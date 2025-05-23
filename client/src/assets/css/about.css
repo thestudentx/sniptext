@@ -1,0 +1,189 @@
+/* === Base Colors & Fonts === */
+:root {
+  --primary: #1D4ED8;
+  --accent: #3B82F6;
+  --orange: #e85d27;
+  --bg-light: #F3F4F6;
+  --text-dark: #1F2937;
+  --text-muted: #6B7280;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* === Section: Hero === */
+.about-hero {
+  background: linear-gradient(var(--primary), var(--accent));
+  color: var(--white);
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-subtext {
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+/* === Section: Info Cards === */
+.about-cards {
+  padding: 4rem 1rem;
+  background-color: var(--bg-light);
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.info-card {
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  border-left: 6px solid var(--primary);
+}
+
+.info-card.accent {
+  border-left: 6px solid var(--orange);
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.card-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* === CTA Section === */
+.cta-wrapper {
+  background-color: var(--primary);
+  padding: 4rem 1rem;
+}
+
+.cta-section {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
+}
+
+.cta-container {
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cta-heading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-text {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+/* CTA Button */
+
+.btn-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-accent), #ff7c4c);
+  color: #fff;
+  padding: 12px 24px;
+  font-family: var(--font-heading); /* Poppins if you're using the system */
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff7c4c, var(--color-accent));
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.btn-cta:hover::before {
+  left: 0;
+}
+
+.btn-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cta:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+
+
+
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .card-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+}

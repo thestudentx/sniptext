@@ -1,3 +1,44 @@
+// -------------------------- DASHBOARD DROPDOWN MENU --------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.getElementById('nav-links');
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+  if (isLoggedIn) {
+    // Replace the last <li> (Login) with Dashboard dropdown
+    const lastLi = navLinks.lastElementChild;
+    lastLi.innerHTML = `
+      <div class="dashboard-dropdown">
+        <button class="dashboard-btn">Dashboard ▼</button>
+        <div class="dropdown-menu">
+          <a href="/client/src/pages/dashboard.html">My Dashboard</a>
+          <a href="#" id="logoutBtn">Logout</a>
+        </div>
+      </div>
+    `;
+
+    // Handle Logout
+    setTimeout(() => {
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('isLoggedIn');
+          window.location.href = '/client/src/pages/login.html';
+        });
+      }
+    }, 100);
+  }
+
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+});
+
+
+
+
 // -------------------------- TESTIMONIAL SECTION --------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".testimonial-track");
