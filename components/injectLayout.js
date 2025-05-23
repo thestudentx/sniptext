@@ -1,15 +1,20 @@
 function loadComponent(selector, filePath, callback) {
   fetch(filePath)
-    .then(res => res.text())
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+      return res.text();
+    })
     .then(data => {
       document.querySelector(selector).innerHTML = data;
-      if (callback) callback();  // Run callback after component is injected
-    });
+      if (callback) callback();
+    })
+    .catch(err => console.error(`Error loading ${filePath}:`, err));
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  // ✅ Relative paths now
-loadComponent("#navbar", "src/components/navbar.html", () => {
+  const basePath = "components/";
+
+  loadComponent("#navbar", basePath + "navbar.html", () => {
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("nav-links");
 
@@ -29,6 +34,5 @@ loadComponent("#navbar", "src/components/navbar.html", () => {
     });
   });
 
-loadComponent("#footer", "src/components/footer.html");
-
+  loadComponent("#footer", basePath + "footer.html");
 });

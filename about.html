@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turnit Premium - About</title>
+
+  <!-- Stylesheets (relative to /pages/) -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/global-loading-animation.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar loaded via JS -->
+  <div id="navbar" data-component="navbar" data-role-aware="true"></div>
+
+  <main id="about-page" class="about-page-wrapper">
+
+    <!-- Hero Section -->
+    <section class="about-hero about-section">
+      <div class="container">
+        <h1 class="hero-title">About Turnit Premium</h1>
+        <p class="hero-subtext">Your trusted companion in academic and professional writing.</p>
+      </div>
+    </section>
+
+    <!-- Info Cards Section -->
+    <section class="about-cards about-section">
+      <div class="container card-grid">
+        <div class="info-card">
+          <h2 class="card-title">Our Mission</h2>
+          <p class="card-text">
+            Empower users with cutting-edge AI tools to write with confidence, clarity, and originality.
+          </p>
+        </div>
+        <div class="info-card accent">
+          <h2 class="card-title">Our Vision</h2>
+          <p class="card-text">
+            To be the most trusted global platform for high-quality writing support and academic integrity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Support Section -->
+    <section class="cta-section about-section">
+      <div class="cta-container">
+        <h3 class="cta-heading">Need Help or Have Questions?</h3>
+        <p class="cta-text">We’re here to assist you. Reach out to our support team anytime.</p>
+        <a href="contact.html" class="btn-cta">Contact Support</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer loaded via JS -->
+  <div id="footer" data-component="footer" data-role-aware="true"></div>
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
+
+  <!-- Scripts -->
+  <script>
+    // Reveal animations on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.about-section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+  <!-- JS files (relative paths from /pages/) -->
+  <script src="js/index.js" defer></script>
+  <script src="components/injectLayout.js"></script>
+
+</body>
+</html>
