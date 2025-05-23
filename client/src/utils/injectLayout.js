@@ -8,30 +8,27 @@ function loadComponent(selector, filePath, callback) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  // Inject Navbar first
-  loadComponent("#navbar", "/client/src/components/navbar.html", () => {
-  // Mobile menu toggle
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("nav-links");
+  // ✅ Relative paths now
+loadComponent("#navbar", "src/components/navbar.html", () => {
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
 
-  if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      hamburger.classList.toggle("active");
-    });
-  }
-
-  // ✅ Highlight active nav link
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll("#nav-links a").forEach(link => {
-    const linkPage = link.getAttribute("href").split("/").pop();
-    if (!link.classList.contains("login-btn") && linkPage === currentPage) {
-      link.classList.add("active");
+    if (hamburger && navLinks) {
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
     }
+
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("#nav-links a").forEach(link => {
+      const linkPage = link.getAttribute("href").split("/").pop();
+      if (!link.classList.contains("login-btn") && linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
   });
-});
 
+loadComponent("#footer", "src/components/footer.html");
 
-  // Inject Footer normally
-  loadComponent("#footer", "/client/src/components/footer.html");
 });
