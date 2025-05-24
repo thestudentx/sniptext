@@ -1,19 +1,29 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.getElementById('loginForm');
-  const errorContainer = document.getElementById('login-error');
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-  loginForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value;
+  console.log('Sending login payload:', { email, password });
 
-    // Temporary check – replace with real authentication logic later
-    if (username === 'user@gmail.com' && password === 'pass123') {
-      localStorage.setItem('isLoggedIn', 'true');
-      window.location.href = '/client/src/pages/dashboard.html';
+  try {
+    const response = await fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+    console.log('Login response:', data);
+
+    if (response.ok) {
+      localStorage.setItem('token', data.token);
+      window.location.href = '/dashboard.html';
     } else {
-      errorContainer.textContent = 'Invalid credentials. Please try again.';
+      alert(data.message || 'Login failed');
     }
-  });
+  } catch (err) {
+    console.error('Login error:', err);
+    alert('Something went wrong. Please try again.');
+  }
 });

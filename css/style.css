@@ -107,10 +107,10 @@ body {
 }
 
 
-.login-btn {
+#nav-dashboard-link {
   display: inline-block;
   background: linear-gradient(120deg, var(--color-text-dark), var(--color-text-dark));
-  color: var(--color-primary);
+  color: var(--color-bg-light);
   padding: 10px 15px !important;
   border-radius: 5px;
   font-weight: 600;
@@ -122,7 +122,7 @@ body {
   z-index: 1;
 }
 
-.login-btn::before {
+#nav-dashboard-link::before {
   content: "";
   position: absolute;
   top: 0;
@@ -134,16 +134,16 @@ body {
   z-index: -1;
 }
 
-.login-btn:hover::before {
+#nav-dashboard-link:hover::before {
   left: 0;
 }
 
-.login-btn:hover {
+#nav-dashboard-link:hover {
   color: var(--color-white);
 }
 
 /* White line won't appear below this li */
-.nav-links li a.login-btn::after {
+.nav-links li a#nav-dashboard-link::after {
   display: none;
 }
 
@@ -1242,4 +1242,10 @@ footer {
 
 
   
+}
+
+@media (max-width: 400px) {
+  .logo a{
+    font-size: 1rem;
+  }
 }
