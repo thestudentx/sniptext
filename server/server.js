@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://127.0.0.1:5500',
+  origin: ['http://127.0.0.1:5500', 'https://sniptext.vercel.app'], 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: false,
   allowedHeaders: ['Content-Type', 'Authorization'] // ✅ important
@@ -22,7 +22,8 @@ app.use('/api', userRoutes);
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ Connected to MongoDB Atlas');
-    app.listen(3000, () => console.log('Server running on port 3000'));
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
   .catch(err => {
     console.error('❌ MongoDB connection error:', err);

@@ -1,13 +1,17 @@
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
+  showLoader(); // 🔵 Show global loader
+
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value;
 
-  console.log('Sending login payload:', { email, password });
+  const BACKEND_URL = location.hostname.includes('localhost')
+    ? 'http://localhost:3000'
+    : 'https://sniptext.onrender.com';
 
   try {
-    const response = await fetch('http://localhost:3000/api/login', {
+    const response = await fetch(`${BACKEND_URL}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -16,14 +20,20 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const data = await response.json();
     console.log('Login response:', data);
 
+    hideLoader(); // 🟢 Hide loader before showing message
+
     if (response.ok) {
       localStorage.setItem('token', data.token);
-      window.location.href = '/dashboard.html';
+      showLoginMessage("Login successful!", true); // ✅ Message box
+      setTimeout(() => {
+        window.location.href = '/dashboard.html';
+      }, 1500);
     } else {
-      alert(data.message || 'Login failed');
+      showLoginMessage(data.message || "Login failed. Please try again.", false); // ❌ Message box
     }
   } catch (err) {
     console.error('Login error:', err);
-    alert('Something went wrong. Please try again.');
+    hideLoader();
+    showLoginMessage("Something went wrong. Please try again.", false);
   }
 });

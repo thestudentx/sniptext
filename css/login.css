@@ -151,3 +151,32 @@
   text-align: center;
   color: #e85d27;
 }
+
+#login-message-box {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 50px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  z-index: 99999;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+#login-message-box.show {
+  top: 40px;
+  opacity: 1;
+}
+
+#login-message-box.hide {
+  top: -100px;
+  opacity: 0;
+}
