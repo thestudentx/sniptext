@@ -1,5 +1,5 @@
-Turnit Premium — Your Advanced Writing Assistance Platform
-Turnit Premium is a specialized writing support platform designed to provide high-quality academic and professional writing tools. It integrates powerful AI and third-party APIs to help users enhance their content through services such as:
+Snip Text — Your Advanced Writing Assistance Platform
+Snip Text is a specialized writing support platform designed to provide high-quality academic and professional writing tools. It integrates powerful AI and third-party APIs to help users enhance their content through services such as:
 
 Plagiarism Detection
 

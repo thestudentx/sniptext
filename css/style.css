@@ -1153,6 +1153,12 @@ footer {
   color: var(--color-text-light);
 }
 
+.powered-by a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+
 
 
 

@@ -42,6 +42,7 @@
 .login-title {
   font-size: 28px;
   font-weight: 700;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   color: var(--color-primary, #1D4ED8);
 }
 
@@ -56,6 +57,15 @@
   color: var(--color-used-often, #e85d27);
   margin-top: 1rem;
   font-weight: 500;
+}
+
+.login-note a {
+  color: var(--color-used-often);
+}
+
+.login-note a:hover {
+  text-decoration: underline;
+  color: var(--color-accent);
 }
 
 .login-form .form-group {
