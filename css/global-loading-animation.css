@@ -14,16 +14,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(243, 244, 246, 0.7); /* light gray with transparency */
+  background: rgba(243, 244, 246, 0.7);
   backdrop-filter: blur(4px);
   z-index: 9999;
-  display: none; /* Hidden by default */
+  display: none;
   justify-content: center;
   align-items: center;
   pointer-events: all;
 }
 
-/* Disable interaction when loading */
 .no-interaction * {
   pointer-events: none !important;
   user-select: none !important;
@@ -31,12 +30,12 @@
 
 /* Typewriter Animation Loader */
 .typewriter {
-  --blue: var(--color-primary);
-  --blue-dark: var(--color-accent);
-  --tool: var(--color-used-often);
-  --key: var(--key);
-  --paper: var(--paper);
-  --text: var(--text);
+  --keyboard-base: var(--color-primary);
+  --slide-top: var(--color-accent);
+  --tool-color: var(--color-used-often);
+  --key-color: var(--key);
+  --paper-color: var(--paper);
+  --text-line: var(--text);
   --duration: 3s;
   position: relative;
   animation: bounce05 var(--duration) linear infinite;
@@ -48,16 +47,17 @@
   border-radius: 3px;
   margin-left: 14px;
   transform: translateX(14px);
-  background: linear-gradient(var(--blue), var(--blue-dark));
+  background: linear-gradient(var(--slide-top), var(--color-primary));
   animation: slide05 var(--duration) ease infinite;
 }
 
 .typewriter .slide:before,
 .typewriter .slide:after,
+.typewriter .slide i,
 .typewriter .slide i:before {
   content: "";
   position: absolute;
-  background: var(--tool);
+  background: var(--tool-color);
 }
 
 .typewriter .slide:before {
@@ -100,7 +100,7 @@
   width: 40px;
   height: 46px;
   border-radius: 5px;
-  background: var(--paper);
+  background: var(--paper-color);
   transform: translateY(46px);
   animation: paper05 var(--duration) linear infinite;
 }
@@ -114,10 +114,11 @@
   border-radius: 2px;
   height: 4px;
   transform: scaleY(0.8);
-  background: var(--text);
-  box-shadow: 0 12px 0 var(--text),
-              0 24px 0 var(--text),
-              0 36px 0 var(--text);
+  background: var(--text-line);
+  box-shadow:
+    0 12px 0 var(--text-line),
+    0 24px 0 var(--text-line),
+    0 36px 0 var(--text-line);
 }
 
 .typewriter .keyboard {
@@ -140,7 +141,7 @@
   right: 0;
   bottom: 0;
   border-radius: 7px;
-  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  background: linear-gradient(135deg, var(--keyboard-base), var(--slide-top));
   transform: perspective(10px) rotateX(2deg);
   transform-origin: 50% 100%;
 }
@@ -152,12 +153,16 @@
   height: 4px;
   border-radius: 2px;
   box-shadow:
-    15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
-    60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
-    22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key),
-    60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    15px 0 0 var(--key-color), 30px 0 0 var(--key-color), 45px 0 0 var(--key-color),
+    60px 0 0 var(--key-color), 75px 0 0 var(--key-color), 90px 0 0 var(--key-color),
+    22px 10px 0 var(--key-color), 37px 10px 0 var(--key-color),
+    52px 10px 0 var(--key-color), 60px 10px 0 var(--key-color),
+    68px 10px 0 var(--key-color), 83px 10px 0 var(--key-color);
   animation: keyboard05 var(--duration) linear infinite;
 }
+
+/* Keyframe animations remain unchanged */
+
 
 /* Keyframe Animations */
 @keyframes bounce05 {

@@ -20,7 +20,7 @@ router.get('/user', (req, res) => {
       email: decoded.email,
       models: decoded.models,
       accessDuration: decoded.accessDuration,
-      models: ['turnitin1', 'quillbot1'] // adjust based on roles later
+      plan: decoded.plan
     });
   } catch (err) {
     return res.status(401).json({ message: 'Invalid token' });

@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Decoded Payload:", decodedPayload); // ✅ Add this
 
-  const { email, accessDuration, models } = decodedPayload;
+  const { email, plan, accessDuration, models } = decodedPayload;
   const expiryDate = new Date(accessDuration);
   const now = new Date();
 
@@ -39,6 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   emailElement.textContent = email;
   accessDurationElement.textContent = expiryDate.toDateString();
+
+  // Display user plan 
+  const planElement = document.getElementById("active-plan");
+  planElement.textContent = plan || "Not Assigned";
+  
+
 
   // Countdown timer
   function updateTimer() {

@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const dummyUser = {
   email: 'testuser@gmail.com',
   password: 'testuser',
+  plan: 'Premium - 1 Year', 
   models: ['turnitin1', 'quillbot2', 'quillbot3', 'grammarly3'],
   accessDuration: "2025-06-15T23:59:59Z", // ISO format
 };
@@ -27,9 +28,13 @@ router.post('/login', (req, res) => {
       return res.status(403).json({ message: 'Your access has expired.' });
     }
 
+    // Log user details for debugging
+    console.log('🔍 User object:', user);
+
     const token = jwt.sign(
       {
         email: user.email,
+        plan: user.plan,
         models: user.models,
         accessDuration: user.accessDuration,
       },
@@ -63,7 +68,7 @@ router.get('/user', (req, res) => {
     }
 
     console.log('✅ Token verified:', decoded);
-    res.json({ email: decoded.email, models: decoded.models });
+    res.json({ email: decoded.email, plan: decoded.plan, models: decoded.models });
   });
 });
 
