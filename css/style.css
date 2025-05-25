@@ -4,9 +4,10 @@
   --color-bg-light: #F3F4F6;
   --color-white: #ffffff;
   --color-text-dark: #1F2937;
-  --color-text-light: #6B7280;
+  --color-text-light: #6B7280; 
   --color-border: #E5E7EB;
   --color-used-often: #e85d27;
+  --color-footer-bg: #1d1f2f;
 
   /* FONT STACK */
   --font-heading: 'Poppins', 'Segoe UI', sans-serif;
@@ -54,13 +55,24 @@ body {
   display: inline-block;
 }
 
+.logo a::after {
+  content: '';
+  position: absolute;
+  top: 53%;
+  left: 12%;
+  width: 51%;
+  height: 1.5px;
+  background-color: var(--color-primary);
+  transform: rotate(-10deg);
+}
+
 /* Glow and slight scale on hover */
 .logo a:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 
 .logo a:hover::after {
-  width: 100%;
+  /* width: 100%; */
 }
 
 
@@ -146,6 +158,37 @@ body {
 .nav-links li a#nav-dashboard-link::after {
   display: none;
 }
+
+/* LOGOUT BUTTON */ 
+/* Style the Logout link like other nav items */
+#nav-logout-link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 4px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+#nav-logout-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: var(--color-bg-light);
+  transition: width 0.3s ease;
+}
+
+#nav-logout-link:hover {
+  color: var(--color-bg-light);
+}
+
+#nav-logout-link:hover::after {
+  width: 100%;
+}
+
 
 
 /* Hide hamburger by default */
@@ -259,6 +302,7 @@ body {
 }
 
 .hero-content {
+  margin-left: 3rem;
   flex: 1 1 500px;
   max-width: 600px;
 }
@@ -1040,7 +1084,7 @@ body {
 /* FOOTER */
 /* ------------------------------------------------------------------------------------- */
 footer {
-  background-color: #1d1f2f;
+  background-color: var(--color-footer-bg);
   color: var(--color-text-light);
   padding: 2.5rem 1rem 1.5rem;
   font-family: var(--font-body);
@@ -1165,12 +1209,17 @@ footer {
 /* ------------------------------------------------------------------------------------- */
 /* RESPONSIVENESS */
 /* ------------------------------------------------------------------------------------- */
-@media (max-width: 1025px) {
+@media (max-width: 1044px) {
     .hero-content {
       flex: 1 1 273px;;
     }
 }
 
+@media (max-width: 816px) {
+    .hero-content {
+      text-align: center;
+    }
+}
 
 
 

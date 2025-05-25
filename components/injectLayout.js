@@ -14,6 +14,7 @@ function loadComponent(selector, filePath, callback) {
 window.addEventListener("DOMContentLoaded", () => {
   const basePath = "components/";
 
+  // Load navbar and then trigger auth logic
   loadComponent("#navbar", basePath + "navbar.html", () => {
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("nav-links");
@@ -32,7 +33,13 @@ window.addEventListener("DOMContentLoaded", () => {
         link.classList.add("active");
       }
     });
+
+    // ✅ Call auth logic after navbar is injected
+    if (typeof runNavbarAuthLogic === 'function') {
+      runNavbarAuthLogic();
+    }
   });
 
+  // Load footer as usual
   loadComponent("#footer", basePath + "footer.html");
 });

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function runNavbarAuthLogic() {
   const token = localStorage.getItem('token');
   const dashboardLink = document.getElementById('nav-dashboard-link');
   const logoutLink = document.getElementById('nav-logout-link');
@@ -33,4 +33,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dashboardLink) dashboardLink.href = '/login.html';
     if (logoutLink) logoutLink.style.display = 'none';
   }
-});
+}
