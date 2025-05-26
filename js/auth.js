@@ -34,3 +34,29 @@ function runNavbarAuthLogic() {
     if (logoutLink) logoutLink.style.display = 'none';
   }
 }
+
+// Inject the navbar and footer components
+window.addEventListener('DOMContentLoaded', () => {
+  // Navbar auth logic
+  runNavbarAuthLogic();
+
+  // Optional: hamburger toggle
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("active");
+    });
+  }
+
+  // Optional: highlight current page
+  const currentPage = window.location.pathname.split("/").pop();
+  document.querySelectorAll("#nav-links a").forEach(link => {
+    const linkPage = link.getAttribute("href").split("/").pop();
+    if (!link.classList.contains("login-btn") && linkPage === currentPage) {
+      link.classList.add("active");
+    }
+  });
+});

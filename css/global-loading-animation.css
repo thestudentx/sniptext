@@ -14,8 +14,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(243, 244, 246, 0.7);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4); /* dim background */
+  backdrop-filter: blur(3px);
   z-index: 9999;
   display: none;
   justify-content: center;
@@ -23,7 +23,7 @@
   pointer-events: all;
 }
 
-.no-interaction * {
+body.no-interaction * {
   pointer-events: none !important;
   user-select: none !important;
 }

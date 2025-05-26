@@ -6,6 +6,9 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value;
 
+  // 🔍 Log the submitted data
+  console.log('🧪 Submitted login data:', { email, password });
+
   const BACKEND_URL = location.hostname.includes('localhost')
     ? 'http://localhost:3000'
     : 'https://sniptext.onrender.com';
@@ -18,7 +21,10 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     });
 
     const data = await response.json();
-    console.log('Login response:', data);
+
+    // 📩 Log server response details
+    console.log('📩 Server responded with status:', response.status);
+    console.log('📨 Response body:', data);
 
     hideLoader(); // 🟢 Hide loader before showing message
 
@@ -36,4 +42,15 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     hideLoader();
     showLoginMessage("Something went wrong. Please try again.", false);
   }
+});
+
+// Function to Show/Hide password 
+document.getElementById('toggle-password').addEventListener('click', function () {
+  const passwordInput = document.getElementById('password');
+  const type = passwordInput.getAttribute('type');
+  const isHidden = type === 'password';
+
+  passwordInput.setAttribute('type', isHidden ? 'text' : 'password');
+  this.textContent = isHidden ? '🙈' : '👁️';
+  this.setAttribute('aria-label', isHidden ? 'Hide Password' : 'Show Password');
 });

@@ -16,8 +16,29 @@
 </head>
 <body>
 
-  <!-- NAVBAR LOADED VIA JS -->
-  <div id="navbar" data-component="navbar" data-role-aware="true"></div>
+
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <a id="nav-dashboard-link" href="login.html">Dashboard</a>
+      <a id="nav-logout-link" href="#" style="display:none;">Logout</a>
+    </ul>
+  </div>
+</nav>
+
 
 
 
@@ -49,8 +70,27 @@
 
 
 
-  <!-- FOOTER LOADED VIA JS -->
-  <div id="footer" data-component="footer" data-role-aware="true"></div>
+<footer id="main-footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="/client/src/pages/about.html#support">Support</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="/client/src/pages/about.html#privacy">Privacy Policy</a>
+      <a href="/client/src/pages/about.html#terms">Terms of Use</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span class="powered-by">Snip Text - powered by <a href="https://checkai.pro" target="_blank">CheckAI.pro</a> All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
 
 
   <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
