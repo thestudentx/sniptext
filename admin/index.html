@@ -1,0 +1,159 @@
+<!-- Admin Panel HTML will go here --><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amin Panel - Snip Text</title>
+  <link rel="stylesheet" href="css/admin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <h2 class="logo">Admin Panel</h2>
+      <nav>
+        <ul>
+          <li><a href="#" class="nav-link active" data-section="users">👤 Users</a></li>
+          <li><a href="#" class="nav-link" data-section="apis">🔌 API Models</a></li>
+          <li><a href="#" class="nav-link" data-section="credits">💳 Credits</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Panel -->
+    <main class="main-panel">
+      <header class="admin-header">
+        <h1 id="section-title">User Management</h1>
+      </header>
+
+      <!-- Section: Users -->
+      <section class="admin-section" id="users-section">
+        <button class="btn primary" id="addUserBtn">➕ Add User</button>
+        <div class="admin-table-wrapper"></div>
+        <table class="admin-table" id="userTable">
+          <thead>
+            <tr>
+                <th>Email</th>
+                <th>Access</th>
+                <th>Expiry</th>
+                <th>APIs</th>
+                <th>Credits</th>
+                <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <!-- Rows inserted by JS -->
+          </tbody>
+        </table>
+        <!-- </div> -->
+      </section>
+
+      <!-- Section: API Models -->
+      <section class="admin-section hidden" id="apis-section">
+        <button class="btn primary" id="addApiBtn">➕ Add API</button>
+        <table class="admin-table" id="apiTable">
+          <thead>
+            <tr>
+              <th>Model Name</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="apiTableBody">
+            <!-- Rows inserted by JS -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section: Credits -->
+      <section class="admin-section hidden" id="credits-section">
+        <button class="btn primary" id="assignCreditBtn">➕ Assign Credit</button>
+        <table class="admin-table" id="creditTable">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>API Model</th>
+              <th>Remaining Credits</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="creditTableBody">
+            <!-- Rows inserted by JS -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+
+
+
+
+
+  <!-- Modals -->
+  <div id="modalContainer">
+    <!-- User Modal -->
+    <div class="modal hidden" id="userModal">
+    <div class="modal-content">
+        <h2 id="userModalTitle">Add User</h2>
+        <form id="userForm">
+        <input type="email" name="email" placeholder="User Email" required />
+        <select name="access" required>
+            <option value="">Access Type</option>
+            <option value="basic">Basic</option>
+            <option value="premium">Premium</option>
+        </select>
+        <input type="date" name="expiry" required />
+        <input type="text" name="apis" placeholder="APIs (comma-separated)" />
+        <input type="number" name="credits" placeholder="Total Credits" min="0" />
+        <div class="modal-actions">
+            <button type="submit" class="btn primary">Save</button>
+            <button type="button" class="btn cancel-btn" data-modal-close="userModal">Cancel</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
+    <!-- API Modal -->
+    <div class="modal hidden" id="apiModal">
+    <div class="modal-content">
+        <h2 id="apiModalTitle">Add API Model</h2>
+        <form id="apiForm">
+        <input type="text" name="model" placeholder="Model Name (e.g., Turnitin)" required />
+        <select name="status" required>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+        <div class="modal-actions">
+            <button type="submit" class="btn primary">Save</button>
+            <button type="button" class="btn cancel-btn" data-modal-close="apiModal">Cancel</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
+    <!-- Credit Modal -->
+    <div class="modal hidden" id="creditModal">
+    <div class="modal-content">
+        <h2 id="creditModalTitle">Assign Credits</h2>
+        <form id="creditForm">
+        <input type="email" name="userEmail" placeholder="User Email" required />
+        <input type="text" name="model" placeholder="API Model (e.g., Quillbot)" required />
+        <input type="number" name="credits" placeholder="Credits to Assign" required min="0" />
+        <div class="modal-actions">
+            <button type="submit" class="btn primary">Save</button>
+            <button type="button" class="btn cancel-btn" data-modal-close="creditModal">Cancel</button>
+        </div>
+        </form>
+    </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/admin.js"></script>
+  <script src="js/users.js"></script>
+  <script src="js/apis.js"></script>
+  <script src="js/credits.js"></script>
+</body>
+</html>
