@@ -43,4 +43,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Logout button handler
+const logoutBtn = document.getElementById('adminLogoutBtn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('adminToken');
+    window.location.href = 'admin-login.html'; // update if your login page path is different
+  });
+}
+
+// Toast Notifications
+window.showToast = function (message, type = 'info', duration = 3000) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+
+  toast.textContent = message;
+
+  // Reset class to base
+  toast.className = 'toast';
+
+  // Add type class for styling
+  toast.classList.add(type); // e.g., 'success', 'error'
+
+  // Show animation
+  toast.classList.add('show');
+
+  // Hide after duration
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, duration);
+};
+
+
 });

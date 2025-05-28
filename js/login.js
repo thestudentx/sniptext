@@ -1,3 +1,20 @@
+// Smooth toast notification function
+window.showToast = function(message, duration = 3000) {
+  const toast = document.getElementById('login-message-box');
+  toast.textContent = message;
+
+  // Show toast with animation
+  toast.classList.remove('hide');
+  toast.classList.add('show');
+
+  // Hide toast after duration
+  setTimeout(() => {
+    toast.classList.remove('show');
+    toast.classList.add('hide');
+  }, duration);
+};
+
+
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
