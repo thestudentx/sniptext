@@ -19,7 +19,7 @@ app.use(express.static('.'));
 
 // Enable CORS
 app.use(cors({
-  origin: ['http://127.0.0.1:5500', 'https://sniptext.vercel.app'], 
+  origin: ['http://127.0.0.1:5500', 'https://sniptext.vercel.app', 'https://checkai.pro', 'https://sniptext.onrender.com'], 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: false,
   allowedHeaders: ['Content-Type', 'Authorization']

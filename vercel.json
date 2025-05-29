@@ -1,13 +1,15 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/dashboard", "destination": "/dashboard.html" },
-    { "source": "/features", "destination": "/features.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/login", "destination": "/login.html" },
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin-login", "destination": "/admin/admin-login.html" }
+    { "source": "/admin/:path*",    "destination": "/admin/:path*" },
+
+    { "source": "/",                "destination": "/index.html" },
+    { "source": "/dashboard",       "destination": "/dashboard.html" },
+    { "source": "/features",        "destination": "/features.html" },
+    { "source": "/about",           "destination": "/about.html" },
+    { "source": "/contact",         "destination": "/contact.html" },
+    { "source": "/login",           "destination": "/login.html" },
+    { "source": "/admin",           "destination": "/admin/index.html" },
+    { "source": "/admin-login",     "destination": "/admin/admin-login.html" }
   ],
   "cleanUrls": true,
   "trailingSlash": false
