@@ -61,10 +61,6 @@ body {
   gap: 1.25rem;
 }
 
-.sidebar nav ul li {
-  /* margin-bottom: 1rem; */
-}
-
 .sidebar nav ul li a {
   display: flex;
   align-items: center;

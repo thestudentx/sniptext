@@ -1,3 +1,9 @@
+// LOGIN CHECK 
+const adminToken = localStorage.getItem('adminToken');
+if (!adminToken) {
+  window.location.href = 'admin-login.html'; // or './admin-login.html' if needed
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Tab Switching
   document.querySelectorAll('.nav-link').forEach(link => {

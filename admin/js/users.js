@@ -195,7 +195,9 @@ async function deleteUser(id) {
 // ——————————————————————————————
 // Initial load
 // ——————————————————————————————
-loadUsers();
+window.addEventListener('load', () => {
+  loadUsers();
+});
 
 
 
