@@ -1,33 +1,34 @@
+// admin-login.js
 document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const email = document.getElementById('adminEmail').value.trim();
+  const email    = document.getElementById('adminEmail').value.trim();
   const password = document.getElementById('adminPassword').value.trim();
-  const loginError = document.getElementById('loginError');
+  const loginErr = document.getElementById('loginError');
 
-const host = window.location.hostname;
-const BASE_URL = (host === 'localhost' || host === '127.0.0.1')
-  ? 'http://localhost:3000'
-  : 'https://sniptext.onrender.com';
+  const host = window.location.hostname;
+  const BASE_URL = (host === 'localhost' || host === '127.0.0.1')
+    ? 'http://localhost:3000'
+    : 'https://sniptext.onrender.com';
 
   try {
-    const response = await fetch(`${BASE_URL}/api/admin/login`, {
+    const res = await fetch(`${BASE_URL}/api/admin/login`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     });
 
-    const data = await response.json();
+    const data = await res.json();
 
-    if (response.ok && data.token) {
+    if (res.ok && data.token) {
       localStorage.setItem('adminToken', data.token);
-      window.location.href = 'index.html'; // redirect to admin dashboard
+      // Redirect to the pretty '/admin' URL
+      window.location.href = '/admin';
     } else {
-      loginError.textContent = data.message || 'Login failed';
+      loginErr.textContent = data.message || 'Login failed';
     }
   } catch (err) {
-    loginError.textContent = 'Server error. Please try again.';
+    console.error('Admin login error:', err);
+    loginErr.textContent = 'Server error. Please try again.';
   }
 });

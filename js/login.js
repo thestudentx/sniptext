@@ -1,29 +1,28 @@
+// login.js
+
 // Smooth toast notification function
-window.showToast = function(message, duration = 3000) {
+window.showToast = function(message, success = true, duration = 3000) {
   const toast = document.getElementById('login-message-box');
   toast.textContent = message;
+  toast.classList.toggle('success', success);
+  toast.classList.toggle('error', !success);
 
-  // Show toast with animation
   toast.classList.remove('hide');
   toast.classList.add('show');
 
-  // Hide toast after duration
   setTimeout(() => {
     toast.classList.remove('show');
     toast.classList.add('hide');
   }, duration);
 };
 
-
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
+  showLoader();
 
-  showLoader(); // 🔵 Show global loader
-
-  const email = document.getElementById('email').value.trim();
+  const email    = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value;
 
-  // 🔍 Log the submitted data
   console.log('🧪 Submitted login data:', { email, password });
 
   const BACKEND_URL = location.hostname.includes('localhost')
@@ -31,43 +30,40 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     : 'https://sniptext.onrender.com';
 
   try {
-    const response = await fetch(`${BACKEND_URL}/api/login`, {
+    const res = await fetch(`${BACKEND_URL}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     });
 
-    const data = await response.json();
+    const data = await res.json();
+    console.log('📩 Status:', res.status, 'Body:', data);
 
-    // 📩 Log server response details
-    console.log('📩 Server responded with status:', response.status);
-    console.log('📨 Response body:', data);
+    hideLoader();
 
-    hideLoader(); // 🟢 Hide loader before showing message
-
-    if (response.ok) {
+    if (res.ok) {
       localStorage.setItem('token', data.token);
-      showLoginMessage("Login successful!", true); // ✅ Message box
+      showToast('Login successful!', true);
       setTimeout(() => {
-        window.location.href = '/dashboard.html';
+        // use the pretty URL rewrite
+        window.location.href = '/dashboard';
       }, 1500);
     } else {
-      showLoginMessage(data.message || "Login failed. Please try again.", false); // ❌ Message box
+      showToast(data.message || 'Login failed. Please try again.', false);
     }
+
   } catch (err) {
     console.error('Login error:', err);
     hideLoader();
-    showLoginMessage("Something went wrong. Please try again.", false);
+    showToast('Something went wrong. Please try again.', false);
   }
 });
 
-// Function to Show/Hide password 
+// Toggle password visibility
 document.getElementById('toggle-password').addEventListener('click', function () {
-  const passwordInput = document.getElementById('password');
-  const type = passwordInput.getAttribute('type');
-  const isHidden = type === 'password';
-
-  passwordInput.setAttribute('type', isHidden ? 'text' : 'password');
+  const pw = document.getElementById('password');
+  const isHidden = pw.type === 'password';
+  pw.type = isHidden ? 'text' : 'password';
   this.textContent = isHidden ? '🙈' : '👁️';
   this.setAttribute('aria-label', isHidden ? 'Hide Password' : 'Show Password');
 });

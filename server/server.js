@@ -17,9 +17,25 @@ app.use(express.json());
 // Serve static HTML files from root (e.g., index.html)
 app.use(express.static('.'));
 
-// Enable CORS
+// Enable dynamic CORS
+const allowedOrigins = [
+  'http://127.0.0.1:5500',
+  'https://sniptext.vercel.app',
+  'https://checkai.pro',
+  'https://www.checkai.pro',
+  'https://sniptext.onrender.com'
+];
+
 app.use(cors({
-  origin: ['http://127.0.0.1:5500', 'https://sniptext.vercel.app', 'https://checkai.pro', 'https://sniptext.onrender.com'], 
+  origin: (incomingOrigin, callback) => {
+    // incomingOrigin is undefined for non-browser clients (curl, Postman)
+    if (!incomingOrigin || allowedOrigins.includes(incomingOrigin)) {
+      callback(null, true);    // allow request
+    } else {
+      console.warn(`Blocked CORS request from: ${incomingOrigin}`);
+      callback(new Error('Not allowed by CORS'));  // reject
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: false,
   allowedHeaders: ['Content-Type', 'Authorization']
