@@ -2,33 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://checkai.pro/</loc>
+    <loc>https://checkai.pro/index.html</loc>
     <priority>1.00</priority>
   </url>
 
   <url>
-    <loc>https://checkai.pro/dashboard</loc>
+    <loc>https://checkai.pro/dashboard.html</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://checkai.pro/features</loc>
+    <loc>https://checkai.pro/features.html</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://checkai.pro/about</loc>
+    <loc>https://checkai.pro/about.html</loc>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://checkai.pro/contact</loc>
+    <loc>https://checkai.pro/contact.html</loc>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://checkai.pro/login</loc>
+    <loc>https://checkai.pro/login.html</loc>
     <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://checkai.pro/admin/admin.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://checkai.pro/admin/admin-login.html</loc>
+    <priority>0.60</priority>
   </url>
 
 </urlset>
