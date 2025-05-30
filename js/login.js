@@ -46,7 +46,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
       showToast('Login successful!', true);
       setTimeout(() => {
         // use the pretty URL rewrite
-        window.location.href = '/dashboard';
+        window.location.href = '/dashboard.html';
       }, 1500);
     } else {
       showToast(data.message || 'Login failed. Please try again.', false);

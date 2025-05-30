@@ -44,14 +44,30 @@
 
   <!-- ----- MAIN DASHBOARD ----- -->
   <main class="dashboard-container">
+
+
+    <!-- USER INFO -->
     <section class="user-info">
       <div class="user-meta">
-        <h2 id="user-email">Loading...</h2>
-        <p>Active Plan: <span id="active-plan">--</span></p>
-        <p>Access valid till <span id="access-duration">--</span></p>
-        <p id="time-remaining"></p>
+        <div class="info-row">
+          <span class="label">User:</span>
+          <span id="user-email" class="value">Loading...</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Plan:</span>
+          <span id="active-plan" class="value">--</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Valid till:</span>
+          <span id="access-duration" class="value">--</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Time left:</span>
+          <span id="time-remaining" class="value">--</span>
+        </div>
       </div>
     </section>
+
 
 
 

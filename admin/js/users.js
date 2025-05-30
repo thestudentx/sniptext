@@ -71,6 +71,7 @@ document.getElementById('addUserBtn').addEventListener('click', () => {
   openModal('userModal');
 });
 
+
 // ——————————————————————————————
 // Handle form submit (POST or PUT)
 // ——————————————————————————————
@@ -124,7 +125,7 @@ function editUser(index) {
 
   form.email.value = u.email;
   form.access.value = u.plan;
-  form.expiry.value = new Date(u.accessDuration).toISOString().slice(0, 10);
+  // form.expiry.value = new Date(u.accessDuration).toISOString().slice(0, 10);
   form.apis.value = (u.modelsAccess || []).join(', ');
 
   // Set credits field with fallback 0
