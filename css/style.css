@@ -106,16 +106,13 @@ body {
   transition: width 0.3s ease;
 }
 
+.nav-links li a:hover::after,
 .nav-links li a.active::after {
   width: 100%;
 }
 
 .nav-links li a:hover {
   color: var(--color-bg-light);
-}
-
-.nav-links li a:hover::after {
-  width: 100%;
 }
 
 

@@ -11,6 +11,7 @@
 
   <!-- Google Fonts: Poppins & Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -98,6 +99,9 @@
         <textarea id="message" name="message" required placeholder="Type your message..."></textarea>
       </div>
 
+      <!-- reCaptcha -->
+      <div class="g-recaptcha" data-sitekey="6Lcp41ArAAAAAL8Q-jKj8AMCZ6glHZqAAHS_jz9p"></div>
+
       <button type="submit" class="btn-submit">Send Message</button>
     </form>
 
@@ -153,51 +157,98 @@
     <script src="js/index.js" defer></script>
     <script src="components/injectLayout.js"></script>
     <script src="js/auth.js"></script>
+  <!-- reCaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+
+    <!-- --------------- FORM SCRIPT --------------- -->
     <script>
   const contactForm = document.querySelector('.contact-form');
   const successBox = document.getElementById('form-success-box');
 
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault(); // Prevent default form behavior
+  // ✅ Auto-fill subject + message if ?request=access is in URL
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('request') === 'access') {
+      const subjectField = document.querySelector('input[name="subject"]');
+      const messageField = document.querySelector('textarea[name="message"]');
 
-    const formData = new FormData(contactForm);
-    const endpoint = contactForm.action;
+      if (subjectField) {
+        subjectField.value = "Requesting Access to Snip Text";
+      }
+      if (messageField) {
+        messageField.value =
+          "Hi team,\n\nI'd like to request access to Snip Text. Please let me know the next steps.\n\nThanks!";
+        messageField.focus();
+      }
+    }
+  });
 
-    // ✅ Show loading overlay
-    showLoader();
+  // ✅ Handle form submission
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault(); // Stop default form submission
+    showLoader(); // Show spinner overlay
+
+    const token = grecaptcha.getResponse();
+    if (!token) {
+      hideLoader();
+      alert('⚠️ Please complete the reCAPTCHA!');
+      return;
+    }
 
     try {
+      // 🔒 Step 1: Verify reCAPTCHA with backend
+      const isLocalhost = window.location.hostname === 'localhost';
+      const recaptchaEndpoint = isLocalhost
+        ? 'http://localhost:5000/api/verify-recaptcha'
+        : 'https://sniptext.onrender.com/api/verify-recaptcha';
+
+      const recaptchaRes = await fetch(recaptchaEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: token })
+      });
+
+      const recaptchaData = await recaptchaRes.json();
+
+      if (!recaptchaData.success || recaptchaData.score < 0.5) {
+        hideLoader();
+        alert('❌ reCAPTCHA failed. Please try again.');
+        return;
+      }
+
+      // ✅ Step 2: Submit form to Formspree
+      const formData = new FormData(contactForm);
+      const endpoint = contactForm.action;
+
       const response = await fetch(endpoint, {
         method: 'POST',
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       });
 
-      // ✅ Hide loader after response
       hideLoader();
 
       if (response.ok) {
         contactForm.reset();
+        grecaptcha.reset(); // Reset the reCAPTCHA box
 
-        // Show slide-down success message
         successBox.classList.add('show');
-
-        // Hide after 5 seconds
-        setTimeout(() => {
-          successBox.classList.remove('show');
-        }, 5000);
+        setTimeout(() => successBox.classList.remove('show'), 5000);
       } else {
-        alert("There was a problem sending your message. Please try again.");
+        alert("⚠️ Error sending message. Try again.");
       }
+
     } catch (error) {
-      hideLoader(); // hide loader even if request fails
-      alert("Something went wrong. Please try later.");
+      hideLoader();
+      console.error("🚫 CAPTCHA Verification Error:", error);
+      alert("🚫 Something went wrong. Please try again.");
     }
   });
 </script>
+
+
+
 
 
 

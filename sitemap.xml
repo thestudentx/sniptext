@@ -41,4 +41,9 @@
     <priority>0.60</priority>
   </url>
 
+    <url>
+      <loc>https://checkai.pro/blog/blog1.html</loc>
+      <priority>0.90</priority>
+    </url>
+
 </urlset>
