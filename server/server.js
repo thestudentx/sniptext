@@ -3,13 +3,19 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
+const authMiddleware = require('./middlewares/authMiddleware');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const registerRoute = require('./routes/register');
 const adminUserRoutes = require('./routes/adminUserRoutes');
-const authMiddleware = require('./middlewares/authMiddleware');
 const adminLoginAuth = require('./routes/adminLoginAuth');
 const contactRoutes = require('./routes/contact');
+const configRoutes = require("./routes/configRoutes");
+
+// CORS PROXY SERVER
+const winstonProxy = require("./routes/winstonProxy");
+
+// grammarly1 
 
 dotenv.config();
 const app = express();
@@ -21,6 +27,7 @@ app.use(express.static('.'));
 // Enable dynamic CORS
 const allowedOrigins = [
   'http://127.0.0.1:5500',
+  'http://localhost:3000',
   'https://sniptext.vercel.app',
   'https://checkai.pro',
   'https://www.checkai.pro',
@@ -50,9 +57,14 @@ app.use('/api/admin/users', adminUserRoutes);
 app.use('/api/admin', adminLoginAuth);
 app.use('/api', contactRoutes);
 
+// turnitin1 API routes
+app.use("/api/config", configRoutes);
+app.use("/api/winston", winstonProxy);
+
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
+  console.log("✅ Connected to MongoDB DB Name:", mongoose.connection.name);
     console.log('✅ Connected to MongoDB Atlas');
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

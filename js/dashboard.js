@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const allModelCards = {
     turnitin1: {
       id: "model-turnitin-1",
-      href: "/model/turnitin1",
+      href: "turnitin1.html",
       img: "images/turnitin-logo.png",
       title: "Turnitin 1",
       description: "Plagiarism Check & Remove",

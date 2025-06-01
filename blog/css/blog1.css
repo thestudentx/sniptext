@@ -1,10 +1,17 @@
-/* Clean professional blog styling */
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', 'Roboto', sans-serif;
   background-color: #f8fafc;
   color: #1e293b;
   margin: 0;
   padding: 0;
+  line-height: 1.7;
 }
 
 .container {
@@ -13,26 +20,33 @@ body {
   padding: 2rem;
 }
 
+/* Header Section */
 .blog-header {
   background-color: #1d4ed8;
   color: #fff;
   padding: 4rem 2rem;
   text-align: center;
+  border-bottom: 4px solid #3b82f6;
 }
 
 .blog-header h1 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
+/* Content Section */
 .blog-content h2 {
-  color: #2563eb;
-  margin-top: 2rem;
+  color: #1d4ed8;
+  margin-top: 2.5rem;
+  font-size: 1.6rem;
+  border-left: 4px solid #3b82f6;
+  padding-left: 0.75rem;
 }
 
 .intro, .conclusion {
@@ -40,26 +54,133 @@ body {
   margin: 2rem 0;
 }
 
+/* Tool Cards */
 .tool {
-  background-color: #fff;
-  border-left: 4px solid #3b82f6;
+  background-color: #ffffff;
+  border-left: 5px solid #3b82f6;
   border-radius: 0.5rem;
-  padding: 1.2rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   margin: 1.5rem 0;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tool:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
+/* Link Styling */
 a {
   color: #3b82f6;
+  font-weight: 500;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+ul {  
+  margin: 1em 0; /* vertical spacing */
+  list-style-position: inside; /* <-- This pulls bullets inside the content box */
+}
+
+/* Comparison Table */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  margin: 1.5rem 0;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.comparison-table thead {
+  background-color: #1d4ed8;
+  color: #fff;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.comparison-table tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+.comparison-table td:first-child {
+  font-weight: 600;
+  color: #1e293b;
+  text-align: left;
+}
+
+.comparison-table td {
+  vertical-align: middle;
+}
+
+/* Responsive tweak: add shadow or fade edges to indicate scroll */
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+/* Highlight section - Why Snip Text Wins */
+.blog-content h2:last-of-type {
+  background: #dbeafe;
+  border-left: 5px solid #1d4ed8;
+  padding: 0.75rem 1rem;
+  border-radius: 0.3rem;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+}
+
+.blog-content .highlight {
+  background: #f0f9ff;
+  padding: 1rem;
+  border-left: 5px solid #3b82f6;
+  margin-top: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Responsive Goodness */
+@media (max-width: 768px) {
+  .blog-header h1 {
+    font-size: 2rem;
+  }
+
+  .blog-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .container p{
+    text-align: justify;
+  }
 }
