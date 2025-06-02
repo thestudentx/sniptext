@@ -140,7 +140,7 @@ async function callContentDetection({ text = "", fileBase64 = "" }) {
   const body = {
     text:      text || "",
     file:      fileBase64 || "",
-    website:   "checkai.pro",
+    // website:   "checkai.pro",
     version:   "v2",
     sentences: true,
     language:  "en"
