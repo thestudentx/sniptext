@@ -141,7 +141,7 @@ async function callContentDetection({ text = "", fileBase64 = "" }) {
     text:      text || "",
     file:      fileBase64 || "",
     // website:   "checkai.pro",
-    version:   "v2",
+    version:   "4.5",
     sentences: true,
     language:  "en"
   };
