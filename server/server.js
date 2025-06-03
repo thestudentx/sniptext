@@ -10,12 +10,7 @@ const registerRoute = require('./routes/register');
 const adminUserRoutes = require('./routes/adminUserRoutes');
 const adminLoginAuth = require('./routes/adminLoginAuth');
 const contactRoutes = require('./routes/contact');
-const configRoutes = require("./routes/configRoutes");
 
-// CORS PROXY SERVER
-const winstonProxy = require("./routes/winstonProxy");
-
-// grammarly1 
 
 dotenv.config();
 const app = express();
@@ -56,10 +51,6 @@ app.use('/api/register', registerRoute);
 app.use('/api/admin/users', adminUserRoutes);
 app.use('/api/admin', adminLoginAuth);
 app.use('/api', contactRoutes);
-
-// turnitin1 API routes
-app.use("/api/config", configRoutes);
-app.use("/api/winston", winstonProxy);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
