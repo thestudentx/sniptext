@@ -71,26 +71,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const allModelCards = {
     turnitin1: {
       id: "model-turnitin-1",
-      href: "turnitin1.html",
+      href: "https://turnitindetect.org/login",
       img: "images/turnitin-logo.png",
       title: "Turnitin 1",
-      description: "Plagiarism Check & Remove",
+      description: "Plagiarism Check & AI Detection",
       model: "Turnitin",
     },
     turnitin2: {
       id: "model-turnitin-2",
-      href: "/model/turnitin2",
+      href: "https://turnitindetect.org/login",
       img: "images/turnitin-logo.png",
       title: "Turnitin 2",
-      description: "Plagiarism Check & Remove",
+      description: "Plagiarism Check & AI Detection",
       model: "Turnitin",
     },
     turnitin3: {
       id: "model-turnitin-3",
-      href: "/model/turnitin3",
+      href: "https://turnitindetect.org/login",
       img: "images/turnitin-logo.png",
       title: "Turnitin 3",
-      description: "Plagiarism Check & Remove",
+      description: "Plagiarism Check & AI Detection",
+      model: "Turnitin",
+    },
+    turnitin4: {
+      id: "model-turnitin-4",
+      href: "https://turnitindetect.org/login",
+      img: "images/turnitin-logo.png",
+      title: "Turnitin 4",
+      description: "Plagiarism Check & AI Detection",
       model: "Turnitin",
     },
     quillbot1: {
@@ -167,34 +175,88 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
+
+  // Filter models based on user access
+  // Email, Password buttons in turnitin1 card 
   models.forEach((modelKey) => {
-    const model = allModelCards[modelKey];
-    if (model) {
+  const model = allModelCards[modelKey];
+  if (model) {
+    const cardDiv = document.createElement("div");
+    cardDiv.className = "card";
+    cardDiv.id = model.id;
+    cardDiv.dataset.model = model.model;
+
+    const img = document.createElement("img");
+    img.src = model.img;
+    img.alt = `${model.model} Icon`;
+    img.className = "card-icon";
+
+    const title = document.createElement("h2");
+    const cleanTitle = model.title.replace(/\s\d+$/, "");
+    title.textContent = cleanTitle;
+
+    const desc = document.createElement("p");
+    desc.textContent = model.description;
+
+    cardDiv.appendChild(img);
+    cardDiv.appendChild(title);
+    cardDiv.appendChild(desc);
+
+    if (modelKey === "turnitin1") {
+      
+    cardDiv.style.cursor = "default"; // Kill pointer
+    cardDiv.onmouseenter = null; // Kill hover triggers if set dynamically
+    cardDiv.onmouseleave = null;
+
+      // --- Custom: Two copy buttons ---
+      const btnEmail = document.createElement("button");
+      btnEmail.textContent = "Copy Email";
+      btnEmail.className = "copy-btn";
+      btnEmail.dataset.value = "tabishmalik0049@gmail.com"; // Change via JS or backend
+      btnEmail.addEventListener("click", () => {
+        navigator.clipboard.writeText(btnEmail.dataset.value);
+        btnEmail.textContent = "Copied Email!";
+        setTimeout(() => (btnEmail.textContent = "Copy Email"), 2000);
+      });
+
+      const btnPass = document.createElement("button");
+      btnPass.textContent = "Copy Password";
+      btnPass.className = "copy-btn";
+      btnPass.dataset.value = "Plag@123"; // Change via JS or backend
+      btnPass.addEventListener("click", () => { 
+        navigator.clipboard.writeText(btnPass.dataset.value);
+        btnPass.textContent = "Copied Password!";
+        setTimeout(() => (btnPass.textContent = "Copy Password"), 2000);
+      });
+
+      cardDiv.appendChild(btnEmail);
+      cardDiv.appendChild(btnPass);
+
+      const singleLink = document.createElement("a");
+      singleLink.href = model.href;
+      singleLink.target = "_blank";
+      singleLink.rel = "noopener noreferrer";
+      singleLink.className = "model-link";
+      singleLink.textContent = "Go to Turnitin Tool";
+
+      cardDiv.appendChild(singleLink);
+      modelLinksContainer.appendChild(cardDiv);
+    } else {
+      // --- Default card with full link ---
+      const note = document.createElement("p");
+      note.textContent = "Use your Snip Text login to access this tool.";
+      note.className = "card-note";
+
       const cardLink = document.createElement("a");
       cardLink.href = model.href;
+      cardLink.target = "_blank";
+      cardLink.rel = "noopener noreferrer";
       cardLink.className = "card-link";
 
-      const cardDiv = document.createElement("div");
-      cardDiv.className = "card";
-      cardDiv.id = model.id;
-      cardDiv.dataset.model = model.model;
-
-      const img = document.createElement("img");
-      img.src = model.img;
-      img.alt = `${model.model} Icon`;
-      img.className = "card-icon";
-
-      const title = document.createElement("h2");
-      title.textContent = model.title;
-
-      const desc = document.createElement("p");
-      desc.textContent = model.description;
-
-      cardDiv.appendChild(img);
-      cardDiv.appendChild(title);
-      cardDiv.appendChild(desc);
+      cardDiv.appendChild(note);
       cardLink.appendChild(cardDiv);
       modelLinksContainer.appendChild(cardLink);
     }
-  });
+  }
+});
 });

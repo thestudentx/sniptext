@@ -114,7 +114,7 @@ async function uploadToCloud(file) {
   formData.append("file", file);
   formData.append("upload_preset", "winston_unsigned");
 
-  const cloudName = "<your_cloud_name>";
+  const cloudName = "<dkjat4qgd>";
   const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
   try {

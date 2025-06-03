@@ -3,7 +3,7 @@ const BACKEND = location.hostname.includes('127.0.0.1') || location.hostname.inc
   ? 'http://localhost:3000'
   : 'https://sniptext.onrender.com';
 
-const API = `${BACKEND}/api/admin/users`; // ✅ this fixes the error
+const API = `${BACKEND}/api/admin/users`;
 
 // ——————————————————————————————
 // Load & render user list
@@ -13,16 +13,14 @@ async function loadUsers() {
   const tbody = document.getElementById('userTableBody');
   tbody.innerHTML = '<tr><td colspan="6">Loading...</td></tr>';
 
-if (!token) {
-  showToast('🚫 Admin access required! Redirecting...', 'error');
-  setTimeout(() => {
-    window.location.href = 'admin-login.html';
-  }, 3000); // wait 2 seconds so the toast shows
-  tbody.innerHTML = '<tr><td colspan="6">Not authorized.</td></tr>';
-  return;
-}
-
-  console.log('adminToken:', token);
+  if (!token) {
+    showToast('🚫 Admin access required! Redirecting...', 'error');
+    setTimeout(() => {
+      window.location.href = 'admin-login.html';
+    }, 3000);
+    tbody.innerHTML = '<tr><td colspan="6">Not authorized.</td></tr>';
+    return;
+  }
 
   try {
     const res = await fetch(API, {
@@ -32,8 +30,7 @@ if (!token) {
     if (!res.ok) throw new Error(users.message || 'Failed to load users');
 
     tbody.innerHTML = '';
-
-     if (users.length === 0) {
+    if (users.length === 0) {
       showToast('ℹ️ No users found.', 'info');
     }
 
@@ -44,7 +41,7 @@ if (!token) {
         <td data-label="Access">${u.plan}</td>
         <td data-label="Expiry">${new Date(u.accessDuration).toLocaleDateString()}</td>
         <td data-label="APIs">${(u.modelsAccess || []).join(', ')}</td>
-        <td data-label="Credits">${typeof u.credits === 'number' ? u.credits : 0}</td> <!-- Updated to show 0 if no credits -->
+        <td data-label="Credits">${typeof u.credits === 'number' ? u.credits : 0}</td>
         <td data-label="Actions">
           <button class="btn" onclick="editUser(${i})">Edit</button>
           <button class="btn" onclick="deleteUser('${u._id}')">Delete</button>
@@ -61,16 +58,25 @@ if (!token) {
 }
 
 // ——————————————————————————————
-// Open modal for add/edit
+// Open modal for Add User
 // ——————————————————————————————
 document.getElementById('addUserBtn').addEventListener('click', () => {
   document.getElementById('userModalTitle').textContent = 'Add User';
+  document.getElementById('userSubmitBtn').textContent = 'Add User';
+
+  // Re‐apply "required" on password & access (in case they were disabled/hidden on edit)
+  document.getElementById('password').required = true;
+  document.getElementById('access').required = true;
+
+  // Ensure password & access fields are visible
+  document.getElementById('password').parentElement.style.display = 'block';
+  document.getElementById('access').parentElement.style.display = 'block';
+
   const form = document.getElementById('userForm');
   form.reset();
-  form.dataset.editingId = '';     // clear any previous edit
+  form.dataset.editingId = ''; // clear any previous edit
   openModal('userModal');
 });
-
 
 // ——————————————————————————————
 // Handle form submit (POST or PUT)
@@ -81,17 +87,32 @@ document.getElementById('userForm').addEventListener('submit', async e => {
   const editingId = form.dataset.editingId;
   const token = localStorage.getItem('adminToken');
 
-  // build payload
-  const data = Object.fromEntries(new FormData(form).entries());
+  // Build raw values from form
+  const raw = Object.fromEntries(new FormData(form).entries());
+  const data = {};
 
-  // Parse modelsAccess from comma-separated string to array
-  data.modelsAccess = data.apis.split(',').map(s => s.trim());
-  delete data.apis; // remove original field
+  // 1) Always include email
+  data.email = raw.email.trim();
 
-  // Parse credits as integer and default to 0
-  data.credits = parseInt(data.credits, 10) || 0;
+  // 2) Include password only if adding OR if a non‐empty value on edit
+  if (!editingId || raw.password.trim() !== '') {
+    data.password = raw.password;
+  }
 
-  // choose method & URL
+  // 3) Always send "access" (we pre‐fill it when editing)
+  //    The <select id="access"> values are "30", "90", "180", "365"
+  data.access = raw.access;
+
+  // 4) Always include modelsAccess as an array
+  data.modelsAccess = raw.apis
+    .split(',')
+    .map(s => s.trim())
+    .filter(s => s.length > 0);
+
+  // 5) Always include credits (parse to int, default to 0)
+  data.credits = parseInt(raw.credits, 10) || 0;
+
+  // Determine HTTP method and URL
   const method = editingId ? 'PUT' : 'POST';
   const url = editingId ? `${API}/${editingId}` : API;
 
@@ -109,9 +130,14 @@ document.getElementById('userForm').addEventListener('submit', async e => {
 
     showToast(editingId ? '✅ User updated!' : '✅ User added!', 'success');
     closeModal('userModal');
+
+    // After closing, restore required on password & access so "Add User" works next time
+    document.getElementById('password').required = true;
+    document.getElementById('access').required = true;
+
     loadUsers();
   } catch (err) {
-  showToast(`❌ ${err.message}`, 'error');
+    showToast(`❌ ${err.message}`, 'error');
   }
 });
 
@@ -121,15 +147,46 @@ document.getElementById('userForm').addEventListener('submit', async e => {
 function editUser(index) {
   const u = window._loadedUsers[index];
   const form = document.getElementById('userForm');
+
+  // 1) Switch modal to "Edit User" mode
   document.getElementById('userModalTitle').textContent = 'Edit User';
+  document.getElementById('userSubmitBtn').textContent = 'Save Changes';
 
+  // 2) Remove required constraints on password (so it can be left blank)
+  document.getElementById('password').required = false;
+
+  // 3) Always pre‐fill the "access" dropdown with the user’s current plan → numeric value
+  //
+  //    We assume u.plan is one of: "Standard", "Pro", "Business", "Premium".
+  //    Map it back to the <select> value: 
+  //      Standard → "30", Pro → "90", Business → "180", Premium → "365"
+  let numericAccess = '';
+  switch (u.plan) {
+    case 'Standard':
+      numericAccess = '30';
+      break;
+    case 'Pro':
+      numericAccess = '90';
+      break;
+    case 'Business':
+      numericAccess = '180';
+      break;
+    case 'Premium':
+      numericAccess = '365';
+      break;
+    default:
+      numericAccess = '';
+  }
+  document.getElementById('access').value = numericAccess;
+  document.getElementById('access').required = true; // keep it required so it never submits empty
+
+  // 4) Pre-fill other fields
   form.email.value = u.email;
-  form.access.value = u.plan;
-  // form.expiry.value = new Date(u.accessDuration).toISOString().slice(0, 10);
   form.apis.value = (u.modelsAccess || []).join(', ');
-
-  // Set credits field with fallback 0
   form.credits.value = typeof u.credits === 'number' ? u.credits : 0;
+
+  // 5) Make sure password field is visible (it’s just optional)
+  document.getElementById('password').parentElement.style.display = 'block';
 
   form.dataset.editingId = u._id;
   openModal('userModal');
@@ -167,9 +224,6 @@ function showConfirmModal() {
   });
 }
 
-// ——————————————————————————————
-// Delete user with confirm modal
-// ——————————————————————————————
 async function deleteUser(id) {
   const confirmed = await showConfirmModal();
   if (!confirmed) return;
@@ -187,11 +241,10 @@ async function deleteUser(id) {
     showToast('🗑️ User deleted successfully!', 'success');
     loadUsers();
   } catch (err) {
-  console.error(err);
-  showToast('Error deleting user.', 'error');
+    console.error(err);
+    showToast('Error deleting user.', 'error');
   }
 }
-
 
 // ——————————————————————————————
 // Initial load
@@ -200,8 +253,6 @@ window.addEventListener('load', () => {
   loadUsers();
 });
 
-
-
 // ——————————————————————————————
 // Search Form and Clear Button Events
 // ——————————————————————————————
@@ -209,19 +260,15 @@ const searchForm  = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
 const clearBtn    = document.getElementById('clearSearch');
 
-// Search on form submit (Enter key or button)
 searchForm.addEventListener('submit', e => {
   e.preventDefault();
   filterUsers();
 });
 
-// Clear search
 clearBtn.addEventListener('click', () => {
   searchInput.value = '';
   filterUsers();
 });
-
-
 
 // ——————————————————————————————
 // Live Search: filter displayed users
@@ -232,27 +279,21 @@ function filterUsers() {
     .toLowerCase();
   const tbody = document.getElementById('userTableBody');
 
-  // If no users loaded yet, bail
   if (!Array.isArray(window._loadedUsers)) return;
 
-  // Filter by email, plan, or any model name
   const filtered = window._loadedUsers.filter(u =>
     u.email.toLowerCase().includes(query) ||
     u.plan.toLowerCase().includes(query) ||
     (u.modelsAccess || []).some(m => m.toLowerCase().includes(query))
   );
 
-  // Clear existing rows
   tbody.innerHTML = '';
-
-  // Show “no match” if empty
   if (filtered.length === 0) {
     tbody.innerHTML = `<tr><td colspan="6">No users match your search.</td></tr>`;
     return;
   }
 
-  // Re-render filtered rows
-  filtered.forEach((u, i) => {
+  filtered.forEach((u) => {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td data-label="Email">${u.email}</td>
@@ -268,4 +309,3 @@ function filterUsers() {
     tbody.appendChild(row);
   });
 }
-
