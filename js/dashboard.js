@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Filter models based on user access
   // Email, Password buttons in turnitin1 card 
-  models.forEach((modelKey) => {
+models.forEach((modelKey) => {
   const model = allModelCards[modelKey];
   if (model) {
     const cardDiv = document.createElement("div");
@@ -203,30 +203,62 @@ document.addEventListener("DOMContentLoaded", () => {
     cardDiv.appendChild(desc);
 
     if (modelKey === "turnitin1") {
-      
-    cardDiv.style.cursor = "default"; // Kill pointer
-    cardDiv.onmouseenter = null; // Kill hover triggers if set dynamically
-    cardDiv.onmouseleave = null;
+      // Disable pointer/hover on the entire card
+      cardDiv.style.cursor = "default";
+      cardDiv.onmouseenter = null;
+      cardDiv.onmouseleave = null;
 
-      // --- Custom: Two copy buttons ---
+      // --- Custom: Two copy buttons with tooltip, pulse, checkmark, and blur feedback ---
       const btnEmail = document.createElement("button");
       btnEmail.textContent = "Copy Email";
       btnEmail.className = "copy-btn";
-      btnEmail.dataset.value = "tabishmalik0049@gmail.com"; // Change via JS or backend
+      btnEmail.title = "Click to copy";                  // Tooltip on hover
+      btnEmail.dataset.value = "tabishmalik0049@gmail.com"; // (Replace dynamically as needed)
+
       btnEmail.addEventListener("click", () => {
         navigator.clipboard.writeText(btnEmail.dataset.value);
-        btnEmail.textContent = "Copied Email!";
-        setTimeout(() => (btnEmail.textContent = "Copy Email"), 2000);
+
+        // 1) Change text + add checkmark
+        btnEmail.textContent = "Copied Email! ✅";
+
+        // 2) Add darker‐on‐click + pulse animation
+        btnEmail.classList.add("clicked", "pulse");
+
+        // 3) Blur the card briefly
+        cardDiv.classList.add("blur");
+
+        // 4) After 1 second, revert everything
+        setTimeout(() => {
+          btnEmail.classList.remove("clicked", "pulse");
+          cardDiv.classList.remove("blur");
+          btnEmail.textContent = "Copy Email";
+        }, 1000);
       });
 
       const btnPass = document.createElement("button");
       btnPass.textContent = "Copy Password";
       btnPass.className = "copy-btn";
-      btnPass.dataset.value = "Plag@123"; // Change via JS or backend
-      btnPass.addEventListener("click", () => { 
+      btnPass.title = "Click to copy";                    // Tooltip on hover
+      btnPass.dataset.value = "Plag@123";                  // (Replace dynamically as needed)
+
+      btnPass.addEventListener("click", () => {
         navigator.clipboard.writeText(btnPass.dataset.value);
-        btnPass.textContent = "Copied Password!";
-        setTimeout(() => (btnPass.textContent = "Copy Password"), 2000);
+
+        // 1) Change text + add checkmark
+        btnPass.textContent = "Copied Password! ✅";
+
+        // 2) Add darker‐on‐click + pulse animation
+        btnPass.classList.add("clicked", "pulse");
+
+        // 3) Blur the card briefly
+        cardDiv.classList.add("blur");
+
+        // 4) After 1 second, revert everything
+        setTimeout(() => {
+          btnPass.classList.remove("clicked", "pulse");
+          cardDiv.classList.remove("blur");
+          btnPass.textContent = "Copy Password";
+        }, 1000);
       });
 
       cardDiv.appendChild(btnEmail);
@@ -242,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardDiv.appendChild(singleLink);
       modelLinksContainer.appendChild(cardDiv);
     } else {
-      // --- Default card with full link ---
+      // --- Default card with full link (unchanged) ---
       const note = document.createElement("p");
       note.textContent = "Use your Snip Text login to access this tool.";
       note.className = "card-note";
@@ -259,4 +291,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
 });
