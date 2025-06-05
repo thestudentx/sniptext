@@ -11,6 +11,9 @@ const adminUserRoutes = require('./routes/adminUserRoutes');
 const adminLoginAuth = require('./routes/adminLoginAuth');
 const contactRoutes = require('./routes/contact');
 
+// Quilbot Self-hosted API 
+const paraphraseRoutes = require('./routes/quilbot2Routes');
+
 
 dotenv.config();
 const app = express();
@@ -51,6 +54,10 @@ app.use('/api/register', registerRoute);
 app.use('/api/admin/users', adminUserRoutes);
 app.use('/api/admin', adminLoginAuth);
 app.use('/api', contactRoutes);
+
+// Quilbot Self-hosted API 
+app.use('/api', paraphraseRoutes);
+
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)

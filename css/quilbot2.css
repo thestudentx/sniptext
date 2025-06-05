@@ -1,0 +1,181 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* === Header / Navbar === */
+.qb-header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.qb-header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.qb-header__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+}
+.qb-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+.qb-nav__link {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.qb-nav__link:hover {
+  color: #111;
+}
+
+/* === Main Container === */
+.qb-main {
+  padding: 2rem 1rem;
+}
+.qb-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem 2rem 3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+.qb-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.qb-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+/* === Tool Sections (Input/Output) === */
+.qb-tool {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.qb-section {
+  display: flex;
+  flex-direction: column;
+}
+.qb-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.qb-textarea {
+  resize: vertical;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  min-height: 180px;
+  transition: border-color 0.2s ease;
+}
+.qb-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* === Buttons & Actions === */
+.qb-actions {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.qb-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.qb-button--primary {
+  background-color: #007bff;
+  color: #fff;
+}
+.qb-button--primary:hover {
+  background-color: #0056b3;
+}
+.qb-button--secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.qb-button--secondary:hover {
+  background-color: #cfcfcf;
+}
+
+/* === Loader & Error === */
+.qb-loader {
+  margin: 1.5rem auto 0;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hidden {
+  display: none;
+}
+.qb-error {
+  margin-top: 1rem;
+  color: #d9534f;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* === Footer === */
+.qb-footer {
+  margin-top: 3rem;
+  background-color: #f1f1f1;
+  padding: 1rem 1rem;
+}
+.qb-footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* === Responsive Breakpoints === */
+@media (max-width: 768px) {
+  .qb-tool {
+    grid-template-columns: 1fr;
+  }
+  .qb-actions {
+    justify-content: center;
+  }
+}

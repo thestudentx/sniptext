@@ -103,10 +103,10 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     quillbot1: {
       id: "model-quillbot-1",
-      href: "/model/quillbot1",
+      href: "/quilbot1.html",
       img: "images/quilbot-logo.png",
-      title: "Quillbot 1",
-      description: "Paraphrasing Tool",
+      title: "Quillbot-1",
+      description: "Paraphrasing & Styling",
       model: "Quillbot",
     },
     quillbot2: {

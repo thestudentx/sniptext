@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Quilbot – Paraphrasing Tool | Snip Text</title>
+  <!-- Link to your global style (if any) and the specific CSS for this page -->
+  <link rel="stylesheet" href="css/quilbot2.css" />
+</head>
+<body>
+  <!-- === Header / Navbar (you can replace with your own navbar snippet) === -->
+  <header class="qb-header">
+    <div class="qb-header__container">
+      <h1 class="qb-header__logo">Snip Text</h1>
+      <nav class="qb-nav">
+        <a href="index.html" class="qb-nav__link">Home</a>
+        <a href="dashboard.html" class="qb-nav__link">Dashboard</a>
+        <a href="features.html" class="qb-nav__link">Features</a>
+        <a href="contact.html" class="qb-nav__link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- === Main Paraphrasing Interface === -->
+  <main class="qb-main">
+    <div class="qb-container">
+      <h2 class="qb-title">Paraphrase with Snip Text</h2>
+      <p class="qb-subtitle">
+        Enter your thesis text below and get a polished, academic-style paraphrase instantly.
+      </p>
+
+      <!-- Input & Output layout -->
+      <div class="qb-tool">
+        <!-- Input Section -->
+        <section class="qb-section qb-section--input">
+          <label for="qb-input" class="qb-label">Original Text</label>
+          <textarea
+            id="qb-input"
+            class="qb-textarea"
+            placeholder="Paste your thesis paragraph here..."
+            rows="8"
+          ></textarea>
+        </section>
+
+        <!-- Output Section -->
+        <section class="qb-section qb-section--output">
+          <label for="qb-output" class="qb-label">Paraphrased Text</label>
+          <textarea
+            id="qb-output"
+            class="qb-textarea"
+            placeholder="Your paraphrased text will appear here..."
+            rows="8"
+            readonly
+          ></textarea>
+        </section>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="qb-actions">
+        <button id="qb-clear" class="qb-button qb-button--secondary">
+          Clear
+        </button>
+        <button id="qb-submit" class="qb-button qb-button--primary">
+          Paraphrase
+        </button>
+      </div>
+
+      <!-- Loader & Error Message -->
+      <div id="qb-loader" class="qb-loader hidden"></div>
+      <p id="qb-error" class="qb-error hidden"></p>
+    </div>
+  </main>
+
+  <!-- === Footer (optional) === -->
+  <footer class="qb-footer">
+    <div class="qb-footer__container">
+      <p>&copy; 2025 Snip Text. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Include the JavaScript file for this page -->
+  <script src="js/quilbot2.js"></script>
+</body>
+</html>

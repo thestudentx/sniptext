@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f6fa;
+  color: #2f3542;
+}
+
+.paraphraser-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.paraphraser-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.paraphraser-header h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.style-selector {
+  display: flex;
+  align-items: center;
+}
+
+.style-selector label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.style-selector select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ced6e0;
+}
+
+.paraphraser-main {
+  display: flex;
+  gap: 20px;
+}
+
+.text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-column label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.input-column textarea {
+  resize: vertical;
+  min-height: 250px;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ced6e0;
+  border-radius: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.action-buttons button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  background: #3742fa;
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.action-buttons button:hover {
+  background: #2f3542;
+}
+
+.output-column .sentence-container {
+  min-height: 250px;
+  border: 1px solid #ced6e0;
+  border-radius: 8px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.sentence-block {
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background: #fafbfc;
+  position: relative;
+}
+
+.sentence-block:hover {
+  background: #f0f3f7;
+}
+
+.sentence-text {
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.sentence-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.sentence-actions button {
+  padding: 6px 10px;
+  font-size: 13px;
+  border: none;
+  background: #57606f;
+  color: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sentence-actions button:hover {
+  background: #3742fa;
+}
+
+.synonym {
+  background: #fffae6;
+  border-bottom: 1px dashed #f1c40f;
+  cursor: pointer;
+}
+
+/* Synonym popup */
+#synonym-popup {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #ced6e0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 8px;
+  display: none;
+  z-index: 1000;
+}
+
+#synonym-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#synonym-popup li {
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+#synonym-popup li:hover {
+  background: #f1f2f6;
+}
+
+.paraphraser-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #57606f;
+}

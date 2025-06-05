@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnipText | Paraphraser</title>
+  <link rel="stylesheet" href="css/quilbot1.css" />
+</head>
+<body>
+  <div class="paraphraser-container">
+
+    <!-- Header Section -->
+    <header class="paraphraser-header">
+      <h1>SnipText Paraphraser</h1>
+      <div class="style-selector">
+        <label for="paraphrase-style">Mode:</label>
+        <select id="paraphrase-style">
+          <option value="standard">Standard</option>
+          <option value="fluent">Fluent</option>
+          <option value="academic">Academic</option>
+          <option value="concise">Concise</option>
+          <option value="creative">Creative</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Main Split View -->
+    <main class="paraphraser-main">
+
+      <!-- Left: Input Column -->
+      <div class="text-column input-column">
+        <label for="input-text">Original Text</label>
+        <textarea id="input-text" placeholder="Type or paste your content here..."></textarea>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button id="live-toggle">🔄 Live Mode: OFF</button>
+        <button id="paraphrase-btn">Paraphrase Now</button>
+        <button id="swap-btn">↔️ Swap</button>
+        <button id="copy-btn">📋 Copy Output</button>
+      </div>
+
+      <!-- Right: Output Column (Sentences) -->
+      <div class="text-column output-column">
+        <label for="output-container">Paraphrased Text</label>
+        <div id="output-container" class="sentence-container"></div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="paraphraser-footer">
+      <p>SnipText © 2025 | AI Thesis Tools for Champions</p>
+    </footer>
+
+  </div>
+
+  <script src="js/quilbot1.js"></script>
+</body>
+</html>
