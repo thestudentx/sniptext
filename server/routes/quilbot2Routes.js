@@ -8,7 +8,7 @@ const router = express.Router();
 
 // 2) Initialize CohereClientV2 with your trial key from .env
 const cohere = new CohereClientV2({
-  token: process.env.COHERE_API_KEY
+  token: process.env.CO_API_KEY
 });
 
 /**
