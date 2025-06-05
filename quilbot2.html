@@ -7,11 +7,18 @@
     content="width=device-width, initial-scale=1.0"
   />
   <title>Quilbot – Paraphrasing Tool | Snip Text</title>
-  <!-- Link to your global style (if any) and the specific CSS for this page -->
+  
+  <!-- Import a modern Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Link to updated CSS -->
   <link rel="stylesheet" href="css/quilbot2.css" />
 </head>
 <body>
-  <!-- === Header / Navbar (you can replace with your own navbar snippet) === -->
+  <!-- === Header / Navbar === -->
   <header class="qb-header">
     <div class="qb-header__container">
       <h1 class="qb-header__logo">Snip Text</h1>
@@ -26,11 +33,22 @@
 
   <!-- === Main Paraphrasing Interface === -->
   <main class="qb-main">
-    <div class="qb-container">
+    <div class="qb-container fade-in">
       <h2 class="qb-title">Paraphrase with Snip Text</h2>
       <p class="qb-subtitle">
-        Enter your thesis text below and get a polished, academic-style paraphrase instantly.
+        Paste your thesis paragraph below and receive a polished, academic-style paraphrase instantly.
       </p>
+
+      <!-- Mode Selector -->
+      <div class="qb-mode-container">
+        <label for="qb-mode" class="qb-label qb-mode-label">Choose Mode:</label>
+        <select id="qb-mode" class="qb-select">
+          <option value="standard" selected>Standard</option>
+          <option value="fluent">Fluent</option>
+          <option value="creative">Creative</option>
+          <option value="academic">Academic</option>
+        </select>
+      </div>
 
       <!-- Input & Output layout -->
       <div class="qb-tool">
@@ -43,6 +61,8 @@
             placeholder="Paste your thesis paragraph here..."
             rows="8"
           ></textarea>
+          <!-- Live Counter Below -->
+          <p id="qb-count" class="qb-count">Words: 0 | Tokens: 0</p>
         </section>
 
         <!-- Output Section -->
@@ -60,10 +80,10 @@
 
       <!-- Action Buttons -->
       <div class="qb-actions">
-        <button id="qb-clear" class="qb-button qb-button--secondary">
+        <button id="qb-clear" class="qb-button qb-button--secondary qb-button--animated">
           Clear
         </button>
-        <button id="qb-submit" class="qb-button qb-button--primary">
+        <button id="qb-submit" class="qb-button qb-button--primary qb-button--animated">
           Paraphrase
         </button>
       </div>
@@ -74,14 +94,17 @@
     </div>
   </main>
 
-  <!-- === Footer (optional) === -->
+  <!-- Toast Notifications Container -->
+  <div id="qb-toast-container" class="qb-toast-container hidden"></div>
+
+  <!-- === Footer === -->
   <footer class="qb-footer">
     <div class="qb-footer__container">
       <p>&copy; 2025 Snip Text. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Include the JavaScript file for this page -->
+  <!-- Include the JavaScript file for this page (unchanged) -->
   <script src="js/quilbot2.js"></script>
 </body>
 </html>

@@ -13,23 +13,33 @@ const cohere = new CohereClientV2({
 
 /**
  * POST /api/cohere/paraphrase
- * Expects JSON body: { text: "some string" }
+ * Expects JSON body: { text: "some string", mode: "fluent"|"creative"|"academic"|undefined }
  * Returns: { paraphrased: "..." } on success, or { error, details } on failure.
  */
 router.post('/cohere/paraphrase', async (req, res) => {
   try {
-    const { text } = req.body;
+    const { text, mode } = req.body;
     if (!text || typeof text !== 'string') {
       return res.status(400).json({
         error: 'Invalid input: request.body.text must be a non-empty string.'
       });
     }
 
+    // Adjust system prompt based on mode
+    let systemPrompt = 'You are an academic writing assistant. Rewrite the user text in a clear, thesis-ready style.';
+    if (mode === 'fluent') {
+      systemPrompt = 'Rewrite the text in a smooth, natural style.';
+    } else if (mode === 'creative') {
+      systemPrompt = 'Rewrite the text creatively, using varied vocabulary.';
+    } else if (mode === 'academic') {
+      systemPrompt = 'Rewrite the text in a formal academic style.';
+    }
+
     // 3) Build a chat-style prompt for paraphrasing
     const messages = [
       {
         role: 'system',
-        content: 'You are an academic writing assistant. Rewrite the user text in a clear, thesis-ready style.',
+        content: systemPrompt,
       },
       {
         role: 'user',
@@ -45,18 +55,6 @@ router.post('/cohere/paraphrase', async (req, res) => {
     });
 
     // 5) Extract the paraphrased text from the V2 response
-    //    response has shape:
-    //    {
-    //      id: '…',
-    //      message: {
-    //        role: 'assistant',
-    //        content: [
-    //          { type: 'text', text: 'Paraphrased version…' }
-    //        ]
-    //      },
-    //      finishReason: 'COMPLETE',
-    //      usage: { … }
-    //    }
     const assistantMessage = response.message;
     if (
       !assistantMessage ||
@@ -75,7 +73,6 @@ router.post('/cohere/paraphrase', async (req, res) => {
     return res.json({ paraphrased: paraphrasedText });
   } catch (err) {
     console.error('Cohere paraphrase error:', err);
-    // If CohereClientV2 throws a CohereError, it often has err.statusCode and err.body
     const statusCode = err.statusCode || 500;
     const details = err.body || err.message || 'Unknown error';
     return res.status(statusCode).json({
