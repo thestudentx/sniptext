@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastContainer = document.getElementById('qb-toast-container');
   const countDisplay = document.getElementById('qb-count');
 
+  const pasteBtn = document.getElementById('qb-paste');
+  const copyBtn = document.getElementById('qb-copy');
+
   // Dynamically set backend URL for local or live server
   const BACKEND_URL =
     location.hostname === 'localhost' || location.hostname === '127.0.0.1'
@@ -45,17 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
       countDisplay.textContent = 'Words: 0 | Approx. Tokens: 0';
       return;
     }
-    // Simple word count:
     const words = text.split(/\s+/).filter((w) => w.length > 0).length;
-    // Approx tokens ≈ words * 1.3 (rough estimate; adjust if needed)
     const approxTokens = Math.ceil(words * 1.3);
     countDisplay.textContent = `Words: ${words} | Approx. Tokens: ${approxTokens}`;
   }
 
-  // Update count on every input
   inputTextarea.addEventListener('input', updateCount);
 
-  // Clear input, output, error messages
   clearBtn.addEventListener('click', () => {
     inputTextarea.value = '';
     outputTextarea.value = '';
@@ -65,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('Cleared text fields.', 'info');
   });
 
-  // Handle form submission
   submitBtn.addEventListener('click', async () => {
     const userText = inputTextarea.value.trim();
     const selectedMode = modeSelect.value;
+    const selectedStyle = document.getElementById('qb-style').value;
 
     if (!userText) {
       errorMsg.textContent = 'Please enter some text to paraphrase.';
@@ -77,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Reset error and show loader
     errorMsg.textContent = '';
     errorMsg.classList.add('hidden');
     loader.classList.remove('hidden');
@@ -89,11 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // include if required
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // optional
         },
         body: JSON.stringify({
           text: userText,
-          mode: selectedMode // backend now uses mode
+          mode: selectedMode,
+          style: selectedStyle
         }),
       });
 
@@ -117,4 +116,41 @@ document.addEventListener('DOMContentLoaded', () => {
       clearBtn.disabled = false;
     }
   });
+
+  // === Clipboard Paste & Copy ===
+
+  // Paste clipboard content into input textarea
+  pasteBtn.addEventListener('click', async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (!text) {
+        showToast('Clipboard is empty.', 'error');
+        return;
+      }
+      inputTextarea.value = text;
+      updateCount();
+      showToast('Pasted text from clipboard!', 'success');
+    } catch (err) {
+      console.error('Paste failed:', err);
+      showToast('Failed to read clipboard. Allow permission?', 'error');
+    }
+  });
+
+  // Copy paraphrased text to clipboard
+  copyBtn.addEventListener('click', async () => {
+    const outputText = outputTextarea.value.trim();
+    if (!outputText) {
+      showToast('Nothing to copy yet!', 'error');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(outputText);
+      showToast('Copied paraphrased text!', 'success');
+    } catch (err) {
+      console.error('Copy failed:', err);
+      showToast('Failed to copy text.', 'error');
+    }
+  });
+
 });

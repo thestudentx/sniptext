@@ -47,6 +47,23 @@
           <option value="fluent">Fluent</option>
           <option value="creative">Creative</option>
           <option value="academic">Academic</option>
+          <option value="formal">Formal</option>
+          <option value="simple">Simple</option>
+          <option value="expand">Expand</option>
+          <option value="shorten">Shorten</option>
+          <option value="grammar">Fix Grammar</option>
+        </select>
+      </div>
+
+      <!-- Styling Selector (New) -->
+      <div class="qb-style-container">
+        <label for="qb-style" class="qb-label qb-style-label">Choose Style:</label>
+        <select id="qb-style" class="qb-select">
+          <option value="default" selected>Default</option>
+          <option value="formal">Formal</option>
+          <option value="casual">Casual</option>
+          <option value="professional">Professional</option>
+          <option value="academicTone">Academic</option>
         </select>
       </div>
 
@@ -55,12 +72,17 @@
         <!-- Input Section -->
         <section class="qb-section qb-section--input">
           <label for="qb-input" class="qb-label">Original Text</label>
-          <textarea
-            id="qb-input"
-            class="qb-textarea"
-            placeholder="Paste your thesis paragraph here..."
-            rows="8"
-          ></textarea>
+          <div class="qb-textarea-container">
+            <textarea
+              id="qb-input"
+              class="qb-textarea"
+              placeholder="Paste your thesis paragraph here..."
+              rows="8"
+            ></textarea>
+            <button id="qb-paste" class="qb-textarea-button qb-button--small" title="Paste from clipboard">
+              📋 Paste
+            </button>
+          </div>
           <!-- Live Counter Below -->
           <p id="qb-count" class="qb-count">Words: 0 | Tokens: 0</p>
         </section>
@@ -68,13 +90,18 @@
         <!-- Output Section -->
         <section class="qb-section qb-section--output">
           <label for="qb-output" class="qb-label">Paraphrased Text</label>
-          <textarea
-            id="qb-output"
-            class="qb-textarea"
-            placeholder="Your paraphrased text will appear here..."
-            rows="8"
-            readonly
-          ></textarea>
+          <div class="qb-textarea-container">
+            <textarea
+              id="qb-output"
+              class="qb-textarea"
+              placeholder="Your paraphrased text will appear here..."
+              rows="8"
+              readonly
+            ></textarea>
+            <button id="qb-copy" class="qb-textarea-button qb-button--small" title="Copy to clipboard">
+              📋 Copy
+            </button>
+          </div>
         </section>
       </div>
 
@@ -104,7 +131,8 @@
     </div>
   </footer>
 
-  <!-- Include the JavaScript file for this page (unchanged) -->
+  <!-- Include the JavaScript file for this page -->
+  <script src="js/auth.js"></script>
   <script src="js/quilbot2.js"></script>
 </body>
 </html>
