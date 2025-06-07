@@ -25,55 +25,58 @@ document.addEventListener("DOMContentLoaded", () => {
   const toneSelect = document.getElementById("toneSelect");
   const domainSelect = document.getElementById("domainSelect");
 
+  // ✅ Backend URL based on environment
+  const BACKEND_URL =
+    window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+      ? "http://localhost:3000"
+      : "https://sniptext.onrender.com";
+
   // Hamburger Toggle
   hamburger.addEventListener("click", () => {
     mobileMenu.classList.toggle("active");
   });
 
-  // Logout (desktop)
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("authToken");
     window.location.href = "login.html";
   });
-  // Logout (mobile)
+
   logoutBtnMobile.addEventListener("click", () => {
     localStorage.removeItem("authToken");
     window.location.href = "login.html";
   });
 
-  // Undo / Redo
   undoBtn.addEventListener("click", () => {
     document.execCommand("undo");
   });
+
   redoBtn.addEventListener("click", () => {
     document.execCommand("redo");
   });
 
-  // Word Count updater
   inputText.addEventListener("input", () => {
     const words = inputText.value.trim().split(/\s+/).filter((w) => w).length;
     wordCountElem.textContent = `${words} word${words !== 1 ? "s" : ""}`;
   });
 
-  // Toggle Writing Goals Overlay
   goalsBtn.addEventListener("click", () => {
     goalsOverlay.style.display = "flex";
   });
+
   closeGoals.addEventListener("click", () => {
     goalsOverlay.style.display = "none";
   });
-  // If user clicks outside the panel, close it
+
   goalsOverlay.addEventListener("click", (e) => {
     if (e.target === goalsOverlay) {
       goalsOverlay.style.display = "none";
     }
   });
-  // Save goals (just closes overlay; values used on next check)
+
   saveGoals.addEventListener("click", () => {
     goalsOverlay.style.display = "none";
   });
 
-  // Check Grammar → Single “Corrected Text” Output
   checkBtn.addEventListener("click", async () => {
     const text = inputText.value.trim();
     if (!text) {
@@ -81,11 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Clear previous output & show loading
     outputText.value = "";
     checkBtn.classList.add("loading");
 
-    // Gather goal values
     const goalsPayload = {
       audience: audienceSelect.value,
       formality: formalitySelect.value,
@@ -95,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch("/api/grammar-check", {
+      const response = await fetch(`${BACKEND_URL}/api/grammar-check`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,8 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) {
         throw new Error("Server error. Try again later.");
       }
+
       const data = await response.json();
-      // Assume data.corrected_text contains the returned full corrected text
       const corrected = data.corrected_text || "";
       outputText.value = corrected;
     } catch (err) {
@@ -121,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Escape HTML helper (not needed for plain textarea output, but kept if you switch to innerHTML)
   function escapeHtml(str) {
     return str
       .replace(/&/g, "&amp;")

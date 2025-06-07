@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     grammarly1: {
       id: "model-grammarly-1",
-      href: "/model/grammarly1",
+      href: "/grammarly1.html",
       img: "images/grammarly-logo.png",
       title: "Grammarly 1",
       description: "Grammar Checker",

@@ -92,7 +92,10 @@ Mode: “Fluent”
 • Do not change sentence order except when necessary to achieve maximum readability; if reordering, maintain logical flow and original meaning.
 • Preserve paragraph breaks.
 • Rephrase so it reads naturally but do not introduce phrases that weaken formal register.
-• Do not add any new adjectives, similes, or metaphors unless strictly needed to smooth an awkward phrase; if added, they must be neutral and not introduce new connotations.`;
+• Do not add any new adjectives, similes, or metaphors unless strictly needed to smooth an awkward phrase; if added, they must be neutral and not introduce new connotations.
+• Ensure transitions between sentences are smooth using varied transitional phrases.
+• Maintain consistent register with the chosen Style block to avoid tonal mismatches.
+• Vary sentence openings to enhance readability and engagement.`;
         break;
 
       case 'creative':
@@ -103,7 +106,11 @@ Mode: “Creative”
 • Maintain exactly all facts, narrative events, names, dates, and sequence from the original.
 • When restructuring sentences, ensure that each sentence’s informational content remains unaltered.
 • Use rhetorical devices (e.g., alliteration, parallel structure) sparingly and only to enhance imagery; do not compromise factual accuracy.
-• Preserve original paragraph breaks unless combining very short sentences to improve flow; if combining, do not eliminate distinct ideas.`;
+• Preserve original paragraph breaks unless combining very short sentences to improve flow; if combining, do not eliminate distinct ideas.
+• Employ dynamic pacing to heighten reader engagement without altering meaning.
+• Select precise sensory verbs and adjectives to bring scenes to life.
+• Introduce subtle figurative language (e.g., mild metaphor or simile) only to underscore key points.
+• Adjust sentence rhythm with deliberate variation in length and structure.`;
         break;
 
       case 'academic':
@@ -116,7 +123,10 @@ Mode: “Academic”
 • Structure paragraphs with topic sentences and supporting sentences, ensuring every idea is clearly justified.
 • If the original text uses colloquial terms, replace them with formal academic equivalents (e.g., “kids” → “children,” “so” → “therefore”).
 • Preserve citation placeholders if any exist (e.g., “[1],” “(Smith, 2020)”).
-• Do not add footnotes, endnotes, or bibliographic entries.`;
+• Do not add footnotes, endnotes, or bibliographic entries.
+• Define specialized terminology succinctly or assume known audience expertise.
+• Use passive voice judiciously to emphasize objectivity and formality.
+• Ensure consistency in tense usage throughout the document.`;
         break;
 
       case 'formal':
@@ -129,7 +139,10 @@ Mode: “Formal”
 • Maintain the same factual details, narrative order, and paragraph structure.
 • If original text is first person, retain that perspective; if third person, retain third person.
 • Do not insert parenthetical asides or rhetorical questions.
-• Use complete and grammatically correct sentences; correct any fragments in original text.`;
+• Use complete and grammatically correct sentences; correct any fragments in original text.
+• Adhere to standard corporate style guidelines for punctuation and formatting.
+• Incorporate appropriate domain-specific terminology to reinforce authority.
+• Verify consistency of terminology and register throughout.`;
         break;
 
       case 'simple':
@@ -141,7 +154,10 @@ Mode: “Simple”
 • Maintain all factual content, narrative flow, and paragraph breaks.
 • Avoid specialized jargon or technical terms; if technical terms are necessary, provide simple definitions in‐line.
 • Do not omit any essential detail or nuance.
-• Use active voice whenever possible (e.g., “The dog chased the ball” instead of “The ball was chased by the dog”).`;
+• Use active voice whenever possible (e.g., “The dog chased the ball” instead of “The ball was chased by the dog”).
+• Prefer high-frequency everyday vocabulary to maximize comprehension.
+• Use clear pronoun references to reduce ambiguity.
+• Keep sentence length under 20 words when possible.`;
         break;
 
       case 'expand':
@@ -152,7 +168,11 @@ Mode: “Expand”
 • Preserve the original paragraph structure—if you add sentences, place them immediately after the sentence they elaborate on.
 • Maintain all original facts, narrative order, names, dates, and events; do not invent new characters or outcomes.
 • Use transitional phrases (e.g., “for example,” “in other words,” “furthermore”) to connect additional details smoothly.
-• Ensure added content is consistent with the tone implied by the chosen Style block (apply Style only after completing expansion).`;
+• Ensure added content is consistent with the tone implied by the chosen Style block (apply Style only after completing expansion).
+• Provide succinct context or definitions for specialized terms or acronyms.
+• Illustrate abstract ideas with concise, relevant examples drawn from real-world scenarios.
+• Introduce comparative nuances to clarify distinctions between related concepts.
+• Emphasize cause-and-effect relationships to enrich comprehension.`;
         break;
 
       case 'shorten':
@@ -165,7 +185,9 @@ Mode: “Shorten”
 • Replace multi‐clause sentences with simpler constructions only if they convey the same information.
 • After condensing, the output should be no more than 45 – 50 % of the original length.
 • If the original is 750 words, the “shorten” result must be ≤ 350 words total.
-• Do not introduce ellipses (…)—output must be continuous prose, not truncated fragments.`;
+• Do not introduce ellipses (…)—output must be continuous prose, not truncated fragments.
+• Prioritize eliminating redundant qualifiers and adverbial phrases.
+• Retain key terminology to ensure conceptual integrity.`;
         break;
 
       case 'grammar':
@@ -176,7 +198,9 @@ Mode: “Grammar”
 • Keep proper nouns, numbers, dates, and original phrasing if grammatically acceptable.
 • Fix subject–verb agreement, punctuation (commas, periods, semicolons), and capitalization errors.
 • Do not remove or add any words beyond what is required to fix errors—no stylistic changes.
-• Preserve paragraph breaks.`;
+• Preserve paragraph breaks.
+• Ensure consistency in variant spellings (e.g., American vs. British conventions).
+• Normalize spacing around punctuation marks to standard conventions.`;
         break;
 
       default: // “standard”
@@ -186,7 +210,10 @@ Mode: “Standard”
 • Use neutral vocabulary, no slang.
 • Maintain narrative flow, factual details, names, dates, and events exactly.
 • Ensure paragraphs remain intact and cohesive.
-• Do not add extra commentary, examples, or tangents.`;
+• Do not add extra commentary, examples, or tangents.
+• Balance brevity with clarity—avoid overly verbose constructions.
+• Retain essential terminology to preserve precise meaning.
+• Maintain consistent academic register throughout.`;
         break;
     }
 
@@ -203,7 +230,8 @@ Style: “Formal”
 • Use terminology that would be acceptable in a corporate or legal document.
 • Do not use any contractions anywhere. Spell out do not, cannot, would not, it is, they are, she has, etc.
 • Adopt an impersonal, professional register—avoid expressions like “she’s,” “we’re,” “it’s,” “you’ll,” etc.
-• Maintain a neutral, impersonal perspective unless original perspective is first person.`;
+• Maintain a neutral, impersonal perspective unless original perspective is first person.
+• Adhere to corporate style guides for punctuation, capitalization, and formatting.`;
           break;
 
         case 'casual':
@@ -216,7 +244,8 @@ Style: “Casual”
 • Write as if you’re telling a friend on a sidewalk—very relaxed voice.
 • Use simple everyday words: “kid,” “dad,” “con” rather than “daughter,” “father,” “deception.”
 • If you find yourself writing elegant or literary phrases, switch to shorter, more spoken‐language equivalents.
-• Maintain original meaning, but speak directly (“I guess,” “You know what I mean?”) where appropriate.`;
+• Maintain original meaning, but speak directly (“I guess,” “You know what I mean?”) where appropriate.
+• Incorporate rhetorical questions and interjections for engagement.`;
           break;
 
         case 'professional':
@@ -226,7 +255,9 @@ Style: “Professional”
 • Avoid slang or overly academic jargon; choose words that a business audience would find appropriate.
 • Use terminology common in professional settings (e.g., “collaborate,” “optimize,” “implement”).
 • Do not use contractions if they reduce perceived professionalism (optional: allow “it’s” or “don’t” sparingly only if context demands a lighter tone).
-• Maintain a balanced tone—neither too casual nor excessively formal.`;
+• Maintain a balanced tone—neither too casual nor excessively formal.
+• Include clear calls to action or next-step suggestions when relevant.
+• Ensure consistency with industry or company style standards.`;
           break;
 
         case 'academicTone':
@@ -240,13 +271,15 @@ Style: “Academic”
 • Replace idiomatic expressions (e.g., “wing it,” “siren call”) with precise academic equivalents (e.g., “improvise,” “emotional appeal”).
 • Write in passive or third‐person structure if the original is not first‐person.
 • Avoid emotional descriptors—replace “haunted” or “merciless” with “unsettled” or “unrelenting” in more measured language.
-• Maintain formal academic register—avoid contractions, slang, or idioms.`;
+• Maintain formal academic register—avoid contractions, slang, or idioms.
+• Use hedging language (e.g., “suggests,” “indicates”) to qualify statements appropriately.`;
           break;
 
         default:
           styleInstruction = `
 Style: “Default”
-• Apply no additional tone modification beyond the Mode’s instructions.`;
+• Apply no additional tone modification beyond the Mode’s instructions.
+• Maintain the neutral register provided by the Mode block.`;
           break;
       }
     }
@@ -369,7 +402,7 @@ After finishing the Mode transformation, apply exactly ONE of the following STYL
 
 --- END STYLE INSTRUCTION ---
 
-Finally, produce only the resulting corrected text following all of the above rules. Return no additional commentary.
+Finally, produce only the resulting corrected text following all of the above rules. Return no additional commentary
 `.trim();
 
     // Build STYLE INSTRUCTION from goals
@@ -394,7 +427,8 @@ Style: “Apply Writing Goals”
 • Tone: ${tone} (infuse a ${tone} tone).
 • Domain: ${domain === 'default' ? 'general' : domain} (apply ${domain} conventions).
 • Do not deviate from the grammar corrections—only adjust word choice and tone to suit these goals.
-`.trim();
+• Ensure word choice aligns with the specified audience, avoiding jargon if unnecessary.
+• Maintain coherence between corrections and style adjustments.`;
 
     // Inject into final prompt
     const finalPrompt = systemPrompt.replace('%STYLE_INSTRUCTION%', styleInstruction.trim());
