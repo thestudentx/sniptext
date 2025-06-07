@@ -1,0 +1,197 @@
+<!-- File: grammarly1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snip Text – Grammar Checker</title>
+  <link rel="stylesheet" href="css/grammarly1.css" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Snip Text</a>
+      <button id="hamburger" class="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="quilbot2.html">Paraphraser</a>
+        <a href="grammarly1.html" class="active">Grammar</a>
+        <a href="profile.html">Profile</a>
+        <button class="btn-logout" id="logoutBtn">Logout</button>
+      </nav>
+    </div>
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="quilbot2.html">Paraphraser</a>
+      <a href="grammarly1.html" class="active">Grammar</a>
+      <a href="profile.html">Profile</a>
+      <button class="btn-logout" id="logoutBtnMobile">Logout</button>
+    </div>
+  </header>
+
+  <!-- MAIN EDITOR + OUTPUT STRUCTURE -->
+  <main class="editor-area">
+    <div class="container editor-container">
+      <!-- Left: Editor Panel -->
+      <section class="pane pane-left">
+        <!-- Toolbar -->
+        <div class="editor-toolbar">
+          <div class="toolbar-left">
+            <button class="icon-btn" id="undoBtn" title="Undo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                   viewBox="0 0 16 16">
+                <path
+                  d="M8.354 1.146a.5.5 0 0 1 .146.354v4.5a.5.5 0 0 1-.854.354L5.5 4.207A5.5 5.5 0 1 0 12 8.5h-1A4.5 4.5 0 1 1 6.354 4.854l3.646 3.646a.5.5 0 0 1-.708.708l-4.5-4.5a.5.5 0 0 1 0-.708l4.5-4.5a.5.5 0 0 1 .708 0z"/>
+              </svg>
+            </button>
+            <button class="icon-btn" id="redoBtn" title="Redo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                   viewBox="0 0 16 16">
+                <path
+                  d="M7.646 1.146a.5.5 0 0 1 .708 0l4.5 4.5a.5.5 0 0 1 0 .708l-4.5 4.5a.5.5 0 1 1-.708-.708l3.646-3.646A5.5 5.5 0 1 1 3.5 7.5h1a4.5 4.5 0 1 0 4.646-4.354L7.646 1.854a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="toolbar-right">
+            <button id="goalsBtn" class="btn-secondary">Writing Goals ▾</button>
+          </div>
+        </div>
+
+        <!-- Writing Goals Overlay (hidden by default) -->
+        <div id="goalsOverlay" class="goals-overlay">
+          <div class="goals-panel">
+            <div class="goals-header">
+              <h3>Writing Goals</h3>
+              <button id="closeGoals" class="close-goals" title="Close">✕</button>
+            </div>
+            <div class="goals-content">
+              <label for="audienceSelect">Audience:</label>
+              <select id="audienceSelect" class="goal-select">
+                <option value="general">General</option>
+                <option value="knowledgeable">Knowledgeable</option>
+                <option value="expert">Expert</option>
+              </select>
+
+              <label for="formalitySelect">Formality:</label>
+              <select id="formalitySelect" class="goal-select">
+                <option value="informal">Informal</option>
+                <option value="neutral">Neutral</option>
+                <option value="formal">Formal</option>
+              </select>
+
+              <label for="intentSelect">Intent:</label>
+              <select id="intentSelect" class="goal-select">
+                <option value="inform">Inform</option>
+                <option value="describe">Describe</option>
+                <option value="convince">Convince</option>
+                <option value="story">Tell a story</option>
+              </select>
+
+              <label for="toneSelect">Tone:</label>
+              <select id="toneSelect" class="goal-select">
+                <option value="neutral">Neutral</option>
+                <option value="confident">Confident</option>
+                <option value="joyful">Joyful</option>
+                <option value="friendly">Friendly</option>
+              </select>
+
+              <label for="domainSelect">Domain:</label>
+              <select id="domainSelect" class="goal-select">
+                <option value="academic">Academic</option>
+                <option value="business">Business</option>
+                <option value="technical">Technical</option>
+                <option value="creative">Creative</option>
+                <option value="casual">Casual</option>
+              </select>
+            </div>
+            <button id="saveGoals" class="btn-primary goals-save">Save Goals</button>
+          </div>
+        </div>
+
+        <!-- Input Textarea -->
+        <textarea
+          id="inputText"
+          class="text-input"
+          placeholder="Type or paste your text here..."
+        ></textarea>
+
+        <!-- Footer of Editor: Word Count & Check Button -->
+        <div class="editor-footer">
+          <div class="word-count" id="wordCount">0 words</div>
+          <button id="checkBtn" class="btn-primary">
+            <span class="btn-text">Check Grammar</span>
+            <span class="btn-spinner" id="btnSpinner"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Right: Output Panel -->
+      <section class="pane pane-right">
+        <h2 class="pane-title">Corrected Text</h2>
+        <textarea
+          id="outputText"
+          class="text-output"
+          placeholder="Your corrected text will appear here."
+          readonly
+        ></textarea>
+      </section>
+    </div>
+  </main>
+
+  <!-- FEATURES OVERVIEW -->
+  <section class="features-overview">
+    <div class="container">
+      <h3 class="features-heading">Why Snip Text Grammar Checker?</h3>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h4>Custom Writing Goals</h4>
+          <p>
+            Set your Audience, Formality, Intent, Tone, and Domain—just like Grammarly—so suggestions
+            adapt to your exact needs.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>Real-Time AI Feedback</h4>
+          <p>Powered by Cohere’s state-of-the-art model, catch issues in one go.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Deep Explanations</h4>
+          <p>
+            Each correction is generated in a single response, showing you the full rewritten text
+            instantly.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>Word-Count & Limits</h4>
+          <p>Live word count, daily limits, and usage tracking keep you on budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <a href="index.html" class="footer-logo">Snip Text</a>
+        <p class="footer-text">&copy; 2025 Snip Text. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/grammarly1.js"></script>
+</body>
+</html>

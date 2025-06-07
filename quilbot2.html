@@ -1,3 +1,4 @@
+<!-- quilbot2.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,64 +8,73 @@
     content="width=device-width, initial-scale=1.0"
   />
   <title>Quilbot – Paraphrasing Tool | Snip Text</title>
-  
+
+  <!-- Link to updated CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/quilbot2.css" />
+
   <!-- Import a modern Google Font -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
-
-  <!-- Link to updated CSS -->
-  <link rel="stylesheet" href="css/quilbot2.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
 </head>
 <body>
-  <!-- === Header / Navbar === -->
-  <header class="qb-header">
-    <div class="qb-header__container">
-      <h1 class="qb-header__logo">Snip Text</h1>
-      <nav class="qb-nav">
-        <a href="index.html" class="qb-nav__link">Home</a>
-        <a href="dashboard.html" class="qb-nav__link">Dashboard</a>
-        <a href="features.html" class="qb-nav__link">Features</a>
-        <a href="contact.html" class="qb-nav__link">Contact</a>
-      </nav>
+  <nav id="main-navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">Snip Text</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="/blog/blog1.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+        <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
   <!-- === Main Paraphrasing Interface === -->
   <main class="qb-main">
     <div class="qb-container fade-in">
       <h2 class="qb-title">Paraphrase with Snip Text</h2>
       <p class="qb-subtitle">
-        Paste your thesis paragraph below and receive a polished, academic-style paraphrase instantly.
+        Paste your thesis paragraph below and receive a polished, academic-style paraphrase
+        instantly.
       </p>
 
-      <!-- Mode Selector -->
-      <div class="qb-mode-container">
-        <label for="qb-mode" class="qb-label qb-mode-label">Choose Mode:</label>
-        <select id="qb-mode" class="qb-select">
-          <option value="standard" selected>Standard</option>
-          <option value="fluent">Fluent</option>
-          <option value="creative">Creative</option>
-          <option value="academic">Academic</option>
-          <option value="formal">Formal</option>
-          <option value="simple">Simple</option>
-          <option value="expand">Expand</option>
-          <option value="shorten">Shorten</option>
-          <option value="grammar">Fix Grammar</option>
-        </select>
+      <!-- ─── Mode Tabs (Mimic Quilbot) ────────────────────────────────────────────────── -->
+      <div class="qb-tabs qb-tabs-mode">
+        <div class="qb-tab qb-tab-mode active" data-mode="standard">Standard</div>
+        <div class="qb-tab qb-tab-mode" data-mode="fluent">Fluent</div>
+        <div class="qb-tab qb-tab-mode" data-mode="creative">Creative</div>
+        <div class="qb-tab qb-tab-mode" data-mode="academic">Academic</div>
+        <div class="qb-tab qb-tab-mode" data-mode="formal">Formal</div>
+        <div class="qb-tab qb-tab-mode" data-mode="simple">Simple</div>
+        <div class="qb-tab qb-tab-mode" data-mode="expand">Expand</div>
+        <div class="qb-tab qb-tab-mode" data-mode="shorten">Shorten</div>
+        <div class="qb-tab qb-tab-mode" data-mode="grammar">Fix Grammar</div>
       </div>
 
-      <!-- Styling Selector (New) -->
-      <div class="qb-style-container">
-        <label for="qb-style" class="qb-label qb-style-label">Choose Style:</label>
-        <select id="qb-style" class="qb-select">
-          <option value="default" selected>Default</option>
-          <option value="formal">Formal</option>
-          <option value="casual">Casual</option>
-          <option value="professional">Professional</option>
-          <option value="academicTone">Academic</option>
-        </select>
+      <!-- ─── Style Tabs (Mimic Quilbot) ───────────────────────────────────────────────── -->
+      <div class="qb-tabs qb-tabs-style">
+        <div class="qb-tab qb-tab-style active" data-style="default">Default</div>
+        <div class="qb-tab qb-tab-style" data-style="formal">Formal</div>
+        <div class="qb-tab qb-tab-style" data-style="casual">Casual</div>
+        <div class="qb-tab qb-tab-style" data-style="professional">Professional</div>
+        <div class="qb-tab qb-tab-style" data-style="academicTone">Academic</div>
       </div>
 
       <!-- Input & Output layout -->
@@ -79,12 +89,16 @@
               placeholder="Paste your thesis paragraph here..."
               rows="8"
             ></textarea>
-            <button id="qb-paste" class="qb-textarea-button qb-button--small" title="Paste from clipboard">
+            <button
+              id="qb-paste"
+              class="qb-textarea-button qb-button--small"
+              title="Paste from clipboard"
+            >
               📋 Paste
             </button>
           </div>
           <!-- Live Counter Below -->
-          <p id="qb-count" class="qb-count">Words: 0 | Tokens: 0</p>
+          <p id="qb-count" class="qb-count">Words: 0 | Approx. Tokens: 0</p>
         </section>
 
         <!-- Output Section -->
@@ -98,7 +112,11 @@
               rows="8"
               readonly
             ></textarea>
-            <button id="qb-copy" class="qb-textarea-button qb-button--small" title="Copy to clipboard">
+            <button
+              id="qb-copy"
+              class="qb-textarea-button qb-button--small"
+              title="Copy to clipboard"
+            >
               📋 Copy
             </button>
           </div>
@@ -107,10 +125,16 @@
 
       <!-- Action Buttons -->
       <div class="qb-actions">
-        <button id="qb-clear" class="qb-button qb-button--secondary qb-button--animated">
+        <button
+          id="qb-clear"
+          class="qb-button qb-button--secondary qb-button--animated"
+        >
           Clear
         </button>
-        <button id="qb-submit" class="qb-button qb-button--primary qb-button--animated">
+        <button
+          id="qb-submit"
+          class="qb-button qb-button--primary qb-button--animated"
+        >
           Paraphrase
         </button>
       </div>
@@ -124,14 +148,37 @@
   <!-- Toast Notifications Container -->
   <div id="qb-toast-container" class="qb-toast-container hidden"></div>
 
-  <!-- === Footer === -->
-  <footer class="qb-footer">
-    <div class="qb-footer__container">
-      <p>&copy; 2025 Snip Text. All rights reserved.</p>
+  <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>Snip Text</h2>
+        <p>Empowering better writing, one tool at a time.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html#contact">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025
+          <span class="powered-by">
+            Snip Text – powered by
+            <a href="https://checkai.pro" target="_blank">CheckAI.pro</a>
+          </span>
+          All rights reserved.
+        </p>
+      </div>
     </div>
   </footer>
 
+  <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
+
   <!-- Include the JavaScript file for this page -->
+  <script src="js/index.js" defer></script>
   <script src="js/auth.js"></script>
   <script src="js/quilbot2.js"></script>
 </body>

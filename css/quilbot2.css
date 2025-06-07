@@ -1,3 +1,14 @@
+/* quilbot2.css */
+/* ─── Define Brand Color ─────────────────────────────────────────────────────────── */
+:root {
+  /* Replace #FF5733 with your actual brand hex */
+  --brand-color: #1D4ED8;
+  --brand-gradient-start: rgba(29, 78, 216, 0.8);
+  --brand-gradient-end: rgba(29, 78, 216, 1);
+  /* For focus shadows, convert hex to RGB in your code or manually: */
+  --brand-color-rgb: 29, 78, 216;
+}
+
 /* ─── Reset & Base ─────────────────────────────────────────────────────────────── */
 * {
   margin: 0;
@@ -11,46 +22,6 @@ body {
   color: #333;
   line-height: 1.5;
   overflow-x: hidden;
-}
-
-/* ─── Header / Navbar ──────────────────────────────────────────────────────────── */
-.qb-header {
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-.qb-header__container {
-    width: 100%;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.qb-header__logo {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #222;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-.qb-header__logo:hover {
-  color: #007bff;
-}
-.qb-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-.qb-nav__link {
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-.qb-nav__link:hover {
-  color: #007bff;
 }
 
 /* ─── Main Container ───────────────────────────────────────────────────────────── */
@@ -73,8 +44,14 @@ body {
   animation: fadeInContainer 0.7s ease forwards;
 }
 @keyframes fadeInContainer {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .qb-title {
@@ -91,34 +68,36 @@ body {
   text-align: center;
 }
 
-/* ─── Mode Selector ────────────────────────────────────────────────────────────── */
-.qb-mode-container {
+/* ─── Tabs Containers ─────────────────────────────────────────────────────────── */
+.qb-tabs {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.75rem;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
 }
-.qb-mode-label {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #444;
+.qb-tabs-mode {
+  margin-bottom: 0.5rem; /* Slight gap between mode & style rows */
 }
-.qb-select {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
+.qb-tab {
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-bottom: none;
   background-color: #f9f9f9;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  margin-right: 0.5rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 0.95rem;
+  color: #444;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
-.qb-select:hover {
-  background-color: #fff;
+.qb-tab:hover {
+  background-color: #eee;
 }
-.qb-select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+.qb-tab.active {
+  background-color: var(--brand-color);
+  color: #fff;
+  border-color: var(--brand-color);
 }
 
 /* ─── Tool Sections (Input / Output) ───────────────────────────────────────────── */
@@ -143,14 +122,12 @@ body {
   display: flex;
   align-items: center;
 }
-/* Replace your existing .qb-textarea rule with this */
 
+/* Improved .qb-textarea styling */
 .qb-textarea {
   width: 100%;
   resize: vertical;
-  /* Top padding increased so first line sits below the button (≈1.5rem),
-     Right padding increased so text doesn’t run under the button (≈3rem) */
-  padding: 2rem 4rem 1rem 1rem;  
+  padding: 2rem 4rem 1rem 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
@@ -165,10 +142,9 @@ body {
 
 .qb-textarea:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 3px rgba(var(--brand-color-rgb), 0.15);
 }
-
 
 /* Small button inside textarea container */
 .qb-textarea-button {
@@ -187,43 +163,6 @@ body {
   background-color: #f0f0f0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* ─── Mode & Style Selector Containers ─────────────────────────────────────── */
-.qb-mode-container,
-.qb-style-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.75rem;
-  gap: 0.75rem;
-}
-
-.qb-mode-label,
-.qb-style-label {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #444;
-}
-
-.qb-select {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  background-color: #f9f9f9;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-.qb-select:hover {
-  background-color: #fff;
-}
-
-.qb-select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
-}
-
 
 /* ─── Live Counter ─────────────────────────────────────────────────────────────── */
 .qb-count {
@@ -257,12 +196,16 @@ body {
   box-shadow: none;
 }
 .qb-button--primary {
-  background: linear-gradient(135deg, #0066ff, #33ccff);
+  background: linear-gradient(
+    135deg,
+    var(--brand-gradient-start),
+    var(--brand-gradient-end)
+  );
   color: #fff;
-  box-shadow: 0 4px 12px rgba(51, 204, 255, 0.4);
+  /* box-shadow: 0 4px 12px rgba(255, 87, 51, 0.4); */
 }
 .qb-button--primary:hover {
-  background: linear-gradient(135deg, #0052cc, #29a3d1);
+  background: linear-gradient(135deg, var(--brand-color), var(--brand-gradient-end));
 }
 .qb-button--secondary {
   background-color: #f0f0f0;
@@ -277,7 +220,7 @@ body {
 .qb-loader {
   margin: 2rem auto 0;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #007bff;
+  border-top: 4px solid var(--brand-color);
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -320,83 +263,97 @@ body {
   animation: slideIn 0.3s ease, fadeOut 0.3s ease 3.5s forwards;
   font-size: 0.95rem;
 }
-.qb-toast--success { background-color: #28a745; }
-.qb-toast--error   { background-color: #e74c3c; }
-.qb-toast--info    { background-color: #3498db; }
+.qb-toast--success {
+  background-color: #28a745;
+}
+.qb-toast--error {
+  background-color: #e74c3c;
+}
+.qb-toast--info {
+  background-color: #3498db;
+}
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 @keyframes fadeOut {
-  to   { opacity: 0; transform: translateX(20px); }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
 }
 
-/* ─── Footer ─────────────────────────────────────────────────────────────────── */
-.qb-footer {
-  margin-top: 3rem;
-  background-color: #f1f1f1;
-  padding: 1.25rem 1rem;
-}
-.qb-footer__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* ─── Responsive Breakpoints ───────────────────────────────────────────────────── */
+/* ─── Responsive Breakpoints ──────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  /* Slightly reduce padding on tablets */
   .qb-container {
     padding: 2rem 1.5rem 2.5rem;
   }
 }
 
+/*  ─── Small‐Screen Tabs: make horizontally scrollable ─────────────────────────── */
 @media (max-width: 768px) {
-  .qb-tool {
+  /* Keep the two tab rows on one line each, allow horizontal scrolling */
+  .qb-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap; /* prevent wrapping so tabs scroll horizontally */
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 1rem;
+    scroll-padding-bottom: 1rem;
+  }
+  .qb-tab {
+    flex: none; /* each tab won’t shrink or wrap; user scrolls instead */
+  }
+  /* Slight padding reduction on container */
+  .qb-container {
+    padding: 2rem 1rem 2.5rem;
+  }
+    .qb-tool {
     grid-template-columns: 1fr;
   }
-  .qb-actions {
-    justify-content: center;
+  /* Make mode & style rows a bit tighter */
+  .qb-tabs-mode {
+    margin-bottom: 0.5rem;
   }
-  .qb-mode-container {
-    flex-direction: column;
-    gap: 0.5rem;
+  .qb-tabs-style {
+    margin-bottom: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  /* Further reduce padding for small phones */
   .qb-container {
     padding: 1.5rem 1rem 2rem;
   }
-
   .qb-title {
     font-size: 1.8rem;
   }
   .qb-subtitle {
     font-size: 0.95rem;
   }
-
-  .qb-mode-label {
-    font-size: 0.9rem;
+  /* Reduce tab padding and font size */
+  .qb-tab {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
   }
-  .qb-select {
-    font-size: 0.9rem;
-    width: 100%;
+  /* Ensure tabs still scroll smoothly */
+  .qb-tabs {
+    gap: 0.4rem;
   }
-
   .qb-textarea {
     font-size: 0.95rem;
     min-height: 200px;
   }
-
   .qb-count {
     font-size: 0.85rem;
   }
-
   .qb-button {
     padding: 0.7rem 1.2rem;
     font-size: 0.95rem;
@@ -404,12 +361,10 @@ body {
 }
 
 @media (max-width: 360px) {
-  /* For very narrow screens (~320px) */
   .qb-container {
     padding: 1rem 0.75rem 1.5rem;
     border-radius: 6px;
   }
-
   .qb-title {
     font-size: 1.5rem;
     margin-bottom: 0.25rem;
@@ -418,18 +373,15 @@ body {
     font-size: 0.9rem;
     margin-bottom: 1.25rem;
   }
-
-  .qb-mode-container {
-    gap: 0.25rem;
+  /* Further shrink tabs */
+  .qb-tab {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+    margin-right: 0.4rem;
   }
-  .qb-mode-label {
-    font-size: 0.85rem;
+  .qb-tabs {
+    gap: 0.3rem;
   }
-  .qb-select {
-    font-size: 0.85rem;
-    padding: 0.45rem 0.5rem;
-  }
-
   .qb-tool {
     gap: 1rem;
   }
@@ -437,11 +389,9 @@ body {
     font-size: 0.85rem;
     min-height: 120px;
   }
-
   .qb-count {
     font-size: 0.8rem;
   }
-
   .qb-button {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;

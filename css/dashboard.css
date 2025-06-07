@@ -99,9 +99,15 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
+  align-items: stretch;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  height: 100%; 
   background-color: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 16px;

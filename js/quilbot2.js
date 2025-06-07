@@ -1,47 +1,91 @@
-// === quilbot2.js ===
-// This script handles sending the user's text (and selected mode) to your backend endpoint,
-// showing loader/toasts, updating the UI, and managing live word/token counts.
+// quilbot2.js
+// This script handles page access, user input, sending to backend, word counts, UI feedback, etc.
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 🔒 AUTH CHECK: Protect page from unauthorized or expired users
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    window.location.href = '/login.html';
+    return;
+  }
+
+  try {
+    const payloadBase64 = token.split('.')[1];
+    const decodedPayload = JSON.parse(atob(payloadBase64));
+    const expiryDate = new Date(decodedPayload.accessDuration);
+    const now = new Date();
+
+    if (now > expiryDate) {
+      localStorage.removeItem('token');
+      window.location.href = '/login.html';
+      return;
+    }
+
+    console.log('✅ Access granted to:', decodedPayload.email);
+  } catch (err) {
+    console.error('Invalid token', err);
+    localStorage.removeItem('token');
+    window.location.href = '/login.html';
+    return;
+  }
+
+  // === Main Feature Logic (only runs if token is valid) ===
+
   const inputTextarea = document.getElementById('qb-input');
   const outputTextarea = document.getElementById('qb-output');
   const submitBtn = document.getElementById('qb-submit');
   const clearBtn = document.getElementById('qb-clear');
   const loader = document.getElementById('qb-loader');
   const errorMsg = document.getElementById('qb-error');
-  const modeSelect = document.getElementById('qb-mode');
   const toastContainer = document.getElementById('qb-toast-container');
   const countDisplay = document.getElementById('qb-count');
-
   const pasteBtn = document.getElementById('qb-paste');
   const copyBtn = document.getElementById('qb-copy');
 
-  // Dynamically set backend URL for local or live server
+  // Track selected mode/style via tabs
+  let selectedMode = 'standard';
+  let selectedStyle = 'default';
+
+  // Setup Mode tabs
+  const modeTabs = document.querySelectorAll('.qb-tab-mode');
+  modeTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      modeTabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+      selectedMode = tab.getAttribute('data-mode');
+    });
+  });
+
+  // Setup Style tabs
+  const styleTabs = document.querySelectorAll('.qb-tab-style');
+  styleTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      styleTabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+      selectedStyle = tab.getAttribute('data-style');
+    });
+  });
+
   const BACKEND_URL =
     location.hostname === 'localhost' || location.hostname === '127.0.0.1'
       ? 'http://localhost:3000'
       : 'https://sniptext.onrender.com';
 
-  // Utility: show a toast (type: "success" | "error" | "info")
   function showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.classList.add('qb-toast', `qb-toast--${type}`);
     toast.textContent = message;
     toastContainer.appendChild(toast);
-
-    // Remove after animation (4s total: 0.3s in, 3.5s visible, 0.3s out)
     setTimeout(() => {
       toast.remove();
       if (toastContainer.childElementCount === 0) {
         toastContainer.classList.add('hidden');
       }
     }, 4000);
-
-    // Ensure container is visible
     toastContainer.classList.remove('hidden');
   }
 
-  // Utility: update word/token count below the textarea
   function updateCount() {
     const text = inputTextarea.value.trim();
     if (!text) {
@@ -66,8 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submitBtn.addEventListener('click', async () => {
     const userText = inputTextarea.value.trim();
-    const selectedMode = modeSelect.value;
-    const selectedStyle = document.getElementById('qb-style').value;
 
     if (!userText) {
       errorMsg.textContent = 'Please enter some text to paraphrase.';
@@ -87,12 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // optional
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           text: userText,
           mode: selectedMode,
-          style: selectedStyle
+          style: selectedStyle,
         }),
       });
 
@@ -117,9 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === Clipboard Paste & Copy ===
-
-  // Paste clipboard content into input textarea
   pasteBtn.addEventListener('click', async () => {
     try {
       const text = await navigator.clipboard.readText();
@@ -136,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Copy paraphrased text to clipboard
   copyBtn.addEventListener('click', async () => {
     const outputText = outputTextarea.value.trim();
     if (!outputText) {
@@ -152,5 +190,4 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Failed to copy text.', 'error');
     }
   });
-
 });

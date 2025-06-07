@@ -106,15 +106,15 @@ document.addEventListener("DOMContentLoaded", () => {
       href: "/quilbot1.html",
       img: "images/quilbot-logo.png",
       title: "Quillbot-1",
-      description: "Paraphrasing & Styling",
+      description: "Paraphrasing & Styling Tool",
       model: "Quillbot",
     },
     quillbot2: {
       id: "model-quillbot-2",
-      href: "/model/quillbot2",
+      href: "/quilbot2.html",
       img: "images/quilbot-logo.png",
       title: "Quillbot 2",
-      description: "Paraphrasing Tool",
+      description: "Paraphrasing & Styling Tool",
       model: "Quillbot",
     },
     quillbot3: {
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       href: "/model/quillbot3",
       img: "images/quilbot-logo.png",
       title: "Quillbot 3",
-      description: "Paraphrasing Tool",
+      description: "Paraphrasing & Styling Tool",
       model: "Quillbot",
     },
     grammarly1: {
@@ -276,7 +276,7 @@ models.forEach((modelKey) => {
     } else {
       // --- Default card with full link (unchanged) ---
       const note = document.createElement("p");
-      note.textContent = "Use your Snip Text login to access this tool.";
+      // note.textContent = "Use your Snip Text login to access this tool.";
       note.className = "card-note";
 
       const cardLink = document.createElement("a");
