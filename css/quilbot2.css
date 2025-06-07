@@ -171,6 +171,29 @@ body {
   color: #666;
 }
 
+.qb-input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.qb-upload-btn {
+  font-size: 0.85rem;
+  color: #444;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.qb-upload-btn:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
 /* ─── Buttons & Actions ───────────────────────────────────────────────────────── */
 .qb-actions {
   margin-top: 2rem;

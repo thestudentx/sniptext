@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // === Main Feature Logic (only runs if token is valid) ===
-
+  // === Main Feature Logic ===
   const inputTextarea = document.getElementById('qb-input');
   const outputTextarea = document.getElementById('qb-output');
   const submitBtn = document.getElementById('qb-submit');
@@ -42,12 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const countDisplay = document.getElementById('qb-count');
   const pasteBtn = document.getElementById('qb-paste');
   const copyBtn = document.getElementById('qb-copy');
+  const uploadInput = document.getElementById('qb-upload'); // ✅ File input element
 
-  // Track selected mode/style via tabs
   let selectedMode = 'standard';
   let selectedStyle = 'default';
 
-  // Setup Mode tabs
   const modeTabs = document.querySelectorAll('.qb-tab-mode');
   modeTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
@@ -57,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Setup Style tabs
   const styleTabs = document.querySelectorAll('.qb-tab-style');
   styleTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
@@ -188,6 +185,37 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.error('Copy failed:', err);
       showToast('Failed to copy text.', 'error');
+    }
+  });
+
+  // 📁 File Upload Logic
+  uploadInput.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const name = file.name.toLowerCase();
+    try {
+      let text = "";
+
+      if (name.endsWith(".txt")) {
+        text = await file.text();
+      } else if (name.endsWith(".docx")) {
+        const arrayBuffer = await file.arrayBuffer();
+        const { value } = await mammoth.extractRawText({ arrayBuffer });
+        text = value;
+      } else {
+        showToast("Only .txt or .docx files are supported.", "error");
+        return;
+      }
+
+      inputTextarea.value = text;
+      inputTextarea.dispatchEvent(new Event("input")); // ⛽ Trigger word/token count update
+      showToast("File uploaded successfully!", "success");
+    } catch (err) {
+      console.error("File read error:", err);
+      showToast("File read failed. Try another one.", "error");
+    } finally {
+      uploadInput.value = ""; // allow same file re-upload
     }
   });
 });

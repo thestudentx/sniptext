@@ -156,7 +156,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  min-width: 300px;
+  min-height: 438px;
 }
 
 /* 1) LEFT: EDITOR PANE */
@@ -309,6 +309,28 @@ body {
   font-size: 0.9rem;
   color: var(--color-text-light);
 }
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+/* style the upload label like a button */
+.upload-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--color-secondary);
+  color: var(--color-text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  margin-right: 1rem;
+}
+.upload-label:hover {
+  background: var(--color-secondary-accent);
+  color: var(--color-text-dark);
+}
 .btn-primary {
   display: flex;
   align-items: center;
@@ -360,7 +382,6 @@ body {
 .pane-title {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  margin-bottom: 0.75rem;
   color: var(--color-text-dark);
 }
 .text-output {
@@ -375,6 +396,46 @@ body {
   color: var(--color-text-dark);
   background-color: var(--color-bg-light);
   line-height: 1.5;
+}
+
+/* Paste button sits alongside undo/redo */
+.icon-btn#pasteBtn {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-btn#pasteBtn:hover {
+  background-color: var(--color-bg-light);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Output toolbar */
+.output-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 0 1rem 0;
+}
+.output-toolbar .icon-btn#copyBtn {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-btn#copyBtn:hover {
+  background-color: var(--color-bg-light);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* ===========================
@@ -499,4 +560,11 @@ body {
 /* Show mobile menu when active */
 .mobile-menu.active {
   display: flex;
+}
+
+@media (max-width: 320px) {
+  .btn-secondary {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.2rem;
+  }
 }

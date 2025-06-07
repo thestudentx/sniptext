@@ -25,58 +25,101 @@ document.addEventListener("DOMContentLoaded", () => {
   const toneSelect = document.getElementById("toneSelect");
   const domainSelect = document.getElementById("domainSelect");
 
+  const pasteBtn = document.getElementById("pasteBtn");
+  const copyBtn = document.getElementById("copyBtn");
+
+  // ←— NEW: grab the hidden file-input
+  const uploadBtn = document.getElementById("uploadBtn");
+
   // ✅ Backend URL based on environment
   const BACKEND_URL =
     window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
       ? "http://localhost:3000"
       : "https://sniptext.onrender.com";
 
-  // Hamburger Toggle
+  // 🍔 Hamburger Toggle
   hamburger.addEventListener("click", () => {
     mobileMenu.classList.toggle("active");
   });
 
+  // 🔒 Logout
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("authToken");
     window.location.href = "login.html";
   });
-
   logoutBtnMobile.addEventListener("click", () => {
     localStorage.removeItem("authToken");
     window.location.href = "login.html";
   });
 
-  undoBtn.addEventListener("click", () => {
-    document.execCommand("undo");
+  // ↩️ Undo/Redo (browser-native)
+  undoBtn.addEventListener("click", () => document.execCommand("undo"));
+  redoBtn.addEventListener("click", () => document.execCommand("redo"));
+
+  // 📋 Paste into input
+  pasteBtn.addEventListener("click", async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      inputText.value = text;
+      inputText.dispatchEvent(new Event("input")); // Update word count
+    } catch (err) {
+      alert("Failed to read clipboard: " + err.message);
+    }
   });
 
-  redoBtn.addEventListener("click", () => {
-    document.execCommand("redo");
+  // 📂 File Upload
+  uploadBtn.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const name = file.name.toLowerCase();
+    try {
+      let text = "";
+
+      if (name.endsWith(".txt")) {
+        text = await file.text();
+      } else if (name.endsWith(".docx")) {
+        const arrayBuffer = await file.arrayBuffer();
+        const { value: rawText } = await mammoth.extractRawText({ arrayBuffer });
+        text = rawText;
+      } else {
+        alert("Unsupported format. Please use .txt or .docx");
+        return;
+      }
+
+      inputText.value = text;
+      inputText.dispatchEvent(new Event("input"));
+    } catch (err) {
+      alert("Error reading file: " + err.message);
+    } finally {
+      uploadBtn.value = ""; // allow uploading same file again
+    }
   });
 
+  // 📄 Copy from output
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(outputText.value);
+    } catch (err) {
+      alert("Failed to copy text: " + err.message);
+    }
+  });
+
+  // 🧮 Word Count
   inputText.addEventListener("input", () => {
     const words = inputText.value.trim().split(/\s+/).filter((w) => w).length;
     wordCountElem.textContent = `${words} word${words !== 1 ? "s" : ""}`;
   });
 
-  goalsBtn.addEventListener("click", () => {
-    goalsOverlay.style.display = "flex";
-  });
-
-  closeGoals.addEventListener("click", () => {
-    goalsOverlay.style.display = "none";
-  });
-
+  // 🎯 Writing Goals Modal
+  goalsBtn.addEventListener("click", () => (goalsOverlay.style.display = "flex"));
+  closeGoals.addEventListener("click", () => (goalsOverlay.style.display = "none"));
   goalsOverlay.addEventListener("click", (e) => {
-    if (e.target === goalsOverlay) {
-      goalsOverlay.style.display = "none";
-    }
+    if (e.target === goalsOverlay) goalsOverlay.style.display = "none";
   });
+  saveGoals.addEventListener("click", () => (goalsOverlay.style.display = "none"));
 
-  saveGoals.addEventListener("click", () => {
-    goalsOverlay.style.display = "none";
-  });
-
+  // ✅ Grammar Check
   checkBtn.addEventListener("click", async () => {
     const text = inputText.value.trim();
     if (!text) {
@@ -102,19 +145,13 @@ document.addEventListener("DOMContentLoaded", () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
-        body: JSON.stringify({
-          text,
-          goals: goalsPayload,
-        }),
+        body: JSON.stringify({ text, goals: goalsPayload }),
       });
 
-      if (!response.ok) {
-        throw new Error("Server error. Try again later.");
-      }
+      if (!response.ok) throw new Error("Server error. Try again later.");
 
       const data = await response.json();
-      const corrected = data.corrected_text || "";
-      outputText.value = corrected;
+      outputText.value = data.corrected_text || "";
     } catch (err) {
       outputText.value = `Error: ${err.message}`;
     } finally {
@@ -122,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Optional: HTML escape (not used but kept for safety)
   function escapeHtml(str) {
     return str
       .replace(/&/g, "&amp;")
