@@ -40,97 +40,6 @@ body {
   margin: 0 auto;
 }
 
-/* ====================
-   NAVBAR & MOBILE NAV
-   ==================== */
-.navbar {
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-}
-.logo {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  text-decoration: none;
-}
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-}
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 3px;
-  background-color: var(--color-text-dark);
-  border-radius: 2px;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.nav-links a {
-  text-decoration: none;
-  font-size: 0.95rem;
-  color: var(--color-text-dark);
-  padding: 0.4rem 0.6rem;
-  transition: color 0.2s;
-}
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--color-primary);
-}
-.btn-logout {
-  background: none;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.2s, color 0.2s;
-}
-.btn-logout:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-}
-
-/* Mobile Menu (hidden by default) */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
-}
-.mobile-menu a,
-#logoutBtnMobile {
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  color: var(--color-text-dark);
-  text-decoration: none;
-  border-top: 1px solid var(--color-border);
-  transition: background 0.2s;
-}
-.mobile-menu a:hover,
-#logoutBtnMobile:hover {
-  background-color: var(--color-bg-light);
-}
-.mobile-menu a.active {
-  color: var(--color-primary);
-}
 
 /* ===========================
    MAIN EDITOR & OUTPUT LAYOUT
@@ -301,20 +210,34 @@ body {
 /* Editor Footer */
 .editor-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   margin-top: 0.75rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid #e0e0e0;
 }
-.word-count {
-  font-size: 0.9rem;
-  color: var(--color-text-light);
-}
+
+/* Left side: Word Count + Upload */
 .footer-left {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex: 1;
 }
 
-/* style the upload label like a button */
+/* Wrap upload + file info to keep them locked side-by-side */
+.upload-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+/* Upload styled like button */
 .upload-label {
   display: flex;
   align-items: center;
@@ -325,14 +248,34 @@ body {
   border-radius: 6px;
   cursor: pointer;
   font-family: var(--font-heading);
-  margin-right: 1rem;
+  white-space: nowrap;
 }
 .upload-label:hover {
   background: var(--color-secondary-accent);
   color: var(--color-text-dark);
 }
+
+/* File info — now perfectly aligned */
+.file-info {
+  font-size: 0.85rem;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+/* Word count on the far right */
+.word-count {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Spinner button (Check) */
 .btn-primary {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   background-color: var(--color-primary);
@@ -344,7 +287,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
-  position: relative;
+  white-space: nowrap;
 }
 .btn-primary:hover {
   background-color: var(--color-accent);
@@ -362,13 +305,14 @@ body {
   animation: spin 1s linear infinite;
 }
 
-/* Show spinner when active */
+/* Show spinner when loading */
 .btn-primary.loading .btn-text {
   visibility: hidden;
 }
 .btn-primary.loading .btn-spinner {
   display: inline-block;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -477,48 +421,55 @@ body {
   line-height: 1.4;
 }
 
-/* =======
-   FOOTER
-   ======= */
-.footer {
-  background-color: var(--color-footer-bg);
-  color: var(--color-white);
-  padding: 2rem 0;
-}
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-.footer-left {
+/* ─── Toast Notifications ─────────────────────────────────────────────────────── */
+.qb-toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  max-width: 320px;
 }
-.footer-logo {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: var(--color-white);
-  text-decoration: none;
-}
-.footer-text {
-  font-size: 0.9rem;
-  color: var(--color-text-light);
-}
-.footer-links {
+.qb-toast {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  background-color: #444;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease, fadeOut 0.3s ease 3.5s forwards;
+  font-size: 0.95rem;
 }
-.footer-links a {
-  color: var(--color-text-light);
-  text-decoration: none;
-  font-size: 0.9rem;
+.qb-toast--success {
+  background-color: #28a745;
 }
-.footer-links a:hover {
-  color: var(--color-white);
+.qb-toast--error {
+  background-color: #e74c3c;
 }
+.qb-toast--info {
+  background-color: #3498db;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
 
 /* ==============
    RESPONSIVE RULES
@@ -552,14 +503,32 @@ body {
   .features-grid {
     grid-template-columns: 1fr;
   }
-  .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 /* Show mobile menu when active */
 .mobile-menu.active {
   display: flex;
+}
+
+@media (max-width: 480px) {
+  .icon-btn#pasteBtn {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem;
+  }
+  .file-info {
+    font-size: 0.75rem;
+    white-space: pre-wrap;
+  }
+  .word-count {
+    margin-left: 0;
+  }
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  .icon-btn#copyBtn {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 320px) {

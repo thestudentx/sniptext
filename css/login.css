@@ -206,21 +206,37 @@
 /* Login Message Styling */
 #login-message-box {
   position: fixed;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;
-  height: 50px;
-  background-color: var(--color-primary);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
+  top: 1rem;
+  right: 1rem;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 320px;
+}
+
+#login-message-box .login-msg {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  z-index: 99999;
-  opacity: 0;
-  transition: all 0.4s ease;
+  background-color: #444;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease, fadeOut 0.3s ease 3.5s forwards;
+  font-size: 0.95rem;
+}
+
+#login-message-box .login-msg--success {
+  background-color: #28a745;
+}
+
+#login-message-box .login-msg--error {
+  background-color: #e74c3c;
+}
+
+#login-message-box .login-msg--info {
+  background-color: #3498db;
 }
 
 #login-message-box.show {

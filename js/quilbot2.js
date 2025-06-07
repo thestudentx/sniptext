@@ -94,7 +94,55 @@ document.addEventListener('DOMContentLoaded', () => {
     countDisplay.textContent = `Words: ${words} | Approx. Tokens: ${approxTokens}`;
   }
 
-  inputTextarea.addEventListener('input', updateCount);
+  // Existing input event listener to trim excess words after typing or other input
+  inputTextarea.addEventListener('input', () => {
+    const wordsArray = inputTextarea.value.trim().split(/\s+/).filter(w => w);
+    if (wordsArray.length > 5000) {
+      const trimmedText = wordsArray.slice(0, 5000).join(' ');
+      inputTextarea.value = trimmedText;
+      showToast("🚫 Max 5000 words allowed!", "error");
+      updateCount(); // Keep token count correct
+    } else {
+      updateCount();
+    }
+  });
+
+  // NEW: paste event listener that enforces word limit before pasting
+  inputTextarea.addEventListener('paste', (e) => {
+    e.preventDefault(); // Prevent default paste
+
+    // Get pasted text from clipboard
+    const paste = (e.clipboardData || window.clipboardData).getData('text');
+
+    // Current words in textarea
+    const currentWords = inputTextarea.value.trim().split(/\s+/).filter(w => w);
+
+    // Words in pasted text
+    const pasteWords = paste.trim().split(/\s+/).filter(w => w);
+
+    // Total words if we add full paste
+    const totalWords = currentWords.length + pasteWords.length;
+
+    if (totalWords > 5000) {
+      const allowedPasteCount = 5000 - currentWords.length;
+      if (allowedPasteCount > 0) {
+        // Add only allowed number of words from paste
+        const allowedPaste = pasteWords.slice(0, allowedPasteCount).join(' ');
+        inputTextarea.value = (inputTextarea.value + ' ' + allowedPaste).trim() + ' ';
+        showToast(`🚫 Max 5000 words allowed! Paste trimmed.`, 'error');
+      } else {
+        showToast(`🚫 Max 5000 words reached! Paste blocked.`, 'error');
+      }
+    } else {
+      // Safe to paste fully
+      inputTextarea.value += paste;
+    }
+
+    updateCount();
+
+    // Trigger input event manually to update UI or other listeners
+    inputTextarea.dispatchEvent(new Event('input'));
+  });
 
   clearBtn.addEventListener('click', () => {
     inputTextarea.value = '';
@@ -197,15 +245,20 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       let text = "";
 
-      if (name.endsWith(".txt")) {
+      const allowedTypes = ['.txt', '.docx'];
+      const ext = name.slice(name.lastIndexOf('.'));
+
+      if (!allowedTypes.includes(ext)) {
+        showToast("Only .txt and .docx files are allowed. Try again.", "error");
+        return;
+      }
+
+      if (ext === '.txt') {
         text = await file.text();
-      } else if (name.endsWith(".docx")) {
+      } else if (ext === '.docx') {
         const arrayBuffer = await file.arrayBuffer();
         const { value } = await mammoth.extractRawText({ arrayBuffer });
         text = value;
-      } else {
-        showToast("Only .txt or .docx files are supported.", "error");
-        return;
       }
 
       inputTextarea.value = text;

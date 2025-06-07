@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Snip Text – Grammar Checker</title>
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/grammarly1.css" />
   <!-- Google Fonts -->
   <link
@@ -16,29 +17,32 @@
   <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">Snip Text</a>
-      <button id="hamburger" class="hamburger">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav-links">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="quilbot2.html">Paraphraser</a>
-        <a href="grammarly1.html" class="active">Grammar</a>
-        <a href="profile.html">Profile</a>
-        <button class="btn-logout" id="logoutBtn">Logout</button>
-      </nav>
+
+
+
+  <nav id="main-navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">Snip Text</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="/blog/blog1.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+        <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+      </ul>
     </div>
-    <div id="mobileMenu" class="mobile-menu">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="quilbot2.html">Paraphraser</a>
-      <a href="grammarly1.html" class="active">Grammar</a>
-      <a href="profile.html">Profile</a>
-      <button class="btn-logout" id="logoutBtnMobile">Logout</button>
-    </div>
-  </header>
+  </nav>
+
+  
 
   <!-- MAIN EDITOR + OUTPUT STRUCTURE -->
   <main class="editor-area">
@@ -131,6 +135,7 @@
 
         <!-- Footer of Editor: File Upload, Word Count & Check Button -->
         <div class="editor-footer">
+          <div class="upload-wrap">
           <!-- left: file upload -->
           <div class="footer-left">
             <label for="uploadBtn" class="btn-secondary upload-label">
@@ -142,6 +147,8 @@
               accept=".txt,.docx"
               style="display: none;"
             />
+            <span id="fileInfo" class="file-info hidden">No file selected</span>
+            </div> 
           </div>
 
           <!-- center: word count -->
@@ -204,21 +211,44 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <a href="index.html" class="footer-logo">Snip Text</a>
-        <p class="footer-text">&copy; 2025 Snip Text. All rights reserved.</p>
+
+  
+
+  <!-- Toast Notifications Container -->
+  <div id="qb-toast-container" class="qb-toast-container hidden"></div>
+
+    <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>Snip Text</h2>
+        <p>Empowering better writing, one tool at a time.</p>
       </div>
+
       <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html#contact">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025
+          <span class="powered-by">
+            Snip Text – powered by
+            <a href="https://checkai.pro" target="_blank">CheckAI.pro</a>
+          </span>
+          All rights reserved.
+        </p>
       </div>
     </div>
   </footer>
 
+  <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
+
+  <!-- Include the JavaScript file for this page -->
+  <script src="js/index.js" defer></script>
+  <script src="js/auth.js"></script>
   <script src="js/grammarly1.js"></script>
 </body>
 </html>
