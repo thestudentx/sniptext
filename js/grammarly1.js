@@ -1,5 +1,34 @@
 // File: grammarly1.js
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+  // 🔒 AUTH CHECK: Protect page from unauthorized or expired users
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    window.location.href = '/login.html';
+    return;
+  }
+
+  try {
+    const payloadBase64 = token.split('.')[1];
+    const decodedPayload = JSON.parse(atob(payloadBase64));
+    const expiryDate = new Date(decodedPayload.accessDuration);
+    const now = new Date();
+
+    if (now > expiryDate) {
+      localStorage.removeItem('token');
+      window.location.href = '/login.html';
+      return;
+    }
+
+    console.log('✅ Access granted to:', decodedPayload.email);
+  } catch (err) {
+    console.error('Invalid token', err);
+    localStorage.removeItem('token');
+    window.location.href = '/login.html';
+    return;
+  }
+
+
   const checkBtn = document.getElementById("checkBtn");
   const inputText = document.getElementById("inputText");
   const outputText = document.getElementById("outputText");
