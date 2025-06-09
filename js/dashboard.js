@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "model-quillbot-1",
       href: "/quilbot1.html",
       img: "images/quilbot-logo.png",
-      title: "Quillbot-1",
+      title: "Quillbot 1",
       description: "Paraphrasing & Styling Tool",
       model: "Quillbot",
     },
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       href: "/grammarly1.html",
       img: "images/grammarly-logo.png",
       title: "Grammarly 1",
-      description: "Grammar Checker",
+      description: "Grammar Checker & Styling",
       model: "Grammarly",
     },
     grammarly2: {
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       href: "/model/grammarly2",
       img: "images/grammarly-logo.png",
       title: "Grammarly 2",
-      description: "Grammar Checker",
+      description: "Grammar Checker & Styling",
       model: "Grammarly",
     },
     grammarly3: {
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       href: "/model/grammarly3",
       img: "images/grammarly-logo.png",
       title: "Grammarly 3",
-      description: "Grammar Checker",
+      description: "Grammar Checker & Styling",
       model: "Grammarly",
     },
     dummy1: {

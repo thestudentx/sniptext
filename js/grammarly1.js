@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const goalsBtn = document.getElementById("goalsBtn");
   const goalsOverlay = document.getElementById("goalsOverlay");
   const closeGoals = document.getElementById("closeGoals");
+  const clearGoals   = document.getElementById("clearGoals");
   const saveGoals = document.getElementById("saveGoals");
 
   const audienceSelect = document.getElementById("audienceSelect");
@@ -61,22 +62,81 @@ document.addEventListener('DOMContentLoaded', () => {
   const uploadBtn = document.getElementById("uploadBtn");
   const fileInfo = document.getElementById("fileInfo");
 
-  const toastContainer = document.getElementById("qb-toast-container");
+  const toastContainer = document.getElementById("g-toast-container");
 
-  // ✅ Toast Notification
-  function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.classList.add('qb-toast', `qb-toast--${type}`);
-    toast.textContent = message;
-    toastContainer.appendChild(toast);
-    toastContainer.classList.remove('hidden');
-    setTimeout(() => {
-      toast.remove();
-      if (toastContainer.childElementCount === 0) {
-        toastContainer.classList.add('hidden');
-      }
-    }, 4000);
+
+  // ✅ Toast Notification (Title on top, Message below)
+function showToast(a1, a2, a3) {
+  let title, message, type;
+
+  // Handle overload: (message, type) or (title, message, type)
+  if (a3 === undefined && ['success','error','info','warning'].includes(a2)) {
+    message = a1;
+    type    = a2;
+    title   = type.charAt(0).toUpperCase() + type.slice(1); // auto-title
+  } else {
+    title   = a1;
+    message = a2;
+    type    = a3 || 'info';
   }
+
+  const toast = document.createElement('div');
+  toast.classList.add('toast', type);
+
+  // 🔔 Icon
+  const iconMap = {
+    success: 'fa-check-circle',
+    error:   'fa-times-circle',
+    info:    'fa-info-circle',
+    warning: 'fa-exclamation-circle'
+  };
+  const c1 = document.createElement('div');
+  c1.className = 'container-1';
+  const icon = document.createElement('i');
+  icon.classList.add('fas', iconMap[type]);
+  c1.appendChild(icon);
+
+  // 📝 Text Block: Title on top, Message below
+  const c2 = document.createElement('div');
+  c2.className = 'container-2';
+
+  const pTitle = document.createElement('p');
+  pTitle.className = 'toast-title';
+  pTitle.textContent = title;
+
+  const pMsg = document.createElement('p');
+  pMsg.className = 'toast-message';
+  pMsg.textContent = message;
+
+  c2.append(pTitle, pMsg);
+
+  // ❌ Close Button
+  const btn = document.createElement('button');
+  btn.className = 'toast-close';
+  btn.innerHTML = '&times;';
+  btn.addEventListener('click', () => {
+    toast.remove();
+    if (!toastContainer.childElementCount) {
+      toastContainer.classList.add('hidden');
+    }
+  });
+
+  // 🧩 Assemble
+  toast.append(c1, c2, btn);
+  toastContainer.appendChild(toast);
+  toastContainer.classList.remove('hidden');
+
+  // ⏱️ Auto-Remove after 4s
+  setTimeout(() => {
+    toast.remove();
+    if (!toastContainer.childElementCount) {
+      toastContainer.classList.add('hidden');
+    }
+  }, 4000);
+}
+
+
+
 
   // ↩️ Undo/Redo
   undoBtn.addEventListener("click", () => document.execCommand("undo"));
@@ -112,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!allowedTypes.includes(ext)) {
         fileInfo.textContent = "❌ Unsupported file type.";
         fileInfo.classList.remove("hidden");
-        showToast("Only .txt and .docx files allowed", "error");
+        showToast("Error", "Only .txt and .docx files allowed", "error");
         return;
       }
 
@@ -171,13 +231,50 @@ inputText.addEventListener("input", () => {
   }
 });
 
-  // 🎯 Writing Goals Modal
-  goalsBtn.addEventListener("click", () => (goalsOverlay.style.display = "flex"));
-  closeGoals.addEventListener("click", () => (goalsOverlay.style.display = "none"));
-  goalsOverlay.addEventListener("click", (e) => {
-    if (e.target === goalsOverlay) goalsOverlay.style.display = "none";
+
+
+// 🎯 Writing Goals Modal
+let userSelectedGoals = {}; // Store selected goals
+
+goalsBtn.addEventListener("click", () => {
+  goalsOverlay.style.display = "flex";
+});
+closeGoals.addEventListener("click", () => {
+  goalsOverlay.style.display = "none";
+});
+goalsOverlay.addEventListener("click", (e) => {
+  if (e.target === goalsOverlay) goalsOverlay.style.display = "none";
+});
+
+// Clear: reset all dropdowns to "default"
+clearGoals.addEventListener("click", () => {
+  document.querySelectorAll('.goal-select').forEach(select => {
+    select.value = 'default';
   });
-  saveGoals.addEventListener("click", () => (goalsOverlay.style.display = "none"));
+});
+
+// Save: gather only non-default goals, then hide overlay
+saveGoals.addEventListener("click", () => {
+  const raw = {
+    audience: audienceSelect.value,
+    formality: formalitySelect.value,
+    intent: intentSelect.value,
+    tone: toneSelect.value,
+    domain: domainSelect.value
+  };
+
+  const goals = {};
+  Object.entries(raw).forEach(([key, val]) => {
+    if (val !== 'default') goals[key] = val;
+  });
+
+  userSelectedGoals = goals; // ✅ store it globally
+  console.log("🎯 Goals saved:", userSelectedGoals);
+
+  goalsOverlay.style.display = "none";
+});
+
+
 
   // ✅ Grammar Check API
   checkBtn.addEventListener("click", async () => {

@@ -15,6 +15,12 @@
 
   <!-- File Upload Feature -->
   <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+
+  <!-- TOAST NOTIFICATION -->
+  <link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+/>
 </head>
 <body>
 
@@ -45,6 +51,18 @@
   
 
   <!-- MAIN EDITOR + OUTPUT STRUCTURE -->
+   
+  <!-- Page Header: Title + Subtitle -->
+  <section class="tool-page-header">
+    <div class="container">
+      <h1 class="tool-title">Snip Text Grammar Checker</h1>
+      <p class="tool-subtitle">
+        Paste your paragraph below and get grammar-perfect, crystal-clear suggestions instantly —
+        academic, formal, or casual — based on your goals.
+      </p>
+    </div>
+  </section>
+  
   <main class="editor-area">
     <div class="container editor-container">
       <!-- Left: Editor Panel -->
@@ -71,7 +89,7 @@
             </button>
           </div>
           <div class="toolbar-right">
-            <button id="goalsBtn" class="btn-secondary">Writing Goals ▾</button>
+            <button id="goalsBtn" class="btn-secondary">Rewrite Style ▾</button>
           </div>
         </div>
 
@@ -79,12 +97,13 @@
         <div id="goalsOverlay" class="goals-overlay">
           <div class="goals-panel">
             <div class="goals-header">
-              <h3>Writing Goals</h3>
+              <h3>Rewrite Style</h3>
               <button id="closeGoals" class="close-goals" title="Close">✕</button>
             </div>
             <div class="goals-content">
               <label for="audienceSelect">Audience:</label>
               <select id="audienceSelect" class="goal-select">
+                <option value="default">Default</option>
                 <option value="general">General</option>
                 <option value="knowledgeable">Knowledgeable</option>
                 <option value="expert">Expert</option>
@@ -92,6 +111,7 @@
 
               <label for="formalitySelect">Formality:</label>
               <select id="formalitySelect" class="goal-select">
+                <option value="default">Default</option>
                 <option value="informal">Informal</option>
                 <option value="neutral">Neutral</option>
                 <option value="formal">Formal</option>
@@ -99,6 +119,7 @@
 
               <label for="intentSelect">Intent:</label>
               <select id="intentSelect" class="goal-select">
+                <option value="default">Default</option>
                 <option value="inform">Inform</option>
                 <option value="describe">Describe</option>
                 <option value="convince">Convince</option>
@@ -107,6 +128,7 @@
 
               <label for="toneSelect">Tone:</label>
               <select id="toneSelect" class="goal-select">
+                <option value="default">Default</option>
                 <option value="neutral">Neutral</option>
                 <option value="confident">Confident</option>
                 <option value="joyful">Joyful</option>
@@ -115,6 +137,7 @@
 
               <label for="domainSelect">Domain:</label>
               <select id="domainSelect" class="goal-select">
+                <option value="default">Default</option>
                 <option value="academic">Academic</option>
                 <option value="business">Business</option>
                 <option value="technical">Technical</option>
@@ -122,9 +145,13 @@
                 <option value="casual">Casual</option>
               </select>
             </div>
-            <button id="saveGoals" class="btn-primary goals-save">Save Goals</button>
+            <div class="goals-actions">
+              <button id="clearGoals" class="btn-primary">Clear</button>
+              <button id="saveGoals" class="btn-primary">Save Goals</button>
+            </div>
           </div>
         </div>
+
 
         <!-- Input Textarea -->
         <textarea
@@ -151,14 +178,16 @@
             </div> 
           </div>
 
-          <!-- center: word count -->
-          <div class="word-count" id="wordCount">0 words</div>
+          <div class="footer-right-wrapper">
+            <!-- center: word count -->
+            <div class="word-count" id="wordCount">0 words</div>
 
-          <!-- right: check button -->
-          <button id="checkBtn" class="btn-primary">
-            <span class="btn-text">Check Grammar</span>
-            <span class="btn-spinner" id="btnSpinner"></span>
-          </button>
+            <!-- right: check button -->
+            <button id="checkBtn" class="btn-primary">
+              <span class="btn-text">Check Grammar</span>
+              <span class="btn-spinner" id="btnSpinner"></span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -215,7 +244,7 @@
   
 
   <!-- Toast Notifications Container -->
-  <div id="qb-toast-container" class="qb-toast-container hidden"></div>
+  <div id="g-toast-container" class="qb-toast-container hidden"></div>
 
     <footer id="main-footer">
     <div class="footer-container">
