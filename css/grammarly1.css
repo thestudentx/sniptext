@@ -225,8 +225,27 @@ body {
   align-items: center;
   text-align: center;
 }
+.tool-tip-card {
+  text-align: center;
+  background-color: #f7f9fb;
+  padding: 10px 14px;
+  margin-top: 15px;
+  border-top: 1px solid #333;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
 
-/* Textarea (Input) */
+.tool-tip-card a {
+  color: #4b6cb7;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+
+/*  ------------------------------------------Textarea (Input) ------------------------------------------- */
 .text-input {
   flex: 1;
   min-height: 300px;          /* ↑ Increase this value as needed */
@@ -625,6 +644,9 @@ body {
   }
   .tool-subtitle {
     font-size: 0.9rem;
+  }
+  .tool-tip-card {
+    font-size: 12px;
   }
   .icon-btn#pasteBtn {
     padding: 0.2rem 0.4rem;

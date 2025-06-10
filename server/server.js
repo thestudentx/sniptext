@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const axios = require('axios'); // ⬅️ Added here
 
 const authMiddleware = require('./middlewares/authMiddleware');
 const authRoutes = require('./routes/auth');
@@ -13,7 +14,6 @@ const contactRoutes = require('./routes/contact');
 
 // Quilbot Self-hosted API 
 const paraphraseRoutes = require('./routes/quilbot2Routes');
-
 
 dotenv.config();
 const app = express();
@@ -58,11 +58,23 @@ app.use('/api', contactRoutes);
 // Quilbot Self-hosted API 
 app.use('/api', paraphraseRoutes);
 
+// 🌐 Public IP Debug Route for Brevo whitelisting
+app.get('/api/check-my-ip', async (req, res) => {
+  try {
+    const response = await axios.get('https://api.ipify.org?format=json');
+    const ip = response.data.ip;
+    console.log('🕵️ My server’s public IP is:', ip);
+    res.json({ ip });
+  } catch (err) {
+    console.error('❌ Failed to fetch public IP:', err.message);
+    res.status(500).json({ error: 'Could not fetch IP' });
+  }
+});
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-  console.log("✅ Connected to MongoDB DB Name:", mongoose.connection.name);
+    console.log("✅ Connected to MongoDB DB Name:", mongoose.connection.name);
     console.log('✅ Connected to MongoDB Atlas');
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

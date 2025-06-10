@@ -58,11 +58,9 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
-    // Extract fields from request body
     console.log('Creating user with body:', req.body);
 
     const { email, password, access, credits } = req.body;
-    // grab whichever was sent:
     const rawModels = req.body.modelsAccess ?? req.body.apis;
     const modelsAccess = Array.isArray(rawModels)
       ? rawModels
@@ -85,11 +83,25 @@ router.post(
         plan:           planMap[days],
         role:           'user',
         accessDuration: expiry,
-        modelsAccess,                     // fixed!
+        modelsAccess,
         credits:        parseInt(credits, 10) || 0
       });
 
       await newUser.save();
+
+      // ✅ BREVO INTEGRATION (safe, no interference)
+      try {
+        const { addUserToBrevo } = require('../utils/brevo'); // only used here
+        await addUserToBrevo({
+          email: newUser.email,
+          firstName: newUser.email.split('@')[0],
+          accessDuration: expiry.toISOString().split('T')[0]
+        });
+      } catch (brevoErr) {
+        console.error('📨 Brevo contact add failed:', brevoErr.message);
+        // Optional: log this error somewhere for audit
+      }
+
       res.status(201).json({ message: 'User created', user: newUser });
     } catch (err) {
       console.error('Error creating user:', err);
@@ -97,6 +109,7 @@ router.post(
     }
   }
 );
+
 
 
 // PUT /api/admin/users/:id — update existing user
