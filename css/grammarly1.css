@@ -247,7 +247,7 @@ body {
 
 /*  ------------------------------------------Textarea (Input) ------------------------------------------- */
 .text-input {
-  flex: 1;
+  flex: none;
   min-height: 300px;          /* ↑ Increase this value as needed */
   resize: vertical;
   padding: 1rem;
@@ -404,8 +404,8 @@ body {
   color: var(--color-text-dark);
 }
 .text-output {
-  flex: 1;
-  min-height: 300px;          /* ↑ Increase this value as needed */
+  flex: none;
+  min-height: 400px;          /* ↑ Increase this value as needed */
   resize: vertical;
   padding: 1rem;
   border: 1px solid var(--color-border);

@@ -65,6 +65,70 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastContainer = document.getElementById("g-toast-container");
 
 
+/**
+ * 1) Remove editorial meta-lines:
+ *    • STAGE 1: …
+ *    • STAGE 2: …
+ *    • Final Polished Text:
+ *    • Explanation of Changes:
+ *    • Any “Style Pass” lines
+ * 2) Strip stray markdown (#, **, *), but:
+ *    • Preserve & indent true lists (–, *, +, 1., 2., etc.)
+ *    • Preserve blockquotes (>)
+ *    • Keep legitimate “Explanation:” lines
+ */
+function formatCleanText(text) {
+  return text
+    .split("\n")
+    // 1) DROP only the unwanted metadata
+    .filter(line => {
+      return !/^\s*(STAGE\s*\d+:|Final Polished Text:|Explanation of Changes:|.*Style Pass.*)$/i.test(line);
+    })
+    .map(line => {
+      // keep blockquotes verbatim
+      if (/^\s*>/.test(line)) {
+        return line.trim();
+      }
+
+      // strip ALL # heading markers
+      line = line.replace(/^#{1,6}\s*/, "").replace(/#/g, "");
+
+      // unwrap bold/italic everywhere
+      line = line
+        .replace(/\*\*(.+?)\*\*/g, "$1")
+        .replace(/\*(.+?)\*/g, "$1");
+
+      const trimmed = line.trim();
+
+      // true numbered list?
+      const numMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
+      if (numMatch) {
+        return "  " + numMatch[1] + ". " + numMatch[2].trim();
+      }
+
+      // true bullet list?
+      const bulletMatch = trimmed.match(/^([*+\-])\s+(.*)/);
+      if (bulletMatch) {
+        return "  " + bulletMatch[1] + " " + bulletMatch[2].trim();
+      }
+
+      // leave em-dashes at start alone (not a list)
+      if (/^[—–]\s+/.test(trimmed)) {
+        return trimmed;
+      }
+
+      // otherwise just return the trimmed line
+      return trimmed;
+    })
+    .join("\n")
+    .trim();  // drop any leading/trailing blank lines
+}
+
+
+
+
+
+
   // ✅ Toast Notification (Title on top, Message below)
 function showToast(a1, a2, a3) {
   let title, message, type;
@@ -223,10 +287,10 @@ function showToast(a1, a2, a3) {
   // 🚫 Word Limit Enforcement (Max 5000 words)
 inputText.addEventListener("input", () => {
   const wordsArray = inputText.value.trim().split(/\s+/).filter((w) => w);
-  if (wordsArray.length > 5000) {
-    const trimmedText = wordsArray.slice(0, 5000).join(" ");
+  if (wordsArray.length > 20000) {
+    const trimmedText = wordsArray.slice(0, 20000).join(" ");
     inputText.value = trimmedText;
-    showToast("🚫 Max 5000 words allowed! Paste trimmed.", "error");
+    showToast("🚫 Max 20000 words allowed! Paste trimmed.", "error");
     inputText.dispatchEvent(new Event("input")); // update word count
   }
 });
@@ -276,46 +340,68 @@ saveGoals.addEventListener("click", () => {
 
 
 
-  // ✅ Grammar Check API
-  checkBtn.addEventListener("click", async () => {
-    const text = inputText.value.trim();
-    if (!text) {
-      showToast("Please enter some text to check!", "error");
-      return;
-    }
+// ✅ Grammar Check API
+// ✅ Grammar Check API
+checkBtn.addEventListener("click", async () => {
+  const raw = inputText.value.trim();
+  if (!raw) {
+    showToast("Please enter some text to check!", "error");
+    return;
+  }
 
-    outputText.value = "";
-    checkBtn.classList.add("loading");
+  // pre-clean stray markdown before sending
+  const text = formatCleanText(raw);
 
-    const goalsPayload = {
-      audience: audienceSelect.value,
-      formality: formalitySelect.value,
-      intent: intentSelect.value,
-      tone: toneSelect.value,
-      domain: domainSelect.value,
-    };
+  outputText.value = "";
+  checkBtn.classList.add("loading");
 
-    try {
-      const response = await fetch(`${BACKEND_URL}/api/grammar-check`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-        body: JSON.stringify({ text, goals: goalsPayload }),
-      });
+  const goalsPayload = {
+    audience: audienceSelect.value,
+    formality: formalitySelect.value,
+    intent: intentSelect.value,
+    tone: toneSelect.value,
+    domain: domainSelect.value,
+  };
 
-      if (!response.ok) throw new Error("Server error. Try again later.");
-      const data = await response.json();
-      outputText.value = data.corrected_text || "";
-      showToast("Grammar check completed!", "success");
-    } catch (err) {
-      outputText.value = `Error: ${err.message}`;
-      showToast("Grammar check failed. Please try again.", "error");
-    } finally {
-      checkBtn.classList.remove("loading");
-    }
-  });
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/grammar-check`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+      body: JSON.stringify({ text, goals: goalsPayload }),
+    });
+
+    if (!response.ok) throw new Error("Server error. Try again later.");
+
+    const data = await response.json();
+    let result = data.corrected_text || "";
+
+    // 🔥 Cut off at common editorial section markers
+    result = result
+      .split(/(Final Polished Text:|Polished Version:|Revised Version:)/i)[0]
+      .trim();
+
+    // Post-clean the final content
+    outputText.value = formatCleanText(result);
+    showToast("Grammar check completed!", "success");
+
+  } catch (err) {
+    console.error(err);
+    outputText.value = `Error: ${err.message}`;
+    showToast("Grammar check failed. Please try again.", "error");
+  } finally {
+    checkBtn.classList.remove("loading");
+  }
+});
+
+
+
+
+
+
+
 
   // 🧼 Optional HTML escape
   function escapeHtml(str) {
