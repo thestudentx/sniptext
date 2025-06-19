@@ -42,6 +42,153 @@ document.addEventListener('DOMContentLoaded', () => {
   const pasteBtn = document.getElementById('qb-paste');
   const copyBtn = document.getElementById('qb-copy');
   const uploadInput = document.getElementById('qb-upload'); // ✅ File input element
+  const toggleBtn = document.getElementById('qb-toggle-highlights');
+  const highlightContainer = document.getElementById('qb-output-highlight');
+
+  // 🌍 MULTI: Language selector element (must exist in your HTML)
+  const langSelect = document.getElementById('qb-language-select');
+
+    // 🌍 MULTI: franc + mapping (ISO-639-3 → ISO-639-1)
+  const isoMap = {
+    eng: 'en',
+    spa: 'es',
+    fra: 'fr',
+    deu: 'de',
+    cmn: 'zh',
+    // add more as needed
+  };
+  function detectLanguage(text) {
+    const francCode = franc.min(text); // e.g. 'eng'
+    return isoMap[francCode] || 'en';
+  }
+
+  // 🌍 MULTI: RTL/LTR helper
+  const rtlLangs = ['ar', 'he'];
+  function applyTextDirection(lang) {
+    const isRTL = rtlLangs.includes(lang);
+    inputTextarea.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+    inputTextarea.style.textAlign = isRTL ? 'right' : 'left';
+    outputTextarea.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+    outputTextarea.style.textAlign = isRTL ? 'right' : 'left';
+  }
+
+  // 🌍 MULTI: toast on manual change + direction switch
+  langSelect.addEventListener('change', () => {
+    const val = langSelect.value;
+    const label = val === 'auto'
+      ? 'Will auto-detect input language'
+      : `Will use ${langSelect.options[langSelect.selectedIndex].text}`;
+    showToast(label, 'info');
+
+    // 👉 Just apply dir/textAlign on the textareas only
+    applyTextDirection(val);
+  });
+
+
+  //  // Toggle highlights on/off
+  // keep track of view state
+  let showingHighlights = false;
+
+  // function to compute diff HTML
+  function generateDiffHTML(original, rewritten) {
+    const dmp = new diff_match_patch();
+    let diffs = dmp.diff_main(original, rewritten);
+    dmp.diff_cleanupSemantic(diffs);
+
+    return diffs.map(([op, text]) => {
+      switch (op) {
+        case DIFF_INSERT:
+          return `<span class="diff-added">${text}</span>`;
+        case DIFF_DELETE:
+          return `<span class="diff-deleted">${text}</span>`;
+        case DIFF_EQUAL:
+        default:
+          return `<span class="diff-equal">${text}</span>`;
+      }
+    }).join('');
+  }
+
+  // toggle view
+  toggleBtn.addEventListener('click', () => {
+    if (!outputTextarea.value.trim()) {
+      showToast('Nothing to highlight yet!', 'error');
+      return;
+    }
+
+    showingHighlights = !showingHighlights;
+    if (showingHighlights) {
+      // generate & show highlights
+      const diffHTML = generateDiffHTML(inputTextarea.value, outputTextarea.value);
+      highlightContainer.innerHTML = diffHTML;
+      highlightContainer.classList.remove('hidden');
+      outputTextarea.classList.add('hidden');
+      toggleBtn.textContent = 'Show Clean';
+    } else {
+      // back to clean textarea
+      highlightContainer.classList.add('hidden');
+      outputTextarea.classList.remove('hidden');
+      toggleBtn.textContent = 'Show Highlights';
+    }
+  });
+
+  /**
+ * 1) Remove editorial meta-lines:
+ *    • STAGE 1: …
+ *    • STAGE 2: …
+ *    • Final Polished Text:
+ *    • Explanation of Changes:
+ *    • Any “Style Pass” lines
+ * 2) Strip stray markdown (#, **, *), but:
+ *    • Preserve & indent true lists (–, *, +, 1., 2., etc.)
+ *    • Preserve blockquotes (>)
+ *    • Keep legitimate “Explanation:” lines
+ */
+  function formatCleanText(text) {
+    return text
+      .split("\n")
+      // 1) DROP only the unwanted metadata
+      .filter(line => {
+        return !/^\s*(STAGE\s*\d+:|Final Polished Text:|Explanation of Changes:|.*Style Pass.*)$/i.test(line);
+      })
+      .map(line => {
+        // keep blockquotes verbatim
+        if (/^\s*>/.test(line)) {
+          return line.trim();
+        }
+
+        // strip ALL # heading markers
+        line = line.replace(/^#{1,6}\s*/, "").replace(/#/g, "");
+
+        // unwrap bold/italic everywhere
+        line = line
+          .replace(/\*\*(.+?)\*\*/g, "$1")
+          .replace(/\*(.+?)\*/g, "$1");
+
+        const trimmed = line.trim();
+
+        // true numbered list?
+        const numMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
+        if (numMatch) {
+          return "  " + numMatch[1] + ". " + numMatch[2].trim();
+        }
+
+        // true bullet list?
+        const bulletMatch = trimmed.match(/^([*+\-])\s+(.*)/);
+        if (bulletMatch) {
+          return "  " + bulletMatch[1] + " " + bulletMatch[2].trim();
+        }
+
+        // leave em-dashes at start alone (not a list)
+        if (/^[—–]\s+/.test(trimmed)) {
+          return trimmed;
+        }
+
+        // otherwise just return the trimmed line
+        return trimmed;
+      })
+      .join("\n")
+      .trim();  // drop any leading/trailing blank lines
+  }
 
   let selectedMode = 'standard';
   let selectedStyle = 'default';
@@ -163,6 +310,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // 🌍 MULTI: decide language
+    let languageToSend = langSelect.value;
+    if (languageToSend === 'auto') {
+      languageToSend = detectLanguage(userText);
+    }
+
     errorMsg.textContent = '';
     errorMsg.classList.add('hidden');
     loader.classList.remove('hidden');
@@ -180,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
           text: userText,
           mode: selectedMode,
           style: selectedStyle,
+          language: languageToSend,  // 🌍 MULTI: send language
         }),
       });
 
@@ -189,7 +343,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const data = await response.json();
-      outputTextarea.value = data.paraphrased ?? '';
+      // take the API’s paraphrase, then clean it for stray Markdown/editorial junk
+      const raw = data.paraphrased || '';
+      outputTextarea.value = formatCleanText(raw);
+
+      // right after you set the output textarea:
+      showingHighlights = false;
+      highlightContainer.classList.add('hidden');
+      outputTextarea.classList.remove('hidden');
+      toggleBtn.textContent = 'Show Highlights';
+
       showToast('Paraphrase complete!', 'success');
     } catch (err) {
       console.error('Paraphrase error:', err);
@@ -257,8 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
         text = await file.text();
       } else if (ext === '.docx') {
         const arrayBuffer = await file.arrayBuffer();
-        const { value } = await mammoth.extractRawText({ arrayBuffer });
-        text = value;
+        const { value: html } = await mammoth.convertToHtml({ arrayBuffer });
+        text = html;
       }
 
       inputTextarea.value = text;

@@ -68,12 +68,91 @@ body {
   text-align: center;
 }
 
+
+/* ─── Language Support ─────────────────────────────────────────────────────────── */
+.qb-language {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  color: var(--brand-color);
+  font-size: 16px;
+}
+
+.qb-language label {
+  font-weight: 600;
+}
+
+.qb-select {
+  padding: 8px 12px;
+  border: 2px solid var(--brand-color);
+  border-radius: 6px;
+  background: white;
+  color: var(--brand-color);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.qb-select:hover {
+  background-color: rgba(var(--brand-color-rgb), 0.05);
+}
+
+.qb-select:focus {
+  box-shadow: 0 0 0 3px rgba(var(--brand-color-rgb), 0.25);
+}
+
 /* ─── Tabs Containers ─────────────────────────────────────────────────────────── */
 .qb-tabs {
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid #ddd;
   margin-bottom: 1rem;
+}
+.qb-section {
+  margin: 25px 0;
+}
+.qb-section-title {
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  color: var(--brand-color);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-left: 2px;
+}
+/* Tooltip Style */
+.qb-tab[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+.qb-tab[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%; /* Above tab */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #111;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 99;
+}
+/* RTL Language support */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+.qb-tab[data-tooltip]:hover::after {
+  opacity: 1;
 }
 .qb-tabs-mode {
   margin-bottom: 0.5rem; /* Slight gap between mode & style rows */
@@ -323,6 +402,42 @@ body {
   }
 }
 
+
+
+
+
+/* highlight containers */
+.qb-highlight-container {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* diff styles */
+.diff-added {
+  background: #d4edda;
+  color: #155724;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.diff-deleted {
+  background: #f8d7da;
+  color: #721c24;
+  text-decoration: line-through;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.diff-equal {
+  /* no change; optional styling */
+}
+
+
+
+
+
 /* ─── Responsive Breakpoints ──────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .qb-container {
@@ -332,6 +447,13 @@ body {
 
 /*  ─── Small‐Screen Tabs: make horizontally scrollable ─────────────────────────── */
 @media (max-width: 768px) {
+   .qb-language {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .qb-select {
+    width: 100%;
+  }
   /* Keep the two tab rows on one line each, allow horizontal scrolling */
   .qb-tabs {
     overflow-x: auto;

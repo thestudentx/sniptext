@@ -341,7 +341,6 @@ saveGoals.addEventListener("click", () => {
 
 
 // ✅ Grammar Check API
-// ✅ Grammar Check API
 checkBtn.addEventListener("click", async () => {
   const raw = inputText.value.trim();
   if (!raw) {

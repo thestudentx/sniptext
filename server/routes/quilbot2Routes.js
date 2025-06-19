@@ -23,12 +23,15 @@ const cohere = new CohereClientV2({
  */
 router.post('/cohere/paraphrase', async (req, res) => {
   try {
-    const { text, mode, style } = req.body;
+    // 🌍 Grab language from body, default to 'en'
+    const { text, mode, style, language = 'en' } = req.body;
+
     if (!text || typeof text !== 'string') {
       return res.status(400).json({
         error: 'Invalid input: request.body.text must be a non-empty string.',
       });
     }
+
 
     // ULTIMATE “1000% PURE / 10000% CORRECT” SYSTEM PROMPT LOGIC
     let systemPrompt = `
@@ -288,6 +291,9 @@ Style: “Default”
     const finalPrompt = systemPrompt
       .replace('%MODE_INSTRUCTION%', modeInstruction.trim())
       .replace('%STYLE_INSTRUCTION%', styleInstruction.trim());
+
+    // 🌍 Prepend a language note into the system prompt (so the model knows target language)
+    finalPrompt = `Language: ${language}\n` + finalPrompt;
 
     // Build chat‐style prompt
     const messages = [

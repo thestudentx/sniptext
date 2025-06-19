@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/quilbot2.css" />
 
+  <!-- Favicon -->
+   <link rel="icon" href="/favicon.png" type="image/png">
+
   <!-- Import a modern Google Font -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
@@ -58,27 +61,61 @@
         instantly.
       </p>
 
-      <!-- ─── Mode Tabs (Mimic Quilbot) ────────────────────────────────────────────────── -->
-      <div class="qb-tabs qb-tabs-mode">
-        <div class="qb-tab qb-tab-mode active" data-mode="standard">Standard</div>
-        <div class="qb-tab qb-tab-mode" data-mode="fluent">Fluent</div>
-        <div class="qb-tab qb-tab-mode" data-mode="creative">Creative</div>
-        <div class="qb-tab qb-tab-mode" data-mode="academic">Academic</div>
-        <div class="qb-tab qb-tab-mode" data-mode="formal">Formal</div>
-        <div class="qb-tab qb-tab-mode" data-mode="simple">Simple</div>
-        <div class="qb-tab qb-tab-mode" data-mode="expand">Expand</div>
-        <div class="qb-tab qb-tab-mode" data-mode="shorten">Shorten</div>
-        <div class="qb-tab qb-tab-mode" data-mode="grammar">Fix Grammar</div>
+      <!-- LANGUAGES DROPDOWN MENU -->
+       <div class="qb-language">
+        <label for="qb-language-select">Language:</label>
+        <select id="qb-language-select" class="qb-select">
+          <option value="auto">🌐 Auto Detect</option>
+          <option value="ar">🇸🇦 Arabic</option>
+          <option value="bn">🇧🇩 Bengali</option>
+          <option value="zh">🇨🇳 Chinese</option>
+          <option value="nl">🇳🇱 Dutch</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="fr">🇫🇷 French</option>
+          <option value="de">🇩🇪 German</option>
+          <option value="hi">🇮🇳 Hindi</option>
+          <option value="id">🇮🇩 Indonesian</option>
+          <option value="it">🇮🇹 Italian</option>
+          <option value="ja">🇯🇵 Japanese</option>
+          <option value="ko">🇰🇷 Korean</option>
+          <option value="pl">🇵🇱 Polish</option>
+          <option value="pt">🇵🇹 Portuguese</option>
+          <option value="ru">🇷🇺 Russian</option>
+          <option value="es">🇪🇸 Spanish</option>
+          <option value="tr">🇹🇷 Turkish</option>
+          <option value="uk">🇺🇦 Ukrainian</option>
+          <option value="vi">🇻🇳 Vietnamese</option>
+        </select>
       </div>
 
-      <!-- ─── Style Tabs (Mimic Quilbot) ───────────────────────────────────────────────── -->
-      <div class="qb-tabs qb-tabs-style">
-        <div class="qb-tab qb-tab-style active" data-style="default">Default</div>
-        <div class="qb-tab qb-tab-style" data-style="formal">Formal</div>
-        <div class="qb-tab qb-tab-style" data-style="casual">Casual</div>
-        <div class="qb-tab qb-tab-style" data-style="professional">Professional</div>
-        <div class="qb-tab qb-tab-style" data-style="academicTone">Academic</div>
+      <!-- Modes -->
+      <div class="qb-section">
+        <h3 class="qb-section-title">Modes</h3>
+        <div class="qb-tabs qb-tabs-mode">
+          <div class="qb-tab qb-tab-mode active" data-mode="standard" data-tooltip="Balanced rewrite with accuracy and clarity">Standard</div>
+          <div class="qb-tab qb-tab-mode" data-mode="fluent" data-tooltip="Improves grammar and flow for smooth reading">Fluent</div>
+          <div class="qb-tab qb-tab-mode" data-mode="creative" data-tooltip="Breaks the mold—ideal for expressive writing">Creative</div>
+          <div class="qb-tab qb-tab-mode" data-mode="academic" data-tooltip="Sharpens tone and vocabulary for academic work">Academic</div>
+          <div class="qb-tab qb-tab-mode" data-mode="formal" data-tooltip="Refines language to sound more professional">Formal</div>
+          <div class="qb-tab qb-tab-mode" data-mode="simple" data-tooltip="Simplifies wording for easier comprehension">Simple</div>
+          <div class="qb-tab qb-tab-mode" data-mode="expand" data-tooltip="Elaborates ideas and adds details">Expand</div>
+          <div class="qb-tab qb-tab-mode" data-mode="shorten" data-tooltip="Condenses text while preserving meaning">Shorten</div>
+          <div class="qb-tab qb-tab-mode" data-mode="grammar" data-tooltip="Fixes grammatical mistakes only">Fix Grammar</div>
+        </div>
       </div>
+
+      <!-- Styles -->
+      <div class="qb-section">
+        <h3 class="qb-section-title">Style</h3>
+        <div class="qb-tabs qb-tabs-style">
+          <div class="qb-tab qb-tab-style active" data-style="default" data-tooltip="Neutral style with no adjustments">Default</div>
+          <div class="qb-tab qb-tab-style" data-style="formal" data-tooltip="Boosts formality, ideal for business & academic writing">Formal</div>
+          <div class="qb-tab qb-tab-style" data-style="casual" data-tooltip="Makes the tone relaxed, like a friendly convo">Casual</div>
+          <div class="qb-tab qb-tab-style" data-style="professional" data-tooltip="Optimized for business and workplace communication">Professional</div>
+          <div class="qb-tab qb-tab-style" data-style="academicTone" data-tooltip="Gives a scholarly and research-focused tone">Academic</div>
+        </div>
+      </div>
+
 
       <!-- Input & Output layout -->
       <div class="qb-tool">
@@ -118,7 +155,6 @@
               class="qb-textarea"
               placeholder="Your paraphrased text will appear here..."
               rows="8"
-              readonly
             ></textarea>
             <button
               id="qb-copy"
@@ -127,6 +163,9 @@
             >
               📋 Copy
             </button>
+
+            <!-- NEW: highlighted preview (hidden by default) -->
+            <div id="qb-output-highlight" class="qb-highlight-container hidden"></div>
           </div>
         </section>
       </div>
@@ -144,6 +183,11 @@
           class="qb-button qb-button--primary qb-button--animated"
         >
           Paraphrase
+        </button>
+
+        <!-- NEW: Toggle highlights -->
+        <button id="qb-toggle-highlights" class="qb-button qb-button--outline qb-button--small">
+          Show Highlights
         </button>
       </div>
 
@@ -188,6 +232,13 @@
   <!-- Include the JavaScript file for this page -->
   <script src="js/index.js" defer></script>
   <script src="js/auth.js"></script>
+
+  <!-- Show Highlights -->
+  <script src="https://unpkg.com/diff-match-patch"></script>
+
+  <!-- Language Support -->
+  <script src="https://unpkg.com/franc@6.1.0/dist/franc.min.js"></script>
+
   <script src="js/quilbot2.js"></script>
 </body>
 </html>
