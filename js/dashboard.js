@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     quillbot2: {
       id: "model-quillbot-2",
-      href: "/quilbot2.html",
+      href: "/quillbot2.html",
       img: "images/quilbot-logo.png",
       title: "Quillbot 2",
       description: "Paraphrasing & Styling Tool",

@@ -157,7 +157,7 @@
               <div class="tool-tip-card">
                 <strong>Need deeper rewrites for longer content?</strong><br>
                 For advanced thesis-level paraphrasing, try our 
-                <a href="/quilbot2.html" target="_blank">Paraphrasing Tool</a> – powered for longer, more creative rewrites.
+                <a href="/quillbot2.html" target="_blank">Paraphrasing Tool</a> – powered for longer, more creative rewrites.
               </div>
           </div>
         </div>
@@ -214,6 +214,14 @@
           class="text-output"
           placeholder="Your corrected text will appear here."
         ></textarea>
+
+        <!-- NEW: Highlighted output (hidden by default) -->
+        <div id="grammarly-output-highlight" class="highlight-container hidden"></div>
+
+        <!-- Inside output-footer -->
+        <div class="output-footer">
+          <button id="toggleHighlightsBtn" class="btn-outline">Show Highlights</button>
+        </div>
       </section>
     </div>
   </main>
@@ -287,6 +295,13 @@
   <!-- Include the JavaScript file for this page -->
   <script src="js/index.js" defer></script>
   <script src="js/auth.js"></script>
+
+  <!-- Show Highlights -->
+  <script src="https://unpkg.com/diff-match-patch"></script>
+
+  <!-- Formatting diff-match library -->
+  <script src="https://unpkg.com/diff-match-patch@1.0.5/index.js"></script>
+  
   <script src="js/grammarly1.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@ const adminLoginAuth = require('./routes/adminLoginAuth');
 const contactRoutes = require('./routes/contact');
 
 // Quilbot Self-hosted API 
-const paraphraseRoutes = require('./routes/quilbot2Routes');
+const paraphraseRoutes = require('./routes/quillbot2Routes');
 
 dotenv.config();
 const app = express();

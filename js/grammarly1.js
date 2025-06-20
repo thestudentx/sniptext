@@ -1,25 +1,22 @@
 // File: grammarly1.js
+
 document.addEventListener('DOMContentLoaded', () => {
   // 🔒 AUTH CHECK: Protect page from unauthorized or expired users
   const token = localStorage.getItem('token');
-
   if (!token) {
     window.location.href = '/login.html';
     return;
   }
-
   try {
     const payloadBase64 = token.split('.')[1];
     const decodedPayload = JSON.parse(atob(payloadBase64));
     const expiryDate = new Date(decodedPayload.accessDuration);
     const now = new Date();
-
     if (now > expiryDate) {
       localStorage.removeItem('token');
       window.location.href = '/login.html';
       return;
     }
-
     console.log('✅ Access granted to:', decodedPayload.email);
   } catch (err) {
     console.error('Invalid token', err);
@@ -35,36 +32,141 @@ document.addEventListener('DOMContentLoaded', () => {
       : "https://sniptext.onrender.com";
 
   // 🌟 DOM Elements
-  const checkBtn = document.getElementById("checkBtn");
-  const inputText = document.getElementById("inputText");
-  const outputText = document.getElementById("outputText");
+  const checkBtn      = document.getElementById("checkBtn");
+  const inputText     = document.getElementById("inputText");
+  const outputText    = document.getElementById("outputText");
   const wordCountElem = document.getElementById("wordCount");
-  const btnSpinner = document.getElementById("btnSpinner");
-
-  const undoBtn = document.getElementById("undoBtn");
-  const redoBtn = document.getElementById("redoBtn");
-
-  const goalsBtn = document.getElementById("goalsBtn");
-  const goalsOverlay = document.getElementById("goalsOverlay");
-  const closeGoals = document.getElementById("closeGoals");
-  const clearGoals   = document.getElementById("clearGoals");
-  const saveGoals = document.getElementById("saveGoals");
-
-  const audienceSelect = document.getElementById("audienceSelect");
+  const btnSpinner    = document.getElementById("btnSpinner");
+  const undoBtn       = document.getElementById("undoBtn");
+  const redoBtn       = document.getElementById("redoBtn");
+  const goalsBtn      = document.getElementById("goalsBtn");
+  const goalsOverlay  = document.getElementById("goalsOverlay");
+  const closeGoals    = document.getElementById("closeGoals");
+  const clearGoals    = document.getElementById("clearGoals");
+  const saveGoals     = document.getElementById("saveGoals");
+  const audienceSelect  = document.getElementById("audienceSelect");
   const formalitySelect = document.getElementById("formalitySelect");
-  const intentSelect = document.getElementById("intentSelect");
-  const toneSelect = document.getElementById("toneSelect");
-  const domainSelect = document.getElementById("domainSelect");
-
-  const pasteBtn = document.getElementById("pasteBtn");
-  const copyBtn = document.getElementById("copyBtn");
-
-  const uploadBtn = document.getElementById("uploadBtn");
-  const fileInfo = document.getElementById("fileInfo");
-
+  const intentSelect    = document.getElementById("intentSelect");
+  const toneSelect      = document.getElementById("toneSelect");
+  const domainSelect    = document.getElementById("domainSelect");
+  const pasteBtn     = document.getElementById("pasteBtn");
+  const copyBtn      = document.getElementById("copyBtn");
+  const uploadBtn    = document.getElementById("uploadBtn");
+  const fileInfo     = document.getElementById("fileInfo");
   const toastContainer = document.getElementById("g-toast-container");
+  const toggleBtn = document.getElementById("toggleHighlightsBtn");
+  const highlightContainer = document.getElementById("grammarly-output-highlight");
 
 
+  // SHOW HIGHLIGHTS
+  // Diff function
+let showingHighlights = false;
+function generateDiffHTML(original, rewritten) {
+  const dmp = new diff_match_patch();
+  const diffs = dmp.diff_main(original, rewritten);
+  dmp.diff_cleanupSemantic(diffs);
+
+  return diffs.map(([op, text]) => {
+    switch (op) {
+      case DIFF_INSERT:
+        return `<span class="diff-added">${text}</span>`;
+      case DIFF_DELETE:
+        return `<span class="diff-deleted">${text}</span>`;
+      case DIFF_EQUAL:
+      default:
+        return `<span class="diff-equal">${text}</span>`;
+    }
+  }).join('');
+}
+
+// Toggle action
+toggleBtn.addEventListener("click", () => {
+  if (!outputText.value.trim()) {
+    showToast("Nothing to highlight yet!", "error"); 
+    return;
+  }
+
+  showingHighlights = !showingHighlights;
+
+    // ✅ Toggle button style
+  toggleBtn.classList.toggle("active");
+
+  if (showingHighlights) {
+    const diffHTML = generateDiffHTML(inputText.value, outputText.value);
+    highlightContainer.innerHTML = diffHTML;
+    highlightContainer.classList.remove("hidden");
+    outputText.classList.add("hidden");
+    toggleBtn.textContent = "Show Clean";
+  } else {
+    highlightContainer.classList.add("hidden");
+    outputText.classList.remove("hidden");
+    toggleBtn.textContent = "Show Highlights";
+  }
+});
+
+  // ─────────────────────────────────────────────────────────────────────
+  // Tokenize original markdown into markers & text chunks
+  function tokenizeMarkdown(raw) {
+    const lines  = raw.split("\n");
+    const tokens = [];
+    lines.forEach((line, idx) => {
+      // strip editorial meta-lines entirely
+      if (/^\s*(STAGE\s*\d+:|Final Polished Text:|Explanation of Changes:|.*Style Pass.*)$/i.test(line)) {
+        // skip this line
+      } else {
+        // detect leading list/blockquote/heading marker
+        const markerMatch = line.match(/^(\s*([*>#+\-]\s|[0-9]+\.\s))/);
+        if (markerMatch) {
+          tokens.push({ type: "marker", value: markerMatch[1] });
+          tokens.push({ type: "text",   value: line.slice(markerMatch[1].length) });
+        } else {
+          tokens.push({ type: "text",   value: line });
+        }
+      }
+      if (idx < lines.length - 1) {
+        tokens.push({ type: "marker", value: "\n" });
+      }
+    });
+    return tokens;
+  }
+
+  // Rebuild markdown from tokens + diffs
+  function rebuildTokens(tokens, diffs) {
+    let rebuilt = "";
+    let diffIdx = 0;
+
+    tokens.forEach(tok => {
+      if (tok.type === "marker") {
+        rebuilt += tok.value;
+      } else {
+        // tok.type === "text"
+        let needed = tok.value.length;
+        let chunk  = "";
+
+        while (needed > 0 && diffIdx < diffs.length) {
+          const [op, data] = diffs[diffIdx];
+          if (op === 0) { // EQUAL
+            const take = data.slice(0, needed);
+            chunk += take;
+            diffs[diffIdx][1] = data.slice(needed);
+            needed -= take.length;
+            if (!diffs[diffIdx][1]) diffIdx++;
+          } else if (op === 1) { // INSERT
+            chunk += data;
+            diffIdx++;
+          } else if (op === -1) { // DELETE
+            diffIdx++;
+          }
+        }
+        rebuilt += chunk;
+      }
+    });
+
+    return rebuilt;
+  }
+
+
+  
 /**
  * 1) Remove editorial meta-lines:
  *    • STAGE 1: …
@@ -340,69 +442,148 @@ saveGoals.addEventListener("click", () => {
 
 
 
-// ✅ Grammar Check API
-checkBtn.addEventListener("click", async () => {
-  const raw = inputText.value.trim();
-  if (!raw) {
-    showToast("Please enter some text to check!", "error");
-    return;
-  }
+ // ✅ Grammar Check API with diff-based reapply
+  checkBtn.addEventListener("click", async () => {
+    const raw = inputText.value;
+    if (!raw.trim()) {
+      showToast("Please enter some text to check!", "error");
+      return;
+    }
 
-  // pre-clean stray markdown before sending
-  const text = formatCleanText(raw);
+    // 1) Tokenize & strip editorial markers
+    const tokens = tokenizeMarkdown(raw);
 
-  outputText.value = "";
-  checkBtn.classList.add("loading");
+    // 2) Extract plain text for API
+    const plainText = tokens
+      .filter(t => t.type === "text")
+      .map(t => t.value)
+      .join("\n");
 
-  const goalsPayload = {
-    audience: audienceSelect.value,
-    formality: formalitySelect.value,
-    intent: intentSelect.value,
-    tone: toneSelect.value,
-    domain: domainSelect.value,
-  };
+    outputText.value = "";
+    checkBtn.classList.add("loading");
 
-  try {
-    const response = await fetch(`${BACKEND_URL}/api/grammar-check`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-      body: JSON.stringify({ text, goals: goalsPayload }),
-    });
+   const goalsPayload = userSelectedGoals;
 
-    if (!response.ok) throw new Error("Server error. Try again later.");
+    try {
+      console.log("📤 Payload:", {
+  text: plainText,
+  goals: goalsPayload
+});
+      const response = await fetch(`${BACKEND_URL}/api/grammar-check`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+        body: JSON.stringify({ text: plainText, goals: goalsPayload }),
+      });
+      if (!response.ok) throw new Error("Server error. Try again later.");
 
-    const data = await response.json();
-    let result = data.corrected_text || "";
+      const data = await response.json();
+      let corrected = data.corrected_text || "";
 
-    // 🔥 Cut off at common editorial section markers
-    result = result
-      .split(/(Final Polished Text:|Polished Version:|Revised Version:)/i)[0]
-      .trim();
+      // cut off at any editorial markers server might still inject
+      corrected = corrected.split(/(Final Polished Text:|Polished Version:|Revised Version:)/i)[0].trim();
 
-    // Post-clean the final content
-    outputText.value = formatCleanText(result);
-    showToast("Grammar check completed!", "success");
+      // 3) Diff-match-patch
+      // 3a) Instantiate
+const dmp = new diff_match_patch();
 
-  } catch (err) {
-    console.error(err);
-    outputText.value = `Error: ${err.message}`;
-    showToast("Grammar check failed. Please try again.", "error");
-  } finally {
-    checkBtn.classList.remove("loading");
-  }
+// 3b) Turn each unique line into a “char” for the library
+const tmp = dmp.diff_linesToChars_(plainText, corrected);
+const chars1    = tmp.chars1;
+const chars2    = tmp.chars2;
+const lineArray = tmp.lineArray;
+
+// 3c) Diff on those pseudo‑chars (fast, and line boundaries are honored)
+let diffs = dmp.diff_main(chars1, chars2, false);
+
+// 3d) Convert the char diffs back into real lines
+dmp.diff_charsToLines_(diffs, lineArray);
+
+// 3e) (Optional) Clean up the diff for readability 
+dmp.diff_cleanupSemantic(diffs);
+
+// 4) Rebuild original formatting + new text
+let rebuilt = rebuildTokens(tokens, diffs);
+
+
+
+// 5) POST-PROCESSING CLEANUP
+
+// Collapse 3+ newlines to 2
+rebuilt = rebuilt.replace(/\n{3,}/g, '\n\n');
+
+// Remove trailing stars or hashes (leftovers)
+rebuilt = rebuilt.replace(/[*#]+\s*$/gm, '');
+
+// Fix mid-sentence broken lines: "This i\ns a problem" → "This is a problem"
+rebuilt = rebuilt.replace(/(?<![#*+\-0-9])(\w+)\n(\w+)/g, '$1 $2');
+
+// Preserve horizontal rules
+rebuilt = rebuilt.replace(/^---$/gm, '\n---\n');
+
+// Capitalize all headings (Markdown style)
+rebuilt = rebuilt.replace(/^#+\s*(.*)$/gm, (_, heading) => {
+  return heading.replace(/\b\w/g, (c) => c.toUpperCase());
 });
 
+// Fix STAGE lines → bold markdown
+// rebuilt = rebuilt.replace(/^STAGE\s*(\d+):/gi, (_, n) => `**STAGE ${n}: Grammar and Typography Pass**`);
+
+// Merge repeated sentences like: "It affects X. It affects Y." → "It affects X and Y."
+rebuilt = rebuilt.replace(/It affects ([\w\s]+?)\. It affects ([\w\s]+?)\./gi, 'It affects $1 and $2.');
+
+// ✅ Normalize bullets & keep them as Markdown list items
+rebuilt = rebuilt.replace(/^\s*[-+*]\s+(.*)/gm, (_, item) => {
+  return `- ${item.trim()}`; // normalize to `-` and clean spacing
+});
+
+// ✅ Normalize numbered lists like "1. something"
+rebuilt = rebuilt.replace(/^\s*\d+\.\s+(.*)/gm, (_, item) => {
+  return `1. ${item.trim()}`; // just normalize spacing (number will be updated below)
+});
+
+// ✅ Auto-correct sequential numbers (so all are not just "1.")
+let number = 1;
+rebuilt = rebuilt.replace(/^1\.\s+/gm, () => `${number++}. `);
+
+// ✅ Add spacing before and after lists for clarity
+rebuilt = rebuilt.replace(/((?:^|\n)- .+?)(?=\n[^-\n]|$)/gs, '\n$1\n');
+rebuilt = rebuilt.replace(/((?:^|\n)\d+\. .+?)(?=\n[^\d\n]|$)/gs, '\n$1\n');
+
+// Fix accidental leftover list symbols like "- +" at end
+rebuilt = rebuilt.replace(/[-+*]\s*[-+*]/g, '').replace(/[-+*]\s*$/, '');
+
+// Remove random symbols only if not part of a legit structure
+rebuilt = rebuilt.replace(/^[-+*]\s*$/gm, '');
+
+// Normalize multiple blank lines followed by symbols
+rebuilt = rebuilt.replace(/\n\s*\n(?=[-+*])/g, '\n\n');
+
+// Normalize heading/title spacing
+rebuilt = rebuilt.replace(/\n{2,}(?=[A-Z🧠🔥🌍✍️])/g, '\n\n');
+
+// Trim overall output
+rebuilt = rebuilt.trim();
 
 
 
+outputText.value = rebuilt;
+  
 
+      showToast("Grammar check completed!", "success");
 
+    } catch (err) {
+      console.error(err);
+      outputText.value = `Error: ${err.message}`;
+      showToast("Grammar check failed. Please try again.", "error");
+    } finally {
+      checkBtn.classList.remove("loading");
+    }
+  });
 
-
-  // 🧼 Optional HTML escape
+  // 🧼 Optional HTML escape (unchanged)
   function escapeHtml(str) {
     return str
       .replace(/&/g, "&amp;")

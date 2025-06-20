@@ -1,4 +1,4 @@
-// File: server/routes/quilbot2Routes.js
+// File: server/routes/quillbot2Routes.js
 
 const express = require('express');
 const { CohereClientV2 } = require('cohere-ai');
@@ -416,6 +416,7 @@ Think step-by-step (internally):
 // STYLE generator: in-place only, with domain rules
 function stylePrompt(userStyle, userAudience, domain) {
   if (!userStyle || userStyle === 'default') return '';
+
   const domainRule = {
     academic:   "• Spell out numbers below 100 in words; use neutral academic tone.",
     business:   "• Be concise—eliminate redundancies; keep bullet-style brevity.",
@@ -426,7 +427,7 @@ function stylePrompt(userStyle, userAudience, domain) {
 
   return `
 STYLE GOAL: ${userStyle}${userAudience ? `; Audience: ${userAudience}` : ''}
-${domainRule(domain)}
+${domainRule}
 Example (in-place):
   “Let me know if you can attend.” → “Please confirm your attendance.”
 Rules:
@@ -436,7 +437,8 @@ Rules:
   • Normalize ellipses (…) and em dashes (—) with correct spacing.
   • Do not alter sentence count or structure beyond word swaps.
 `.trim();
-}
+}  // <— only one closing brace here
+
 
 // 1) SUPER-CHARGED SYSTEM PROMPT
 const systemPrompt = `
