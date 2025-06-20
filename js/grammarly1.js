@@ -96,11 +96,11 @@ toggleBtn.addEventListener("click", () => {
     highlightContainer.innerHTML = diffHTML;
     highlightContainer.classList.remove("hidden");
     outputText.classList.add("hidden");
-    toggleBtn.textContent = "Show Clean";
+    toggleBtn.textContent = "Hide Changes";
   } else {
     highlightContainer.classList.add("hidden");
     outputText.classList.remove("hidden");
-    toggleBtn.textContent = "Show Highlights";
+    toggleBtn.textContent = "Highlight Changes";
   }
 });
 

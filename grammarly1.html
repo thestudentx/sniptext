@@ -220,7 +220,7 @@
 
         <!-- Inside output-footer -->
         <div class="output-footer">
-          <button id="toggleHighlightsBtn" class="btn-outline">Show Highlights</button>
+          <button id="toggleHighlightsBtn" class="btn-outline">Highlight Changes</button>
         </div>
       </section>
     </div>
@@ -232,26 +232,46 @@
       <h3 class="features-heading">Why Snip Text Grammar Checker?</h3>
       <div class="features-grid">
         <div class="feature-card">
-          <h4>Custom Writing Goals</h4>
+          <h4>Formatting-Safe Corrections</h4>
           <p>
-            Set your Audience, Formality, Intent, Tone, and Domain—just like Grammarly—so suggestions
-            adapt to your exact needs.
+            Paste rich text or headings, and we’ll keep your structure intact—lists, bullet points, and all.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>Your Text Stays Yours</h4>
+          <p>
+            Snip Text never stores or shares your input. 100% private grammar checking—powered by local APIs.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>Visual Edit Highlights</h4>
+          <p>
+            Instantly see what was changed—insertions, deletions, and rewrites—all color-coded so you never miss a detail.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>Smart Writing Goals</h4>
+          <p>
+            Set your audience, tone, intent, and style—Snip Text adapts every correction to match your purpose, whether academic or casual.
           </p>
         </div>
         <div class="feature-card">
           <h4>Real-Time AI Feedback</h4>
-          <p>Powered by Cohere’s state-of-the-art model, catch issues in one go.</p>
-        </div>
-        <div class="feature-card">
-          <h4>Deep Explanations</h4>
           <p>
-            Each correction is generated in a single response, showing you the full rewritten text
-            instantly.
+            Get instant grammar, tone, and clarity feedback powered by Cohere’s top-tier AI model—no waiting, no lag.
           </p>
         </div>
         <div class="feature-card">
-          <h4>Word-Count & Limits</h4>
-          <p>Live word count, daily limits, and usage tracking keep you on budget.</p>
+          <h4>Full Rewrite with Context</h4>
+          <p>
+            See all your edits applied in one smooth, formatted output—no piecemeal fixes, just a clean, clear version.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>Paraphrase without Fear</h4>
+          <p>
+            Our grammar fix avoids plagiarism by rewriting naturally—perfect for essays, blogs, and research work.
+          </p>
         </div>
       </div>
     </div>
@@ -297,10 +317,12 @@
   <script src="js/auth.js"></script>
 
   <!-- Show Highlights -->
-  <script src="https://unpkg.com/diff-match-patch"></script>
+  <script src="https://unpkg.com/diff-match-patch@1.0.5/index.js"></script>
 
   <!-- Formatting diff-match library -->
-  <script src="https://unpkg.com/diff-match-patch@1.0.5/index.js"></script>
+  <!-- ✅ Browser‑ready UMD build -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/diff-match-patch/20121119/diff_match_patch.js"></script>
+
   
   <script src="js/grammarly1.js"></script>
 </body>

@@ -1,4 +1,4 @@
-// quillbot2.js
+// quilbot2.js
 // This script handles page access, user input, sending to backend, word counts, UI feedback, etc.
 
 document.addEventListener('DOMContentLoaded', () => {

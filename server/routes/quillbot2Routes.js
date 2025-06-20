@@ -288,12 +288,12 @@ Style: “Default”
     }
 
     // Inject Mode & Style blocks
-    const finalPrompt = systemPrompt
-      .replace('%MODE_INSTRUCTION%', modeInstruction.trim())
-      .replace('%STYLE_INSTRUCTION%', styleInstruction.trim());
+    let finalPrompt = systemPrompt
+  .replace('%MODE_INSTRUCTION%', modeInstruction.trim())
+  .replace('%STYLE_INSTRUCTION%', styleInstruction.trim());
 
-    // 🌍 Prepend a language note into the system prompt (so the model knows target language)
-    finalPrompt = `Language: ${language}\n` + finalPrompt;
+finalPrompt = `Language: ${language}\n` + finalPrompt; // ✅
+
 
     // Build chat‐style prompt
     const messages = [

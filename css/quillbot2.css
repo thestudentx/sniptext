@@ -113,14 +113,14 @@ body {
   margin-bottom: 1rem;
 }
 .qb-section {
-  margin: 25px 0;
+  margin: 1rem 0;
 }
 .qb-section-title {
   font-family: 'Poppins', 'Roboto', sans-serif;
   color: var(--brand-color);
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 2px;
   padding-left: 2px;
 }
 /* Tooltip Style */
@@ -481,6 +481,11 @@ html[dir="rtl"] {
   .qb-tabs-style {
     margin-bottom: 1rem;
   }
+  
+  .qb-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -510,8 +515,8 @@ html[dir="rtl"] {
     font-size: 0.85rem;
   }
   .qb-button {
-    padding: 0.7rem 1.2rem;
-    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -548,7 +553,9 @@ html[dir="rtl"] {
     font-size: 0.8rem;
   }
   .qb-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.3rem 1rem;
+    font-size: 0.5rem;
   }
 }

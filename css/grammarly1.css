@@ -762,6 +762,10 @@ body {
   .btn-primary .btn-text {
     font-size: 0.75rem;
   }
+  .btn-outline {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
   .icon-btn#copyBtn {
     padding: 0.2rem 0.4rem;
     font-size: 0.75rem;

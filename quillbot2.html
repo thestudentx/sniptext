@@ -234,10 +234,13 @@
   <script src="js/auth.js"></script>
 
   <!-- Show Highlights -->
-  <script src="https://unpkg.com/diff-match-patch"></script>
+  <script src="https://unpkg.com/diff-match-patch@1.0.5/index.js"></script>
 
   <!-- Language Support -->
-  <script src="https://unpkg.com/franc@6.1.0/dist/franc.min.js"></script>
+  <script type="module">
+  import { francAll, franc } from "https://cdn.skypack.dev/franc";
+  window.franc = { min: franc }; // simulate franc.min() call structure
+</script>
 
   <script src="js/quillbot2.js"></script>
 </body>
