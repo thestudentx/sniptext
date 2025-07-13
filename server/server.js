@@ -12,8 +12,8 @@ const adminUserRoutes = require('./routes/adminUserRoutes');
 const adminLoginAuth = require('./routes/adminLoginAuth');
 const contactRoutes = require('./routes/contact');
 
-// Quilbot Self-hosted API 
-const paraphraseRoutes = require('./routes/quillbot2Routes');
+// Quilbot/Turnitin Self-hosted API 
+const paraphraseRoutes = require('./routes/quillbot2Routes');const turnitin1Routes = require('./routes/turnitin1Routes');
 
 dotenv.config();
 const app = express();
@@ -55,8 +55,9 @@ app.use('/api/admin/users', adminUserRoutes);
 app.use('/api/admin', adminLoginAuth);
 app.use('/api', contactRoutes);
 
-// Quilbot Self-hosted API 
+// Quilbot/Turnitin Self-hosted API 
 app.use('/api', paraphraseRoutes);
+app.use('/api/turnitin1', turnitin1Routes);
 
 // 🌐 Public IP Debug Route for Brevo whitelisting
 app.get('/api/check-my-ip', async (req, res) => {

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SnipText – powered by checkai.pro. AI-powered plagiarism detection, grammar enhancement, and text rewriting.">
+
+  <title>Home - Snip Text</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <link rel="stylesheet" href="css/turnitin1.css">
+
+  <!-- Favicon -->
+   <link rel="icon" href="/favicon.png" type="image/png">
+
+  <!-- Google Fonts: Poppins & Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+
+
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog1.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+  
+<main class="turnit-container dark-split">
+  <!-- Left panel: Input & Upload -->
+  <section class="split-panel input-panel">
+    <h2 class="panel-title">AI Content Detection</h2>
+    <p class="panel-sub">Upload or paste text to identify AI-generated content.</p>
+
+    <div class="upload-wrapper">
+      <label for="fileUpload" class="upload-btn">
+        <svg width="20" height="20" fill="var(--color-accent)" viewBox="0 0 24 24">
+          <path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6v-6h4l-7-7z"/>
+        </svg>
+        Upload File
+      </label>
+      <input type="file" id="fileUpload" accept=".txt,.docx" hidden />
+      <span class="file-info" id="fileInfo">No file chosen</span>
+    </div>
+
+    <div class="textarea-wrapper">
+      <textarea id="inputText" placeholder="Paste your content..." rows="12"></textarea>
+    </div>
+    <div class="counter-wrapper">
+      <span id="wordCount">0 words</span> •
+      <span id="tokenCount">0 tokens</span>
+    </div>
+
+    <div class="actions">
+      <button id="checkAIBtn" class="ripple-btn" data-ripple>Detect AI</button>
+      <button id="checkPlagiarismBtn" class="ripple-btn disabled" disabled>Plagiarism (Soon)</button>
+    </div>
+  </section>
+
+  <!-- Right panel: Results & Future -->
+<section class="split-panel result-panel">
+  <div id="loadingIndicator" class="loader hidden"></div>
+  <div id="errorMsg" class="error hidden"></div>
+
+  <!-- Metrics Panel -->
+  <div id="resultMetrics" class="metrics-panel hidden">
+    <h3 class="metrics-title">Detection Breakdown</h3>
+
+    <div class="metric">
+      <div class="metric-label">AI Written</div>
+      <div class="metric-value" id="aiScoreValue">--%</div>
+      <div class="progress">
+        <div id="aiScoreBar" class="progress-bar"></div>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">Human Written</div>
+      <div class="metric-value" id="humanScoreValue">--%</div>
+      <div class="progress">
+        <div id="humanScoreBar" class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Placeholder for future report feature -->
+  <button id="generateReportBtn" class="ripple-btn report-btn hidden" disabled>
+    Generate Report
+  </button>
+</section>
+
+</main>
+
+
+
+  
+<footer id="main-footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span class="powered-by">Snip Text - powered by <a href="https://checkai.pro" target="_blank">CheckAI.pro</a> All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+  <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
+
+
+  <!-- SCRIPT LOADERS -->
+  <script src="js/index.js" defer></script>
+  <script src="components/injectLayout.js"></script>
+  <script src="js/auth.js"></script>
+
+  <!-- <script src="components/global-loading-animation.js"></script> -->
+<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+  <script src="js/turnitin1.js"></script>
+</body>
+</html>

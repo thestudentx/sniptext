@@ -190,26 +190,58 @@ document.addEventListener('DOMContentLoaded', () => {
       .trim();  // drop any leading/trailing blank lines
   }
 
-  let selectedMode = 'standard';
-  let selectedStyle = 'default';
+let selectedType = 'mode';
+let selectedMode = 'standard';
+let selectedStyle = 'default';
+let selectedTone = 'default';
 
-  const modeTabs = document.querySelectorAll('.qb-tab-mode');
-  modeTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      modeTabs.forEach((t) => t.classList.remove('active'));
-      tab.classList.add('active');
-      selectedMode = tab.getAttribute('data-mode');
-    });
-  });
+const modeTabs = document.querySelectorAll('.qb-tab-mode');
+const styleTabs = document.querySelectorAll('.qb-tab-style');
+const toneTabs = document.querySelectorAll('.qb-tab-tone');
 
-  const styleTabs = document.querySelectorAll('.qb-tab-style');
-  styleTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      styleTabs.forEach((t) => t.classList.remove('active'));
-      tab.classList.add('active');
-      selectedStyle = tab.getAttribute('data-style');
-    });
+// helper to clear all tab groups
+function clearAllTabs() {
+  modeTabs.forEach(t => t.classList.remove('active'));
+  styleTabs.forEach(t => t.classList.remove('active'));
+  toneTabs.forEach(t => t.classList.remove('active'));
+}
+
+// MODE SELECT
+modeTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    clearAllTabs();
+    tab.classList.add('active');
+    selectedType = 'mode';
+    selectedMode = tab.getAttribute('data-mode');
+    selectedStyle = '';
+    selectedTone = '';
   });
+});
+
+// STYLE SELECT
+styleTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    clearAllTabs();
+    tab.classList.add('active');
+    selectedType = 'style';
+    selectedStyle = tab.getAttribute('data-style');
+    selectedMode = '';
+    selectedTone = '';
+  });
+});
+
+// TONE SELECT
+toneTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    clearAllTabs();
+    tab.classList.add('active');
+    selectedType = 'tone';
+    selectedTone = tab.getAttribute('data-tone');
+    selectedMode = '';
+    selectedStyle = '';
+  });
+});
+
 
   const BACKEND_URL =
     location.hostname === 'localhost' || location.hostname === '127.0.0.1'
@@ -322,25 +354,35 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
     clearBtn.disabled = true;
 
-    try {
-      const response = await fetch(`${BACKEND_URL}/api/cohere/paraphrase`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          text: userText,
-          mode: selectedMode,
-          style: selectedStyle,
-          language: languageToSend,  // 🌍 MULTI: send language
-        }),
-      });
+try {
+  const requestBody = {
+    text: userText,
+    language: languageToSend,
+  };
 
-      if (!response.ok) {
-        const errText = await response.text();
-        throw new Error(errText || 'Unknown error from server');
-      }
+  if (selectedType === 'mode') {
+    requestBody.mode = selectedMode;
+  } else if (selectedType === 'style') {
+    requestBody.style = selectedStyle;
+  } else if (selectedType === 'tone') {
+    requestBody.tone = selectedTone;
+  }
+
+  const response = await fetch(`${BACKEND_URL}/api/cohere/paraphrase`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(requestBody),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(errText || 'Unknown error from server');
+  }
+
+  // ... rest of your success logic
 
       const data = await response.json();
       // take the API’s paraphrase, then clean it for stray Markdown/editorial junk

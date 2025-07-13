@@ -88,33 +88,48 @@
         </select>
       </div>
 
-      <!-- Modes -->
-      <div class="qb-section">
-        <h3 class="qb-section-title">Modes</h3>
-        <div class="qb-tabs qb-tabs-mode">
-          <div class="qb-tab qb-tab-mode active" data-mode="standard" data-tooltip="Balanced rewrite with accuracy and clarity">Standard</div>
-          <div class="qb-tab qb-tab-mode" data-mode="fluent" data-tooltip="Improves grammar and flow for smooth reading">Fluent</div>
-          <div class="qb-tab qb-tab-mode" data-mode="creative" data-tooltip="Breaks the mold—ideal for expressive writing">Creative</div>
-          <div class="qb-tab qb-tab-mode" data-mode="academic" data-tooltip="Sharpens tone and vocabulary for academic work">Academic</div>
-          <div class="qb-tab qb-tab-mode" data-mode="formal" data-tooltip="Refines language to sound more professional">Formal</div>
-          <div class="qb-tab qb-tab-mode" data-mode="simple" data-tooltip="Simplifies wording for easier comprehension">Simple</div>
-          <div class="qb-tab qb-tab-mode" data-mode="expand" data-tooltip="Elaborates ideas and adds details">Expand</div>
-          <div class="qb-tab qb-tab-mode" data-mode="shorten" data-tooltip="Condenses text while preserving meaning">Shorten</div>
-          <div class="qb-tab qb-tab-mode" data-mode="grammar" data-tooltip="Fixes grammatical mistakes only">Fix Grammar</div>
-        </div>
-      </div>
+      <div class="qb-toolbar">
+  <!-- Mode Section -->
+  <div class="qb-section-group">
+    <h3 class="qb-section-title">Mode:</h3>
+    <div class="qb-tabs qb-tabs-mode">
+      <div class="qb-tab qb-tab-mode active" data-mode="standard">Standard</div>
+      <div class="qb-tab qb-tab-mode" data-mode="fluent">Fluent</div>
+      <div class="qb-tab qb-tab-mode" data-mode="creative">Creative</div>
+      <div class="qb-tab qb-tab-mode" data-mode="academic">Academic</div>
+      <div class="qb-tab qb-tab-mode" data-mode="expand">Expand</div>
+      <div class="qb-tab qb-tab-mode" data-mode="shorten">Shorten</div>
+      <div class="qb-tab qb-tab-mode" data-mode="grammar">Fix Grammar</div>
+    </div>
+  </div>
 
-      <!-- Styles -->
-      <div class="qb-section">
-        <h3 class="qb-section-title">Style</h3>
-        <div class="qb-tabs qb-tabs-style">
-          <div class="qb-tab qb-tab-style active" data-style="default" data-tooltip="Neutral style with no adjustments">Default</div>
-          <div class="qb-tab qb-tab-style" data-style="formal" data-tooltip="Boosts formality, ideal for business & academic writing">Formal</div>
-          <div class="qb-tab qb-tab-style" data-style="casual" data-tooltip="Makes the tone relaxed, like a friendly convo">Casual</div>
-          <div class="qb-tab qb-tab-style" data-style="professional" data-tooltip="Optimized for business and workplace communication">Professional</div>
-          <div class="qb-tab qb-tab-style" data-style="academicTone" data-tooltip="Gives a scholarly and research-focused tone">Academic</div>
-        </div>
-      </div>
+  <!-- Style Section -->
+  <div class="qb-section-group">
+    <h3 class="qb-section-title">Style:</h3>
+    <div class="qb-tabs qb-tabs-style">
+      <div class="qb-tab qb-tab-style active" data-style="default">Default</div>
+      <div class="qb-tab qb-tab-style" data-style="professional">Professional</div>
+      <div class="qb-tab qb-tab-style" data-style="casual">Casual</div>
+      <div class="qb-tab qb-tab-style" data-style="academicTone">Academic</div>
+      <div class="qb-tab qb-tab-style" data-style="business">Business</div>
+    </div>
+  </div>
+
+  <!-- Tone Section -->
+  <div class="qb-section-group">
+    <h3 class="qb-section-title">Tone:</h3>
+    <div class="qb-tabs qb-tabs-tone">
+      <div class="qb-tab qb-tab-tone active" data-tone="default">Default</div>
+      <div class="qb-tab qb-tab-tone" data-tone="formal">Formal</div>
+      <div class="qb-tab qb-tab-tone" data-tone="confident">Confident</div>
+      <div class="qb-tab qb-tab-tone" data-tone="friendly">Friendly</div>
+      <div class="qb-tab qb-tab-tone" data-tone="apologetic">Apologetic</div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
       <!-- Input & Output layout -->
@@ -182,7 +197,8 @@
           id="qb-submit"
           class="qb-button qb-button--primary qb-button--animated"
         >
-          Paraphrase
+          <span class="qb-btn-label">Paraphrase</span>
+          <span class="qb-btn-spinner hidden"></span>
         </button>
 
         <!-- NEW: Toggle highlights -->

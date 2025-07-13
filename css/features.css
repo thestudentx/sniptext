@@ -164,7 +164,7 @@ box-shadow: 0 2px 8px rgba(232, 93, 39, 0.08);
   font-family: var(--font-heading); /* Poppins if you're using the system */
   font-weight: 600;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
   border: none;
   border-radius: 8px;
   text-decoration: none;

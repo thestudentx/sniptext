@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     turnitin2: {
       id: "model-turnitin-2",
-      href: "https://turnitindetect.org/login",
+      href: "turnitin1.html",
       img: "images/turnitin-logo.png",
       title: "Turnitin 2",
       description: "Plagiarism Check & AI Detection",
