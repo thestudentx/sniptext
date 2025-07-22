@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const axios = require('axios'); // ⬅️ Added here
+const axios = require('axios'); 
 
 const authMiddleware = require('./middlewares/authMiddleware');
 const authRoutes = require('./routes/auth');
@@ -13,11 +13,16 @@ const adminLoginAuth = require('./routes/adminLoginAuth');
 const contactRoutes = require('./routes/contact');
 
 // Quilbot/Turnitin Self-hosted API 
-const paraphraseRoutes = require('./routes/quillbot2Routes');const turnitin1Routes = require('./routes/turnitin1Routes');
+const paraphraseRoutes = require('./routes/quillbot2Routes');
+const turnitin1Routes = require('./routes/turnitin1Routes');
+
+
 
 dotenv.config();
+console.log("✅ Loaded Hugging Face Token:", process.env.HUGGINGFACE_API_TOKEN ? "Found" : "MISSING!");
 const app = express();
 app.use(express.json());
+
 
 // Serve static HTML files from root (e.g., index.html)
 app.use(express.static('.'));

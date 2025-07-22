@@ -11,6 +11,11 @@
     padding: 3rem;
   }
 }
+/* Utility hidden class */
+.hidden {
+  display: none !important;
+}
+
 /* Panels */
 .split-panel {
   background: rgba(31, 35, 55, .85);
