@@ -77,37 +77,36 @@
 
   <!-- Right panel: Results & Future -->
 <section class="split-panel result-panel">
-    <div id="loadingIndicator" class="loader hidden"></div>
-    <div id="errorMsg" class="error hidden"></div>
+  <div id="loadingIndicator" class="loader hidden"></div>
+  <div id="errorMsg" class="error hidden"></div>
 
-    <!-- Metrics Panel - Cleaned up for the new API -->
-    <div id="resultMetrics" class="metrics-panel hidden">
-      <h3 class="metrics-title">Detection Breakdown</h3>
+  <div id="resultMetrics" class="metrics-panel hidden">
+    <h3 class="metrics-title">Detection Breakdown</h3>
 
-      <div class="metric">
-        <div class="metric-label">AI Written</div>
-        <div class="metric-value" id="aiScoreValue">--%</div>
-        <div class="progress">
-          <div id="aiScoreBar" class="progress-bar"></div>
-        </div>
+    <div class="metric">
+      <div class="metric-label">AI Written</div>
+      <div class="metric-value" id="aiScoreValue">--%</div>
+      <div class="progress">
+        <div id="aiScoreBar" class="progress-bar"></div>
       </div>
-
-      <div class="metric">
-        <div class="metric-label">Human Written</div>
-        <div class="metric-value" id="humanScoreValue">--%</div>
-        <div class="progress">
-          <div id="humanScoreBar" class="progress-bar"></div>
-        </div>
-      </div>
-
-      <p id="verdictText" class="verdict-text">Verdict: –</p>
     </div>
 
-    <!-- Placeholder for future report feature -->
-    <button id="generateReportBtn" class="ripple-btn report-btn hidden" disabled>
-      Generate Report
-    </button>
-  </section>
+    <div class="metric">
+      <div class="metric-label">Human Written</div>
+      <div class="metric-value" id="humanScoreValue">--%</div>
+      <div class="progress">
+        <div id="humanScoreBar" class="progress-bar"></div>
+      </div>
+    </div>
+
+    <p id="verdictText" class="verdict-text">Verdict: –</p>
+  </div>
+
+  <button id="generateReportBtn" class="ripple-btn report-btn hidden" disabled>
+    Generate Report
+  </button>
+</section>
+
 
 
 </main>

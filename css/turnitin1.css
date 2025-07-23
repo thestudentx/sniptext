@@ -211,7 +211,7 @@
 .metrics-title {
   margin: 0 0 1rem;
   font-family: var(--font-heading);
-  color: var(--color-accent);
+  color: #b1b1b1;
 }
 .metric {
   margin-bottom: 1rem;

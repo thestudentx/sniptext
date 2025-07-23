@@ -95,48 +95,70 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // AI Detection Button Click
-  aiBtn.addEventListener('click', async () => {
-    const originalText = aiBtn.textContent;
-    const rawText = normalizeInput(inputText.value);
-    if (!rawText) {
-      return showError('Please enter or upload some text first.');
-    }
+aiBtn.addEventListener('click', async () => {
+  const originalText = aiBtn.textContent;
+  const rawText = normalizeInput(inputText.value);
+  if (!rawText) return showError('Please enter or upload some text first.');
 
-    resetUI();
-    showLoading();
-    aiBtn.disabled = true;
-    aiBtn.textContent = 'Checking...';
+  resetUI();
+  showLoading();
+  aiBtn.disabled = true;
+  aiBtn.textContent = 'Checking...';
 
-    try {
-      const data = await callAPI('/api/turnitin1/detect', { text: rawText });
+  try {
+    // Call Sapling AI backend
+    const data = await callAPI('/api/turnitin1/sapling', { text: rawText });
 
-      // Store the result for the report generator
-      latestDetectionResult = {
-        aiPercent: data.aiPercent,
-        verdict: data.verdict,
-        originalText: rawText.substring(0, 3000) // Store a snippet for the report
-      };
+    const score = data?.score ?? 0; // Default 0 if missing
+    const aiPercent = +(score * 100).toFixed(2);
+    const humanPercent = +(100 - aiPercent).toFixed(2);
 
-      // Populate UI with results
-      document.getElementById('aiScoreValue').textContent = `${data.aiPercent}%`;
-      document.getElementById('aiScoreBar').style.width = `${data.aiPercent}%`;
-      const humanPercent = 100 - data.aiPercent;
-      document.getElementById('humanScoreValue').textContent = `${humanPercent}%`;
-      document.getElementById('humanScoreBar').style.width = `${humanPercent}%`;
-      document.getElementById('verdictText').textContent = data.verdict;
+    // Determine verdict
+    const verdict =
+      aiPercent >= 85
+        ? 'AI Written'
+        : aiPercent >= 50
+        ? 'Mixed or Unclear'
+        : 'Human Written';
 
-      metricsPanel.classList.remove('hidden');
-      reportBtn.classList.remove('hidden');
-      reportBtn.disabled = false;
+    // Store result for report
+    latestDetectionResult = {
+      aiPercent,
+      verdict,
+      originalText: rawText.substring(0, 3000)
+    };
 
-    } catch (err) {
-      showError(err.message);
-    } finally {
-      hideLoading();
-      aiBtn.disabled = false;
-      aiBtn.textContent = originalText;
-    }
-  });
+    // Populate UI
+    document.getElementById('aiScoreValue').textContent = `${aiPercent}%`;
+    document.getElementById('aiScoreBar').style.width = `${aiPercent}%`;
+    document.getElementById('aiScoreBar').style.backgroundColor =
+      aiPercent >= 85 ? '#d9534f' : aiPercent >= 50 ? '#f0ad4e' : '#5cb85c';
+
+    document.getElementById('humanScoreValue').textContent = `${humanPercent}%`;
+    document.getElementById('humanScoreBar').style.width = `${humanPercent}%`;
+    document.getElementById('humanScoreBar').style.backgroundColor =
+      humanPercent >= 85 ? '#5cb85c' : humanPercent >= 50 ? '#f0ad4e' : '#d9534f';
+
+    document.getElementById('verdictText').textContent = `Verdict: ${verdict}`;
+
+    // Show results
+    metricsPanel.classList.remove('hidden');
+    reportBtn.classList.remove('hidden');
+    reportBtn.disabled = false;
+
+  } catch (err) {
+    console.error(err);
+    showError(err.message || 'Detection failed.');
+  } finally {
+    hideLoading();
+    aiBtn.disabled = false;
+    aiBtn.textContent = originalText;
+  }
+});
+
+
+
+
 
   // Report Generation Button Click
   reportBtn.addEventListener('click', () => {

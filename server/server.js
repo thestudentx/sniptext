@@ -19,7 +19,6 @@ const turnitin1Routes = require('./routes/turnitin1Routes');
 
 
 dotenv.config();
-console.log("✅ Loaded Hugging Face Token:", process.env.HUGGINGFACE_API_TOKEN ? "Found" : "MISSING!");
 const app = express();
 app.use(express.json());
 
