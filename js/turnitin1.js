@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorMsg = document.getElementById('errorMsg');
   const metricsPanel = document.getElementById('resultMetrics');
   const reportBtn = document.getElementById('generateReportBtn');
+  const toastContainer = document.getElementById('toast-container');
 
   // --- State Variable ---
   // This variable will hold the latest detection result for report generation
@@ -74,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
         inputText.value = await file.text();
       }
     } catch (err) {
-        showError('Could not read the file.');
-        console.error('File read error:', err);
+  console.error('File read error:', err);
+  showToast('Could not read the file.', 'error');
     }
     updateCounts();
   });
@@ -98,7 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
 aiBtn.addEventListener('click', async () => {
   const originalText = aiBtn.textContent;
   const rawText = normalizeInput(inputText.value);
-  if (!rawText) return showError('Please enter or upload some text first.');
+  if (!rawText) {
+  showToast('Please enter or upload some text first.', 'error');
+  return;
+}
 
   resetUI();
   showLoading();
@@ -146,9 +150,10 @@ aiBtn.addEventListener('click', async () => {
     reportBtn.classList.remove('hidden');
     reportBtn.disabled = false;
 
+    showToast('AI detection complete!', 'success');
   } catch (err) {
     console.error(err);
-    showError(err.message || 'Detection failed.');
+    showToast(err.message || 'Detection failed.', 'error');
   } finally {
     hideLoading();
     aiBtn.disabled = false;

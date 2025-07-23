@@ -15,6 +15,9 @@
   <!-- Google Fonts: Poppins & Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
+        <!-- TOAST NOTIFICATION -->
+  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 </head>
 <body>
 
@@ -109,7 +112,7 @@
       <button type="submit" class="btn-submit">Send Message</button>
     </form>
 
-    <div id="form-success-box">Your message has been sent successfully!</div>
+    <!-- <div id="form-success-box">Your message has been sent successfully!</div> -->
 
   </div>
 </section>
@@ -153,7 +156,10 @@
 
 
 
+<!-- Global Toast Container -->
+<div id="toast-container" class="toast-container hidden"></div>
 
+<!-- Scroll to top button -->
   <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
 
 
@@ -168,88 +174,72 @@
     <!-- --------------- FORM SCRIPT --------------- -->
     <script>
   const contactForm = document.querySelector('.contact-form');
-  const successBox = document.getElementById('form-success-box');
 
-  // ✅ Auto-fill subject + message if ?request=access is in URL
+  // Auto‑fill subject if needed
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('request') === 'access') {
-      const subjectField = document.querySelector('input[name="subject"]');
-      const messageField = document.querySelector('textarea[name="message"]');
-
-      if (subjectField) {
-        subjectField.value = "Requesting Access to Snip Text";
-      }
-      if (messageField) {
-        messageField.value =
-          "Hi team,\n\nI'd like to request access to Snip Text. Please let me know the next steps.\n\nThanks!";
-        messageField.focus();
+      const subject = document.querySelector('input[name="subject"]');
+      const msg     = document.querySelector('textarea[name="message"]');
+      if (subject) subject.value = "Requesting Access to Snip Text";
+      if (msg) {
+        msg.value = "Hi team,\n\nI'd like to request access to Snip Text. Please let me know the next steps.\n\nThanks!";
+        msg.focus();
       }
     }
   });
 
-  // ✅ Handle form submission
   contactForm.addEventListener('submit', async function (e) {
-    e.preventDefault(); // Stop default form submission
-    showLoader(); // Show spinner overlay
+    e.preventDefault();
+    showLoader();
 
     const token = grecaptcha.getResponse();
     if (!token) {
       hideLoader();
-      alert('⚠️ Please complete the reCAPTCHA!');
-      return;
+      return showToast('Please complete the reCAPTCHA!', 'error');
     }
 
     try {
-      // 🔒 Step 1: Verify reCAPTCHA with backend
-      const isLocalhost = window.location.hostname === 'localhost';
-      const recaptchaEndpoint = isLocalhost
-        ? 'http://localhost:5000/api/verify-recaptcha'
-        : 'https://sniptext.onrender.com/api/verify-recaptcha';
+      // 1) Verify reCAPTCHA
+      const recaptchaUrl = (location.hostname === 'localhost'
+        ? 'http://localhost:5000'
+        : 'https://sniptext.onrender.com')
+        + '/api/verify-recaptcha';
 
-      const recaptchaRes = await fetch(recaptchaEndpoint, {
+      const recRes = await fetch(recaptchaUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: token })
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({token})
       });
-
-      const recaptchaData = await recaptchaRes.json();
-
-      if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      const recData = await recRes.json();
+      if (!recData.success || recData.score < 0.5) {
         hideLoader();
-        alert('❌ reCAPTCHA failed. Please try again.');
-        return;
+        return showToast('reCAPTCHA failed. Please try again.', 'error');
       }
 
-      // ✅ Step 2: Submit form to Formspree
-      const formData = new FormData(contactForm);
-      const endpoint = contactForm.action;
-
-      const response = await fetch(endpoint, {
+      // 2) Submit to Formspree
+      const response = await fetch(contactForm.action, {
         method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+        body: new FormData(contactForm),
+        headers: {Accept: 'application/json'}
       });
 
       hideLoader();
-
       if (response.ok) {
         contactForm.reset();
-        grecaptcha.reset(); // Reset the reCAPTCHA box
-
-        successBox.classList.add('show');
-        setTimeout(() => successBox.classList.remove('show'), 5000);
+        grecaptcha.reset();
+        return showToast('Your message has been sent successfully!', 'success');
       } else {
-        alert("⚠️ Error sending message. Try again.");
+        return showToast('Error sending message. Try again.', 'error');
       }
-
-    } catch (error) {
+    } catch (err) {
       hideLoader();
-      console.error("🚫 CAPTCHA Verification Error:", error);
-      alert("🚫 Something went wrong. Please try again.");
+      console.error('Contact error:', err);
+      return showToast('Something went wrong. Please try again.', 'error');
     }
   });
 </script>
+
 
 
 

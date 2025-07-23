@@ -1,6 +1,6 @@
 /* Root Variables (can go in :root) */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', 'Arial', sans-serif;
   background-color: #F3F4F6;
   color: #1F2937;
   line-height: 1.6;
@@ -107,6 +107,7 @@ body {
 
 .form-group input,
 .form-group textarea {
+  font-family: 'Roboto';
   padding: 0.75rem 1rem;
   font-size: 16px;
   border: 1px solid #d1d5db;

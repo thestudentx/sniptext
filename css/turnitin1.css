@@ -78,19 +78,35 @@
   width: 100%;
   height: 100%;
   min-height: 240px;
-  padding: 1rem;
-  background: rgba(255,255,255,0.1);
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.07);
   border: 1px solid #445;
   border-radius: 8px;
-  color: var(--color-white);
-  font-family: var(--font-body);
+  color: #f0f0f0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
   resize: vertical;
-  transition: background .3s, transform .2s;
+  overflow-y: auto;
+  transition: background 0.3s, transform 0.2s;
+  white-space: pre-wrap; /* allows wrapping */
+  word-wrap: break-word;
+  scroll-behavior: smooth;
+  caret-color: #00ffcc;
 }
 .textarea-wrapper textarea:focus {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.12);
   transform: scale(1.01);
   outline: none;
+  border-color: #66c2ff;
+  box-shadow: 0 0 0 1px #66c2ff;
+}
+.textarea-wrapper textarea::-webkit-scrollbar {
+  width: 10px;
+}
+.textarea-wrapper textarea::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 5px;
 }
 .counter-wrapper {
   font-family: var(--font-body);
@@ -177,60 +193,82 @@
 
 /* Result Card */
 .result-card {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.07);
   border: 1px solid var(--color-accent);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   color: var(--color-white);
-  transform: scale(0.9);
+  transform: scale(0.95);
   opacity: 0;
   animation: popIn 0.4s 0.2s forwards;
+  transition: box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
 }
 @keyframes popIn {
-  to { transform: scale(1); opacity: 1; }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 .result-card h3 {
   margin-top: 0;
+  font-size: 1.6rem;
   color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 .result-card p {
-  margin: .5rem 0 0;
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
 }
 
 
 /* Metrics Panel */
 .metrics-panel {
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: inset 0 4px 12px rgba(0,0,0,0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.25);
   color: var(--color-white);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  transition: background 0.3s ease;
 }
 .metrics-title {
-  margin: 0 0 1rem;
+  margin: 0 0 1.2rem;
   font-family: var(--font-heading);
-  color: #b1b1b1;
+  font-size: 1.2rem;
+  color: #bbbbbb;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .metric {
   margin-bottom: 1rem;
 }
 .metric-label {
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: #ccc;
+  font-size: 0.95rem;
+  color: #cccccc;
+  margin-bottom: 0.25rem;
 }
 .metric-value {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: var(--color-accent);
 }
 .progress {
   width: 100%;
-  height: 8px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 4px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
   overflow: hidden;
 }
 .progress-bar {
@@ -238,17 +276,28 @@
   width: 0%;
   background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
   transition: width 0.8s ease-out;
+  border-radius: 5px 0 0 5px;
 }
 
 
 /* Report Button */
 .report-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  color: #fff;
   background: var(--color-used-often);
-  margin-top: auto;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
 }
 .report-btn:hover {
   background: #f9510f;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(249, 81, 15, 0.3);
 }
 
 /* Responsive tweaks */

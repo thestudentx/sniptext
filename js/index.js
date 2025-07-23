@@ -135,6 +135,60 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
 
 
+
+
+// -------------------------- TOAST NOTIFICATION --------------------------
+  function showToast(a1, a2, a3) {
+  let title, message, type;
+
+  // Flexible argument handling
+  if (a3 === undefined && ['success', 'error', 'info', 'warning'].includes(a2)) {
+    message = a1;
+    type = a2;
+    title = type.charAt(0).toUpperCase() + type.slice(1);
+  } else {
+    title = a1;
+    message = a2;
+    type = a3 || 'info';
+  }
+
+  const toastContainer = document.getElementById("toast-container");
+  if (!toastContainer) return;
+
+  // Create toast
+  const toast = document.createElement("div");
+  toast.classList.add("toast", type);
+  toast.innerHTML = `
+    <div class="icon"><i class="fas ${
+      type === "success" ? "fa-check-circle" :
+      type === "error"   ? "fa-times-circle" :
+      type === "warning" ? "fa-exclamation-circle" :
+                           "fa-info-circle"
+    }"></i></div>
+    <div class="text">
+      <p>${title}</p>
+      <p>${message}</p>
+    </div>
+    <button onclick="this.parentElement.remove()">&times;</button>
+  `;
+
+  toastContainer.classList.remove("hidden");
+  toastContainer.appendChild(toast);
+
+  // Auto-remove toast after 4s
+  setTimeout(() => {
+    toast.remove();
+    if (toastContainer.children.length === 0) {
+      toastContainer.classList.add("hidden");
+    }
+  }, 4000);
+}
+
+
+
+
+
+
 // -------------------------- SCROLL TO TOP BUTTON --------------------------
 const scrollBtn = document.getElementById("scrollToTopBtn");
 

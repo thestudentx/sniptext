@@ -1,6 +1,3 @@
-// quilbot2.js
-// This script handles page access, user input, sending to backend, word counts, UI feedback, etc.
-
 document.addEventListener('DOMContentLoaded', () => {
   // 🔒 AUTH CHECK: Protect page from unauthorized or expired users
   const token = localStorage.getItem('token');
@@ -37,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearBtn = document.getElementById('qb-clear');
   const loader = document.getElementById('qb-loader');
   const errorMsg = document.getElementById('qb-error');
-  const toastContainer = document.getElementById('qb-toast-container');
+  const toastContainer = document.getElementById('toast-container');
   const countDisplay = document.getElementById('qb-count');
   const pasteBtn = document.getElementById('qb-paste');
   const copyBtn = document.getElementById('qb-copy');
@@ -248,20 +245,9 @@ toneTabs.forEach(tab => {
       ? 'http://localhost:3000'
       : 'https://sniptext.onrender.com';
 
-  function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.classList.add('qb-toast', `qb-toast--${type}`);
-    toast.textContent = message;
-    toastContainer.appendChild(toast);
-    setTimeout(() => {
-      toast.remove();
-      if (toastContainer.childElementCount === 0) {
-        toastContainer.classList.add('hidden');
-      }
-    }, 4000);
-    toastContainer.classList.remove('hidden');
-  }
 
+
+  // COUNTER
   function updateCount() {
     const text = inputTextarea.value.trim();
     if (!text) {

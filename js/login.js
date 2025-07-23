@@ -1,24 +1,3 @@
-// login.js
-
-// Smooth toast notification function
-window.showToast = function(message, success = true, duration = 3000) {
-  const container = document.getElementById('login-message-box');
-
-  // Create the actual toast element
-  const toast = document.createElement('div');
-  toast.className = 'login-msg ' + (success ? 'login-msg--success' : 'login-msg--error');
-  toast.textContent = message;
-
-  // Append to container
-  container.appendChild(toast);
-
-  // Auto remove after duration
-  setTimeout(() => {
-    toast.remove();
-  }, duration);
-};
-
-
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   showLoader();
@@ -46,19 +25,18 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 
     if (res.ok) {
       localStorage.setItem('token', data.token);
-      showToast('Login successful!', true);
+      showToast("Welcome Back! Your dashboard is ready", "success");
       setTimeout(() => {
-        // use the pretty URL rewrite
         window.location.href = '/dashboard.html';
       }, 1500);
     } else {
-      showToast(data.message || 'Login failed. Please try again.', false);
+      showToast(data.message || 'Login failed. Please try again.', "error");
     }
 
   } catch (err) {
     console.error('Login error:', err);
     hideLoader();
-    showToast('Something went wrong. Please try again.', false);
+    showToast('Something went wrong. Please try again.', "error");
   }
 });
 

@@ -366,64 +366,6 @@ html[dir="rtl"] {
   opacity: 0.6;
   cursor: not-allowed;
 }
-/* .hidden {
-  display: none;
-}
-.qb-error {
-  margin-top: 1rem;
-  color: #e74c3c;
-  font-size: 0.95rem;
-  text-align: center;
-} */
-
-/* ─── Toast Notifications ─────────────────────────────────────────────────────── */
-.qb-toast-container {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 320px;
-}
-.qb-toast {
-  display: flex;
-  align-items: center;
-  background-color: #444;
-  color: #fff;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.3s ease, fadeOut 0.3s ease 3.5s forwards;
-  font-size: 0.95rem;
-}
-.qb-toast--success {
-  background-color: #28a745;
-}
-.qb-toast--error {
-  background-color: #e74c3c;
-}
-.qb-toast--info {
-  background-color: #3498db;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-}
 
 
 
