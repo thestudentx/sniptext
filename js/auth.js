@@ -24,8 +24,14 @@ function runNavbarAuthLogic() {
         logoutLink.addEventListener('click', (e) => {
           e.preventDefault();
           localStorage.removeItem('token');
-          window.location.href = '/login.html';
+          // Fire a toast
+          showToast('Logged out successfully', 'info');
+          // Wait for it to show, then redirect
+          setTimeout(() => {
+            window.location.href = '/login.html';
+          }, 1000);
         });
+
       }
     } catch (err) {
       console.error("Token parse error:", err);
@@ -42,9 +48,9 @@ window.addEventListener('DOMContentLoaded', () => {
   // Navbar auth logic
   runNavbarAuthLogic();
 
-  // Protect turnitin1.html from unauthorized access
+  // Protect ai-detection.html from unauthorized access
   const currentPage = window.location.pathname.split("/").pop();
-  if (currentPage === "turnitin1.html") {
+  if (currentPage === "ai-detection.html") {
     const token = localStorage.getItem('token');
     if (!token) {
       window.location.href = '/login.html';
@@ -60,7 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
         return;
       }
     } catch (err) {
-      console.error("Token parse error on turnitin1:", err);
+      console.error("Token parse error on ai-detection:", err);
       localStorage.removeItem('token');
       window.location.href = '/login.html';
       return;

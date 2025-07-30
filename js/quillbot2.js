@@ -318,83 +318,89 @@ toneTabs.forEach(tab => {
     showToast('Cleared text fields.', 'info');
   });
 
-  submitBtn.addEventListener('click', async () => {
-    const userText = inputTextarea.value.trim();
+  /**
+ * Splits a string into chunks of roughly `maxWords` words,
+ * breaking only at whitespace boundaries.
+ */
+function chunkText(text, maxWords = 300) {
+  const words = text.trim().split(/\s+/);
+  const chunks = [];
+  for (let i = 0; i < words.length; i += maxWords) {
+    chunks.push(words.slice(i, i + maxWords).join(' '));
+  }
+  return chunks;
+}
 
-    if (!userText) {
-      errorMsg.textContent = 'Please enter some text to paraphrase.';
-      errorMsg.classList.remove('hidden');
-      showToast('You need to type something first.', 'error');
-      return;
-    }
 
-    // 🌍 MULTI: decide language
-    let languageToSend = langSelect.value;
-    if (languageToSend === 'auto') {
-      languageToSend = detectLanguage(userText);
-    }
-
-    errorMsg.textContent = '';
-    errorMsg.classList.add('hidden');
-    loader.classList.remove('hidden');
-    submitBtn.disabled = true;
-    clearBtn.disabled = true;
-
-try {
-  const requestBody = {
-    text: userText,
-    language: languageToSend,
-  };
-
-  if (selectedType === 'mode') {
-    requestBody.mode = selectedMode;
-  } else if (selectedType === 'style') {
-    requestBody.style = selectedStyle;
-  } else if (selectedType === 'tone') {
-    requestBody.tone = selectedTone;
+submitBtn.addEventListener('click', async () => {
+  const userText = inputTextarea.value.trim();
+  if (!userText) {
+    errorMsg.textContent = 'Please enter some text to paraphrase.';
+    errorMsg.classList.remove('hidden');
+    showToast('You need to type something first.', 'error');
+    return;
   }
 
-  const response = await fetch(`${BACKEND_URL}/api/cohere/paraphrase`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(requestBody),
-  });
+  // decide language
+  let languageToSend = langSelect.value === 'auto'
+    ? detectLanguage(userText)
+    : langSelect.value;
 
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error(errText || 'Unknown error from server');
-  }
+  // chunk if too big
+  const chunks = chunkText(userText, 300);
 
-  // ... rest of your success logic
+  loader.classList.remove('hidden');
+  submitBtn.disabled = true;
+  clearBtn.disabled = true;
+  errorMsg.classList.add('hidden');
 
-      const data = await response.json();
-      // take the API’s paraphrase, then clean it for stray Markdown/editorial junk
-      const raw = data.paraphrased || '';
-      outputTextarea.value = formatCleanText(raw);
+  try {
+    const paraphrasedChunks = [];
+    for (let i = 0; i < chunks.length; i++) {
+      showToast(`Paraphrasing chunk ${i + 1} of ${chunks.length}…`, 'info');
 
-      // right after you set the output textarea:
-      showingHighlights = false;
-      highlightContainer.classList.add('hidden');
-      outputTextarea.classList.remove('hidden');
-      toggleBtn.textContent = 'Show Highlights';
+      const body = {
+        text: chunks[i],
+        language: languageToSend,
+        ...(selectedType === 'mode'   && { mode:  selectedMode   }),
+        ...(selectedType === 'style'  && { style: selectedStyle  }),
+        ...(selectedType === 'tone'   && { tone:  selectedTone   }),
+      };
 
-      showToast('Paraphrase complete!', 'success');
-    } catch (err) {
-      console.error('Paraphrase error:', err);
-      errorMsg.textContent =
-        'Sorry, something went wrong. Please try again later.';
-      errorMsg.classList.remove('hidden');
-      showToast('Failed to paraphrase. Check console for details.', 'error');
-    } finally {
-      loader.classList.add('hidden');
-      submitBtn.disabled = false;
-      clearBtn.disabled = false;
+      const res = await fetch(`${BACKEND_URL}/api/cohere/paraphrase`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) throw new Error(await res.text());
+
+      const { paraphrased = '' } = await res.json();
+      paraphrasedChunks.push(formatCleanText(paraphrased));
     }
-  });
 
+    // join all the paraphrased chunks back into one text
+    const finalParaphrase = paraphrasedChunks.join('\n\n');
+    outputTextarea.value = finalParaphrase;
+    highlightContainer.classList.add('hidden');
+    outputTextarea.classList.remove('hidden');
+    toggleBtn.textContent = 'Show Highlights';
+    showToast('Paraphrase complete!', 'success');
+  } catch (err) {
+    console.error('Paraphrase error:', err);
+    errorMsg.textContent = 'Sorry, something went wrong. Please try again later.';
+    errorMsg.classList.remove('hidden');
+    showToast('Failed to paraphrase. Check console.', 'error');
+  } finally {
+    loader.classList.add('hidden');
+    submitBtn.disabled = false;
+    clearBtn.disabled = false;
+  }
+});
+
+// Paste/Copy Logic 
   pasteBtn.addEventListener('click', async () => {
     try {
       const text = await navigator.clipboard.readText();
@@ -426,6 +432,8 @@ try {
       showToast('Failed to copy text.', 'error');
     }
   });
+
+  
 
   // 📁 File Upload Logic
   uploadInput.addEventListener('change', async (e) => {
@@ -461,5 +469,21 @@ try {
     } finally {
       uploadInput.value = ""; // allow same file re-upload
     }
+  });
+});
+
+// === Reveal Animation for Why Section Cards ===
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.fade-in-box').forEach((box) => {
+    observer.observe(box);
   });
 });

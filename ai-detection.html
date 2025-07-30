@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="SnipText – powered by checkai.pro. AI-powered plagiarism detection, grammar enhancement, and text rewriting.">
 
-  <title>Home - Snip Text</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>AI Detection - Snip Text</title>
+  <link rel="stylesheet" href="css/style.css">
 
-  <link rel="stylesheet" href="css/turnitin1.css">
+  <link rel="stylesheet" href="css/ai-detection.css">
 
   <!-- Favicon -->
    <link rel="icon" href="/favicon.png" type="image/png">
@@ -48,15 +48,28 @@
 
   
 <main class="turnit-container dark-split">
+  
   <!-- Left panel: Input & Upload -->
-  <section class="split-panel input-panel">
-    <h2 class="panel-title">AI Content Detection</h2>
-    <p class="panel-sub">Upload or paste text to identify AI-generated content.</p>
+<section class="split-panel input-panel">
+  <div class="title-section">
+    <div class="title-wrapper">
+      <h2 class="panel-title">AI Content Detection</h2>
+      <p class="panel-sub">Upload or paste text to identify AI-generated content.</p>
+    </div>
+    <div class="theme-toggle-wrapper">
+      <button id="themeToggle">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
 
+
+  <!-- ✅ Grouped Actions: Upload + Filename + Paste + Clear -->
+  <div class="input-actions-wrapper">
     <div class="upload-wrapper">
       <label for="fileUpload" class="upload-btn">
         <svg width="20" height="20" fill="var(--color-accent)" viewBox="0 0 24 24">
-          <path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6v-6h4l-7-7z"/>
+          <path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6v-6h4l-7-7z" />
         </svg>
         Upload File
       </label>
@@ -64,22 +77,29 @@
       <span class="file-info" id="fileInfo">No file chosen</span>
     </div>
 
-    <div class="textarea-wrapper">
-      <textarea id="inputText" placeholder="Paste your content..." rows="12"></textarea>
-    </div>
-    <div class="counter-wrapper">
-      <span id="wordCount">0 words</span> •
-      <span id="tokenCount">0 tokens</span>
-    </div>
+    <button id="pasteBtn" class="ripple-btn small-btn" data-ripple>Paste</button>
+    <button id="clearBtn" class="ripple-btn small-btn" data-ripple>Clear</button>
+  </div>
 
-    <div class="actions">
-      <button id="checkAIBtn" class="ripple-btn" data-ripple>Detect AI</button>
-      <button id="checkPlagiarismBtn" class="ripple-btn disabled" disabled>Plagiarism (Soon)</button>
-    </div>
-  </section>
+  <div class="textarea-wrapper">
+    <textarea id="inputText" placeholder="Paste your content..." rows="12"></textarea>
+  </div>
+
+  <div class="counter-wrapper">
+    <span id="wordCount">0 words</span> •
+    <span id="tokenCount">0 tokens</span>
+  </div>
+
+  <!-- Main Actions -->
+  <div class="actions">
+    <button id="checkAIBtn" class="ripple-btn" data-ripple>Detect AI</button>
+    <button id="checkPlagiarismBtn" class="ripple-btn disabled" disabled>Plagiarism (Soon)</button>
+  </div>
+</section>
+
 
   <!-- Right panel: Results & Future -->
-<section class="split-panel result-panel">
+<section class="split-panel result-panel hidden">
   <div id="loadingIndicator" class="loader hidden"></div>
   <div id="errorMsg" class="error hidden"></div>
 
@@ -147,12 +167,12 @@
 
   <!-- SCRIPT LOADERS -->
   <script src="js/index.js" defer></script>
-  <script src="components/injectLayout.js"></script>
-  <script src="js/auth.js"></script>
+  <script src="js/auth.js" defer></script>
+  <script src="components/injectLayout.js"></script> 
 
   <!-- <script src="components/global-loading-animation.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
-  <script src="js/turnitin1.js"></script>
+  <script src="js/ai-detection.js" defer></script>
 </body>
 </html>

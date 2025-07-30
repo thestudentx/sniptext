@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyBtn      = document.getElementById("copyBtn");
   const uploadBtn    = document.getElementById("uploadBtn");
   const fileInfo     = document.getElementById("fileInfo");
-  const toastContainer = document.getElementById("g-toast-container");
+  // const toastContainer = document.getElementById("toast-container");
   const toggleBtn = document.getElementById("toggleHighlightsBtn");
   const highlightContainer = document.getElementById("grammarly-output-highlight");
 
@@ -227,80 +227,17 @@ function formatCleanText(text) {
 }
 
 
-
-
-
-
-  // ✅ Toast Notification (Title on top, Message below)
-function showToast(a1, a2, a3) {
-  let title, message, type;
-
-  // Handle overload: (message, type) or (title, message, type)
-  if (a3 === undefined && ['success','error','info','warning'].includes(a2)) {
-    message = a1;
-    type    = a2;
-    title   = type.charAt(0).toUpperCase() + type.slice(1); // auto-title
-  } else {
-    title   = a1;
-    message = a2;
-    type    = a3 || 'info';
+/**
+ * Split text into roughly maxWords‑sized chunks.
+ */
+function chunkText(text, maxWords = 300) {
+  const words = text.trim().split(/\s+/);
+  const chunks = [];
+  for (let i = 0; i < words.length; i += maxWords) {
+    chunks.push(words.slice(i, i + maxWords).join(' '));
   }
-
-  const toast = document.createElement('div');
-  toast.classList.add('toast', type);
-
-  // 🔔 Icon
-  const iconMap = {
-    success: 'fa-check-circle',
-    error:   'fa-times-circle',
-    info:    'fa-info-circle',
-    warning: 'fa-exclamation-circle'
-  };
-  const c1 = document.createElement('div');
-  c1.className = 'container-1';
-  const icon = document.createElement('i');
-  icon.classList.add('fas', iconMap[type]);
-  c1.appendChild(icon);
-
-  // 📝 Text Block: Title on top, Message below
-  const c2 = document.createElement('div');
-  c2.className = 'container-2';
-
-  const pTitle = document.createElement('p');
-  pTitle.className = 'toast-title';
-  pTitle.textContent = title;
-
-  const pMsg = document.createElement('p');
-  pMsg.className = 'toast-message';
-  pMsg.textContent = message;
-
-  c2.append(pTitle, pMsg);
-
-  // ❌ Close Button
-  const btn = document.createElement('button');
-  btn.className = 'toast-close';
-  btn.innerHTML = '&times;';
-  btn.addEventListener('click', () => {
-    toast.remove();
-    if (!toastContainer.childElementCount) {
-      toastContainer.classList.add('hidden');
-    }
-  });
-
-  // 🧩 Assemble
-  toast.append(c1, c2, btn);
-  toastContainer.appendChild(toast);
-  toastContainer.classList.remove('hidden');
-
-  // ⏱️ Auto-Remove after 4s
-  setTimeout(() => {
-    toast.remove();
-    if (!toastContainer.childElementCount) {
-      toastContainer.classList.add('hidden');
-    }
-  }, 4000);
+  return chunks;
 }
-
 
 
 
@@ -338,7 +275,7 @@ function showToast(a1, a2, a3) {
       if (!allowedTypes.includes(ext)) {
         fileInfo.textContent = "❌ Unsupported file type.";
         fileInfo.classList.remove("hidden");
-        showToast("Error", "Only .txt and .docx files allowed", "error");
+        showToast("Only .txt and .docx files allowed", "error");
         return;
       }
 
@@ -442,146 +379,91 @@ saveGoals.addEventListener("click", () => {
 
 
 
- // ✅ Grammar Check API with diff-based reapply
-  checkBtn.addEventListener("click", async () => {
-    const raw = inputText.value;
-    if (!raw.trim()) {
-      showToast("Please enter some text to check!", "error");
-      return;
-    }
+ // ✅ Grammar Check API with diff-based reapply (chunked)
+checkBtn.addEventListener("click", async () => {
+  const raw = inputText.value;
+  if (!raw.trim()) {
+    showToast("Please enter some text to check!", "error");
+    return;
+  }
 
-    // 1) Tokenize & strip editorial markers
-    const tokens = tokenizeMarkdown(raw);
+  // 1) Tokenize & strip editorial markers
+  const tokens = tokenizeMarkdown(raw);
 
-    // 2) Extract plain text for API
-    const plainText = tokens
-      .filter(t => t.type === "text")
-      .map(t => t.value)
-      .join("\n");
+  // 2) Extract plain text for API
+  const plainText = tokens
+    .filter(t => t.type === "text")
+    .map(t => t.value)
+    .join("\n");
 
-    outputText.value = "";
-    checkBtn.classList.add("loading");
+  // 3) Split into ~300-word chunks
+  const chunks = chunkText(plainText, 300);
 
-   const goalsPayload = userSelectedGoals;
+  outputText.value = "";
+  checkBtn.classList.add("loading");
 
-    try {
-      console.log("📤 Payload:", {
-  text: plainText,
-  goals: goalsPayload
-});
-      const response = await fetch(`${BACKEND_URL}/api/grammar-check`, {
+  try {
+    const correctedChunks = [];
+
+    for (let i = 0; i < chunks.length; i++) {
+      showToast(`Checking chunk ${i + 1} of ${chunks.length}…`, "info");
+
+      const res = await fetch(`${BACKEND_URL}/api/grammar-check`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
-        body: JSON.stringify({ text: plainText, goals: goalsPayload }),
+        body: JSON.stringify({ text: chunks[i], goals: userSelectedGoals }),
       });
-      if (!response.ok) throw new Error("Server error. Try again later.");
+      if (!res.ok) throw new Error(await res.text());
 
-      const data = await response.json();
-      let corrected = data.corrected_text || "";
-
-      // cut off at any editorial markers server might still inject
-      corrected = corrected.split(/(Final Polished Text:|Polished Version:|Revised Version:)/i)[0].trim();
-
-      // 3) Diff-match-patch
-      // 3a) Instantiate
-const dmp = new diff_match_patch();
-
-// 3b) Turn each unique line into a “char” for the library
-const tmp = dmp.diff_linesToChars_(plainText, corrected);
-const chars1    = tmp.chars1;
-const chars2    = tmp.chars2;
-const lineArray = tmp.lineArray;
-
-// 3c) Diff on those pseudo‑chars (fast, and line boundaries are honored)
-let diffs = dmp.diff_main(chars1, chars2, false);
-
-// 3d) Convert the char diffs back into real lines
-dmp.diff_charsToLines_(diffs, lineArray);
-
-// 3e) (Optional) Clean up the diff for readability 
-dmp.diff_cleanupSemantic(diffs);
-
-// 4) Rebuild original formatting + new text
-let rebuilt = rebuildTokens(tokens, diffs);
-
-
-
-// 5) POST-PROCESSING CLEANUP
-
-// Collapse 3+ newlines to 2
-rebuilt = rebuilt.replace(/\n{3,}/g, '\n\n');
-
-// Remove trailing stars or hashes (leftovers)
-rebuilt = rebuilt.replace(/[*#]+\s*$/gm, '');
-
-// Fix mid-sentence broken lines: "This i\ns a problem" → "This is a problem"
-rebuilt = rebuilt.replace(/(?<![#*+\-0-9])(\w+)\n(\w+)/g, '$1 $2');
-
-// Preserve horizontal rules
-rebuilt = rebuilt.replace(/^---$/gm, '\n---\n');
-
-// Capitalize all headings (Markdown style)
-rebuilt = rebuilt.replace(/^#+\s*(.*)$/gm, (_, heading) => {
-  return heading.replace(/\b\w/g, (c) => c.toUpperCase());
-});
-
-// Fix STAGE lines → bold markdown
-// rebuilt = rebuilt.replace(/^STAGE\s*(\d+):/gi, (_, n) => `**STAGE ${n}: Grammar and Typography Pass**`);
-
-// Merge repeated sentences like: "It affects X. It affects Y." → "It affects X and Y."
-rebuilt = rebuilt.replace(/It affects ([\w\s]+?)\. It affects ([\w\s]+?)\./gi, 'It affects $1 and $2.');
-
-// ✅ Normalize bullets & keep them as Markdown list items
-rebuilt = rebuilt.replace(/^\s*[-+*]\s+(.*)/gm, (_, item) => {
-  return `- ${item.trim()}`; // normalize to `-` and clean spacing
-});
-
-// ✅ Normalize numbered lists like "1. something"
-rebuilt = rebuilt.replace(/^\s*\d+\.\s+(.*)/gm, (_, item) => {
-  return `1. ${item.trim()}`; // just normalize spacing (number will be updated below)
-});
-
-// ✅ Auto-correct sequential numbers (so all are not just "1.")
-let number = 1;
-rebuilt = rebuilt.replace(/^1\.\s+/gm, () => `${number++}. `);
-
-// ✅ Add spacing before and after lists for clarity
-rebuilt = rebuilt.replace(/((?:^|\n)- .+?)(?=\n[^-\n]|$)/gs, '\n$1\n');
-rebuilt = rebuilt.replace(/((?:^|\n)\d+\. .+?)(?=\n[^\d\n]|$)/gs, '\n$1\n');
-
-// Fix accidental leftover list symbols like "- +" at end
-rebuilt = rebuilt.replace(/[-+*]\s*[-+*]/g, '').replace(/[-+*]\s*$/, '');
-
-// Remove random symbols only if not part of a legit structure
-rebuilt = rebuilt.replace(/^[-+*]\s*$/gm, '');
-
-// Normalize multiple blank lines followed by symbols
-rebuilt = rebuilt.replace(/\n\s*\n(?=[-+*])/g, '\n\n');
-
-// Normalize heading/title spacing
-rebuilt = rebuilt.replace(/\n{2,}(?=[A-Z🧠🔥🌍✍️])/g, '\n\n');
-
-// Trim overall output
-rebuilt = rebuilt.trim();
-
-
-
-outputText.value = rebuilt;
-  
-
-      showToast("Grammar check completed!", "success");
-
-    } catch (err) {
-      console.error(err);
-      outputText.value = `Error: ${err.message}`;
-      showToast("Grammar check failed. Please try again.", "error");
-    } finally {
-      checkBtn.classList.remove("loading");
+      const { corrected_text = "" } = await res.json();
+      correctedChunks.push(corrected_text);
     }
-  });
+
+    // 4) Stitch all corrected chunks back together
+    const fullCorrected = correctedChunks.join("\n\n");
+
+    // 5) Run your diff-match-patch + rebuildTokens on the full text
+    const dmp = new diff_match_patch();
+    const tmp = dmp.diff_linesToChars_(plainText, fullCorrected);
+    let diffs = dmp.diff_main(tmp.chars1, tmp.chars2, false);
+    dmp.diff_charsToLines_(diffs, tmp.lineArray);
+    dmp.diff_cleanupSemantic(diffs);
+
+    let rebuilt = rebuildTokens(tokens, diffs);
+
+    // 6) Post‑processing cleanup (all your existing replacements)
+    rebuilt = rebuilt.replace(/\n{3,}/g, "\n\n")
+                     .replace(/[*#]+\s*$/gm, "")
+                     .replace(/(?<![#*+\-0-9])(\w+)\n(\w+)/g, "$1 $2")
+                     .replace(/^---$/gm, "\n---\n")
+                     .replace(/^#+\s*(.*)$/gm, (_, h) => h.replace(/\b\w/g, c => c.toUpperCase()))
+                     .replace(/It affects ([\w\s]+?)\. It affects ([\w\s]+?)\./gi, "It affects $1 and $2.")
+                     .replace(/^\s*[-+*]\s+(.*)/gm, (_, item) => `- ${item.trim()}`)
+                     .replace(/^\s*\d+\.\s+(.*)/gm, (_, item) => `1. ${item.trim()}`)
+                     .replace(/^1\.\s+/gm, () => `${(function(){let n=1;return n++})()}. `)  // auto‑increment
+                     .replace(/((?:^|\n)- .+?)(?=\n[^-\n]|$)/gs, "\n$1\n")
+                     .replace(/((?:^|\n)\d+\. .+?)(?=\n[^\d\n]|$)/gs, "\n$1\n")
+                     .replace(/[-+*]\s*[-+*]/g, "")
+                     .replace(/[-+*]\s*$/g, "")
+                     .replace(/^[-+*]\s*$/gm, "")
+                     .replace(/\n\s*\n(?=[-+*])/g, "\n\n")
+                     .replace(/\n{2,}(?=[A-Z🧠])/g, "\n\n")
+                     .trim();
+
+    outputText.value = rebuilt;
+    showToast("Grammar check completed!", "success");
+  } catch (err) {
+    console.error(err);
+    outputText.value = `Error: ${err.message}`;
+    showToast("Grammar check failed. Please try again.", "error");
+  } finally {
+    checkBtn.classList.remove("loading");
+  }
+});
+
 
   // 🧼 Optional HTML escape (unchanged)
   function escapeHtml(str) {

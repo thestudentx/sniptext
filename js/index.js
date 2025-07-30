@@ -138,10 +138,9 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
 
 // -------------------------- TOAST NOTIFICATION --------------------------
-  function showToast(a1, a2, a3) {
+function showToast(a1, a2, a3) {
   let title, message, type;
 
-  // Flexible argument handling
   if (a3 === undefined && ['success', 'error', 'info', 'warning'].includes(a2)) {
     message = a1;
     type = a2;
@@ -152,10 +151,15 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     type = a3 || 'info';
   }
 
-  const toastContainer = document.getElementById("toast-container");
-  if (!toastContainer) return;
+  // 📌 Fix: Create container if not exists
+  let toastContainer = document.getElementById("toast-container");
+  if (!toastContainer) {
+    toastContainer = document.createElement("div");
+    toastContainer.id = "toast-container";
+    toastContainer.className = "toast-container";
+    document.body.appendChild(toastContainer);
+  }
 
-  // Create toast
   const toast = document.createElement("div");
   toast.classList.add("toast", type);
   toast.innerHTML = `
@@ -175,7 +179,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   toastContainer.classList.remove("hidden");
   toastContainer.appendChild(toast);
 
-  // Auto-remove toast after 4s
   setTimeout(() => {
     toast.remove();
     if (toastContainer.children.length === 0) {
@@ -184,6 +187,8 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   }, 4000);
 }
 
+// 🔥 MAKE IT GLOBAL
+window.showToast = showToast;
 
 
 

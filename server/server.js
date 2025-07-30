@@ -14,7 +14,8 @@ const contactRoutes = require('./routes/contact');
 
 // Quilbot/Turnitin Self-hosted API 
 const paraphraseRoutes = require('./routes/quillbot2Routes');
-const turnitin1Routes = require('./routes/turnitin1Routes');
+const grammarly1Routes = require('./routes/grammarly1Routes');
+const aidetectionRoutes = require('./routes/aidetectionRoutes');
 
 
 
@@ -61,7 +62,9 @@ app.use('/api', contactRoutes);
 
 // Quilbot/Turnitin Self-hosted API 
 app.use('/api', paraphraseRoutes);
-app.use('/api/turnitin1', turnitin1Routes);
+app.use('/api', grammarly1Routes);
+app.use('/api/aidetection', aidetectionRoutes);
+
 
 // 🌐 Public IP Debug Route for Brevo whitelisting
 app.get('/api/check-my-ip', async (req, res) => {
@@ -87,3 +90,4 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => {
     console.error('❌ MongoDB connection error:', err);
   });
+  

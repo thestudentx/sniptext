@@ -1175,6 +1175,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  min-width: 250px;
   max-width: 300px;
   font-family: "Poppins", sans-serif;
 }

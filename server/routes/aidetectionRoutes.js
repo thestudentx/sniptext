@@ -1,11 +1,11 @@
-// routes/turnitin1Routes.js
+
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
 const SAPLING_API_KEY = process.env.SAPLING_API_KEY;
 
-// POST /api/turnitin1/sapling
+
 router.post('/sapling', async (req, res) => {
   const { text } = req.body;
 

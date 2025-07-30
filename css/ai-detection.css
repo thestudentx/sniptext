@@ -1,16 +1,47 @@
-/* === Dark Split-Screen Layout === */
+:root {
+  /* Light mode colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: rgba(31, 35, 55, .05);
+  --text-primary: #111;
+  --text-secondary: #444;
+  --panel-bg: rgba(255, 255, 255, 0.85);
+  --panel-color: #111;
+  --accent: #3b82f6;
+}
+
+[data-theme="dark"] {
+  /* Dark mode overrides */
+  --bg-primary: #1f2337;
+  --bg-secondary: rgba(31, 35, 55, .85);
+  --text-primary: #f0f0f0;
+  --text-secondary: #aaa;
+  --panel-bg: rgba(31, 35, 55, .85);
+  --panel-color: #f0f0f0;
+  --accent: #3b82f6;
+}
+html, body, textarea {
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+
+
 .turnit-container.dark-split {
-  display: grid;
-  grid-template-columns: 1fr;
+  width: 90%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* horizontal centering */
+  justify-content: center;   /* vertical centering */
   gap: 2rem;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 }
-@media(min-width: 768px) {
-  .turnit-container.dark-split {
-    grid-template-columns: 1fr 1fr;
-    padding: 3rem;
-  }
-}
+
+
 /* Utility hidden class */
 .hidden {
   display: none !important;
@@ -18,17 +49,27 @@
 
 /* Panels */
 .split-panel {
-  background: rgba(31, 35, 55, .85);
+  background: var(--panel-bg);
   backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  color: var(--color-white);
+  color: var(--panel-color);
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 /* Titles */
+.title-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .panel-title {
   font-family: var(--font-heading);
   font-size: 1.75rem;
@@ -41,6 +82,24 @@
   color: #ccc;
   margin-bottom: 1.5rem;
 }
+
+/* toggleTheme */ 
+#themeToggle {
+  border: none;
+  background: transparent;
+}
+.theme-icon {
+  font-size: 2rem;
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.theme-icon.fade {
+  opacity: 0;
+  transform: rotate(180deg) scale(0.8);
+}
+
 
 /* Upload */
 .upload-wrapper {
@@ -67,6 +126,39 @@
   font-size: .9rem;
   color: #aaa;
 }
+/* 🆕 Input Actions Wrapper */
+.input-actions-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* 🆕 Upload Section with Paste & Clear */
+.input-actions-wrapper .upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+/* 🆕 Paste & Clear Buttons (inline small buttons) */
+.ripple-btn.small-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  background: var(--accent);
+  border: 1px solid #aaaaaa2c;
+  color: var(--bg-primary);
+  font-family: var(--font-heading);
+  transition: all 0.25s;
+}
+.ripple-btn.small-btn:hover {
+  background: #2570e7;
+  color: var(--color-white);
+}
 
 /* Textarea & Counter */
 .textarea-wrapper {
@@ -82,7 +174,7 @@
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid #445;
   border-radius: 8px;
-  color: #f0f0f0;
+  color: #9b9b9b;
   font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: 15px;
   line-height: 1.6;
@@ -111,7 +203,7 @@
 .counter-wrapper {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: var(--color-text-light);
+  color: #aaa;
   text-align: right;
   margin-top: -1rem;
   margin-bottom: 1.5rem;
@@ -191,8 +283,10 @@
   50% { transform: translateX(6px); }
 }
 
+
+
 /* Result Card */
-.result-card {
+.result-card { 
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid var(--color-accent);
   padding: 2rem;
@@ -278,6 +372,27 @@
   transition: width 0.8s ease-out;
   border-radius: 5px 0 0 5px;
 }
+/* Color classes for dynamic results */
+.result-safe {
+  color: #5cb85c !important;
+}
+.result-warning {
+  color: #f0ad4e !important;
+}
+.result-danger {
+  color: #d9534f !important;
+}
+
+.bg-safe {
+  background: #5cb85c !important;
+}
+.bg-warning {
+  background: #f0ad4e !important;
+}
+.bg-danger {
+  background: #d9534f !important;
+}
+
 
 
 /* Report Button */
@@ -300,9 +415,41 @@
   box-shadow: 0 8px 18px rgba(249, 81, 15, 0.3);
 }
 
+@media (max-width: 768px) {
+  .split-panel {
+    padding: 1.5rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 /* Responsive tweaks */
 @media(max-width: 600px) {
   .split-panel { padding: 1.5rem; }
   .ripple-btn { width: 100%; }
   .ripple-btn.disabled {margin-left: 0;}
+  .input-actions-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .input-actions-wrapper .upload-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0.5rem 0;
+  }
+  .ripple-btn.small-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .file-info {
+    display: block;
+    margin-top: 0.3rem;
+  }
 }
