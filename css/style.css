@@ -1182,7 +1182,7 @@ footer {
 
 .toast {
   display: grid;
-  grid-template-columns: 1fr 4fr 0.3fr;
+  grid-template-columns: auto 1fr auto;
   column-gap: 0.5rem;
   align-items: center;
   background-color: #ffffff;
@@ -1205,10 +1205,23 @@ footer {
 .toast .icon {
   font-size: 20px;
 }
-.toast.success .icon { color: #47D764; }
-.toast.error   .icon { color: #ff355b; }
-.toast.info    .icon { color: #2F86EB; }
-.toast.warning .icon { color: #FFC021; }
+/* Make each toast’s “color” the same as its border */
+.toast.success {
+  border-left-color: #47D764;
+  color: #47D764;
+}
+.toast.error {
+  border-left-color: #ff355b;
+  color: #ff355b;
+}
+.toast.info {
+  border-left-color: #2F86EB;
+  color: #2F86EB;
+}
+.toast.warning {
+  border-left-color: #FFC021;
+  color: #FFC021;
+}
 
 /* Text container */
 .toast .text p:first-child {
@@ -1225,14 +1238,39 @@ footer {
 }
 
 /* Close button */
-.toast button {
+.toast .toast-close {
   background: transparent;
   font-size: 20px;
   color: #656565;
   cursor: pointer;
   border: none;
   padding: 0;
-  align-self: flex-start;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.toast .toast-close:hover {
+  color: #101020;
+  transform: scale(1.1);
+}
+
+/* Progress bar */
+.toast .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: currentColor;
+  width: 100%;
+  animation: progressBar 4s linear forwards;
+  border-radius: 0 0 4px 4px;
+  opacity: 0.8;
+}
+
+/* Pause animation on hover */
+.toast:hover {
+  animation-play-state: paused !important;
+}
+.toast:hover .progress-bar {
+  animation-play-state: paused !important;
 }
 
 /* Stacking gap */
@@ -1247,6 +1285,10 @@ footer {
 }
 @keyframes fadeOut {
   to { opacity: 0; transform: translateX(20px); }
+}
+@keyframes progressBar {
+  from { width: 100%; }
+  to   { width: 0%; }
 }
 
 

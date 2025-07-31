@@ -17,10 +17,24 @@ const SAPLING_API_KEY = process.env.SAPLING_API_KEY;
  */
 router.post('/grammar-check', async (req, res) => {
   try {
-    const { text /*, goals*/ } = req.body;
+    const { text, goals = {} } = req.body;
+
     if (!text || typeof text !== 'string') {
       return res.status(400).json({ error: 'Invalid input: text required.' });
     }
+
+    // Now you can safely use `goals` even if the client never sent it
+    // const processed = await yourGrammarFunction(text, goals);
+
+  //   return res.json({ corrected_text: processed });
+  // } catch (err) {
+  //   console.error(err);
+  //   return res.status(500).json({
+  //     error: 'Grammar check failed.',
+  //     details: err.message
+  //   });
+  // }
+// });
 
    // 0) ENHANCED PROMPT COMPONENTS (always applied)
 
@@ -428,35 +442,32 @@ Mode: “Grammar”
 `
     };
 
-        // 4) Detect & pull user goals
-const {
-  audience  = 'default',
-  formality = 'default',
-  intent    = 'default',
-  tone      = 'default',
-  domain    = 'default'
-} = goals || {};
+        // Goals extraction
+    const {
+      audience  = 'default',
+      formality = 'default',
+      intent    = 'default',
+      tone      = 'default',
+      domain    = 'default'
+    } = goals || {};
 
-// 5) Build styleSection only if needed
-const styleDescriptor = [formality, intent, tone]
-  .filter(v => v !== 'default')
-  .join(', ');
+    const styleDescriptor = [formality, intent, tone]
+      .filter(v => v !== 'default')
+      .join(', ');
 
-const styleSection = stylePrompt(
-  styleDescriptor,
-  audience !== 'default' ? audience : '',
-  domain
-);
+    const styleSection = stylePrompt(
+      styleDescriptor,
+      audience !== 'default' ? audience : '',
+      domain
+    );
 
-// 6) Send to Sapling Edits API for grammar & style corrections
+    // Sapling API call
     const payload = {
-      key:               SAPLING_API_KEY,
+      key: SAPLING_API_KEY,
       text,
-      session_id:        `grammar_${Date.now()}`,
-      auto_apply:        true,   // return applied_text with all edits applied
-      neural_spellcheck: true     // enable deeper spelling fixes
-      // NOTE: Sapling doesn’t accept “goals” prompts natively,
-      //       so styleSection is informational only if you wish to log it.
+      session_id: `grammar_${Date.now()}`,
+      auto_apply: true,
+      neural_spellcheck: true,
     };
 
     const { data } = await axios.post(
@@ -465,7 +476,6 @@ const styleSection = stylePrompt(
       { headers: { 'Content-Type': 'application/json' } }
     );
 
-    // Sapling returns final corrected text here when auto_apply=true
     const correctedText = data.applied_text || '';
     return res.json({ corrected_text: correctedText });
 

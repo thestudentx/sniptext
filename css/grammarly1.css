@@ -4,18 +4,43 @@
    Root Variables (Brand)
    ====================== */
 :root {
-  --color-primary: #1D4ED8;
-  --color-accent: #3B82F6;
-  --color-bg-light: #F3F4F6;
-  --color-white: #ffffff;
-  --color-text-dark: #1F2937;
-  --color-text-light: #6B7280;
-  --color-border: #E5E7EB;
-  --color-used-often: #e85d27;
-  --color-footer-bg: #1d1f2f;
+  /* backgrounds */
+  --bg-page: #F3F4F6;
+  --bg-panel: #ffffff;
+  --bg-accent-hover: #E5E7EB;
+
+  /* text */
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --text-inverse: #ffffff;
+
+  /* borders */
+  --border-default: #E5E7EB;
+
+  /* brand colors */
+  --brand-primary: #1D4ED8;
+  --brand-accent: #3B82F6;
+  --brand-used-often-rgb: 232,93,39;
 
   --font-heading: 'Poppins', 'Segoe UI', sans-serif;
   --font-body: 'Roboto', 'Arial', sans-serif;
+}
+
+/* ─────── Dark Theme ─────── */
+[data-theme="dark"] {
+  --bg-page: #1d1f2f;
+  --bg-panel: rgba(31, 35, 55, 0.85);
+  --bg-accent-hover: rgba(255,255,255,0.08);
+
+  --text-primary: #f0f0f0;
+  --text-secondary: #aaa;
+  --text-inverse: #1F2937;
+
+  --border-default: #445;
+
+  --brand-primary: #1f2337;  /* swap if you like a different accent */
+  --brand-accent: #3b82f6;
+  --brand-used-often-rgb: 232,93,39;
 }
 
 /* Reset + Global */
@@ -27,10 +52,14 @@
 html,
 body {
   font-family: var(--font-body);
-  background-color: var(--color-bg-light);
-  color: var(--color-text-dark);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   width: 100%;
   height: 100%;
+}
+html, body, .pane, .editor-area, .tool-page-header,
+.text-input, .text-output, .icon-btn, .btn-primary, .btn-secondary {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Utility Container */
@@ -49,24 +78,54 @@ body {
    Tool Page Header Section
    =========================== */
 .tool-page-header {
-  padding: 2rem 1rem 0 1rem;
-  background-color: var(--color-bg-light);
-  text-align: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  background-color: var(--bg-primary);
+  transition: background-color 0.4s ease;
+}
+.title-section {
+  width: 100%;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .tool-title {
   font-family: var(--font-heading);
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 
 .tool-subtitle {
   font-size: 1.05rem;
-  max-width: 720px;
-  margin: 0 auto;
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   line-height: 1.6;
+}
+
+/* Button reset */
+#themeToggle {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Icon animation */
+.theme-icon {
+  font-size: 2rem;
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.theme-icon.fade {
+  opacity: 0;
+  transform: rotate(180deg) scale(0.8);
 }
 
 
@@ -83,8 +142,8 @@ body {
 
 /* Pane Common Styles */
 .pane {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-default);
   border-radius: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   padding: 1rem;
@@ -115,23 +174,23 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   padding: 0.3rem;
   border-radius: 4px;
   transition: background 0.2s, color 0.2s;
 }
 .icon-btn:hover {
-  background-color: var(--color-bg-light);
-  color: var(--color-text-dark);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
 }
 .toolbar-right {
   display: flex;
   gap: 0.5rem;
 }
 .btn-secondary {
-  background-color: var(--color-bg-light);
-  color: var(--color-text-dark);
-  border: 1px solid var(--color-border);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
@@ -140,7 +199,7 @@ body {
   transition: background 0.2s, border-color 0.2s;
 }
 .btn-secondary:hover {
-  background-color: var(--color-primary);
+  background-color: var(--brand-primary);
   color: var(--color-white);
   border-color: var(--color-primary);
 }
@@ -168,7 +227,7 @@ body {
   max-width: 500px;
   max-height: 90vh;
   padding: 1.5rem;
-  background-color: var(--color-white);
+  background-color: var(--bg-panel);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   overflow-y: auto;
@@ -182,18 +241,18 @@ body {
 .goals-header h3 {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 .close-goals {
   background: none;
   border: none;
   font-size: 1.2rem;
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: color 0.2s;
 }
 .close-goals:hover {
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 .goals-content {
   display: flex;
@@ -203,15 +262,15 @@ body {
 }
 .goals-content label {
   font-size: 0.95rem;
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 .goal-select {
   padding: 0.5rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   font-size: 0.95rem;
-  color: var(--color-text-dark);
-  background-color: var(--color-white);
+  color: var(--text-primary);
+  background-color: var(--bg-panel);
   cursor: pointer;
 }
 .goals-save {
@@ -227,7 +286,7 @@ body {
 }
 .tool-tip-card {
   text-align: center;
-  background-color: #f7f9fb;
+  background-color: var(--bg-page);
   padding: 10px 14px;
   margin-top: 15px;
   border-top: 1px solid #333;
@@ -247,21 +306,22 @@ body {
 
 /*  ------------------------------------------Textarea (Input) ------------------------------------------- */
 .text-input {
+  background-color: var(--bg-panel);
   flex: none;
-  min-height: 300px;          /* ↑ Increase this value as needed */
+  min-height: 399px;          /* ↑ Increase this value as needed */
   resize: vertical;
   padding: 1rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   font-size: 1rem;
   font-family: var(--font-body);
-  color: var(--color-text-dark);
+  color: var(--text-primary);
   line-height: 1.5;
 }
 .text-input:focus {
   outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px var(--brand-accent);
 }
 
 /* Editor Footer */
@@ -271,9 +331,8 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-top: 0.75rem;
+  /* margin-top: 0.75rem; */
   padding: 0.75rem 0 0 0;
-  border-top: 1px solid #e0e0e0;
 }
 
 /* Left side: Word Count + Upload */
@@ -301,7 +360,7 @@ body {
   align-items: center;
   gap: 0.25rem;
   background: var(--color-secondary);
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
@@ -310,7 +369,7 @@ body {
 }
 .upload-label:hover {
   background: var(--color-secondary-accent);
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 
 /* File info — now perfectly aligned */
@@ -336,7 +395,7 @@ body {
 /* Word count on the far right */
 .word-count {
   font-size: 0.9rem;
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   margin-left: auto;
   white-space: nowrap;
 }
@@ -346,12 +405,13 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--color-primary);
+  background-color: var(--brand-primary);
   color: var(--color-white);
   border: none;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
   font-family: var(--font-heading);
+  border: 1px solid var(--border-default) ;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
@@ -401,26 +461,26 @@ body {
 .pane-title {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 .text-output {
   flex: none;
   min-height: 400px;          /* ↑ Increase this value as needed */
   resize: vertical;
   padding: 1rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   font-size: 1rem;
   font-family: var(--font-body);
-  color: var(--color-text-dark);
-  background-color: var(--color-bg-light);
+  color: var(--text-primary);
+  background-color: var(--bg-page);
   line-height: 1.5;
 }
 
 /* Paste button sits alongside undo/redo */
 .icon-btn#pasteBtn {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--color-border);
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   padding: 0.3rem 0.6rem;
   font-size: 0.85rem;
@@ -429,8 +489,8 @@ body {
 }
 
 .icon-btn#pasteBtn:hover {
-  background-color: var(--color-bg-light);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* background-color: var(--bg-page); */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 /* Output toolbar */
@@ -443,18 +503,31 @@ body {
   padding: 0 0 1rem 0;
 }
 .output-toolbar .icon-btn#copyBtn {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--color-border);
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   padding: 0.3rem;
   font-size: 0.85rem;
   cursor: pointer;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
+/* ── Copy & Paste Buttons ── */
+.icon-btn#copyBtn,
+.icon-btn#pasteBtn {
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.icon-btn#copyBtn:hover,
+.icon-btn#pasteBtn:hover {
+  background-color: var(--bg-accent-hover);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
 .icon-btn#copyBtn:hover {
-  background-color: var(--color-bg-light);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  /* background-color: var(--bg-page);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
 }
 
 /* ===========================
@@ -462,14 +535,14 @@ body {
    =========================== */
 .features-overview {
   padding: 3rem 0;
-  background-color: var(--color-white);
+  background-color: var(--bg-panel);
 }
 .features-heading {
   font-family: var(--font-heading);
   font-size: 1.75rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 .features-grid {
   display: grid;
@@ -481,8 +554,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center; /* So content is balanced */
-  background-color: var(--color-bg-light);
-  border: 1px solid var(--color-border);
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-default);
   border-radius: 6px;
   padding: 1.5rem;
   text-align: center;
@@ -498,10 +571,10 @@ body {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   margin-bottom: 0.75rem;
-  color: var(--color-text-dark);
+  color: var(--text-primary);
 }
 .feature-card p {
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.4;
 }
@@ -518,9 +591,9 @@ body {
 }
 .btn-outline {
   padding: 0.6rem 1.2rem;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--border-default);
   background-color: transparent;
-  color: var(--color-primary);
+  color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 1rem;
   /* font-weight: 600; */
@@ -530,7 +603,7 @@ body {
 }
 
 .btn-outline:hover {
-  background-color: var(--color-primary);
+  background-color: var(--brand-primary);
   color: var(--color-white);
 }
 .btn-outline.active {
@@ -539,6 +612,9 @@ body {
   border-color: var(--color-used-often);
 }
 .highlight-container {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
   white-space: pre-wrap;
   padding: 1rem;
   font-family: inherit;
@@ -552,7 +628,7 @@ body {
 }
 
 .diff-added {
-  background-color: #d4f8d4;
+  background-color: rgba( var(--brand-used-often-rgb), 0.2 ); /* or define another var */
   color: #0a730a;
   font-weight: bold;
 }
@@ -591,17 +667,14 @@ body {
   }
 }
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .footer-left {
+   .tool-page-header {
     flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
   }
-  .footer-right-wrapper {
-    flex-direction: column;
+  .title-section {
+    align-items: center;
+    text-align: center;
   }
   .pane-left {
     padding-bottom: 1rem;

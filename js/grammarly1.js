@@ -56,6 +56,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // const toastContainer = document.getElementById("toast-container");
   const toggleBtn = document.getElementById("toggleHighlightsBtn");
   const highlightContainer = document.getElementById("grammarly-output-highlight");
+  const themeToggle = document.getElementById('themeToggle');
+
+  // --- Theme Toggle ---
+const themeIcon = themeToggle.querySelector('.theme-icon');
+
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+const initial = savedTheme || (prefersDark ? 'dark' : 'light');
+
+document.documentElement.setAttribute('data-theme', initial);
+themeIcon.textContent = initial === 'dark' ? '☀️' : '🌙';
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+
+  // Animate the icon switch
+  themeIcon.classList.add('fade');
+  setTimeout(() => {
+    themeIcon.textContent = next === 'dark' ? '☀️' : '🌙';
+    themeIcon.classList.remove('fade');
+  }, 150);
+
+  showToast(`Switched to ${next.charAt(0).toUpperCase() + next.slice(1)} Mode`, 'success');
+});
 
 
   // SHOW HIGHLIGHTS
@@ -335,16 +362,20 @@ inputText.addEventListener("input", () => {
 });
 
 
-
 // 🎯 Writing Goals Modal
 let userSelectedGoals = {}; // Store selected goals
 
+// Open the goals overlay
 goalsBtn.addEventListener("click", () => {
   goalsOverlay.style.display = "flex";
 });
+
+// Close the overlay with close button
 closeGoals.addEventListener("click", () => {
   goalsOverlay.style.display = "none";
 });
+
+// Close overlay if clicked outside panel
 goalsOverlay.addEventListener("click", (e) => {
   if (e.target === goalsOverlay) goalsOverlay.style.display = "none";
 });
@@ -354,9 +385,10 @@ clearGoals.addEventListener("click", () => {
   document.querySelectorAll('.goal-select').forEach(select => {
     select.value = 'default';
   });
+  showToast("Rewrite style cleared.", "info");
 });
 
-// Save: gather only non-default goals, then hide overlay
+// ✅ Save: gather only non-default goals, show toast, then hide overlay
 saveGoals.addEventListener("click", () => {
   const raw = {
     audience: audienceSelect.value,
@@ -371,9 +403,17 @@ saveGoals.addEventListener("click", () => {
     if (val !== 'default') goals[key] = val;
   });
 
-  userSelectedGoals = goals; // ✅ store it globally
+  userSelectedGoals = goals; // ✅ store globally
   console.log("🎯 Goals saved:", userSelectedGoals);
 
+  // ✅ Show success or info toast
+  if (Object.keys(goals).length > 0) {
+    showToast("Rewrite style saved and applied.", "success");
+  } else {
+    showToast("All rewrite options are set to default.", "info");
+  }
+
+  // ✅ Close overlay after toast
   goalsOverlay.style.display = "none";
 });
 
