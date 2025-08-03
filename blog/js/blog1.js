@@ -1,22 +1,31 @@
-// Smooth fade-in on scroll
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll(".tool");
+// ===== blog1.js =====
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = "translateY(0)";
+document.addEventListener('DOMContentLoaded', () => {
+  // Read More Toggle
+  document.querySelectorAll('.read-more-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const full = btn.nextElementSibling;
+      full.classList.toggle('expanded');
+      btn.textContent = full.classList.contains('expanded') ? 'Show Less' : 'Read More';
+      // smooth scroll into view when expanding on small screens
+      if (full.classList.contains('expanded')) {
+        full.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
-  }, {
-    threshold: 0.1
   });
 
-  elements.forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = "translateY(20px)";
-    el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-    observer.observe(el);
-  });
+  // Optional: Intersection Observer to trigger CSS animations when cards scroll into view
+  const cards = document.querySelectorAll('.post-card');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+  }
 });

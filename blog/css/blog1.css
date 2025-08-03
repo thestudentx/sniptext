@@ -1,186 +1,138 @@
-/* Reset & Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ===== blog1.css ===== */
+:root {
+  /* your existing brand vars… */
+  --color-primary: #1D4ED8;
+  --color-accent: #3B82F6;
+  --color-bg-light: #F3F4F6;
+  --color-white: #ffffff;
+  --color-text-dark: #1F2937;
+  --color-text-light: #6B7280;
+  --color-border: #E5E7EB;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
 }
 
-body {
-  font-family: 'Poppins', 'Roboto', sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
-  margin: 0;
-  padding: 0;
-  line-height: 1.7;
+.blog-content.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  background: var(--color-bg-light);
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
-}
-
-/* Header Section */
-.blog-header {
-  background-color: #1d4ed8;
-  color: #fff;
-  padding: 4rem 2rem;
-  text-align: center;
-  border-bottom: 4px solid #3b82f6;
-}
-
+/* Header */
 .blog-header h1 {
-  font-size: 2.75rem;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  opacity: 0.95;
-}
-
-/* Content Section */
-.blog-content h2 {
-  color: #1d4ed8;
-  margin-top: 2.5rem;
-  font-size: 1.6rem;
-  border-left: 4px solid #3b82f6;
-  padding-left: 0.75rem;
-}
-
-.intro, .conclusion {
-  font-size: 1.1rem;
-  margin: 2rem 0;
-}
-
-/* Tool Cards */
-.tool {
-  background-color: #ffffff;
-  border-left: 5px solid #3b82f6;
-  border-radius: 0.5rem;
-  padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tool:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-}
-
-/* Link Styling */
-a {
-  color: #3b82f6;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-ul {  
-  margin: 1em 0; /* vertical spacing */
-  list-style-position: inside; /* <-- This pulls bullets inside the content box */
-}
-
-/* Comparison Table */
-.table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-  margin: 1.5rem 0;
-}
-
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 0.5rem;
-  border-collapse: collapse;
-  overflow: hidden;
-}
-
-.comparison-table thead {
-  background-color: #1d4ed8;
-  color: #fff;
-}
-
-.comparison-table th,
-.comparison-table td {
-  padding: 1rem;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--color-text-dark);
+  margin-bottom: 0.75rem;
   text-align: center;
-  font-size: 0.95rem;
-  white-space: nowrap;
+}
+.blog-header .lead {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: var(--color-text-light);
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.comparison-table tr:nth-child(even) {
-  background-color: #f1f5f9;
+/* List wrapper */
+.posts-list { display: flex; flex-direction: column; gap: 4rem; }
+
+/* Each item */
+.post-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--color-white);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.post-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 
-.comparison-table td:first-child {
-  font-weight: 600;
-  color: #1e293b;
-  text-align: left;
+/* Alternate image/text order */
+.post-item.alt .post-image { order: 2; }
+.post-item.alt .post-details { order: 1; }
+
+/* Image panel */
+.post-image {
+  flex: 1 1 40%;
+}
+.post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.comparison-table td {
-  vertical-align: middle;
+/* Details panel */
+.post-details {
+  flex: 1 1 60%;
+  padding: 2rem 2.5rem;
+}
+.post-details h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-dark);
+}
+.post-details .summary {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
-/* Responsive tweak: add shadow or fade edges to indicate scroll */
-.table-wrapper::-webkit-scrollbar {
-  height: 8px;
+/* Read More */
+.read-more-btn {
+  font-family: var(--font-body);
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: background .3s, transform .2s;
 }
-.table-wrapper::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 4px;
-}
-
-/* Highlight section - Why Snip Text Wins */
-.blog-content h2:last-of-type {
-  background: #dbeafe;
-  border-left: 5px solid #1d4ed8;
-  padding: 0.75rem 1rem;
-  border-radius: 0.3rem;
-  font-size: 1.5rem;
-  margin-top: 3rem;
+.read-more-btn:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
 }
 
-.blog-content .highlight {
-  background: #f0f9ff;
-  padding: 1rem;
-  border-left: 5px solid #3b82f6;
+/* Hidden content */
+.full-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s ease, margin .3s ease, padding .3s ease;
+}
+.full-content.expanded {
   margin-top: 1.5rem;
-  border-radius: 0.5rem;
+  padding-top: 1rem;
+  max-height: 600px; /* adjust as needed */
+}
+.full-content ul {
+  margin-bottom: 1rem;
+  list-style: disc inside;
+  color: var(--color-text-dark);
+}
+.full-content p {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
 }
 
-/* Responsive Goodness */
-@media (max-width: 768px) {
-  .blog-header h1 {
-    font-size: 2rem;
+/* Responsive */
+@media (max-width: 800px) {
+  .post-item {
+    flex-direction: column;
   }
-
-  .blog-content h2 {
-    font-size: 1.3rem;
+  .post-image, .post-details {
+    flex: 1 1 100%;
   }
-
-  .comparison-table th,
-  .comparison-table td {
-    font-size: 0.85rem;
-    padding: 0.8rem;
-  }
-
-  .container {
+  .post-details {
     padding: 1.5rem;
-  }
-
-  .container p{
-    text-align: justify;
   }
 }
