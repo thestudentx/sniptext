@@ -1,4 +1,17 @@
 {
+  "version": 2,
+  "builds": [
+
+    { "src": "server/**/*.js", "use": "@vercel/node" },
+
+    { "src": "admin/**/*",     "use": "@vercel/static" },
+    { "src": "blog/**/*",      "use": "@vercel/static" },
+    { "src": "*.html",         "use": "@vercel/static" },
+    { "src": "css/**/*",       "use": "@vercel/static" },
+    { "src": "js/**/*",        "use": "@vercel/static" },
+    { "src": "images/**/*",    "use": "@vercel/static" }
+  ],
+
   "redirects": [
     {
       "source": "/blog/:blogslug.html",
@@ -6,16 +19,18 @@
       "permanent": true
     }
   ],
+
   "rewrites": [
     {
       "source": "/admin-login",
       "destination": "/admin/admin-login.html"
     },
     {
-      "source": "/admin",
-      "destination": "/admin/index.html"
+      "source": "/admin/:path*",
+      "destination": "/admin/:path*"
     }
   ],
+
   "cleanUrls": true,
   "trailingSlash": false
 }
