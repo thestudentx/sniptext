@@ -3,11 +3,9 @@ document.getElementById('adminLoginForm').addEventListener('submit', async (e) =
 
   const email    = document.getElementById('adminEmail').value.trim();
   const password = document.getElementById('adminPassword').value.trim();
-  const loginErr = document.getElementById('loginError');
-  const loader   = document.getElementById('global-loader');
 
   // Show loader
-  loader.style.display = 'flex'; // or 'block' if no flex styles
+  showLoader();
 
   const host = window.location.hostname;
   const BASE_URL = (host === 'localhost' || host === '127.0.0.1')
@@ -25,14 +23,22 @@ document.getElementById('adminLoginForm').addEventListener('submit', async (e) =
 
     if (res.ok && data.token) {
       localStorage.setItem('adminToken', data.token);
-      window.location.href = '/admin';
+      hideLoader();
+      // Show a success toast
+      showToast('Success', 'Logged in successfully!', 'success');
+      // Redirect after a brief pause so the user sees the toast
+      setTimeout(() => {
+        window.location.href = '/admin';
+      }, 1000);
+
     } else {
-      loader.style.display = 'none'; // Hide loader
-      loginErr.textContent = data.message || 'Login failed';
+      hideLoader();
+      // Error toast
+      showToast('Error', data.message || 'Login failed', 'error');
     }
   } catch (err) {
     console.error('Admin login error:', err);
-    loader.style.display = 'none'; // Hide loader
-    loginErr.textContent = 'Server error. Please try again.';
+    hideLoader();
+    showToast('Error', 'Server error. Please try again.', 'error');
   }
 });

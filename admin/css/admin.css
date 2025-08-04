@@ -13,6 +13,19 @@
   --font-body: 'Roboto', 'Arial', sans-serif;
 }
 
+:root[data-theme="dark"] {
+  --color-primary: #3B82F6;
+  --color-accent: #60A5FA;
+  --color-bg-light: #1d1f2f;
+  --color-white: #1f2337;
+  --color-text-dark: #f0f0f0;
+  --color-text-light: #a3a3a3;
+  --color-border: #3a3b4a;
+  --color-used-often: #e85d27;
+  --color-footer-bg: #12131f;
+}
+
+
 /* Reset basics */
 * {
   margin: 0;
@@ -36,69 +49,22 @@ body {
   overflow-x: hidden;
 }
 
-
-/* Sidebar */
-.sidebar {
-  width: 240px;
-  background-color: var(--color-white);
-  border-right: 1px solid var(--color-border);
-  padding: 1rem;
+.header-right {
   display: flex;
-  flex-direction: column;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.05);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: width 0.3s ease;
+  align-content: center;
+  gap: 1rem;
 }
 
-.sidebar .logo {
-  font-size: 1.5rem;
-  font-weight: bolder;
-  font-family: var(--font-heading);
-  margin-bottom: 2rem;
-  color: var(--color-primary);
-  user-select: none;
-}
-
-.sidebar nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-grow: 1;
+.admin-header {
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.sidebar nav ul li a {
-  display: flex;
+  width: 100%;
   align-items: center;
-  color: #333;
-  font-weight: 600;
-  font-size: 1.05rem;
-  text-decoration: none;
-  padding: 0.7rem 1rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  user-select: none;
-  cursor: pointer;
-}
-
-.sidebar nav ul li a.active,
-.sidebar nav ul li a:hover {
-  color: var(--color-primary);
-  /* color: #fff; */
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.4);
+  justify-content: space-between;
+  margin: 0rem 0 1rem 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Logout button */
-.logout-container {
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
-  display: flex;
-  justify-content: center;
-}
-
 .logout-btn {
   background-color: #e85d27;
   color: #fff;
@@ -106,35 +72,12 @@ body {
   padding: 0.6rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
 .logout-btn:hover {
   background-color: #cc4b1d;
-}
-
-/* Main Panel */
-.main-panel {
-  flex: 1;
-  padding: 2rem;
-  background-color: var(--color-bg-light);
-}
-
-.admin-header h1 {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  color: var(--color-text-dark);
-}
-
-.admin-section {
-  margin-top: 1.5rem;
-}
-
-.admin-section.hidden {
-  display: none;
 }
 
 /* For hiding modals */
@@ -144,12 +87,16 @@ body {
 
 /* Buttons */
 .btn {
+  background: #e9e6e6;
   padding: 0.6rem 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: 500;
   font-family: var(--font-body);
+}
+.btn:hover {
+  background-color: #dcdcdc;
 }
 
 .btn.primary {
@@ -197,9 +144,12 @@ body {
 .admin-table td .btn {
   background: none;
   margin-right: 0.5rem;
+  color: var(--color-text-dark);
   font-size: 0.85rem;
 }
-
+.admin-table td .btn:hover {
+  color: var(--color-primary);
+}
 .admin-table-wrapper {
   overflow-x: auto;
 }
@@ -274,6 +224,7 @@ body {
   padding: 25px 30px;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  border: 1px solid var(--color-text-light);
   max-width: 320px;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -305,12 +256,12 @@ body {
 }
 
 .btn-secondary {
-  background-color: #ccc;
+  background-color: #e9e6e6;
   color: #333;
 }
 
 .btn-secondary:hover {
-  background-color: #aaa;
+  background-color: #e0dddd;
 }
 
 
@@ -341,7 +292,17 @@ body {
   max-height: 90vh; /* Limit height to viewport */
   overflow-y: auto;  /* Enable scrolling if too tall */
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  animation: modal-fade-in 0.2s ease-in-out;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
 }
 
 .modal-content::-webkit-scrollbar {
@@ -376,6 +337,7 @@ body {
   padding: 0.6rem;
   border: 1px solid var(--color-border);
   border-radius: 6px;
+  width: 100%;
   font-family: var(--font-body);
   font-size: 1rem;
   margin-bottom: 1.5rem;
@@ -409,177 +371,54 @@ body {
 
 
 
-/* TOAST */
-.toast {
-  position: fixed;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;
-  max-width: 90%;
-  height: auto;
-  padding: 12px 20px;
-  background-color: #3B82F6; /* Accent color for distinction */
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  z-index: 99999;
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-.toast.show {
-  top: 60px;
-  opacity: 1;
-}
-
-.toast.hide {
-  top: -100px;
-  opacity: 0;}
-
-.toast.success {
-  background-color: #10B981; /* Green for success */
-}
-
-.toast.error {
-  background-color: #EF4444; /* Red for error */
-}
-
-.toast.info {
-  background-color: #1D4ED8;
-  color: white;
-}
-
-
 
 
 
 
 /* Responsive */
-@media screen and (max-width: 768px) {
-  .admin-container {
+@media screen and (max-width: 768px) { 
+  .admin-header {
+    align-content: center;
+    text-align: center;
+    gap: 1rem;
     flex-direction: column;
-  }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-    padding: 0 1rem;
-    border-right: none;
-    border-top: 1px solid #ddd;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
-    z-index: 1000;
-  }
-
-  .sidebar .logo {
-    display: none; /* hide logo on mobile to save space */
-  }
-
-  .sidebar nav ul {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    justify-content: center;
-    flex-grow: 1;
-    margin: 0;
-  }
-
-  .sidebar nav ul li {
-    margin-bottom: 0;
-  }
-
-   .sidebar nav ul li a {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    border-radius: 0;
-    color: #555;
-  }
-
-  .sidebar nav ul li a.active,
-  .sidebar nav ul li a:hover {
-    color: #1D4ED8;
-    background-color: transparent;
-    box-shadow: none;
-  }
-
-      .logout-container {
-        margin: 0 30px 0 0;
-        padding: 0;
-    }
-
-  .logout-btn {
-    width: auto;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    max-width: none;
-    box-shadow: none;
-  }
-
-
-
-  .main-panel {
-    padding: 1rem;
-  }
-
-  .admin-table thead {
-    display: none;
-  }
-
-  .admin-table,
-  .admin-table tbody,
-  .admin-table tr,
-  .admin-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .admin-table tr {
-    margin-bottom: 1rem;
-    background-color: var(--color-white);
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    padding: 1rem;
-  }
-
-  .admin-table td {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    border-bottom: none;
-    font-size: 0.9rem;
-  }
-
-  .admin-table td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: var(--color-text-light);
-    flex: 1;
   }
 }
 
 /* Mobile form fix */
 @media screen and (max-width: 500px) {
+  .table-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
 
-     .sidebar nav ul li a {
-      font-size: 0.9rem;
-     }
+  .search-form {
+    width: 100%;
+    flex-direction: column;
+  }
 
+  .search-form input {
+    width: 100%;
+  }
+
+  .table-controls select {
+    width: 100%;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pagination-controls button {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
     .modal {
     align-items: flex-end; /* Start modal from bottom */
     padding: 0;
   }
-
   .modal-content {
     width: 100%;
     border-radius: 12px 12px 0 0;
@@ -587,7 +426,6 @@ body {
     padding: 1.2rem;
     animation: slideUp 0.3s ease;
   }
-
   @keyframes slideUp {
     from {
       transform: translateY(100%);
@@ -598,13 +436,11 @@ body {
       opacity: 1;
     }
   }
-
   .modal-content input,
   .modal-content select {
     font-size: 0.95rem;
     padding: 0.5rem;
   }
-
   .modal-actions {
     flex-direction: column;
     align-items: stretch;
