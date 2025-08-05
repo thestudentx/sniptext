@@ -80,8 +80,26 @@ document.getElementById('userForm').addEventListener('submit', async e => {
   const editingId = form.dataset.editingId;
   const token = localStorage.getItem('adminToken');
   const raw = Object.fromEntries(new FormData(form).entries());
+
+  const submittedEmail = raw.email.trim().toLowerCase();
+  const existing = (window._loadedUsers || []).find(
+    user => user.email.toLowerCase() === submittedEmail
+  );
+
+  // 🔒 Check for duplicate email only on "Add"
+  if (!editingId && existing) {
+    showToast('Warning', 'Email already exists. Use a different one.', 'warning');
+    return;
+  }
+
+  // 🛠️ Check for duplicate email on "Edit" (only if changed)
+  if (editingId && existing && existing._id !== editingId) {
+    showToast('Warning', 'Email already belongs to another user.', 'warning');
+    return;
+  }
+
   const data = {
-    email: raw.email.trim(),
+    email: submittedEmail,
     access: raw.access,
     modelsAccess: raw.apis
       .split(',')
@@ -89,7 +107,11 @@ document.getElementById('userForm').addEventListener('submit', async e => {
       .filter(s => s),
     credits: parseInt(raw.credits, 10) || 0
   };
-  if (!editingId || raw.password.trim()) data.password = raw.password;
+
+  // Only send password if new or edited
+  if (!editingId || raw.password.trim()) {
+    data.password = raw.password;
+  }
 
   try {
     const res = await fetch(editingId ? `${API}/${editingId}` : API, {
@@ -103,13 +125,14 @@ document.getElementById('userForm').addEventListener('submit', async e => {
     const result = await res.json();
     if (!res.ok) throw new Error(result.message || 'Request failed');
 
-    showToast('Success', 'User added!', 'success');
+    showToast('Success', editingId ? 'User updated!' : 'User added!', 'success');
     closeModal('userModal');
     loadUsers();
   } catch (err) {
     showToast('Error', `Error: ${err.message}`, 'error');
   }
 });
+
 
 // ——————————————————————————————
 // Populate “Edit User” modal
@@ -170,14 +193,27 @@ async function deleteUser(id) {
 // ——————————————————————————————
 // Search & filter users
 // ——————————————————————————————
-document.getElementById('searchForm').addEventListener('submit', e => {
-  e.preventDefault();
+const searchInput = document.getElementById('searchInput');
+const clearSearch = document.getElementById('clearSearch');
+
+// Debounce function (core logic)
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+// Attach debounced search
+searchInput.addEventListener('input', debounce(filterUsers, 300));
+
+// Clear search button
+clearSearch.addEventListener('click', () => {
+  searchInput.value = '';
   filterUsers();
 });
-document.getElementById('clearSearch').addEventListener('click', () => {
-  document.getElementById('searchInput').value = '';
-  filterUsers();
-});
+
 
 function filterUsers() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();

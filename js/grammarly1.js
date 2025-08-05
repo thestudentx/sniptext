@@ -53,10 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyBtn      = document.getElementById("copyBtn");
   const uploadBtn    = document.getElementById("uploadBtn");
   const fileInfo     = document.getElementById("fileInfo");
-  // const toastContainer = document.getElementById("toast-container");
   const toggleBtn = document.getElementById("toggleHighlightsBtn");
   const highlightContainer = document.getElementById("grammarly-output-highlight");
   const themeToggle = document.getElementById('themeToggle');
+  const uploadModal = document.getElementById("uploadModal");
+const openUploadModalBtn = document.querySelector(".upload-label");
+const closeUploadModal = document.getElementById("closeUploadModal");
+const modalUploadInput = document.getElementById("modalUploadInput");
+const modalFileInfo = document.getElementById("modalFileInfo");
+const dropArea = document.getElementById("dropArea");
 
   // --- Theme Toggle ---
 const themeIcon = themeToggle.querySelector('.theme-icon');
@@ -130,6 +135,29 @@ toggleBtn.addEventListener("click", () => {
     toggleBtn.textContent = "Highlight Changes";
   }
 });
+
+// ─────────────────────────────────────────────────────────────────────
+// Download Output as .txt file
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  const text = outputText.value.trim(); // assuming outputText is your textarea or div
+  if (!text) {
+    showToast("Output is empty", "error");
+    return;
+  }
+
+  const blob = new Blob([text], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "SnipText_Grammar_Correction.txt"; // 🔥 filename updated
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  URL.revokeObjectURL(url);
+});
+
 
   // ─────────────────────────────────────────────────────────────────────
   // Tokenize original markdown into markers & text chunks
@@ -288,46 +316,115 @@ function chunkText(text, maxWords = 300) {
     }
   });
 
-  // 📂 Upload File (.txt / .docx)
-  uploadBtn.addEventListener("change", async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
 
-    const name = file.name.toLowerCase();
-    try {
-      let text = "";
-      const allowedTypes = [".txt", ".docx"];
-      const ext = name.slice(name.lastIndexOf("."));
+  // 📤 Upload file
+  openUploadModalBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  uploadModal.classList.remove("hidden");
+});
 
-      if (!allowedTypes.includes(ext)) {
-        fileInfo.textContent = "❌ Unsupported file type.";
-        fileInfo.classList.remove("hidden");
-        showToast("Only .txt and .docx files allowed", "error");
-        return;
-      }
+closeUploadModal.addEventListener("click", () => {
+  uploadModal.classList.add("hidden");
+  modalFileInfo.classList.add("hidden");
+});
 
-      fileInfo.textContent = `📄 ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-      fileInfo.classList.remove("hidden");
-
-      if (ext === ".txt") {
-        text = await file.text();
-      } else if (ext === ".docx") {
-        const arrayBuffer = await file.arrayBuffer();
-        const { value } = await mammoth.extractRawText({ arrayBuffer });
-        text = value;
-      }
-
-      inputText.value = text;
-      inputText.dispatchEvent(new Event("input"));
-      showToast("File uploaded successfully!", "success");
-    } catch (err) {
-      fileInfo.textContent = "⚠️ Failed to read file.";
-      fileInfo.classList.remove("hidden");
-      showToast("Error reading file", "error");
-    } finally {
-      uploadBtn.value = ""; // allow re-upload of same file
-    }
+// Drag & Drop Logic
+["dragenter", "dragover"].forEach(event => {
+  dropArea.addEventListener(event, e => {
+    e.preventDefault();
+    dropArea.classList.add("hover");
   });
+});
+
+["dragleave", "drop"].forEach(event => {
+  dropArea.addEventListener(event, e => {
+    e.preventDefault();
+    dropArea.classList.remove("hover");
+  });
+});
+
+dropArea.addEventListener("drop", e => {
+  const file = e.dataTransfer.files[0];
+  handleFileUpload(file);
+});
+
+modalUploadInput.addEventListener("change", e => {
+  const file = e.target.files[0];
+  handleFileUpload(file);
+});
+
+async function handleFileUpload(file) {
+  if (!file) return;
+
+  const maxSize = 300 * 1024 * 1024; // 300MB
+  const name = file.name.toLowerCase();
+  const ext = name.slice(name.lastIndexOf("."));
+  const allowedTypes = [".txt", ".docx", ".pdf"];
+
+  if (!allowedTypes.includes(ext)) {
+    modalFileInfo.textContent = "❌ Unsupported file type.";
+    modalFileInfo.classList.remove("hidden");
+    showToast("Only .txt, .docx, and .pdf files allowed", "error");
+    return;
+  }
+
+  if (file.size > maxSize) {
+    modalFileInfo.textContent = "❌ File too large.";
+    modalFileInfo.classList.remove("hidden");
+    showToast("File must be below 300MB", "error");
+    return;
+  }
+
+  modalFileInfo.textContent = `📄 ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+  modalFileInfo.classList.remove("hidden");
+
+  try {
+    let text = "";
+    if (ext === ".txt") {
+      text = await file.text();
+    } else if (ext === ".docx") {
+      const arrayBuffer = await file.arrayBuffer();
+      const { value } = await mammoth.extractRawText({ arrayBuffer });
+      text = value;
+    } else if (ext === ".pdf") {
+      const pdfText = await readPDF(file);
+      text = pdfText;
+    }
+
+    inputText.value = text;
+    inputText.dispatchEvent(new Event("input"));
+    showToast("File uploaded successfully!", "success");
+    uploadModal.classList.add("hidden");
+  } catch (err) {
+    modalFileInfo.textContent = "⚠️ Failed to read file.";
+    showToast("Error reading file", "error");
+  }
+}
+
+async function readPDF(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+        const pdf = await pdfjsLib.getDocument({ data: reader.result }).promise;
+        let text = '';
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          text += content.items.map(item => item.str).join(' ') + '\n';
+        }
+        resolve(text);
+      } catch (e) {
+        reject(e);
+      }
+    };
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(file);
+  });
+}
+
 
   // 📤 Copy output
   copyBtn.addEventListener("click", async () => {

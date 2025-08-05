@@ -176,18 +176,18 @@
         <!-- Footer of Editor: File Upload, Word Count & Check Button -->
         <div class="editor-footer">
           <div class="upload-wrap">
-          <!-- left: file upload -->
-          <div class="footer-left">
-            <label for="uploadBtn" class="btn-secondary upload-label">
-              📂 Upload File
-            </label>
-            <input
-              type="file"
-              id="uploadBtn"
-              accept=".txt,.docx"
-              style="display: none;"
-            />
-            <span id="fileInfo" class="file-info hidden">No file selected</span>
+            <!-- left: file upload -->
+            <div class="footer-left">
+              <label for="uploadBtn" class="btn-secondary upload-label">
+                📂 Upload File
+              </label>
+              <input
+                type="file"
+                id="uploadBtn"
+                accept=".txt,.docx"
+                style="display: none;"
+              />
+              <span id="fileInfo" class="file-info hidden">No file selected</span>
             </div> 
           </div>
 
@@ -224,6 +224,7 @@
         <!-- Inside output-footer -->
         <div class="output-footer">
           <button id="toggleHighlightsBtn" class="btn-outline">Highlight Changes</button>
+          <button id="downloadBtn" class="btn-brand">Download</button>
         </div>
       </section>
     </div>
@@ -279,6 +280,33 @@
       </div>
     </div>
   </section>
+
+
+  <!-- Upload Modal -->
+<div id="uploadModal" class="upload-modal hidden">
+  <div class="upload-modal-content">
+    <span class="close-upload-modal" id="closeUploadModal">×</span>
+    <h3>📂 Upload Your File</h3>
+
+    <div id="dropArea" class="drop-area">
+      <p>Drag and drop your file here</p>
+      <p>or</p>
+      <label class="btn-secondary upload-label">
+        Click to Choose File
+        <input type="file" id="modalUploadInput" accept=".txt,.docx,.pdf" hidden />
+      </label>
+    </div>
+
+    <div class="upload-instructions">
+      <p>✅ Supported formats: .txt, .docx, .pdf</p>
+      <p>⚠️ Max file size: 300 MB</p>
+      <p>🔒 Your files are never stored or shared</p>
+    </div>
+
+    <div id="modalFileInfo" class="file-info hidden">No file selected</div>
+  </div>
+</div>
+
 
 
 
