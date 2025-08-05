@@ -19,24 +19,25 @@
   ],
 
   "rewrites": [
-    { "source": "/admin/:path*", "destination": "/admin/:path*" },
+    {
+      "source": "/admin/:path*",
+      "destination": "/admin/:path*.html"
+    },
 
-    { "source": "/admin-login",   "destination": "/admin/admin-login.html" },
+    { "source": "/admin-login", "destination": "/admin/admin-login.html" },
+    { "source": "/admin",       "destination": "/admin/index.html"   },
 
-    { "source": "/admin",         "destination": "/admin/index.html" },
-
-    { "source": "/blog/:blogslug", "destination": "/blog/:blogslug.html" },
-
-    { "source": "/",                "destination": "/index.html" },
-    { "source": "/dashboard",       "destination": "/dashboard.html" },
-    { "source": "/features",        "destination": "/features.html" },
-    { "source": "/about",           "destination": "/about.html" },
-    { "source": "/contact",         "destination": "/contact.html" },
-    { "source": "/login",           "destination": "/login.html" },
-    { "source": "/register",        "destination": "/register.html" },
-    { "source": "/feedback",        "destination": "/feedback.html" },
-    { "source": "/privacy-policy",  "destination": "/privacy-policy.html" },
-    { "source": "/terms-of-use",    "destination": "/terms-of-use.html" }
+    { "source": "/blog/:blogslug",   "destination": "/blog/:blogslug.html" },
+    { "source": "/",                 "destination": "/index.html"         },
+    { "source": "/dashboard",        "destination": "/dashboard.html"     },
+    { "source": "/features",         "destination": "/features.html"      },
+    { "source": "/about",            "destination": "/about.html"         },
+    { "source": "/contact",          "destination": "/contact.html"       },
+    { "source": "/login",            "destination": "/login.html"         },
+    { "source": "/register",         "destination": "/register.html"      },
+    { "source": "/feedback",         "destination": "/feedback.html"      },
+    { "source": "/privacy-policy",   "destination": "/privacy-policy.html"},
+    { "source": "/terms-of-use",     "destination": "/terms-of-use.html"  }
   ],
 
   "cleanUrls": false,
