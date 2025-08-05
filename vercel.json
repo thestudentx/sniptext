@@ -1,54 +1,25 @@
 {
-  "version": 2,
+  "rewrites": [
+    { "source": "/admin-login",     "destination": "/admin/admin-login.html" },
+    { "source": "/admin",           "destination": "/admin/index.html" },
+    { "source": "/admin/:path*",    "destination": "/admin/:path*" },
 
-  "builds": [
-    { "src": "admin/**/*",  "use": "@vercel/static" },
-    { "src": "blog/**/*",   "use": "@vercel/static" },
-    { "src": "*.html",      "use": "@vercel/static" },
-    { "src": "css/**/*",    "use": "@vercel/static" },
-    { "src": "js/**/*",     "use": "@vercel/static" },
-    { "src": "images/**/*", "use": "@vercel/static" }
+    { "source": "/blog/:blogslug",  "destination": "/blog/:blogslug.html" },
+    { "source": "/blog/blog1",      "destination": "/blog/blog1.html" },
+
+    { "source": "/",                "destination": "/index.html" },
+    { "source": "/dashboard",       "destination": "/dashboard.html" },
+    { "source": "/features",        "destination": "/features.html" },
+    { "source": "/about",           "destination": "/about.html" },
+    { "source": "/ai-detection",           "destination": "/ai-detection.html" },
+    { "source": "/grammarly1",           "destination": "/grammarly1.html" },
+    { "source": "/quillbot2",           "destination": "/quillbot2.html" },
+    { "source": "/contact",         "destination": "/contact.html" },
+    { "source": "/login",           "destination": "/login.html" },
+    { "source": "/feedback",        "destination": "/feedback.html" },
+    { "source": "/privacy-policy",  "destination": "/privacy-policy.html" },
+    { "source": "/terms-of-use",    "destination": "/terms-of-use.html" }
   ],
-
-  "redirects": [
-    {
-      "source": "/blog/:blogslug.html",
-      "destination": "/blog/:blogslug",
-      "permanent": true
-    }
-  ],
-
-  "routes": [
-    { "handle": "filesystem" },
-
-    {
-      "src": "/admin(?:/(.*))?$",
-      "dest": "/admin/index.html"
-    },
-
-    {
-      "src": "/admin-login",
-      "dest": "/admin/admin-login.html"
-    },
-    {
-      "src": "/blog/:blogslug",
-      "dest": "/blog/:blogslug.html"
-    },
-
-    { "src": "/",             "dest": "/index.html"       },
-    { "src": "/dashboard",    "dest": "/dashboard.html"   },
-    { "src": "/features",     "dest": "/features.html"    },
-    { "src": "/about",        "dest": "/about.html"       },
-    { "src": "/contact",      "dest": "/contact.html"     },
-    { "src": "/login",        "dest": "/login.html"       },
-    { "src": "/register",     "dest": "/register.html"    },
-    { "src": "/feedback",     "dest": "/feedback.html"    },
-    { "src": "/privacy-policy","dest": "/privacy-policy.html"},
-    { "src": "/terms-of-use", "dest": "/terms-of-use.html" },
-
-    { "handle": "miss" }
-  ],
-
-  "cleanUrls": false,
+  "cleanUrls": true,
   "trailingSlash": false
 }
