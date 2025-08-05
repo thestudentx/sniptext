@@ -38,6 +38,7 @@ if (logoutBtn) {
 }
 
   // --- Theme Toggle ---
+  const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('.theme-icon');
 
 const savedTheme = localStorage.getItem('theme');
