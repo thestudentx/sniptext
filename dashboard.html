@@ -9,6 +9,7 @@
 
   <title>User Dashboard - Snip Text</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/components/toggleTheme.css">
     <link rel="stylesheet" href="css/dashboard.css" />
 
   <!-- Favicon -->
@@ -69,6 +70,11 @@
           <span class="label">Time left:</span>
           <span id="time-remaining" class="value">--</span>
         </div>
+        <div class="theme-toggle-wrapper">
+          <button id="themeToggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -119,6 +125,7 @@
 
   <!-- SCRIPT LOADERS -->
   <script src="js/index.js" defer></script>
+  <script src="/components/themeToggle.js"></script>
   <script src="components/injectLayout.js"></script>
   <script src="js/auth.js"></script>
 

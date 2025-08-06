@@ -83,24 +83,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* toggleTheme */ 
-#themeToggle {
-  border: none;
-  background: transparent;
-}
-.theme-icon {
-  font-size: 2rem;
-  display: inline-block;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  cursor: pointer;
-}
-
-.theme-icon.fade {
-  opacity: 0;
-  transform: rotate(180deg) scale(0.8);
-}
-
-
 /* Upload */
 .upload-wrapper {
   display: flex;
@@ -174,7 +156,7 @@ body {
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid #445;
   border-radius: 8px;
-  color: #9b9b9b;
+  color: var(--text-primary);
   font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: 15px;
   line-height: 1.6;

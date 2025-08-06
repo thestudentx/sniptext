@@ -11,6 +11,7 @@
 
   <!-- Link to updated CSS -->
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/components/toggleTheme.css">
   <link rel="stylesheet" href="css/quillbot2.css" />
 
   <!-- Favicon -->
@@ -66,29 +67,36 @@
 
       <!-- LANGUAGES DROPDOWN MENU -->
        <div class="qb-language">
-        <label for="qb-language-select">Language:</label>
-        <select id="qb-language-select" class="qb-select">
-          <option value="auto">🌐 Auto Detect</option>
-          <option value="ar">🇸🇦 Arabic</option>
-          <option value="bn">🇧🇩 Bengali</option>
-          <option value="zh">🇨🇳 Chinese</option>
-          <option value="nl">🇳🇱 Dutch</option>
-          <option value="en">🇬🇧 English</option>
-          <option value="fr">🇫🇷 French</option>
-          <option value="de">🇩🇪 German</option>
-          <option value="hi">🇮🇳 Hindi</option>
-          <option value="id">🇮🇩 Indonesian</option>
-          <option value="it">🇮🇹 Italian</option>
-          <option value="ja">🇯🇵 Japanese</option>
-          <option value="ko">🇰🇷 Korean</option>
-          <option value="pl">🇵🇱 Polish</option>
-          <option value="pt">🇵🇹 Portuguese</option>
-          <option value="ru">🇷🇺 Russian</option>
-          <option value="es">🇪🇸 Spanish</option>
-          <option value="tr">🇹🇷 Turkish</option>
-          <option value="uk">🇺🇦 Ukrainian</option>
-          <option value="vi">🇻🇳 Vietnamese</option>
-        </select>
+        <div class="language-part">
+          <label for="qb-language-select">Language:</label>
+          <select id="qb-language-select" class="qb-select">
+            <option value="auto">🌐 Auto Detect</option>
+            <option value="ar">🇸🇦 Arabic</option>
+            <option value="bn">🇧🇩 Bengali</option>
+            <option value="zh">🇨🇳 Chinese</option>
+            <option value="nl">🇳🇱 Dutch</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="fr">🇫🇷 French</option>
+            <option value="de">🇩🇪 German</option>
+            <option value="hi">🇮🇳 Hindi</option>
+            <option value="id">🇮🇩 Indonesian</option>
+            <option value="it">🇮🇹 Italian</option>
+            <option value="ja">🇯🇵 Japanese</option>
+            <option value="ko">🇰🇷 Korean</option>
+            <option value="pl">🇵🇱 Polish</option>
+            <option value="pt">🇵🇹 Portuguese</option>
+            <option value="ru">🇷🇺 Russian</option>
+            <option value="es">🇪🇸 Spanish</option>
+            <option value="tr">🇹🇷 Turkish</option>
+            <option value="uk">🇺🇦 Ukrainian</option>
+            <option value="vi">🇻🇳 Vietnamese</option>
+          </select>
+        </div>
+        <div class="theme-toggle-wrapper">
+          <button id="themeToggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
       </div>
 
       <div class="qb-toolbar">
@@ -139,7 +147,16 @@
       <div class="qb-tool">
         <!-- Input Section -->
         <section class="qb-section qb-section--input">
-          <label for="qb-input" class="qb-label">Original Text</label>
+          <div class="input-upper-part">
+              <label for="qb-input" class="qb-label">Original Text</label>
+              <button
+                id="qb-paste"
+                class="qb-textarea-button qb-button--small"
+                title="Paste from clipboard"
+              >
+                📋 Paste
+              </button>
+            </div>
           <div class="qb-textarea-container">
             <textarea
               id="qb-input"
@@ -147,13 +164,6 @@
               placeholder="Paste your thesis paragraph here..."
               rows="8"
             ></textarea>
-            <button
-              id="qb-paste"
-              class="qb-textarea-button qb-button--small"
-              title="Paste from clipboard"
-            >
-              📋 Paste
-            </button>
           </div>
           <!-- Live Counter Below -->
           <div class="qb-input-footer">
@@ -166,7 +176,16 @@
 
         <!-- Output Section -->
         <section class="qb-section qb-section--output">
-          <label for="qb-output" class="qb-label">Paraphrased Text</label>
+          <div class="output-upper-part">
+            <label for="qb-output" class="qb-label">Paraphrased Text</label>          
+            <button
+                id="qb-copy"
+                class="qb-textarea-button qb-button--small"
+                title="Copy to clipboard"
+              >
+                📋 Copy
+            </button>
+          </div>
           <div class="qb-textarea-container">
             <textarea
               id="qb-output"
@@ -174,13 +193,6 @@
               placeholder="Your paraphrased text will appear here..."
               rows="8"
             ></textarea>
-            <button
-              id="qb-copy"
-              class="qb-textarea-button qb-button--small"
-              title="Copy to clipboard"
-            >
-              📋 Copy
-            </button>
 
             <!-- NEW: highlighted preview (hidden by default) -->
             <div id="qb-output-highlight" class="qb-highlight-container hidden"></div>
@@ -205,7 +217,7 @@
         </button>
 
         <!-- NEW: Toggle highlights -->
-        <button id="qb-toggle-highlights" class="qb-button qb-button--outline qb-button--small">
+        <button id="qb-toggle-highlights" class="qb-button qb-button--outline qb-button--small qb-button--secondary">
           Show Highlights
         </button>
       </div>
@@ -303,6 +315,7 @@
   
   <!-- Include the JavaScript file for this page -->
   <script src="js/index.js" defer></script>
+  <script src="/components/themeToggle.js"></script>
   <script src="js/auth.js"></script>
 
   <!-- Show Highlights -->

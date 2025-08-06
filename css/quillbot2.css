@@ -1,15 +1,79 @@
-/* quilbot2.css */
-/* ─── Define Brand Color ─────────────────────────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Dark/Light Theme Variables                                                  */
+/* ──────────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* Replace #FF5733 with your actual brand hex */
+  /* Brand */
   --brand-color: #1D4ED8;
-  --brand-gradient-start: rgba(29, 78, 216, 0.8);
-  --brand-gradient-end: rgba(29, 78, 216, 1);
-  /* For focus shadows, convert hex to RGB in your code or manually: */
   --brand-color-rgb: 29, 78, 216;
+  --brand-gradient-start: rgba(29, 78, 216, 0.8);
+  --brand-gradient-end:   rgba(29, 78, 216, 1);
+
+  /* Backgrounds */
+  --bg-page:     #f0f4f8;
+  --bg-container:#ffffff;
+  --bg-input:    #fafafa;
+  --bg-tab:      #f9f9f9;
+  --bg-tab-hover:#eeeeee;
+  --bg-highlight:#f1f4ff;
+  --bg-svg-circle: rgba(170, 182, 254, 0.2);
+
+  /* Text */
+  --text-primary:   #222222;
+  --text-secondary: #444444;
+  --text-subtitle:  #666666;
+  --text-light:     #ffffff;
+  --text-muted:     #888888;
+
+  /* Borders & Shadows */
+  --border-default: #dddddd;
+  --shadow-light:   rgba(0,0,0,0.05);
+  --shadow-medium:  rgba(0,0,0,0.1);
+
+  /* Diff highlights */
+  --diff-added-bg:   #d4edda;
+  --diff-added-text: #155724;
+  --diff-del-bg:     #f8d7da;
+  --diff-del-text:   #721c24;
 }
 
-/* ─── Reset & Base ─────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  /* Brand */
+  --brand-color: #3B82F6;
+  --brand-color-rgb: 59, 130, 246;
+  --brand-gradient-start: rgba(59, 130, 246, 0.8);
+  --brand-gradient-end:   rgba(59, 130, 246, 1);
+
+  /* Backgrounds */
+  --bg-page:      #1E1E2A;
+  --bg-container: #2A2A3F;
+  --bg-input:     #333349;
+  --bg-tab:       #2F2F45;
+  --bg-tab-hover: #3A3A55;
+  --bg-highlight: #252535;
+  --bg-svg-circle: rgba(59, 130, 246, 0.1);
+
+  /* Text */
+  --text-primary:   #F0F0F0;
+  --text-secondary: #DDDDDD;
+  --text-subtitle:  #BBBBBB;
+  --text-light:     #ffffff;
+  --text-muted:     #AAAAAA;
+
+  /* Borders & Shadows */
+  --border-default: #444457;
+  --shadow-light:   rgba(0,0,0,0.3);
+  --shadow-medium:  rgba(0,0,0,0.5);
+
+  /* Diff highlights */
+  --diff-added-bg:   #274d2f;
+  --diff-added-text: #a6d8a1;
+  --diff-del-bg:     #4d292f;
+  --diff-del-text:   #e09a9f;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Reset & Base                                                                 */
+/* ──────────────────────────────────────────────────────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
@@ -18,23 +82,24 @@
 }
 
 body {
-  background: #f0f4f8;
-  color: #333;
+  background: var(--bg-page);
+  color: var(--text-primary);
   line-height: 1.5;
   overflow-x: hidden;
 }
 
-/* ─── Main Container ───────────────────────────────────────────────────────────── */
-.qb-main {
-  padding: 2rem 1rem;
-}
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Main Container                                                               */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+.qb-main { padding: 2rem 1rem; }
+
 .qb-container {
   width: 95%;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: var(--bg-container);
   border-radius: 12px;
   padding: 3rem 2rem 3.5rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 20px var(--shadow-light);
   position: relative;
   overflow: hidden;
 }
@@ -44,51 +109,46 @@ body {
   animation: fadeInContainer 0.7s ease forwards;
 }
 @keyframes fadeInContainer {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Titles & Subtitles                                                           */
+/* ──────────────────────────────────────────────────────────────────────────────── */
 .qb-title {
   font-size: 2.2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   text-align: center;
-  color: #222;
+  color: var(--text-primary);
 }
 .qb-subtitle {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-subtitle);
   margin-bottom: 2rem;
   text-align: center;
 }
 
-
-/* ─── Language Support ─────────────────────────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Language Support                                                             */
+/* ──────────────────────────────────────────────────────────────────────────────── */
 .qb-language {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   margin: 20px 0;
-  font-family: 'Poppins', 'Roboto', sans-serif;
   color: var(--brand-color);
   font-size: 16px;
-}
-
-.qb-language label {
-  font-weight: 600;
 }
 
 .qb-select {
   padding: 8px 12px;
   border: 2px solid var(--brand-color);
   border-radius: 6px;
-  background: white;
+  background: var(--bg-container);
   color: var(--brand-color);
   font-family: inherit;
   font-size: 15px;
@@ -96,56 +156,54 @@ body {
   outline: none;
   transition: all 0.3s ease;
 }
-
 .qb-select:hover {
   background-color: rgba(var(--brand-color-rgb), 0.05);
 }
-
 .qb-select:focus {
   box-shadow: 0 0 0 3px rgba(var(--brand-color-rgb), 0.25);
 }
 
-/* ─── Tabs Containers ─────────────────────────────────────────────────────────── */
-.qb-toolbar {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1.5rem;
-  overflow-x: auto;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-}
-.qb-section-group {
-  flex-shrink: 0;
-  min-width: 250px; /* adjust if needed */
-}
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Tabs & Toolbars                                                              */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+.qb-toolbar { display: flex; flex-wrap: nowrap; gap: 1.5rem; overflow-x: auto; margin-bottom: 1.5rem; }
+.qb-section-group { flex-shrink: 0; min-width: 250px; }
 
 .qb-tabs {
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-default);
   margin-bottom: 1rem;
 }
-.qb-section {
-  margin: 1rem 0;
-}
-.qb-section-title {
-  font-family: 'Poppins', 'Roboto', sans-serif;
-  color: var(--brand-color);
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 2px;
-  padding-left: 2px;
-}
-/* Tooltip Style */
-.qb-tab[data-tooltip] {
-  position: relative;
+.qb-tab {
+  white-space: nowrap;
+  padding: 0.75rem 1.25rem;
+  margin-right: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-tab);
+  border: 1px solid var(--border-default);
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.qb-tab:hover { background-color: var(--bg-tab-hover); }
+.qb-tab.active {
+  background-color: var(--brand-color);
+  color: var(--text-light);
+  border-color: var(--brand-color);
 }
 
+/* Tooltip */
+.qb-tab[data-tooltip] {
+  position: relative;
+}
 .qb-tab[data-tooltip]::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 125%; /* Above tab */
+  bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #111;
@@ -153,106 +211,59 @@ body {
   font-size: 12px;
   padding: 6px 10px;
   border-radius: 4px;
-  white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
   z-index: 99;
 }
-/* RTL Language support */
-html[dir="rtl"] {
-  direction: rtl;
-  text-align: right;
-}
-.qb-tab[data-tooltip]:hover::after {
-  opacity: 1;
-}
-.qb-tabs-mode {
-  margin-bottom: 0.5rem; /* Slight gap between mode & style rows */
-}
-.qb-tab {
-  white-space: nowrap; /* prevent line breaks */
-  padding: 0.75rem 1.25rem;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  background-color: #f9f9f9;
-  margin-right: 0.5rem;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  font-size: 0.95rem;
-  color: #444;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.qb-tab:hover {
-  background-color: #eee;
-}
-.qb-tab.active {
-  background-color: var(--brand-color);
-  color: #fff;
-  border-color: var(--brand-color);
-}
+.qb-tab[data-tooltip]:hover::after { opacity: 1; }
+
+/* Section Titles */
 .qb-section-title {
-    cursor: auto;
-    border: none;
-    background: none;
-    font-size: 1rem;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  color: var(--brand-color);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  padding-left: 2px;
+  cursor: auto;
+  background: none;
+  border: none;
 }
 
-/* ─── Tool Sections (Input / Output) ───────────────────────────────────────────── */
-.qb-tool {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-.qb-section {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
-}
-.qb-label {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: #444;
-}
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Tool Sections (Input / Output)                                               */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+.qb-tool { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.qb-section { display: flex; flex-direction: column; margin: 1rem 0; }
+.qb-label { font-weight: 500; color: var(--text-secondary); }
+.input-upper-part { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
+.output-upper-part { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
 
-/* Container for textarea + button */
-.qb-textarea-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* Improved .qb-textarea styling */
+.qb-textarea-container { position: relative; display: flex; align-items: center; }
 .qb-textarea {
   width: 100%;
   resize: vertical;
   padding: 2rem 4rem 1rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-default);
   border-radius: 8px;
   font-size: 1rem;
+  color: var(--text-secondary);
   min-height: 300px;
-  background-color: #fafafa;
+  background-color: var(--bg-input);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
-
-.qb-textarea:hover {
-  background-color: #fff;
-}
-
+.qb-textarea:hover { background-color: var(--bg-container); }
 .qb-textarea:focus {
   outline: none;
   border-color: var(--brand-color);
   box-shadow: 0 0 0 3px rgba(var(--brand-color-rgb), 0.15);
 }
 
-/* Small button inside textarea container */
 .qb-textarea-button {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid #ccc;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
   border-radius: 6px;
   padding: 0.3rem 0.6rem;
   font-size: 0.85rem;
@@ -260,57 +271,30 @@ html[dir="rtl"] {
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 .qb-textarea-button:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--text-secondary);
 }
 
-/* ─── Live Counter ─────────────────────────────────────────────────────────────── */
-.qb-count {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.qb-input-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.5rem;
-}
+/* Counter & Footer */
+.qb-count { margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-subtitle); }
+.qb-input-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
 
 .qb-upload-btn {
   font-size: 0.85rem;
-  color: #444;
-  background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 0.3rem 0.7rem;
   cursor: pointer;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
-.qb-upload-btn:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+.qb-upload-btn:hover { background-color: var(--bg-tab-hover); box-shadow: 0 2px 6px var(--shadow-light); }
 
-.file-info {
-  font-size: 0.9rem;
-  color: #666;
-  margin-right: 12px;
-  display: inline-block;
-}
+.file-info { font-size: 0.9rem; color: var(--text-subtitle); margin-right: 12px; display: inline-block; }
+.hidden { display: none !important; }
 
-.hidden {
-  display: none !important;
-}
-
-/* ─── Buttons & Actions ───────────────────────────────────────────────────────── */
-.qb-actions {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Buttons & Actions                                                             */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+.qb-actions { margin-top: 2rem; display: flex; justify-content: flex-end; gap: 1rem; }
 .qb-button {
   padding: 0.8rem 1.8rem;
   border: none;
@@ -322,7 +306,7 @@ html[dir="rtl"] {
 }
 .qb-button--animated:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-light);
 }
 .qb-button--animated:active {
   transform: translateY(0);
@@ -334,91 +318,78 @@ html[dir="rtl"] {
     var(--brand-gradient-start),
     var(--brand-gradient-end)
   );
-  color: #fff;
-  /* box-shadow: 0 4px 12px rgba(255, 87, 51, 0.4); */
+  color: var(--text-light);
 }
 .qb-button--primary:hover {
   background: linear-gradient(135deg, var(--brand-color), var(--brand-gradient-end));
 }
 .qb-button--secondary {
-  background-color: #f0f0f0;
-  color: #444;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-tab);
+  color: var(--text-secondary);
+  box-shadow: 0 2px 6px var(--shadow-light);
 }
 .qb-button--secondary:hover {
-  background-color: #e0e0e0;
+  background-color: var(--bg-tab-hover);
 }
 
-/* ─── Loader & Error ──────────────────────────────────────────────────────────── */
+/* Loader & Disabled */
 .qb-btn-spinner {
   display: inline-block;
-  width: 18px;
-  height: 18px;
+  width: 18px; height: 18px;
   margin-left: 10px;
-  vertical-align: middle;
-  border: 3px solid #ffffff;
+  border: 3px solid var(--text-light);
   border-top: 3px solid transparent;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
-
+@keyframes spin { to { transform: rotate(360deg); } }
 .qb-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-
-
-
-
-/* highlight containers */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Highlight & Diff Styles                                                       */
+/* ──────────────────────────────────────────────────────────────────────────────── */
 .qb-highlight-container {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-default);
   padding: 1rem;
   border-radius: 4px;
   white-space: pre-wrap;
-  font-family: inherit;
-  line-height: 1.5;
 }
 
-/* diff styles */
 .diff-added {
-  background: #d4edda;
-  color: #155724;
+  background: var(--diff-added-bg);
+  color: var(--diff-added-text);
   border-radius: 3px;
   padding: 0 2px;
 }
 .diff-deleted {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--diff-del-bg);
+  color: var(--diff-del-text);
   text-decoration: line-through;
   border-radius: 3px;
   padding: 0 2px;
 }
 
-
-/* === Why Snip Text Paraphraser Section (Enhanced) === */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  “Why Snip Text” Section                                                       */
+/* ──────────────────────────────────────────────────────────────────────────────── */
 .qb-why-snip {
-  background: linear-gradient(135deg, #f1f4ff 0%, #fdfdff 100%);
+  background: linear-gradient(135deg, var(--bg-highlight) 0%, var(--bg-container) 100%);
   position: relative;
   overflow: hidden;
   padding: 2rem 20px;
-  font-family: 'Poppins', sans-serif;
-  z-index: 1;
 }
-
 .qb-svg-bg::before {
   content: '';
   position: absolute;
-  top: -100px;
-  left: -150px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle at center, #aab6fe33 0%, transparent 70%);
+  top: -100px; left: -150px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle at center, var(--bg-svg-circle) 0%, transparent 70%);
   transform: rotate(30deg);
   z-index: 0;
 }
-
 .qb-why-container {
   max-width: 1200px;
   margin: auto;
@@ -426,53 +397,45 @@ html[dir="rtl"] {
   position: relative;
   z-index: 2;
 }
-
 .qb-why-title {
   font-size: 2.4rem;
   font-weight: 600;
-  color: #1c1c1e;
+  color: var(--text-primary);
   margin-bottom: 50px;
 }
-
 .qb-why-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
   text-align: left;
 }
-
 .qb-why-box {
-  background: white;
+  background: var(--bg-container);
   padding: 30px 25px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px var(--shadow-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
 }
-
 .qb-why-box:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 40px var(--shadow-medium);
 }
-
 .qb-why-box h3 {
   font-size: 1.2rem;
-  color: #253858;
+  color: var(--text-secondary);
   margin: 15px 0 10px;
 }
-
 .qb-why-box p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #4e5969;
+  color: var(--text-muted);
 }
-
 .qb-icon {
   font-size: 1.8rem;
-  color: #4c5fd5;
+  color: var(--brand-color);
 }
-
 /* Reveal Animation */
 .fade-in-box.fade-in-visible {
   opacity: 1;
@@ -480,129 +443,48 @@ html[dir="rtl"] {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-
-
-
-
-/* ─── Responsive Breakpoints ──────────────────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────────────────────────── */
+/*  Responsive Breakpoints                                                        */
+/* ──────────────────────────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .qb-container {
-    padding: 2rem 1.5rem 2.5rem;
-  }
+  .qb-container { padding: 2rem 1.5rem 2.5rem; }
 }
-
-/*  ─── Small‐Screen Tabs: make horizontally scrollable ─────────────────────────── */
 @media (max-width: 768px) {
-   .qb-language {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .qb-select {
-    width: 100%;
-  }
-  /* Keep the two tab rows on one line each, allow horizontal scrolling */
+  /* .qb-language { flex-direction: column; align-items: flex-start; } */
+  .qb-select { width: 100%; }
   .qb-tabs {
-  display: flex;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    flex-wrap: nowrap; /* prevent wrapping so tabs scroll horizontally */
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 1rem;
-    scroll-padding-bottom: 1rem;
+    display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap; gap: 0.5rem; margin-bottom: 0.75rem;
+    padding-bottom: 1rem; scroll-padding-bottom: 1rem;
   }
-  .qb-tab {
-    flex: none; /* each tab won’t shrink or wrap; user scrolls instead */
-  }
-  /* Slight padding reduction on container */
-  .qb-container {
-    padding: 2rem 1rem 2.5rem;
-  }
-    .qb-tool {
-    grid-template-columns: 1fr;
-  }
-  /* Make mode & style rows a bit tighter */
-  .qb-tabs-mode {
-    margin-bottom: 0.5rem;
-  }
-  .qb-tabs-style {
-    margin-bottom: 1rem;
-  }
-  
-  .qb-button {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
+  .qb-tab { flex: none; }
+  .qb-container { padding: 2rem 1rem 2.5rem; }
+  .qb-tool { grid-template-columns: 1fr; }
+  .qb-tabs-mode { margin-bottom: 0.5rem; }
+  .qb-tabs-style { margin-bottom: 1rem; }
+  .qb-button { padding: 0.6rem 1rem; font-size: 0.9rem; }
 }
-
 @media (max-width: 480px) {
-  .qb-container {
-    padding: 1.5rem 1rem 2rem;
-  }
-  .qb-title {
-    font-size: 1.8rem;
-  }
-  .qb-subtitle {
-    font-size: 0.95rem;
-  }
-  /* Reduce tab padding and font size */
-  .qb-tab {
-    font-size: 0.85rem;
-    padding: 0.6rem 1rem;
-  }
-  /* Ensure tabs still scroll smoothly */
-  .qb-tabs {
-    gap: 0.4rem;
-  }
-  .qb-textarea {
-    font-size: 0.95rem;
-    min-height: 200px;
-  }
-  .qb-count {
-    font-size: 0.85rem;
-  }
-  .qb-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
-  }
+  .qb-container { padding: 1.5rem 1rem 2rem; }
+  .qb-title { font-size: 1.8rem; }
+  .qb-subtitle { font-size: 0.95rem; }
+  .qb-tab { font-size: 0.85rem; padding: 0.6rem 1rem; }
+  .qb-tabs { gap: 0.4rem; }
+  .qb-textarea { font-size: 0.95rem; min-height: 200px; }
+  .qb-count { font-size: 0.85rem; }
+  .qb-button { padding: 0.5rem 1rem; font-size: 0.75rem; }
 }
-
 @media (max-width: 360px) {
-  .qb-container {
-    padding: 1rem 0.75rem 1.5rem;
-    border-radius: 6px;
-  }
-  .qb-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-  }
-  .qb-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1.25rem;
-  }
-  /* Further shrink tabs */
-  .qb-tab {
-    font-size: 0.8rem;
-    padding: 0.5rem 0.75rem;
-    margin-right: 0.4rem;
-  }
-  .qb-tabs {
-    gap: 0.3rem;
-  }
-  .qb-tool {
-    gap: 1rem;
-  }
-  .qb-textarea {
-    font-size: 0.85rem;
-    min-height: 120px;
-  }
-  .qb-count {
-    font-size: 0.8rem;
-  }
+  .qb-container { padding: 1rem 0.75rem 1.5rem; border-radius: 6px; }
+  .qb-title { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  .qb-subtitle { font-size: 0.9rem; margin-bottom: 1.25rem; }
+  .qb-tab { font-size: 0.8rem; padding: 0.5rem 0.75rem; margin-right: 0.4rem; }
+  .qb-tabs { gap: 0.3rem; }
+  .qb-tool { gap: 1rem; }
+  .qb-textarea { font-size: 0.85rem; min-height: 120px; }
+  .qb-count { font-size: 0.8rem; width: 50%; }
   .qb-button {
-    width: 100%;
-    max-width: 300px;
-    padding: 0.3rem 1rem;
-    font-size: 0.5rem;
+    width: 100%; max-width: 300px;
+    padding: 0.3rem 1rem; font-size: 0.5rem;
   }
 }

@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const accessDurationElement = document.getElementById("access-duration");
   const timeRemainingElement = document.getElementById("time-remaining");
   const modelLinksContainer = document.getElementById("modelLinks");
-  const errorDiv = document.getElementById("dashboard-error");
 
   // Protect dashboard access
   if (!token) {
@@ -74,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       href: "https://turnitindetect.org/login",
       img: "images/turnitin-logo.png",
       title: "Turnitin 1",
-      description: "Plagiarism Check & AI Detection",
+      description: "Copy the info below and click the button to open Turnitin now.",
       model: "Turnitindetect",
     },
     turnitin2: {
