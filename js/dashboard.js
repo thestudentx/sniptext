@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const allModelCards = {
     turnitin1: {
       id: "model-turnitin-1",
-      href: "https://turnitindetect.org/login",
+      href: "https://turndetect.com/login",
       img: "images/turnitin-logo.png",
       title: "Turnitin 1",
       description: "Copy the info below and click the button to open Turnitin now.",
@@ -238,7 +238,7 @@ models.forEach((modelKey) => {
       btnPass.textContent = "Copy Password";
       btnPass.className = "copy-btn";
       btnPass.title = "Click to copy";                    // Tooltip on hover
-      btnPass.dataset.value = "Plag@123";                  // (Replace dynamically as needed)
+      btnPass.dataset.value = "sniptext.checkai";                  // (Replace dynamically as needed)
 
       btnPass.addEventListener("click", () => {
         navigator.clipboard.writeText(btnPass.dataset.value);

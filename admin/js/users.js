@@ -34,11 +34,41 @@ async function loadUsers() {
 
     users.forEach((u, i) => {
       const row = document.createElement('tr');
+
+      // ① Compute expiry status
+      const expiryDate = new Date(u.accessDuration);
+      const now        = new Date();
+      const diffDays   = Math.ceil((expiryDate - now) / (1000 * 60 * 60 * 24));
+      const isExpired  = diffDays < 0;
+      const isExpiring = diffDays >= 2 && diffDays <= 5;
+
+      // ② Build unified expiry cell
+      const statusClass = isExpired
+        ? 'expired-text'
+        : isExpiring
+          ? 'expiring-text'
+          : '';
+
+      const badge = isExpired
+        ? '<span class="expired-badge">Expired</span>'
+        : isExpiring
+          ? '<span class="expiring-badge">Expiring Soon</span>'
+          : '';
+
+      const expiryCell = `
+        <td data-label="Expiry">
+          <span class="${statusClass}">
+            ${expiryDate.toLocaleDateString()}
+          </span>
+          ${badge}
+        </td>
+      `;
+
       row.innerHTML = `
         <td data-label="No.">${i + 1}</td>
         <td data-label="Email">${u.email}</td>
         <td data-label="Access">${u.plan}</td>
-        <td data-label="Expiry">${new Date(u.accessDuration).toLocaleDateString()}</td>
+        ${expiryCell}
         <td data-label="APIs">${(u.modelsAccess || []).join(', ')}</td>
         <td data-label="Credits">${typeof u.credits === 'number' ? u.credits : 0}</td>
         <td data-label="Actions">
@@ -215,33 +245,72 @@ clearSearch.addEventListener('click', () => {
 });
 
 
+// ——————————————————————————————
+// Search & filter users
+// ——————————————————————————————
 function filterUsers() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const tbody = document.getElementById('userTableBody');
   const list = window._loadedUsers || [];
+
   const filtered = list.filter(u =>
     u.email.toLowerCase().includes(q) ||
     u.plan.toLowerCase().includes(q) ||
     (u.modelsAccess || []).some(m => m.toLowerCase().includes(q))
   );
 
-  tbody.innerHTML = filtered.length
-    ? filtered.map((u, i) => `
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="7">No users match your search.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map((u, idx) => {
+    // ① Compute expiry status
+    const expiryDate = new Date(u.accessDuration);
+    const now        = new Date();
+    const diffDays   = Math.ceil((expiryDate - now) / (1000 * 60 * 60 * 24));
+    const isExpired  = diffDays < 0;
+    const isExpiring = diffDays >= 2 && diffDays <= 5;
+
+    // ② Build unified expiry cell
+    const statusClass = isExpired
+      ? 'expired-text'
+      : isExpiring
+        ? 'expiring-text'
+        : '';
+
+    const badge = isExpired
+      ? '<span class="expired-badge">Expired</span>'
+      : isExpiring
+        ? '<span class="expiring-badge">Expiring Soon</span>'
+        : '';
+
+    const expiryCell = `
+      <td data-label="Expiry">
+        <span class="${statusClass}">
+          ${expiryDate.toLocaleDateString()}
+        </span>
+        ${badge}
+      </td>
+    `;
+
+    return `
       <tr>
-        <td data-label="No.">${i + 1}</td>
+        <td data-label="No.">${idx + 1}</td>
         <td data-label="Email">${u.email}</td>
         <td data-label="Access">${u.plan}</td>
-        <td data-label="Expiry">${new Date(u.accessDuration).toLocaleDateString()}</td>
+        ${expiryCell}
         <td data-label="APIs">${(u.modelsAccess || []).join(', ')}</td>
-        <td data-label="Credits">${u.credits || 0}</td>
+        <td data-label="Credits">${typeof u.credits === 'number' ? u.credits : 0}</td>
         <td data-label="Actions">
           <button class="btn" onclick="editUser(${list.indexOf(u)})">Edit</button>
           <button class="btn" onclick="deleteUser('${u._id}')">Delete</button>
         </td>
-      </tr>`
-    ).join('')
-    : `<tr><td colspan="7">No users match your search.</td></tr>`;
+      </tr>
+    `;
+  }).join('');
 }
+
 
 // ——————————————————————————————
 // Initial load

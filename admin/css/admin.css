@@ -160,6 +160,40 @@ body {
 }
 
 
+/* for accounts expiring soon */
+.expiring-text {
+  color: #c90;      /* amber-ish */
+  font-weight: bold;
+}
+
+.expiring-badge {
+  background: #c90;
+  color: var(--color-text-dark);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+/* red text for expired dates */
+.expired-text {
+  color: var(--color-used-often);
+  font-weight: bold;
+}
+
+/* a little badge next to the date */
+.expired-badge {
+  background: var(--color-used-often);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+
+
 /* USER SEARCH BAR */
 .table-controls {
   display: flex;

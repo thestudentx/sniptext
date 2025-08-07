@@ -22,25 +22,6 @@
   --font-body: 'Roboto', 'Arial', sans-serif;
 }
 
-[data-theme="dark"] {
-  --color-primary: #60a5fa; /* Lighter blue for better contrast */
-  --color-accent: #93c5fd; /* Softer accent blue */
-  --color-bg-light: #0f172a; /* Becomes dark background */
-  --color-bg-dark: #f3f4f6; /* Use light bg for elements like cards if needed */
-  --color-white: #1e293b; /* Soft dark for white elements */
-  --color-text-dark: #f9fafb; /* Light text on dark bg */
-  --color-text-light: #9ca3af; /* Muted text */
-  --color-border: #334155; /* Subtle border */
-  --color-used-often: #f97316; /* Adjusted orange */
-  --color-footer-bg: #0d0f1f; /* Slightly deeper footer */
-
-  --gradient-hero-end: #0b0e1d;
-  --gradient-timeline-end: #0b0e1d;
-  --gradient-cta-start: var(--color-accent);
-  --gradient-cta-end: #fb923c;
-}
-
-
 /* Reset & Base */
 * {
   margin: 0;
