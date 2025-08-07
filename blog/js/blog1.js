@@ -7,15 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const full = btn.nextElementSibling;
       full.classList.toggle('expanded');
       btn.textContent = full.classList.contains('expanded') ? 'Show Less' : 'Read More';
-      // smooth scroll into view when expanding on small screens
+
+      // On expand, gently scroll just enough to reveal content
       if (full.classList.contains('expanded')) {
-        full.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        full.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',    // <-- only scroll minimally
+          inline: 'nearest'
+        });
       }
     });
   });
 
   // Optional: Intersection Observer to trigger CSS animations when cards scroll into view
-  const cards = document.querySelectorAll('.post-card');
+  const cards = document.querySelectorAll('.post-item');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

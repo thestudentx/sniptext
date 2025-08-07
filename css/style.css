@@ -1,18 +1,45 @@
 :root {
+  /* COLOR PALETTE */
   --color-primary: #1D4ED8;
   --color-accent: #3B82F6;
   --color-bg-light: #F3F4F6;
+  --color-bg-dark: #0F172A;
   --color-white: #ffffff;
   --color-text-dark: #1F2937;
-  --color-text-light: #6B7280; 
+  --color-text-light: #6B7280;
   --color-border: #E5E7EB;
   --color-used-often: #e85d27;
   --color-footer-bg: #1d1f2f;
+
+  /* ADDITIONAL COMPONENT COLORS */
+  --gradient-hero-end: #23253d;
+  --gradient-timeline-end: #23253d;
+  --gradient-cta-start: var(--color-accent);
+  --gradient-cta-end: #ff7c4c;
 
   /* FONT STACK */
   --font-heading: 'Poppins', 'Segoe UI', sans-serif;
   --font-body: 'Roboto', 'Arial', sans-serif;
 }
+
+[data-theme="dark"] {
+  --color-primary: #60a5fa; /* Lighter blue for better contrast */
+  --color-accent: #93c5fd; /* Softer accent blue */
+  --color-bg-light: #0f172a; /* Becomes dark background */
+  --color-bg-dark: #f3f4f6; /* Use light bg for elements like cards if needed */
+  --color-white: #1e293b; /* Soft dark for white elements */
+  --color-text-dark: #f9fafb; /* Light text on dark bg */
+  --color-text-light: #9ca3af; /* Muted text */
+  --color-border: #334155; /* Subtle border */
+  --color-used-often: #f97316; /* Adjusted orange */
+  --color-footer-bg: #0d0f1f; /* Slightly deeper footer */
+
+  --gradient-hero-end: #0b0e1d;
+  --gradient-timeline-end: #0b0e1d;
+  --gradient-cta-start: var(--color-accent);
+  --gradient-cta-end: #fb923c;
+}
+
 
 /* Reset & Base */
 * {
@@ -24,8 +51,8 @@
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
 }
 
 
@@ -71,17 +98,6 @@ body {
   background-color: var(--color-primary);
   transform: rotate(-10deg);
 }
-
-/* Glow and slight scale on hover */
-.logo a:hover {
-  /* transform: scale(1.05); */
-}
-
-.logo a:hover::after {
-  /* width: 100%; */
-}
-
-
 
 .nav-links {
   display: flex;
@@ -210,7 +226,7 @@ body {
   display: block;
   width: 25px;
   height: 3px;
-  background: #fff;
+  background: var(--color-white);
   transition: 0.3s ease;
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
@@ -252,8 +268,8 @@ body {
   position: absolute;
   top: 110%;
   right: 0;
-  background: white;
-  border: 1px solid #ccc;
+  background: var(--color-white);
+  border: 1px solid var(--color-bg-light);
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   z-index: 1000;
@@ -263,13 +279,13 @@ body {
 .dropdown-menu a {
   display: block;
   padding: 10px 16px;
-  color: #333;
+  color: var(--color-primary);
   text-decoration: none;
   transition: background 0.3s ease;
 }
 
 .dropdown-menu a:hover {
-  background-color: #f3f4f6;
+  background-color: var(--color-bg-light);
 }
 
 /* Show dropdown on hover (desktop) */
@@ -297,7 +313,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, var(--color-primary), #23253d);
+  background: linear-gradient(135deg, var(--color-primary), var(--gradient-hero-end));
   color: var(--color-white);
   flex-wrap: wrap;
   min-height: 100vh;
@@ -329,10 +345,10 @@ body {
 
 .cta-btn {
   display: inline-block;
-  background: linear-gradient(135deg, var(--color-accent), #ff7c4c);
-  color: #fff;
+  background: linear-gradient(135deg, var(--gradient-cta-start), var(--gradient-cta-end));
+  color: var(--color-white);
   padding: 12px 24px;
-  font-family: var(--font-heading); /* Poppins if you're using the system */
+  font-family: var(--font-heading); 
   font-weight: 600;
   font-size: 1rem;
   border: none;
@@ -353,7 +369,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #ff7c4c, var(--color-accent));
+  background: linear-gradient(135deg, var(--gradient-cta-end), var(--gradient-cta-start));
   transition: all 0.4s ease;
   z-index: -1;
 }
@@ -368,7 +384,7 @@ body {
 }
 
 .cta-btn:hover {
-  color: #fff;
+  color: var(--color-white);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
@@ -438,9 +454,10 @@ body {
 .feature-box {
   box-sizing: border-box;
   height: 260px;
-  background: rgba(255, 255, 255, 0.2); /* Glass effect */
-  border: 1px solid white;
-  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-bg-light);
+  color: var(--color-text-dark);
+  box-shadow: 12px 17px 51px var(--color-text-light);
   backdrop-filter: blur(8px);
   border-radius: 17px;
   text-align: center;
@@ -452,12 +469,11 @@ body {
   justify-content: center;
   padding: 20px;
   user-select: none;
-  color: var(--color-text-dark);
 }
 
 .feature-box:hover {
   transform: scale(1.05);
-  border-color: #e85d27; /* slight accent border on hover */
+  border-color: var(--color-used-often);
 }
 
 .feature-box:active {
@@ -488,7 +504,7 @@ body {
 /* ------------------------------------------------------------------------------------- */
 .timeline-section {
   position: relative;
-  background: linear-gradient(135deg, var(--color-primary), #23253d);
+  background: linear-gradient(135deg, var(--color-primary), var(--gradient-timeline-end));
   padding: 100px 20px;
   text-align: center;
   color: var(--color-white);
@@ -559,10 +575,10 @@ body {
   top: 6px;
   width: 16px;
   height: 16px;
-  background-color: #e85d27;
+  background-color: var(--color-used-often);
   border-radius: 50%;
   border: 3px solid var(--color-white);
-  box-shadow: 0 0 0 4px #e85d2733;
+  box-shadow: 0 0 0 4px rgba(232,93,39,0.2);
   transition: transform 0.4s ease;
 }
 
@@ -571,7 +587,7 @@ body {
 }
 
 .timeline-content {
-  background: linear-gradient(135deg, var(--color-primary), #10328d);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   backdrop-filter: blur(6px);
   padding: 20px 25px;
   border-radius: 12px;
@@ -626,7 +642,7 @@ body {
 .how-it-works {
   background-color: var(--color-white);
   padding: 60px 20px;
-  background: linear-gradient(135deg, #f9f9f9 0%, #e6f0ff 100%);
+  background: linear-gradient(135deg, var(--color-bg-light) 0%, #e6f0ff 100%);
   background-image: radial-gradient(circle at 10% 20%, rgba(0, 128, 255, 0.03) 0%, transparent 70%), 
                     radial-gradient(circle at 90% 80%, rgba(255, 0, 150, 0.03) 0%, transparent 70%);
 
@@ -679,7 +695,7 @@ body {
   left: 0;
   width: 300%;
   height: 300%;
-  background-color: #e85d27; /* Your desired solid orange color */
+  background-color: var(--color-used-often);
   transform: translate(-100%, -100%) rotate(45deg);
   transition: transform 1.1s ease;
   z-index: -1;
@@ -699,7 +715,7 @@ body {
   font-size: 2.5rem;
   margin-bottom: 20px;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-white);
   width: 64px;
   height: 64px;
   display: flex;
@@ -749,7 +765,7 @@ body {
 /* ------------------------------------------------------------------------------------- */
 .use-cases-section {
   padding: 5rem 2rem;
-  background-color: #0f172a; /* dark slate */
+  background-color: var(--color-bg-dark);
   text-align: center;
 }
 
@@ -781,7 +797,7 @@ body {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-text-dark);
   border-radius: 16px;
   padding: 2rem 1.5rem;
   color: var(--color-white);
@@ -901,14 +917,11 @@ body {
   flex: 0 0 100%;
   max-width: 100%;
   box-sizing: border-box;
-
-  /* ✅ Add these to center content */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-
   background: var(--color-bg-light);
   padding: 2rem;
   border-radius: 16px;
@@ -948,7 +961,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-white);
   border: none;
   padding: 0.5rem 0.8rem;
   font-size: 1.5rem;
@@ -1012,7 +1025,7 @@ body {
 .faq-item {
   border: none;
   border-radius: 0;
-  background-color: #f9fafb;
+  background-color: var(--color-bg-light);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease-out;
@@ -1059,7 +1072,7 @@ body {
   max-height: 0;
   transition: max-height 0.5s ease;
   padding: 0 0;
-  background-color: #fff;
+  background-color: var(--color-white);
 }
 
 .faq-answer p {
@@ -1149,7 +1162,7 @@ footer {
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--color-text-dark);
   padding-top: 1rem;
   margin-top: 1.5rem;
   font-size: 0.85rem;

@@ -1,25 +1,25 @@
 /* === Base Colors & Fonts === */
 :root {
-  --primary: #1D4ED8;
-  --accent: #3B82F6;
-  --orange: #e85d27;
-  --bg-light: #F3F4F6;
-  --text-dark: #1F2937;
-  --text-muted: #6B7280;
-  --white: #ffffff;
+  --color-primary: #1D4ED8;
+  --color-accent: #3B82F6;
+  --color-used-often: #e85d27;
+  --color-bg-light: #F3F4F6;
+  --color-text-dark: #1F2937;
+  --color-text-light: #6B7280;
+  --color-white: #ffffff;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
 }
 
 /* === Section: Hero === */
 .about-hero {
-  background: linear-gradient(var(--primary), var(--accent));
-  color: var(--white);
+  background: linear-gradient(var(--color-primary), var(--color-accent));
+  color: var(--color-white);
   text-align: center;
   padding: 4rem 1rem;
 }
@@ -41,7 +41,7 @@ body {
 /* === Section: Info Cards === */
 .about-cards {
   padding: 4rem 1rem;
-  background-color: var(--bg-light);
+  background-color: var(--color-bg-light);
 }
 
 .card-grid {
@@ -52,17 +52,17 @@ body {
 }
 
 .info-card {
-  background-color: var(--white);
+  background-color: var(--color-white);
   border-radius: 20px;
   padding: 2rem;
   max-width: 500px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
-  border-left: 6px solid var(--primary);
+  border-left: 6px solid var(--color-primary);
 }
 
 .info-card.accent {
-  border-left: 6px solid var(--orange);
+  border-left: 6px solid var(--color-used-often);
 }
 
 .info-card:hover {
@@ -73,18 +73,18 @@ body {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--text-dark);
+  color: var(--color-text-dark);
 }
 
 .card-text {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: var(--color-text-light);
 }
 
 /* === CTA Section === */
 .cta-wrapper {
-  background-color: var(--primary);
+  background-color: var(--color-primary);
   padding: 4rem 1rem;
 }
 
@@ -102,7 +102,7 @@ body {
 }
 
 .cta-heading {
-  color: var(--accent);
+  color: var(--color-accent);
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -116,13 +116,12 @@ body {
 }
 
 /* CTA Button */
-
 .btn-cta {
   display: inline-block;
-  background: linear-gradient(135deg, var(--color-accent), #ff7c4c);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-accent), var(--gradient-cta-end));
+  color: var(--color-white);
   padding: 12px 24px;
-  font-family: var(--font-heading); /* Poppins if you're using the system */
+  font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1rem;
   border: none;
@@ -143,7 +142,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #ff7c4c, var(--color-accent));
+  background: linear-gradient(135deg, var(--gradient-cta-end), var(--color-accent));
   transition: all 0.4s ease;
   z-index: -1;
 }
@@ -158,19 +157,10 @@ body {
 }
 
 .btn-cta:hover {
-  color: #fff;
+  color: var(--color-white);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
-
-
-
-
-
-
-
-
-
 
 /* === Responsive === */
 @media (max-width: 768px) {
