@@ -176,29 +176,3 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
-
-.login-message {
-  min-height: 24px;
-  margin-bottom: 1rem;
-  font-size: 14px;
-  text-align: center;
-  color: #e85d27;
-}
-
-/* Loading message */
-/* Loader Message Styling */
-#loader-message {
-  color: white;          /* matches your existing text color */
-  font-size: 1.1rem;           /* bump it up a bit so folks actually see it */
-  margin-top: 1rem;            /* give it breathing room beneath the animation */
-  text-align: center;          /* center the text under the loader */
-  min-height: 1.4em;           /* reserve space even if the text is short */
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* When showing a new message, we’ll toggle a class to fade it in: */
-#loader-message.show {
-  opacity: 1;
-}
-

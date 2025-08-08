@@ -1271,7 +1271,6 @@ footer {
 .toast + .toast {
   margin-top: 1rem;
 }
-
 /* Animations */
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(20px); }

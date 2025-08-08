@@ -1,69 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://checkai.pro/</loc>
     <priority>1.00</priority>
   </url>
-
-  <url>
-    <loc>https://checkai.pro/dashboard</loc>
-    <priority>0.90</priority>
-  </url>
-
   <url>
     <loc>https://checkai.pro/features</loc>
     <priority>0.90</priority>
   </url>
-
   <url>
     <loc>https://checkai.pro/about</loc>
     <priority>0.80</priority>
   </url>
-
   <url>
     <loc>https://checkai.pro/contact</loc>
     <priority>0.80</priority>
   </url>
-
-  <url>
-    <loc>https://checkai.pro/login</loc>
-    <priority>0.70</priority>
-  </url>
-
-  <url>
-    <loc>https://checkai.pro/register</loc>
-    <priority>0.70</priority>
-  </url>
-
   <url>
     <loc>https://checkai.pro/feedback</loc>
     <priority>0.60</priority>
   </url>
-
   <url>
     <loc>https://checkai.pro/privacy-policy</loc>
     <priority>0.60</priority>
   </url>
-
   <url>
     <loc>https://checkai.pro/terms-of-use</loc>
     <priority>0.60</priority>
   </url>
-
-  <url>
-    <loc>https://checkai.pro/admin</loc>
-    <priority>0.40</priority>
-  </url>
-
-  <url>
-    <loc>https://checkai.pro/admin-login</loc>
-    <priority>0.40</priority>
-  </url>
-
+  <!-- Blog posts -->
   <url>
     <loc>https://checkai.pro/blog/sniptext-blog</loc>
     <priority>0.85</priority>
   </url>
-
+  <url>
+    <loc>https://checkai.pro/blog/paraphrase-rewrite-summarize</loc>
+    <priority>0.85</priority>
+  </url>
+  <!-- Add other blog post URLs here -->
 </urlset>

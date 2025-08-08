@@ -18,10 +18,12 @@
   backdrop-filter: blur(3px);
   z-index: 9999;
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   pointer-events: all;
 }
+
 
 body.no-interaction * {
   pointer-events: none !important;
@@ -206,4 +208,34 @@ body.no-interaction * {
   63% { box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 12px 0 var(--key); }
   72% { box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 2px 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key); }
   81% { box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 12px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key); }
+}
+/* ------------------------------------------------------------------------------------- */
+/* LOADER TEXT STYLING */
+/* ------------------------------------------------------------------------------------- */
+#loader-text {
+  padding: 0.75rem 1.25rem;
+  max-width: 260px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  color: #ffffff;
+
+  background-color: rgba(47, 134, 235, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 0.5rem;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* toggles for fade-in / fade-out */
+#loader-text.visible {
+  opacity: 1;
+}
+#loader-text.hidden {
+  opacity: 0;
 }
