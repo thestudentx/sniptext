@@ -517,6 +517,108 @@ body {
   padding: var(--spacing-lg);
 }
 
+ /* Grammar FAQ — themed to your CSS variables */
+.grammar-faq {
+  max-width: 800px;
+  margin: var(--spacing-md) 0;
+  padding: calc(var(--spacing-md) * 1);
+  border-radius: var(--border-radius);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 18px var(--shadow-light);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+/* Question row */
+.grammar-faq dt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  font-weight: 600;
+  margin: 0.5rem 0 0.25rem 0;
+  cursor: pointer;
+  position: relative;
+  padding: calc(var(--spacing-sm) * 0.6) calc(var(--spacing-md) * 0.2);
+  color: var(--text-primary);
+  background: transparent;
+  border-radius: 6px;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Hover / focus affordance */
+.grammar-faq dt:hover,
+.grammar-faq dt:focus {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Caret */
+.grammar-faq dt::after {
+  content: "▸";
+  margin-left: var(--spacing-sm);
+  transform-origin: center;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  font-size: 0.95rem;
+  color: var(--accent-primary);
+}
+
+/* Answer block: animated collapse (max-height + opacity) */
+.grammar-faq dd {
+  margin: 0 0 var(--spacing-sm) 0;
+  padding: 0.6rem calc(var(--spacing-md) * 0.5);
+  color: var(--text-secondary);
+  background: transparent;
+  border-left: 3px solid rgba(0,0,0,0); /* visually becomes accent when open */
+  overflow: hidden;
+  max-height: 1000px; /* large enough for full content when open */
+  opacity: 1;
+  transition: max-height var(--transition-normal) ease, opacity var(--transition-fast) ease, border-color var(--transition-fast) ease;
+  font-size: var(--font-size-sm);
+  border-radius: 4px;
+}
+
+/* Closed state (hidden) */
+.grammar-faq dd.hidden {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-left-color: rgba(0,0,0,0);
+}
+
+/* When question is open, rotate caret and show accent border */
+.grammar-faq dt.open::after {
+  transform: rotate(90deg);
+  color: var(--accent-secondary);
+}
+.grammar-faq dt.open + dd {
+  border-left-color: var(--accent-primary);
+}
+
+/* Small improvements for inline code inside FAQ */
+.grammar-faq code {
+  background: var(--bg-tertiary);
+  padding: 0.12rem 0.35rem;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  font-size: 0.92em;
+  color: var(--text-primary);
+}
+
+/* Accessibility: visible focus outline */
+.grammar-faq dt:focus {
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.12);
+  outline: none;
+}
+
+
 
 /* Highlight Quote */
 .highlight-quote {
@@ -949,6 +1051,15 @@ body {
     flex-direction: column;
     align-items: flex-start;
   }
+  
+
+  .grammar-faq {
+    padding: calc(var(--spacing-sm) * 1.2);
+    font-size: var(--font-size-sm);
+  }
+  .grammar-faq dd {
+    font-size: 0.95rem;
+  }
 
   .bio-card {
     flex-direction: column;
@@ -1052,4 +1163,11 @@ a:focus {
     border: 1px solid #ccc;
   }
 }
-
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .grammar-faq dt,
+  .grammar-faq dt::after,
+  .grammar-faq dd {
+    transition: none !important;
+  }
+}
