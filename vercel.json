@@ -5,7 +5,10 @@
     { "source": "/admin/:path*",    "destination": "/admin/:path*" },
 
     { "source": "/blog/:blogslug",  "destination": "/blog/:blogslug.html" },
+    { "source": "/blog/sniptext-blog",      "destination": "/blog/blog.html" },
     { "source": "/blog/sniptext-blog",      "destination": "/blog/sniptext-blog.html" },
+    { "source": "/blog/paraphrase-rewrite-summarize",      "destination": "/blog/paraphrase-rewrite-summarize.html" },
+    { "source": "/blog/best-ai-writing-tools-2025",      "destination": "/blog/best-ai-writing-tools-2025.html" },
 
     { "source": "/",                "destination": "/index.html" },
     { "source": "/dashboard",       "destination": "/dashboard.html" },

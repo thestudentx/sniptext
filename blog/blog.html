@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary meta -->
+    <title>SnipText Blog — AI Writing Tools, Paraphrasing, Plagiarism & Practical Workflows</title>
+    <meta name="description" content="SnipText Blog — practical guides, tool reviews and responsible workflows for AI-assisted writing: paraphrasing, plagiarism checks, citation, grammar, AI-detection and publish-ready processes." />
+    <meta name="keywords" content="AI writing tools, paraphrasing, plagiarism checker, citation manager, grammar checker, AI detector, writing workflow, SnipText blog, paraphrase tools, Zotero, QuillBot, GPTZero" />
+    <meta name="author" content="Snip Text" />
+    <base href="/blog/">
+
+    <!-- Robots & referrer -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Canonical (set to blog root) -->
+    <link rel="canonical" href="https://checkai.pro/blog/" />
+
+    <!-- Social preview / Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SnipText" />
+    <meta property="og:title" content="SnipText Blog — AI Writing Tools, Paraphrasing, Plagiarism & Practical Workflows" />
+    <meta property="og:description" content="Practical guides and tool roundups for AI-assisted writing — paraphrase, citation, plagiarism checks, grammar and ethics. Workflows & reviews you can trust." />
+    <meta property="og:url" content="https://checkai.pro/blog/" />
+    <meta property="og:locale" content="en_US" />
+    <!-- Replace the image URL below with your actual preview image (1200x630 recommended) -->
+    <meta property="og:image" content="https://checkai.pro/assets/images/blog-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SnipText Blog — AI Writing Tools, Paraphrasing & Practical Workflows" />
+    <meta name="twitter:description" content="Practical guides and tool roundups for AI-assisted writing — paraphrase, citation, plagiarism checks, grammar and ethics." />
+    <meta name="twitter:image" content="https://checkai.pro/assets/images/blog-og.png" />
+    <!-- optionally add your Twitter handle -->
+    <meta name="twitter:site" content="@SnipText" />
+
+    <!-- Theme & mobile -->
+    <meta name="theme-color" content="#0a84ff" />
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Sitemap & RSS -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="alternate" type="application/rss+xml" title="SnipText Blog RSS" href="/blog/rss.xml" />
+
+    <!-- Preconnect / fonts (keeps your existing font optimizations) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+
+    <!-- Stylesheets (kept as-is) -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/blog/css/sniptext-blog.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+
+    <!-- Structured data: Blog / CollectionPage (helps indexing & rich results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "url": "https://checkai.pro/blog/",
+      "name": "SnipText Blog",
+      "description": "Practical guides and tool roundups for AI-assisted writing — paraphrasing, citation, plagiarism checks, grammar and ethics.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Snip Text",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://checkai.pro/favicon.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://checkai.pro/blog/"
+      }
+    }
+    </script>
+
+    <!-- Optional: small security / performance hints -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#" class="brand-link">SnipText</a>
+            </div>
+            <div class="nav-menu">
+                <a href="/blog/blog.html" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#articles" class="nav-link">Articles</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+            <div class="nav-hamburger" id="nav-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="blog-hero-content">
+                    <h1 class="hero-title">Welcome to SnipText Blog</h1>
+                    <p class="hero-subtitle">Where ideas meet elegant design and thoughtful writing</p>
+                    <div class="hero-cta">
+                        <a href="#articles" class="cta-button">Start Reading</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Articles Section -->
+        <section id="articles" class="articles-section">
+            <div class="container">
+                <h2 class="section-title">Latest Articles</h2>
+                <div class="articles-grid">
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">Academic Writing</span>
+                            <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
+                        </div>
+                        <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference &amp; When to Use Each</h3>
+                        <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.</p>
+                        <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">Writing Tools</span>
+                            <time datetime="2025-08-09" class="article-date">August 9, 2025</time>
+                        </div>
+                        <h3 class="article-title">Best AI Writing Tools 2025: A Practical Toolkit for Writers, Students &amp; Teams</h3>
+                        <p class="article-excerpt">A compact, ethically-minded guide to the top AI tools for paraphrasing, citation, plagiarism checks, grammar, and AI-detection - plus a publish-ready workflow you can use today.</p>
+                        <a href="/blog/best-ai-writing-tools-2025.html" class="read-more">Read More</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">Academic Writing</span>
+                            <time datetime="2025-07-20" class="article-date">July 20, 2025</time>
+                        </div>
+                        <h3 class="article-title">Ethical Paraphrasing in Academia: How to Use AI Without Getting in Trouble</h3>
+                        <p class="article-excerpt">Discover best practices for paraphrasing research, proper citation methods, and how SnipText helps you maintain academic integrity.</p>
+                        <a href="/blog/ethical-paraphrasing-academia" class="read-more">Read More</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">Grammar Tips</span>
+                            <time datetime="2025-07-10" class="article-date">July 10, 2025</time>
+                        </div>
+                        <h3 class="article-title">Top 10 Grammar Blunders Professors Hate (And How to Fix Them Instantly)</h3>
+                        <p class="article-excerpt">Real student examples, quick fixes, and how to leverage SnipText’s grammar checker to eliminate common mistakes.</p>
+                        <a href="/blog/grammar-blunders-fix" class="read-more">Read More</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">About This Blog</h2>
+                    <p class="about-text">This blog explores the intersection of writing and modern AI - from paraphrasing, rewriting, and summarizing to plagiarism checks, AI-detection, grammar fixes, citation workflows, and practical toolchains. We test and compare real-world tools, explain trade-offs (accuracy vs. privacy vs. cost), and show step-by-step workflows so you can produce better, faster, and more honest writing.</p>
+
+                    <p class="about-text">Our mission is to help writers, students, and content teams use AI responsibly: to speed up drafting, improve clarity, and protect originality. Expect hands-on guides, tool comparisons, privacy notes, and reproducible workflows - all focused on usability, ethics, and results. Want a clean workflow? We show you the exact tools and steps to get from idea to publish-ready.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">SnipText</h4>
+                    <p class="footer-text">Creating digital experiences that matter.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SnipText. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <span class="back-to-top-icon">↑</span>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="/blog/js/sniptext-blog.js"></script>
+</body>
+</html>
