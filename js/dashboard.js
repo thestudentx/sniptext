@@ -68,6 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateTimer, 1000);
 
   const allModelCards = {
+    chatgpt1: {
+      id: "model-chatgpt-1",
+      href: "https://chatgpt.com", 
+      img: "images/chatgpt_icon.png",
+      title: "ChatGPT 1",       
+      description: "Copy the info below and click the button to open ChatGPT now.",
+      model: "ChatGPT",
+    },
     turnitin1: {
       id: "model-turnitin-1",
       href: "https://turndetect.com/login",
@@ -201,78 +209,79 @@ models.forEach((modelKey) => {
     cardDiv.appendChild(title);
     cardDiv.appendChild(desc);
 
-    if (modelKey === "turnitin1") {
-      // Disable pointer/hover on the entire card
-      cardDiv.style.cursor = "default";
-      cardDiv.onmouseenter = null;
-      cardDiv.onmouseleave = null;
+if (modelKey === "turnitin1" || modelKey === "chatgpt1") {
+  // Disable pointer/hover on the entire card
+  cardDiv.style.cursor = "default";
+  cardDiv.onmouseenter = null;
+  cardDiv.onmouseleave = null;
 
-      // --- Custom: Two copy buttons with tooltip, pulse, checkmark, and blur feedback ---
-      const btnEmail = document.createElement("button");
+  // Per-model credentials + link label
+  const perModel = {
+    turnitin1: {
+      email: "tabishmalik0049@gmail.com",
+      password: "sniptext.checkai",
+      linkText: "Go to Turnitin Tool",
+    },
+    chatgpt1: {
+      email: "isntwaris@gmail.com", 
+      password: "4768.Isnt92747@Waris",       
+      linkText: "Open ChatGPT",
+    },
+  };
+
+  const { email: copyEmail, password: copyPassword, linkText } = perModel[modelKey];
+
+  // --- Copy Email button ---
+  const btnEmail = document.createElement("button");
+  btnEmail.textContent = "Copy Email";
+  btnEmail.className = "copy-btn";
+  btnEmail.title = "Click to copy";
+  btnEmail.dataset.value = copyEmail;
+
+  btnEmail.addEventListener("click", () => {
+    navigator.clipboard.writeText(btnEmail.dataset.value);
+    btnEmail.textContent = "Copied Email! ✅";
+    btnEmail.classList.add("clicked", "pulse");
+    cardDiv.classList.add("blur");
+    setTimeout(() => {
+      btnEmail.classList.remove("clicked", "pulse");
+      cardDiv.classList.remove("blur");
       btnEmail.textContent = "Copy Email";
-      btnEmail.className = "copy-btn";
-      btnEmail.title = "Click to copy";                  // Tooltip on hover
-      btnEmail.dataset.value = "tabishmalik0049@gmail.com"; // (Replace dynamically as needed)
+    }, 1000);
+  });
 
-      btnEmail.addEventListener("click", () => {
-        navigator.clipboard.writeText(btnEmail.dataset.value);
+  // --- Copy Password button ---
+  const btnPass = document.createElement("button");
+  btnPass.textContent = "Copy Password";
+  btnPass.className = "copy-btn";
+  btnPass.title = "Click to copy";
+  btnPass.dataset.value = copyPassword;
 
-        // 1) Change text + add checkmark
-        btnEmail.textContent = "Copied Email! ✅";
-
-        // 2) Add darker‐on‐click + pulse animation
-        btnEmail.classList.add("clicked", "pulse");
-
-        // 3) Blur the card briefly
-        cardDiv.classList.add("blur");
-
-        // 4) After 1 second, revert everything
-        setTimeout(() => {
-          btnEmail.classList.remove("clicked", "pulse");
-          cardDiv.classList.remove("blur");
-          btnEmail.textContent = "Copy Email";
-        }, 1000);
-      });
-
-      const btnPass = document.createElement("button");
+  btnPass.addEventListener("click", () => {
+    navigator.clipboard.writeText(btnPass.dataset.value);
+    btnPass.textContent = "Copied Password! ✅";
+    btnPass.classList.add("clicked", "pulse");
+    cardDiv.classList.add("blur");
+    setTimeout(() => {
+      btnPass.classList.remove("clicked", "pulse");
+      cardDiv.classList.remove("blur");
       btnPass.textContent = "Copy Password";
-      btnPass.className = "copy-btn";
-      btnPass.title = "Click to copy";                    // Tooltip on hover
-      btnPass.dataset.value = "sniptext.checkai";                  // (Replace dynamically as needed)
+    }, 1000);
+  });
 
-      btnPass.addEventListener("click", () => {
-        navigator.clipboard.writeText(btnPass.dataset.value);
+  cardDiv.appendChild(btnEmail);
+  cardDiv.appendChild(btnPass);
 
-        // 1) Change text + add checkmark
-        btnPass.textContent = "Copied Password! ✅";
+  const singleLink = document.createElement("a");
+  singleLink.href = model.href;
+  singleLink.target = "_blank";
+  singleLink.rel = "noopener noreferrer";
+  singleLink.className = "model-link";
+  singleLink.textContent = linkText;
 
-        // 2) Add darker‐on‐click + pulse animation
-        btnPass.classList.add("clicked", "pulse");
-
-        // 3) Blur the card briefly
-        cardDiv.classList.add("blur");
-
-        // 4) After 1 second, revert everything
-        setTimeout(() => {
-          btnPass.classList.remove("clicked", "pulse");
-          cardDiv.classList.remove("blur");
-          btnPass.textContent = "Copy Password";
-        }, 1000);
-      });
-
-      cardDiv.appendChild(btnEmail);
-      cardDiv.appendChild(btnPass);
-
-      const singleLink = document.createElement("a");
-      singleLink.href = model.href;
-      singleLink.target = "_blank";
-      singleLink.rel = "noopener noreferrer";
-      singleLink.className = "model-link";
-      singleLink.textContent = "Go to Turnitin Tool";
-
-      cardDiv.appendChild(singleLink);
-      modelLinksContainer.appendChild(cardDiv);
-    } else {
+  cardDiv.appendChild(singleLink);
+  modelLinksContainer.appendChild(cardDiv);
+} else {
       // --- Default card with full link (unchanged) ---
       const note = document.createElement("p");
       // note.textContent = "Use your Snip Text login to access this tool.";
