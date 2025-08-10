@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
 });
 
 
-// GET /api/user — Verify token and return user info
+// GET /api/user - Verify token and return user info
 router.get('/user', (req, res) => {
   console.log('🔒 Incoming auth request...');
   const authHeader = req.headers.authorization;

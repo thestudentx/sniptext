@@ -29,7 +29,7 @@ GENERAL RULES (apply these unconditionally):
 • Do not include any extra blank lines at the beginning or end of the output.
 • Do not include a trailing space at the end of any line.
 • If the text has multiple paragraphs, preserve the paragraph breaks; do not merge or split paragraphs beyond what the Mode explicitly requires.
-• If Mode = “Expand,” any added content must be clearly related to existing sentences—do not introduce tangents or unrelated examples.
+• If Mode = “Expand,” any added content must be clearly related to existing sentences-do not introduce tangents or unrelated examples.
 • If Mode = “Shorten,” remove only filler words, redundancies, or unnecessary adverbs/adjectives. Never omit any content that changes the factual meaning or narrative sequence.
 • Preserve paragraph breaks.
 • If Mode = “Grammar,” correct spelling, punctuation, and grammatical errors only. Maintain original word choice, tone, and structure aside from fixes.
@@ -38,7 +38,7 @@ GENERAL RULES (apply these unconditionally):
 • If Mode = “Fluent,” ensure the text reads effortlessly, like native speech, smoothing out any awkward phrasing while preserving every nuance.
 • If Mode = “Creative,” richly enhance vocabulary, sentence structure, and descriptive language, yet keep all facts and narrative order intact.
 * If Mode = “Academic,” produce a highly scholarly tone, using precise academic vocabulary and logical connectors. Ensure the text reads as part of a university or journal submission.
-* If Mode = “Standard,” provide a clear, concise paraphrase suited for a thesis-ready style—neutral, straightforward, academically acceptable.
+* If Mode = “Standard,” provide a clear, concise paraphrase suited for a thesis-ready style-neutral, straightforward, academically acceptable.
 * Do not deviate from these Mode-specific rules under any circumstances.
 
 Now, apply exactly ONE of the following MODE INSTRUCTION BLOCKS based on the user’s selected mode:
@@ -125,7 +125,7 @@ Mode: “Fluent”
       case 'creative':
         modeInstruction = `
 Mode: “Creative”
-• Rewrite using vivid, imaginative language—select evocative adjectives, use varied sentence lengths, and add descriptive flair.
+• Rewrite using vivid, imaginative language-select evocative adjectives, use varied sentence lengths, and add descriptive flair.
 • Expand metaphorical or sensory detail where appropriate, but do not invent new plot elements, events, or characters.
 • Maintain exactly all facts, narrative events, names, dates, and sequence from the original.
 • When restructuring sentences, ensure that each sentence’s informational content remains unaltered.
@@ -237,7 +237,7 @@ Style: “Formal”
 • Each sentence must sound business‐appropriate: clear, respectful, and devoid of slang.
 • Use terminology that would be acceptable in a corporate or legal document.
 • Do not use any contractions anywhere. Spell out do not, cannot, would not, it is, they are, she has, etc.
-• Adopt an impersonal, professional register—avoid expressions like “she’s,” “we’re,” “it’s,” “you’ll,” etc.
+• Adopt an impersonal, professional register-avoid expressions like “she’s,” “we’re,” “it’s,” “you’ll,” etc.
 • Maintain a neutral, impersonal perspective unless original perspective is first person.
 • Adhere to corporate style guides for punctuation, capitalization, and formatting.
           `.trim();
@@ -251,7 +251,7 @@ Style: “Confident”
 • Include one emphatic adverb (“undoubtedly,” “clearly”).
 • Begin one sentence with a strong adverb (“Indeed,” “Certainly”).
 • State benefits as certainties.
-• Avoid question formats—use statements.
+• Avoid question formats-use statements.
 • Use “I am confident” or “It is clear” phrases.
 • Limit subordinate clauses.
 • End with a decisive closing statement.

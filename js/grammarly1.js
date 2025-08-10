@@ -240,7 +240,7 @@ function formatCleanText(text) {
       }
 
       // leave em-dashes at start alone (not a list)
-      if (/^[—–]\s+/.test(trimmed)) {
+      if (/^[-–]\s+/.test(trimmed)) {
         return trimmed;
       }
 

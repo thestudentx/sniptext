@@ -1,0 +1,327 @@
+/*-----------------------------------------------
+  VARIABLES & THEME (bluish + orangish)
+-----------------------------------------------*/
+:root{
+  --bg-body: #F3F6FB;
+  --text-main: #0f1724;
+  --text-muted: #54606a;
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,253,0.9));
+  --card-border: rgba(30,58,138,0.08);
+  --btn-text: #fff;
+
+  /* bluish / orangish gradients */
+  --gradient-primary-start: #3b82f6;   /* blue */
+  --gradient-primary-end:   #60a5fa;
+
+  /* orangish accent (replaces previous yellowish values) */
+  --gradient-accent-start:  #ff7c4c;   /* warm orange */
+  --gradient-accent-end:    #ff9a6a;   /* softer orange for gradients */
+
+  /* CTA-specific end color you mentioned */
+  --gradient-cta-end:       #ff7c4c;
+
+  /* frequently used accent color */
+  --color-used-often:       #e85d27;
+
+  --shadow-1: 0 6px 20px rgba(38, 78, 162, 0.08);
+  --shadow-2: 0 8px 30px rgba(15, 23, 42, 0.06);
+
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+
+  --gap: 20px;
+
+  --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Roboto', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-body: #0f1724;
+  --text-main: #E6EEF8;
+  --text-muted: #AAB6C7;
+  --card-bg: linear-gradient(180deg, rgba(24,28,43,0.65), rgba(18,22,36,0.6));
+  --card-border: rgba(255,255,255,0.04);
+
+  --gradient-primary-start: #1e3a8a;
+  --gradient-primary-end:   #2563eb;
+
+  /* darker / slightly desaturated orangish accents for dark theme */
+  --gradient-accent-start:  #ff7c4c;
+  --gradient-accent-end:    #ff8a5a;
+
+  --gradient-cta-end:       #ff7c4c;
+
+  /* slightly toned-down used-often color for dark background */
+  --color-used-often:       #c9421a;
+
+  --shadow-1: 0 8px 30px rgba(3,6,23,0.6);
+  --shadow-2: 0 12px 40px rgba(2,6,23,0.7);
+}
+
+/*-----------------------------------------------
+  BASE LAYOUT
+-----------------------------------------------*/
+.tools-page {
+  background: var(--bg-body);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  padding: 36px 20px;
+}
+
+/*-----------------------------------------------
+  HERO - standard (non-responsive)
+  - layout: grid with a fluid second column (min width)
+  - typography for headings and lead
+  - actions / buttons wrapper
+  - decorative visual container (blob / illustration)
+-----------------------------------------------*/
+.tools-hero {
+  display: grid;
+  grid-template-columns: 1fr min(420px, 36vw); /* fluid second column */
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 28px;
+  width: 100%;
+  height: fit-content;
+  min-height: 300px;
+  box-sizing: border-box;
+  padding-inline: 8px;
+}
+
+/* heading & lead */
+.hero-content h1{
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3.6vw, 30px); /* fluid */
+  margin: 0 0 12px;
+  line-height: 1.05;
+}
+.hero-content .lead{
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  max-width: 70ch;
+  font-size: clamp(13px, 1.6vw, 15px);
+}
+
+/* actions/buttons container */
+.hero-actions {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* decorative visual area - holds blob or writing-illustration */
+.hero-visual {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: clamp(120px, 20vh, 220px); /* fluid height */
+  position:relative;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+/* SVG sizing - works for blob or writing-illustration */
+.hero-visual svg,
+.hero-visual .blob,
+.hero-visual .writing-illustration {
+  width: 100%;
+  max-width: min(420px, 34vw);
+  height: auto;
+  max-height: 100%;
+  display:block;
+  transform-origin: 50% 50%;
+  transition: transform .36s ease, opacity .36s ease;
+  pointer-events: none; /* decorative only */
+}
+
+/* gentle transform limit for blob element */
+.hero-visual .blob { transform: rotate(-6deg) scale(1.01); opacity: 0.96; }
+
+/* theme-toggle wrapper (keeps toggle compact inside hero-actions) */
+.theme-toggle-wrapper {
+  margin-left: 6px;
+  display: inline-flex;
+}
+
+/* ensure hero layout doesn't overflow horizontally */
+.tools-hero, .hero-content, .hero-visual { max-width: 1280px; margin-inline: auto; }
+
+/*-----------------------------------------------
+  BUTTONS - primary & ghost
+-----------------------------------------------*/
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius: 10px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  transition: transform .16s ease, box-shadow .16s ease;
+  box-shadow: var(--shadow-1);
+}
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary{
+  color: var(--btn-text);
+  background: linear-gradient(90deg,var(--gradient-primary-start),var(--gradient-accent-start));
+  background-size: 200% 100%;
+}
+.btn-primary:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+}
+
+.btn-ghost{
+  color: var(--text-main);
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+/* dark theme ghost border */
+[data-theme="dark"] .btn-ghost { border-color: rgba(255,255,255,0.06); }
+
+/*-----------------------------------------------
+  TOOLS GRID - standard layout
+-----------------------------------------------*/
+.tools-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+/*-----------------------------------------------
+  TOOL CARD - visuals, spacing, hover/focus
+-----------------------------------------------*/
+.tool-card{
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-1);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  transition: transform .22s cubic-bezier(.2,.9,.25,1), box-shadow .22s, border-color .22s;
+  cursor: pointer;
+  min-height: 170px;
+  position: relative;
+  overflow: hidden;
+  isolation:isolate;
+}
+.tool-card:focus { outline: none; box-shadow: 0 8px 30px rgba(59,130,246,0.12); transform: translateY(-6px); }
+.tool-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-2); border-color: rgba(59,130,246,0.14); }
+
+/* icon container */
+.card-icon{
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.02);
+  color: var(--gradient-primary-start);
+  flex-shrink:0;
+  transition: transform .22s ease;
+}
+.tool-card:hover .card-icon{ transform: translateY(-4px) rotate(-6deg); color: var(--gradient-accent-start); }
+
+.svg-icon{ width:28px; height:28px; display:block; }
+
+/* titles & description */
+.card-title{
+  font-family: var(--font-heading);
+  font-size: 16px;
+  margin: 0;
+}
+.card-desc{
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+/* CTA button inside card */
+.card-cta{
+  margin-top: 6px;
+  align-self:flex-start;
+  font-weight:600;
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--gradient-primary-start), var(--gradient-accent-start));
+  color: var(--btn-text);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.12);
+  transition: transform .14s ease;
+}
+.card-cta:active{ transform: translateY(1px); }
+
+/* shiny overlay on hover */
+.tool-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  mix-blend-mode: overlay;
+  opacity:0;
+  transform: translateY(10px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.tool-card:hover::after{ opacity:1; transform: translateY(0); }
+
+/*-----------------------------------------------
+  SMALL HELPERS & VARIANTS
+-----------------------------------------------*/
+/* card icon gradient alternation */
+.tools-grid .tool-card:nth-child(odd) .card-icon{ background: linear-gradient(135deg,var(--gradient-primary-start),var(--gradient-primary-end)); color: #fff; }
+.tools-grid .tool-card:nth-child(even) .card-icon{ background: linear-gradient(135deg,var(--gradient-accent-start),var(--gradient-accent-end)); color: #08203b; }
+
+/*-----------------------------------------------
+  RESPONSIVE & MEDIA QUERIES (grouped)
+  - All responsive rules are placed below as requested.
+-----------------------------------------------*/
+
+/* stacked layout at narrower widths (hero) */
+@media (max-width:980px){
+  .tools-hero { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; height: clamp(110px, 18vh, 180px); margin-bottom: 10px; }
+}
+
+/* tools-grid breakpoints */
+@media (max-width:1200px){
+  .tools-grid{ grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width:860px){
+  .tools-grid{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width:520px){
+  .tools-grid{ grid-template-columns: 1fr; }
+}
+
+/* hero-actions & button stacking on very small screens */
+@media (max-width:520px){
+  .hero-actions { flex-direction: column; align-items: center; width: 100%; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+
+  /* tiny screens: tighten spacing and avoid hover motion */
+  .tools-hero { gap: 16px; margin-bottom: 18px; }
+  .hero-content .lead { max-width: 100%; }
+  .hero-visual svg { max-width: 300px; }
+  .hero-visual:hover svg { transform: none; } /* no hover motion on touch devices */
+}
+
+/* hover polish but small amplitude kept (still under responsive section for completeness) */
+@media (hover: hover) and (pointer: fine) {
+  .hero-visual:hover svg { transform: rotate(-2.5deg) scale(1.01); }
+}
+
+/* prefers-reduced-motion - reduce transitions & animations */
+@media (prefers-reduced-motion: reduce){
+  .tool-card, .card-icon, .btn { transition: none; transform: none; }
+}

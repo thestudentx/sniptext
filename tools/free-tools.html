@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <noscript>
+  <meta http-equiv="refresh" content="0; url=login.html" />
+</noscript>
+
+    <base href="/tools/">
+
+  <title>Free Tools - Snip Text</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/components/toggleTheme.css">
+    <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Favicon -->
+   <link rel="icon" href="/favicon.png" type="image/png">
+
+  <!-- Google Fonts: Poppins & Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<main class="tools-page" id="tools-page">  
+  <!-- HERO -->
+  <section class="tools-hero" aria-labelledby="tools-hero-title">
+    <div class="hero-content">
+      <h1 id="tools-hero-title">Free Text Tools - fast, tiny, and for everyone</h1>
+      <p class="lead">
+        We offer a growing collection of lightweight text utilities - free to use for everyone. No sign-ins, no fuss.
+        Use them to count words, clean formatting, compare texts, and more. Want something advanced? We also offer
+        premium tools for plagiarism checking, grammar correction, paraphrasing, rewriting and styling.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contact.html" id="contact-btn">Contact Us</a>
+        <a class="btn btn-ghost" href="#tools-grid" aria-label="View tools">Browse tools</a>
+        <div class="theme-toggle-wrapper">
+            <button id="themeToggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <!-- decorative gradient blob -->
+      <svg class="blob" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gBlob" x1="0" x2="1">
+            <stop offset="0" stop-color="var(--gradient-primary-start)" />
+            <stop offset="1" stop-color="var(--gradient-accent-end)" />
+          </linearGradient>
+        </defs>
+        <g transform="translate(300,300)">
+          <path d="M120,-164C151,-125,163,-72,165,-18C166,36,157,88,127,125C96,162,44,185,-7,187C-58,189,-116,169,-151,129C-186,89,-198,29,-186,-27C-173,-83,-136,-135,-94,-171C-52,-207,-6,-228,41,-232C88,-236,176,-203,120,-164Z" fill="url(#gBlob)"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- TOOLS GRID -->
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+    <article class="tool-card" tabindex="0" data-href="tools/word-char-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="tools/word-char-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/duplicate-words.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="tools/duplicate-words.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/format-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="tools/format-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/emoji-replacer.html" aria-labelledby="t5">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M8 10h.01M16 10h.01M8 15s1.5 1.5 4 1.5 4-1.5 4-1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t5" class="card-title">Emoji Replacer</h3>
+      <p class="card-desc">Replace words with emojis, convert emoticons to emojis, or remove emoji characters from text.</p>
+      <a class="card-cta" href="tools/emoji-replacer.html" aria-label="Open Emoji Replacer">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/symbol-counter.html" aria-labelledby="t6">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t6" class="card-title">Symbol / Character Info</h3>
+      <p class="card-desc">Counts symbols and shows ASCII & Unicode code points and names for selected characters.</p>
+      <a class="card-cta" href="tools/symbol-counter.html" aria-label="Open Symbol/Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/palindrome-finder.html" aria-labelledby="t7">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t7" class="card-title">Palindromic Word Finder</h3>
+      <p class="card-desc">Detect palindromes (words or phrases) and show positions so you can highlight or extract them.</p>
+      <a class="card-cta" href="tools/palindrome-finder.html" aria-label="Open Palindromic Word Finder">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/text-diff.html" aria-labelledby="t8">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 6h8v12H3zM13 6h8v12h-8z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t8" class="card-title">Text Diff Checker</h3>
+      <p class="card-desc">Compare two text blocks side-by-side and see insertions, deletions and changed lines.</p>
+      <a class="card-cta" href="tools/text-diff.html" aria-label="Open Text Diff Checker">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/remove-empty-lines.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
+      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
+      <a class="card-cta" href="tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="tools/random-text.html" aria-labelledby="t10">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t10" class="card-title">Random Text Generator</h3>
+      <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+      <a class="card-cta" href="tools/random-text.html" aria-label="Open Random Text Generator">Open →</a>
+    </article>
+  </section>
+</main>
+
+
+
+
+
+
+
+    <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>Snip Text</h2>
+        <p>Empowering better writing, one tool at a time.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html#contact">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025
+          <span class="powered-by">
+            Snip Text – powered by
+            <a href="https://checkai.pro" target="_blank">CheckAI.pro</a>
+          </span>
+          All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+<!-- Global Toast Container -->
+<div id="toast-container" class="toast-container hidden"></div>
+
+<!-- Scroll to top button -->
+  <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
+
+
+
+
+
+  <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/components/themeToggle.js"></script>
+  <script src="/js/auth.js"></script>
+
+  <script src="/tools/js/free-tools.js"></script>
+</body>
+</html>

@@ -36,7 +36,7 @@ const userValidation = [
     .isInt({ min: 0 }).withMessage('Credits must be a non-negative integer')
 ];
 
-// GET /api/admin/users — list all users
+// GET /api/admin/users - list all users
 router.get('/', authenticateToken, requireAdmin, async (req, res) => {
   try {
     const users = await User.find({}, '-password').lean();
@@ -47,7 +47,7 @@ router.get('/', authenticateToken, requireAdmin, async (req, res) => {
   }
 });
 
-// POST /api/admin/users — create new user via admin panel
+// POST /api/admin/users - create new user via admin panel
 // POST /api/admin/users
 router.post(
   '/', 
@@ -112,7 +112,7 @@ router.post(
 
 
 
-// PUT /api/admin/users/:id — update existing user
+// PUT /api/admin/users/:id - update existing user
 router.put('/:id',
   authenticateToken,
   requireAdmin,
@@ -166,7 +166,7 @@ if (rawModels != null) {
   }
 );
 
-// DELETE /api/admin/users/:id — delete user
+// DELETE /api/admin/users/:id - delete user
 router.delete('/:id', authenticateToken, requireAdmin, async (req, res) => {
   try {
     const result = await User.findByIdAndDelete(req.params.id);

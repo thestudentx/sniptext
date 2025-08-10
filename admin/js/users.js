@@ -4,9 +4,9 @@ const BACKEND = (['127.0.0.1', 'localhost'].some(h => location.hostname.includes
   : 'https://sniptext.onrender.com';
 const API = `${BACKEND}/api/admin/users`;
 
-// ——————————————————————————————
+// ------------------------------
 // Load & render user list with numbering
-// ——————————————————————————————
+// ------------------------------
 async function loadUsers() {
   const token = localStorage.getItem('adminToken');
   const tbody = document.getElementById('userTableBody');
@@ -85,9 +85,9 @@ async function loadUsers() {
   }
 }
 
-// ——————————————————————————————
+// ------------------------------
 // Open “Add User” modal
-// ——————————————————————————————
+// ------------------------------
 document.getElementById('addUserBtn').addEventListener('click', () => {
   const form = document.getElementById('userForm');
   form.dataset.editingId = '';
@@ -101,9 +101,9 @@ document.getElementById('addUserBtn').addEventListener('click', () => {
   openModal('userModal');
 });
 
-// ——————————————————————————————
+// ------------------------------
 // Handle Add/Edit form submit
-// ——————————————————————————————
+// ------------------------------
 document.getElementById('userForm').addEventListener('submit', async e => {
   e.preventDefault();
   const form = e.target;
@@ -164,9 +164,9 @@ document.getElementById('userForm').addEventListener('submit', async e => {
 });
 
 
-// ——————————————————————————————
+// ------------------------------
 // Populate “Edit User” modal
-// ——————————————————————————————
+// ------------------------------
 function editUser(index) {
   const u = window._loadedUsers[index];
   const form = document.getElementById('userForm');
@@ -190,9 +190,9 @@ function editUser(index) {
   showToast('Info', `Editing user: ${u.email}`, 'info');
 }
 
-// ——————————————————————————————
+// ------------------------------
 // Delete user with confirmation
-// ——————————————————————————————
+// ------------------------------
 async function deleteUser(id) {
   const confirmed = await new Promise(resolve => {
     const modal = document.getElementById('confirmModal');
@@ -220,9 +220,9 @@ async function deleteUser(id) {
   }
 }
 
-// ——————————————————————————————
+// ------------------------------
 // Search & filter users
-// ——————————————————————————————
+// ------------------------------
 const searchInput = document.getElementById('searchInput');
 const clearSearch = document.getElementById('clearSearch');
 
@@ -245,9 +245,9 @@ clearSearch.addEventListener('click', () => {
 });
 
 
-// ——————————————————————————————
+// ------------------------------
 // Search & filter users
-// ——————————————————————————————
+// ------------------------------
 function filterUsers() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const tbody = document.getElementById('userTableBody');
@@ -312,9 +312,9 @@ function filterUsers() {
 }
 
 
-// ——————————————————————————————
+// ------------------------------
 // Initial load
-// ——————————————————————————————
+// ------------------------------
 window.addEventListener('load', loadUsers);
 
 // Expose filter for inline calls (if any)

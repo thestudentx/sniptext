@@ -42,8 +42,8 @@ router.post('/grammar-check', async (req, res) => {
 const metaPrompt = `
 Whenever you receive instructions:
 1. Analyze for clarity and completeness.
-2. Refine & simplify—they go under "Refined Instruction:".
-3. Execute—they go under "Execution:".
+2. Refine & simplify-they go under "Refined Instruction:".
+3. Execute-they go under "Execution:".
 `.trim();
 
 // Context-Layering
@@ -55,7 +55,7 @@ CONTEXT: Any English prose (emails, essays, blogs, posts)
 CONSTRAINTS:
   • Preserve all original sentences & paragraph breaks.
   • Do NOT add, remove, split, merge, or reorder sentences.
-  • Normalize curly quotes (“…”), ellipses (… with space after), em dashes (—), commas, spacing.
+  • Normalize curly quotes (“…”), ellipses (… with space after), em dashes (-), commas, spacing.
 `.trim();
 
 // Focused Test-style Prompts
@@ -66,7 +66,7 @@ const testPrompts = [
   "• Verify pronoun clarity and agreement .",
   "• Normalize curly quotes (“…” and ‘…’).",
   "• Normalize ellipses (…) to a single character, with a space after if mid-sentence.",
-  "• Convert hyphens-in-text to em dashes (—) for breaks.",
+  "• Convert hyphens-in-text to em dashes (-) for breaks.",
   "• Remove duplicate spaces, stray tabs, trailing whitespace.",
   "• Do NOT split or merge sentences: preserve original sentence count exactly.",
   "• Replace any straight quotes (\") with curly quotes (“” / ‘’).",
@@ -91,7 +91,7 @@ function stylePrompt(userStyle, userAudience, domain) {
 
   const domainRule = {
     academic:   "• Spell out numbers below 100 in words; use neutral academic tone.",
-    business:   "• Be concise—eliminate redundancies; keep bullet-style brevity.",
+    business:   "• Be concise-eliminate redundancies; keep bullet-style brevity.",
     creative:   "• Add vivid adjectives or imagery in place (e.g. “dreary”→“mournful”).",
     casual:     "• Allow light colloquialisms but keep sentences intact.",
     technical:  "• Use precise technical terminology where relevant."
@@ -106,10 +106,10 @@ Rules:
   • Replace words/phrases within each sentence only.
   • Do NOT add/remove/split/merge sentences or paragraphs.
   • Convert straight quotes to curly quotes.
-  • Normalize ellipses (…) and em dashes (—) with correct spacing.
+  • Normalize ellipses (…) and em dashes (-) with correct spacing.
   • Do not alter sentence count or structure beyond word swaps.
 `.trim();
-}  // <— only one closing brace here
+}  // <- only one closing brace here
 
 
 // 1) SUPER-CHARGED SYSTEM PROMPT
@@ -123,7 +123,7 @@ You will execute TWO STAGES exactly:
 STAGE 1: MODE = “Grammar”
 • Fix ONLY spelling, punctuation, capitalization, grammar, typography.
 • Preserve all original sentences & paragraph breaks.
-• Normalize curly quotes, ellipses (… with space), em dashes (—), commas, spacing.
+• Normalize curly quotes, ellipses (… with space), em dashes (-), commas, spacing.
 • Do NOT add/remove/split/merge/reorder sentences or paragraphs.
 
 STAGE 2: STYLE = “Writing Goals”
@@ -141,7 +141,7 @@ Mode: “Grammar”
 • Spelling & grammar:
   e.g. “teh quick brown fox” → “the quick brown fox”
 • Typography normalization:
-  Ellipses “…”, em dashes “—”; no multiple periods or hyphens.
+  Ellipses “…”, em dashes “-”; no multiple periods or hyphens.
 • Agreement & consistency:
   e.g. “She go”→“She goes”, “they was”→“they were”
 • Whitespace cleanup:
@@ -169,7 +169,7 @@ Mode: “Grammar”
 • Prefer common everyday words over rare or technical terms.
 • Break any especially long sentence into two simpler ones.
 • Provide brief context for any unusual term (in parentheses).
-• Eliminate unnecessary synonyms—choose the clearest option.
+• Eliminate unnecessary synonyms-choose the clearest option.
 • Use active voice unless passive is required for clarity.
 • Avoid idiomatic expressions that aren’t universally understood.
 • Ensure each sentence stands alone as a complete thought.
@@ -191,7 +191,7 @@ Mode: “Grammar”
 `,
       expert: `
 --- GOAL: Audience ---
-• MUST write for specialists—precise technical terms, no explanations.
+• MUST write for specialists-precise technical terms, no explanations.
 • Employ advanced vocabulary and complex sentence structures.
 • Keep tone formal and authoritative.
 • Include at least one domain-specific abbreviation or acronym.
@@ -222,9 +222,9 @@ Mode: “Grammar”
 `,
       neutral: `
 --- GOAL: Formality ---
-• MUST maintain a balanced register—no contractions but not stiff.
+• MUST maintain a balanced register-no contractions but not stiff.
 • Use standard grammar without colloquialisms.
-• Keep sentence length moderate—avoid extremes.
+• Keep sentence length moderate-avoid extremes.
 • Avoid slang, idioms, and rhetorical flourishes.
 • Use second person (“you”) only when necessary.
 • Maintain consistent tense throughout.
@@ -272,7 +272,7 @@ Mode: “Grammar”
 • Vary sentence lengths for rhythm: one long, one short.
 • Introduce at least one sensory metaphor (“like glittering beads”).
 • Use active verbs to depict movement or change.
-• Avoid abstract nouns—focus on concrete imagery.
+• Avoid abstract nouns-focus on concrete imagery.
 • Place descriptive clause at clause-end for emphasis.
 • Use precise color, texture, or sound descriptors.
 • Include a simile or two for illustration.
@@ -286,7 +286,7 @@ Mode: “Grammar”
 • Include at least one benefit-oriented phrase (“so you can…”).
 • Use “therefore,” “consequently,” or “hence” for logical flow.
 • Offer a brief, compelling call to action at end.
-• Avoid hedging—replace “might” with “will” or “must.”
+• Avoid hedging-replace “might” with “will” or “must.”
 • Use second-person (“you”) to directly engage.
 • Include one comparative statement (“better than…”).
 • Cite an authority if possible (“experts agree…”).
@@ -300,7 +300,7 @@ Mode: “Grammar”
 • Employ descriptive scene-setting at start.
 • Use temporal connectors (“Then,” “After,” “Meanwhile”).
 • Maintain tension by varying sentence length.
-• Show, don’t tell—use action verbs over state verbs.
+• Show, don’t tell-use action verbs over state verbs.
 • Introduce a brief conflict or challenge.
 • Resolve with a satisfying conclusion.
 • Use third person or first person consistently.
@@ -332,7 +332,7 @@ Mode: “Grammar”
 • Include one emphatic adverb (“undoubtedly,” “clearly”).
 • Begin one sentence with a strong adverb (“Indeed,” “Certainly”).
 • State benefits as certainties.
-• Avoid question formats—use statements.
+• Avoid question formats-use statements.
 • Use “I am confident” or “It is clear” phrases.
 • Limit subordinate clauses.
 • End with a decisive closing statement.
@@ -404,7 +404,7 @@ Mode: “Grammar”
 • Structure sentences for procedural clarity (steps, sequences).
 • Include one example of parameter or variable notation.
 • Use active voice for instructions (“Initialize the module”).
-• Avoid analogies—stick to literal descriptions.
+• Avoid analogies-stick to literal descriptions.
 • Include at least one code-style snippet reference.
 • Use consistent units of measure.
 • Keep terminology consistent across sentences.
@@ -434,7 +434,7 @@ Mode: “Grammar”
 • Use short, punchy sentences.
 • Add a playful emoji description if desired.
 • Address reader directly (“hey you!”).
-• Avoid formal transitions—use “then,” “so,” “but.”
+• Avoid formal transitions-use “then,” “so,” “but.”
 • End with a question or friendly prompt.
 • Keep tone chatty, not scripted.
 • Use at least one idiom (“spill the tea”).

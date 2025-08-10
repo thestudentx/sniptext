@@ -517,7 +517,7 @@ body {
   padding: var(--spacing-lg);
 }
 
- /* Grammar FAQ — themed to your CSS variables */
+ /* Grammar FAQ - themed to your CSS variables */
 .grammar-faq {
   max-width: 800px;
   margin: var(--spacing-md) 0;
