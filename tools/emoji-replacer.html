@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Emoji Replacer — Replace Words, Convert Emoticons, Remove Emojis | SnipText</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- =========================
+       THEME (variables only)
+       ========================= -->
+  <style>
+    :root{
+      /* Palette */
+      --emoji-replacer-bg:             #0f172a;
+      --emoji-replacer-bg-soft:        #111827;
+      --emoji-replacer-surface:        #0b1223ec;
+      --emoji-replacer-text:           #e5e7eb;
+      --emoji-replacer-text-muted:     #cbd5e1;
+      --emoji-replacer-border:         rgba(255,255,255,.10);
+
+      /* Accents */
+      --emoji-replacer-accent:         #7c3aed;
+      --emoji-replacer-accent-2:       #06b6d4;
+      --emoji-replacer-ok:             #22c55e;
+      --emoji-replacer-warn:           #f59e0b;
+      --emoji-replacer-danger:         #ef4444;
+
+      /* Radii & shadows */
+      --emoji-replacer-radius-xl:      18px;
+      --emoji-replacer-radius-lg:      14px;
+      --emoji-replacer-radius-md:      10px;
+      --emoji-replacer-shadow-1:       0 10px 30px rgba(0,0,0,.35);
+      --emoji-replacer-shadow-2:       0 16px 44px rgba(17,24,39,.45);
+
+      /* Layout */
+      --emoji-replacer-maxw:           1200px;
+
+      /* Typography */
+      --emoji-replacer-font-heading:   'Poppins', 'Rajdhani', 'Roboto', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --emoji-replacer-font-body:      'Roboto', 'Poppins', 'Rajdhani', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --emoji-replacer-bg:           #f3f4f6;
+        --emoji-replacer-bg-soft:      #ffffff;
+        --emoji-replacer-surface:      #ffffffef;
+        --emoji-replacer-text:         #0f172a;
+        --emoji-replacer-text-muted:   #334155;
+        --emoji-replacer-border:       #e5e7eb;
+
+        --emoji-replacer-shadow-1:     0 10px 30px rgba(2,6,23,.08);
+        --emoji-replacer-shadow-2:     0 16px 44px rgba(2,6,23,.12);
+      }
+    }
+  </style>
+
+  <!-- =========================
+       PAGE STYLES
+       ========================= -->
+  <style>
+    *{
+      box-sizing : border-box;
+    }
+
+    html,
+    body{
+      height : 100%;
+      margin : 0;
+      background :
+        radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.20), transparent 60%),
+        radial-gradient(900px 520px at 100% 0%, rgba(6,182,212,.18), transparent 55%),
+        linear-gradient(180deg, var(--emoji-replacer-bg) 0%, var(--emoji-replacer-bg-soft) 100%);
+      color : var(--emoji-replacer-text);
+      font-family : var(--emoji-replacer-font-body);
+      -webkit-text-size-adjust : 100%;
+      text-size-adjust : 100%;
+    }
+
+    a{
+      color : inherit;
+      text-decoration : none;
+    }
+
+    button{
+      font-family : var(--emoji-replacer-font-heading);
+    }
+
+    /* Page */
+    .emoji-replacer-page{
+      max-width : var(--emoji-replacer-maxw);
+      margin : clamp(16px,3vw,40px) auto;
+      padding : clamp(12px,2.4vw,24px);
+    }
+
+    /* Hero */
+    .emoji-replacer-hero{
+      position : relative;
+      padding : clamp(18px,3vw,28px);
+      border : 1px solid var(--emoji-replacer-border);
+      background : linear-gradient(135deg, rgba(124,58,237,.16), rgba(6,182,212,.16)) border-box;
+      border-radius : var(--emoji-replacer-radius-xl);
+      box-shadow : var(--emoji-replacer-shadow-1);
+      overflow : hidden;
+      isolation : isolate;
+    }
+
+    .emoji-replacer-hero::after{
+      content : "";
+      position : absolute;
+      inset : -2px;
+      background :
+        radial-gradient(600px 220px at 18% -6%, rgba(124,58,237,.28), transparent 65%),
+        radial-gradient(460px 260px at 85% 0%, rgba(6,182,212,.26), transparent 60%);
+      filter : blur(16px);
+      opacity : .65;
+      z-index : -1;
+      pointer-events : none;
+    }
+
+    .emoji-replacer-hero-title{
+      margin : 0 0 6px 0;
+      font-weight : 800;
+      letter-spacing : .2px;
+      font-size : clamp(22px,3.2vw,36px);
+      line-height : 1.15;
+      font-family : var(--emoji-replacer-font-heading);
+      background : linear-gradient(90deg, #fff, #c7d2fe 35%, #99f6e4 70%, #fff);
+      -webkit-background-clip : text;
+      background-clip : text;
+      color : transparent;
+    }
+
+    .emoji-replacer-hero-sub{
+      margin : 6px 0 0 0;
+      color : var(--emoji-replacer-text-muted);
+      font-size : clamp(14px,1.8vw,16px);
+    }
+
+    /* Grid */
+    .emoji-replacer-grid{
+      display : grid;
+      grid-template-columns : 1fr;
+      gap : clamp(12px,2.4vw,20px);
+      margin-top : clamp(14px,2.6vw,24px);
+    }
+
+    @media (min-width: 992px){
+      .emoji-replacer-grid{
+        grid-template-columns : 1.1fr .9fr;
+      }
+    }
+
+    /* Card */
+    .emoji-replacer-card{
+      border : 1px solid var(--emoji-replacer-border);
+      border-radius : var(--emoji-replacer-radius-lg);
+      background : var(--emoji-replacer-surface);
+      box-shadow : var(--emoji-replacer-shadow-2);
+      backdrop-filter : blur(10px);
+      -webkit-backdrop-filter : blur(10px);
+      overflow : hidden;
+    }
+
+    .emoji-replacer-card-head{
+      display : flex;
+      align-items : center;
+      justify-content : space-between;
+      padding : 12px 14px;
+      background : linear-gradient(90deg, rgba(124,58,237,.14), rgba(6,182,212,.10));
+      border-bottom : 1px solid var(--emoji-replacer-border);
+    }
+
+    .emoji-replacer-card-title{
+      margin : 0;
+      font-size : 14px;
+      letter-spacing : .35px;
+      text-transform : uppercase;
+      opacity : .92;
+      font-family : var(--emoji-replacer-font-heading);
+    }
+
+    /* Textareas & preview */
+    .emoji-replacer-textarea{
+      width : 100%;
+      min-height : 260px;
+      resize : vertical;
+      border : 0;
+      outline : 0;
+      background : transparent;
+      color : var(--emoji-replacer-text);
+      padding : 16px;
+      font : 500 15px/1.55 var(--emoji-replacer-font-body);
+      caret-color : var(--emoji-replacer-accent);
+      letter-spacing : .2px;
+    }
+
+    .emoji-replacer-textarea::placeholder{
+      color : color-mix(in oklab, var(--emoji-replacer-text-muted) 75%, transparent);
+      font-family : 'Poppins', sans-serif;
+    }
+
+    .emoji-replacer-preview{
+      padding : 16px;
+      min-height : 365px;
+      max-height : 429px;
+      overflow : auto;
+      font : 500 15px/1.6 var(--emoji-replacer-font-body);
+      white-space : pre-wrap;
+      word-wrap : break-word;
+    }
+
+    .emoji-replacer-preview .emoji-replacer-mark{
+      background : linear-gradient(180deg, rgba(124,58,237,.35), rgba(6,182,212,.45));
+      border-radius : 6px;
+      padding : 0 2px;
+      box-shadow : 0 0 0 1px rgba(255,255,255,.14) inset;
+    }
+
+    /* Toolbar */
+    .emoji-replacer-toolbar{
+      display : flex;
+      flex-wrap : wrap;
+      gap : 8px;
+      padding : 12px 14px;
+      border-top : 1px solid var(--emoji-replacer-border);
+      background : linear-gradient(90deg, rgba(6,182,212,.07), rgba(124,58,237,.08));
+    }
+
+    .emoji-replacer-row{
+      display : flex;
+      gap : 8px;
+      flex-wrap : wrap;
+      align-items : center;
+    }
+
+    .emoji-replacer-spacer{
+      flex : 1 1 auto;
+    }
+
+    .emoji-replacer-btn{
+      --_bg : linear-gradient(180deg, color-mix(in oklab, var(--emoji-replacer-accent) 72%, transparent), color-mix(in oklab, var(--emoji-replacer-accent-2) 64%, transparent));
+      --_txt : #fff;
+      --_bd : color-mix(in oklab, #000 10%, var(--emoji-replacer-accent));
+      appearance : none;
+      -webkit-appearance : none;
+      border : 1px solid var(--_bd);
+      background : var(--_bg);
+      color : var(--_txt);
+      padding : 10px 12px;
+      border-radius : 12px;
+      font-weight : 700;
+      font-size : 13px;
+      letter-spacing : .3px;
+      cursor : pointer;
+      position : relative;
+      transition : transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+      box-shadow : 0 10px 20px rgba(124,58,237,.18), 0 6px 14px rgba(6,182,212,.14);
+    }
+
+    .emoji-replacer-btn:hover{
+      transform : translateY(-1px);
+      filter : brightness(1.06);
+    }
+
+    .emoji-replacer-btn:active{
+      transform : translateY(0);
+      filter : brightness(.98);
+    }
+
+    .emoji-replacer-btn-outline{
+      --_bg : transparent;
+      --_txt : var(--emoji-replacer-text);
+      --_bd : var(--emoji-replacer-border);
+      background : var(--_bg);
+      color : var(--_txt);
+      border-color : var(--_bd);
+      box-shadow : none;
+      font-weight : 600;
+    }
+
+    .emoji-replacer-btn-ghost{
+      background : transparent;
+      color : var(--emoji-replacer-text-muted);
+      border : 1px dashed var(--emoji-replacer-border);
+      box-shadow : none;
+      font-weight : 600;
+    }
+
+    .emoji-replacer-kbd{
+      font : 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      background : #111827a6;
+      color : #cbd5e1;
+      padding : 3px 6px;
+      border-radius : 8px;
+      border : 1px solid var(--emoji-replacer-border);
+      margin-left : 6px;
+    }
+
+    /* Options */
+    .emoji-replacer-options{
+      display : grid;
+      grid-template-columns : 1fr 1fr;
+      gap : 12px;
+      padding : 12px 14px;
+      border-top : 1px solid var(--emoji-replacer-border);
+      color : var(--emoji-replacer-text-muted);
+      background : linear-gradient(90deg, rgba(255,255,255,.03), transparent);
+      font-size : 13px;
+    }
+
+    @media (max-width: 840px){
+      .emoji-replacer-options{
+        grid-template-columns : 1fr;
+      }
+    }
+
+    .emoji-replacer-fieldset{
+      margin : 0;
+      padding : 0;
+      border : 0;
+      display : grid;
+      gap : 8px;
+    }
+
+    .emoji-replacer-legend{
+      font-weight : 700;
+      color : var(--emoji-replacer-text);
+      font-family : var(--emoji-replacer-font-heading);
+      letter-spacing : .2px;
+      margin-bottom : 2px;
+    }
+
+    .emoji-replacer-check-row,
+    .emoji-replacer-radio-row{
+      display : flex;
+      align-items : center;
+      gap : 8px;
+      flex-wrap : wrap;
+    }
+
+    .emoji-replacer-select,
+    .emoji-replacer-input,
+    .emoji-replacer-number{
+      padding : 8px 10px;
+      border : 1px solid var(--emoji-replacer-border);
+      border-radius : 10px;
+      background : transparent;
+      color : var(--emoji-replacer-text);
+      outline : none;
+      width : 100%;
+    }
+
+    .emoji-replacer-number{
+      width : 90px;
+    }
+
+    .emoji-replacer-dict{
+      width : 100%;
+      min-height : 86px;
+      resize : vertical;
+      border : 1px solid var(--emoji-replacer-border);
+      border-radius : 10px;
+      padding : 10px;
+      background : transparent;
+      color : var(--emoji-replacer-text);
+      font : 500 13px/1.5 var(--emoji-replacer-font-body);
+    }
+
+    /* Stats */
+    .emoji-replacer-stats{
+      display : grid;
+      grid-template-columns : repeat(4, 1fr);
+      gap : 10px;
+      padding : 10px 14px;
+      border-top : 1px solid var(--emoji-replacer-border);
+      color : var(--emoji-replacer-text-muted);
+      background : linear-gradient(90deg, rgba(255,255,255,.03), transparent);
+      font-size : 12px;
+    }
+
+    @media (max-width: 820px){
+      .emoji-replacer-stats{
+        grid-template-columns : 1fr 1fr;
+      }
+    }
+
+    .emoji-replacer-chip{
+      padding : 6px 8px;
+      border : 1px solid var(--emoji-replacer-border);
+      border-radius : 999px;
+      background : #0b1324a8;
+      backdrop-filter : blur(6px);
+    }
+
+    /* Toast */
+    .emoji-replacer-toast{
+      position : fixed;
+      inset : auto 16px 16px auto;
+      background : #0b1223ee;
+      color : #e5e7eb;
+      padding : 10px 14px;
+      border-radius : 12px;
+      border : 1px solid var(--emoji-replacer-border);
+      backdrop-filter : blur(8px);
+      box-shadow : var(--emoji-replacer-shadow-1);
+      transform : translateY(20px);
+      opacity : 0;
+      pointer-events : none;
+      transition : transform .25s ease, opacity .25s ease;
+      z-index : 50;
+    }
+
+    .emoji-replacer-toast.emoji-replacer-show{
+      transform : translateY(0);
+      opacity : 1;
+    }
+
+    /* Subtle float animation */
+    @media (prefers-reduced-motion: no-preference){
+      .emoji-replacer-card{
+        animation : emoji-replacer-float 18s ease-in-out infinite;
+      }
+
+      @keyframes emoji-replacer-float{
+        0%{
+          transform : translateY(0);
+        }
+        50%{
+          transform : translateY(-2px);
+        }
+        100%{
+          transform : translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  
+
+
+  <main class="emoji-replacer-page" role="main">
+    <!-- Hero -->
+    <section class="emoji-replacer-hero" aria-labelledby="emoji-replacer-hero-title">
+      <h1 id="emoji-replacer-hero-title" class="emoji-replacer-hero-title">
+        Emoji Replacer
+      </h1>
+      <p class="emoji-replacer-hero-sub">
+        Replace words with emojis, convert emoticons to emojis, or remove emojis from text—with live preview, custom dictionary, and skin tone options.
+      </p>
+    </section>
+
+    <!-- App -->
+    <section class="emoji-replacer-grid" aria-label="Emoji replacer workspace">
+      <!-- Editor -->
+      <article class="emoji-replacer-card">
+        <header class="emoji-replacer-card-head">
+          <h3 class="emoji-replacer-card-title">
+            Input
+          </h3>
+          <div class="emoji-replacer-row" aria-label="Quick actions">
+            <button id="emoji-replacer-sampleBtn" class="emoji-replacer-btn emoji-replacer-btn-outline" type="button">
+              Sample
+            </button>
+            <button id="emoji-replacer-clearBtn" class="emoji-replacer-btn emoji-replacer-btn-ghost" type="button">
+              Clear
+            </button>
+          </div>
+        </header>
+
+        <textarea id="emoji-replacer-input" class="emoji-replacer-textarea" spellcheck="false" placeholder="Paste or type your text here…"></textarea>
+
+        <div class="emoji-replacer-toolbar" role="group" aria-label="Primary actions">
+          <div class="emoji-replacer-row">
+            <button id="emoji-replacer-runReplaceBtn" class="emoji-replacer-btn" type="button" title="Replace words with emojis per dictionary">
+              Replace Words
+            </button>
+            <button id="emoji-replacer-runEmoticonsBtn" class="emoji-replacer-btn" type="button" title="Convert emoticons like :) to 🙂">
+              Convert Emoticons
+            </button>
+            <button id="emoji-replacer-removeEmojiBtn" class="emoji-replacer-btn" type="button" title="Remove all emojis from text">
+              Remove Emojis
+            </button>
+          </div>
+          <div class="emoji-replacer-spacer"></div>
+          <div class="emoji-replacer-row">
+            <button id="emoji-replacer-applyBtn" class="emoji-replacer-btn emoji-replacer-btn-outline" type="button">
+              Apply to Text
+            </button>
+            <button id="emoji-replacer-copyBtn" class="emoji-replacer-btn emoji-replacer-btn-outline" type="button">
+              Copy Output
+            </button>
+            <button id="emoji-replacer-downloadBtn" class="emoji-replacer-btn emoji-replacer-btn-outline" type="button">
+              Download .txt
+            </button>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div class="emoji-replacer-options">
+          <fieldset class="emoji-replacer-fieldset">
+            <legend class="emoji-replacer-legend">
+              Replacement Rules
+            </legend>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-liveMode" type="checkbox" checked/>
+              <span>Live mode (update preview as you type)</span>
+            </label>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-wholeWords" type="checkbox" checked/>
+              <span>Whole words only</span>
+            </label>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-caseSensitive" type="checkbox"/>
+              <span>Case sensitive</span>
+            </label>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-keepWord" type="checkbox"/>
+              <span>Keep original word next to emoji</span>
+            </label>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-spaceAround" type="checkbox" checked/>
+              <span>Add spaces around inserted emoji</span>
+            </label>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-normalizeVS16" type="checkbox"/>
+              <span>Normalize to emoji style (add VS16)</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="emoji-replacer-fieldset">
+            <legend class="emoji-replacer-legend">
+              Skin Tone (for people/hand emojis)
+            </legend>
+            <select id="emoji-replacer-tone" class="emoji-replacer-select">
+              <option value="none">No change</option>
+              <option value="light">Light 👍🏻</option>
+              <option value="medium-light">Medium-light 👍🏼</option>
+              <option value="medium">Medium 👍🏽</option>
+              <option value="medium-dark">Medium-dark 👍🏾</option>
+              <option value="dark">Dark 👍🏿</option>
+            </select>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-toneReplaceExisting" type="checkbox"/>
+              <span>Override existing tone</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="emoji-replacer-fieldset">
+            <legend class="emoji-replacer-legend">
+              Dictionary (custom lines)
+            </legend>
+            <textarea id="emoji-replacer-dict" class="emoji-replacer-dict" placeholder="Add one per line: word = 😊
+idea = 💡
+rocket = 🚀"></textarea>
+            <small>Format: <strong>word = emoji</strong> (or <em>word,emoji</em>). Custom entries override defaults.</small>
+          </fieldset>
+
+          <fieldset class="emoji-replacer-fieldset">
+            <legend class="emoji-replacer-legend">
+              Exclusions & Emoticons
+            </legend>
+            <input id="emoji-replacer-exclude" class="emoji-replacer-input" type="text" placeholder="Protected words (comma-separated), e.g. Apple, JAMstack"/>
+            <label class="emoji-replacer-check-row">
+              <input id="emoji-replacer-enableEmoticons" type="checkbox" checked/>
+              <span>Enable emoticon → emoji conversion</span>
+            </label>
+          </fieldset>
+        </div>
+
+        <!-- Stats -->
+        <div class="emoji-replacer-stats" aria-live="polite">
+          <div class="emoji-replacer-chip">
+            <strong>Emojis:</strong> <span id="emoji-replacer-stat-emojis">0</span>
+          </div>
+          <div class="emoji-replacer-chip">
+            <strong>Unique:</strong> <span id="emoji-replacer-stat-unique">0</span>
+          </div>
+          <div class="emoji-replacer-chip">
+            <strong>Emoticons:</strong> <span id="emoji-replacer-stat-emoticons">0</span>
+          </div>
+          <div class="emoji-replacer-chip">
+            <strong>Chars:</strong> <span id="emoji-replacer-stat-chars">0</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Preview -->
+      <article class="emoji-replacer-card">
+        <header class="emoji-replacer-card-head">
+          <h3 class="emoji-replacer-card-title">
+            Output Preview
+          </h3>
+          <div class="emoji-replacer-row">
+            <span title="Live preview of current settings">
+              Live
+            </span>
+          </div>
+        </header>
+        <pre id="emoji-replacer-preview" class="emoji-replacer-preview" aria-live="polite"></pre>
+      </article>
+    </section>
+  </main>
+
+  <!-- Toast -->
+  <div id="emoji-replacer-toast" class="emoji-replacer-toast" role="status" aria-live="polite"></div>
+
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text — powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+
+       <script src="/js/index.js"></script>
+
+  <script>
+    (function(){
+      "use strict";
+
+      /* Elements */
+      const ta = document.getElementById('emoji-replacer-input');
+      const previewEl = document.getElementById('emoji-replacer-preview');
+      const toastEl = document.getElementById('emoji-replacer-toast');
+
+      const sampleBtn = document.getElementById('emoji-replacer-sampleBtn');
+      const clearBtn = document.getElementById('emoji-replacer-clearBtn');
+      const runReplaceBtn = document.getElementById('emoji-replacer-runReplaceBtn');
+      const runEmoticonsBtn = document.getElementById('emoji-replacer-runEmoticonsBtn');
+      const removeEmojiBtn = document.getElementById('emoji-replacer-removeEmojiBtn');
+      const applyBtn = document.getElementById('emoji-replacer-applyBtn');
+      const copyBtn = document.getElementById('emoji-replacer-copyBtn');
+      const downloadBtn = document.getElementById('emoji-replacer-downloadBtn');
+
+      /* Options */
+      const liveMode = document.getElementById('emoji-replacer-liveMode');
+      const wholeWords = document.getElementById('emoji-replacer-wholeWords');
+      const caseSensitive = document.getElementById('emoji-replacer-caseSensitive');
+      const keepWord = document.getElementById('emoji-replacer-keepWord');
+      const spaceAround = document.getElementById('emoji-replacer-spaceAround');
+      const normalizeVS16 = document.getElementById('emoji-replacer-normalizeVS16');
+
+      const toneSelect = document.getElementById('emoji-replacer-tone');
+      const toneOverride = document.getElementById('emoji-replacer-toneReplaceExisting');
+
+      const dictArea = document.getElementById('emoji-replacer-dict');
+      const excludeInput = document.getElementById('emoji-replacer-exclude');
+      const enableEmoticons = document.getElementById('emoji-replacer-enableEmoticons');
+
+      /* Stats */
+      const sEmojis = document.getElementById('emoji-replacer-stat-emojis');
+      const sUnique = document.getElementById('emoji-replacer-stat-unique');
+      const sEmoticons = document.getElementById('emoji-replacer-stat-emoticons');
+      const sChars = document.getElementById('emoji-replacer-stat-chars');
+
+      /* Toast */
+      let toastTimer = null;
+      function toast(msg){
+        toastEl.textContent = msg;
+        toastEl.classList.add('emoji-replacer-show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(()=> toastEl.classList.remove('emoji-replacer-show'), 1400);
+      }
+
+      /* Emoji regex helpers */
+      // Broad emoji detector (modern engines)
+      const EMOJI_RE = /(\p{Extended_Pictographic}\uFE0F?)/gu;
+      const EMOJI_BASE_MOD_RE = /(\p{Emoji_Modifier_Base})(\p{Emoji_Modifier})?/gu;
+      const VS16 = '\uFE0F';
+
+      // Emoticon patterns (surrounded by start/space/punct or end)
+      const emoticons = [
+        {re: /(^|[\s(])(:-\)|:\))/g, emo: '$1🙂'},
+        {re: /(^|[\s(]);-\)|;\)/g, emo: '$1😉'},
+        {re: /(^|[\s(]):-D|(^|[\s(]):D/g, emo: (m, a, b)=> (a||b)+'😄'},
+        {re: /(^|[\s(]):-P|(^|[\s(]):P/g, emo: (m, a, b)=> (a||b)+'😛'},
+        {re: /(^|[\s(]):-\(|(^|[\s(]):\(/g, emo: (m, a, b)=> (a||b)+'🙁'},
+        {re: /(^|[\s(]):-O|(^|[\s(]):O/g, emo: (m, a, b)=> (a||b)+'😮'},
+        {re: /(^|[\s(]):\*|(^|[\s()] :-\*)/g, emo: (m, a)=> (a||'')+'😘'},
+        {re: /(^|[\s(])<3/g, emo: '$1❤️'},
+        {re: /(^|[\s(]):\/|(^|[\s()] :-\/)/g, emo: (m, a)=> (a||'')+'😕'}
+      ];
+
+      /* Default dictionary */
+      const defaultMap = {
+        love:'❤️', heart:'❤️', like:'👍', ok:'👌',
+        fire:'🔥', star:'⭐', idea:'💡', check:'✅', warning:'⚠️',
+        rocket:'🚀', party:'🎉', music:'🎵', coffee:'☕', tea:'🍵',
+        sun:'☀️', moon:'🌙', smile:'😊', happy:'😊', cool:'😎',
+        wow:'😮', sad:'🙁', clap:'👏', thumbs:'👍', good:'👍'
+      };
+
+      function parseCustomDict(text){
+        const out = {};
+        if(!text) return out;
+        text.split(/\r?\n/).forEach(line=>{
+          const trimmed = line.trim();
+          if(!trimmed) return;
+          let key='', val='';
+          if(trimmed.includes('=')){
+            const [k,...rest] = trimmed.split('=');
+            key = k.trim();
+            val = rest.join('=').trim();
+          }else if(trimmed.includes(',')){
+            const [k,...rest] = trimmed.split(',');
+            key = k.trim();
+            val = rest.join(',').trim();
+          }
+          if(key && val){
+            out[key] = val;
+          }
+        });
+        return out;
+      }
+
+      function getOptions(){
+        const excludes = (excludeInput.value || '')
+          .split(',')
+          .map(s=>s.trim())
+          .filter(Boolean);
+
+        return {
+          live : !!liveMode.checked,
+          whole : !!wholeWords.checked,
+          case : !!caseSensitive.checked,
+          keep : !!keepWord.checked,
+          pad : !!spaceAround.checked,
+          vs16 : !!normalizeVS16.checked,
+          tone : toneSelect.value,          // 'none' | 'light' | ...
+          toneOverride : !!toneOverride.checked,
+          dict : { ...defaultMap, ...parseCustomDict(dictArea.value) },
+          exclude : new Set(excludes),
+          emoticons : !!enableEmoticons.checked
+        };
+      }
+
+      function wordRegexFromDict(dict, whole, sensitive){
+        const esc = s=> s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+        const keys = Object.keys(dict).filter(Boolean).sort((a,b)=> b.length - a.length);
+        if(keys.length === 0) return null;
+        const group = keys.map(esc).join('|');
+        const flags = 'gu' + (sensitive ? '' : 'i');
+        if(whole){
+          // Use unicode word boundary; good enough for most languages
+          return new RegExp(`\\b(?:${group})\\b`, flags);
+        }
+        return new RegExp(`(?:${group})`, flags);
+      }
+
+      function applyWordReplacements(text, opt){
+        const re = wordRegexFromDict(opt.dict, opt.whole, opt.case);
+        if(!re) return text;
+        return text.replace(re, (m)=>{
+          const key = opt.case ? m : m.toLowerCase();
+          const emoji = opt.dict[key] ?? opt.dict[m];
+          if(!emoji) return m;
+          const piece = opt.keep ? `${m}${opt.pad?' ':''}${emoji}` : `${emoji}`;
+          return opt.pad && !opt.keep ? ` ${emoji} ` : piece;
+        });
+      }
+
+      function convertEmoticons(text, enabled){
+        if(!enabled) return text;
+        let out = text;
+        emoticons.forEach(({re, emo})=>{
+          out = out.replace(re, emo);
+        });
+        return out;
+      }
+
+      function removeEmojis(text){
+        return text.replace(EMOJI_RE, '');
+      }
+
+      function normalizeEmojiStyle(text, enable){
+        if(!enable) return text;
+        // Force VS16 for characters that support text/emoji presentation
+        return text.replace(EMOJI_RE, (m)=>{
+          return m.endsWith(VS16) ? m : (m + VS16);
+        });
+      }
+
+      function toneChar(val){
+        switch(val){
+          case 'light': return '\u{1F3FB}';
+          case 'medium-light': return '\u{1F3FC}';
+          case 'medium': return '\u{1F3FD}';
+          case 'medium-dark': return '\u{1F3FE}';
+          case 'dark': return '\u{1F3FF}';
+          default: return '';
+        }
+      }
+
+      function applySkinTone(text, val, override){
+        const mod = toneChar(val);
+        if(!mod) return text;
+        return text.replace(EMOJI_BASE_MOD_RE, (m, base, existing)=>{
+          if(existing && !override) return m; // keep existing tone
+          // Append VS16 if not present for consistent style
+          const needsVs = !/\uFE0F$/.test(base);
+          return base + (needsVs ? VS16 : '') + mod;
+        });
+      }
+
+      function protectExclusions(text, opt){
+        if(!opt.exclude.size) return {text, map:new Map()};
+        // Protect excluded words by placeholder tokens
+        const map = new Map();
+        let i = 0;
+        const flags = 'giu';
+        const parts = Array.from(opt.exclude).map(w => w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+        const re = new RegExp(`\\b(?:${parts.join('|')})\\b`, flags);
+        const out = text.replace(re, (m)=>{
+          const token = `__EXCL_${i++}__`;
+          map.set(token, m);
+          return token;
+        });
+        return {text: out, map};
+      }
+
+      function restoreExclusions(text, map){
+        let out = text;
+        for(const [token, orig] of map.entries()){
+          const re = new RegExp(token, 'g');
+          out = out.replace(re, orig);
+        }
+        return out;
+      }
+
+      function pipeline(raw, steps){
+        // steps: { replaceWords, convertEmo, removeEmoji }
+        const opt = getOptions();
+
+        // Protect excluded words
+        const protectedPack = protectExclusions(raw, opt);
+        let t = protectedPack.text;
+
+        if(steps.replaceWords){
+          t = applyWordReplacements(t, opt);
+        }
+        if(steps.convertEmo){
+          t = convertEmoticons(t, opt.emoticons);
+        }
+        if(steps.removeEmoji){
+          t = removeEmojis(t);
+        }
+
+        t = normalizeEmojiStyle(t, opt.vs16);
+        t = applySkinTone(t, opt.tone, opt.toneOverride);
+
+        // Restore exclusions
+        t = restoreExclusions(t, protectedPack.map);
+
+        return t;
+      }
+
+      function highlightForPreview(text){
+        // Wrap every emoji for preview highlighting
+        return text.replace(EMOJI_RE, (m)=> `<span class="emoji-replacer-mark">${m}</span>`);
+      }
+
+      function countEmoticonsIn(text){
+        let count = 0;
+        emoticons.forEach(({re})=>{
+          const r = new RegExp(re.source, re.flags);
+          const matches = text.match(r);
+          if(matches) count += matches.length;
+        });
+        return count;
+      }
+
+      function updateStats(raw, out){
+        const emojis = (out.match(EMOJI_RE) || []);
+        sEmojis.textContent = emojis.length;
+        sUnique.textContent = new Set(emojis).size;
+        sEmoticons.textContent = countEmoticonsIn(raw);
+        sChars.textContent = out.length;
+      }
+
+      function render(){
+        const opt = getOptions();
+        const raw = ta.value || '';
+
+        // Decide which steps to simulate in live preview:
+        // live preview applies Replace Words + Emoticons; it does not auto "Remove Emojis"
+        const out = pipeline(raw, {replaceWords:true, convertEmo:true, removeEmoji:false});
+
+        updateStats(raw, out);
+
+        if(opt.live){
+          previewEl.innerHTML = highlightForPreview(out);
+        }else{
+          previewEl.textContent = out;
+        }
+
+        return out; // return current preview output
+      }
+
+      /* Events */
+      let typingTimer = null;
+      function scheduleRender(){
+        if(typingTimer) clearTimeout(typingTimer);
+        typingTimer = setTimeout(render, 70);
+      }
+
+      ta.addEventListener('input', scheduleRender);
+
+      [
+        liveMode, wholeWords, caseSensitive, keepWord, spaceAround, normalizeVS16,
+        toneSelect, toneOverride, dictArea, excludeInput, enableEmoticons
+      ].forEach(el => el.addEventListener('change', render));
+
+      sampleBtn.addEventListener('click', ()=>{
+        ta.value =
+`We love clean text! This tool can replace words with emoji, like love -> heart and idea -> lightbulb.
+Classic emoticons turn into emoji too: :) ;) :D <3
+Good code style makes reviewers 😊 and keeps diffs small. Party time!
+Thumbs up for a rocket launch and coffee break.
+
+Apple should stay as Apple (not an apple).`;
+        render();
+        ta.focus();
+        toast('Sample loaded');
+      });
+
+      clearBtn.addEventListener('click', ()=>{
+        ta.value = '';
+        render();
+        ta.focus();
+        toast('Cleared');
+      });
+
+      runReplaceBtn.addEventListener('click', ()=>{
+        const out = pipeline(ta.value || '', {replaceWords:true, convertEmo:false, removeEmoji:false});
+        previewEl.innerHTML = highlightForPreview(out);
+        updateStats(ta.value || '', out);
+        toast('Words → emojis applied');
+      });
+
+      runEmoticonsBtn.addEventListener('click', ()=>{
+        const out = pipeline(ta.value || '', {replaceWords:false, convertEmo:true, removeEmoji:false});
+        previewEl.innerHTML = highlightForPreview(out);
+        updateStats(ta.value || '', out);
+        toast('Emoticons converted');
+      });
+
+      removeEmojiBtn.addEventListener('click', ()=>{
+        const out = pipeline(ta.value || '', {replaceWords:false, convertEmo:false, removeEmoji:true});
+        previewEl.textContent = out;
+        updateStats(ta.value || '', out);
+        toast('Emojis removed');
+      });
+
+      applyBtn.addEventListener('click', ()=>{
+        // Apply full live pipeline to editor text
+        const out = pipeline(ta.value || '', {replaceWords:true, convertEmo:true, removeEmoji:false});
+        ta.value = out;
+        render();
+        toast('Applied to editor');
+      });
+
+      copyBtn.addEventListener('click', async ()=>{
+        try{
+          // Copy what is currently previewed (strip markup)
+          const current = previewEl.textContent || '';
+          await navigator.clipboard.writeText(current);
+          toast('Copied output');
+        }catch(e){
+          toast('Copy failed');
+        }
+      });
+
+      downloadBtn.addEventListener('click', ()=>{
+        const current = previewEl.textContent || '';
+        const blob = new Blob([current], {type:'text/plain;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const yyyy = new Date().toISOString().slice(0,10);
+        a.href = url;
+        a.download = `sniptext-emoji-replacer-${yyyy}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        toast('Downloaded');
+      });
+
+      // Shortcuts
+      window.addEventListener('keydown', (e)=>{
+        const key = e.key.toLowerCase();
+        if((e.ctrlKey || e.metaKey) && key === 'k'){
+          e.preventDefault();
+          ta.value = '';
+          render();
+          toast('Cleared');
+        }
+        if((e.ctrlKey || e.metaKey) && key === 'enter'){
+          e.preventDefault();
+          const out = pipeline(ta.value || '', {replaceWords:true, convertEmo:true, removeEmoji:false});
+          previewEl.innerHTML = highlightForPreview(out);
+          updateStats(ta.value || '', out);
+          toast('Processed');
+        }
+      });
+
+      // Initial
+      render();
+    })();
+  </script>
+</body>
+</html>

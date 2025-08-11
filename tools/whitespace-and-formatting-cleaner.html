@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Whitespace & Formatting Cleaner | SnipText</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Fonts (project-wide choice) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- =========================
+       THEME (variables only)
+       ========================= -->
+  <style>
+    :root{
+      /* Palette */
+      --whitespace-formatting-bg:            #0f172a;
+      --whitespace-formatting-bg-soft:       #111827;
+      --whitespace-formatting-surface:       #0b1223ec;
+      --whitespace-formatting-text:          #e5e7eb;
+      --whitespace-formatting-text-muted:    #cbd5e1;
+      --whitespace-formatting-border:        rgba(255,255,255,.10);
+
+      /* Accents */
+      --whitespace-formatting-accent:        #1D4ED8;
+      --whitespace-formatting-accent-2:      #06b6d4;
+      --whitespace-formatting-warn:          #f59e0b;
+      --whitespace-formatting-danger:        #ef4444;
+      --whitespace-formatting-ok:            #22c55e;
+
+      /* Radii & shadows */
+      --whitespace-formatting-radius-xl:     18px;
+      --whitespace-formatting-radius-lg:     14px;
+      --whitespace-formatting-radius-md:     10px;
+      --whitespace-formatting-shadow-1:      0 10px 30px rgba(0,0,0,.35);
+      --whitespace-formatting-shadow-2:      0 16px 44px rgba(17,24,39,.45);
+
+      /* Layout */
+      --whitespace-formatting-maxw:          1200px;
+
+      /* Typography */
+      --whitespace-formatting-font-heading:  'Poppins', 'Rajdhani', 'Roboto', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --whitespace-formatting-font-body:     'Roboto', 'Poppins', 'Rajdhani', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --whitespace-formatting-bg:          #f3f4f6;
+        --whitespace-formatting-bg-soft:     #ffffff;
+        --whitespace-formatting-surface:     #ffffffef;
+        --whitespace-formatting-text:        #0f172a;
+        --whitespace-formatting-text-muted:  #334155;
+        --whitespace-formatting-border:      #e5e7eb;
+
+        --whitespace-formatting-shadow-1:    0 10px 30px rgba(2,6,23,.08);
+        --whitespace-formatting-shadow-2:    0 16px 44px rgba(2,6,23,.12);
+      }
+    }
+  </style>
+
+  <!-- =========================
+       PAGE STYLES
+       ========================= -->
+  <style>
+    *{
+      box-sizing : border-box;
+    }
+
+    html,
+    body{
+      height : 100%;
+      margin : 0;
+      background :
+        radial-gradient(1200px 600px at 8% -10%, rgba(29,78,216,.20), transparent 65%),
+        radial-gradient(900px 520px at 100% 0%, rgba(6,182,212,.18), transparent 60%),
+        linear-gradient(180deg, var(--whitespace-formatting-bg) 0%, var(--whitespace-formatting-bg-soft) 100%);
+      color : var(--whitespace-formatting-text);
+      font-family : var(--whitespace-formatting-font-body);
+      -webkit-text-size-adjust : 100%;
+      text-size-adjust : 100%;
+    }
+
+    a{
+      color : inherit;
+      text-decoration : none;
+    }
+
+    button{
+      font-family : var(--whitespace-formatting-font-heading);
+    }
+
+    /* Page */
+    .whitespace-formatting-page{
+      max-width : var(--whitespace-formatting-maxw);
+      margin : clamp(16px,3vw,40px) auto;
+      padding : clamp(12px,2.4vw,24px);
+    }
+
+    /* Hero */
+    .whitespace-formatting-hero{
+      position : relative;
+      padding : clamp(18px,3vw,28px);
+      border : 1px solid var(--whitespace-formatting-border);
+      background : linear-gradient(135deg, rgba(29,78,216,.16), rgba(6,182,212,.16)) border-box;
+      border-radius : var(--whitespace-formatting-radius-xl);
+      box-shadow : var(--whitespace-formatting-shadow-1);
+      overflow : hidden;
+      isolation : isolate;
+    }
+
+    .whitespace-formatting-hero::after{
+      content : "";
+      position : absolute;
+      inset : -2px;
+      background :
+        radial-gradient(600px 200px at 20% -5%, rgba(29,78,216,.26), transparent 65%),
+        radial-gradient(400px 260px at 85% 0%, rgba(6,182,212,.26), transparent 60%);
+      filter : blur(16px);
+      opacity : .6;
+      z-index : -1;
+      pointer-events : none;
+    }
+
+    .whitespace-formatting-hero-title{
+      margin : 0 0 6px 0;
+      font-weight : 800;
+      letter-spacing : .2px;
+      font-size : clamp(22px,3.2vw,36px);
+      line-height : 1.15;
+      font-family : var(--whitespace-formatting-font-heading);
+      background : linear-gradient(90deg, #fff, #c7d2fe 35%, #99f6e4 70%, #fff);
+      -webkit-background-clip : text;
+      background-clip : text;
+      color : transparent;
+    }
+
+    .whitespace-formatting-hero-sub{
+      margin : 6px 0 0 0;
+      color : var(--whitespace-formatting-text-muted);
+      font-size : clamp(14px,1.8vw,16px);
+    }
+
+    /* Grid */
+    .whitespace-formatting-grid{
+      display : grid;
+      grid-template-columns : 1fr;
+      gap : clamp(12px,2.4vw,20px);
+      margin-top : clamp(14px,2.6vw,24px);
+    }
+
+    @media (min-width: 992px){
+      .whitespace-formatting-grid{
+        grid-template-columns : 1.1fr .9fr;
+      }
+    }
+
+    /* Card */
+    .whitespace-formatting-card{
+      border : 1px solid var(--whitespace-formatting-border);
+      border-radius : var(--whitespace-formatting-radius-lg);
+      background : var(--whitespace-formatting-surface);
+      box-shadow : var(--whitespace-formatting-shadow-2);
+      backdrop-filter : blur(10px);
+      -webkit-backdrop-filter : blur(10px);
+      overflow : hidden;
+    }
+
+    .whitespace-formatting-card-head{
+      display : flex;
+      align-items : center;
+      justify-content : space-between;
+      padding : 12px 14px;
+      background : linear-gradient(90deg, rgba(29,78,216,.14), rgba(6,182,212,.10));
+      border-bottom : 1px solid var(--whitespace-formatting-border);
+    }
+
+    .whitespace-formatting-card-title{
+      margin : 0;
+      font-size : 14px;
+      letter-spacing : .35px;
+      text-transform : uppercase;
+      opacity : .92;
+      font-family : var(--whitespace-formatting-font-heading);
+    }
+
+    /* Textareas & preview */
+    .whitespace-formatting-textarea{
+      width : 100%;
+      min-height : 260px;
+      resize : vertical;
+      border : 0;
+      outline : 0;
+      background : transparent;
+      color : var(--whitespace-formatting-text);
+      padding : 16px;
+      font : 500 15px/1.55 var(--whitespace-formatting-font-body);
+      caret-color : var(--whitespace-formatting-accent);
+      letter-spacing : .2px;
+    }
+
+    .whitespace-formatting-textarea::placeholder{
+      color : color-mix(in oklab, var(--whitespace-formatting-text-muted) 75%, transparent);
+      font-family : 'Poppins', sans-serif;
+    }
+
+    .whitespace-formatting-preview{
+      padding : 16px;
+      min-height : 365px;
+      max-height : 429px;
+      overflow : auto;
+      font : 500 15px/1.6 var(--whitespace-formatting-font-body);
+      white-space : pre-wrap;
+      word-wrap : break-word;
+    }
+
+    .whitespace-formatting-preview-showcodes .whitespace-formatting-symbol-space{
+      background : linear-gradient(180deg, rgba(59,130,246,.25), rgba(29,78,216,.35));
+      border-radius : 4px;
+      padding : 0 1px;
+    }
+
+    /* Toolbar */
+    .whitespace-formatting-toolbar{
+      display : flex;
+      flex-wrap : wrap;
+      gap : 8px;
+      padding : 12px 14px;
+      border-top : 1px solid var(--whitespace-formatting-border);
+      background : linear-gradient(90deg, rgba(6,182,212,.07), rgba(29,78,216,.08));
+    }
+
+    .whitespace-formatting-row{
+      display : flex;
+      gap : 8px;
+      flex-wrap : wrap;
+      align-items : center;
+    }
+
+    .whitespace-formatting-spacer{
+      flex : 1 1 auto;
+    }
+
+    .whitespace-formatting-btn{
+      --_bg : linear-gradient(180deg, color-mix(in oklab, var(--whitespace-formatting-accent) 72%, transparent), color-mix(in oklab, var(--whitespace-formatting-accent-2) 64%, transparent));
+      --_txt : #fff;
+      --_bd : color-mix(in oklab, #000 10%, var(--whitespace-formatting-accent));
+      appearance : none;
+      -webkit-appearance : none;
+      border : 1px solid var(--_bd);
+      background : var(--_bg);
+      color : var(--_txt);
+      padding : 10px 12px;
+      border-radius : 12px;
+      font-weight : 700;
+      font-size : 13px;
+      letter-spacing : .3px;
+      cursor : pointer;
+      position : relative;
+      transition : transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+      box-shadow : 0 10px 20px rgba(29,78,216,.18), 0 6px 14px rgba(6,182,212,.14);
+    }
+
+    .whitespace-formatting-btn:hover{
+      transform : translateY(-1px);
+      filter : brightness(1.06);
+    }
+
+    .whitespace-formatting-btn:active{
+      transform : translateY(0);
+      filter : brightness(.98);
+    }
+
+    .whitespace-formatting-btn-outline{
+      --_bg : transparent;
+      --_txt : var(--whitespace-formatting-text);
+      --_bd : var(--whitespace-formatting-border);
+      background : var(--_bg);
+      color : var(--_txt);
+      border-color : var(--_bd);
+      box-shadow : none;
+      font-weight : 600;
+    }
+
+    .whitespace-formatting-btn-ghost{
+      background : transparent;
+      color : var(--whitespace-formatting-text-muted);
+      border : 1px dashed var(--whitespace-formatting-border);
+      box-shadow : none;
+      font-weight : 600;
+    }
+
+    .whitespace-formatting-kbd{
+      font : 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      background : #111827a6;
+      color : #cbd5e1;
+      padding : 3px 6px;
+      border-radius : 8px;
+      border : 1px solid var(--whitespace-formatting-border);
+      margin-left : 6px;
+    }
+
+    /* Options */
+    .whitespace-formatting-options{
+      display : grid;
+      grid-template-columns : 1fr 1fr;
+      gap : 12px;
+      padding : 12px 14px;
+      border-top : 1px solid var(--whitespace-formatting-border);
+      color : var(--whitespace-formatting-text-muted);
+      background : linear-gradient(90deg, rgba(255,255,255,.03), transparent);
+      font-size : 13px;
+    }
+
+    @media (max-width: 720px){
+      .whitespace-formatting-options{
+        grid-template-columns : 1fr;
+      }
+    }
+
+    .whitespace-formatting-fieldset{
+      margin : 0;
+      padding : 0;
+      border : 0;
+      display : grid;
+      gap : 8px;
+    }
+
+    .whitespace-formatting-legend{
+      font-weight : 700;
+      color : var(--whitespace-formatting-text);
+      font-family : var(--whitespace-formatting-font-heading);
+      letter-spacing : .2px;
+      margin-bottom : 2px;
+    }
+
+    .whitespace-formatting-radio-row,
+    .whitespace-formatting-check-row{
+      display : flex;
+      align-items : center;
+      gap : 8px;
+    }
+
+    .whitespace-formatting-radio-row input,
+    .whitespace-formatting-check-row input{
+      accent-color : var(--whitespace-formatting-accent);
+      cursor : pointer;
+    }
+
+    .whitespace-formatting-number{
+      width : 70px;
+      padding : 8px 10px;
+      border : 1px solid var(--whitespace-formatting-border);
+      border-radius : 10px;
+      background : transparent;
+      color : var(--whitespace-formatting-text);
+      outline : none;
+    }
+
+    .whitespace-formatting-select{
+      padding : 8px 10px;
+      border : 1px solid var(--whitespace-formatting-border);
+      border-radius : 10px;
+      background : transparent;
+      color : var(--whitespace-formatting-text);
+      outline : none;
+    }
+
+    /* Stats */
+    .whitespace-formatting-stats{
+      display : grid;
+      grid-template-columns : repeat(3, 1fr);
+      gap : 10px;
+      padding : 10px 14px;
+      border-top : 1px solid var(--whitespace-formatting-border);
+      color : var(--whitespace-formatting-text-muted);
+      background : linear-gradient(90deg, rgba(255,255,255,.03), transparent);
+      font-size : 12px;
+    }
+
+    @media (max-width: 740px){
+      .whitespace-formatting-stats{
+        grid-template-columns : 1fr 1fr;
+      }
+    }
+
+    .whitespace-formatting-chip{
+      padding : 6px 8px;
+      border : 1px solid var(--whitespace-formatting-border);
+      border-radius : 999px;
+      background : #0b1324a8;
+      backdrop-filter : blur(6px);
+    }
+
+    /* Toast */
+    .whitespace-formatting-toast{
+      position : fixed;
+      inset : auto 16px 16px auto;
+      background : #0b1223ee;
+      color : #e5e7eb;
+      padding : 10px 14px;
+      border-radius : 12px;
+      border : 1px solid var(--whitespace-formatting-border);
+      backdrop-filter : blur(8px);
+      box-shadow : var(--whitespace-formatting-shadow-1);
+      transform : translateY(20px);
+      opacity : 0;
+      pointer-events : none;
+      transition : transform .25s ease, opacity .25s ease;
+      z-index : 50;
+    }
+
+    .whitespace-formatting-toast.whitespace-formatting-show{
+      transform : translateY(0);
+      opacity : 1;
+    }
+
+    /* Subtle float animation */
+    @media (prefers-reduced-motion: no-preference){
+      .whitespace-formatting-card{
+        animation : whitespace-formatting-float 18s ease-in-out infinite;
+      }
+
+      @keyframes whitespace-formatting-float{
+        0%{
+          transform : translateY(0);
+        }
+        50%{
+          transform : translateY(-2px);
+        }
+        100%{
+          transform : translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  
+  <main class="whitespace-formatting-page" role="main">
+    <!-- Hero -->
+    <section class="whitespace-formatting-hero" aria-labelledby="whitespace-formatting-hero-title">
+      <h1 id="whitespace-formatting-hero-title" class="whitespace-formatting-hero-title">
+        Whitespace & Formatting Cleaner
+      </h1>
+      <p class="whitespace-formatting-hero-sub">
+        Trim whitespace, normalize newlines, collapse blanks, and fix indentation. Advanced options for zero-width characters, BOM, tabs/spaces, and “show invisibles”.
+      </p>
+    </section>
+
+    <!-- App -->
+    <section class="whitespace-formatting-grid" aria-label="Whitespace cleaner workspace">
+      <!-- Editor -->
+      <article class="whitespace-formatting-card">
+        <header class="whitespace-formatting-card-head">
+          <h3 class="whitespace-formatting-card-title">
+            Input
+          </h3>
+          <div class="whitespace-formatting-row" aria-label="Quick actions">
+            <button id="whitespace-formatting-sampleBtn" class="whitespace-formatting-btn whitespace-formatting-btn-outline" type="button">
+              Sample
+            </button>
+            <button id="whitespace-formatting-clearBtn" class="whitespace-formatting-btn whitespace-formatting-btn-ghost" type="button">
+              Clear
+            </button>
+          </div>
+        </header>
+
+        <textarea id="whitespace-formatting-input" class="whitespace-formatting-textarea" spellcheck="false" placeholder="Paste or type your text here..."></textarea>
+
+        <div class="whitespace-formatting-toolbar" role="group" aria-label="Primary actions">
+          <div class="whitespace-formatting-row">
+            <button id="whitespace-formatting-cleanAllBtn" class="whitespace-formatting-btn" type="button" title="Run all selected fixes">
+              Clean All
+            </button>
+            <button id="whitespace-formatting-applyBtn" class="whitespace-formatting-btn" type="button" title="Apply cleaned output to the editor">
+              Apply to Text
+            </button>
+          </div>
+          <div class="whitespace-formatting-spacer"></div>
+          <div class="whitespace-formatting-row">
+            <button id="whitespace-formatting-copyBtn" class="whitespace-formatting-btn whitespace-formatting-btn-outline" type="button">
+              Copy Output
+            </button>
+            <button id="whitespace-formatting-downloadBtn" class="whitespace-formatting-btn whitespace-formatting-btn-outline" type="button">
+              Download .txt
+            </button>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div class="whitespace-formatting-options">
+          <fieldset class="whitespace-formatting-fieldset">
+            <legend class="whitespace-formatting-legend">
+              Newlines
+            </legend>
+            <label class="whitespace-formatting-radio-row">
+              <input type="radio" name="nl" value="auto" checked/>
+              <span>Auto → LF <code>\n</code></span>
+            </label>
+            <label class="whitespace-formatting-radio-row">
+              <input type="radio" name="nl" value="lf"/>
+              <span>Force LF <code>\n</code></span>
+            </label>
+            <label class="whitespace-formatting-radio-row">
+              <input type="radio" name="nl" value="crlf"/>
+              <span>Force CRLF <code>\r\n</code></span>
+            </label>
+          </fieldset>
+
+          <fieldset class="whitespace-formatting-fieldset">
+            <legend class="whitespace-formatting-legend">
+              Spaces & Blanks
+            </legend>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-trimAll" type="checkbox" checked/>
+              <span>Trim start/end</span>
+            </label>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-trimTrailing" type="checkbox" checked/>
+              <span>Trim trailing spaces (each line)</span>
+            </label>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-collapseSpaces" type="checkbox"/>
+              <span>Collapse multiple spaces to one</span>
+            </label>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-collapseBlankLines" type="checkbox" checked/>
+              <span>Collapse multiple blank lines</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="whitespace-formatting-fieldset">
+            <legend class="whitespace-formatting-legend">
+              Indentation
+            </legend>
+            <label class="whitespace-formatting-radio-row">
+              <input type="radio" name="indentStyle" value="spaces" checked/>
+              <span>Spaces</span>
+            </label>
+            <label class="whitespace-formatting-radio-row">
+              <input type="radio" name="indentStyle" value="tabs"/>
+              <span>Tabs</span>
+            </label>
+            <div class="whitespace-formatting-radio-row">
+              <label for="whitespace-formatting-indentSize">
+                Size
+              </label>
+              <input id="whitespace-formatting-indentSize" class="whitespace-formatting-number" type="number" min="1" max="8" step="1" value="2"/>
+            </div>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-normalizeIndent" type="checkbox" checked/>
+              <span>Normalize indentation (leading only)</span>
+            </label>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-tabsToSpaces" type="checkbox"/>
+              <span>Convert tabs → spaces (leading)</span>
+            </label>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-spacesToTabs" type="checkbox"/>
+              <span>Convert spaces → tabs (leading)</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="whitespace-formatting-fieldset">
+            <legend class="whitespace-formatting-legend">
+              Safety & Visibility
+            </legend>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-removeZW" type="checkbox" checked/>
+              <span>Remove zero-width chars (ZWSP/ZWNJ/ZWJ/WJ)</span>
+            </label>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-removeBOM" type="checkbox" checked/>
+              <span>Remove BOM <code>U+FEFF</code></span>
+            </label>
+            <label class="whitespace-formatting-check-row">
+              <input id="whitespace-formatting-showInvisibles" type="checkbox"/>
+              <span>Show invisibles in preview</span>
+            </label>
+          </fieldset>
+        </div>
+
+        <!-- Stats -->
+        <div class="whitespace-formatting-stats" aria-live="polite">
+          <div class="whitespace-formatting-chip">
+            <strong>Lines:</strong> <span id="whitespace-formatting-stat-lines">0</span>
+          </div>
+          <div class="whitespace-formatting-chip">
+            <strong>Chars:</strong> <span id="whitespace-formatting-stat-chars">0</span>
+          </div>
+          <div class="whitespace-formatting-chip">
+            <strong>Newlines:</strong> <span id="whitespace-formatting-stat-eol">—</span>
+          </div>
+          <div class="whitespace-formatting-chip">
+            <strong>Tabs:</strong> <span id="whitespace-formatting-stat-tabs">0</span>
+          </div>
+          <div class="whitespace-formatting-chip">
+            <strong>Trailing-space lines:</strong> <span id="whitespace-formatting-stat-trailing">0</span>
+          </div>
+          <div class="whitespace-formatting-chip">
+            <strong>Blank lines:</strong> <span id="whitespace-formatting-stat-blank">0</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Preview -->
+      <article class="whitespace-formatting-card">
+        <header class="whitespace-formatting-card-head">
+          <h3 class="whitespace-formatting-card-title">
+            Cleaned Preview
+          </h3>
+          <div class="whitespace-formatting-row">
+            <span title="Live preview updates as you type">
+              Live
+            </span>
+          </div>
+        </header>
+        <pre id="whitespace-formatting-preview" class="whitespace-formatting-preview" aria-live="polite"></pre>
+      </article>
+    </section>
+  </main>
+
+  <!-- Toast -->
+  <div id="whitespace-formatting-toast" class="whitespace-formatting-toast" role="status" aria-live="polite"></div>
+
+
+
+
+
+  
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text — powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+
+
+       <script src="/js/index.js"></script>
+
+  <script>
+    (function(){
+      "use strict";
+
+      /* Elements */
+      const ta = document.getElementById('whitespace-formatting-input');
+      const previewEl = document.getElementById('whitespace-formatting-preview');
+      const toastEl = document.getElementById('whitespace-formatting-toast');
+
+      const sampleBtn = document.getElementById('whitespace-formatting-sampleBtn');
+      const clearBtn = document.getElementById('whitespace-formatting-clearBtn');
+      const cleanAllBtn = document.getElementById('whitespace-formatting-cleanAllBtn');
+      const applyBtn = document.getElementById('whitespace-formatting-applyBtn');
+      const copyBtn = document.getElementById('whitespace-formatting-copyBtn');
+      const downloadBtn = document.getElementById('whitespace-formatting-downloadBtn');
+
+      /* Options */
+      const nlRadios = Array.from(document.querySelectorAll('input[name="nl"]'));
+      const trimAll = document.getElementById('whitespace-formatting-trimAll');
+      const trimTrailing = document.getElementById('whitespace-formatting-trimTrailing');
+      const collapseSpaces = document.getElementById('whitespace-formatting-collapseSpaces');
+      const collapseBlankLines = document.getElementById('whitespace-formatting-collapseBlankLines');
+
+      const indentStyleRadios = Array.from(document.querySelectorAll('input[name="indentStyle"]'));
+      const indentSizeInput = document.getElementById('whitespace-formatting-indentSize');
+      const normalizeIndent = document.getElementById('whitespace-formatting-normalizeIndent');
+      const tabsToSpaces = document.getElementById('whitespace-formatting-tabsToSpaces');
+      const spacesToTabs = document.getElementById('whitespace-formatting-spacesToTabs');
+
+      const removeZW = document.getElementById('whitespace-formatting-removeZW');
+      const removeBOM = document.getElementById('whitespace-formatting-removeBOM');
+      const showInvisibles = document.getElementById('whitespace-formatting-showInvisibles');
+
+      /* Stats */
+      const sLines = document.getElementById('whitespace-formatting-stat-lines');
+      const sChars = document.getElementById('whitespace-formatting-stat-chars');
+      const sEOL = document.getElementById('whitespace-formatting-stat-eol');
+      const sTabs = document.getElementById('whitespace-formatting-stat-tabs');
+      const sTrailing = document.getElementById('whitespace-formatting-stat-trailing');
+      const sBlank = document.getElementById('whitespace-formatting-stat-blank');
+
+      /* Toast */
+      let toastTimer = null;
+      function toast(msg){
+        toastEl.textContent = msg;
+        toastEl.classList.add('whitespace-formatting-show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(()=> toastEl.classList.remove('whitespace-formatting-show'), 1400);
+      }
+
+      /* Utilities */
+      const ZW_REGEX = /[\u200B\u200C\u200D\u2060]/g; // ZWSP, ZWNJ, ZWJ, WJ
+
+      function detectEOL(t){
+        const crlf = (t.match(/\r\n/g)||[]).length;
+        const lf = (t.match(/(?<!\r)\n/g)||[]).length;
+        const cr = (t.match(/\r(?!\n)/g)||[]).length;
+        const kinds = [crlf>0, lf>0, cr>0].filter(Boolean).length;
+        if(kinds > 1) return {type:'Mixed', crlf, lf, cr};
+        if(crlf) return {type:'CRLF', crlf, lf, cr};
+        if(lf) return {type:'LF', crlf, lf, cr};
+        if(cr) return {type:'CR', crlf, lf, cr};
+        return {type:'None', crlf:0, lf:0, cr:0};
+      }
+
+      function normalizeNewlines(t, mode){
+        // unify line endings
+        if(mode === 'crlf'){
+          t = t.replace(/\r\n/g, '\n').replace(/\r/g, '\n').replace(/\n/g, '\r\n');
+          return t;
+        }
+        // default LF (auto/lf)
+        t = t.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        return t;
+      }
+
+      function trimEdges(t){
+        return t.trim();
+      }
+
+      function trimTrailingSpacesPerLine(t){
+        return t.replace(/[ \t]+\r?\n/g, m => m.replace(/[ \t]+/,''));
+      }
+
+      function collapseInternalSpaces(t){
+        // collapse runs of 2+ spaces (not across newlines)
+        return t.replace(/([^\S\r\n]{2,})/g, ' ');
+      }
+
+      function collapseBlankLinesFn(t){
+        // keep at most one blank line
+        t = normalizeNewlines(t, 'lf');
+        t = t.replace(/\n[ \t]*\n{2,}/g, '\n\n');
+        return t;
+      }
+
+      function removeZeroWidth(t){
+        return t.replace(ZW_REGEX, '');
+      }
+
+      function removeBom(t){
+        return t.replace(/^\uFEFF/, '');
+      }
+
+      function leadingInfo(line){
+        const m = line.match(/^[ \t]+/);
+        const lead = m ? m[0] : '';
+        const rest = line.slice(lead.length);
+        return {lead, rest};
+      }
+
+      function convertLeadingTabsToSpaces(line, size){
+        const {lead, rest} = leadingInfo(line);
+        const converted = lead.replace(/\t/g, ' '.repeat(size));
+        return converted + rest;
+      }
+
+      function convertLeadingSpacesToTabs(line, size){
+        const {lead, rest} = leadingInfo(line);
+        let out = '';
+        let i = 0;
+        while(i < lead.length){
+          if(lead.slice(i, i+size).split('').every(ch => ch === ' ')){
+            out += '\t';
+            i += size;
+          }else{
+            out += lead[i];
+            i++;
+          }
+        }
+        return out + rest;
+      }
+
+      function expandTabs(s, size){
+        return s.replace(/\t/g, ' '.repeat(size));
+      }
+
+      function normalizeIndentation(t, style, size){
+        t = normalizeNewlines(t, 'lf');
+        const lines = t.split('\n');
+
+        if(style === 'spaces'){
+          // Expand leading tabs to spaces, then align to floor multiple
+          for(let i=0;i<lines.length;i++){
+            const {lead, rest} = leadingInfo(lines[i]);
+            const expanded = lead.replace(/\t/g, ' '.repeat(size));
+            const count = expanded.length;
+            const aligned = ' '.repeat(count - (count % size));
+            lines[i] = aligned + rest;
+          }
+        }else{
+          // style === 'tabs' : compress leading groups of spaces to tabs by size
+          for(let i=0;i<lines.length;i++){
+            const {lead, rest} = leadingInfo(lines[i]);
+            let out = '';
+            let iPos = 0;
+            while(iPos < lead.length){
+              if(lead.slice(iPos, iPos+size).split('').every(ch => ch === ' ')){
+                out += '\t';
+                iPos += size;
+              }else if(lead[iPos] === '\t'){
+                out += '\t';
+                iPos += 1;
+              }else{
+                // leftover single spaces remain as space
+                out += lead[iPos];
+                iPos += 1;
+              }
+            }
+            lines[i] = out + rest;
+          }
+        }
+
+        return lines.join('\n');
+      }
+
+      function getOptions(){
+        const nl = nlRadios.find(r => r.checked)?.value || 'auto';
+        const indentStyle = indentStyleRadios.find(r => r.checked)?.value || 'spaces';
+        const indentSize = Math.max(1, Math.min(8, parseInt(indentSizeInput.value || '2', 10)));
+        return {
+          nl,
+          trimAll : !!trimAll.checked,
+          trimTrailing : !!trimTrailing.checked,
+          collapseSpaces : !!collapseSpaces.checked,
+          collapseBlankLines : !!collapseBlankLines.checked,
+          indentStyle,
+          indentSize,
+          normalizeIndent : !!normalizeIndent.checked,
+          tabsToSpaces : !!tabsToSpaces.checked,
+          spacesToTabs : !!spacesToTabs.checked,
+          removeZW : !!removeZW.checked,
+          removeBOM : !!removeBOM.checked,
+          showInvisibles : !!showInvisibles.checked
+        };
+      }
+
+      function applyAll(raw, opt){
+        let t = String(raw);
+
+        if(opt.removeBOM){
+          t = removeBom(t);
+        }
+
+        if(opt.removeZW){
+          t = removeZeroWidth(t);
+        }
+
+        // Normalize newlines early
+        const nlMode = (opt.nl === 'crlf') ? 'crlf' : 'lf';
+        t = normalizeNewlines(t, nlMode);
+
+        if(opt.trimTrailing){
+          t = trimTrailingSpacesPerLine(t);
+        }
+
+        if(opt.collapseBlankLines){
+          t = collapseBlankLinesFn(t);
+        }
+
+        if(opt.collapseSpaces){
+          t = collapseInternalSpaces(t);
+        }
+
+        // Leading indentation transforms
+        if(opt.tabsToSpaces){
+          const size = opt.indentSize;
+          t = t.split(/\n/).map(line => convertLeadingTabsToSpaces(line, size)).join('\n');
+        }
+        if(opt.spacesToTabs){
+          const size = opt.indentSize;
+          t = t.split(/\n/).map(line => convertLeadingSpacesToTabs(line, size)).join('\n');
+        }
+
+        if(opt.normalizeIndent){
+          t = normalizeIndentation(t, opt.indentStyle, opt.indentSize);
+        }
+
+        if(opt.trimAll){
+          t = t.trim();
+        }
+
+        // Re-apply requested newline mode at end (in case)
+        t = normalizeNewlines(t, nlMode);
+
+        return t;
+      }
+
+      function showInvisiblesRender(t){
+        // Replace spaces, tabs, newlines with visible glyphs (preview only)
+        const NL = '↵';
+        const TAB = '→';
+        const SPC = '·';
+
+        t = t
+          .replace(/\r\n/g, '\n')          // unify
+          .replace(/ /g, `<span class="whitespace-formatting-symbol-space">${SPC}</span>`)
+          .replace(/\t/g, `<span class="whitespace-formatting-symbol-space">${TAB}</span>`)
+          .replace(/\n/g, `${NL}\n`);
+
+        return t;
+      }
+
+      function analyze(t){
+        const eol = detectEOL(t);
+        const tabs = (t.match(/\t/g)||[]).length;
+        const lines = t.length ? t.split(/\r\n|\r|\n/).length : 0;
+        const trailing = (t.match(/[ \t]+\r?\n/g)||[]).length + (t.endsWith(' ')||t.endsWith('\t') ? 1 : 0);
+        const blank = (t.match(/(?:^|\n)[ \t]*\n/g)||[]).length;
+        return {
+          chars : t.length,
+          lines,
+          eol : eol.type,
+          tabs,
+          trailing,
+          blank
+        };
+      }
+
+      function render(){
+        const opt = getOptions();
+        const raw = ta.value || '';
+        const cleaned = applyAll(raw, opt);
+
+        // Stats from raw (left) and eol from raw
+        const stats = analyze(raw);
+        sLines.textContent = stats.lines;
+        sChars.textContent = stats.chars;
+        sEOL.textContent = stats.eol;
+        sTabs.textContent = stats.tabs;
+        sTrailing.textContent = stats.trailing;
+        sBlank.textContent = stats.blank;
+
+        // Preview
+        if(opt.showInvisibles){
+          previewEl.classList.add('whitespace-formatting-preview-showcodes');
+          previewEl.innerHTML = showInvisiblesRender(cleaned);
+        }else{
+          previewEl.classList.remove('whitespace-formatting-preview-showcodes');
+          previewEl.textContent = cleaned;
+        }
+      }
+
+      /* Events */
+      let typingTimer = null;
+      function scheduleRender(){
+        if(typingTimer) clearTimeout(typingTimer);
+        typingTimer = setTimeout(render, 70);
+      }
+
+      ta.addEventListener('input', scheduleRender);
+      [...nlRadios,
+        trimAll, trimTrailing, collapseSpaces, collapseBlankLines,
+        ...indentStyleRadios, indentSizeInput, normalizeIndent, tabsToSpaces, spacesToTabs,
+        removeZW, removeBOM, showInvisibles
+      ].forEach(el => el.addEventListener('change', render));
+
+      sampleBtn.addEventListener('click', ()=>{
+        ta.value =
+`﻿\u200B  This   is   a  sample\ttext.   
+
+It has  mixed   spaces,  tabs, Windows\r\nand  Unix\nnewlines, plus   trailing spaces.      
+\t\tSome lines are indented with tabs, others with spaces.   
+
+     And    multiple     blank      lines.
+
+
+
+End.`;
+        render();
+        ta.focus();
+        toast('Sample loaded');
+      });
+
+      clearBtn.addEventListener('click', ()=>{
+        ta.value = '';
+        render();
+        ta.focus();
+        toast('Cleared');
+      });
+
+      cleanAllBtn.addEventListener('click', ()=>{
+        const opt = getOptions();
+        const cleaned = applyAll(ta.value || '', opt);
+        previewEl.textContent = cleaned;
+        toast('Cleaned with current options');
+      });
+
+      applyBtn.addEventListener('click', ()=>{
+        const opt = getOptions();
+        ta.value = applyAll(ta.value || '', opt);
+        render();
+        toast('Applied to editor');
+      });
+
+      copyBtn.addEventListener('click', async ()=>{
+        try{
+          const opt = getOptions();
+          const cleaned = applyAll(ta.value || '', opt);
+          await navigator.clipboard.writeText(cleaned);
+          toast('Copied output');
+        }catch(e){
+          toast('Copy failed');
+        }
+      });
+
+      downloadBtn.addEventListener('click', ()=>{
+        const opt = getOptions();
+        const cleaned = applyAll(ta.value || '', opt);
+        const blob = new Blob([cleaned], {type:'text/plain;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const yyyy = new Date().toISOString().slice(0,10);
+        a.href = url;
+        a.download = `sniptext-whitespace-cleaned-${yyyy}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        toast('Downloaded');
+      });
+
+      // Shortcuts
+      window.addEventListener('keydown', (e)=>{
+        const key = e.key.toLowerCase();
+        if((e.ctrlKey || e.metaKey) && key === 'k'){
+          e.preventDefault();
+          ta.value = '';
+          render();
+          toast('Cleared');
+        }
+        if((e.ctrlKey || e.metaKey) && key === 'enter'){
+          e.preventDefault();
+          const opt = getOptions();
+          const cleaned = applyAll(ta.value || '', opt);
+          previewEl.textContent = cleaned;
+          toast('Cleaned');
+        }
+      });
+
+      // Initial
+      render();
+    })();
+  </script>
+</body>
+</html>

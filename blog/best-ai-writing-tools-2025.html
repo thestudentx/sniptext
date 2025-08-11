@@ -183,18 +183,18 @@
                         <p>We prioritized tools that: 1) address a specific writing task (paraphrase, citation, check), 2) have consistent reliability and useful free/paid tiers, and 3) provide clear privacy terms for user text. For deep research and comparison, consult tool pages and recent 2025 roundups before choosing a paid plan.</p>
 
                         <h3>FAQ</h3>
-                        <dl class="faq">
-                            <dt>Are AI detectors accurate?</dt>
-                            <dd>Not perfectly. Detectors can flag likely AI-origin patterns but produce false positives/negatives. Use them as part of a larger review process.</dd>
+                        <dl class="faq grammar-faq" id="grammar-faq">
+                        <dt tabindex="0" aria-expanded="false">Are AI detectors accurate?</dt>
+                        <dd class="hidden">Not perfectly. Detectors can flag likely AI-origin patterns but produce false positives/negatives. Use them as part of a larger review process.</dd>
 
-                            <dt>Can I rely only on AI tools to publish?</dt>
-                            <dd>No. AI tools speed up drafting and surface ideas - human review remains essential for accuracy, context, and voice.</dd>
+                        <dt tabindex="0" aria-expanded="false">Can I rely only on AI tools to publish?</dt>
+                        <dd class="hidden">No. AI tools speed up drafting and surface ideas - human review remains essential for accuracy, context, and voice.</dd>
 
-                            <dt>Which single tool should a student start with?</dt>
-                            <dd>Start with Zotero for citations and one grammar tool (Grammarly) plus a paraphraser (QuillBot) as needed. Learn to document sources and keep drafts.</dd>
+                        <dt tabindex="0" aria-expanded="false">Which single tool should a student start with?</dt>
+                        <dd class="hidden">Start with Zotero for citations and one grammar tool (Grammarly) plus a paraphraser (QuillBot) as needed. Learn to document sources and keep drafts.</dd>
                         </dl>
 
-                        <p class="article-conclusion">Want a one-click writing workflow? <a href="/features">SnipText features</a> combines paraphrasing, grammar checks, plagiarism detection, and citations into a single flow - built for fast, honest writing.</p>
+                        <p class="article-conclusion">Want a one-click writing workflow? <a href="/features.html">SnipText features</a> combines paraphrasing, grammar checks, plagiarism detection, and citations into a single flow - built for fast, honest writing.</p>
                     </div>
                     <div class="article-footer">
                         <div class="article-tags">
@@ -225,7 +225,10 @@
                             <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
                         </div>
                         <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference &amp; When to Use Each</h3>
-                        <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.</p>
+                        <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.
+
+                            Free Whitespace & Formatting Cleaner: Trim, Normalize Newlines & Fix Indentation
+                        </p>
                         <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
                     </article>
 
@@ -329,5 +332,38 @@
 
     <!-- JavaScript -->
     <script src="/blog/js/sniptext-blog.js"></script>
+
+    <!-- Small accessible script to toggle FAQ questions (optional, unobtrusive) -->
+    <script>
+    (function () {
+      const faq = document.getElementById('grammar-faq');
+      if (!faq) return;
+      const dts = faq.querySelectorAll('dt');
+
+      dts.forEach(dt => {
+        const dd = dt.nextElementSibling;
+        // ensure initial state
+        dt.setAttribute('role', 'button');
+        dt.setAttribute('aria-controls', dd ? dd.id || '' : '');
+        dt.setAttribute('tabindex', '0');
+
+        const toggle = () => {
+          const isOpen = dt.classList.toggle('open');
+          if (dd) {
+            dd.classList.toggle('hidden', !isOpen);
+            dt.setAttribute('aria-expanded', String(isOpen));
+          }
+        };
+
+        dt.addEventListener('click', toggle);
+        dt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    })();
+    </script>
 </body>
 </html>
