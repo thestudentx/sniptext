@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SnipText — Duplicate Word Finder</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+
+      <link rel="icon" href="/favicon.png" type="image/png">  
+    <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- =========================
+       THEME COLORS (variables only)
+       ========================= -->
+  <style>
+    :root{
+      /* Brand-aligned palette (dark first) */
+      --duplicate-word-bg:           #0F172A;  /* base background */
+      --duplicate-word-bg-soft:      #111827;  /* section contrast */
+      --duplicate-word-surface:      #0b1223ec;/* glass card */
+      --duplicate-word-text:         #e5e7eb;  /* main text */
+      --duplicate-word-text-muted:   #cbd5e1;  /* secondary text */
+      --duplicate-word-border:       rgba(255,255,255,.10);
+
+      /* Accents */
+      --duplicate-word-accent:       #1D4ED8;  /* primary */
+      --duplicate-word-accent-2:     #3B82F6;  /* accent */
+      --duplicate-word-warn:         #f59e0b;  /* warning */
+      --duplicate-word-danger:       #ef4444;  /* danger */
+      --duplicate-word-ok:           #22c55e;  /* success */
+
+      /* UI tokens */
+      --duplicate-word-radius-xl:    18px;
+      --duplicate-word-radius-lg:    14px;
+      --duplicate-word-radius-md:    10px;
+      --duplicate-word-shadow-1:     0 10px 30px rgba(0,0,0,.35);
+      --duplicate-word-shadow-2:     0 16px 44px rgba(17,24,39,.45);
+      --duplicate-word-maxw:         1200px;
+
+      /* Typography */
+      --duplicate-word-font:         'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji','Segoe UI Emoji';
+      --duplicate-word-mono:         ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+
+      color-scheme: dark;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --duplicate-word-bg:         #F3F4F6;
+        --duplicate-word-bg-soft:    #ffffff;
+        --duplicate-word-surface:    #ffffffef;
+        --duplicate-word-text:       #1F2937;
+        --duplicate-word-text-muted: #6B7280;
+        --duplicate-word-border:     #E5E7EB;
+
+        --duplicate-word-shadow-1:   0 10px 30px rgba(2,6,23,.08);
+        --duplicate-word-shadow-2:   0 16px 44px rgba(2,6,23,.12);
+
+        color-scheme: light;
+      }
+    }
+  </style>
+
+  <!-- =========================
+       PAGE STYLES
+       ========================= -->
+  <style>
+    html, body{
+      height:100%;
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 5% -10%, rgba(29,78,216,.18), transparent 65%),
+        radial-gradient(1000px 520px at 100% 0%, rgba(59,130,246,.16), transparent 60%),
+        linear-gradient(180deg, var(--duplicate-word-bg) 0%, var(--duplicate-word-bg-soft) 100%);
+      color:var(--duplicate-word-text);
+      font-family: var(--duplicate-word-font);
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+    }
+
+    /* ===== Layout ===== */
+    .duplicate-word-page{
+      max-width: var(--duplicate-word-maxw);
+      margin: clamp(16px,3vw,40px) auto;
+      padding: clamp(12px,2.4vw,24px);
+    }
+
+    /* ===== Hero ===== */
+    .duplicate-word-hero{
+      position:relative;
+      padding: clamp(18px,3vw,28px);
+      border:1px solid var(--duplicate-word-border);
+      background: var(--duplicate-word-surface);
+      border-radius: var(--duplicate-word-radius-xl);
+      box-shadow: var(--duplicate-word-shadow-1);
+      overflow: hidden;
+      isolation:isolate;
+    }
+    .duplicate-word-hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 200px at 20% -5%, rgba(29,78,216,.25), transparent 65%),
+        radial-gradient(400px 260px at 85% 0%, rgba(59,130,246,.25), transparent 60%);
+      filter: blur(16px);
+      opacity:.55;
+      pointer-events:none;
+      z-index:-1;
+    }
+    .duplicate-word-hero-title{
+      margin:0 0 6px 0;
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size: clamp(22px,3.2vw,36px);
+      line-height:1.15;
+      background: linear-gradient(90deg, #fff, #c7d2fe 35%, #93c5fd 70%, #fff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .duplicate-word-hero-sub{
+      margin:6px 0 0; color: var(--duplicate-word-text-muted);
+      font-size: clamp(14px,1.8vw,16px);
+    }
+
+    /* ===== Cards & grid ===== */
+    .duplicate-word-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: clamp(12px,2.4vw,20px);
+      margin-top: clamp(14px,2.6vw,24px);
+    }
+    @media (min-width: 1024px){
+      .duplicate-word-grid{ grid-template-columns: 1.05fr .95fr; }
+    }
+    .duplicate-word-card{
+      border:1px solid var(--duplicate-word-border);
+      border-radius: var(--duplicate-word-radius-lg);
+      background: var(--duplicate-word-surface);
+      box-shadow: var(--duplicate-word-shadow-2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+    .duplicate-word-card-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px 14px;
+      background: linear-gradient(90deg, rgba(29,78,216,.14), rgba(59,130,246,.10));
+      border-bottom: 1px solid var(--duplicate-word-border);
+    }
+    .duplicate-word-card-title{
+      margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.9;
+    }
+
+    /* ===== Textareas & preview ===== */
+    .duplicate-word-textarea{
+  font: 500 15px/1.55 'Poppins', 'Roboto', monospace;
+      width:100%; min-height: 260px; resize: vertical; border:0; outline:0;
+      background: transparent; color: var(--duplicate-word-text);
+      padding: 16px;
+      caret-color: var(--duplicate-word-accent);
+      letter-spacing:.2px;
+    }
+    .duplicate-word-textarea::placeholder{ color: color-mix(in oklab, var(--duplicate-word-text-muted) 75%, transparent); font-family: 'Poppins', sans-serif;}
+
+    .duplicate-word-preview{
+      padding:16px; min-height:365px; max-height: 429px; overflow:auto;
+      font: 500 15px/1.6 'Poppins', 'Roboto', monospace;
+      white-space: pre-wrap; word-wrap: break-word;
+    }
+
+    /* ===== Toolbar ===== */
+    .duplicate-word-toolbar{
+      display:flex; flex-wrap:wrap; gap:8px; padding: 12px 14px;
+      border-top:1px solid var(--duplicate-word-border);
+      background: linear-gradient(90deg, rgba(59,130,246,.08), rgba(29,78,216,.08));
+    }
+    .duplicate-word-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .duplicate-word-spacer{ flex:1 1 auto; }
+
+    .duplicate-word-btn{
+      --_bg: linear-gradient(180deg, color-mix(in oklab, var(--duplicate-word-accent) 72%, transparent), color-mix(in oklab, var(--duplicate-word-accent-2) 64%, transparent));
+      --_txt:#fff; --_bd: color-mix(in oklab, #000 10%, var(--duplicate-word-accent));
+      appearance:none; border:1px solid var(--_bd);
+      background: var(--_bg); color:var(--_txt);
+      padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px;
+      cursor:pointer; position:relative;
+      transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+      box-shadow: 0 10px 20px rgba(29,78,216,.18), 0 6px 14px rgba(59,130,246,.14);
+    }
+    .duplicate-word-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+    .duplicate-word-btn:active{ transform: translateY(0); filter: brightness(.98); }
+    .duplicate-word-btn[aria-pressed="true"]{
+      outline:2px solid color-mix(in oklab, var(--duplicate-word-accent) 40%, var(--duplicate-word-accent-2));
+      outline-offset:2px;
+    }
+    .duplicate-word-btn-outline{
+      --_bg: transparent; --_txt: var(--duplicate-word-text); --_bd: var(--duplicate-word-border);
+      background: var(--_bg); color:var(--_txt); border-color: var(--_bd);
+      box-shadow:none; font-weight:600;
+    }
+    .duplicate-word-btn-ghost{
+      background: transparent; color: var(--duplicate-word-text-muted); border:1px dashed var(--duplicate-word-border);
+      box-shadow:none; font-weight:600;
+    }
+    .duplicate-word-kbd{
+      font: 600 11px/1.2 var(--duplicate-word-mono);
+      background: #111827a6; color:#cbd5e1; padding:3px 6px; border-radius:8px;
+      border:1px solid var(--duplicate-word-border); margin-left:6px;
+    }
+
+    /* ===== Options & switches ===== */
+    .duplicate-word-options{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; color:var(--duplicate-word-text-muted); font-size:13px; padding: 10px 14px; }
+    .duplicate-word-switch{ position:relative; display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none; }
+    .duplicate-word-switch input{ appearance:none; width:40px; height:22px; background:#0f1b34; border:1px solid var(--duplicate-word-border); border-radius:999px; position:relative; outline:0; transition: background .2s ease; }
+    .duplicate-word-switch input:checked{ background: linear-gradient(90deg, var(--duplicate-word-accent), var(--duplicate-word-accent-2)); border-color: transparent; }
+    .duplicate-word-switch input::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; transition: transform .2s ease; box-shadow: 0 3px 10px rgba(0,0,0,.25); }
+    .duplicate-word-switch input:checked::after{ transform: translateX(18px); }
+
+    /* ===== Stats ===== */
+    .duplicate-word-stats{
+      display:flex; gap:10px; flex-wrap:wrap; padding: 10px 14px; border-top:1px solid var(--duplicate-word-border);
+      color:var(--duplicate-word-text-muted); font-size:12px;
+      background: linear-gradient(90deg, rgba(255,255,255,.03), transparent);
+    }
+    .duplicate-word-chip{
+      padding:6px 8px; border:1px solid var(--duplicate-word-border); border-radius:999px; background:#0b1324a8;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ===== Duplicates panel ===== */
+    .duplicate-word-panel{
+      margin-top: clamp(12px,2vw,18px);
+    }
+    .duplicate-word-table-wrap{ overflow:auto; }
+    .duplicate-word-table{
+      width:100%; border-collapse: collapse; font-size:14px;
+    }
+    .duplicate-word-table th, .duplicate-word-table td{
+      text-align:left; padding:10px 12px; border-bottom:1px solid var(--duplicate-word-border);
+    }
+    .duplicate-word-badge{
+      display:inline-block; padding:4px 8px; border-radius:999px; background: rgba(29,78,216,.12); color:#93c5fd; font-weight:700; font-size:12px;
+    }
+
+    /* ===== Highlight styles ===== */
+    .duplicate-word-mark{
+      background: linear-gradient(180deg, rgba(59,130,246,.35), rgba(29,78,216,.45));
+      color: inherit; border-radius:6px; padding:0 2px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset;
+      transition: box-shadow .2s ease, background .2s ease;
+    }
+    .duplicate-word-mark-strong{
+      background: linear-gradient(180deg, rgba(248,113,113,.45), rgba(239,68,68,.55));
+      box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset;
+    }
+    .duplicate-word-mark-active{
+      outline:2px solid #fff; outline-offset:1px;
+    }
+
+    /* ===== Toast ===== */
+    .duplicate-word-toast{
+      position: fixed; inset:auto 16px 16px auto;
+      background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--duplicate-word-border);
+      backdrop-filter: blur(8px); box-shadow: var(--duplicate-word-shadow-1);
+      transform: translateY(20px); opacity:0; pointer-events:none;
+      transition: transform .25s ease, opacity .25s ease;
+      z-index: 50;
+    }
+    .duplicate-word-toast.duplicate-word-show{ transform: translateY(0); opacity:1; }
+
+    /* Subtle float animation */
+    @media (prefers-reduced-motion: no-preference){
+      .duplicate-word-card{ animation: duplicate-word-float 18s ease-in-out infinite; }
+      @keyframes duplicate-word-float{
+        0%,100%{ transform: translateY(0); }
+        50%{ transform: translateY(-2px); }
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  <main class="duplicate-word-page" aria-label="Duplicate Word Finder">
+    <!-- =========================
+         HERO
+         ========================= -->
+    <section class="duplicate-word-hero">
+      <h1 class="duplicate-word-hero-title">Duplicate Word Finder</h1>
+      <p class="duplicate-word-hero-sub">Find repeated words and consecutive duplicates. Highlight or remove them automatically—fast, accurate, and privacy-friendly.</p>
+    </section>
+
+    <!-- =========================
+         GRID: INPUT | PREVIEW
+         ========================= -->
+    <section class="duplicate-word-grid">
+      <!-- Input card -->
+      <article class="duplicate-word-card">
+        <header class="duplicate-word-card-head">
+          <h2 class="duplicate-word-card-title">Input</h2>
+          <div class="duplicate-word-row">
+            <button type="button" id="duplicate-word-sampleBtn" class="duplicate-word-btn duplicate-word-btn-outline">Sample</button>
+            <button type="button" id="duplicate-word-clearBtn"  class="duplicate-word-btn duplicate-word-btn-ghost">Clear</button>
+          </div>
+        </header>
+        <textarea id="duplicate-word-input" class="duplicate-word-textarea" placeholder="Paste or type your text here…"></textarea>
+
+        <!-- Options -->
+        <div class="duplicate-word-options" role="group" aria-label="Options">
+          <label class="duplicate-word-switch" title="Case sensitive counting">
+            <input id="duplicate-word-case" type="checkbox"/>
+            <span>Case sensitive</span>
+          </label>
+          <label class="duplicate-word-switch" title="Ignore common stopwords (the, and, of…)">
+            <input id="duplicate-word-stop" type="checkbox" checked/>
+            <span>Ignore stopwords</span>
+          </label>
+          <label class="duplicate-word-switch" title="Ignore numbers">
+            <input id="duplicate-word-num" type="checkbox" checked/>
+            <span>Ignore numbers</span>
+          </label>
+          <label class="duplicate-word-switch" title="Highlight live as you type">
+            <input id="duplicate-word-live" type="checkbox" checked/>
+            <span>Live preview</span>
+          </label>
+
+          <div class="duplicate-word-row" style="margin-left:auto;">
+            <label for="duplicate-word-min" style="font-size:12px; color:var(--duplicate-word-text-muted);">Min occurrences</label>
+            <input id="duplicate-word-min" type="number" min="2" max="50" value="2" style="width:64px; padding:6px 8px; border-radius:8px; border:1px solid var(--duplicate-word-border); background:transparent; color:var(--duplicate-word-text);"/>
+          </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="duplicate-word-toolbar" role="group" aria-label="Actions">
+          <button type="button" id="duplicate-word-findAllBtn" class="duplicate-word-btn" aria-pressed="true">Highlight Repeats</button>
+          <button type="button" id="duplicate-word-findConsecBtn" class="duplicate-word-btn" aria-pressed="true">Highlight Consecutive</button>
+          <span class="duplicate-word-spacer"></span>
+          <button type="button" id="duplicate-word-removeConsecBtn" class="duplicate-word-btn duplicate-word-btn-outline">Remove Consecutive</button>
+          <button type="button" id="duplicate-word-copyCleanBtn" class="duplicate-word-btn duplicate-word-btn-outline">Copy Clean</button>
+          <button type="button" id="duplicate-word-downloadBtn" class="duplicate-word-btn duplicate-word-btn-ghost">Download .txt</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="duplicate-word-stats" id="duplicate-word-stats" aria-live="polite">
+          <span class="duplicate-word-chip" id="duplicate-word-stat-words">Words: 0</span>
+          <span class="duplicate-word-chip" id="duplicate-word-stat-unique">Unique: 0</span>
+          <span class="duplicate-word-chip" id="duplicate-word-stat-types">Duplicate types: 0</span>
+          <span class="duplicate-word-chip" id="duplicate-word-stat-consec">Consecutive dupes: 0</span>
+        </div>
+      </article>
+
+      <!-- Preview / Output card -->
+      <article class="duplicate-word-card">
+        <header class="duplicate-word-card-head">
+          <h2 class="duplicate-word-card-title">Preview &amp; Output</h2>
+          <div class="duplicate-word-row">
+            <span class="duplicate-word-badge" id="duplicate-word-previewBadge">Preview</span>
+          </div>
+        </header>
+
+        <!-- Highlighted preview -->
+        <div id="duplicate-word-preview" class="duplicate-word-preview" aria-label="Preview of highlighted duplicates"></div>
+
+        <!-- Cleaned output (hidden until removal) -->
+        <div class="duplicate-word-toolbar">
+          <h3 class="duplicate-word-card-title" style="margin:0;">Cleaned (after removing consecutive duplicates)</h3>
+        </div>
+        <textarea id="duplicate-word-cleaned" class="duplicate-word-textarea" placeholder="Click ‘Remove Consecutive’ to generate cleaned text…" readonly></textarea>
+      </article>
+    </section>
+
+    <!-- =========================
+         DUPLICATES PANEL
+         ========================= -->
+    <section class="duplicate-word-panel duplicate-word-card">
+      <header class="duplicate-word-card-head">
+        <h2 class="duplicate-word-card-title">Duplicate Words</h2>
+        <div class="duplicate-word-row">
+          <input id="duplicate-word-filter" type="search" placeholder="Filter words…" aria-label="Filter duplicate list"
+                 style="padding:8px 10px; border-radius:10px; border:1px solid var(--duplicate-word-border); background:transparent; color:var(--duplicate-word-text);"/>
+        </div>
+      </header>
+      <div class="duplicate-word-table-wrap">
+        <table class="duplicate-word-table" id="duplicate-word-table" aria-describedby="duplicate-word-table-caption">
+          <caption id="duplicate-word-table-caption" style="position:absolute; left:-9999px;">List of repeated words with counts</caption>
+          <thead>
+            <tr>
+              <th style="width:30%;">Word</th>
+              <th style="width:20%;">Count</th>
+              <th style="width:25%;">% of total</th>
+              <th style="width:25%;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="duplicate-word-tbody">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="duplicate-word-toast" id="duplicate-word-toast" role="status" aria-live="polite"></div>
+
+
+
+
+
+
+  
+
+  
+<footer id="main-footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span class="powered-by">Snip Text - powered by <a href="https://checkai.pro" target="_blank">CheckAI.pro</a> All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
+
+
+
+
+  <script src="/js/index.js"></script>
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+  <script>
+  (function(){
+    'use strict';
+
+    /* ---------- Elements ---------- */
+    const elInput   = document.getElementById('duplicate-word-input');
+    const elPreview = document.getElementById('duplicate-word-preview');
+    const elClean   = document.getElementById('duplicate-word-cleaned');
+
+    const btnSample = document.getElementById('duplicate-word-sampleBtn');
+    const btnClear  = document.getElementById('duplicate-word-clearBtn');
+
+    const btnHLAll  = document.getElementById('duplicate-word-findAllBtn');
+    const btnHLCon  = document.getElementById('duplicate-word-findConsecBtn');
+    const btnRemove = document.getElementById('duplicate-word-removeConsecBtn');
+    const btnCopy   = document.getElementById('duplicate-word-copyCleanBtn');
+    const btnDown   = document.getElementById('duplicate-word-downloadBtn');
+
+    const swCase    = document.getElementById('duplicate-word-case');
+    const swStop    = document.getElementById('duplicate-word-stop');
+    const swNum     = document.getElementById('duplicate-word-num');
+    const swLive    = document.getElementById('duplicate-word-live');
+    const inputMin  = document.getElementById('duplicate-word-min');
+
+    const statWords = document.getElementById('duplicate-word-stat-words');
+    const statUnique= document.getElementById('duplicate-word-stat-unique');
+    const statTypes = document.getElementById('duplicate-word-stat-types');
+    const statCon   = document.getElementById('duplicate-word-stat-consec');
+
+    const tblBody   = document.getElementById('duplicate-word-tbody');
+    const filterBox = document.getElementById('duplicate-word-filter');
+
+    const toast     = document.getElementById('duplicate-word-toast');
+
+    const previewBadge = document.getElementById('duplicate-word-previewBadge');
+
+    /* ---------- Toast ---------- */
+    const showToast = (msg) => {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('duplicate-word-show');
+      setTimeout(()=> toast.classList.remove('duplicate-word-show'), 1400);
+    };
+
+    /* ---------- Unicode-safe regex support ---------- */
+    let unicodeOK = true;
+    try { new RegExp('\\p{L}', 'u'); } catch { unicodeOK = false; }
+
+    const WORD_RE = unicodeOK
+      ? /[\p{L}\p{M}\p{N}]+(?:['’\-][\p{L}\p{M}\p{N}]+)*/gu
+      : /[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*/g;
+
+    const NUMBER_RE = unicodeOK
+      ? /^\p{N}+$/u
+      : /^[0-9]+$/;
+
+    const SEP_RE = unicodeOK
+      ? /[\s\S]/gu   // we will reconstruct using full scan
+      : /[\s\S]/g;
+
+    const STOPWORDS = new Set([
+      'the','and','a','an','of','to','in','for','on','with','at','by','from','up','down','out','over','into','onto','as',
+      'is','are','was','were','be','been','being','this','that','these','those','it','its','them','they','their','you','your',
+      'i','we','our','or','but','not','so','if','then','than','too','very','can','could','may','might','should','would',
+      'about','because','between','within','without','through','during','before','after','above','below','under','again'
+    ]);
+
+    /* ---------- Helpers ---------- */
+    const escapeHTML = (str) => str
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+
+    // Tokenize into [ {text, isWord, norm, idx}, ... ] and keep original separators
+    function tokenize(text, {caseSensitive=false}) {
+      const out = [];
+      let i = 0;
+      const iter = text.matchAll(WORD_RE);
+      let lastIndex = 0;
+
+      for (const m of iter){
+        const start = m.index;
+        const word = m[0];
+
+        // Push separator before the word (if any)
+        if (start > lastIndex){
+          out.push({ text: text.slice(lastIndex, start), isWord:false, norm:'', idx: i++ });
+        }
+
+        // Word token
+        const norm = caseSensitive ? word : word.toLocaleLowerCase();
+        out.push({ text: word, isWord:true, norm, idx: i++ });
+
+        lastIndex = start + word.length;
+      }
+      // Trailing separator
+      if (lastIndex < text.length){
+        out.push({ text: text.slice(lastIndex), isWord:false, norm:'', idx: i++ });
+      }
+      return out;
+    }
+
+    function countStats(tokens, {ignoreNumbers=true, ignoreStop=true, min=2}) {
+      const counts = new Map();
+      let wordTotal = 0;
+
+      for (const t of tokens){
+        if (!t.isWord) continue;
+        const raw = t.text;
+        const norm = t.norm;
+
+        if (ignoreNumbers && NUMBER_RE.test(raw)) continue;
+        if (ignoreStop && STOPWORDS.has(norm)) continue;
+
+        wordTotal++;
+        counts.set(norm, (counts.get(norm) || 0) + 1);
+      }
+
+      const dupEntries = [...counts.entries()].filter(([,c]) => c >= Math.max(2, min))
+                                              .sort((a,b)=> b[1]-a[1]);
+      const uniqueCount = [...counts.keys()].length;
+
+      return { counts, duplicates: dupEntries, totalWords: wordTotal, uniqueCount };
+    }
+
+    // Find consecutive duplicates occurrences (indexes of the SECOND word in runs)
+    function findConsecutive(tokens, {ignoreNumbers=true, ignoreStop=true}) {
+      const idxs = [];
+      let prevNorm = null, prevIsWord = false, prevWasNumber = false, prevWasStop = false;
+
+      for (let i=0; i<tokens.length; i++){
+        const t = tokens[i];
+        if (!t.isWord){ prevIsWord=false; continue; }
+
+        const raw = t.text;
+        const isNumber = NUMBER_RE.test(raw);
+        const isStop   = STOPWORDS.has(t.norm);
+
+        const comparable = (!ignoreNumbers || !isNumber) && (!ignoreStop || !isStop);
+
+        if (prevIsWord && comparable){
+          if (t.norm === prevNorm && (!ignoreNumbers || (!isNumber && !prevWasNumber)) && (!ignoreStop || (!isStop && !prevWasStop))){
+            idxs.push(i); // duplicate occurrence
+          }
+        }
+        prevNorm = t.norm;
+        prevIsWord = true;
+        prevWasNumber = isNumber;
+        prevWasStop   = isStop;
+      }
+      return idxs;
+    }
+
+    // Build preview HTML with highlights
+    function buildPreview(tokens, stats, options, activeWord=null){
+      const { duplicates } = stats;
+      const dupSet = new Set(duplicates.map(([w])=> w));
+      const consecIdx = findConsecutive(tokens, options);
+      const consecSet = new Set(consecIdx);
+
+      const doHLAll  = btnHLAll.getAttribute('aria-pressed') === 'true';
+      const doHLCon  = btnHLCon.getAttribute('aria-pressed') === 'true';
+
+      let html = '';
+      for (let i=0; i<tokens.length; i++){
+        const t = tokens[i];
+        if (!t.isWord){ html += escapeHTML(t.text); continue; }
+
+        const isDupe = doHLAll && dupSet.has(t.norm);
+        const isCon  = doHLCon && consecSet.has(i);
+
+        if (!isDupe && !isCon){
+          html += escapeHTML(t.text);
+          continue;
+        }
+
+        const strong = isCon ? ' duplicate-word-mark-strong' : '';
+        const active = activeWord && t.norm === activeWord ? ' duplicate-word-mark-active' : '';
+        html += `<mark class="duplicate-word-mark${strong}${active}">${escapeHTML(t.text)}</mark>`;
+      }
+      return html;
+    }
+
+    // Remove consecutive duplicates (keep first in each run)
+    function removeConsecutive(tokens, options){
+      const out = [];
+      let prevNorm = null, prevIsWord = false, prevWasNumber=false, prevWasStop=false;
+
+      for (let i=0; i<tokens.length; i++){
+        const t = tokens[i];
+        if (!t.isWord){ out.push(t.text); prevIsWord=false; continue; }
+
+        const isNumber = NUMBER_RE.test(t.text);
+        const isStop   = STOPWORDS.has(t.norm);
+        const comparable = (!options.ignoreNumbers || !isNumber) && (!options.ignoreStop || !isStop);
+
+        if (prevIsWord && comparable){
+          if (t.norm === prevNorm && (!options.ignoreNumbers || (!isNumber && !prevWasNumber)) && (!options.ignoreStop || (!isStop && !prevWasStop))){
+            // skip duplicate
+            prevIsWord = true; // continue run
+            continue;
+          }
+        }
+
+        out.push(t.text);
+        prevNorm = t.norm;
+        prevIsWord = true;
+        prevWasNumber = isNumber;
+        prevWasStop   = isStop;
+      }
+      return out.join('');
+    }
+
+    // Render duplicates table
+    function renderTable(dups, totalWords, activeWordFilter = ''){
+      const frag = document.createDocumentFragment();
+      tblBody.innerHTML = '';
+      const filtered = activeWordFilter
+        ? dups.filter(([w]) => w.includes(activeWordFilter.toLocaleLowerCase()))
+        : dups;
+
+      for (const [word,count] of filtered){
+        const tr = document.createElement('tr');
+
+        const tdWord = document.createElement('td');
+        tdWord.textContent = word;
+
+        const tdCount = document.createElement('td');
+        tdCount.textContent = count;
+
+        const tdPct = document.createElement('td');
+        const pct = totalWords ? ((count/totalWords)*100).toFixed(2) : '0.00';
+        tdPct.textContent = `${pct}%`;
+
+        const tdAct = document.createElement('td');
+        const btnFocus = document.createElement('button');
+        btnFocus.type='button';
+        btnFocus.className='duplicate-word-btn duplicate-word-btn-outline';
+        btnFocus.textContent='Highlight word';
+        btnFocus.addEventListener('click', () => {
+          // re-render preview with this word emphasized
+          const ctx = collectOptions();
+          const tokens = tokenize(elInput.value || '', {caseSensitive: ctx.caseSensitive});
+          const stats  = countStats(tokens, ctx);
+          elPreview.innerHTML = buildPreview(tokens, stats, ctx, word);
+          previewBadge.textContent = `Preview • ${word}`;
+          showToast(`Highlighted “${word}”`);
+        });
+
+        tdAct.appendChild(btnFocus);
+        tr.append(tdWord, tdCount, tdPct, tdAct);
+        frag.appendChild(tr);
+      }
+      tblBody.appendChild(frag);
+    }
+
+    // Stats UI
+    function updateStatsDisplay(stats, consecCount){
+      statWords.textContent  = `Words: ${stats.totalWords}`;
+      statUnique.textContent = `Unique: ${stats.uniqueCount}`;
+      statTypes.textContent  = `Duplicate types: ${stats.duplicates.length}`;
+      statCon.textContent    = `Consecutive dupes: ${consecCount}`;
+    }
+
+    // Options collection
+    function collectOptions(){
+      return {
+        caseSensitive: !!swCase.checked,
+        ignoreStop:    !!swStop.checked,
+        ignoreNumbers: !!swNum.checked,
+        min: Math.max(2, Math.min(50, parseInt(inputMin.value || '2', 10) || 2))
+      };
+    }
+
+    // Main analyze + render
+    function analyzeAndRender(activeWord=null){
+      const text = elInput.value || '';
+      const opts = collectOptions();
+      const tokens = tokenize(text, {caseSensitive: opts.caseSensitive});
+      const stats  = countStats(tokens, opts);
+      const consec = findConsecutive(tokens, opts);
+
+      updateStatsDisplay(stats, consec.length);
+      elPreview.innerHTML = buildPreview(tokens, stats, opts, activeWord);
+      renderTable(stats.duplicates, stats.totalWords, filterBox.value.trim().toLocaleLowerCase());
+      previewBadge.textContent = 'Preview';
+      return { tokens, stats, consec };
+    }
+
+    // Throttle helper
+    let typingTimer = null;
+    function scheduleAnalyze(){
+      if (typingTimer) clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        if (swLive.checked){ analyzeAndRender(); }
+        else {
+          // still update stats table from current text
+          analyzeAndRender();
+        }
+      }, 70);
+    }
+
+    // Sample & clear
+    btnSample.addEventListener('click', ()=>{
+      elInput.value = `This is is a simple simple sample. It shows how a duplicate duplicate word finder can highlight highlight repeated words. 
+
+The the tool also catches consecutive duplicates like like this, and it can remove remove them while keeping your original spacing. Numbers 123 123 are ignored if you want.
+
+Tip: Try toggling Case Sensitive and Ignore Stopwords to refine results.`;
+      analyzeAndRender();
+      elInput.focus();
+      showToast('Sample text inserted');
+    });
+    btnClear.addEventListener('click', ()=>{
+      elInput.value = '';
+      elClean.value = '';
+      analyzeAndRender();
+      showToast('Cleared');
+      elInput.focus();
+    });
+
+    // Live toggles
+    [swCase, swStop, swNum, inputMin].forEach(el => el.addEventListener('change', analyzeAndRender));
+    swLive.addEventListener('change', ()=> {
+      showToast(swLive.checked ? 'Live Preview ON' : 'Live Preview OFF');
+      analyzeAndRender();
+    });
+
+    // Highlight toggles
+    function togglePress(btn){
+      const now = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', String(!now));
+      analyzeAndRender();
+    }
+    btnHLAll.addEventListener('click', ()=> togglePress(btnHLAll));
+    btnHLCon.addEventListener('click', ()=> togglePress(btnHLCon));
+
+    // Remove consecutive duplicates
+    btnRemove.addEventListener('click', ()=>{
+      const opts = collectOptions();
+      const tokens = tokenize(elInput.value || '', {caseSensitive: opts.caseSensitive});
+      const cleaned = removeConsecutive(tokens, opts);
+      elClean.value = cleaned;
+      showToast('Consecutive duplicates removed');
+    });
+
+    // Copy cleaned
+    btnCopy.addEventListener('click', async ()=>{
+      try{
+        const text = elClean.value || '';
+        if (!text){ showToast('Nothing to copy'); return; }
+        if (navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+        }
+        showToast('Copied cleaned text');
+      }catch(_){ showToast('Copy failed'); }
+    });
+
+    // Download cleaned
+    btnDown.addEventListener('click', ()=>{
+      const text = elClean.value || '';
+      if (!text){ showToast('Nothing to download'); return; }
+      const bom = '\uFEFF';
+      const blob = new Blob([bom, text], {type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const yyyy = new Date().toISOString().slice(0,10);
+      a.href = url; a.download = `sniptext-duplicate-word-cleaned-${yyyy}.txt`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Downloaded .txt');
+    });
+
+    // Input typing
+    elInput.addEventListener('input', scheduleAnalyze);
+
+    // Filter table
+    filterBox.addEventListener('input', ()=> {
+      analyzeAndRender(filterBox.value.trim().toLocaleLowerCase());
+    });
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (!e.ctrlKey && !e.metaKey) return;
+      const k = e.key.toLowerCase();
+      if (k === 'h'){ e.preventDefault(); togglePress(btnHLAll); }
+      if (k === 'j'){ e.preventDefault(); togglePress(btnHLCon); }
+      if (k === 'k'){ e.preventDefault(); btnRemove.click(); }
+      if (k === 'b'){ e.preventDefault(); btnCopy.click(); }
+      if (k === 'd'){ e.preventDefault(); btnDown.click(); }
+      if (k === 'l'){ e.preventDefault(); swLive.checked = !swLive.checked; showToast(swLive.checked?'Live ON':'Live OFF'); analyzeAndRender(); }
+    });
+
+    // Initial render
+    analyzeAndRender();
+    elInput.focus();
+  })();
+  </script>
+</body>
+</html>

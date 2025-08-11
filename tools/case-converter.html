@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Case Converter (Uppercase · Lowercase · Sentence · Title · Alternating) | SnipText</title>
+  <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="icon" href="/favicon.png" type="image/png">  
+    <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+/* ===========================
+   CASE CONVERTER — UPDATED PALETTE
+   (only colors changed, names preserved)
+   =========================== */
+:root{
+  /* Backgrounds */
+  --case-converter-bg:       var(--color-bg-dark);
+  --case-converter-bg-soft:  var(--color-footer-bg); /* subtle contrast layer */
+  --case-converter-surface:  rgba(255,255,255,0.06); /* glassy card on dark */
+
+  /* Text & borders */
+  --case-converter-text:        var(--color-white);
+  --case-converter-text-muted:  rgba(255,255,255,0.70);
+  --case-converter-border:      rgba(255,255,255,0.12);
+
+  /* Brand accents mapped to theme blues */
+  --case-converter-accent:   var(--color-primary);
+  --case-converter-accent-2: var(--color-accent);
+
+  /* Status colors (kept, but nudged toward brand warmth where sensible) */
+  --case-converter-ok:     #16a34a;          /* success */
+  --case-converter-warn:   var(--color-used-often); /* warm brand orange */
+  --case-converter-danger: #ef4444;          /* danger */
+
+  /* Radii & shadows (unchanged) */
+  --case-converter-radius-xl: 18px;
+  --case-converter-radius-lg: 14px;
+  --case-converter-radius-md: 10px;
+  --case-converter-shadow-1:  0 10px 30px rgba(0,0,0,.35);
+  --case-converter-shadow-2:  0 16px 44px rgba(17,24,39,.45);
+
+  /* Layout (unchanged) */
+  --case-converter-maxw: 1200px;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Light-mode overrides for Case Converter */
+@media (prefers-color-scheme: light){
+  :root{
+    --case-converter-bg:        var(--color-bg-light);
+    --case-converter-bg-soft:   #ffffff;
+    --case-converter-surface:   #ffffffef;
+
+    --case-converter-text:        var(--color-text-dark);
+    --case-converter-text-muted:  var(--color-text-light);
+    --case-converter-border:      var(--color-border);
+
+    --case-converter-accent:   var(--color-primary);
+    --case-converter-accent-2: var(--color-accent);
+
+    --case-converter-shadow-1:  0 10px 30px rgba(2,6,23,.08);
+    --case-converter-shadow-2:  0 16px 44px rgba(2,6,23,.12);
+  }
+}
+
+
+    html, body{
+      height:100%;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.20), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, rgba(6,182,212,.18), transparent 50%),
+        linear-gradient(180deg, var(--case-converter-bg) 0%, var(--case-converter-bg-soft) 100%);
+      color:var(--case-converter-text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      margin:0;
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+    }
+
+    .case-converter-page{
+      max-width:var(--case-converter-maxw);
+      margin:clamp(16px,3vw,40px) auto;
+      padding: clamp(12px,2.5vw,24px);
+    }
+
+    .case-converter-hero{
+      position:relative;
+      padding: clamp(18px,3vw,28px);
+      border:1px solid var(--case-converter-border);
+      background:linear-gradient(135deg, rgba(124,58,237,.18), rgba(6,182,212,.18)) border-box;
+      border-radius:var(--case-converter-radius-xl);
+      box-shadow:var(--case-converter-shadow-1);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .case-converter-hero::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 200px at 20% -5%, rgba(124,58,237,.25), transparent 65%),
+        radial-gradient(400px 260px at 85% 0%, rgba(6,182,212,.25), transparent 60%);
+      filter: blur(16px);
+      opacity:.6;
+      z-index:-1;
+      pointer-events:none;
+    }
+    .case-converter-hero-title{
+      margin:0 0 6px 0;
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:clamp(22px,3.2vw,36px);
+      line-height:1.15;
+      background:linear-gradient(90deg, #fff, #c7d2fe 35%, #99f6e4 70%, #fff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .case-converter-hero-sub{
+      margin:6px 0 0 0;
+      color:var(--case-converter-text-muted);
+      font-size:clamp(14px,1.8vw,16px);
+    }
+
+    .case-converter-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: clamp(12px,2.4vw,20px);
+      margin-top: clamp(14px,2.6vw,24px);
+    }
+    @media (min-width: 980px){
+      .case-converter-grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .case-converter-card{
+      border:1px solid var(--case-converter-border);
+      border-radius: var(--case-converter-radius-lg);
+      background: var(--case-converter-surface);
+      box-shadow: var(--case-converter-shadow-2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    .case-converter-card-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 14px;
+      background: linear-gradient(90deg, rgba(124,58,237,.14), rgba(6,182,212,.10));
+      border-bottom: 1px solid var(--case-converter-border);
+    }
+    .case-converter-card-title{
+      margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.9;
+    }
+
+    .case-converter-textarea{
+      width:100%;
+      min-height: 240px;
+      resize: vertical;
+      border:0;
+      outline:0;
+      background: transparent;
+      color: var(--case-converter-text);
+      padding: 16px;
+      font: 500 15px/1.55 'Poppins', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      caret-color: var(--case-converter-accent);
+      letter-spacing:.2px;
+    }
+    .case-converter-textarea::placeholder{ color: color-mix(in oklab, var(--case-converter-text-muted) 75%, transparent); }
+
+    .case-converter-toolbar{
+      display:flex; flex-wrap:wrap; gap:8px;
+      padding: 12px 14px;
+      border-top:1px solid var(--case-converter-border);
+      background: linear-gradient(90deg, rgba(6,182,212,.07), rgba(124,58,237,.08));
+    }
+
+    .case-converter-btn{
+      --_bg: linear-gradient(180deg, color-mix(in oklab, var(--case-converter-accent) 72%, transparent), color-mix(in oklab, var(--case-converter-accent-2) 64%, transparent));
+      --_txt: #fff;
+      --_bd: color-mix(in oklab, #000 10%, var(--case-converter-accent));
+      appearance:none; -webkit-appearance:none;
+      border:1px solid var(--_bd);
+      background: var(--_bg);
+      color:var(--_txt);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing:.3px;
+      cursor:pointer;
+      position:relative;
+      transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+      box-shadow: 0 10px 20px rgba(124,58,237,.18), 0 6px 14px rgba(6,182,212,.14);
+    }
+    .case-converter-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+    .case-converter-btn:active{ transform: translateY(0); filter: brightness(.98); }
+    .case-converter-btn[aria-pressed="true"]{
+      outline:2px solid color-mix(in oklab, var(--case-converter-accent) 40%, var(--case-converter-accent-2));
+      outline-offset:2px;
+    }
+
+    .case-converter-btn-outline{
+      --_bg: transparent; --_txt: var(--case-converter-text); --_bd: var(--case-converter-border);
+      background: var(--_bg); color: var(--_txt); border-color: var(--_bd);
+      box-shadow:none;
+    }
+    .case-converter-btn-ghost{
+      background: transparent; color: var(--case-converter-text-muted); border:1px dashed var(--case-converter-border);
+      box-shadow:none; font-weight:600;
+    }
+
+    .case-converter-row{
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+    }
+    .case-converter-spacer{ flex:1 1 auto; }
+
+    .case-converter-kbd{
+      font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+      background: #111827a6;
+      color:#cbd5e1;
+      padding:3px 6px;
+      border-radius:8px;
+      border:1px solid var(--case-converter-border);
+      margin-left:6px;
+    }
+
+    .case-converter-stats{
+      display:flex; gap:10px; flex-wrap:wrap; padding: 10px 14px; border-top:1px solid var(--case-converter-border);
+      color:var(--case-converter-text-muted); font-size:12px;
+      background: linear-gradient(90deg, rgba(255,255,255,.03), transparent);
+    }
+    .case-converter-chip{
+      padding:6px 8px; border:1px solid var(--case-converter-border); border-radius:999px; background:#0b1324a8; backdrop-filter: blur(6px);
+    }
+
+    .case-converter-options{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; color:var(--case-converter-text-muted); font-size:13px;
+    }
+    .case-converter-switch{
+      position:relative; display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none;
+    }
+    .case-converter-switch input{ appearance:none; width:40px; height:22px; background:#0f1b34; border:1px solid var(--case-converter-border); border-radius:999px; position:relative; outline:0; transition: background .2s ease; }
+    .case-converter-switch input:checked{ background: linear-gradient(90deg, var(--case-converter-accent), var(--case-converter-accent-2)); border-color: transparent; }
+    .case-converter-switch input::after{
+      content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%;
+      background:#fff; transition: transform .2s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,.25);
+    }
+    .case-converter-switch input:checked::after{ transform: translateX(18px); }
+
+    .case-converter-toast{
+      position: fixed; inset: auto 16px 16px auto;
+      background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--case-converter-border);
+      backdrop-filter: blur(8px); box-shadow: var(--case-converter-shadow-1);
+      transform: translateY(20px); opacity:0; pointer-events:none;
+      transition: transform .25s ease, opacity .25s ease;
+      z-index: 50;
+    }
+    .case-converter-toast.case-converter-show{ transform: translateY(0); opacity:1; }
+
+    /* Subtle float animation for card */
+    @media (prefers-reduced-motion: no-preference){
+      .case-converter-card{ animation: case-converter-float 18s ease-in-out infinite; }
+      @keyframes case-converter-float{
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-2px); }
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+    
+
+<nav id="main-navbar" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="logo"><a href="/index.html">Snip Text</a></div>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+  <main class="case-converter-page" aria-label="Case Converter">
+    <!-- Hero -->
+    <section class="case-converter-hero">
+      <h1 class="case-converter-hero-title">Case Converter</h1>
+      <p class="case-converter-hero-sub">Switch between <strong>UPPERCASE</strong>, <strong>lowercase</strong>, <strong>Sentence case</strong>, <strong>Title Case</strong>, and <strong>aLtErNaTiNg cAsE</strong> with one click.</p>
+    </section>
+
+    <!-- Grid -->
+    <section class="case-converter-grid">
+      <!-- Input -->
+      <article class="case-converter-card">
+        <header class="case-converter-card-head">
+          <h2 class="case-converter-card-title">Input</h2>
+          <div class="case-converter-row">
+            <button class="case-converter-btn case-converter-btn-outline" id="case-converter-pasteBtn" type="button" title="Paste">
+              Paste
+            </button>
+            <button class="case-converter-btn case-converter-btn-ghost" id="case-converter-clearBtn" type="button" title="Clear">Clear</button>
+          </div>
+        </header>
+        <textarea class="case-converter-textarea" id="case-converter-input" placeholder="Type or paste your text here…"></textarea>
+        <div class="case-converter-stats" id="case-converter-inputStats" aria-live="polite">
+          <span class="case-converter-chip" id="case-converter-inWords">Words: 0</span>
+          <span class="case-converter-chip" id="case-converter-inChars">Characters: 0</span>
+          <span class="case-converter-chip" id="case-converter-inLines">Lines: 0</span>
+        </div>
+      </article>
+
+      <!-- Output -->
+      <article class="case-converter-card">
+        <header class="case-converter-card-head">
+          <h2 class="case-converter-card-title">Output</h2>
+          <div class="case-converter-row">
+            <button class="case-converter-btn" id="case-converter-copyBtn" type="button" title="Copy result">
+              Copy
+            </button>
+            <button class="case-converter-btn case-converter-btn-outline" id="case-converter-downloadBtn" type="button" title="Download .txt">Download</button>
+            <button class="case-converter-btn case-converter-btn-ghost" id="case-converter-applyBackBtn" type="button" title="Replace input with output">Apply to Input</button>
+          </div>
+        </header>
+        <textarea class="case-converter-textarea" id="case-converter-output" placeholder="Your converted text appears here…" readonly></textarea>
+        <div class="case-converter-stats" id="case-converter-outputStats">
+          <span class="case-converter-chip" id="case-converter-outWords">Words: 0</span>
+          <span class="case-converter-chip" id="case-converter-outChars">Characters: 0</span>
+          <span class="case-converter-chip" id="case-converter-outLines">Lines: 0</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Controls -->
+    <section class="case-converter-card" style="margin-top: clamp(12px,2vw,18px);">
+      <header class="case-converter-card-head">
+        <h2 class="case-converter-card-title">Transform</h2>
+        <div class="case-converter-options" role="group" aria-label="Options">
+          <label class="case-converter-switch" title="For Title Case: capitalize words after colon">
+            <input id="case-converter-capAfterColon" type="checkbox" checked />
+            <span>Capitalize after colon</span>
+          </label>
+          <label class="case-converter-switch" title="Keep fully UPPERCASE words as-is">
+            <input id="case-converter-keepAcronyms" type="checkbox" checked />
+            <span>Preserve ACRONYMS</span>
+          </label>
+          <label class="case-converter-switch" title="Alternating Case: start with UPPER">
+            <input id="case-converter-altStartUpper" type="checkbox" checked />
+            <span>Alternating: start Upper</span>
+          </label>
+        </div>
+      </header>
+
+      <div class="case-converter-toolbar" role="group" aria-label="Conversion buttons">
+        <button class="case-converter-btn" id="case-converter-toUpper" type="button" aria-pressed="false">UPPERCASE</button>
+        <button class="case-converter-btn" id="case-converter-toLower" type="button" aria-pressed="false">lowercase</button>
+        <button class="case-converter-btn" id="case-converter-toSentence" type="button" aria-pressed="false">Sentence case</button>
+        <button class="case-converter-btn" id="case-converter-toTitle" type="button" aria-pressed="false">Title Case</button>
+        <button class="case-converter-btn" id="case-converter-toAlternating" type="button" aria-pressed="false">aLtErNaTiNg</button>
+
+        <span class="case-converter-spacer"></span>
+
+        <button class="case-converter-btn case-converter-btn-outline" id="case-converter-livePreview" type="button" aria-pressed="true" title="Update output as you type">Live Preview</button>
+        <button class="case-converter-btn case-converter-btn-ghost" id="case-converter-resetBtn" type="button" title="Reset output to original input">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="case-converter-toast" id="case-converter-toast" role="status" aria-live="polite"></div>
+  
+
+
+  
+
+  
+<footer id="main-footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 <span class="powered-by">Snip Text - powered by <a href="https://checkai.pro" target="_blank">CheckAI.pro</a> All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollToTopBtn" title="Back to Top">&#8679;</button>
+
+
+  <script src="/js/index.js"></script>  
+  <script>
+  (function(){
+    'use strict';
+
+    // ---- Elements ----
+    const elInput          = document.getElementById('case-converter-input');
+    const elOutput         = document.getElementById('case-converter-output');
+    const btnUpper         = document.getElementById('case-converter-toUpper');
+    const btnLower         = document.getElementById('case-converter-toLower');
+    const btnSentence      = document.getElementById('case-converter-toSentence');
+    const btnTitle         = document.getElementById('case-converter-toTitle');
+    const btnAlt           = document.getElementById('case-converter-toAlternating');
+    const btnLive          = document.getElementById('case-converter-livePreview');
+    const btnReset         = document.getElementById('case-converter-resetBtn');
+    const btnClear         = document.getElementById('case-converter-clearBtn');
+    const btnPaste         = document.getElementById('case-converter-pasteBtn');
+    const btnCopy          = document.getElementById('case-converter-copyBtn');
+    const btnApplyBack     = document.getElementById('case-converter-applyBackBtn');
+    const btnDownload      = document.getElementById('case-converter-downloadBtn');
+    const swAfterColon     = document.getElementById('case-converter-capAfterColon');
+    const swKeepAcronyms   = document.getElementById('case-converter-keepAcronyms');
+    const swAltStartUpper  = document.getElementById('case-converter-altStartUpper');
+    const toast            = document.getElementById('case-converter-toast');
+
+    const inWords          = document.getElementById('case-converter-inWords');
+    const inChars          = document.getElementById('case-converter-inChars');
+    const inLines          = document.getElementById('case-converter-inLines');
+    const outWords         = document.getElementById('case-converter-outWords');
+    const outChars         = document.getElementById('case-converter-outChars');
+    const outLines         = document.getElementById('case-converter-outLines');
+
+    // ---- Utilities ----
+    const showToast = (msg) => {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('case-converter-show');
+      setTimeout(()=> toast.classList.remove('case-converter-show'), 1400);
+    };
+
+    const countStats = (t) => {
+      const lines = t.length ? (t.match(/\r\n|\r|\n/g)?.length || 0) + 1 : 0;
+      const words = t.trim() ? t.trim().split(/\s+/).filter(Boolean).length : 0;
+      return { words, chars: Array.from(t).length, lines };
+    };
+    const updateStats = () => {
+      const A = countStats(elInput.value || '');
+      const B = countStats(elOutput.value || '');
+      inWords.textContent = `Words: ${A.words}`;
+      inChars.textContent = `Characters: ${A.chars}`;
+      inLines.textContent = `Lines: ${A.lines}`;
+      outWords.textContent= `Words: ${B.words}`;
+      outChars.textContent= `Characters: ${B.chars}`;
+      outLines.textContent= `Lines: ${B.lines}`;
+    };
+
+    // ---- Converters ----
+    const toUpper = (s) => s.toLocaleUpperCase();
+    const toLower = (s) => s.toLocaleLowerCase();
+
+    // Sentence case: lowercase entire string, then uppercase first letter after start or punctuation (.!?。！？)
+    function toSentenceCase(s){
+      const lower = s.toLocaleLowerCase();
+      return lower.replace(/(^\s*|[.!?。！？]\s+)(["'([{«“‘]*)([a-z\u00c0-\u024f\u0400-\u04ff])/gmi,
+        (_, start, lead, chr) => `${start}${lead}${chr.toLocaleUpperCase()}`);
+    }
+
+    // Title Case with small-word rules & hyphen handling
+    function toTitleCase(str, {capitalizeAfterColon=true, preserveAcronyms=true}={}){
+      if (!str) return "";
+      const small = new Set(["a","an","the","and","but","or","nor","as","at","by","for","in","of","on","per","to","vs","via","with","without","over","into","onto","from","up","down"]);
+      const tokens = str.split(/(\s+)/); // keep whitespace
+      let wordIndex = -1;
+
+      const isAllCaps = (w) => {
+        const letters = w.replace(/[^A-Za-z]/g,'');
+        return letters.length >= 2 && letters === letters.toUpperCase() && letters !== letters.toLowerCase();
+      };
+      const cap = (w) => w.slice(0,1).toLocaleUpperCase() + w.slice(1);
+
+      // For each non-space chunk, apply title rules
+      for (let i=0;i<tokens.length;i++){
+        const chunk = tokens[i];
+        if (/^\s+$/.test(chunk)) continue; // whitespace as-is
+        wordIndex++;
+
+        // Separate leading/trailing punctuation
+        const leadMatch = chunk.match(/^[("'[{«“‘]+/);
+        const trailMatch= chunk.match(/[)"'\]}»”’.,:;!?]+$/);
+        const lead = leadMatch ? leadMatch[0] : "";
+        const trail= trailMatch ? trailMatch[0] : "";
+        const core = chunk.slice(lead.length, chunk.length - trail.length);
+
+        // Handle colon rule: if previous non-space chunk ended with ":" we force cap
+        const prev = tokens.slice(0,i).reverse().find(t => !/^\s+$/.test(t)) || "";
+        const prevEndsColon = /:\s*$/.test(prev);
+
+        // Hyphenated words: Title-Case each part respecting small-word list
+        const parts = core.split(/(-)/); // keep hyphens
+        let anyWordSeen = false;
+        let out = parts.map((part, idx) => {
+          if (part === "-") return part;
+
+          const base = part;
+          const isWord = /[A-Za-z\u00c0-\u024f\u0400-\u04ff]/.test(base);
+          if (!isWord) return base; // numbers/symbols
+
+          const lower = base.toLocaleLowerCase();
+
+          // preserve acronyms like NASA, USA, HTML
+          if (preserveAcronyms && isAllCaps(base)) return base;
+
+          const isFirst = wordIndex === 0 && !anyWordSeen;
+          // if this token is the last word overall (ignoring spaces at end)
+          const isLast = (() => {
+            const rest = tokens.slice(i+1).filter(t => !/^\s+$/.test(t));
+            return rest.length === 0;
+          })();
+
+          const smallWord = small.has(lower);
+
+          let shouldCap =
+            isFirst || isLast || prevEndsColon && capitalizeAfterColon || !smallWord;
+
+          anyWordSeen = true;
+          return shouldCap ? cap(lower) : lower;
+        }).join("");
+
+        tokens[i] = lead + out + trail;
+      }
+      return tokens.join("");
+    }
+
+    // Alternating case: toggle only letters; preserve others
+    function toAlternatingCase(str, startUpper=true){
+      let upper = !!startUpper;
+      const isLetter = (c) => c.toLocaleLowerCase() !== c.toLocaleUpperCase();
+      let out = "";
+      for (const ch of str){
+        if (!isLetter(ch)){ out += ch; continue; }
+        out += upper ? ch.toLocaleUpperCase() : ch.toLocaleLowerCase();
+        upper = !upper;
+      }
+      return out;
+    }
+
+    // ---- Apply transform ----
+    let currentMode = 'sentence'; // default
+    const run = () => {
+      const t = elInput.value || "";
+      let out = t;
+      switch(currentMode){
+        case 'upper':     out = toUpper(t); break;
+        case 'lower':     out = toLower(t); break;
+        case 'sentence':  out = toSentenceCase(t); break;
+        case 'title':     out = toTitleCase(t, {capitalizeAfterColon: swAfterColon.checked, preserveAcronyms: swKeepAcronyms.checked}); break;
+        case 'alt':       out = toAlternatingCase(t, swAltStartUpper.checked); break;
+      }
+      elOutput.value = out;
+      updateStats();
+    };
+
+    // ---- Button state ----
+    const buttons = [btnUpper, btnLower, btnSentence, btnTitle, btnAlt];
+    const setActive = (btn) => {
+      buttons.forEach(b => b.setAttribute('aria-pressed', b===btn ? 'true' : 'false'));
+    };
+
+    // ---- Events ----
+    btnUpper.addEventListener('click',   () => { currentMode='upper'; setActive(btnUpper);   run(); showToast('Converted to UPPERCASE'); });
+    btnLower.addEventListener('click',   () => { currentMode='lower'; setActive(btnLower);   run(); showToast('Converted to lowercase'); });
+    btnSentence.addEventListener('click',() => { currentMode='sentence'; setActive(btnSentence); run(); showToast('Converted to Sentence case'); });
+    btnTitle.addEventListener('click',   () => { currentMode='title';  setActive(btnTitle);  run(); showToast('Converted to Title Case'); });
+    btnAlt.addEventListener('click',     () => { currentMode='alt';    setActive(btnAlt);    run(); showToast('Converted to aLtErNaTiNg'); });
+
+    // Live preview toggle
+    btnLive.setAttribute('aria-pressed', 'true');
+    btnLive.addEventListener('click', () => {
+      const now = btnLive.getAttribute('aria-pressed') === 'true';
+      btnLive.setAttribute('aria-pressed', String(!now));
+      showToast(!now ? 'Live Preview ON' : 'Live Preview OFF');
+    });
+
+    // React to typing (with very light throttle)
+    let typingTimer = null;
+    elInput.addEventListener('input', () => {
+      if (typingTimer) clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        if (btnLive.getAttribute('aria-pressed') === 'true') run();
+        else { // still update input stats even if not live
+          const A = countStats(elInput.value || '');
+          inWords.textContent = `Words: ${A.words}`;
+          inChars.textContent = `Characters: ${A.chars}`;
+          inLines.textContent = `Lines: ${A.lines}`;
+        }
+      }, 60);
+    });
+
+    // Reset output to raw input
+    btnReset.addEventListener('click', () => {
+      elOutput.value = elInput.value || '';
+      updateStats();
+      showToast('Output reset');
+    });
+
+    // Clear input
+    btnClear.addEventListener('click', () => {
+      elInput.value = '';
+      run();
+      elInput.focus();
+      showToast('Cleared');
+    });
+
+    // Paste (best effort)
+    btnPaste.addEventListener('click', async () => {
+      try{
+        if (navigator.clipboard?.readText) {
+          const txt = await navigator.clipboard.readText();
+          elInput.value = txt;
+          run();
+          elInput.focus();
+          showToast('Pasted from clipboard');
+        } else {
+          showToast('Clipboard not available');
+        }
+      }catch(_){ showToast('Clipboard blocked'); }
+    });
+
+    // Copy output
+    btnCopy.addEventListener('click', async () => {
+      try{
+        const text = elOutput.value || '';
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+        }
+        showToast('Copied result');
+      }catch(_){ showToast('Copy failed'); }
+    });
+
+    // Apply result back to input
+    btnApplyBack.addEventListener('click', () => {
+      elInput.value = elOutput.value || '';
+      elInput.focus();
+      run();
+      showToast('Applied to input');
+    });
+
+    // Download
+    btnDownload.addEventListener('click', () => {
+      const bom = '\uFEFF';
+      const blob = new Blob([bom, elOutput.value || ''], {type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const yyyy = new Date().toISOString().slice(0,10);
+      a.download = `sniptext-case-converter-${yyyy}.txt`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Downloaded .txt');
+    });
+
+    // Options affect output immediately (if live)
+    [swAfterColon, swKeepAcronyms, swAltStartUpper].forEach(sw => sw.addEventListener('change', run));
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (!e.ctrlKey && !e.metaKey) return;
+      const k = e.key.toLowerCase();
+      if (k === 'u'){ e.preventDefault(); currentMode='upper'; setActive(btnUpper); run(); }
+      if (k === 'l'){ e.preventDefault(); currentMode='lower'; setActive(btnLower); run(); }
+      if (k === 't'){ e.preventDefault(); currentMode='title'; setActive(btnTitle); run(); }
+      if (k === 's'){ /* reserved by browsers sometimes; skip to avoid clashes */ }
+      if (k === 'b'){ e.preventDefault(); currentMode='alt';   setActive(btnAlt); run(); }
+      if (k === 'r'){ e.preventDefault(); btnReset.click(); }
+    });
+
+    // Initial state
+    setActive(btnSentence);
+    run();
+    elInput.focus();
+  })();
+  </script>
+</body>
+</html>
