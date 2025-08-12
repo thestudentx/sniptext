@@ -51,40 +51,92 @@
 
 
 <main class="tools-page" id="tools-page">  
+  
   <!-- HERO -->
-  <section class="tools-hero" aria-labelledby="tools-hero-title">
-    <div class="hero-content">
-      <h1 id="tools-hero-title">Free Text Tools - fast, tiny, and for everyone</h1>
-      <p class="lead">
-        We offer a growing collection of lightweight text utilities - free to use for everyone. No sign-ins, no fuss.
-        Use them to count words, clean formatting, compare texts, and more. Want something advanced? We also offer
-        <span style="color: aqua; font-weight: bolder;"> PREMIUM TOOLS </span>for plagiarism checking, grammar correction, paraphrasing, rewriting and styling.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/contact.html" id="contact-btn">Contact Us</a>
-        <a class="btn btn-ghost" href="/dashboard.html" aria-label="View tools">Browse tools</a>
-        <div class="theme-toggle-wrapper">
-            <button id="themeToggle" aria-label="Toggle theme">
-            <span class="theme-icon">🌙</span>
-            </button>
-        </div>
+<section class="tools-hero tools-hero--writing" aria-labelledby="tools-hero-title">
+  <div class="hero-content">
+    <h1 id="tools-hero-title">Free Text Tools — fast, tiny, and for everyone</h1>
+    <p class="lead">
+      Lightweight text utilities with zero friction—no sign-ins, no fuss. Count words, clean formatting, compare texts, and more.
+      Need more power? Our <span class="hero-premium">PREMIUM TOOLS</span> cover plagiarism checks, grammar, paraphrasing, rewriting, and styling.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/contact.html" id="contact-btn">Contact Us</a>
+      <a class="btn btn-ghost" href="/dashboard.html" aria-label="View tools">Browse tools</a>
+      <div class="theme-toggle-wrapper">
+        <button id="themeToggle" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
       </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <!-- decorative gradient blob -->
-      <svg class="blob" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="gBlob" x1="0" x2="1">
-            <stop offset="0" stop-color="var(--gradient-primary-start)" />
-            <stop offset="1" stop-color="var(--gradient-accent-end)" />
-          </linearGradient>
-        </defs>
-        <g transform="translate(300,300)">
-          <path d="M120,-164C151,-125,163,-72,165,-18C166,36,157,88,127,125C96,162,44,185,-7,187C-58,189,-116,169,-151,129C-186,89,-198,29,-186,-27C-173,-83,-136,-135,-94,-171C-52,-207,-6,-228,41,-232C88,-236,176,-203,120,-164Z" fill="url(#gBlob)"/>
-        </g>
-      </svg>
-    </div>
-  </section>
+  </div>
+
+  <!-- Writing-themed visual -->
+  <div class="hero-visual" aria-hidden="true">
+    <svg class="writing-visual" viewBox="0 0 520 420" role="img">
+      <defs>
+        <!-- brand ink gradient (uses your existing CSS vars) -->
+        <linearGradient id="ink" x1="0" x2="1">
+          <stop offset="0" stop-color="var(--blue-600)"/>
+          <stop offset="1" stop-color="var(--warm-600)"/>
+        </linearGradient>
+
+        <!-- subtle paper lines -->
+        <pattern id="paperLines" width="24" height="24" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="22" x2="24" y2="22" stroke="currentColor" stroke-opacity=".08" stroke-width="2"/>
+        </pattern>
+
+        <!-- soft shadow for paper/card -->
+        <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity=".18"/>
+        </filter>
+
+        <!-- clip for rounded paper -->
+        <clipPath id="paperClip"><rect x="60" y="58" width="340" height="230" rx="18"/></clipPath>
+      </defs>
+
+      <!-- glow backdrop -->
+      <g opacity=".35">
+        <ellipse cx="360" cy="110" rx="120" ry="70" fill="url(#ink)"/>
+      </g>
+
+      <!-- “paper” card -->
+      <g filter="url(#soft)">
+        <rect x="56" y="54" width="348" height="238" rx="20"
+              fill="rgba(255,255,255,.92)" stroke="rgba(0,0,0,.06)"/>
+        <rect x="56" y="54" width="348" height="238" rx="20" fill="url(#paperLines)" clip-path="url(#paperClip)"/>
+      </g>
+
+      <!-- typed lines -->
+      <g transform="translate(84,88)">
+        <rect width="220" height="10" rx="5" fill="rgba(0,0,0,.14)" />
+        <rect y="28" width="260" height="10" rx="5" fill="rgba(0,0,0,.12)" />
+        <rect y="56" width="180" height="10" rx="5" fill="rgba(0,0,0,.12)" />
+        <rect y="84" width="300" height="10" rx="5" fill="rgba(0,0,0,.12)" />
+        <rect y="112" width="210" height="10" rx="5" fill="rgba(0,0,0,.12)" />
+      </g>
+
+      <!-- animated underline (draws in) -->
+      <path d="M86 200 C 180 230, 250 186, 380 206"
+            fill="none" stroke="url(#ink)" stroke-width="6" stroke-linecap="round"
+            style="stroke-dasharray: 420; stroke-dashoffset: 420; animation: draw 1.6s .35s cubic-bezier(.3,.8,.2,1) forwards;" />
+
+      <!-- caret (blinking) -->
+      <rect x="298" y="141" width="3" height="22" fill="var(--blue-600)"
+            style="animation: blink 1.1s steps(1) infinite;" />
+
+      <!-- floating pen nib -->
+      <g transform="translate(370,80)" style="animation: float 4.2s ease-in-out infinite;">
+        <path d="M16 0 L36 20 L22 34 L2 14 Z" fill="url(#ink)"/>
+        <circle cx="22" cy="22" r="3.2" fill="rgba(255,255,255,.9)"/>
+      </g>
+
+      <!-- sparkles -->
+      <g fill="url(#ink)" opacity=".8" style="animation: float 5.5s -1.2s ease-in-out infinite;">
+        <circle cx="430" cy="60" r="3"/><circle cx="446" cy="92" r="2.5"/><circle cx="408" cy="96" r="2.5"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
 
   <!-- TOOLS GRID -->
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">

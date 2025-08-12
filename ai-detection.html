@@ -49,89 +49,120 @@
 
   
 <main class="turnit-container dark-split">
-  
+
+  <!-- HERO / SCAN BANNER -->
+  <section class="ai-hero" aria-label="AI Detection">
+    <div class="ai-hero__bg" aria-hidden="true">
+      <svg class="ai-hero__grid" viewBox="0 0 1200 280" preserveAspectRatio="none">
+        <defs>
+          <pattern id="aiGrid" width="36" height="36" patternUnits="userSpaceOnUse">
+            <path d="M36 0H0v36" fill="none" stroke="currentColor" stroke-opacity=".12" />
+          </pattern>
+          <linearGradient id="aiGlow" x1="0" x2="1">
+            <stop offset="0" stop-color="var(--ai-accent)" />
+            <stop offset="1" stop-color="var(--ai-accent-2)" />
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="280" fill="url(#aiGrid)"/>
+        <!-- scanning beam -->
+        <rect class="ai-hero__beam" x="-220" y="0" width="220" height="280" fill="url(#aiGlow)" opacity=".25"/>
+      </svg>
+      <div class="ai-hero__rings"></div>
+    </div>
+
+    <div class="ai-hero__inner">
+      <div class="ai-hero__copy">
+        <h1 class="ai-hero__title">AI Content Detection</h1>
+        <p class="ai-hero__sub">Paste or upload your text. We’ll estimate how likely it is to be AI-generated and show a clear breakdown.</p>
+      </div>
+      <div class="ai-hero__badgebar" aria-hidden="true">
+        <span class="ai-pill">⚡ Fast analysis</span>
+        <span class="ai-pill">🛡️ Privacy-aware</span>
+        <span class="ai-pill">📄 DOCX & TXT</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Left panel: Input & Upload -->
-<section class="split-panel input-panel">
-  <div class="title-section">
-    <div class="title-wrapper">
-      <h2 class="panel-title">AI Content Detection</h2>
-      <p class="panel-sub">Upload or paste text to identify AI-generated content.</p>
-    </div>
-    <div class="theme-toggle-wrapper">
-      <button id="themeToggle">
-        <span class="theme-icon">🌙</span>
-      </button>
-    </div>
-  </div>
-
-
-  <!-- ✅ Grouped Actions: Upload + Filename + Paste + Clear -->
-  <div class="input-actions-wrapper">
-    <div class="upload-wrapper">
-      <label for="fileUpload" class="upload-btn">
-        <svg width="20" height="20" fill="var(--color-accent)" viewBox="0 0 24 24">
-          <path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6v-6h4l-7-7z" />
-        </svg>
-        Upload File
-      </label>
-      <input type="file" id="fileUpload" accept=".txt,.docx" hidden />
-      <span class="file-info" id="fileInfo">No file chosen</span>
-    </div>
-
-    <button id="pasteBtn" class="ripple-btn small-btn" data-ripple>Paste</button>
-    <button id="clearBtn" class="ripple-btn small-btn" data-ripple>Clear</button>
-  </div>
-
-  <div class="textarea-wrapper">
-    <textarea id="inputText" placeholder="Paste your content..." rows="12"></textarea>
-  </div>
-
-  <div class="counter-wrapper">
-    <span id="wordCount">0 words</span> •
-    <span id="tokenCount">0 tokens</span>
-  </div>
-
-  <!-- Main Actions -->
-  <div class="actions">
-    <button id="checkAIBtn" class="ripple-btn" data-ripple>Detect AI</button>
-    <button id="checkPlagiarismBtn" class="ripple-btn disabled" disabled>Plagiarism (Soon)</button>
-  </div>
-</section>
-
-
-  <!-- Right panel: Results & Future -->
-<section class="split-panel result-panel hidden">
-  <div id="loadingIndicator" class="loader hidden"></div>
-  <div id="errorMsg" class="error hidden"></div>
-
-  <div id="resultMetrics" class="metrics-panel hidden">
-    <h3 class="metrics-title">Detection Breakdown</h3>
-
-    <div class="metric">
-      <div class="metric-label">AI Written</div>
-      <div class="metric-value" id="aiScoreValue">--%</div>
-      <div class="progress">
-        <div id="aiScoreBar" class="progress-bar"></div>
+  <section class="split-panel input-panel">
+    <div class="title-section">
+      <div class="title-wrapper">
+        <h2 class="panel-title">Analyzer</h2>
+        <p class="panel-sub">Upload or paste text to identify AI-generated content.</p>
+      </div>
+      <div class="theme-toggle-wrapper">
+        <button id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
       </div>
     </div>
 
-    <div class="metric">
-      <div class="metric-label">Human Written</div>
-      <div class="metric-value" id="humanScoreValue">--%</div>
-      <div class="progress">
-        <div id="humanScoreBar" class="progress-bar"></div>
+    <!-- Actions -->
+    <div class="input-actions-wrapper">
+      <div class="upload-wrapper">
+        <label for="fileUpload" class="upload-btn" title="Upload .docx or .txt">
+          <svg width="20" height="20" fill="var(--ai-accent)" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6v-6h4l-7-7z" />
+          </svg>
+          Upload File
+        </label>
+        <input type="file" id="fileUpload" accept=".txt,.docx" hidden />
+        <span class="file-info" id="fileInfo">No file chosen</span>
       </div>
+
+      <button id="pasteBtn" class="ripple-btn small-btn" data-ripple>Paste</button>
+      <button id="clearBtn" class="ripple-btn small-btn" data-ripple>Clear</button>
     </div>
 
-    <p id="verdictText" class="verdict-text">Verdict: –</p>
-  </div>
+    <div class="textarea-wrapper">
+      <textarea id="inputText" placeholder="Paste your content..." rows="12" aria-label="Text to analyze"></textarea>
+      <div class="textarea-halo" aria-hidden="true"></div>
+    </div>
 
-  <button id="generateReportBtn" class="ripple-btn report-btn hidden" disabled>
-    Generate Report
-  </button>
-</section>
+    <div class="counter-wrapper">
+      <span id="wordCount">0 words</span> •
+      <span id="tokenCount">0 tokens</span>
+    </div>
 
+    <div class="actions">
+      <button id="checkAIBtn" class="ripple-btn" data-ripple>Detect AI</button>
+      <button id="checkPlagiarismBtn" class="ripple-btn disabled" disabled>Plagiarism (Soon)</button>
+    </div>
+  </section>
 
+  <!-- Right panel: Results -->
+  <section class="split-panel result-panel hidden">
+    <div id="loadingIndicator" class="loader hidden" aria-live="polite"></div>
+    <div id="errorMsg" class="error hidden" role="alert"></div>
+
+    <div id="resultMetrics" class="metrics-panel hidden" aria-live="polite">
+      <h3 class="metrics-title">Detection Breakdown</h3>
+
+      <div class="metric">
+        <div class="metric-head">
+          <span class="metric-label">AI Written</span>
+          <span class="metric-value" id="aiScoreValue">--%</span>
+        </div>
+        <div class="progress">
+          <div id="aiScoreBar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="metric">
+        <div class="metric-head">
+          <span class="metric-label">Human Written</span>
+          <span class="metric-value" id="humanScoreValue">--%</span>
+        </div>
+        <div class="progress">
+          <div id="humanScoreBar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <p id="verdictText" class="verdict-text">Verdict: –</p>
+    </div>
+
+    <button id="generateReportBtn" class="ripple-btn report-btn hidden" disabled>Generate Report</button>
+  </section>
 
 </main>
 
@@ -183,8 +214,8 @@
 
 
 
-<!-- Global Toast Container -->
-<div id="toast-container" class="toast-container hidden"></div>
+<!-- Global Toast Container (positions: toast-pos-tr | -br | -tl | -bl | -center) -->
+<div id="toast-container" class="toast-container toast-pos-tr hidden" aria-live="polite" aria-atomic="true"></div>
 
 
   <!-- SCRIPT LOADERS -->

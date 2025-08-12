@@ -5,6 +5,32 @@
  * - simple reveal animation via IntersectionObserver
  */
 
+// ------------------------------- HERO SECTION -------------------------------
+  // Gentle parallax on mouse move (visual only; no layout shifts)
+  (() => {
+    const v = document.querySelector('.tools-hero--writing .hero-visual');
+    if(!v) return;
+    let rAF;
+    v.addEventListener('pointermove', (e) => {
+      const rect = v.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5..0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(() => {
+        v.querySelector('.writing-visual').style.transform =
+          `translate3d(${x*8}px, ${y* -6}px, 0)`;
+      });
+    });
+    v.addEventListener('pointerleave', () => {
+      v.querySelector('.writing-visual').style.transform = '';
+    });
+  })();
+
+
+
+
+  
+
 /* ===== card click / keyboard behavior ===== */
 document.addEventListener('click', function (e) {
   const card = e.target.closest('.tool-card');

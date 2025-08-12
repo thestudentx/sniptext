@@ -592,52 +592,141 @@ html, body, .pane, .editor-area, .tool-page-header,
 
 
 /* ===========================
-   FEATURES OVERVIEW SECTION
+   FEATURES OVERVIEW — PRO (theme-tokenised)
    =========================== */
-.features-overview {
-  padding: 3rem 0;
-  background-color: var(--bg-panel);
+.features-overview--pro{
+  position: relative;
+  padding: clamp(2rem, 5vw, 3.2rem) 0;
+  background: linear-gradient(180deg, var(--bg-panel), color-mix(in srgb, var(--bg-panel) 75%, transparent));
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+  overflow: clip;
+  isolation: isolate;
 }
-.features-heading {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
-  text-align: center;
-  margin-bottom: 2rem;
+
+/* Soft gradient blobs + subtle grid (brand-accent + warm) */
+.features-overview--pro .features-bg{
+  position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(600px 280px at 90% -10%, color-mix(in srgb, var(--brand-accent) 16%, transparent) 0%, transparent 60%),
+    radial-gradient(520px 260px at 10% 110%, color-mix(in srgb, rgb(var(--brand-used-often-rgb)) 14%, transparent) 0%, transparent 60%),
+    linear-gradient(transparent, transparent);
+}
+.features-overview--pro .features-bg::after{
+  content:""; position:absolute; inset:0; opacity:.08;
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 36px 36px;
   color: var(--text-primary);
+  mix-blend-mode: overlay;
 }
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+
+.features-heading{
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  text-align:center; margin: 0 0 1.6rem;
+  color: var(--text-primary);
+  position: relative; display:inline-block; left:50%; transform: translateX(-50%);
+}
+.features-heading::after{
+  content:""; display:block; height: 3px; width: 120px; margin:.6rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand-accent), rgb(var(--brand-used-often-rgb)));
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--brand-accent) 35%, transparent);
+  animation: drawline .9s .15s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes drawline{ from{ transform: scaleX(0); transform-origin: 0 50%; } to{ transform: scaleX(1);} }
+
+.features-grid{
+  display:grid; gap: clamp(1rem, 2vw, 1.4rem);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   align-items: stretch;
 }
-.feature-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* So content is balanced */
-  background-color: var(--bg-page);
+
+/* Card with gradient ring, glass body, animated sheen */
+.feature-card{
+  --ring: linear-gradient(120deg, var(--brand-accent), rgb(var(--brand-used-often-rgb)));
+  position: relative;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding: 1.25rem 1.2rem 1.35rem;
+  border-radius: 14px;
   border: 1px solid var(--border-default);
-  border-radius: 6px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  height: 100%; /* Force cards to stretch equally in grid */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: color-mix(in srgb, var(--bg-page) 85%, transparent);
+  box-shadow: 0 10px 28px rgba(15,23,42,.06);
+  overflow:hidden;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
 }
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.feature-card::before{
+  content:""; position:absolute; inset:-1px; border-radius: 16px; padding:1px; z-index:0;
+  background: var(--ring);
+  opacity:.0; transition: opacity .3s ease;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
 }
-.feature-card h4 {
+.feature-card::after{
+  content:""; position:absolute; inset:-40% -60% auto -60%; height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,.0) 0%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.0) 100%);
+  transform: translateX(-120%) rotate(12deg);
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  pointer-events:none;
+}
+.feature-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 50px rgba(15,23,42,.12); }
+.feature-card:hover::before{ opacity:.9; }
+.feature-card:hover::after{ transform: translateX(10%) rotate(12deg); }
+
+.feature-icon{
+  position: relative; z-index:1;
+  display:grid; place-items:center; width:48px; height:48px; border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(120deg, var(--brand-accent), rgb(var(--brand-used-often-rgb)));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-accent) 35%, transparent);
+  margin-bottom: .9rem;
+  animation: float 5s ease-in-out infinite;
+}
+@keyframes float{ 0%{transform:translateY(0)} 50%{transform:translateY(-4px)} 100%{transform:translateY(0)} }
+
+.feature-card h4{
   font-family: var(--font-heading);
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.08rem;
+  margin: .15rem 0 .45rem;
   color: var(--text-primary);
 }
-.feature-card p {
+.feature-card p{
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: .98rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Staggered entrance */
+.feature-card{
+  opacity: 0; transform: translateY(10px);
+  animation: fadeUp .6s ease forwards;
+}
+.features-grid .feature-card:nth-child(1){ animation-delay: .05s; }
+.features-grid .feature-card:nth-child(2){ animation-delay: .1s; }
+.features-grid .feature-card:nth-child(3){ animation-delay: .15s; }
+.features-grid .feature-card:nth-child(4){ animation-delay: .2s; }
+.features-grid .feature-card:nth-child(5){ animation-delay: .25s; }
+.features-grid .feature-card:nth-child(6){ animation-delay: .3s; }
+.features-grid .feature-card:nth-child(7){ animation-delay: .35s; }
+@keyframes fadeUp{ to{ opacity:1; transform: translateY(0);} }
+
+/* Focus styles */
+.feature-card:focus-within{
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-accent) 36%, transparent);
+}
+.feature-card a:focus-visible{ outline: 2px solid var(--brand-accent); outline-offset: 3px; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .feature-card, .feature-card::after, .feature-card::before,
+  .feature-icon, .features-heading::after{
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 

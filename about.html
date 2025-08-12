@@ -3,7 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Snip Text</title>
+  <!-- SEO: title + description -->
+<title>About SnipText — AI Writing Tools: Plagiarism Checker, AI Detector, Paraphraser, Grammar, Citations</title>
+<meta name="description" content="SnipText is an all-in-one suite of AI writing tools: plagiarism checker, similarity report, AI content detector, paraphrasing tool, grammar and style correction, citation generator, and free utilities like word counter and case converter. Built for students, researchers, and professionals."/>
+<link rel="canonical" href="https://your-domain.com/about.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="About SnipText — AI Writing Tools"/>
+<meta property="og:description" content="Plagiarism checking, AI detection, paraphrasing, grammar correction, citations, and more."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://your-domain.com/about.html"/>
+<meta property="og:image" content="https://your-domain.com/og-image.jpg"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="About SnipText — AI Writing Tools"/>
+<meta name="twitter:description" content="Plagiarism checking, AI detection, paraphrasing, grammar correction, citations, and more."/>
+<meta name="twitter:image" content="https://your-domain.com/og-image.jpg"/>
 
   <!-- Stylesheets (relative to /pages/) -->
   <link rel="stylesheet" href="css/style.css" />
@@ -15,6 +31,53 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: Organization + WebSite + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":["Organization","WebSite"],
+  "name":"SnipText",
+  "url":"https://your-domain.com/",
+  "description":"AI writing tools for academic and professional content: plagiarism checker, AI detector, paraphraser, grammar correction, citation generator, and free utilities.",
+  "sameAs": [],
+  "potentialAction": {
+    "@type":"SearchAction",
+    "target":"https://your-domain.com/search?q={query}",
+    "query-input":"required name=query"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"What makes SnipText different from other AI writing tools?",
+      "@type":"Question",
+      "acceptedAnswer":{"@type":"Answer","text":"SnipText combines plagiarism checking, AI content detection, paraphrasing, grammar and style correction, citation generation, and research-friendly utilities in one privacy-conscious workspace."}
+    },
+    {
+      "@type":"Question",
+      "name":"Is the plagiarism checker free?",
+      "acceptedAnswer":{"@type":"Answer","text":"SnipText offers free checks with fair usage limits. Premium options enable deeper scans and expanded reports."}
+    },
+    {
+      "@type":"Question",
+      "name":"Does SnipText detect AI-generated content?",
+      "acceptedAnswer":{"@type":"Answer","text":"Yes. The AI content detector highlights likely AI-written passages and confidence scores to support editorial decisions."}
+    },
+    {
+      "@type":"Question",
+      "name":"Which citations does SnipText support?",
+      "acceptedAnswer":{"@type":"Answer","text":"APA, MLA, Chicago, IEEE, and more—plus automatic metadata lookup for books, articles, and web sources."}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -43,44 +106,221 @@
 
 
 
-  <main id="about-page" class="about-page-wrapper">
+  <main id="about-page" class="about-page about-page-wrapper" data-about-page>
+  <!-- HERO -->
+  <section class="about-hero about-section" id="about-hero">
+    <div class="about-hero-bg" aria-hidden="true">
+      <!-- animated writing lines + pen nibs -->
+      <svg class="about-hero-pattern" viewBox="0 0 1200 400" preserveAspectRatio="none">
+        <defs>
+          <pattern id="about-lines" width="60" height="20" patternUnits="userSpaceOnUse">
+            <rect width="60" height="1" y="9" fill="currentColor" opacity=".08"></rect>
+          </pattern>
+          <g id="about-nib">
+            <path d="M12 2l8 8-6 6-8-8 6-6zm0 0l-4 10 10-4" fill="currentColor" opacity=".18"/>
+          </g>
+        </defs>
+        <rect width="1200" height="400" fill="url(#about-lines)"></rect>
+        <use href="#about-nib" x="80"  y="60"></use>
+        <use href="#about-nib" x="260" y="160"></use>
+        <use href="#about-nib" x="520" y="100"></use>
+        <use href="#about-nib" x="880" y="220"></use>
+      </svg>
+      <div class="about-hero-glow"></div>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="about-hero about-section">
-      <div class="container">
-        <h1 class="hero-title">About Snip Text</h1>
-        <p class="hero-subtext">Your trusted companion in academic and professional writing.</p>
+    <div class="about-container">
+      <h1 class="about-hero-title">
+        About SnipText — <span class="about-hero-emph">AI Writing Tools</span> for Students, Researchers & Professionals
+      </h1>
+      <p class="about-hero-sub">
+        Create clear, original writing faster with our all-in-one toolkit: plagiarism checking, similarity reports, AI content detection, paraphrasing, grammar & style correction, citation generation, and free utilities like word counter and case converter.
+      </p>
+      <div class="about-hero-actions">
+        <a class="about-btn about-btn-primary" href="/tools/free-tools.html">Explore Free Tools</a>
+        <a class="about-btn about-btn-ghost" href="/features.html">See Full Feature List</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Info Cards Section -->
-    <section class="about-cards about-section">
-      <div class="container card-grid">
-        <div class="info-card">
-          <h2 class="card-title">Our Mission</h2>
-          <p class="card-text">
-            Empower users with cutting-edge AI tools to write with confidence, clarity, and originality.
+  <!-- TRUST BAR -->
+  <section class="about-trustbar about-section" id="about-trustbar">
+    <div class="about-container about-trustbar-grid">
+      <div class="about-trust-item">
+        <span class="about-icon" aria-hidden="true">🛡️</span>
+        <p class="about-trust-text">Academic integrity first</p>
+      </div>
+      <div class="about-trust-item">
+        <span class="about-icon" aria-hidden="true">⚡</span>
+        <p class="about-trust-text">Fast, accurate analysis</p>
+      </div>
+      <div class="about-trust-item">
+        <span class="about-icon" aria-hidden="true">🔏</span>
+        <p class="about-trust-text">Privacy-aware workflow</p>
+      </div>
+      <div class="about-trust-item">
+        <span class="about-icon" aria-hidden="true">🌐</span>
+        <p class="about-trust-text">Multilingual support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE SUITE -->
+  <section class="about-suite about-section" id="about-suite">
+    <div class="about-container">
+      <header class="about-section-head">
+        <h2 class="about-section-title">Everything you need to write with confidence</h2>
+        <p class="about-section-sub">A focused suite of <strong>AI writing tools</strong> that helps you draft, verify, and polish content for academia and work.</p>
+      </header>
+
+      <div class="about-grid about-grid-features">
+        <!-- Plagiarism -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">📚</div>
+          <h3 class="about-card-title">Plagiarism Checker</h3>
+          <p class="about-card-text">
+            Scan drafts for duplication and improper citations. Export a <em>similarity report</em> with highlighted matches for easy revision.
           </p>
-        </div>
-        <div class="info-card accent">
-          <h2 class="card-title">Our Vision</h2>
-          <p class="card-text">
-            To be the most trusted global platform for high-quality writing support and academic integrity.
+          <a class="about-card-link" href="/dashboard.html">Run a plagiarism check →</a>
+        </article>
+
+        <!-- AI Detector -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">🤖</div>
+          <h3 class="about-card-title">AI Content Detector</h3>
+          <p class="about-card-text">
+            Identify likely AI-generated passages and review confidence indicators before you submit or publish.
           </p>
-        </div>
-      </div>
-    </section>
+          <a class="about-card-link" href="/ai-detection.html">Analyze AI signals →</a>
+        </article>
 
-    <!-- CTA / Support Section -->
-    <section class="cta-section about-section">
-      <div class="cta-container">
-        <h3 class="cta-heading">Need Help or Have Questions?</h3>
-        <p class="cta-text">We’re here to assist you. Reach out to our support team anytime.</p>
-        <a href="contact.html" class="btn-cta">Contact Support</a>
-      </div>
-    </section>
+        <!-- Paraphraser -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">✍️</div>
+          <h3 class="about-card-title">Paraphrasing Tool</h3>
+          <p class="about-card-text">
+            Rewrite sentences to improve clarity and originality while preserving meaning across styles and tones.
+          </p>
+          <a class="about-card-link" href="/quillbot2.html">Paraphrase text →</a>
+        </article>
 
-  </main>
+        <!-- Grammar -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">📝</div>
+          <h3 class="about-card-title">Grammar & Style</h3>
+          <p class="about-card-text">
+            Fix grammar, punctuation, and readability issues with suggestions tuned for academic and professional writing.
+          </p>
+          <a class="about-card-link" href="/grammarly1.html">Check grammar →</a>
+        </article>
+
+        <!-- Citations -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">📖</div>
+          <h3 class="about-card-title">Citation Generator</h3>
+          <p class="about-card-text">
+            Generate accurate citations and bibliographies in APA, MLA, Chicago, IEEE, and more—no formatting pain.
+          </p>
+          <a class="about-card-link" href="/dashboard.html">Create citations →</a>
+        </article>
+
+        <!-- Reports -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">📊</div>
+          <h3 class="about-card-title">Similarity Report</h3>
+          <p class="about-card-text">
+            Validate originality with side-by-side sources, match percentages, and actionable revision tips.
+          </p>
+          <a class="about-card-link" href="/dashboard.html">View a report →</a>
+        </article>
+
+        <!-- Free utilities -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">🧰</div>
+          <h3 class="about-card-title">Free Writing Utilities</h3>
+          <p class="about-card-text">
+            Word counter, case converter, duplicate word finder, character counter, reading time, and more.
+          </p>
+          <a class="about-card-link" href="/tools/free-tools.html">Explore free tools →</a>
+        </article>
+
+        <!-- Styling -->
+        <article class="about-card">
+          <div class="about-card-icon" aria-hidden="true">🎯</div>
+          <h3 class="about-card-title">Styling & Formatting</h3>
+          <p class="about-card-text">
+            Clean layouts, heading structure, and tone guidance tailored for research, essays, and business docs.
+          </p>
+          <a class="about-card-link" href="/tools/free-tools.html">Format my draft →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="about-benefits about-section" id="about-benefits">
+    <div class="about-container about-benefits-grid">
+      <div class="about-benefit">
+        <span class="about-benefit-icon" aria-hidden="true">🔍</span>
+        <h3 class="about-benefit-title">Transparent results</h3>
+        <p class="about-benefit-text">Clear highlights, confidence notes, and exportable reports support ethical writing decisions.</p>
+      </div>
+      <div class="about-benefit">
+        <span class="about-benefit-icon" aria-hidden="true">🛡️</span>
+        <h3 class="about-benefit-title">Privacy-aware</h3>
+        <p class="about-benefit-text">Your drafts stay yours. We promote responsible checks without unnecessary data exposure.</p>
+      </div>
+      <div class="about-benefit">
+        <span class="about-benefit-icon" aria-hidden="true">⚙️</span>
+        <h3 class="about-benefit-title">Works with your workflow</h3>
+        <p class="about-benefit-text">Paste text, upload docs, or use browser-friendly tools—no steep learning curve.</p>
+      </div>
+      <div class="about-benefit">
+        <span class="about-benefit-icon" aria-hidden="true">🌍</span>
+        <h3 class="about-benefit-title">Built for global writers</h3>
+        <p class="about-benefit-text">Multilingual support and region-savvy suggestions for academic and business contexts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="about-faq about-section" id="about-faq">
+    <div class="about-container">
+      <h2 class="about-section-title">Frequently asked questions</h2>
+      <div class="about-faq-list">
+        <details class="about-faq-item">
+          <summary class="about-faq-q">What makes SnipText different?</summary>
+          <div class="about-faq-a">An integrated set of AI writing tools—plagiarism checker, AI detector, paraphraser, grammar & style, and citations—designed to protect originality and improve clarity.</div>
+        </details>
+        <details class="about-faq-item">
+          <summary class="about-faq-q">Is the plagiarism checker free?</summary>
+          <div class="about-faq-a">Yes, free checks are available with fair usage. Deeper scanning and extended history are available with premium tiers.</div>
+        </details>
+        <details class="about-faq-item">
+          <summary class="about-faq-q">Do you support academic formats?</summary>
+          <div class="about-faq-a">Yes—APA, MLA, Chicago, IEEE, and more. You can create citations and export formatted bibliographies.</div>
+        </details>
+        <details class="about-faq-item">
+          <summary class="about-faq-q">Do you store my content?</summary>
+          <div class="about-faq-a">We follow a privacy-aware approach. See our policy for how we handle temporary processing and optional saved history.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta about-section" id="about-cta">
+    <div class="about-container about-cta-box">
+      <h2 class="about-cta-title">Write with confidence—start free</h2>
+      <p class="about-cta-text">Run a quick plagiarism check, detect AI signals, or fix grammar. No signup required for core free tools.</p>
+      <div class="about-hero-actions">
+        <a class="about-btn about-btn-primary" href="/tools/free-tools.html">Launch tools</a>
+        <a class="about-btn about-btn-ghost" href="/contact.html">Contact support</a>
+      </div>
+    </div>
+  </section>
+</main>
+
 
 
   
@@ -146,6 +386,20 @@
   <script src="js/index.js" defer></script>
   <script src="components/injectLayout.js"></script>
   <script src="js/auth.js"></script>
+
+  <script>
+  // Section reveal
+  const aboutObserver = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('about-visible');
+        aboutObserver.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.about-section').forEach(s => aboutObserver.observe(s));
+</script>
 
 </body>
 </html>

@@ -46,81 +46,146 @@
 
 
 
-  <main>
+<main>
 
-
-
-<!-- Contact Page -->
-<section class="contact-hero">
-  <div class="container">
-    <h1 class="contact-title">Get in Touch</h1>
-    <p class="contact-subtitle">We’re here to help. Reach out for support, feedback, or business inquiries.</p>
-  </div>
-</section>
-
-<section class="contact-info-form">
-  <div class="container contact-grid">
-
-    <!-- Contact Info -->
-    <div class="contact-info">
-      <h2 class="info-title">Contact Information</h2>
-      <ul class="info-list">
-        <li>
-          <i class="fas fa-envelope"></i>
-          <span>Email:</span>
-          <a href="mailto:support@sniptext.com">support@checkai.com</a>
-        </li>
-        <li>
-          <i class="fas fa-envelope"></i>
-          <span>Sales:</span>
-          <a href="mailto:sales@sniptext.com">sales@checkai.com</a>
-        </li>
-        <li>
-          <i class="fas fa-phone-alt"></i>
-          <span>Call Us:</span>
-          <a href="tel:+1234567890">+92 341 837 8430</a>
-        </li>
-      </ul>
+  <!-- Hero -->
+  <section class="contact-hero contact-hero--fx">
+    <div class="contact-hero__bg" aria-hidden="true">
+      <!-- animated paper lines + pen nibs -->
+      <svg class="contact-hero__pattern" viewBox="0 0 1200 360" preserveAspectRatio="none">
+        <defs>
+          <pattern id="contact-lines" width="60" height="22" patternUnits="userSpaceOnUse">
+            <rect width="60" height="1" y="11" fill="currentColor" opacity=".1"></rect>
+          </pattern>
+          <g id="contact-nib">
+            <path d="M12 2l8 8-6 6-8-8 6-6zm0 0l-4 10 10-4" fill="currentColor" opacity=".2"/>
+          </g>
+        </defs>
+        <rect width="1200" height="360" fill="url(#contact-lines)"></rect>
+        <use href="#contact-nib" x="120" y="40"></use>
+        <use href="#contact-nib" x="420" y="120"></use>
+        <use href="#contact-nib" x="760" y="70"></use>
+        <use href="#contact-nib" x="980" y="180"></use>
+      </svg>
+      <div class="contact-hero__glow"></div>
     </div>
 
-    <!-- Contact Form -->
-    <form class="contact-form" action="https://formspree.io/f/xdkgrzqa" method="POST">
-      <h2 class="form-title">Send a Message</h2>
-
-      <div class="form-group">
-        <label for="name">Name *</label>
-        <input type="text" id="name" name="name" required placeholder="Your Name">
+    <div class="contact-container">
+      <h1 class="contact-hero__title">Get in touch with SnipText</h1>
+      <p class="contact-hero__sub">
+        Questions, feedback, or partnerships—drop us a message and we’ll get back fast.
+      </p>
+      <div class="contact-hero__badges">
+        <span class="contact-badge">🛡️ Privacy-first</span>
+        <span class="contact-badge">⚡ Fast response</span>
+        <span class="contact-badge">🌍 Global support</span>
       </div>
+    </div>
+  </section>
 
-      <div class="form-group">
-        <label for="email">Email *</label>
-        <input type="email" id="email" name="email" required placeholder="your@email.com">
-      </div>
+  <!-- Content -->
+  <section class="contact-section">
+    <div class="contact-container contact-grid">
 
-      <div class="form-group">
-        <label for="subject">Subject *</label>
-        <input type="text" id="subject" name="subject" required placeholder="Subject">
-      </div>
+      <!-- Info Card -->
+      <aside class="contact-card contact-info">
+        <header class="contact-card__head">
+          <div class="contact-card__icon">✍️</div>
+          <h2 class="contact-card__title">Contact information</h2>
+          <p class="contact-card__sub">We typically reply within 1 business day.</p>
+        </header>
 
-      <div class="form-group">
-        <label for="message">Message *</label>
-        <textarea id="message" name="message" required placeholder="Type your message..."></textarea>
-      </div>
+        <ul class="contact-list">
+          <li class="contact-list__item">
+            <span class="contact-list__dot"></span>
+            <div class="contact-list__body">
+              <span class="contact-list__label">Support</span>
+              <a class="contact-list__link" href="mailto:support@sniptext.com">support@checkai.com</a>
+            </div>
+          </li>
+          <li class="contact-list__item">
+            <span class="contact-list__dot"></span>
+            <div class="contact-list__body">
+              <span class="contact-list__label">Sales</span>
+              <a class="contact-list__link" href="mailto:sales@sniptext.com">sales@checkai.com</a>
+            </div>
+          </li>
+          <li class="contact-list__item">
+            <span class="contact-list__dot"></span>
+            <div class="contact-list__body">
+              <span class="contact-list__label">Phone</span>
+              <a class="contact-list__link" href="tel:+923418378430">+92 341 837 8430</a>
+            </div>
+          </li>
+        </ul>
 
-      <!-- reCaptcha -->
-      <div class="g-recaptcha" data-sitekey="6Lcp41ArAAAAAL8Q-jKj8AMCZ6glHZqAAHS_jz9p"></div>
+        <div class="contact-chips" aria-label="Quick subjects">
+          <button class="contact-chip" data-fill="General question">General</button>
+          <button class="contact-chip" data-fill="Billing">Billing</button>
+          <button class="contact-chip" data-fill="Partnership">Partnership</button>
+          <button class="contact-chip" data-fill="Bug report">Bug report</button>
+        </div>
 
-      <button type="submit" class="btn-submit">Send Message</button>
-    </form>
+        <div class="contact-note">
+          <span class="contact-note__emoji">ℹ️</span>
+          <p class="contact-note__text">Prefer email? We love detailed context and links.</p>
+        </div>
+      </aside>
 
-    <!-- <div id="form-success-box">Your message has been sent successfully!</div> -->
+      <!-- Form -->
+      <form class="contact-card contact-form" action="https://formspree.io/f/xdkgrzqa" method="POST" novalidate>
+        <h2 class="contact-card__title">Send a message</h2>
 
-  </div>
-</section>
+        <div class="contact-field">
+          <label class="contact-field__label" for="name">Name *</label>
+          <div class="contact-field__wrap">
+            <span class="contact-field__icon" aria-hidden="true">👤</span>
+            <input class="contact-field__control" type="text" id="name" name="name" required placeholder="Your name">
+          </div>
+        </div>
 
+        <div class="contact-field">
+          <label class="contact-field__label" for="email">Email *</label>
+          <div class="contact-field__wrap">
+            <span class="contact-field__icon" aria-hidden="true">✉️</span>
+            <input class="contact-field__control" type="email" id="email" name="email" required placeholder="you@email.com">
+          </div>
+        </div>
 
+        <div class="contact-field">
+          <label class="contact-field__label" for="subject">Subject *</label>
+          <div class="contact-field__wrap">
+            <span class="contact-field__icon" aria-hidden="true">🏷️</span>
+            <input class="contact-field__control" type="text" id="subject" name="subject" required placeholder="How can we help?">
+          </div>
+        </div>
+
+        <div class="contact-field">
+          <label class="contact-field__label" for="message">Message *</label>
+          <div class="contact-field__wrap contact-field__wrap--textarea">
+            <span class="contact-field__icon" aria-hidden="true">📝</span>
+            <textarea class="contact-field__control contact-field__area" id="message" name="message" required placeholder="Share details, links, and screenshots if helpful..."></textarea>
+          </div>
+          <div class="contact-hint" id="char-hint">Minimum 20 characters for best help.</div>
+        </div>
+
+        <!-- reCaptcha -->
+        <div class="g-recaptcha" data-sitekey="6Lcp41ArAAAAAL8Q-jKj8AMCZ6glHZqAAHS_jz9p"></div>
+
+        <button type="submit" class="btn-submit contact-btn">
+          <span class="contact-btn__shine"></span>
+          <span class="contact-btn__text">Send message</span>
+        </button>
+      </form>
+
+    </div>
+  </section>
 
 </main>
+
+
+
+
 
 <!-- Global Loading Spinner -->
 <div id="global-loader">
@@ -175,8 +240,8 @@
 
 
 
-<!-- Global Toast Container -->
-<div id="toast-container" class="toast-container hidden"></div>
+<!-- Global Toast Container (positions: toast-pos-tr | -br | -tl | -bl | -center) -->
+<div id="toast-container" class="toast-container toast-pos-tr hidden" aria-live="polite" aria-atomic="true"></div>
 
 
     <!-- SCRIPTS -->
@@ -263,6 +328,37 @@
 
 
     <script src="components/global-loading-animation.js"></script>
+
+
+    <script>
+  (function(){
+    // Subject chips
+    document.querySelectorAll('.contact-chip').forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        const subject = document.getElementById('subject');
+        if (subject) subject.value = chip.dataset.fill || subject.value;
+        subject?.focus();
+      });
+    });
+
+    // Autosize textarea + live hint
+    const ta = document.getElementById('message');
+    const hint = document.getElementById('char-hint');
+    function autosize(){
+      ta.style.height = 'auto';
+      ta.style.height = Math.min(ta.scrollHeight, 360) + 'px';
+      if(hint){
+        const len = ta.value.trim().length;
+        hint.textContent = len < 20 ? `Add ${20-len} more characters for best help.` : 'Thanks! The more context, the better.';
+      }
+    }
+    if (ta){
+      ['input','change'].forEach(ev=> ta.addEventListener(ev, autosize));
+      window.addEventListener('load', autosize);
+    }
+  })();
+</script>
+
 
 
   
