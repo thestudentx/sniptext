@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <base href="/tools/">
-  <title>Instant Text Counter — Snip Text</title>
+  <title>Instant Text Counter - Snip Text</title>
 
   <link rel="stylesheet" href="/css/style.css">
 
@@ -15,7 +15,7 @@
   <!-- Page styles (self-contained so this file is portable) -->
   <style>
 /* ===========================
-   WORD COUNTER — UPDATED PALETTE
+   WORD COUNTER - UPDATED PALETTE
    (only colors changed, names preserved)
    =========================== */
 :root{
@@ -163,7 +163,7 @@
       <!-- LEFT: heading, controls, stats -->
       <div class="word-counter-left">
         <h1 class="word-counter-title">Instant Text Counter</h1>
-        <p class="word-counter-subtitle">Word, character, line & sentence counts — live, animated, and lightning fast. Perfect for editors, students, and content creators.</p>
+        <p class="word-counter-subtitle">Word, character, line & sentence counts - live, animated, and lightning fast. Perfect for editors, students, and content creators.</p>
 
         <div class="word-counter-controls" role="toolbar" aria-label="Tool actions">
           <button id="word-counter-sampleBtn" class="word-counter-btn" title="Load sample text">Load sample</button>
@@ -210,7 +210,7 @@
       <!-- RIGHT: textarea -->
       <div class="word-counter-right">
         <label for="word-counter-theText" class="word-counter-visually-hidden">Enter or paste text</label>
-        <textarea id="word-counter-theText" placeholder="Paste or type your text here — stats update live..." spellcheck="true" autocomplete="off" aria-label="Text input"></textarea>
+        <textarea id="word-counter-theText" placeholder="Paste or type your text here - stats update live..." spellcheck="true" autocomplete="off" aria-label="Text input"></textarea>
       </div>
     </div>
   </section>
@@ -242,7 +242,7 @@
       <p>
         &copy; <span id="year"></span>
         <span class="powered-by">
-          Snip Text — powered by
+          Snip Text - powered by
           <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
         </span>
         · All rights reserved.
@@ -336,7 +336,7 @@
   // - Latin words can include internal apostrophes/hyphens.
   // - CJK characters count individually (common behavior among counters).
   const wordTokenRe = unicodePropsOK
-    ? /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]|[\p{L}\p{N}]+(?:['’\--‒–—][\p{L}\p{N}]+)*/gu
+    ? /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]|[\p{L}\p{N}]+(?:['’\--‒–-][\p{L}\p{N}]+)*/gu
     : /[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*/g;
 
   // Sentence count heuristic:
@@ -526,7 +526,7 @@
   // ---- Buttons (guard each) ----
   if (sampleBtn) {
     sampleBtn.addEventListener('click', () => {
-      ta.value = "Paste your text here and get instant counts:\n\n— Words, characters (with/without spaces)\n— Lines and sentences\n— Reading time & more\n\nSnipText keeps it fast, accurate, and private.";
+      ta.value = "Paste your text here and get instant counts:\n\n- Words, characters (with/without spaces)\n- Lines and sentences\n- Reading time & more\n\nSnipText keeps it fast, accurate, and private.";
       updateCounts();
       ta.focus();
       persistSoon();

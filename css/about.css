@@ -1,49 +1,73 @@
 /* =========================
-   ABOUT PAGE — THEME VARS
+   ABOUT PAGE - THEME VARS (brand-aligned)
    ========================= */
 :root {
-  /* color system — all include "about" */
-  --about-color-ink: #0f172a;
-  --about-color-ink-soft: #475569;
-  --about-color-surface: #0b1020;
-  --about-color-panel: #10162b;
-  --about-color-brand: #3b82f6;  /* primary accent */
-  --about-color-brand-2: #8b5cf6;/* secondary accent */
-  --about-color-line: rgba(255,255,255,.08);
-  --about-color-card: #0e1426;
-  --about-color-card-ink: #e6eefc;
+  /* palette mapped from global brand tokens */
+  --about-color-ink: var(--color-text-dark, #1F2937);
+  --about-color-ink-soft: var(--color-text-light, #6B7280);
+
+  --about-color-surface: var(--color-bg-dark, #0F172A);
+  /* subtle lifts from bg-dark using brand-aware mixes */
+  --about-color-panel: color-mix(in srgb, var(--color-bg-dark, #0F172A) 85%, var(--color-white, #fff) 15%);
+  --about-color-card:  color-mix(in srgb, var(--color-bg-dark, #0F172A) 80%, var(--color-white, #fff) 20%);
+  --about-color-card-ink: var(--color-white, #ffffff);
+
+  /* primary/secondary accents pulled from brand */
+  --about-color-brand:   var(--color-primary, #1D4ED8);
+  --about-color-brand-2: var(--color-used-often, #e85d27); /* warm secondary accent */
+
+  /* lines/ghosts harmonized to brand on dark */
+  --about-color-line:    color-mix(in srgb, var(--color-white, #fff) 12%, transparent);
+  --about-color-ghost:   color-mix(in srgb, var(--color-white, #fff) 10%, transparent);
+  --about-color-ghost-2: color-mix(in srgb, var(--color-white, #fff) 6%, transparent);
+
+  /* status (kept vivid for contrast on dark) */
   --about-color-success: #22c55e;
   --about-color-warning: #f59e0b;
   --about-color-danger:  #ef4444;
-  --about-color-ghost: rgba(255,255,255,.10);
-  --about-color-ghost-2: rgba(255,255,255,.06);
 
   /* spacing & radius */
   --about-radius-xl: 18px;
   --about-radius-lg: 14px;
   --about-radius-md: 12px;
 
-  /* shadows */
-  --about-shadow-1: 0 10px 30px rgba(0,0,0,.35);
-  --about-shadow-2: 0 20px 60px rgba(0,0,0,.45);
+  /* shadows tuned to brand dark */
+  --about-shadow-1: 0 10px 30px color-mix(in srgb, var(--color-bg-dark, #0F172A) 22%, transparent);
+  --about-shadow-2: 0 20px 60px color-mix(in srgb, var(--color-bg-dark, #0F172A) 32%, transparent);
 
   /* typography */
-  --about-font: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  --about-font: var(--font-heading, 'Poppins'), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
   /* motion */
   --about-reveal-delay: 90ms;
   --about-reveal-distance: 14px;
 }
 
-/* Scope page background */
+/* Scoped page background now uses brand gradients */
 [data-about-page] {
-  color: #eaf1ff;
+  color: color-mix(in srgb, var(--color-white, #fff) 94%, transparent);
   background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.24), transparent 55%),
-    radial-gradient(900px 600px at 10% -20%, rgba(139,92,246,.20), transparent 55%),
-    linear-gradient(180deg, #0a0f1f, #070b16);
+    radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb, var(--color-accent, #3B82F6) 38%, transparent) 0 55%, transparent 55%),
+    radial-gradient(900px 600px at 10% -20%, color-mix(in srgb, var(--gradient-cta-end, #ff7c4c) 30%, transparent) 0 55%, transparent 55%),
+    linear-gradient(180deg, var(--color-bg-dark, #0F172A), color-mix(in srgb, var(--color-bg-dark, #0F172A) 85%, #000 15%));
   font-family: var(--about-font);
 }
+
+/* (Optional) brand-consistent primary button for About page components */
+[data-about-page] .about-btn-primary{
+  background: linear-gradient(90deg, var(--gradient-cta-start, var(--color-accent, #3B82F6)), var(--gradient-cta-end, #ff7c4c));
+  color: var(--color-white, #fff);
+  border: 1px solid color-mix(in srgb, var(--color-white, #fff) 12%, transparent);
+  border-radius: var(--about-radius-md);
+  box-shadow: var(--about-shadow-1);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+[data-about-page] .about-btn-primary:hover{
+  transform: translateY(-1px);
+  box-shadow: var(--about-shadow-2);
+  filter: saturate(1.06);
+}
+
 
 /* Utility container */
 .about-container {

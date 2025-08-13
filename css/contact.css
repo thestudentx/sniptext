@@ -1,38 +1,94 @@
 /* =========================
-   CONTACT — THEME & TOKENS
+   CONTACT - THEME & TOKENS (brand-aligned)
    ========================= */
 :root{
-  --contact-bg: #070b16;
-  --contact-bg-2: #0a0f1f;
-  --contact-ink: #eaf1ff;
-  --contact-ink-soft:#cdd9ff;
-  --contact-line: rgba(255,255,255,.12);
-  --contact-ghost: rgba(255,255,255,.06);
-  --contact-ghost-2: rgba(255,255,255,.10);
+  /* surfaces & ink derived from global brand */
+  --contact-bg:   var(--color-bg-dark, #0F172A);
+  --contact-bg-2: color-mix(in srgb, var(--color-bg-dark, #0F172A) 85%, #000 15%);
+  --contact-ink:       color-mix(in srgb, var(--color-white, #ffffff) 96%, transparent);
+  --contact-ink-soft:  color-mix(in srgb, var(--color-white, #ffffff) 78%, transparent);
 
-  --contact-brand:#3b82f6;      /* blue */
-  --contact-brand-2:#8b5cf6;    /* violet */
+  /* lines/ghosts harmonized to brand on dark */
+  --contact-line:   color-mix(in srgb, var(--color-white, #ffffff) 14%, transparent);
+  --contact-ghost:  color-mix(in srgb, var(--color-white, #ffffff) 8%, transparent);
+  --contact-ghost-2:color-mix(in srgb, var(--color-white, #ffffff) 12%, transparent);
+
+  /* brand accents pulled from your palette */
+  --contact-brand:   var(--color-primary, #1D4ED8);    /* primary blue */
+  --contact-brand-2: var(--color-used-often, #e85d27); /* warm secondary */
+
+  /* status (keep vivid for contrast) */
   --contact-success:#22c55e;
-  --contact-danger:#ef4444;
+  --contact-danger: #ef4444;
 
+  /* radii & shadows tuned for dark */
   --contact-radius-xl:20px;
   --contact-radius-lg:16px;
   --contact-radius-md:12px;
 
-  --contact-shadow-1: 0 10px 30px rgba(0,0,0,.35);
-  --contact-shadow-2: 0 30px 70px rgba(0,0,0,.5);
+  --contact-shadow-1: 0 10px 30px color-mix(in srgb, var(--color-bg-dark, #0F172A) 25%, transparent);
+  --contact-shadow-2: 0 30px 70px color-mix(in srgb, var(--color-bg-dark, #0F172A) 40%, transparent);
 
-  --contact-focus: 0 0 0 3px color-mix(in srgb, var(--contact-brand) 30%, #fff 0%);
+  /* focus ring based on brand accent */
+  --contact-focus: 0 0 0 4px color-mix(in srgb, var(--color-accent, #3B82F6) 35%, transparent);
   --contact-speed: .25s;
 }
 
+/* Page background now uses your brand gradients */
 body{
   background:
-    radial-gradient(1100px 600px at 80% -10%, rgba(59,130,246,.24), transparent 55%),
-    radial-gradient(900px 600px at 10% -20%, rgba(139,92,246,.20), transparent 55%),
+    radial-gradient(1100px 600px at 80% -10%, color-mix(in srgb, var(--color-accent, #3B82F6) 36%, transparent) 0 55%, transparent 55%),
+    radial-gradient(900px 600px at 10% -20%, color-mix(in srgb, var(--gradient-cta-end, #ff7c4c) 28%, transparent) 0 55%, transparent 55%),
     linear-gradient(180deg, var(--contact-bg-2), var(--contact-bg));
   color: var(--contact-ink);
+  font-family: var(--font-body, 'Roboto','Arial',sans-serif);
 }
+
+/* Optional: brand-consistent controls for the contact form */
+.contact-field{
+  background: color-mix(in srgb, var(--color-white, #fff) 3%, transparent);
+  border: 1px solid var(--contact-line);
+  color: var(--contact-ink);
+  border-radius: var(--contact-radius-md);
+  transition: border-color var(--contact-speed), box-shadow var(--contact-speed), background var(--contact-speed);
+}
+.contact-field:focus{
+  outline: none;
+  border-color: var(--contact-brand);
+  box-shadow: var(--contact-focus);
+  background: color-mix(in srgb, var(--color-white, #fff) 6%, transparent);
+}
+
+.contact-btn-primary{
+  background: linear-gradient(90deg, var(--gradient-cta-start, var(--color-accent, #3B82F6)), var(--gradient-cta-end, #ff7c4c));
+  color: var(--color-white, #ffffff);
+  border: 1px solid var(--contact-line);
+  border-radius: var(--contact-radius-md);
+  box-shadow: var(--contact-shadow-1);
+  transition: transform var(--contact-speed), box-shadow var(--contact-speed), filter var(--contact-speed);
+}
+.contact-btn-primary:hover{
+  transform: translateY(-1px);
+  box-shadow: var(--contact-shadow-2);
+  filter: saturate(1.06);
+}
+
+.contact-divider{
+  height: 1px;
+  background: var(--contact-line);
+  border: 0;
+}
+
+/* Helper badges */
+.contact-badge{
+  display:inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--contact-ghost);
+  color: var(--contact-ink-soft);
+  border: 1px solid var(--contact-line);
+}
+
 
 /* Layout helpers */
 .contact-container{ width:min(1100px,92vw); margin-inline:auto; padding-inline:1rem; }

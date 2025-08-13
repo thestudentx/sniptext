@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Symbol / Character Info - Analyzer & Inspector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Analyze symbols and characters: count grapheme clusters, view ASCII & Unicode code points, names, UTF encodings, HTML entities, scripts, blocks, and more." />
+  <meta name="keywords" content="symbol, character, unicode, ascii, code point, utf-8, utf-16, html entities, grapheme clusters, emoji, scripts, blocks, analyzer, inspector" />
+  <meta name="author" content="Symbol / Character Info" />
+  <link rel="canonical" href="https://example.com/symbol-character-info" />
+  <meta property="og:title" content="Symbol / Character Info - Analyzer & Inspector" />
+  <meta property="og:description" content="Counts symbols and shows ASCII & Unicode code points and names for selected characters with advanced tools." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/symbol-character-info" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#161a36" />
+
+
+  <link rel="stylesheet" href="/css/style.css">
+
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Symbol / Character Info",
+    "applicationCategory":"Utility",
+    "operatingSystem":"Web",
+    "url":"https://example.com/symbol-character-info",
+    "description":"Analyze and inspect symbols/characters with Unicode details, counts, encodings, and advanced tools.",
+    "featureList":[
+      "Grapheme cluster counting",
+      "ASCII & Unicode code points with names",
+      "UTF-8 / UTF-16 encodings",
+      "HTML entity generation",
+      "Script & block detection",
+      "Normalization (NFC/NFD/NFKC/NFKD)",
+      "Diacritic stripping",
+      "Emoji and invisible visualization",
+      "Favorites and quick-picker",
+      "Transform tools (case, URL encode, escape HTML)"
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      /* Color system (light) */
+      --symbol-character-bg: #0f1225;
+      --symbol-character-bg-soft: #13173a;
+      --symbol-character-card: rgba(255,255,255,0.08);
+      --symbol-character-border: rgba(255,255,255,0.12);
+      --symbol-character-primary: #7c9bff;
+      --symbol-character-primary-2: #9b7cff;
+      --symbol-character-accent: #4ee0c1;
+      --symbol-character-text: #e7ebff;
+      --symbol-character-text-dim: #b7c0ff;
+      --symbol-character-warning: #ffcc66;
+      --symbol-character-danger: #ff6b6b;
+      --symbol-character-success: #51d29c;
+      --symbol-character-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --symbol-character-glow: 0 0 0 0 rgba(124,155,255,0.45);
+      --symbol-character-chip: rgba(255,255,255,0.06);
+      --symbol-character-chip-hover: rgba(255,255,255,0.12);
+      --symbol-character-input: rgba(255,255,255,0.05);
+      --symbol-character-scroll: rgba(255,255,255,0.2);
+      --symbol-character-selection: rgba(124,155,255,0.35);
+      --symbol-character-gradient-1: linear-gradient(135deg, #7c9bff 0%, #9b7cff 40%, #4ee0c1 100%);
+    }
+    [data-symbol-character-theme="light"] {
+      --symbol-character-bg: #f7f8ff;
+      --symbol-character-bg-soft: #ffffff;
+      --symbol-character-card: #ffffff;
+      --symbol-character-border: rgba(23, 25, 35, 0.1);
+      --symbol-character-primary: #3d5afe;
+      --symbol-character-primary-2: #7c4dff;
+      --symbol-character-accent: #00c2a8;
+      --symbol-character-text: #161a36;
+      --symbol-character-text-dim: #4b5075;
+      --symbol-character-warning: #b57400;
+      --symbol-character-danger: #d23b3b;
+      --symbol-character-success: #108d63;
+      --symbol-character-shadow: 0 10px 25px rgba(23, 25, 35, 0.08);
+      --symbol-character-glow: 0 0 0 0 rgba(61,90,254,0.35);
+      --symbol-character-chip: rgba(23, 25, 35, 0.04);
+      --symbol-character-chip-hover: rgba(23, 25, 35, 0.08);
+      --symbol-character-input: rgba(23, 25, 35, 0.03);
+      --symbol-character-scroll: rgba(23, 25, 35, 0.35);
+      --symbol-character-selection: rgba(61,90,254,0.15);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      background:
+        radial-gradient(1200px 600px at -10% -10%, rgba(124,155,255,0.2), transparent 60%),
+        radial-gradient(900px 600px at 110% -10%, rgba(155,124,255,0.15), transparent 60%),
+        radial-gradient(900px 700px at 50% 120%, rgba(78,224,193,0.12), transparent 60%),
+        var(--symbol-character-bg);
+      color: var(--symbol-character-text);
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.45;
+    }
+    ::selection { background: var(--symbol-character-selection); }
+
+    .symbol-character-app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px clamp(16px, 3vw, 28px) 48px;
+    }
+
+    .symbol-character-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .symbol-character-title {
+      display: flex; gap: 14px; align-items: center;
+      filter: drop-shadow(0 6px 24px rgba(124,155,255,0.25));
+    }
+    .symbol-character-mark {
+      width: 44px; height: 44px; border-radius: 14px;
+      background: var(--symbol-character-gradient-1);
+      box-shadow: var(--symbol-character-glow);
+      position: relative; isolation: isolate;
+      overflow: hidden;
+    }
+    .symbol-character-mark::after {
+      content: "¶";
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      font-weight: 700; font-size: 26px; color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+    h1.symbol-character-heading {
+      margin: 0; font-size: clamp(22px, 2.4vw, 34px);
+      letter-spacing: 0.3px;
+    }
+    .symbol-character-subtitle {
+      margin-top: 6px;
+      color: var(--symbol-character-text-dim);
+      max-width: 80ch;
+      font-size: clamp(13px, 1.4vw, 15px);
+    }
+
+    .symbol-character-actions {
+      display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;
+    }
+    .symbol-character-btn {
+      background: var(--symbol-character-card);
+      color: var(--symbol-character-text);
+      border: 1px solid var(--symbol-character-border);
+      padding: 10px 14px; border-radius: 12px;
+      cursor: pointer; transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      box-shadow: var(--symbol-character-shadow);
+      font-weight: 600; font-size: 14px;
+    }
+    .symbol-character-btn:hover { transform: translateY(-1px); background: var(--symbol-character-chip-hover); }
+    .symbol-character-btn:active { transform: translateY(0); }
+    .symbol-character-btn.symbol-character-primary {
+      background: var(--symbol-character-gradient-1);
+      border-color: transparent; color: #0b0f2c;
+    }
+    .symbol-character-toggle {
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+
+    .symbol-character-main {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 980px) {
+      .symbol-character-main { grid-template-columns: 1fr; }
+      .symbol-character-actions { justify-content: flex-start; }
+    }
+
+    .symbol-character-card {
+      background: backdrop-filter(saturate(120%) blur(10px)) var(--symbol-character-card);
+      border: 1px solid var(--symbol-character-border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: var(--symbol-character-shadow);
+      position: relative; overflow: hidden;
+    }
+    .symbol-character-card::before {
+      content: ""; position: absolute; inset: -1px; pointer-events: none;
+      background: radial-gradient(400px 60px at var(--x, 0%) var(--y, 0%), rgba(124,155,255,0.16), transparent 50%);
+      transition: opacity .25s ease; opacity: 0.0;
+    }
+    .symbol-character-card:hover::before { opacity: 1; }
+    .symbol-character-card h2 { margin: 0 0 10px; font-size: 16px; letter-spacing: .3px; color: var(--symbol-character-text-dim); }
+
+    .symbol-character-input-wrap {
+      display: grid; gap: 12px;
+    }
+    .symbol-character-textarea {
+      width: 100%; min-height: 150px; resize: vertical;
+      background: var(--symbol-character-input);
+      color: var(--symbol-character-text);
+      border: 1px solid var(--symbol-character-border);
+      border-radius: 14px; padding: 14px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      line-height: 1.5; font-size: 14px;
+      outline: none; transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .symbol-character-textarea:focus {
+      border-color: var(--symbol-character-primary);
+      box-shadow: 0 0 0 6px rgba(124,155,255,0.18);
+    }
+
+    .symbol-character-tools {
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .symbol-character-chipbtn {
+      border: 1px dashed var(--symbol-character-border);
+      background: var(--symbol-character-chip);
+      color: var(--symbol-character-text);
+      border-radius: 12px; padding: 8px 10px; font-size: 12px;
+      cursor: pointer; transition: background .2s ease, transform .15s ease;
+    }
+    .symbol-character-chipbtn:hover { background: var(--symbol-character-chip-hover); transform: translateY(-1px); }
+    .symbol-character-chipbtn:active { transform: translateY(0); }
+
+    .symbol-character-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 6px;
+    }
+    @media (max-width: 640px) { .symbol-character-stats { grid-template-columns: 1fr 1fr; } }
+    .symbol-character-stat {
+      border: 1px solid var(--symbol-character-border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+      border-radius: 12px; padding: 10px;
+    }
+    .symbol-character-stat b { display:block; font-size: 12px; color: var(--symbol-character-text-dim); }
+    .symbol-character-stat span { font-size: 20px; font-weight: 800; letter-spacing: .5px; }
+
+    .symbol-character-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); gap: 8px; margin-top: 12px;
+      max-height: 240px; overflow: auto; padding-right: 6px;
+    }
+    .symbol-character-grid::-webkit-scrollbar { width: 8px; }
+    .symbol-character-grid::-webkit-scrollbar-thumb { background: var(--symbol-character-scroll); border-radius: 999px; }
+    .symbol-character-chip {
+      border: 1px solid var(--symbol-character-border);
+      background: var(--symbol-character-chip);
+      border-radius: 12px; height: 46px; display: grid; place-items: center;
+      cursor: pointer; transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      position: relative; overflow: hidden;
+    }
+    .symbol-character-chip:hover { transform: translateY(-1px); background: var(--symbol-character-chip-hover); }
+    .symbol-character-chip.symbol-character-selected { border-color: var(--symbol-character-primary); box-shadow: 0 0 0 3px rgba(124,155,255,0.25) inset; }
+    .symbol-character-chip small {
+      position: absolute; bottom: 4px; right: 6px; font-size: 10px; opacity: .75; color: var(--symbol-character-text-dim);
+    }
+
+    .symbol-character-details {
+      display: grid; gap: 12px;
+    }
+    .symbol-character-preview {
+      display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;
+    }
+    .symbol-character-glyph {
+      width: clamp(80px, 8vw, 120px); height: clamp(80px, 8vw, 120px);
+      background: var(--symbol-character-chip);
+      border: 1px solid var(--symbol-character-border);
+      border-radius: 16px;
+      display: grid; place-items: center;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+    }
+    .symbol-character-meta {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px;
+    }
+    .symbol-character-meta .symbol-character-pill {
+      background: var(--symbol-character-chip);
+      border: 1px solid var(--symbol-character-border);
+      border-radius: 12px; padding: 10px;
+      font-size: 12px;
+    }
+    .symbol-character-kv {
+      display: grid; grid-template-columns: 140px 1fr; gap: 8px; align-items: start;
+      border: 1px solid var(--symbol-character-border); border-radius: 12px; padding: 10px;
+    }
+    .symbol-character-kv code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+    .symbol-character-advanced {
+      display: none; margin-top: 12px;
+    }
+    .symbol-character-advanced.symbol-character-open { display: grid; gap: 12px; }
+    .symbol-character-advanced-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px;
+    }
+    @media (max-width: 800px) { .symbol-character-advanced-grid { grid-template-columns: 1fr; } }
+    .symbol-character-advanced-section {
+      border: 1px dashed var(--symbol-character-border); border-radius: 12px; padding: 12px;
+    }
+    .symbol-character-advanced-section h3 {
+      margin: 0 0 8px; font-size: 14px; color: var(--symbol-character-text-dim);
+    }
+    .symbol-character-flex { display: flex; gap: 8px; flex-wrap: wrap; }
+    .symbol-character-switch {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid var(--symbol-character-border);
+      border-radius: 999px; cursor: pointer; user-select: none; background: var(--symbol-character-chip);
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .symbol-character-switch input { display: none; }
+    .symbol-character-switch .symbol-character-dot {
+      width: 16px; height: 16px; border-radius: 999px; border: 2px solid var(--symbol-character-border);
+      background: var(--symbol-character-input); transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .symbol-character-switch input:checked + .symbol-character-dot {
+      background: var(--symbol-character-primary); border-color: transparent; box-shadow: 0 0 0 4px rgba(124,155,255,0.25);
+    }
+    .symbol-character-mini {
+      font-size: 12px; color: var(--symbol-character-text-dim);
+    }
+
+    .symbol-character-footer {
+      margin-top: 22px; color: var(--symbol-character-text-dim); font-size: 12px;
+      text-align: center;
+    }
+
+    /* Animations */
+    .symbol-character-fade { animation: symbol-character-fade .28s ease both; }
+    @keyframes symbol-character-fade {
+      from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); }
+    }
+    .symbol-character-shimmer {
+      position: relative; overflow: hidden;
+    }
+    .symbol-character-shimmer::after {
+      content:""; position:absolute; inset:-40%;
+      background: conic-gradient(from 0deg, transparent 0 5%, rgba(255,255,255,.1) 6% 8%, transparent 9% 100%);
+      animation: symbol-character-rotate 8s linear infinite;
+    }
+    @keyframes symbol-character-rotate { to { transform: rotate(360deg); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .symbol-character-fade, .symbol-character-shimmer::after { animation: none !important; }
+      .symbol-character-btn, .symbol-character-chip, .symbol-character-card::before { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+
+
+    
+
+
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  <div class="symbol-character-app" id="symbol-character-app">
+    <header class="symbol-character-header">
+      <div class="symbol-character-title">
+        <div class="symbol-character-mark symbol-character-shimmer" aria-hidden="true"></div>
+        <div>
+          <h1 class="symbol-character-heading">Symbol / Character Info</h1>
+          <p class="symbol-character-subtitle">Counts symbols and shows ASCII &amp; Unicode code points, names, encodings, scripts/blocks, and more - with advanced tooling.</p>
+        </div>
+      </div>
+      <div class="symbol-character-actions">
+        <button class="symbol-character-btn" id="symbol-character-theme-toggle" aria-label="Toggle theme">🌗 Theme</button>
+        <button class="symbol-character-btn" id="symbol-character-advanced-toggle" aria-expanded="false">⚙️ Advanced Options</button>
+        <button class="symbol-character-btn symbol-character-primary" id="symbol-character-copy-report">📄 Copy Report</button>
+      </div>
+    </header>
+
+    <main class="symbol-character-main">
+      <!-- LEFT: Input & Grid -->
+      <section class="symbol-character-card symbol-character-fade" id="symbol-character-input-card" aria-labelledby="symbol-character-input-label">
+        <h2 id="symbol-character-input-label">Input & Tools</h2>
+        <div class="symbol-character-input-wrap">
+          <textarea id="symbol-character-textarea" class="symbol-character-textarea" placeholder="Paste or type text here… Try:  Hello - 42% € 😊 𝄞 𝟠 Ä 𝔘𝔫𝔦𝔠𝔬𝔡𝔢 🔣"></textarea>
+
+          <div class="symbol-character-tools">
+            <button class="symbol-character-chipbtn" id="symbol-character-btn-paste">Paste</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-btn-copy">Copy</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-btn-clear">Clear</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-btn-favorites">★ Favorites</button>
+            <span class="symbol-character-mini">Tip: Click a symbol-character tile below to inspect it.</span>
+          </div>
+
+          <div class="symbol-character-stats" id="symbol-character-stats">
+            <div class="symbol-character-stat"><b>Total (graphemes)</b><span id="symbol-character-count-graphemes">0</span></div>
+            <div class="symbol-character-stat"><b>Code points</b><span id="symbol-character-count-codepoints">0</span></div>
+            <div class="symbol-character-stat"><b>Code units (UTF-16)</b><span id="symbol-character-count-codeunits">0</span></div>
+            <div class="symbol-character-stat"><b>Words</b><span id="symbol-character-count-words">0</span></div>
+            <div class="symbol-character-stat"><b>Lines</b><span id="symbol-character-count-lines">0</span></div>
+            <div class="symbol-character-stat"><b>Unique symbols</b><span id="symbol-character-count-unique">0</span></div>
+          </div>
+
+          <div class="symbol-character-grid" id="symbol-character-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Details -->
+      <aside class="symbol-character-card symbol-character-fade" id="symbol-character-details-card">
+        <h2>Selected Symbol / Character</h2>
+        <div class="symbol-character-details">
+          <div class="symbol-character-preview">
+            <div class="symbol-character-glyph" id="symbol-character-glyph" aria-live="polite">-</div>
+            <div class="symbol-character-meta">
+              <div class="symbol-character-pill"><b>Name</b><div id="symbol-character-name">-</div></div>
+              <div class="symbol-character-pill"><b>Script</b><div id="symbol-character-script">-</div></div>
+              <div class="symbol-character-pill"><b>Block</b><div id="symbol-character-block">-</div></div>
+              <div class="symbol-character-pill"><b>Plane</b><div id="symbol-character-plane">-</div></div>
+            </div>
+          </div>
+
+          <div class="symbol-character-kv"><div><b>Unicode</b></div><div id="symbol-character-unicode">-</div></div>
+          <div class="symbol-character-kv"><div><b>ASCII</b></div><div id="symbol-character-ascii">-</div></div>
+          <div class="symbol-character-kv"><div><b>UTF-8 bytes</b></div><div id="symbol-character-utf8">-</div></div>
+          <div class="symbol-character-kv"><div><b>UTF-16 code units</b></div><div id="symbol-character-utf16">-</div></div>
+          <div class="symbol-character-kv"><div><b>HTML entity</b></div><div id="symbol-character-entity">-</div></div>
+
+          <div class="symbol-character-tools">
+            <button class="symbol-character-chipbtn" id="symbol-character-copy-char">Copy symbol-character</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-copy-unicode">Copy Unicode</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-copy-entity">Copy HTML entity</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-add-fav">Add to symbol-character favorites</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Advanced Options -->
+    <section class="symbol-character-card symbol-character-advanced" id="symbol-character-advanced">
+      <div class="symbol-character-advanced-grid">
+        <div class="symbol-character-advanced-section">
+          <h3>Counting & Visibility</h3>
+          <div class="symbol-character-flex">
+            <label class="symbol-character-switch"><input id="symbol-character-toggle-graphemes" type="checkbox" checked><span class="symbol-character-dot"></span>Count grapheme clusters</label>
+            <label class="symbol-character-switch"><input id="symbol-character-toggle-invisibles" type="checkbox"><span class="symbol-character-dot"></span>Show invisibles (e.g., ␠ ␉ ␤)</label>
+            <label class="symbol-character-switch"><input id="symbol-character-toggle-nowhitespace" type="checkbox"><span class="symbol-character-dot"></span>Exclude whitespace from counts</label>
+          </div>
+          <p class="symbol-character-mini">Grapheme clusters treat emoji + skin tones, flags, and combining marks as a single symbol-character.</p>
+        </div>
+
+        <div class="symbol-character-advanced-section">
+          <h3>Normalization & Transform</h3>
+          <div class="symbol-character-flex">
+            <button class="symbol-character-chipbtn" data-symbol-character-norm="NFC">Normalize NFC</button>
+            <button class="symbol-character-chipbtn" data-symbol-character-norm="NFD">Normalize NFD</button>
+            <button class="symbol-character-chipbtn" data-symbol-character-norm="NFKC">Normalize NFKC</button>
+            <button class="symbol-character-chipbtn" data-symbol-character-norm="NFKD">Normalize NFKD</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-strip-diacritics">Strip diacritics</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-upper">UPPERCASE</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-lower">lowercase</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-title">Title Case</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-escape-html">Escape HTML</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-unescape-html">Unescape HTML</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-url-encode">URL encode</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-url-decode">URL decode</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-unique">Unique symbols</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-sort">Sort symbols</button>
+          </div>
+        </div>
+
+        <div class="symbol-character-advanced-section">
+          <h3>Quick Picker & Favorites</h3>
+          <div class="symbol-character-flex" id="symbol-character-quickpicker"></div>
+          <hr style="border: none; border-top: 1px dashed var(--symbol-character-border); margin: 10px 0;">
+          <div class="symbol-character-flex" id="symbol-character-favorites"></div>
+          <div class="symbol-character-tools" style="margin-top:8px;">
+            <button class="symbol-character-chipbtn" id="symbol-character-export-fav">Export favorites</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-import-fav">Import favorites</button>
+            <input id="symbol-character-import-file" type="file" accept="application/json" style="display:none">
+          </div>
+        </div>
+
+        <div class="symbol-character-advanced-section">
+          <h3>Random symbol-character Generator</h3>
+          <div class="symbol-character-flex">
+            <select id="symbol-character-rand-category" class="symbol-character-chipbtn" style="cursor:pointer">
+              <option value="ascii">ASCII punctuation</option>
+              <option value="currency">Currency</option>
+              <option value="arrows">Arrows</option>
+              <option value="math">Math</option>
+              <option value="emoji">Emoji</option>
+              <option value="latin1">Latin-1 symbols</option>
+            </select>
+            <input id="symbol-character-rand-count" type="number" min="1" max="50" value="5" class="symbol-character-chipbtn" style="width:80px; text-align:center">
+            <button class="symbol-character-chipbtn" id="symbol-character-generate">Generate</button>
+            <button class="symbol-character-chipbtn" id="symbol-character-append">Append to input</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+  
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/components/themeToggle.js"></script>
+  <script src="/js/auth.js"></script>
+
+  <script src="/tools/js/free-tools.js"></script>
+
+
+
+
+  <script>
+    (function(){
+      const $ = (sel, root=document) => root.querySelector(sel);
+      const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+      // THEME
+      const symbolCharacterThemeToggle = $('#symbol-character-theme-toggle');
+      const savedTheme = localStorage.getItem('symbol-character-theme') || 'dark';
+      if(savedTheme === 'light') document.documentElement.setAttribute('data-symbol-character-theme','light');
+      symbolCharacterThemeToggle.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-symbol-character-theme');
+        const next = cur === 'light' ? null : 'light';
+        if(next) { document.documentElement.setAttribute('data-symbol-character-theme', next); localStorage.setItem('symbol-character-theme','light'); }
+        else { document.documentElement.removeAttribute('data-symbol-character-theme'); localStorage.setItem('symbol-character-theme','dark'); }
+      });
+
+      // ELEMENTS
+      const ta = $('#symbol-character-textarea');
+      const grid = $('#symbol-character-grid');
+      const glyph = $('#symbol-character-glyph');
+      const nameEl = $('#symbol-character-name');
+      const scriptEl = $('#symbol-character-script');
+      const blockEl = $('#symbol-character-block');
+      const planeEl = $('#symbol-character-plane');
+      const unicodeEl = $('#symbol-character-unicode');
+      const asciiEl = $('#symbol-character-ascii');
+      const utf8El = $('#symbol-character-utf8');
+      const utf16El = $('#symbol-character-utf16');
+      const entityEl = $('#symbol-character-entity');
+
+      const countGraphemesEl = $('#symbol-character-count-graphemes');
+      const countCodepointsEl = $('#symbol-character-count-codepoints');
+      const countCodeunitsEl = $('#symbol-character-count-codeunits');
+      const countWordsEl = $('#symbol-character-count-words');
+      const countLinesEl = $('#symbol-character-count-lines');
+      const countUniqueEl = $('#symbol-character-count-unique');
+
+      const toggleGraphemes = $('#symbol-character-toggle-graphemes');
+      const toggleInvisibles = $('#symbol-character-toggle-invisibles');
+      const toggleNoWhitespace = $('#symbol-character-toggle-nowhitespace');
+
+      const adv = $('#symbol-character-advanced');
+      const advToggle = $('#symbol-character-advanced-toggle');
+
+      const copyReportBtn = $('#symbol-character-copy-report');
+      const copyCharBtn = $('#symbol-character-copy-char');
+      const copyUnicodeBtn = $('#symbol-character-copy-unicode');
+      const copyEntityBtn = $('#symbol-character-copy-entity');
+      const addFavBtn = $('#symbol-character-add-fav');
+      const favWrap = $('#symbol-character-favorites');
+      const quickPicker = $('#symbol-character-quickpicker');
+
+      const pasteBtn = $('#symbol-character-btn-paste');
+      const copyBtn = $('#symbol-character-btn-copy');
+      const clearBtn = $('#symbol-character-btn-clear');
+      const favBtn = $('#symbol-character-btn-favorites');
+
+      const exportFavBtn = $('#symbol-character-export-fav');
+      const importFavBtn = $('#symbol-character-import-fav');
+      const importFavFile = $('#symbol-character-import-file');
+
+      const randCat = $('#symbol-character-rand-category');
+      const randCount = $('#symbol-character-rand-count');
+      const randGen = $('#symbol-character-generate');
+      const randAppend = $('#symbol-character-append');
+
+      // STATE
+      let selectedSymbolCharacter = null;
+      let currentSegments = [];
+      let favorites = JSON.parse(localStorage.getItem('symbol-character-favorites') || '[]');
+
+      // HELPERS
+      const hasIntlSeg = typeof Intl !== "undefined" && Intl.Segmenter;
+      const seg = hasIntlSeg ? new Intl.Segmenter('en', {granularity:'grapheme'}) : null;
+      const segmentGraphemes = (str) => {
+        if(hasIntlSeg) return Array.from(seg.segment(str)).map(s => s.segment);
+        // fallback (may split surrogate pairs incorrectly for complex emoji)
+        return Array.from(str);
+      };
+
+      const isWhitespaceGrapheme = (g) => /^\s+$/u.test(g);
+      const invisibleMap = {
+        '\u0020':'␠','\u00A0':'⍽','\u2000':'␠','\u2001':'␠','\u2002':'␠','\u2003':'␠','\u2004':'␠','\u2005':'␠',
+        '\u2006':'␠','\u2007':'␠','\u2008':'␠','\u2009':'␠','\u200A':'␠','\u202F':'␠','\u205F':'␠','\u3000':'␠',
+        '\u0009':'␉','\u000A':'␊','\u000D':'␍','\u000B':'␋','\u000C':'␌'
+      };
+
+      const asciiControlNames = {
+        0:'NULL',1:'START OF HEADING',2:'START OF TEXT',3:'END OF TEXT',4:'END OF TRANSMISSION',5:'ENQUIRY',6:'ACKNOWLEDGE',
+        7:'BELL',8:'BACKSPACE',9:'CHARACTER TABULATION',10:'LINE FEED',11:'LINE TABULATION',12:'FORM FEED',13:'CARRIAGE RETURN',
+        14:'SHIFT OUT',15:'SHIFT IN',16:'DATA LINK ESCAPE',17:'DEVICE CONTROL ONE',18:'DEVICE CONTROL TWO',19:'DEVICE CONTROL THREE',
+        20:'DEVICE CONTROL FOUR',21:'NEGATIVE ACKNOWLEDGE',22:'SYNCHRONOUS IDLE',23:'END OF TRANSMISSION BLOCK',
+        24:'CANCEL',25:'END OF MEDIUM',26:'SUBSTITUTE',27:'ESCAPE',28:'FILE SEPARATOR',29:'GROUP SEPARATOR',30:'RECORD SEPARATOR',
+        31:'UNIT SEPARATOR',32:'SPACE',127:'DELETE'
+      };
+      const asciiPunctNames = {
+        '!':'EXCLAMATION MARK','"':'QUOTATION MARK','#':'NUMBER SIGN','$':'DOLLAR SIGN','%':'PERCENT SIGN','&':'AMPERSAND',
+        '\'':'APOSTROPHE','(':'LEFT PARENTHESIS',')':'RIGHT PARENTHESIS','*':'ASTERISK','+':'PLUS SIGN',',':'COMMA',
+        '-':'HYPHEN-MINUS','.':'FULL STOP','/':'SOLIDUS',':':'COLON',';':'SEMICOLON','<':'LESS-THAN SIGN','=':'EQUALS SIGN',
+        '>':'GREATER-THAN SIGN','?':'QUESTION MARK','@':'COMMERCIAL AT','[':'LEFT SQUARE BRACKET','\\':'REVERSE SOLIDUS',
+        ']':'RIGHT SQUARE BRACKET','^':'CIRCUMFLEX ACCENT','_':'LOW LINE','`':'GRAVE ACCENT','{':'LEFT CURLY BRACKET',
+        '|':'VERTICAL LINE','}':'RIGHT CURLY BRACKET','~':'TILDE'
+      };
+      const latin1Names = {
+        0x00A0:'NO-BREAK SPACE',0x00A1:'INVERTED EXCLAMATION MARK',0x00A2:'CENT SIGN',0x00A3:'POUND SIGN',0x00A4:'CURRENCY SIGN',
+        0x00A5:'YEN SIGN',0x00A6:'BROKEN BAR',0x00A7:'SECTION SIGN',0x00A8:'DIAERESIS',0x00A9:'COPYRIGHT SIGN',0x00AA:'FEMININE ORDINAL INDICATOR',
+        0x00AB:'LEFT-POINTING DOUBLE ANGLE QUOTATION MARK',0x00AC:'NOT SIGN',0x00AD:'SOFT HYPHEN',0x00AE:'REGISTERED SIGN',
+        0x00AF:'MACRON',0x00B0:'DEGREE SIGN',0x00B1:'PLUS-MINUS SIGN',0x00B2:'SUPERSCRIPT TWO',0x00B3:'SUPERSCRIPT THREE',
+        0x00B4:'ACUTE ACCENT',0x00B5:'MICRO SIGN',0x00B6:'PILCROW SIGN',0x00B7:'MIDDLE DOT',0x00B8:'CEDILLA',
+        0x00B9:'SUPERSCRIPT ONE',0x00BA:'MASCULINE ORDINAL INDICATOR',0x00BB:'RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK',
+        0x00BC:'VULGAR FRACTION ONE QUARTER',0x00BD:'VULGAR FRACTION ONE HALF',0x00BE:'VULGAR FRACTION THREE QUARTERS',
+        0x00BF:'INVERTED QUESTION MARK',0x00C0:'LATIN CAPITAL LETTER A WITH GRAVE',0x00C1:'LATIN CAPITAL LETTER A WITH ACUTE',
+        0x00C4:'LATIN CAPITAL LETTER A WITH DIAERESIS',0x00C5:'LATIN CAPITAL LETTER A WITH RING ABOVE',0x00C6:'LATIN CAPITAL LETTER AE',
+        0x00D0:'LATIN CAPITAL LETTER ETH',0x00D1:'LATIN CAPITAL LETTER N WITH TILDE',0x00D7:'MULTIPLICATION SIGN',
+        0x00D8:'LATIN CAPITAL LETTER O WITH STROKE',0x00DE:'LATIN CAPITAL LETTER THORN',
+        0x00DF:'LATIN SMALL LETTER SHARP S',0x00E0:'LATIN SMALL LETTER A WITH GRAVE',0x00E1:'LATIN SMALL LETTER A WITH ACUTE',
+        0x00E4:'LATIN SMALL LETTER A WITH DIAERESIS',0x00E5:'LATIN SMALL LETTER A WITH RING ABOVE',0x00E6:'LATIN SMALL LETTER AE',
+        0x00F0:'LATIN SMALL LETTER ETH',0x00F1:'LATIN SMALL LETTER N WITH TILDE',0x00F7:'DIVISION SIGN',
+        0x00F8:'LATIN SMALL LETTER O WITH STROKE',0x00FE:'LATIN SMALL LETTER THORN',0x00FF:'LATIN SMALL LETTER Y WITH DIAERESIS',
+        0x00A9:'COPYRIGHT SIGN',0x00AE:'REGISTERED SIGN',0x2122:'TRADE MARK SIGN'
+      };
+
+      const namedEntities = {
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"\'":'&apos;','\u00A0':'&nbsp;','\u00A9':'&copy;','\u00AE':'&reg;',
+        '\u2122':'&trade;','\u20AC':'&euro;','\u00A3':'&pound;','\u00A5':'&yen;','\u00A2':'&cent;','\u00B6':'&para;',
+        '\u00A7':'&sect;','\u00B0':'&deg;','\u00B1':'&plusmn;','\u00D7':'&times;','\u00F7':'&divide;','\u00B5':'&micro;',
+        '\u00B7':'&middot;','\u2022':'&bull;','\u2026':'&hellip;','\u2013':'&ndash;','\u2014':'&mdash;','\u2018':'&lsquo;',
+        '\u2019':'&rsquo;','\u201C':'&ldquo;','\u201D':'&rdquo;','\u00AB':'&laquo;','\u00BB':'&raquo;','\u00A1':'&iexcl;','\u00BF':'&iquest;'
+      };
+
+      // Minimal block ranges (covering many common cases)
+      const unicodeBlocks = [
+        [0x0000,0x007F,'Basic Latin'],[0x0080,0x00FF,'Latin-1 Supplement'],[0x0100,0x017F,'Latin Extended-A'],
+        [0x0180,0x024F,'Latin Extended-B'],[0x0250,0x02AF,'IPA Extensions'],[0x02B0,0x02FF,'Spacing Modifier Letters'],
+        [0x0300,0x036F,'Combining Diacritical Marks'],[0x0370,0x03FF,'Greek and Coptic'],[0x0400,0x04FF,'Cyrillic'],
+        [0x0590,0x05FF,'Hebrew'],[0x0600,0x06FF,'Arabic'],[0x0700,0x074F,'Syriac'],[0x0750,0x077F,'Arabic Supplement'],
+        [0x0900,0x097F,'Devanagari'],[0x0980,0x09FF,'Bengali'],[0x0A00,0x0A7F,'Gurmukhi'],[0x0A80,0x0AFF,'Gujarati'],
+        [0x0B00,0x0B7F,'Oriya'],[0x0B80,0x0BFF,'Tamil'],[0x0C00,0x0C7F,'Telugu'],[0x0C80,0x0CFF,'Kannada'],[0x0D00,0x0D7F,'Malayalam'],
+        [0x0E00,0x0E7F,'Thai'],[0x0E80,0x0EFF,'Lao'],[0x10A0,0x10FF,'Georgian'],[0x1100,0x11FF,'Hangul Jamo'],
+        [0x2000,0x206F,'General Punctuation'],[0x2070,0x209F,'Superscripts and Subscripts'],[0x20A0,0x20CF,'Currency Symbols'],
+        [0x20D0,0x20FF,'Combining Diacritical Marks for Symbols'],[0x2100,0x214F,'Letterlike Symbols'],
+        [0x2150,0x218F,'Number Forms'],[0x2190,0x21FF,'Arrows'],[0x2200,0x22FF,'Mathematical Operators'],
+        [0x2300,0x23FF,'Miscellaneous Technical'],[0x2460,0x24FF,'Enclosed Alphanumerics'],[0x25A0,0x25FF,'Geometric Shapes'],
+        [0x2600,0x26FF,'Miscellaneous Symbols'],[0x2700,0x27BF,'Dingbats'],[0x2900,0x297F,'Supplemental Arrows-B'],
+        [0x2980,0x29FF,'Miscellaneous Mathematical Symbols-B'],[0x2B00,0x2BFF,'Miscellaneous Symbols and Arrows'],
+        [0x2E00,0x2E7F,'Supplemental Punctuation'],[0x3000,0x303F,'CJK Symbols and Punctuation'],[0x3040,0x309F,'Hiragana'],
+        [0x30A0,0x30FF,'Katakana'],[0x3130,0x318F,'Hangul Compatibility Jamo'],[0x3190,0x319F,'Kanbun'],
+        [0x31F0,0x31FF,'Katakana Phonetic Extensions'],[0x3200,0x32FF,'Enclosed CJK Letters and Months'],
+        [0x3400,0x4DBF,'CJK Unified Ideographs Extension A'],[0x4E00,0x9FFF,'CJK Unified Ideographs'],
+        [0xAC00,0xD7AF,'Hangul Syllables'],[0xD800,0xDB7F,'High Surrogates'],[0xDB80,0xDBFF,'High Private Use Surrogates'],
+        [0xDC00,0xDFFF,'Low Surrogates'],[0xE000,0xF8FF,'Private Use Area'],[0x1F300,0x1F5FF,'Misc Symbols and Pictographs'],
+        [0x1F600,0x1F64F,'Emoticons (Emoji)'],[0x1F680,0x1F6FF,'Transport and Map Symbols'],[0x1F900,0x1F9FF,'Supplemental Symbols and Pictographs'],
+        [0x1FA70,0x1FAFF,'Symbols and Pictographs Extended-A']
+      ];
+
+      const scriptsList = ['Latin','Cyrillic','Greek','Hebrew','Arabic','Devanagari','Bengali','Gurmukhi','Gujarati','Tamil','Telugu','Kannada','Malayalam','Thai','Lao','Hangul','Hiragana','Katakana','Han','Georgian','Armenian'];
+      const detectScript = (char) => {
+        try {
+          for (const s of scriptsList) {
+            if (new RegExp('^\\p{Script='+s+'}$','u').test(char)) return s;
+          }
+        } catch {}
+        return '-';
+      };
+      const detectBlock = (cp) => {
+        for (const [a,b,name] of unicodeBlocks) if (cp>=a && cp<=b) return name;
+        return '-';
+      };
+      const planeName = (cp) => {
+        const p = cp >>> 16;
+        switch(p){
+          case 0: return 'BMP (Basic Multilingual Plane)';
+          case 1: return 'SMP (Supplementary Multilingual Plane)';
+          case 2: return 'SIP (Supplementary Ideographic Plane)';
+          case 14: return 'SSP (Supplementary Special-purpose Plane)';
+          case 15: case 16: return 'Private Use Plane';
+          default: return 'Supplementary Plane';
+        }
+      };
+      const asciiNameFor = (cp, ch) => {
+        if (cp <= 32 || cp === 127) return asciiControlNames[cp] || 'CONTROL';
+        if (asciiPunctNames[ch]) return asciiPunctNames[ch];
+        if (cp>=0x41 && cp<=0x5A) return 'LATIN CAPITAL LETTER ' + ch;
+        if (cp>=0x61 && cp<=0x7A) return 'LATIN SMALL LETTER ' + ch.toUpperCase();
+        if (cp>=0x30 && cp<=0x39) return 'DIGIT ' + ch;
+        return null;
+      };
+      const unicodeNameFor = (ch) => {
+        const cp = ch.codePointAt(0);
+        const ascii = asciiNameFor(cp, ch);
+        if (ascii) return ascii;
+        if (latin1Names[cp]) return latin1Names[cp];
+        // Basic heuristics for combining marks
+        if (/^\p{M}$/u.test(ch)) return 'COMBINING MARK';
+        // Fallback to block + code
+        return null;
+      };
+
+      const toHex = (n, pad=2) => n.toString(16).toUpperCase().padStart(pad,'0');
+      const unicodeCodePoints = (g) => Array.from(g).map(c => 'U+'+toHex(c.codePointAt(0), 4));
+      const asciiCode = (g) => {
+        if (g.length!==1) return '-';
+        const cp = g.codePointAt(0);
+        return cp<128 ? String(cp) : '-';
+      };
+      const utf8Bytes = (g) => Array.from(new TextEncoder().encode(g)).map(b => '0x'+toHex(b,2)).join(' ');
+      const utf16Units = (g) => {
+        const arr = [];
+        for (let i=0;i<g.length;i++) arr.push('0x'+toHex(g.charCodeAt(i),4));
+        return arr.join(' ');
+      };
+      const htmlEntity = (g) => {
+        if (g.length === 1 && namedEntities[g]) return namedEntities[g];
+        // Use first code point for numeric entity; if multiple, join with spaces
+        const cps = Array.from(g).map(c => c.codePointAt(0));
+        if (cps.length === 1) {
+          const cp = cps[0];
+          return `&#${cp}; / &#x${toHex(cp)};`;
+        }
+        return cps.map(cp => `&#x${toHex(cp)};`).join(' ');
+      };
+
+      const showToast = (msg) => {
+        const t = document.createElement('div');
+        t.textContent = msg;
+        t.className = 'symbol-character-toast';
+        t.style.cssText = `
+          position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+          background:var(--symbol-character-gradient-1);color:#0b0f2c;padding:10px 14px;border-radius:12px;
+          box-shadow:var(--symbol-character-shadow);z-index:9999;font-weight:800;letter-spacing:.2px;
+        `;
+        document.body.appendChild(t);
+        setTimeout(()=>{ t.remove(); }, 1600);
+      };
+
+      const updateHoverFX = (e) => {
+        if (!e.currentTarget.matches('.symbol-character-card')) return;
+        const r = e.currentTarget.getBoundingClientRect();
+        e.currentTarget.style.setProperty('--x', ((e.clientX - r.left)/r.width*100).toFixed(2)+'%');
+        e.currentTarget.style.setProperty('--y', ((e.clientY - r.top)/r.height*100).toFixed(2)+'%');
+      };
+      $$('.symbol-character-card').forEach(c => c.addEventListener('mousemove', updateHoverFX));
+
+      // ANALYZE + GRID
+      const analyze = () => {
+        let text = ta.value;
+        if (toggleNoWhitespace.checked) text = text.replace(/\s+/gu,'');
+        currentSegments = toggleGraphemes.checked ? segmentGraphemes(text) : Array.from(text); // code points
+        const uniqueMap = new Map();
+        for (const g of currentSegments) uniqueMap.set(g, (uniqueMap.get(g)||0)+1);
+
+        countGraphemesEl.textContent = (toggleGraphemes.checked ? currentSegments.length : segmentGraphemes(text).length);
+        countCodepointsEl.textContent = Array.from(text).length;
+        countCodeunitsEl.textContent = text.length;
+        countWordsEl.textContent = text.trim() ? (text.trim().split(/\s+/).length) : 0;
+        countLinesEl.textContent = text ? text.split(/\r\n|\r|\n/).length : 0;
+        countUniqueEl.textContent = uniqueMap.size;
+
+        // grid
+        grid.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        for (const [g, n] of uniqueMap) {
+          const chip = document.createElement('button');
+          chip.className = 'symbol-character-chip';
+          chip.setAttribute('title', 'Click to inspect');
+          let label = g;
+          if (toggleInvisibles.checked && g in invisibleMap) label = invisibleMap[g];
+          chip.textContent = label;
+          const small = document.createElement('small'); small.textContent = n;
+          chip.appendChild(small);
+          chip.addEventListener('click', () => selectSymbolCharacter(g, chip));
+          frag.appendChild(chip);
+        }
+        grid.appendChild(frag);
+        // auto-select first
+        const first = uniqueMap.keys().next().value;
+        if (first !== undefined) {
+          selectSymbolCharacter(first, grid.querySelector('.symbol-character-chip'));
+        } else {
+          clearDetails();
+        }
+      };
+
+      const clearDetails = () => {
+        selectedSymbolCharacter = null;
+        glyph.textContent = '-';
+        nameEl.textContent = '-'; scriptEl.textContent = '-'; blockEl.textContent = '-'; planeEl.textContent = '-';
+        unicodeEl.textContent = '-'; asciiEl.textContent = '-'; utf8El.textContent = '-'; utf16El.textContent = '-'; entityEl.textContent = '-';
+        $$('.symbol-character-chip', grid).forEach(c=>c.classList.remove('symbol-character-selected'));
+      };
+
+      const selectSymbolCharacter = (g, chipEl) => {
+        selectedSymbolCharacter = g;
+        $$('.symbol-character-chip', grid).forEach(c=>c.classList.remove('symbol-character-selected'));
+        if (chipEl) chipEl.classList.add('symbol-character-selected');
+
+        glyph.textContent = toggleInvisibles.checked && g in invisibleMap ? invisibleMap[g] : g;
+
+        // meta
+        const cps = Array.from(g).map(c => c.codePointAt(0));
+        const names = cps.map((cp,i) => {
+          const ch = Array.from(g)[i];
+          return unicodeNameFor(ch) || `${detectBlock(cp)} CHARACTER`;
+        });
+        nameEl.textContent = names.join(' + ');
+        scriptEl.textContent = detectScript(g.normalize('NFD')[0] || g);
+        blockEl.textContent = cps.map(cp => detectBlock(cp)).join(' + ');
+        planeEl.textContent = cps.map(cp => planeName(cp)).join(' + ');
+
+        // values
+        unicodeEl.innerHTML = cps.map(cp => `<code>U+${toHex(cp,4)}</code>`).join(' ');
+        asciiEl.innerHTML = `<code>${asciiCode(g)}</code>`;
+        utf8El.innerHTML = `<code>${utf8Bytes(g)}</code>`;
+        utf16El.innerHTML = `<code>${utf16Units(g)}</code>`;
+        entityEl.innerHTML = `<code>${htmlEntity(g)}</code>`;
+      };
+
+      // QUICK PICKER + RANDOM SETS
+      const sets = {
+        ascii: Array.from(`!"#$%&'()*+,-./:;<=>?@[\\]^_\`{|}~`),
+        currency: ['$', '€', '£', '¥', '₩', '₹', '₽', '₺', '₦', '₫', '₴', '¢', '¤'],
+        arrows: ['←','↑','→','↓','↔','↕','↖','↗','↘','↙','⇐','⇒','⇑','⇓','⇔','⟵','⟶','⟷','⤴','⤵','➔','➤','➜','➡','⟹'],
+        math: ['±','≈','≠','≤','≥','∞','∑','∏','√','∫','∂','∇','∈','∩','∪','∧','∨','⊂','⊃','⊆','⊇','⊕','⊗','∴','∵'],
+        emoji: ['😀','😁','😂','🤣','😊','😍','🥰','😎','🤔','🙌','👍','👎','👏','🔥','✨','🎉','✅','❌','⚠️','💡','🧠','🧩','🔣'],
+        latin1: ['©','®','™','°','·','×','÷','µ','§','¶','¿','¡','Æ','æ','ß','Ø','ø','Å','å','Ð','ð','Þ','þ','Ñ','ñ']
+      };
+      const buildQuickPicker = () => {
+        quickPicker.innerHTML = '';
+        for (const [label, arr] of Object.entries(sets)) {
+          const group = document.createElement('div');
+          group.style.display = 'flex'; group.style.flexWrap='wrap'; group.style.gap='6px';
+          const title = document.createElement('div');
+          title.className = 'symbol-character-mini';
+          title.style.flexBasis = '100%';
+          title.textContent = label.toUpperCase();
+          group.appendChild(title);
+          arr.forEach(ch => {
+            const btn = document.createElement('button');
+            btn.className = 'symbol-character-chipbtn';
+            btn.textContent = ch;
+            btn.addEventListener('click', () => {
+              ta.value += ch;
+              analyze();
+            });
+            group.appendChild(btn);
+          });
+          quickPicker.appendChild(group);
+        }
+      };
+
+      // FAVORITES
+      const renderFavorites = () => {
+        favWrap.innerHTML = '';
+        favorites.forEach((ch, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'symbol-character-chipbtn';
+          btn.textContent = ch;
+          btn.title = 'Click to insert; Shift+Click to remove';
+          btn.addEventListener('click', (e) => {
+            if (e.shiftKey) { favorites.splice(idx,1); persistFavorites(); renderFavorites(); }
+            else { ta.value += ch; analyze(); }
+          });
+          favWrap.appendChild(btn);
+        });
+      };
+      const persistFavorites = () => localStorage.setItem('symbol-character-favorites', JSON.stringify(favorites));
+
+      // TRANSFORMS
+      const applyNorm = (form) => { try { ta.value = ta.value.normalize(form); analyze(); showToast('Normalized '+form); } catch{} };
+      const stripDiacritics = () => { ta.value = ta.value.normalize('NFD').replace(/\p{M}+/gu,''); analyze(); };
+      const titleCase = () => { ta.value = ta.value.replace(/\w\S*/gu, t=>t[0]?.toUpperCase()+t.slice(1).toLowerCase()); analyze(); };
+      const escapeHTML = () => { ta.value = ta.value.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[m])); analyze(); };
+      const unescapeHTML = () => { ta.value = ta.value.replace(/&(amp|lt|gt|quot|apos);/g, (_,e)=>({'amp':'&','lt':'<','gt':'>','quot':'"','apos':"'" }[e])); analyze(); };
+      const urlEncode = () => { ta.value = encodeURIComponent(ta.value); analyze(); };
+      const urlDecode = () => { try{ ta.value = decodeURIComponent(ta.value); analyze(); }catch{ showToast('Invalid URL encoding'); } };
+      const uniqueSymbols = () => {
+        const segs = segmentGraphemes(ta.value);
+        ta.value = Array.from(new Set(segs)).join('');
+        analyze();
+      };
+      const sortSymbols = () => {
+        const segs = segmentGraphemes(ta.value);
+        ta.value = segs.sort((a,b)=> a.localeCompare(b)).join('');
+        analyze();
+      };
+
+      // EVENTS
+      ta.addEventListener('input', analyze);
+      toggleGraphemes.addEventListener('change', analyze);
+      toggleNoWhitespace.addEventListener('change', analyze);
+      toggleInvisibles.addEventListener('change', analyze);
+
+      advToggle.addEventListener('click', () => {
+        const open = adv.classList.toggle('symbol-character-open');
+        advToggle.setAttribute('aria-expanded', String(open));
+        if(open) adv.scrollIntoView({behavior:'smooth', block:'nearest'});
+      });
+
+      pasteBtn.addEventListener('click', async () => {
+        try { const txt = await navigator.clipboard.readText(); ta.value += txt; analyze(); showToast('Pasted'); }
+        catch { showToast('Clipboard permission needed'); }
+      });
+      copyBtn.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(ta.value); showToast('Copied'); } catch { showToast('Clipboard permission needed'); }
+      });
+      clearBtn.addEventListener('click', () => { ta.value = ''; analyze(); });
+
+      // Transform buttons
+      $$('[data-symbol-character-norm]').forEach(b => b.addEventListener('click', () => applyNorm(b.getAttribute('data-symbol-character-norm'))));
+      $('#symbol-character-strip-diacritics').addEventListener('click', stripDiacritics);
+      $('#symbol-character-upper').addEventListener('click', () => { ta.value = ta.value.toUpperCase(); analyze(); });
+      $('#symbol-character-lower').addEventListener('click', () => { ta.value = ta.value.toLowerCase(); analyze(); });
+      $('#symbol-character-title').addEventListener('click', titleCase);
+      $('#symbol-character-escape-html').addEventListener('click', escapeHTML);
+      $('#symbol-character-unescape-html').addEventListener('click', unescapeHTML);
+      $('#symbol-character-url-encode').addEventListener('click', urlEncode);
+      $('#symbol-character-url-decode').addEventListener('click', urlDecode);
+      $('#symbol-character-unique').addEventListener('click', uniqueSymbols);
+      $('#symbol-character-sort').addEventListener('click', sortSymbols);
+
+      // Copy details
+      copyReportBtn.addEventListener('click', async () => {
+        const report = [
+          '=== Symbol / Character Info Report ===',
+          'Text length (graphemes): ' + countGraphemesEl.textContent,
+          'Code points: ' + countCodepointsEl.textContent,
+          'Code units (UTF-16): ' + countCodeunitsEl.textContent,
+          'Words: ' + countWordsEl.textContent,
+          'Lines: ' + countLinesEl.textContent,
+          'Unique symbols: ' + countUniqueEl.textContent,
+          '',
+          selectedSymbolCharacter ? `Selected: "${selectedSymbolCharacter}"` : 'Selected: -',
+          'Name: ' + nameEl.textContent,
+          'Script: ' + scriptEl.textContent,
+          'Block: ' + blockEl.textContent,
+          'Plane: ' + planeEl.textContent,
+          'Unicode: ' + unicodeEl.textContent.replace(/<[^>]+>/g,''),
+          'ASCII: ' + asciiEl.textContent,
+          'UTF-8: ' + utf8El.textContent.replace(/<[^>]+>/g,''),
+          'UTF-16: ' + utf16El.textContent.replace(/<[^>]+>/g,''),
+          'HTML entity: ' + entityEl.textContent
+        ].join('\n');
+        try { await navigator.clipboard.writeText(report); showToast('Report copied'); } catch { showToast('Clipboard permission needed'); }
+      });
+      copyCharBtn.addEventListener('click', async () => {
+        if (!selectedSymbolCharacter) return;
+        try { await navigator.clipboard.writeText(selectedSymbolCharacter); showToast('Symbol-character copied'); } catch {}
+      });
+      copyUnicodeBtn.addEventListener('click', async () => {
+        if (!selectedSymbolCharacter) return;
+        const cps = Array.from(selectedSymbolCharacter).map(c => 'U+'+toHex(c.codePointAt(0),4)).join(' ');
+        try { await navigator.clipboard.writeText(cps); showToast('Unicode copied'); } catch {}
+      });
+      copyEntityBtn.addEventListener('click', async () => {
+        if (!selectedSymbolCharacter) return;
+        try { await navigator.clipboard.writeText(entityEl.textContent); showToast('HTML entity copied'); } catch {}
+      });
+
+      // Favorites
+      addFavBtn.addEventListener('click', () => {
+        if (!selectedSymbolCharacter) return;
+        if (!favorites.includes(selectedSymbolCharacter)) {
+          favorites.push(selectedSymbolCharacter); persistFavorites(); renderFavorites(); showToast('Added to favorites');
+        } else showToast('Already in favorites');
+      });
+      favBtn.addEventListener('click', () => adv.classList.add('symbol-character-open'));
+
+      exportFavBtn.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(favorites,null,2)], {type:'application/json'});
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+        a.download = 'symbol-character-favorites.json'; a.click();
+        URL.revokeObjectURL(a.href);
+      });
+      importFavBtn.addEventListener('click', () => importFavFile.click());
+      importFavFile.addEventListener('change', async () => {
+        const f = importFavFile.files[0]; if (!f) return;
+        try {
+          const text = await f.text();
+          const arr = JSON.parse(text);
+          if (Array.isArray(arr)) { favorites = arr.filter(x=> typeof x === 'string'); persistFavorites(); renderFavorites(); showToast('Favorites imported'); }
+        } catch { showToast('Invalid favorites file'); }
+      });
+
+      // Random generator
+      let generated = [];
+      randGen.addEventListener('click', () => {
+        const arr = sets[randCat.value] || sets.ascii;
+        const n = Math.max(1, Math.min(50, Number(randCount.value)||5));
+        generated = [];
+        for (let i=0;i<n;i++) generated.push(arr[Math.floor(Math.random()*arr.length)]);
+        showToast('Generated: ' + generated.join(' '));
+      });
+      randAppend.addEventListener('click', () => { if(generated.length){ ta.value += generated.join(''); analyze(); } });
+
+      // INIT
+      buildQuickPicker();
+      renderFavorites();
+      ta.value = 'Hello - 42% € 😊 A\u0308'; // demo: Ä combining
+      analyze();
+    })();
+  </script>
+</body>
+</html>

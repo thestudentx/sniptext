@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Palindromic Word Finder - Detect, Highlight & Extract Palindromes</title>
+  <meta name="description" content="Free Palindromic Word Finder by SnipText. Detect palindromes in words or phrases, see their positions, highlight them in context, and export results as CSV/JSON." />
+  <meta name="keywords" content="palindromic word finder, palindrome detector, find palindromes, palindrome highlighter, palindrome extractor, text analysis, SnipText" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:title" content="Palindromic Word Finder - Detect, Highlight & Extract Palindromes" />
+  <meta property="og:description" content="Detect palindromes (words or phrases), show positions, highlight/extract them, and export. Free, instant, privacy-friendly." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://example.com/tools/palindromic-word-finder" />
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* =========================
+       THEME (all vars use 'palindromic' in name as requested)
+       Values mapped from your provided palette
+    ========================= */
+    :root {
+      /* COLOR PALETTE */
+      --palindromic-color-primary: #1D4ED8;     /* was --color-primary */
+      --palindromic-color-accent: #3B82F6;      /* was --color-accent */
+      --palindromic-color-bg-light: #F3F4F6;    /* was --color-bg-light */
+      --palindromic-color-bg-dark: #0F172A;     /* was --color-bg-dark */
+      --palindromic-color-white: #ffffff;       /* was --color-white */
+      --palindromic-color-text-dark: #1F2937;   /* was --color-text-dark */
+      --palindromic-color-text-light: #6B7280;  /* was --color-text-light */
+      --palindromic-color-border: #E5E7EB;      /* was --color-border */
+      --palindromic-color-used-often: #e85d27;  /* was --color-used-often */
+      --palindromic-color-footer-bg: #1d1f2f;   /* was --color-footer-bg */
+
+      /* ADDITIONAL COMPONENT COLORS */
+      --palindromic-gradient-hero-end: #23253d;     /* was --gradient-hero-end */
+      --palindromic-gradient-timeline-end: #23253d; /* was --gradient-timeline-end */
+      --palindromic-gradient-cta-start: var(--palindromic-color-accent); /* was --gradient-cta-start */
+      --palindromic-gradient-cta-end: #ff7c4c;      /* was --gradient-cta-end */
+
+      /* FONT STACK */
+      --palindromic-font-heading: 'Poppins','Segoe UI',sans-serif;
+      --palindromic-font-body: 'Roboto','Arial',sans-serif;
+
+      /* EFFECTS */
+      --palindromic-shadow-1: 0 8px 24px rgba(15, 23, 42, 0.15);
+      --palindromic-shadow-2: 0 16px 50px rgba(15, 23, 42, 0.25);
+      --palindromic-radius: 16px;
+      --palindromic-radius-sm: 10px;
+      --palindromic-grid-gap: 18px;
+      --palindromic-transition: 200ms cubic-bezier(.2,.7,.2,1);
+      --palindromic-mark-bg: rgba(59, 130, 246, .25);
+      --palindromic-mark-border: rgba(59, 130, 246, .6);
+      --palindromic-badge-bg: rgba(29, 78, 216, .08);
+      --palindromic-badge-text: #1D4ED8;
+    }
+
+    /* Root layout (no navbar/footer per request) */
+    html, body {
+      height: 100%;
+      margin: 0;
+      background:
+        radial-gradient(1200px 500px at -10% -10%, rgba(29,78,216,.14), transparent 55%),
+        radial-gradient(1000px 500px at 110% -10%, rgba(59,130,246,.10), transparent 55%),
+        linear-gradient(180deg, var(--palindromic-color-bg-light), var(--palindromic-color-white));
+      color: var(--palindromic-color-text-dark);
+      font-family: var(--palindromic-font-body);
+      line-height: 1.55;
+    }
+
+    .palindromic-app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(16px, 3vw, 28px);
+    }
+
+    /* Header / Hero */
+    .palindromic-hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--palindromic-grid-gap);
+      align-items: center;
+      margin-bottom: 22px;
+    }
+    @media (max-width: 980px) {
+      .palindromic-hero { grid-template-columns: 1fr; }
+    }
+
+    .palindromic-hero-card {
+      background: linear-gradient(180deg, var(--palindromic-color-white), rgba(255,255,255,.85));
+      border: 1px solid var(--palindromic-color-border);
+      border-radius: var(--palindromic-radius);
+      padding: clamp(16px, 2.2vw, 22px);
+      box-shadow: var(--palindromic-shadow-1);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .palindromic-hero-card::after{
+      content:"";
+      position:absolute; inset:-30%;
+      background: radial-gradient(600px 200px at 0% 0%, rgba(29,78,216,.12), transparent 50%),
+                  radial-gradient(600px 200px at 100% 0%, rgba(59,130,246,.12), transparent 50%);
+      z-index:-1;
+      animation: palindromic-sheen 12s linear infinite;
+      opacity: .8;
+    }
+    @keyframes palindromic-sheen { to { transform: rotate(360deg) } }
+
+    .palindromic-title {
+      font-family: var(--palindromic-font-heading);
+      font-size: clamp(22px, 2.8vw, 42px);
+      letter-spacing: .3px;
+      margin: 0 0 8px;
+    }
+    .palindromic-subtitle {
+      color: var(--palindromic-color-text-light);
+      margin: 0 0 14px;
+      max-width: 70ch;
+    }
+
+    .palindromic-cta-row {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .palindromic-btn {
+      appearance: none; border: none;
+      background: linear-gradient(90deg, var(--palindromic-gradient-cta-start), var(--palindromic-gradient-cta-end));
+      color: white; font-weight: 700; letter-spacing: .2px;
+      padding: 10px 14px; border-radius: 999px; cursor: pointer;
+      box-shadow: var(--palindromic-shadow-1);
+      transition: transform var(--palindromic-transition), box-shadow var(--palindromic-transition), filter var(--palindromic-transition);
+    }
+    .palindromic-btn:hover { transform: translateY(-1px); box-shadow: var(--palindromic-shadow-2); filter: saturate(1.05); }
+    .palindromic-btn.palindromic-ghost {
+      background: var(--palindromic-badge-bg); color: var(--palindromic-badge-text);
+      border: 1px solid var(--palindromic-color-border); box-shadow: none; font-weight: 600;
+    }
+
+    /* Main Grid */
+    .palindromic-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--palindromic-grid-gap);
+    }
+    @media (max-width: 1040px){ .palindromic-grid{ grid-template-columns: 1fr; } }
+
+    .palindromic-card {
+      background: var(--palindromic-color-white);
+      border: 1px solid var(--palindromic-color-border);
+      border-radius: var(--palindromic-radius);
+      padding: clamp(14px, 2vw, 18px);
+      box-shadow: var(--palindromic-shadow-1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .palindromic-card h2 {
+      font: 600 clamp(14px, 1.6vw, 18px) var(--palindromic-font-heading);
+      color: var(--palindromic-color-text-dark);
+      margin: 0 0 10px;
+    }
+
+    /* Input + Highlights overlay */
+    .palindromic-input-wrap {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+    .palindromic-mirror {
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow: hidden;
+      padding: 12px;
+      border-radius: var(--palindromic-radius-sm);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      pointer-events: none;
+    }
+    .palindromic-textarea {
+      position: relative;
+      background: var(--palindromic-color-bg-light);
+      border: 1px solid var(--palindromic-color-border);
+      border-radius: var(--palindromic-radius-sm);
+      min-height: 220px;
+      resize: vertical;
+      color: var(--palindromic-color-text-dark);
+      padding: 12px;
+      font: 500 14px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      outline: none;
+      transition: box-shadow var(--palindromic-transition), border-color var(--palindromic-transition), background var(--palindromic-transition);
+    }
+    .palindromic-textarea:focus {
+      border-color: var(--palindromic-color-accent);
+      box-shadow: 0 0 0 6px rgba(59,130,246,.16);
+      background: #EEF2FF;
+    }
+    .palindromic-mark {
+      background: linear-gradient(180deg, var(--palindromic-mark-bg), rgba(255,255,255,.0));
+      border-bottom: 2px solid var(--palindromic-mark-border);
+      border-radius: 4px;
+      transition: background var(--palindromic-transition);
+    }
+
+    /* Toolbar */
+    .palindromic-toolbar {
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    }
+    .palindromic-chipbtn, .palindromic-select, .palindromic-input, .palindromic-number {
+      border: 1px solid var(--palindromic-color-border);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: transform var(--palindromic-transition), background var(--palindromic-transition), border-color var(--palindromic-transition);
+    }
+    .palindromic-chipbtn:hover { transform: translateY(-1px); background: #F8FAFC; }
+    .palindromic-select, .palindromic-input, .palindromic-number { cursor: default; }
+    .palindromic-number { width: 90px; text-align: center; }
+    .palindromic-switch {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 10px;
+      background: #fff; border: 1px solid var(--palindromic-color-border); border-radius: 999px;
+    }
+    .palindromic-switch input{ display:none; }
+    .palindromic-dot{
+      width: 16px; height: 16px; border-radius: 999px;
+      border: 2px solid var(--palindromic-color-border); background: #f5f7fb;
+      transition: transform var(--palindromic-transition), background var(--palindromic-transition), box-shadow var(--palindromic-transition);
+    }
+    .palindromic-switch input:checked + .palindromic-dot{
+      background: var(--palindromic-color-primary);
+      border-color: transparent;
+      box-shadow: 0 0 0 4px rgba(29,78,216,.2);
+    }
+    .palindromic-mini { font-size: 12px; color: var(--palindromic-color-text-light); }
+
+    /* Stats */
+    .palindromic-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    }
+    @media (max-width: 560px){ .palindromic-stats{ grid-template-columns: 1fr 1fr; } }
+    .palindromic-stat {
+      border: 1px solid var(--palindromic-color-border);
+      border-radius: 12px; padding: 10px; background: #fff;
+    }
+    .palindromic-stat b{ display:block; color: var(--palindromic-color-text-light); font-size: 12px; }
+    .palindromic-stat span{ font-weight: 800; font-size: 18px; }
+
+    /* Results */
+    .palindromic-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .palindromic-tab { border: 1px solid var(--palindromic-color-border); background:#fff; padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:600; }
+    .palindromic-tab.palindromic-active { background: var(--palindromic-badge-bg); color: var(--palindromic-badge-text); border-color: var(--palindromic-color-primary); }
+    .palindromic-results {
+      max-height: 360px; overflow:auto; border:1px solid var(--palindromic-color-border); border-radius:12px;
+    }
+    .palindromic-table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+    }
+    .palindromic-table th, .palindromic-table td {
+      padding: 10px; border-bottom: 1px solid var(--palindromic-color-border); text-align: left;
+    }
+    .palindromic-table th { position: sticky; top: 0; background: #fff; z-index: 1; }
+    .palindromic-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700;
+      background: var(--palindromic-badge-bg); color: var(--palindromic-badge-text);
+    }
+    .palindromic-empty {
+      padding: 18px; text-align: center; color: var(--palindromic-color-text-light);
+    }
+
+    /* Animations helpers */
+    .palindromic-fade { animation: palindromic-fade .28s ease both; }
+    @keyframes palindromic-fade{ from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)} }
+
+    @media (prefers-reduced-motion: reduce){
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  <div class="palindromic-app" id="palindromic-app">
+    <!-- HERO -->
+    <section class="palindromic-hero">
+      <div class="palindromic-hero-card palindromic-fade">
+        <h1 class="palindromic-title">Palindromic Word Finder</h1>
+        <p class="palindromic-subtitle">
+          Detect palindromes in <strong>words</strong> or <strong>phrases</strong>, see their <em>positions</em>,
+          highlight them in your text, and <strong>export</strong> the results. Free, instant, and privacy-friendly.
+        </p>
+        <div class="palindromic-cta-row">
+          <button class="palindromic-btn" id="palindromic-btn-examples">Load Examples</button>
+          <button class="palindromic-btn palindromic-ghost" id="palindromic-btn-copy-report">Copy Report</button>
+          <span class="palindromic-mini">Tip: click any row to re-highlight in context.</span>
+        </div>
+      </div>
+
+      <div class="palindromic-hero-card palindromic-fade">
+        <h2 class="palindromic-mini" style="font-size:13px;margin:0 0 10px;">Advanced Options</h2>
+        <div class="palindromic-toolbar" style="margin-bottom:10px;">
+          <label class="palindromic-switch">
+            <input type="checkbox" id="palindromic-case-insensitive" checked />
+            <span class="palindromic-dot"></span>
+            <span class="palindromic-mini">Case-insensitive</span>
+          </label>
+          <label class="palindromic-switch">
+            <input type="checkbox" id="palindromic-ignore-spaces" checked />
+            <span class="palindromic-dot"></span>
+            <span class="palindromic-mini">Ignore spaces</span>
+          </label>
+          <label class="palindromic-switch">
+            <input type="checkbox" id="palindromic-ignore-punct" checked />
+            <span class="palindromic-dot"></span>
+            <span class="palindromic-mini">Ignore punctuation</span>
+          </label>
+          <label class="palindromic-switch">
+            <input type="checkbox" id="palindromic-ignore-diacritics" />
+            <span class="palindromic-dot"></span>
+            <span class="palindromic-mini">Ignore diacritics</span>
+          </label>
+          <label class="palindromic-switch">
+            <input type="checkbox" id="palindromic-unique-only" checked />
+            <span class="palindromic-dot"></span>
+            <span class="palindromic-mini">Unique only</span>
+          </label>
+        </div>
+        <div class="palindromic-toolbar">
+          <label class="palindromic-mini">Mode:
+            <select id="palindromic-mode" class="palindromic-select" aria-label="Detection mode">
+              <option value="words">Words</option>
+              <option value="substrings">Substrings (within words)</option>
+              <option value="phrases">Phrases (across text)</option>
+            </select>
+          </label>
+          <label class="palindromic-mini">Min length:
+            <input id="palindromic-minlen" type="number" class="palindromic-number" min="2" max="200" value="3" />
+          </label>
+          <label class="palindromic-mini">Max results:
+            <input id="palindromic-max" type="number" class="palindromic-number" min="10" max="2000" value="300" />
+          </label>
+          <button class="palindromic-chipbtn" id="palindromic-btn-export-json">Export JSON</button>
+          <button class="palindromic-chipbtn" id="palindromic-btn-export-csv">Export CSV</button>
+          <button class="palindromic-chipbtn" id="palindromic-btn-clear">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN GRID -->
+    <section class="palindromic-grid">
+      <!-- LEFT: Input -->
+      <div class="palindromic-card palindromic-fade">
+        <h2>Input &amp; Highlights</h2>
+
+        <div class="palindromic-input-wrap">
+          <div class="palindromic-mirror" id="palindromic-mirror" aria-hidden="true"></div>
+          <textarea class="palindromic-textarea" id="palindromic-textarea" placeholder="Paste or type your text here… Try:  Was it a car or a cat I saw?  /  Never odd or even."></textarea>
+        </div>
+
+        <div class="palindromic-toolbar" style="margin-top:10px;">
+          <button class="palindromic-chipbtn" id="palindromic-btn-paste">Paste</button>
+          <button class="palindromic-chipbtn" id="palindromic-btn-copy">Copy</button>
+          <span class="palindromic-mini">Selections highlight below as you type.</span>
+        </div>
+
+        <div class="palindromic-stats" style="margin-top:12px;">
+          <div class="palindromic-stat"><b>Total chars</b><span id="palindromic-stat-chars">0</span></div>
+          <div class="palindromic-stat"><b>Total words</b><span id="palindromic-stat-words">0</span></div>
+          <div class="palindromic-stat"><b>Palindromes found</b><span id="palindromic-stat-found">0</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="palindromic-card palindromic-fade">
+        <h2>Results</h2>
+
+        <div class="palindromic-tabs" role="tablist" aria-label="Result filters">
+          <button class="palindromic-tab palindromic-active" data-palindromic-scope="all" role="tab" aria-selected="true">All</button>
+          <button class="palindromic-tab" data-palindromic-scope="words" role="tab">Words</button>
+          <button class="palindromic-tab" data-palindromic-scope="substrings" role="tab">Substrings</button>
+          <button class="palindromic-tab" data-palindromic-scope="phrases" role="tab">Phrases</button>
+        </div>
+
+        <div class="palindromic-results" id="palindromic-results" role="region" aria-live="polite">
+          <table class="palindromic-table" id="palindromic-table">
+            <thead>
+              <tr>
+                <th>Text</th>
+                <th>Type</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Length</th>
+              </tr>
+            </thead>
+            <tbody id="palindromic-tbody">
+              <tr><td class="palindromic-empty" colspan="5">No palindromes yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+
+  
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+
+
+
+
+  <script>
+  (function(){
+    const $ = (s, r=document)=>r.querySelector(s);
+    const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+
+    // Elements
+    const ta = $('#palindromic-textarea');
+    const mirror = $('#palindromic-mirror');
+    const statChars = $('#palindromic-stat-chars');
+    const statWords = $('#palindromic-stat-words');
+    const statFound = $('#palindromic-stat-found');
+    const tbody = $('#palindromic-tbody');
+    const tabs = $$('.palindromic-tab');
+
+    // Controls
+    const exBtn = $('#palindromic-btn-examples');
+    const copyReportBtn = $('#palindromic-btn-copy-report');
+    const pasteBtn = $('#palindromic-btn-paste');
+    const copyBtn = $('#palindromic-btn-copy');
+    const clearBtn = $('#palindromic-btn-clear');
+    const exportJsonBtn = $('#palindromic-btn-export-json');
+    const exportCsvBtn = $('#palindromic-btn-export-csv');
+
+    const modeEl = $('#palindromic-mode');
+    const minLenEl = $('#palindromic-minlen');
+    const maxResEl = $('#palindromic-max');
+
+    const optCase = $('#palindromic-case-insensitive');
+    const optSpaces = $('#palindromic-ignore-spaces');
+    const optPunct = $('#palindromic-ignore-punct');
+    const optDiac = $('#palindromic-ignore-diacritics');
+    const optUnique = $('#palindromic-unique-only');
+
+    // State
+    let allResults = []; // {text, start, end, length, type}
+    let currentScope = 'all';
+
+    // Helpers
+    const showToast = (msg) => {
+      const n = document.createElement('div');
+      n.textContent = msg;
+      n.style.cssText = `
+        position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+        background: linear-gradient(90deg, var(--palindromic-gradient-cta-start), var(--palindromic-gradient-cta-end));
+        color:#fff;padding:10px 14px;border-radius:999px;font-weight:800;letter-spacing:.2px;
+        box-shadow: var(--palindromic-shadow-1);z-index:9999
+      `;
+      document.body.appendChild(n);
+      setTimeout(()=>n.remove(), 1500);
+    };
+
+    const escapeHTML = s => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+    const stripDiacritics = (str) => str.normalize('NFD').replace(/\p{M}+/gu, '');
+
+    const normalizeForCompare = (str) => {
+      let s = str;
+      if (optDiac.checked) s = stripDiacritics(s);
+      if (optCase.checked) s = s.toLowerCase();
+      return s;
+    };
+
+    const onlyAlphaNum = (ch) => /\p{L}|\p{N}/u.test(ch);
+
+    const tokenRegex = /[\p{L}\p{N}_]+/gu;
+
+    const reverseString = (s) => Array.from(s).reverse().join('');
+
+    // Core: check palindrome given string AFTER normalization choices for comparison
+    const isPalindrome = (s) => {
+      const comp = normalizeForCompare(s);
+      return comp.length >= Number(minLenEl.value) && comp === reverseString(comp);
+    };
+
+    // Map cleaned string positions back to original
+    const buildCleanedWithMap = (src) => {
+      const arr = Array.from(src);
+      const cleaned = [];
+      const map = []; // cleaned idx -> original idx
+      for (let i=0;i<arr.length;i++){
+        const ch = arr[i];
+        const okSpace = !optSpaces.checked && /\s/u.test(ch);
+        const okPunct = !optPunct.checked && /[^\p{L}\p{N}\s]/u.test(ch);
+        if (onlyAlphaNum(ch) || okSpace || okPunct){
+          cleaned.push(ch);
+          map.push(i);
+        }
+      }
+      return { cleaned: cleaned.join(''), map };
+    };
+
+    // Find palindromic WORDS
+    const findWordPalindromes = (text) => {
+      const out = [];
+      let m;
+      while ((m = tokenRegex.exec(text)) !== null) {
+        const word = m[0];
+        const start = m.index;
+        const end = start + word.length;
+        let cmp = word;
+        if (optDiac.checked) cmp = stripDiacritics(cmp);
+        if (optCase.checked) cmp = cmp.toLowerCase();
+        if (cmp.length >= Number(minLenEl.value) && cmp === reverseString(cmp)){
+          out.push({ text: word, start, end, length: word.length, type: 'words' });
+        }
+      }
+      return out;
+    };
+
+    // Expand-around-center for substrings (within a token)
+    const expandPalSubs = (rawWord, wordStart) => {
+      const results = [];
+      const chars = Array.from(rawWord);
+      const baseForCompare = optDiac.checked ? stripDiacritics(rawWord) : rawWord;
+      const compArr = Array.from(optCase.checked ? baseForCompare.toLowerCase() : baseForCompare);
+
+      const pushIfValid = (l, r) => {
+        const len = r - l + 1;
+        if (len >= Number(minLenEl.value)) {
+          const text = chars.slice(l, r+1).join('');
+          results.push({ text, start: wordStart + l, end: wordStart + r + 1, length: len, type: 'substrings' });
+        }
+      };
+
+      const expand = (L, R) => {
+        while (L>=0 && R<compArr.length && compArr[L] === compArr[R]) {
+          pushIfValid(L, R);
+          L--; R++;
+          if (results.length > Number(maxResEl.value)) break;
+        }
+      };
+
+      for (let i=0;i<compArr.length;i++){
+        expand(i, i);     // odd length
+        expand(i, i+1);   // even length
+        if (results.length > Number(maxResEl.value)) break;
+      }
+      return results;
+    };
+
+    const findSubstringPalindromes = (text) => {
+      const out = [];
+      let m;
+      while ((m = tokenRegex.exec(text)) !== null) {
+        const word = m[0];
+        const start = m.index;
+        expandPalSubs(word, start).forEach(x => out.push(x));
+        if (out.length > Number(maxResEl.value)) break;
+      }
+      return out;
+    };
+
+    // Phrases across whole text (honor toggles)
+    const findPhrasePalindromes = (text) => {
+      const out = [];
+      const { cleaned, map } = buildCleanedWithMap(text);
+      const ref = Array.from(cleaned);
+      if (ref.length === 0) return out;
+
+      const base = optDiac.checked ? stripDiacritics(cleaned) : cleaned;
+      const comp = Array.from(optCase.checked ? base.toLowerCase() : base);
+
+      const pushIfValid = (L, R) => {
+        const len = R - L + 1;
+        if (len >= Number(minLenEl.value)) {
+          const oStart = map[L];
+          const oEnd = map[R] + 1;
+          const textSlice = Array.from(text).slice(oStart, oEnd).join('');
+          out.push({ text: textSlice, start: oStart, end: oEnd, length: textSlice.length, type: 'phrases' });
+        }
+      };
+
+      const expand = (L, R) => {
+        while (L>=0 && R<comp.length && comp[L] === comp[R]) {
+          pushIfValid(L, R);
+          if (out.length >= Number(maxResEl.value)) break;
+          L--; R++;
+        }
+      };
+
+      for (let i=0;i<comp.length;i++){
+        expand(i, i);
+        expand(i, i+1);
+        if (out.length >= Number(maxResEl.value)) break;
+      }
+      return out;
+    };
+
+    // Compose results based on mode
+    const dedupeResults = (arr) => {
+      if (!optUnique.checked) return arr;
+      const seen = new Set();
+      const out = [];
+      for (const r of arr){
+        const key = `${r.start}-${r.end}-${r.type}`;
+        if (!seen.has(key)){ seen.add(key); out.push(r); }
+      }
+      return out;
+    };
+
+    const sortResults = (arr) => {
+      // Longer first, then earlier position
+      return arr.sort((a,b)=> b.length - a.length || a.start - b.start);
+    };
+
+    const filterByScope = (arr, scope) => {
+      if (scope === 'all') return arr;
+      return arr.filter(r => r.type === scope);
+    };
+
+    // Highlight ranges in mirror (expects non-overlapping, sorted)
+    const renderHighlights = (text, ranges) => {
+      if (!text) { mirror.innerHTML = ''; return; }
+      const esc = escapeHTML(text);
+      if (!ranges.length){
+        mirror.innerHTML = esc;
+        return;
+      }
+
+      // Build safely with slicing original (unescaped), then escape segments
+      let out = '';
+      let last = 0;
+      for (const {start, end} of ranges){
+        const pre = text.slice(last, start);
+        const mid = text.slice(start, end);
+        out += escapeHTML(pre);
+        out += `<mark class="palindromic-mark">${escapeHTML(mid)}</mark>`;
+        last = end;
+      }
+      out += escapeHTML(text.slice(last));
+      // Normalize newlines for mirror
+      mirror.innerHTML = out.replace(/\r\n|\r|\n/g, '\n');
+    };
+
+    // Update stats + results + highlights
+    const analyze = () => {
+      const text = ta.value || '';
+      statChars.textContent = Array.from(text).length;
+      statWords.textContent = (text.trim().match(tokenRegex) || []).length;
+
+      let results = [];
+      const mode = modeEl.value;
+
+      if (mode === 'words') results = findWordPalindromes(text);
+      if (mode === 'substrings') results = findSubstringPalindromes(text);
+      if (mode === 'phrases') results = findPhrasePalindromes(text);
+
+      // Also compute the other modes in background for "All" tab view
+      let all = results.slice();
+      if (mode !== 'words') all = all.concat(findWordPalindromes(text));
+      if (mode !== 'substrings') all = all.concat(findSubstringPalindromes(text));
+      if (mode !== 'phrases') all = all.concat(findPhrasePalindromes(text));
+
+      all = dedupeResults(all);
+      all = sortResults(all).slice(0, Number(maxResEl.value));
+      allResults = all;
+
+      statFound.textContent = allResults.length.toString();
+
+      // Table render (respect currentScope)
+      drawTable();
+
+      // Highlights use current scope on screen
+      const visible = filterByScope(allResults, currentScope);
+      renderHighlights(text, visible.map(({start,end}) => ({start,end})));
+    };
+
+    const drawTable = () => {
+      const scope = currentScope;
+      const list = filterByScope(allResults, scope);
+      if (!list.length){
+        tbody.innerHTML = `<tr><td class="palindromic-empty" colspan="5">No palindromes yet.</td></tr>`;
+        return;
+      }
+      const rows = list.map(r => `
+        <tr data-palindromic-start="${r.start}" data-palindromic-end="${r.end}">
+          <td>${escapeHTML(r.text)}</td>
+          <td><span class="palindromic-badge">${r.type}</span></td>
+          <td>${r.start}</td>
+          <td>${r.end}</td>
+          <td>${r.length}</td>
+        </tr>
+      `).join('');
+      tbody.innerHTML = rows;
+
+      // row click => re-highlight only that range
+      $$('tr', tbody).forEach(tr => {
+        tr.addEventListener('click', () => {
+          const s = Number(tr.getAttribute('data-palindromic-start'));
+          const e = Number(tr.getAttribute('data-palindromic-end'));
+          renderHighlights(ta.value, [{start:s, end:e}]);
+          // brief flash effect
+          tr.style.background = 'rgba(29,78,216,.08)';
+          setTimeout(()=> tr.style.background = '', 300);
+        });
+      });
+    };
+
+    // Events
+    ta.addEventListener('input', analyze);
+    [modeEl, minLenEl, maxResEl, optCase, optSpaces, optPunct, optDiac, optUnique].forEach(el => {
+      el.addEventListener('change', analyze);
+    });
+
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('palindromic-active'));
+      t.classList.add('palindromic-active');
+      currentScope = t.getAttribute('data-palindromic-scope') || 'all';
+      drawTable();
+      const visible = filterByScope(allResults, currentScope);
+      renderHighlights(ta.value, visible.map(({start,end}) => ({start,end})));
+    }));
+
+    // Clipboard helpers
+    pasteBtn.addEventListener('click', async () => {
+      try { const txt = await navigator.clipboard.readText(); ta.value += txt; analyze(); showToast('Pasted'); }
+      catch { showToast('Clipboard permission needed'); }
+    });
+    copyBtn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(ta.value); showToast('Copied'); }
+      catch { showToast('Clipboard permission needed'); }
+    });
+
+    // Clear
+    clearBtn.addEventListener('click', () => { ta.value = ''; analyze(); });
+
+    // Examples
+    exBtn.addEventListener('click', () => {
+      ta.value = [
+        'Was it a car or a cat I saw?',
+        'Never odd or even.',
+        'A man, a plan, a canal: Panama!',
+        'Madam Arora teaches malayalam.',
+        'Step on no pets.',
+        'No lemon, no melon.'
+      ].join('\n');
+      analyze();
+      showToast('Examples loaded');
+    });
+
+    // Export
+    exportJsonBtn.addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(allResults, null, 2)], {type:'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'palindromic-results.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    const toCSV = (rows) => {
+      const head = ['text','type','start','end','length'];
+      const esc = v => `"${String(v).replace(/"/g,'""')}"`;
+      const lines = [head.join(',')].concat(rows.map(r => [esc(r.text), r.type, r.start, r.end, r.length].join(',')));
+      return lines.join('\n');
+    };
+    exportCsvBtn.addEventListener('click', () => {
+      const blob = new Blob([toCSV(allResults)], {type:'text/csv'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'palindromic-results.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // Copy Report
+    copyReportBtn.addEventListener('click', async () => {
+      const lines = [
+        '=== Palindromic Word Finder Report ===',
+        'Chars: ' + statChars.textContent,
+        'Words: ' + statWords.textContent,
+        'Found: ' + statFound.textContent,
+        '',
+        ...allResults.map((r,i)=> `${i+1}. [${r.type}] "${r.text}" (start:${r.start}, end:${r.end}, len:${r.length})`)
+      ];
+      try { await navigator.clipboard.writeText(lines.join('\n')); showToast('Report copied'); }
+      catch { showToast('Clipboard permission needed'); }
+    });
+
+    // Initial demo content
+    ta.value = 'Never odd or even.\nWas it a car or a cat I saw?\nMadam, in Eden, I\'m Adam.';
+    analyze();
+  })();
+  </script>
+</body>
+</html>
