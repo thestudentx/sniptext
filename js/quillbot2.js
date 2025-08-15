@@ -467,85 +467,113 @@ document.addEventListener('DOMContentLoaded', () => {
     return formatCleanText(paraphrased);
   }
 
-  async function runParaphrase() {
-    const userText = inputTextarea.value.trim();
-    if (!userText) {
-      errorMsg.textContent = 'Please enter some text to paraphrase.';
-      errorMsg.classList.remove('hidden');
-      showToast('You need to type something first.', 'error', { position: 'tr' });
-      return null;
-    }
-
-    if (currentAbort) currentAbort.abort();
-    currentAbort = new AbortController();
-
-    const languageToSend = langSelect.value === 'auto' ? detectLanguage(userText) : langSelect.value;
-    applyTextDirection(languageToSend);
-
-    const chunks = chunkByBudget(userText, 1200);
-    const total = chunks.length;
-
-    const { candidates, useRerank } = qualityToParams(qualitySel?.value || 'fast');
-
-    const bodies = chunks.map(c => ({
-      text: c,
-      language: languageToSend,
-      mode:  selectedMode,
-      style: selectedStyle,
-      tone:  selectedTone,
-      protectedWords,
-      rewriteStrength: strength ? Number(strength.value) : 50,
-      candidates,
-      useRerank
-    }));
-
-    const results = new Array(total);
-    let completed = 0;
-    const CONCURRENCY = Math.min(3, total);
-
-    setBusy(true, `0%`);
-    errorMsg.classList.add('hidden');
-
-    const queue = bodies.map((body, index) => ({ body, index }));
-    let inFlight = 0;
-    let i = 0;
-
-    return new Promise((resolve) => {
-      const next = () => {
-        if (i >= queue.length && inFlight === 0) {
-          setBusy(false);
-          resolve(results.join('\n\n'));
-          return;
-        }
-        while (inFlight < CONCURRENCY && i < queue.length) {
-          const { body, index } = queue[i++];
-          inFlight++;
-          // shorter duration for progress pings
-          showToast(`Paraphrasing part ${index + 1} of ${total}…`, 'info', { duration: 2000, position: 'tr' });
-          paraphraseChunk(body, currentAbort.signal)
-            .then(text => {
-              results[index] = text;
-              completed++;
-              const pct = Math.round((completed / total) * 100);
-              setBusy(true, `${pct}%`);
-            })
-            .catch(err => {
-              if (currentAbort.signal.aborted) return;
-              console.error('Paraphrase error:', err);
-              errorMsg.textContent = 'Sorry, something went wrong. Please try again later.';
-              errorMsg.classList.remove('hidden');
-              showToast('Failed to paraphrase a chunk. Check console.', 'error', { position: 'tr' });
-              results[index] = queue[index]?.body?.text || '';
-            })
-            .finally(() => {
-              inFlight--;
-              next();
-            });
-        }
-      };
-      next();
-    });
+async function runParaphrase() {
+  const userText = inputTextarea.value.trim();
+  if (!userText) {
+    errorMsg.textContent = 'Please enter some text to paraphrase.';
+    errorMsg.classList.remove('hidden');
+    showToast('You need to type something first.', 'error', { position: 'tr' });
+    return null;
   }
+
+  if (currentAbort) currentAbort.abort();
+  currentAbort = new AbortController();
+
+  const languageToSend = langSelect.value === 'auto' ? detectLanguage(userText) : langSelect.value;
+  applyTextDirection(languageToSend);
+
+  // Split work into manageable pieces
+  const chunks = chunkByBudget(userText, 1200);
+  const total = chunks.length;
+
+  const { candidates, useRerank } = qualityToParams(qualitySel?.value || 'fast');
+
+  const bodies = chunks.map(c => ({
+    text: c,
+    language: languageToSend,
+    mode:  selectedMode,
+    style: selectedStyle,
+    tone:  selectedTone,
+    protectedWords,
+    rewriteStrength: strength ? Number(strength.value) : 50,
+    candidates,
+    useRerank
+  }));
+
+  // Results array prefilled with placeholders to preserve order/height
+  const PLACEHOLDER = '⏳ Paraphrasing...';
+  const results = Array(total).fill(PLACEHOLDER);
+
+  // Throttled renderer so we don’t spam the DOM on every resolve
+  let renderQueued = false;
+  const renderNow = () => {
+    outputTextarea.value = results.join('\n\n');
+    renderQueued = false;
+  };
+  const scheduleRender = () => {
+    if (renderQueued) return;
+    renderQueued = true;
+    requestAnimationFrame(renderNow);
+  };
+
+  // Prepare UI
+  highlightContainer.classList.add('hidden');
+  outputTextarea.classList.remove('hidden');
+  outputTextarea.value = results.join('\n\n'); // show placeholders immediately
+  errorMsg.classList.add('hidden');
+  setBusy(true, `0%`);
+
+  const queue = bodies.map((body, index) => ({ body, index }));
+  const CONCURRENCY = Math.min(3, total);
+  let inFlight = 0, i = 0, completed = 0;
+
+  return new Promise((resolve) => {
+    const next = () => {
+      // All done?
+      if (i >= queue.length && inFlight === 0) {
+        setBusy(false);
+        // Final paint (in case last update was throttled)
+        outputTextarea.value = results.join('\n\n');
+        resolve(outputTextarea.value);
+        return;
+      }
+
+      // Start more work while we have capacity
+      while (inFlight < CONCURRENCY && i < queue.length) {
+        const { body, index } = queue[i++];
+        inFlight++;
+
+        showToast(`Paraphrasing part ${index + 1} of ${total}…`, 'info', { duration: 1800, position: 'tr' });
+
+        paraphraseChunk(body, currentAbort.signal)
+          .then(text => {
+            // Insert chunk in its correct place
+            results[index] = text || '';
+            completed++;
+            const pct = Math.round((completed / total) * 100);
+            setBusy(true, `${pct}%`);
+            scheduleRender();
+          })
+          .catch(err => {
+            if (currentAbort.signal.aborted) return;
+            console.error('Paraphrase error:', err);
+            results[index] = body.text || ''; // graceful fallback: keep original text
+            errorMsg.textContent = 'Sorry, something went wrong. Please try again later.';
+            errorMsg.classList.remove('hidden');
+            showToast('Failed to paraphrase a chunk. Using original text for that part.', 'warning', { position: 'tr' });
+            scheduleRender();
+          })
+          .finally(() => {
+            inFlight--;
+            next();
+          });
+      }
+    };
+
+    next();
+  });
+}
+
 
   // Submit handler
   submitBtn.addEventListener('click', async () => {
@@ -601,7 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inp = (inputTextarea?.value || '').trim();
     if (out) return out;
     if (inp) {
-      showToast({ title:'Heads up', message:'No paraphrased text yet — exporting original input.', type:'info' });
+      showToast({ title:'Heads up', message:'No paraphrased text yet - exporting original input.', type:'info' });
       return inp;
     }
     showToast({ title:'Nothing to export', message:'Add some text first.', type:'error' });

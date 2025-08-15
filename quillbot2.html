@@ -6,6 +6,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paraphrasing Tool - Snip Text</title>
 
+  <!-- ✅ Primary SEO -->
+<meta name="description" content="Free AI paraphrasing tool by Snip Text. Rephrase sentences and paragraphs with multiple modes (Standard, Creative, Academic), rewrite strength, protected words, and highlight differences. Export to DOCX/PDF. No text storage." />
+<link rel="canonical" href="https://YOUR-DOMAIN.com/tools/paraphrasing" />
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+<meta name="theme-color" content="#1D4ED8" />
+
+<!-- ✅ Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Free AI Paraphrasing Tool | Snip Text" />
+<meta property="og:description" content="Rephrase sentences & paragraphs in seconds. Multiple modes, protected words, rewrite strength, and DOCX/PDF export. We don’t store your text." />
+<meta property="og:url" content="https://checkai.pro/quillbot2" />
+<meta property="og:image" content="https://checkai.pro/images/quilbot-logo.png" />
+<meta property="og:site_name" content="Snip Text" />
+
+<!-- ✅ Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Free AI Paraphrasing Tool | Snip Text" />
+<meta name="twitter:description" content="Fast, secure paraphrasing with modes, tone & style, protected words, and exports." />
+<meta name="twitter:image" content="https://checkai.pro/images/quilbot-logo.png" />
+
+<!-- (Optional but nice) favicon sizes -->
+<link rel="apple-touch-icon" href="/favicon.png" />
+<link rel="icon" sizes="192x192" href="/favicon.png" />
+
+<!-- ✅ Accessible yet invisible H1 for SEO (keeps your visual H2) -->
+<style>
+  .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+
+<!-- ✅ Structured Data: SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Snip Text Paraphrasing Tool",
+  "applicationCategory":"Writing",
+  "operatingSystem":"Web",
+  "url":"https://YOUR-DOMAIN.com/tools/paraphrasing",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "featureList":[
+    "Paraphrasing modes (Standard, Creative, Academic, Expand, Shorten, Grammar)",
+    "Style & tone controls",
+    "Protected words",
+    "Rewrite strength slider",
+    "Highlight differences",
+    "DOCX/PDF export",
+    "Zero data storage"
+  ],
+  "creator":{"@type":"Organization","name":"Snip Text","url":"https://YOUR-DOMAIN.com"}
+}
+</script>
+
+<!-- ✅ Structured Data: WebSite + SearchAction -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"Snip Text",
+  "url":"https://YOUR-DOMAIN.com/",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://YOUR-DOMAIN.com/search?q={search_term_string}",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+
+<!-- ✅ Structured Data: Breadcrumbs -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://YOUR-DOMAIN.com/"},
+    {"@type":"ListItem","position":2,"name":"Free Tools","item":"https://YOUR-DOMAIN.com/tools/free-tools"},
+    {"@type":"ListItem","position":3,"name":"Paraphrasing Tool","item":"https://YOUR-DOMAIN.com/tools/paraphrasing"}
+  ]
+}
+</script>
+
+<!-- ✅ Structured Data: FAQ (matches the FAQ section you’ll add below) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Is my text stored or shared?",
+      "acceptedAnswer":{"@type":"Answer","text":"No. Processing is done through a private API and we don’t store your text."}
+    },
+    {
+      "@type":"Question",
+      "name":"How does protected words work?",
+      "acceptedAnswer":{"@type":"Answer","text":"Any words you add as protected will be preserved during rewriting."}
+    },
+    {
+      "@type":"Question",
+      "name":"What paraphrasing modes do you support?",
+      "acceptedAnswer":{"@type":"Answer","text":"Standard, Fluent, Creative, Academic, Expand, Shorten, and Fix Grammar."}
+    },
+    {
+      "@type":"Question",
+      "name":"Can I export the result?",
+      "acceptedAnswer":{"@type":"Answer","text":"Yes, you can export to TXT, DOCX, and PDF in one click."}
+    }
+  ]
+}
+</script>
+
+
   <!-- Core CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="/components/toggleTheme.css">
@@ -26,7 +137,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
-  <nav id="main-navbar">
+  <nav id="main-navbar" aria-label="Primary">
     <div class="nav-container">
       <div class="logo"><a href="index.html">Snip Text</a></div>
       <div class="hamburger" id="hamburger">
@@ -48,6 +159,7 @@
   <!-- === Main Paraphrasing Interface === -->
   <main class="qb-main">
     <div class="qb-container fade-in">
+      <h1 class="sr-only">Free AI Paraphrasing Tool - Rephrase Sentences & Paragraphs Online | Snip Text</h1>
       <h2 class="qb-title">Paraphrase with Snip Text</h2>
       <p class="qb-subtitle">
         Paste your thesis paragraph below and receive a polished, academic-style paraphrase instantly.
@@ -161,7 +273,7 @@
             <button id="qb-paste" class="qb-textarea-button qb-button--small" title="Paste from clipboard">📋 Paste</button>
           </div>
           <div class="qb-textarea-container">
-            <textarea id="qb-input" class="qb-textarea" placeholder="Paste your thesis paragraph here..." rows="8" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+            <textarea id="qb-input" class="qb-textarea" placeholder="Paste your text paragraph here..." rows="8" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
           </div>
           <div class="qb-input-footer">
             <p id="qb-count" class="qb-count">Words: 0 | Approx. Tokens: 0</p>
@@ -207,6 +319,7 @@
         </div>
 
         <div class="qb-meta-right">
+          <p>Download</p>
           <button id="qb-export-txt"  class="qb-export-btn" title="Export as .txt">
             <i class="fas fa-file-alt" aria-hidden="true"></i> TXT
           </button>
@@ -230,12 +343,12 @@
     <div class="qb-why-container">
       <h2 class="qb-why-title">Why Snip Text Paraphraser?</h2>
       <div class="qb-why-grid">
-        <div class="qb-why-box fade-in-box"><i class="fas fa-sliders-h qb-icon"></i><h3>Rich Rewrite Modes</h3><p>Switch between academic, fluent, creative, or concise styles—perfect for every writing goal.</p></div>
+        <div class="qb-why-box fade-in-box"><i class="fas fa-sliders-h qb-icon"></i><h3>Rich Rewrite Modes</h3><p>Switch between academic, fluent, creative, or concise styles-perfect for every writing goal.</p></div>
         <div class="qb-why-box fade-in-box"><i class="fas fa-shield-alt qb-icon"></i><h3>Zero Data Storage</h3><p>Your content is never saved or shared. We run on private, secure APIs to keep your input confidential.</p></div>
         <div class="qb-why-box fade-in-box"><i class="fas fa-brain qb-icon"></i><h3>Context-Aware Outputs</h3><p>Instead of random rewrites, Snip Text understands your intent and paraphrases accordingly.</p></div>
         <div class="qb-why-box fade-in-box"><i class="fas fa-bolt qb-icon"></i><h3>Real-Time Results</h3><p>Instant feedback, no wait. Our AI processes and returns your rewritten paragraph in seconds.</p></div>
         <div class="qb-why-box fade-in-box"><i class="fas fa-highlighter qb-icon"></i><h3>Highlight Differences</h3><p>Visual diff preview lets you compare the original and paraphrased version with colored highlights.</p></div>
-        <div class="qb-why-box fade-in-box"><i class="fas fa-columns qb-icon"></i><h3>Structure-Preserving Paraphrase</h3><p>Headings, bullet points, lists—your original format stays intact while we rewrite the content.</p></div>
+        <div class="qb-why-box fade-in-box"><i class="fas fa-columns qb-icon"></i><h3>Structure-Preserving Paraphrase</h3><p>Headings, bullet points, lists-your original format stays intact while we rewrite the content.</p></div>
       </div>
     </div>
   </section>
@@ -281,7 +394,7 @@
   <!-- Diff lib -->
   <script src="https://unpkg.com/diff-match-patch@1.0.5/index.js" defer></script>
 
-  <!-- DOCX & PDF (UMDs) — safe no-conflict globals -->
+  <!-- DOCX & PDF (UMDs) - safe no-conflict globals -->
 <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
 

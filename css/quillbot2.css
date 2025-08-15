@@ -1,6 +1,13 @@
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Dark/Light Theme Variables                                                  */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   Snip Text – Paraphraser UI Styles (clean + commented)
+   - All base/desktop styles first
+   - All responsive media queries consolidated at the very end
+   - Nothing changed/removed: only reordered + commented
+──────────────────────────────────────────────────────────────────────────────── */
+
+/* ────────────────────────────────────────────────────────────────────────────────
+   1) Dark/Light Theme Variables
+──────────────────────────────────────────────────────────────────────────────── */
 :root {
   /* Brand */
   --brand-color: #1D4ED8;
@@ -83,23 +90,23 @@
   --diff-del-bg:     #4d292f;
   --diff-del-text:   #e09a9f;
   
-    /* Controls */
+  /* Controls */
   --control-surface: var(--bg-input);
   --control-border:  #40445a;
   --chip-bg:         rgba(var(--brand-color-rgb), .18);
   --chip-text:       var(--text-secondary);
   --chip-remove:     rgba(var(--brand-color-rgb), 1);
 
-    /* Slider */
+  /* Slider */
   --slider-track:    #393e55;
   --slider-fill:     rgba(var(--brand-color-rgb), 1);
   --slider-thumb:    var(--brand-color);
   --slider-thumb-ring: rgba(var(--brand-color-rgb), .35);
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Reset & Base                                                                 */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   2) Reset & Base
+──────────────────────────────────────────────────────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
@@ -114,9 +121,9 @@ body {
   overflow-x: hidden;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Main Container                                                               */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   3) Main Container + Fade-in
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-main { padding: 2rem 1rem; }
 
 .qb-container {
@@ -131,17 +138,15 @@ body {
 }
 
 /* Fade-in animation */
-.fade-in {
-  animation: fadeInContainer 0.7s ease forwards;
-}
+.fade-in { animation: fadeInContainer 0.7s ease forwards; }
 @keyframes fadeInContainer {
   from { opacity: 0; transform: translateY(15px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Titles & Subtitles                                                           */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   4) Titles & Subtitles
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-title {
   font-size: 2.2rem;
   font-weight: 600;
@@ -156,9 +161,9 @@ body {
   text-align: center;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Language Support                                                             */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   5) Language Selector
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-language {
   display: flex;
   flex-direction: row;
@@ -182,16 +187,12 @@ body {
   outline: none;
   transition: all 0.3s ease;
 }
-.qb-select:hover {
-  background-color: rgba(var(--brand-color-rgb), 0.05);
-}
-.qb-select:focus {
-  box-shadow: 0 0 0 3px rgba(var(--brand-color-rgb), 0.25);
-}
+.qb-select:hover { background-color: rgba(var(--brand-color-rgb), 0.05); }
+.qb-select:focus { box-shadow: 0 0 0 3px rgba(var(--brand-color-rgb), 0.25); }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Tabs & Toolbars                                                              */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   6) Tabs & Toolbar (Mode / Style / Tone)
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-toolbar { display: flex; flex-wrap: nowrap; gap: 1.5rem; overflow-x: auto; margin-bottom: 1.5rem; }
 .qb-section-group { flex-shrink: 0; min-width: 250px; }
 
@@ -201,6 +202,7 @@ body {
   border-bottom: 1px solid var(--border-default);
   margin-bottom: 1rem;
 }
+
 .qb-tab {
   white-space: nowrap;
   padding: 0.75rem 1.25rem;
@@ -222,10 +224,8 @@ body {
   border-color: var(--brand-color);
 }
 
-/* Tooltip */
-.qb-tab[data-tooltip] {
-  position: relative;
-}
+/* Tooltip for tabs */
+.qb-tab[data-tooltip] { position: relative; }
 .qb-tab[data-tooltip]::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -257,8 +257,9 @@ body {
   border: none;
 }
 
-
-/* ── Meta bar (trust + model + exports) ───────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   7) Meta Bar (trust message + model badge + export buttons)
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-meta-bar{
   margin-top: 1rem;
   display:flex; align-items:center; justify-content:space-between; gap:12px;
@@ -285,7 +286,7 @@ body {
 }
 .qb-model-badge strong{ color: var(--brand-color); font-weight: 700; }
 
-/* Export buttons */
+/* Export buttons cluster */
 .qb-meta-right{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .qb-export-btn{
   display:inline-flex; align-items:center; gap:6px;
@@ -302,19 +303,10 @@ body {
 .qb-export-btn:active{ transform: translateY(1px); }
 .qb-export-btn i{ color: var(--brand-color); }
 
-/* Stack neatly on small screens */
-@media (max-width: 720px){
-  .qb-meta-bar{ flex-direction: column; align-items: stretch; }
-  .qb-meta-right{ justify-content: flex-start; }
-}
-
-
-
-/* -------------------------------- CONTROLS, REWRITE STRENGTH, QUALITY ---------------------------------------- */
-/* ——— Controls Bar ——— */
-.qb-section-controls{
-  margin-top: .5rem;
-}
+/* ────────────────────────────────────────────────────────────────────────────────
+   8) Controls Panel (Protected words + Strength + Quality)
+──────────────────────────────────────────────────────────────────────────────── */
+.qb-section-controls{ margin-top: .5rem; }
 
 .qb-controls{
   display:grid;
@@ -327,7 +319,6 @@ body {
   padding: 14px;
 }
 
-/* Each control */
 .qb-control label{
   display:block;
   margin-bottom:8px;
@@ -335,7 +326,7 @@ body {
   color: var(--text-secondary);
 }
 
-/* Protected chips */
+/* Protected words chips */
 .qb-chips{
   display:flex;
   flex-wrap:wrap;
@@ -346,7 +337,6 @@ body {
   border-radius:10px;
   background: var(--bg-input);
 }
-
 .qb-chip{
   display:inline-flex;
   gap:6px;
@@ -361,9 +351,7 @@ body {
   transition: border-color .15s ease, transform .1s ease;
 }
 .qb-chip:hover{ border-color: var(--brand-color); transform: translateY(-1px); }
-.qb-chip-remove{
-  cursor:pointer; opacity:.8; color: var(--chip-remove);
-}
+.qb-chip-remove{ cursor:pointer; opacity:.8; color: var(--chip-remove); }
 .qb-chip-remove:hover{ opacity:1; }
 
 /* Chip input */
@@ -383,15 +371,14 @@ body {
   box-shadow: 0 0 0 3px rgba(var(--brand-color-rgb), .18);
 }
 
-/* Quality select (inherits .qb-select look) */
+/* Quality dropdown (inherits .qb-select) */
 .qb-control .qb-select{
   width:100%;
   height: 40px;
   border-radius:10px;
 }
 
-/* —— Rewrite Strength (range) —— */
-/* Base */
+/* Strength range */
 #qb-strength{
   --percent: 50%; /* JS updates this */
   -webkit-appearance: none;
@@ -413,8 +400,6 @@ body {
   box-shadow: 0 0 0 3px var(--slider-thumb-ring);
   border-color: var(--brand-color);
 }
-
-/* WebKit Thumb */
 #qb-strength::-webkit-slider-thumb{
   -webkit-appearance: none;
   appearance: none;
@@ -426,14 +411,8 @@ body {
   cursor: pointer;
   margin-top: -4px; /* centers thumb */
 }
-
-/* Firefox Track & Thumb */
-#qb-strength::-moz-range-track{
-  height:10px; border-radius:999px; background: transparent;
-}
-#qb-strength::-moz-range-progress{
-  height:10px; border-radius:999px; background: var(--slider-fill);
-}
+#qb-strength::-moz-range-track{ height:10px; border-radius:999px; background: transparent; }
+#qb-strength::-moz-range-progress{ height:10px; border-radius:999px; background: var(--slider-fill); }
 #qb-strength::-moz-range-thumb{
   width: 18px; height: 18px;
   background: var(--slider-thumb);
@@ -443,7 +422,7 @@ body {
   cursor: pointer;
 }
 
-/* Strength value text */
+/* Strength value bubble */
 #qb-strength-value{
   display:inline-block;
   min-width: 2ch;
@@ -451,28 +430,13 @@ body {
   font-weight: 700;
 }
 
-/* ——— Responsive ——— */
-@media (max-width: 1100px){
-  .qb-controls{
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 700px){
-  .qb-controls{
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Tool Sections (Input / Output)                                               */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   9) Tool Sections (Input / Output panels)
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-tool { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .qb-section { display: flex; flex-direction: column; margin: 1rem 0; }
 .qb-label { font-weight: 500; color: var(--text-secondary); }
-.input-upper-part { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
+.input-upper-part,
 .output-upper-part { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
 
 .qb-textarea-container { position: relative; display: flex; align-items: center; }
@@ -505,11 +469,9 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
-.qb-textarea-button:hover {
-  border: 1px solid var(--text-secondary);
-}
+.qb-textarea-button:hover { border: 1px solid var(--text-secondary); }
 
-/* Counter & Footer */
+/* Input footer (counter, file info, upload) */
 .qb-count { margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-subtitle); }
 .qb-input-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
 
@@ -526,10 +488,11 @@ body {
 .file-info { font-size: 0.9rem; color: var(--text-subtitle); margin-right: 12px; display: inline-block; }
 .hidden { display: none !important; }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Buttons & Actions                                                             */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   10) Buttons & Actions (CTA Row)
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-actions { margin-top: 2rem; display: flex; justify-content: flex-end; gap: 1rem; }
+
 .qb-button {
   padding: 0.8rem 1.8rem;
   border: none;
@@ -543,31 +506,22 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--shadow-light);
 }
-.qb-button--animated:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
+.qb-button--animated:active { transform: translateY(0); box-shadow: none; }
+
 .qb-button--primary {
-  background: linear-gradient(
-    135deg,
-    var(--brand-gradient-start),
-    var(--brand-gradient-end)
-  );
+  background: linear-gradient(135deg, var(--brand-gradient-start), var(--brand-gradient-end));
   color: var(--text-light);
 }
-.qb-button--primary:hover {
-  background: linear-gradient(135deg, var(--brand-color), var(--brand-gradient-end));
-}
+.qb-button--primary:hover { background: linear-gradient(135deg, var(--brand-color), var(--brand-gradient-end)); }
+
 .qb-button--secondary {
   background-color: var(--bg-tab);
   color: var(--text-secondary);
   box-shadow: 0 2px 6px var(--shadow-light);
 }
-.qb-button--secondary:hover {
-  background-color: var(--bg-tab-hover);
-}
+.qb-button--secondary:hover { background-color: var(--bg-tab-hover); }
 
-/* Loader & Disabled */
+/* Loader spinner + disabled state */
 .qb-btn-spinner {
   display: inline-block;
   width: 18px; height: 18px;
@@ -578,21 +532,17 @@ body {
   animation: spin 0.8s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.qb-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+.qb-button:disabled { opacity: 0.6; cursor: not-allowed; }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Highlight & Diff Styles                                                       */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   11) Highlight & Diff (visual comparison)
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-highlight-container {
   border: 1px solid var(--border-default);
   padding: 1rem;
   border-radius: 4px;
   white-space: pre-wrap;
 }
-
 .diff-added {
   background: var(--diff-added-bg);
   color: var(--diff-added-text);
@@ -607,9 +557,9 @@ body {
   padding: 0 2px;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  “Why Snip Text” Section                                                       */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   12) “Why Snip Text” Marketing Section
+──────────────────────────────────────────────────────────────────────────────── */
 .qb-why-snip {
   background: linear-gradient(135deg, var(--bg-highlight) 0%, var(--bg-container) 100%);
   position: relative;
@@ -667,57 +617,105 @@ body {
   line-height: 1.6;
   color: var(--text-muted);
 }
-.qb-icon {
-  font-size: 1.8rem;
-  color: var(--brand-color);
-}
-/* Reveal Animation */
+.qb-icon { font-size: 1.8rem; color: var(--brand-color); }
+
+/* Reveal on scroll */
 .fade-in-box.fade-in-visible {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* ──────────────────────────────────────────────────────────────────────────────── */
-/*  Responsive Breakpoints                                                        */
-/* ──────────────────────────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────────────────────────
+   13) Responsive Breakpoints (all consolidated)
+   - Each breakpoint groups ALL related components’ responsive tweaks
+──────────────────────────────────────────────────────────────────────────────── */
+
+/* ≥ 0 to 1100px */
+@media (max-width: 1100px){
+  /* Controls: collapse to two columns */
+  .qb-controls{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ≥ 0 to 1024px */
 @media (max-width: 1024px) {
+  /* Container padding tighter on tablets */
   .qb-container { padding: 2rem 1.5rem 2.5rem; }
 }
+
+/* ≥ 0 to 768px */
 @media (max-width: 768px) {
+  /* Language: keep dropdown full width on small screens */
   /* .qb-language { flex-direction: column; align-items: flex-start; } */
   .qb-select { width: 100%; }
+
+  /* Tabs: scrollable row */
   .qb-tabs {
     display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
     flex-wrap: nowrap; gap: 0.5rem; margin-bottom: 0.75rem;
     padding-bottom: 1rem; scroll-padding-bottom: 1rem;
   }
   .qb-tab { flex: none; }
+
+  /* Container + layout */
   .qb-container { padding: 2rem 1rem 2.5rem; }
   .qb-tool { grid-template-columns: 1fr; }
   .qb-tabs-mode { margin-bottom: 0.5rem; }
   .qb-tabs-style { margin-bottom: 1rem; }
+
+  /* Buttons sizing */
   .qb-button { padding: 0.6rem 1rem; font-size: 0.9rem; }
 }
+
+/* ≥ 0 to 720px */
+@media (max-width: 720px){
+  /* Meta bar: stack trust/model + export buttons */
+  .qb-meta-bar{ flex-direction: column; align-items: stretch; }
+  .qb-meta-right{ justify-content: flex-start; }
+}
+
+/* ≥ 0 to 700px */
+@media (max-width: 700px){
+  /* Controls: single column on phones */
+  .qb-controls{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ≥ 0 to 480px */
 @media (max-width: 480px) {
+  /* Overall sizing */
   .qb-container { padding: 1.5rem 1rem 2rem; }
   .qb-title { font-size: 1.8rem; }
   .qb-subtitle { font-size: 0.95rem; }
+
+  /* Tabs sizing */
   .qb-tab { font-size: 0.85rem; padding: 0.6rem 1rem; }
   .qb-tabs { gap: 0.4rem; }
+
+  /* Text area */
   .qb-textarea { font-size: 0.95rem; min-height: 200px; }
+
+  /* Minor text/button tweaks */
   .qb-count { font-size: 0.85rem; }
   .qb-button { padding: 0.5rem 1rem; font-size: 0.75rem; }
 }
+
+/* ≥ 0 to 360px */
 @media (max-width: 360px) {
   .qb-container { padding: 1rem 0.75rem 1.5rem; border-radius: 6px; }
   .qb-title { font-size: 1.5rem; margin-bottom: 0.25rem; }
   .qb-subtitle { font-size: 0.9rem; margin-bottom: 1.25rem; }
+
   .qb-tab { font-size: 0.8rem; padding: 0.5rem 0.75rem; margin-right: 0.4rem; }
   .qb-tabs { gap: 0.3rem; }
   .qb-tool { gap: 1rem; }
+
   .qb-textarea { font-size: 0.85rem; min-height: 120px; }
   .qb-count { font-size: 0.8rem; width: 50%; }
+
   .qb-button {
     width: 100%; max-width: 300px;
     padding: 0.3rem 1rem; font-size: 0.5rem;
