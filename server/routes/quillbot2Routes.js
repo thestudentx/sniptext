@@ -4,8 +4,7 @@ const express = require('express');
 const { CohereClientV2 } = require('cohere-ai');
 const router = express.Router();
 
-// 1) (Assumes server.js already did `require('dotenv').config()` and `app.use(express.json());`)
-// 2) Initialize CohereClientV2 with your trial key from .env
+// Assumes server.js already did dotenv + express.json()
 const cohere = new CohereClientV2({
   token: process.env.CO_API_KEY,
 });
@@ -56,7 +55,7 @@ After finishing the Mode transformation, apply exactly ONE of the following STYL
 Finally, produce only the resulting rewritten text following all of the above rules. Return no additional commentary.
 `.trim();
 
-// Helper to pick temperature per option
+// Helper to pick temperature per option (unchanged)
 function getTemperature({ mode, style, tone }) {
   if (mode) {
     switch (mode) {
@@ -86,25 +85,76 @@ function getTemperature({ mode, style, tone }) {
   return 0.5;
 }
 
+/**
+ * ──────────────────────────────────────────────────────────────────────────────
+ * Protected-terms handling (placeholder strategy)
+ * • Replaces each protected term with unique placeholder §§P{n}§§ using
+ *   Unicode-aware "word-ish" boundaries (no partial inside-word matches).
+ * • Restores originals after the model responds.
+ * ──────────────────────────────────────────────────────────────────────────────
+ */
+function escapeRegex(s = '') {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+function makeBoundaryRegex(term) {
+  // Allow multi-word terms; normalize spaces to \s+
+  const inner = term
+    .trim()
+    .split(/\s+/)
+    .map(escapeRegex)
+    .join('\\s+');
+  // (^|[^letter/number/_]) (term) (?=$|[^letter/number/_]) with Unicode flag
+  return new RegExp(`(^|[^\\p{L}\\p{N}_])(${inner})(?=$|[^\\p{L}\\p{N}_])`, 'giu');
+}
+function protectTerms(text, terms = []) {
+  let out = text;
+  const restore = [];
+  for (const t of (terms || []).filter(Boolean)) {
+    const rx = makeBoundaryRegex(t);
+    out = out.replace(rx, (m, pre, match) => {
+      const ph = `§§P${restore.length}§§`;
+      restore.push(match); // keep exact original spelling/case that was matched
+      return `${pre}${ph}`;
+    });
+  }
+  return { text: out, restore };
+}
+function restoreTerms(text, restore = []) {
+  let out = text;
+  restore.forEach((orig, i) => {
+    const ph = new RegExp(`§§P${i}§§`, 'g');
+    out = out.replace(ph, orig);
+  });
+  return out;
+}
+
 router.post('/cohere/paraphrase', async (req, res) => {
   try {
-    // Destructure new 'tone' plus existing
-    const { text, mode, style, tone, language = 'en' } = req.body;
+    // Accept combined controls; keep defaults if missing
+    let {
+      text,
+      mode,
+      style,
+      tone,
+      language = 'en',
+      protectedWords = [],
+      rewriteStrength, // currently not altering model params; reserved
+      candidates,      // reserved for future rerank workflows
+      useRerank        // reserved
+    } = req.body || {};
 
     // Validate text
-    if (!text || typeof text !== 'string') {
+    if (!text || typeof text !== 'string' || !text.trim()) {
       return res.status(400).json({ error: 'Invalid input: text must be a non-empty string.' });
     }
 
-    // Enforce exactly one of mode/style/tone
-    const provided = [mode, style, tone].filter(v => v);
-    if (provided.length !== 1) {
-      return res.status(400).json({
-        error: 'Please provide exactly one of: mode, style, or tone.'
-      });
-    }
+    // Normalize style alias from UI
+    if (style === 'business') style = 'professional';
 
-    // Build Mode Instruction
+    // ── Apply protection placeholders BEFORE sending to the model
+    const { text: protectedText, restore } = protectTerms(text, protectedWords);
+
+    // Build Mode Instruction (kept intact)
     let modeInstruction;
     switch (mode) {
       case 'fluent':
@@ -209,28 +259,35 @@ Mode: “Standard”
         `.trim();
     }
 
-    // Build Style or Tone Instruction
-    let styleInstruction = '';
+    // Build Style + Tone Instruction (concatenate if both provided; keep each block intact)
+    let styleBlocks = [];
+
     if (style && style !== 'default') {
       switch (style) {
         case 'formal':
-          styleInstruction = `… (your existing Style: Formal block)`; break;
+          styleBlocks.push(`… (your existing Style: Formal block)`);
+          break;
         case 'casual':
-          styleInstruction = `… (your existing Style: Casual block)`; break;
+          styleBlocks.push(`… (your existing Style: Casual block)`);
+          break;
         case 'professional':
-          styleInstruction = `… (your existing Style: Professional block)`; break;
+          styleBlocks.push(`… (your existing Style: Professional block)`);
+          break;
         case 'academicTone':
-          styleInstruction = `… (your existing Style: Academic block)`; break;
+          styleBlocks.push(`… (your existing Style: Academic block)`);
+          break;
         default:
-          styleInstruction = `
+          styleBlocks.push(`
 Style: “Default”
 • Apply no additional tone modification.
-          `.trim();
+          `.trim());
       }
-    } else if (tone && tone !== 'default') {
+    }
+
+    if (tone && tone !== 'default') {
       switch (tone) {
         case 'formal':
-          styleInstruction = `
+          styleBlocks.push(`
 Style: “Formal”
 • Use exclusively formal language. Do not use contractions (e.g., “cannot” instead of “can’t,” “do not” instead of “don’t”).
 • Avoid colloquial expressions or idioms (e.g., “hang out,” “shoot the breeze”).
@@ -240,10 +297,10 @@ Style: “Formal”
 • Adopt an impersonal, professional register-avoid expressions like “she’s,” “we’re,” “it’s,” “you’ll,” etc.
 • Maintain a neutral, impersonal perspective unless original perspective is first person.
 • Adhere to corporate style guides for punctuation, capitalization, and formatting.
-          `.trim();
+          `.trim());
           break;
         case 'confident':
-          styleInstruction = `
+          styleBlocks.push(`
 Style: “Confident”
 • MUST use assertive modals (“will,” “must,” “cannot”).
 • Avoid qualifiers (“maybe,” “perhaps”).
@@ -255,10 +312,10 @@ Style: “Confident”
 • Use “I am confident” or “It is clear” phrases.
 • Limit subordinate clauses.
 • End with a decisive closing statement.
-          `.trim();
+          `.trim());
           break;
         case 'friendly':
-          styleInstruction = `
+          styleBlocks.push(`
 Style: “Friendly”
 • MUST use warm, approachable phrasing.
 • Address the reader directly (“you”).
@@ -270,55 +327,76 @@ Style: “Friendly”
 • End with a friendly sign-off phrase.
 • Keep paragraphs short for easy reading.
 • Use emotive adjectives (“lovely,” “cozy”).
-          `.trim();
+          `.trim());
           break;
         case 'apologetic':
-          styleInstruction = `
+          styleBlocks.push(`
 Style: “Apologetic”
 • MUST use soft, humble language.
 • Acknowledge concerns gently.
 • Favor passive voice and politeness markers (“please,” “if possible”).
 • Use wording like “we regret,” “we’re sorry,” “thank you for your patience.”
-          `.trim();
+          `.trim());
           break;
         default:
-          styleInstruction = `
+          styleBlocks.push(`
 Style: “Default”
 • Apply no additional tone modification beyond the Mode’s instructions.
 • Maintain the neutral register provided by the Mode block.
-          `.trim();
+          `.trim());
       }
-    } else {
-      styleInstruction = `
-Style: “Default”
-• Apply no additional tone modification beyond the Mode’s instructions.
-• Maintain the neutral register provided by the Mode block.
-      `.trim();
     }
 
-    // Assemble final prompt
+    if (styleBlocks.length === 0) {
+      styleBlocks.push(`
+Style: “Default”
+• Apply no additional tone modification beyond the Mode’s instructions.
+• Maintain the neutral register provided by the Mode block.
+      `.trim());
+    }
+
+    // Assemble final prompt (keep your structure; include language directive as before)
     let finalPrompt = BASE_SYSTEM_PROMPT
       .replace('%MODE_INSTRUCTION%', modeInstruction)
-      .replace('%STYLE_INSTRUCTION%', styleInstruction);
+      .replace('%STYLE_INSTRUCTION%', styleBlocks.join('\n\n'));
 
     finalPrompt = `Language: ${language}\n` + finalPrompt;
 
+    // Extra safety: tell the model to keep placeholders verbatim (does not modify your base prompt)
+    const placeholderGuard = 'If the user text contains placeholders like §§P0§§, §§P1§§, etc., return them exactly as-is, without translation or alteration.';
+
     const messages = [
+      { role: 'system', content: placeholderGuard },
       { role: 'system', content: finalPrompt },
-      { role: 'user', content: text }
+      { role: 'user',   content: protectedText }
     ];
 
-    // Call Cohere with dynamic temperature
+    // Call Cohere with dynamic temperature (unchanged API surface)
     const response = await cohere.chat({
       model: 'command-a-03-2025',
       messages,
       temperature: getTemperature({ mode, style, tone }),
     });
 
-    const paraphrased = response?.message?.content?.[0]?.text?.trim();
+    // Robust extraction: join any text parts if present
+    const parts = response?.message?.content;
+    let paraphrased = '';
+    if (Array.isArray(parts)) {
+      paraphrased = parts
+        .filter(p => p && p.type === 'text' && typeof p.text === 'string')
+        .map(p => p.text.trim())
+        .join(' ')
+        .trim();
+    } else {
+      paraphrased = response?.message?.content?.[0]?.text?.trim();
+    }
+
     if (!paraphrased) {
       return res.status(500).json({ error: 'Cohere returned invalid response.', details: response });
     }
+
+    // ── Restore protected terms AFTER model response
+    paraphrased = restoreTerms(paraphrased, restore);
 
     return res.json({ paraphrased });
   } catch (err) {
@@ -328,6 +406,5 @@ Style: “Default”
     return res.status(statusCode).json({ error: 'Paraphrasing failed.', details });
   }
 });
-
 
 module.exports = router;

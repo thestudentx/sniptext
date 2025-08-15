@@ -1,25 +1,19 @@
+// js/quillbot2.js
 document.addEventListener('DOMContentLoaded', () => {
-  // 🔒 AUTH CHECK: Protect page from unauthorized or expired users
+  // 🔒 AUTH CHECK
   const token = localStorage.getItem('token');
-
-  if (!token) {
-    window.location.href = '/login.html';
-    return;
-  }
+  if (!token) { window.location.href = '/login.html'; return; }
 
   try {
     const payloadBase64 = token.split('.')[1];
     const decodedPayload = JSON.parse(atob(payloadBase64));
-    const expiryDate = new Date(decodedPayload.accessDuration);
-    const now = new Date();
-
-    if (now > expiryDate) {
+    const expMs = decodedPayload.exp ? decodedPayload.exp * 1000 : new Date(decodedPayload.accessDuration).getTime();
+    if (!expMs || Date.now() > expMs) {
       localStorage.removeItem('token');
       window.location.href = '/login.html';
       return;
     }
-
-    console.log('✅ Access granted to:', decodedPayload.email);
+    console.log('✅ Access granted to:', decodedPayload.email || 'user');
   } catch (err) {
     console.error('Invalid token', err);
     localStorage.removeItem('token');
@@ -27,453 +21,684 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // === Main Feature Logic ===
-  const inputTextarea = document.getElementById('qb-input');
-  const outputTextarea = document.getElementById('qb-output');
-  const submitBtn = document.getElementById('qb-submit');
-  const clearBtn = document.getElementById('qb-clear');
-  const loader = document.getElementById('qb-loader');
-  const errorMsg = document.getElementById('qb-error');
-  const toastContainer = document.getElementById('toast-container');
-  const countDisplay = document.getElementById('qb-count');
-  const pasteBtn = document.getElementById('qb-paste');
-  const copyBtn = document.getElementById('qb-copy');
-  const uploadInput = document.getElementById('qb-upload'); // ✅ File input element
-  const toggleBtn = document.getElementById('qb-toggle-highlights');
+  // === Main Feature Elements ===
+  const inputTextarea   = document.getElementById('qb-input');
+  const outputTextarea  = document.getElementById('qb-output');
+  const submitBtn       = document.getElementById('qb-submit');
+  const clearBtn        = document.getElementById('qb-clear');
+  const loader          = document.getElementById('qb-loader');
+  const errorMsg        = document.getElementById('qb-error');
+  const toastContainer  = document.getElementById('toast-container');
+  const countDisplay    = document.getElementById('qb-count');
+  const pasteBtn        = document.getElementById('qb-paste');
+  const copyBtn         = document.getElementById('qb-copy');
+  const uploadInput     = document.getElementById('qb-upload');
+  const toggleBtn       = document.getElementById('qb-toggle-highlights');
   const highlightContainer = document.getElementById('qb-output-highlight');
+  const fileInfo        = document.getElementById('fileInfo');
+  const langSelect      = document.getElementById('qb-language-select');
+  const progressSpan    = document.getElementById('qb-progress');
 
-  // 🌍 MULTI: Language selector element (must exist in your HTML)
-  const langSelect = document.getElementById('qb-language-select');
+  // NEW controls
+  const chipsWrap   = document.getElementById('qb-protected-chips');
+  const chipEntry   = document.getElementById('qb-protected-entry');
+  const strength    = document.getElementById('qb-strength');
+  const strengthVal = document.getElementById('qb-strength-value');
+  const qualitySel  = document.getElementById('qb-quality');
 
-    // 🌍 MULTI: franc + mapping (ISO-639-3 → ISO-639-1)
+  // === Model label (Zero-data badge area) ===
+  const MODEL_STORAGE_KEY = 'qb-last-model';
+  const DEFAULT_MODEL_LABEL = 'Cohere command-a-03-2025';
+  const modelEl = document.getElementById('qb-model-label');
+  if (modelEl) {
+    const saved = localStorage.getItem(MODEL_STORAGE_KEY) || DEFAULT_MODEL_LABEL;
+    modelEl.textContent = saved;
+  }
+
+  // Backend URL
+  const BACKEND_URL =
+    location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+      ? 'http://localhost:3000'
+      : 'https://sniptext.onrender.com';
+
+  // === Toast wrapper (uses ULTRA TOAST if present; otherwise minimal fallback) ===
+  const ultraToast = window.showToast; // keep reference; do NOT overwrite global
+  function showToast(msg, type = 'info', opts = {}) {
+    try {
+      if (typeof ultraToast === 'function') {
+        if (typeof msg === 'object') { ultraToast(msg); return; }
+        ultraToast({
+          title: opts.title || (type ? type.charAt(0).toUpperCase() + type.slice(1) : 'Info'),
+          message: msg,
+          type,
+          duration: opts.duration ?? (type === 'error' ? 5200 : 3400),
+          position: opts.position,   // 'tr','br','tl','bl','center'
+          actions: opts.actions,
+          aria: opts.aria
+        });
+        return;
+      }
+    } catch (_) { /* fall through */ }
+
+    // Fallback if ULTRA TOAST missing
+    if (!toastContainer) { console.log(`[${type}] ${msg}`); return; }
+    const el = document.createElement('div');
+    el.className = `toast toast-${type}`;
+    el.textContent = typeof msg === 'string' ? msg : (msg?.message || 'Notice');
+    toastContainer.appendChild(el);
+    toastContainer.classList.remove('hidden');
+    setTimeout(() => {
+      el.remove();
+      if (!toastContainer.children.length) toastContainer.classList.add('hidden');
+    }, 3000);
+  }
+
+  // Language detection (franc-min shim)
   const isoMap = {
-    eng: 'en',
-    spa: 'es',
-    fra: 'fr',
-    deu: 'de',
-    cmn: 'zh',
-    // add more as needed
+    eng: 'en', spa: 'es', fra: 'fr', deu: 'de', cmn: 'zh',
+    arb: 'ar', pes: 'fa', urd: 'ur', heb: 'he', hin: 'hi',
+    ita: 'it', jpn: 'ja', kor: 'ko', nld: 'nl', pol: 'pl',
+    por: 'pt', rus: 'ru', tur: 'tr', ukr: 'uk', vie: 'vi',
+    ben: 'bn', ind: 'id'
   };
   function detectLanguage(text) {
-    const francCode = franc.min(text); // e.g. 'eng'
-    return isoMap[francCode] || 'en';
+    try {
+      const code3 = (window.__franc && window.__franc.min(text)) || 'eng';
+      return isoMap[code3] || 'en';
+    } catch {
+      return 'en';
+    }
   }
 
-  // 🌍 MULTI: RTL/LTR helper
-  const rtlLangs = ['ar', 'he'];
+  // RTL support
+  const rtlLangs = ['ar', 'he', 'fa', 'ur', 'ps'];
   function applyTextDirection(lang) {
     const isRTL = rtlLangs.includes(lang);
-    inputTextarea.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-    inputTextarea.style.textAlign = isRTL ? 'right' : 'left';
-    outputTextarea.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-    outputTextarea.style.textAlign = isRTL ? 'right' : 'left';
+    [inputTextarea, outputTextarea].forEach(el => {
+      el.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      el.style.textAlign = isRTL ? 'right' : 'left';
+    });
   }
 
-  // 🌍 MULTI: toast on manual change + direction switch
   langSelect.addEventListener('change', () => {
     const val = langSelect.value;
     const label = val === 'auto'
       ? 'Will auto-detect input language'
       : `Will use ${langSelect.options[langSelect.selectedIndex].text}`;
     showToast(label, 'info');
-
-    // 👉 Just apply dir/textAlign on the textareas only
     applyTextDirection(val);
   });
 
+  // Safer HTML escaping for diff view
+  function escapeHTML(s) {
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
 
-  //  // Toggle highlights on/off
-  // keep track of view state
-  let showingHighlights = false;
-
-  // function to compute diff HTML
+  // Compute diff HTML (XSS-safe)
   function generateDiffHTML(original, rewritten) {
-    const dmp = new diff_match_patch();
-    let diffs = dmp.diff_main(original, rewritten);
+    const DMP = window.diff_match_patch || (typeof diff_match_patch !== 'undefined' ? diff_match_patch : null);
+    if (!DMP) return escapeHTML(rewritten); // fallback: no diff if lib isn't ready
+    const dmp = new DMP();
+    const o = escapeHTML(original);
+    const r = escapeHTML(rewritten);
+    let diffs = dmp.diff_main(o, r);
     dmp.diff_cleanupSemantic(diffs);
-
+    const DI = (typeof window.DIFF_INSERT !== 'undefined')
+      ? window.DIFF_INSERT
+      : (typeof DIFF_INSERT !== 'undefined' ? DIFF_INSERT : 1);
+    const DD = (typeof window.DIFF_DELETE !== 'undefined')
+      ? window.DIFF_DELETE
+      : (typeof DIFF_DELETE !== 'undefined' ? DIFF_DELETE : -1);
     return diffs.map(([op, text]) => {
       switch (op) {
-        case DIFF_INSERT:
-          return `<span class="diff-added">${text}</span>`;
-        case DIFF_DELETE:
-          return `<span class="diff-deleted">${text}</span>`;
-        case DIFF_EQUAL:
-        default:
-          return `<span class="diff-equal">${text}</span>`;
+        case DI: return `<span class="diff-added">${text}</span>`;
+        case DD: return `<span class="diff-deleted">${text}</span>`;
+        default: return `<span class="diff-equal">${text}</span>`;
       }
     }).join('');
   }
 
-  // toggle view
+  // Toggle highlights on/off
+  let showingHighlights = false;
   toggleBtn.addEventListener('click', () => {
     if (!outputTextarea.value.trim()) {
       showToast('Nothing to highlight yet!', 'error');
       return;
     }
-
     showingHighlights = !showingHighlights;
     if (showingHighlights) {
-      // generate & show highlights
       const diffHTML = generateDiffHTML(inputTextarea.value, outputTextarea.value);
       highlightContainer.innerHTML = diffHTML;
       highlightContainer.classList.remove('hidden');
       outputTextarea.classList.add('hidden');
       toggleBtn.textContent = 'Show Clean';
     } else {
-      // back to clean textarea
       highlightContainer.classList.add('hidden');
       outputTextarea.classList.remove('hidden');
       toggleBtn.textContent = 'Show Highlights';
     }
   });
 
-  /**
- * 1) Remove editorial meta-lines:
- *    • STAGE 1: …
- *    • STAGE 2: …
- *    • Final Polished Text:
- *    • Explanation of Changes:
- *    • Any “Style Pass” lines
- * 2) Strip stray markdown (#, **, *), but:
- *    • Preserve & indent true lists (–, *, +, 1., 2., etc.)
- *    • Preserve blockquotes (>)
- *    • Keep legitimate “Explanation:” lines
- */
+  // Clean model text (remove meta, preserve structure)
   function formatCleanText(text) {
     return text
-      .split("\n")
-      // 1) DROP only the unwanted metadata
-      .filter(line => {
-        return !/^\s*(STAGE\s*\d+:|Final Polished Text:|Explanation of Changes:|.*Style Pass.*)$/i.test(line);
-      })
+      .split('\n')
+      .filter(line => !/^\s*(STAGE\s*\d+:|Final Polished Text:|Explanation of Changes:|.*Style Pass.*)$/i.test(line))
       .map(line => {
-        // keep blockquotes verbatim
-        if (/^\s*>/.test(line)) {
-          return line.trim();
-        }
-
-        // strip ALL # heading markers
-        line = line.replace(/^#{1,6}\s*/, "").replace(/#/g, "");
-
-        // unwrap bold/italic everywhere
+        if (/^\s*>/.test(line)) return line.trim(); // Keep blockquotes
+        line = line.replace(/^#{1,6}\s*/, '').replace(/#/g, ''); // Strip headings
         line = line
-          .replace(/\*\*(.+?)\*\*/g, "$1")
-          .replace(/\*(.+?)\*/g, "$1");
-
-        const trimmed = line.trim();
-
-        // true numbered list?
-        const numMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
-        if (numMatch) {
-          return "  " + numMatch[1] + ". " + numMatch[2].trim();
-        }
-
-        // true bullet list?
-        const bulletMatch = trimmed.match(/^([*+\-])\s+(.*)/);
-        if (bulletMatch) {
-          return "  " + bulletMatch[1] + " " + bulletMatch[2].trim();
-        }
-
-        // leave em-dashes at start alone (not a list)
-        if (/^[-–]\s+/.test(trimmed)) {
-          return trimmed;
-        }
-
-        // otherwise just return the trimmed line
-        return trimmed;
+          .replace(/\*\*(.+?)\*\*/g, '$1')
+          .replace(/\*(.+?)\*/g, '$1'); // Unwrap bold/italic
+        const t = line.trim();
+        const n = t.match(/^(\d+)\.\s+(.*)/);               // Numbered list
+        if (n) return '  ' + n[1] + '. ' + n[2].trim();
+        const b = t.match(/^([*+\-])\s+(.*)/);              // Bullet list
+        if (b) return '  ' + b[1] + ' ' + b[2].trim();
+        if (/^[-–]\s+/.test(t)) return t;                   // Preserve em-dash starts
+        return t;
       })
-      .join("\n")
-      .trim();  // drop any leading/trailing blank lines
+      .join('\n')
+      .trim();
   }
 
-let selectedType = 'mode';
-let selectedMode = 'standard';
-let selectedStyle = 'default';
-let selectedTone = 'default';
+  // === Tabs: allow selecting Mode + Style + Tone together ===
+  let selectedMode  = 'standard';
+  let selectedStyle = 'default';
+  let selectedTone  = 'default';
 
-const modeTabs = document.querySelectorAll('.qb-tab-mode');
-const styleTabs = document.querySelectorAll('.qb-tab-style');
-const toneTabs = document.querySelectorAll('.qb-tab-tone');
+  function activateExclusive(groupSelector, clicked) {
+    document.querySelectorAll(groupSelector).forEach(t => t.classList.remove('active'));
+    clicked.classList.add('active');
+  }
 
-// helper to clear all tab groups
-function clearAllTabs() {
-  modeTabs.forEach(t => t.classList.remove('active'));
-  styleTabs.forEach(t => t.classList.remove('active'));
-  toneTabs.forEach(t => t.classList.remove('active'));
-}
-
-// MODE SELECT
-modeTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    clearAllTabs();
-    tab.classList.add('active');
-    selectedType = 'mode';
-    selectedMode = tab.getAttribute('data-mode');
-    selectedStyle = '';
-    selectedTone = '';
+  document.querySelectorAll('.qb-tab-mode').forEach(tab => {
+    tab.addEventListener('click', () => {
+      activateExclusive('.qb-tab-mode', tab);
+      selectedMode = tab.getAttribute('data-mode');
+    });
   });
-});
-
-// STYLE SELECT
-styleTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    clearAllTabs();
-    tab.classList.add('active');
-    selectedType = 'style';
-    selectedStyle = tab.getAttribute('data-style');
-    selectedMode = '';
-    selectedTone = '';
+  document.querySelectorAll('.qb-tab-style').forEach(tab => {
+    tab.addEventListener('click', () => {
+      activateExclusive('.qb-tab-style', tab);
+      selectedStyle = tab.getAttribute('data-style');
+    });
   });
-});
-
-// TONE SELECT
-toneTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    clearAllTabs();
-    tab.classList.add('active');
-    selectedType = 'tone';
-    selectedTone = tab.getAttribute('data-tone');
-    selectedMode = '';
-    selectedStyle = '';
+  document.querySelectorAll('.qb-tab-tone').forEach(tab => {
+    tab.addEventListener('click', () => {
+      activateExclusive('.qb-tab-tone', tab);
+      selectedTone = tab.getAttribute('data-tone');
+    });
   });
-});
 
-
-  const BACKEND_URL =
-    location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-      ? 'http://localhost:3000'
-      : 'https://sniptext.onrender.com';
-
-
-
-  // COUNTER
+  // === Counters ===
+  function estimateTokens(text) {
+    const words = (text.trim().match(/\S+/g) || []).length;
+    const chars = text.length;
+    return Math.max(Math.ceil(words * 1.3), Math.ceil(chars / 4));
+  }
   function updateCount() {
-    const text = inputTextarea.value.trim();
-    if (!text) {
-      countDisplay.textContent = 'Words: 0 | Approx. Tokens: 0';
-      return;
-    }
-    const words = text.split(/\s+/).filter((w) => w.length > 0).length;
-    const approxTokens = Math.ceil(words * 1.3);
+    const text = inputTextarea.value || '';
+    const words = (text.trim().match(/\S+/g) || []).length;
+    const approxTokens = estimateTokens(text);
     countDisplay.textContent = `Words: ${words} | Approx. Tokens: ${approxTokens}`;
   }
 
-  // Existing input event listener to trim excess words after typing or other input
+  const MAX_WORDS = 5000;
+
   inputTextarea.addEventListener('input', () => {
-    const wordsArray = inputTextarea.value.trim().split(/\s+/).filter(w => w);
-    if (wordsArray.length > 5000) {
-      const trimmedText = wordsArray.slice(0, 5000).join(' ');
-      inputTextarea.value = trimmedText;
-      showToast("🚫 Max 5000 words allowed!", "error");
-      updateCount(); // Keep token count correct
-    } else {
-      updateCount();
+    const wordsArray = (inputTextarea.value.trim().match(/\S+/g) || []);
+    if (wordsArray.length > MAX_WORDS) {
+      inputTextarea.value = wordsArray.slice(0, MAX_WORDS).join(' ') + ' ';
+      showToast('🚫 Max 5000 words allowed!', 'error');
     }
+    updateCount();
   });
 
-  // NEW: paste event listener that enforces word limit before pasting
   inputTextarea.addEventListener('paste', (e) => {
-    e.preventDefault(); // Prevent default paste
-
-    // Get pasted text from clipboard
-    const paste = (e.clipboardData || window.clipboardData).getData('text');
-
-    // Current words in textarea
-    const currentWords = inputTextarea.value.trim().split(/\s+/).filter(w => w);
-
-    // Words in pasted text
-    const pasteWords = paste.trim().split(/\s+/).filter(w => w);
-
-    // Total words if we add full paste
-    const totalWords = currentWords.length + pasteWords.length;
-
-    if (totalWords > 5000) {
-      const allowedPasteCount = 5000 - currentWords.length;
-      if (allowedPasteCount > 0) {
-        // Add only allowed number of words from paste
-        const allowedPaste = pasteWords.slice(0, allowedPasteCount).join(' ');
-        inputTextarea.value = (inputTextarea.value + ' ' + allowedPaste).trim() + ' ';
-        showToast(`🚫 Max 5000 words allowed! Paste trimmed.`, 'error');
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData('text') || '';
+    const currentWords = (inputTextarea.value.trim().match(/\S+/g) || []);
+    const pasteWords = (paste.trim().match(/\S+/g) || []);
+    const total = currentWords.length + pasteWords.length;
+    if (total > MAX_WORDS) {
+      const allowed = MAX_WORDS - currentWords.length;
+      if (allowed > 0) {
+        inputTextarea.value = (inputTextarea.value + ' ' + pasteWords.slice(0, allowed).join(' ')).trim() + ' ';
+        showToast('🚫 Max 5000 words allowed! Paste trimmed.', 'error');
       } else {
-        showToast(`🚫 Max 5000 words reached! Paste blocked.`, 'error');
+        showToast('🚫 Max 5000 words reached! Paste blocked.', 'error');
       }
     } else {
-      // Safe to paste fully
       inputTextarea.value += paste;
     }
-
     updateCount();
-
-    // Trigger input event manually to update UI or other listeners
     inputTextarea.dispatchEvent(new Event('input'));
   });
 
+  // Clear button
   clearBtn.addEventListener('click', () => {
     inputTextarea.value = '';
     outputTextarea.value = '';
+    highlightContainer.classList.add('hidden');
+    outputTextarea.classList.remove('hidden');
+    toggleBtn.textContent = 'Show Highlights';
     errorMsg.textContent = '';
     errorMsg.classList.add('hidden');
     updateCount();
     showToast('Cleared text fields.', 'info');
   });
 
-  /**
- * Splits a string into chunks of roughly `maxWords` words,
- * breaking only at whitespace boundaries.
- */
-function chunkText(text, maxWords = 300) {
-  const words = text.trim().split(/\s+/);
-  const chunks = [];
-  for (let i = 0; i < words.length; i += maxWords) {
-    chunks.push(words.slice(i, i + maxWords).join(' '));
+  // === File Upload (.txt/.docx -> raw text) ===
+  uploadInput.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const name = file.name;
+    const lower = name.toLowerCase();
+    const ext = lower.slice(lower.lastIndexOf('.'));
+
+    try {
+      if (!['.txt', '.docx'].includes(ext)) {
+        showToast('Only .txt and .docx files are allowed. Try again.', 'error');
+        return;
+      }
+      let text = '';
+      if (ext === '.txt') {
+        text = await file.text();
+      } else {
+        const arrayBuffer = await file.arrayBuffer();
+        const { value } = await window.mammoth.extractRawText({ arrayBuffer });
+        text = value || '';
+      }
+      inputTextarea.value = text.trim();
+      inputTextarea.dispatchEvent(new Event('input'));
+      showToast('File uploaded successfully!', 'success');
+      if (fileInfo) {
+        fileInfo.textContent = `Loaded: ${name}`;
+        fileInfo.classList.remove('hidden');
+      }
+    } catch (err) {
+      console.error('File read error:', err);
+      showToast('File read failed. Try another one.', 'error');
+    } finally {
+      uploadInput.value = '';
+    }
+  });
+
+  // === Chunking (sentence-aware with fallback) ===
+  function splitIntoSentences(text) {
+    try {
+      const seg = new Intl.Segmenter(undefined, { granularity: 'sentence' });
+      return Array.from(seg.segment(text)).map(s => s.segment.trim()).filter(Boolean);
+    } catch {
+      return text.split(/(?<=[.?!۔۔!؟]|।)\s+/).map(s => s.trim()).filter(Boolean);
+    }
   }
-  return chunks;
-}
-
-
-submitBtn.addEventListener('click', async () => {
-  const userText = inputTextarea.value.trim();
-  if (!userText) {
-    errorMsg.textContent = 'Please enter some text to paraphrase.';
-    errorMsg.classList.remove('hidden');
-    showToast('You need to type something first.', 'error');
-    return;
+  function chunkByBudget(text, maxChars = 1200) {
+    const sents = splitIntoSentences(text);
+    a: if (!sents.length) break a;
+    const chunks = [];
+    let buf = '';
+    for (const s of sents) {
+      if ((buf + ' ' + s).trim().length > maxChars) {
+        if (buf) chunks.push(buf.trim());
+        buf = s;
+      } else {
+        buf = buf ? `${buf} ${s}` : s;
+      }
+    }
+    if (buf) chunks.push(buf.trim());
+    return chunks.length ? chunks : [text.trim()];
   }
 
-  // decide language
-  let languageToSend = langSelect.value === 'auto'
-    ? detectLanguage(userText)
-    : langSelect.value;
+  // Protected words chips
+  const protectedWords = [];
+  function addChip(term){
+    const t=(term||'').trim().replace(/^"|"$/g,'');
+    if(!t) return;
+    if(protectedWords.length>=50) return showToast('Max 50 protected terms.','error');
+    if(protectedWords.some(x=>x.toLowerCase()===t.toLowerCase())) return;
+    protectedWords.push(t);
+    const chip=document.createElement('span');
+    chip.className='qb-chip';
+    chip.innerHTML=`<span>${t}</span><span class="qb-chip-remove" title="Remove">&times;</span>`;
+    chip.querySelector('.qb-chip-remove').addEventListener('click',()=>{
+      const idx=protectedWords.findIndex(x=>x.toLowerCase()===t.toLowerCase());
+      if(idx>-1) protectedWords.splice(idx,1);
+      chip.remove();
+    });
+    chipsWrap.appendChild(chip);
+  }
+  chipEntry?.addEventListener('keydown',(e)=>{
+    if(e.key==='Enter' || e.key===','){
+      e.preventDefault();
+      const raw = chipEntry.value;
+      chipEntry.value='';
+      raw.split(',').forEach(x=>addChip(x));
+    }
+    if(e.key==='Backspace' && chipEntry.value.trim()==='' && protectedWords.length){
+      const last = chipsWrap.lastElementChild;
+      if(last){ last.querySelector('.qb-chip-remove')?.click(); }
+    }
+  });
+  chipEntry?.addEventListener('blur',()=>{
+    const raw = chipEntry.value.trim();
+    if(raw){ chipEntry.value=''; raw.split(',').forEach(x=>addChip(x)); }
+  });
 
-  // chunk if too big
-  const chunks = chunkText(userText, 300);
+  // Rewrite Strength slider
+  strength?.addEventListener('input',()=>{
+    strengthVal.textContent = String(strength.value);
+    strength.style.setProperty('--percent', strength.value + '%');
+  });
+  if (strength && strengthVal){
+    strengthVal.textContent = String(strength.value || 50);
+    strength.style.setProperty('--percent', (strength.value || 50) + '%'); // init
+  }
 
-  loader.classList.remove('hidden');
-  submitBtn.disabled = true;
-  clearBtn.disabled = true;
-  errorMsg.classList.add('hidden');
+  // Quality mapping → candidates & rerank
+  function qualityToParams(val){
+    if(val==='best') return { candidates: 3, useRerank: true };
+    if(val==='balanced') return { candidates: 2, useRerank: true };
+    return { candidates: 1, useRerank: false }; // fast
+  }
 
-  try {
-    const paraphrasedChunks = [];
-    for (let i = 0; i < chunks.length; i++) {
-      showToast(`Paraphrasing chunk ${i + 1} of ${chunks.length}…`, 'info');
+  // === Networking: retry/backoff + abort + progress ===
+  let currentAbort = null;
 
-      const body = {
-        text: chunks[i],
-        language: languageToSend,
-        ...(selectedType === 'mode'   && { mode:  selectedMode   }),
-        ...(selectedType === 'style'  && { style: selectedStyle  }),
-        ...(selectedType === 'tone'   && { tone:  selectedTone   }),
-      };
+  function setBusy(busy, progressText = '') {
+    [submitBtn, clearBtn].forEach(b => b.disabled = busy);
+    loader.classList.toggle('hidden', !busy);
+    if (progressSpan) progressSpan.textContent = busy ? ` ${progressText}` : '';
+  }
 
-      const res = await fetch(`${BACKEND_URL}/api/cohere/paraphrase`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) throw new Error(await res.text());
+  async function fetchWithRetry(url, options, retries = 2) {
+    let attempt = 0, delay = 600;
+    while (true) {
+      try {
+        const res = await fetch(url, options);
+        if (res.status === 401) {
+          showToast('Session expired. Redirecting to login…', 'error', { position: 'tr' });
+          localStorage.removeItem('token');
+          window.location.href = '/login.html';
+          return Promise.reject(new Error('Unauthorized'));
+        }
+        if (!res.ok) {
+          if ((res.status === 429 || res.status >= 500) && attempt < retries) {
+            attempt++;
+            await new Promise(r => setTimeout(r, delay + Math.random() * 300));
+            delay *= 1.6;
+            continue;
+          }
+          const text = await res.text().catch(() => '');
+          throw new Error(text || `HTTP ${res.status}`);
+        }
+        return res;
+      } catch (e) {
+        if (options.signal && options.signal.aborted) throw e;
+        if (attempt < retries) {
+          attempt++;
+          await new Promise(r => setTimeout(r, delay + Math.random() * 300));
+          delay *= 1.6;
+          continue;
+        }
+        throw e;
+      }
+    }
+  }
 
-      const { paraphrased = '' } = await res.json();
-      paraphrasedChunks.push(formatCleanText(paraphrased));
+  async function paraphraseChunk(body, signal) {
+    const res = await fetchWithRetry(`${BACKEND_URL}/api/cohere/paraphrase`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(body),
+      signal
+    });
+    const data = await res.json();
+    const { paraphrased = '', model } = data || {};
+    // Update model badge if backend tells us
+    if (model && modelEl) {
+      modelEl.textContent = model;
+      try { localStorage.setItem(MODEL_STORAGE_KEY, model); } catch(_) {}
+    }
+    return formatCleanText(paraphrased);
+  }
+
+  async function runParaphrase() {
+    const userText = inputTextarea.value.trim();
+    if (!userText) {
+      errorMsg.textContent = 'Please enter some text to paraphrase.';
+      errorMsg.classList.remove('hidden');
+      showToast('You need to type something first.', 'error', { position: 'tr' });
+      return null;
     }
 
-    // join all the paraphrased chunks back into one text
-    const finalParaphrase = paraphrasedChunks.join('\n\n');
-    outputTextarea.value = finalParaphrase;
-    highlightContainer.classList.add('hidden');
-    outputTextarea.classList.remove('hidden');
-    toggleBtn.textContent = 'Show Highlights';
-    showToast('Paraphrase complete!', 'success');
-  } catch (err) {
-    console.error('Paraphrase error:', err);
-    errorMsg.textContent = 'Sorry, something went wrong. Please try again later.';
-    errorMsg.classList.remove('hidden');
-    showToast('Failed to paraphrase. Check console.', 'error');
-  } finally {
-    loader.classList.add('hidden');
-    submitBtn.disabled = false;
-    clearBtn.disabled = false;
-  }
-});
+    if (currentAbort) currentAbort.abort();
+    currentAbort = new AbortController();
 
-// Paste/Copy Logic 
+    const languageToSend = langSelect.value === 'auto' ? detectLanguage(userText) : langSelect.value;
+    applyTextDirection(languageToSend);
+
+    const chunks = chunkByBudget(userText, 1200);
+    const total = chunks.length;
+
+    const { candidates, useRerank } = qualityToParams(qualitySel?.value || 'fast');
+
+    const bodies = chunks.map(c => ({
+      text: c,
+      language: languageToSend,
+      mode:  selectedMode,
+      style: selectedStyle,
+      tone:  selectedTone,
+      protectedWords,
+      rewriteStrength: strength ? Number(strength.value) : 50,
+      candidates,
+      useRerank
+    }));
+
+    const results = new Array(total);
+    let completed = 0;
+    const CONCURRENCY = Math.min(3, total);
+
+    setBusy(true, `0%`);
+    errorMsg.classList.add('hidden');
+
+    const queue = bodies.map((body, index) => ({ body, index }));
+    let inFlight = 0;
+    let i = 0;
+
+    return new Promise((resolve) => {
+      const next = () => {
+        if (i >= queue.length && inFlight === 0) {
+          setBusy(false);
+          resolve(results.join('\n\n'));
+          return;
+        }
+        while (inFlight < CONCURRENCY && i < queue.length) {
+          const { body, index } = queue[i++];
+          inFlight++;
+          // shorter duration for progress pings
+          showToast(`Paraphrasing part ${index + 1} of ${total}…`, 'info', { duration: 2000, position: 'tr' });
+          paraphraseChunk(body, currentAbort.signal)
+            .then(text => {
+              results[index] = text;
+              completed++;
+              const pct = Math.round((completed / total) * 100);
+              setBusy(true, `${pct}%`);
+            })
+            .catch(err => {
+              if (currentAbort.signal.aborted) return;
+              console.error('Paraphrase error:', err);
+              errorMsg.textContent = 'Sorry, something went wrong. Please try again later.';
+              errorMsg.classList.remove('hidden');
+              showToast('Failed to paraphrase a chunk. Check console.', 'error', { position: 'tr' });
+              results[index] = queue[index]?.body?.text || '';
+            })
+            .finally(() => {
+              inFlight--;
+              next();
+            });
+        }
+      };
+      next();
+    });
+  }
+
+  // Submit handler
+  submitBtn.addEventListener('click', async () => {
+    try {
+      outputTextarea.value = '';
+      highlightContainer.classList.add('hidden');
+      outputTextarea.classList.remove('hidden');
+      toggleBtn.textContent = 'Show Highlights';
+
+      const finalText = await runParaphrase();
+      if (finalText !== null) {
+        outputTextarea.value = finalText;
+        showToast('Paraphrase complete!', 'success', { position: 'tr' });
+      }
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+      console.error(e);
+    } finally {
+      setBusy(false);
+      if (progressSpan) progressSpan.textContent = '';
+    }
+  });
+
+  // Paste/Copy
   pasteBtn.addEventListener('click', async () => {
     try {
       const text = await navigator.clipboard.readText();
-      if (!text) {
-        showToast('Clipboard is empty.', 'error');
-        return;
-      }
+      if (!text) { showToast('Clipboard is empty.', 'error', { position: 'tr' }); return; }
       inputTextarea.value = text;
       updateCount();
-      showToast('Pasted text from clipboard!', 'success');
+      showToast('Pasted text from clipboard!', 'success', { position: 'tr' });
     } catch (err) {
       console.error('Paste failed:', err);
-      showToast('Failed to read clipboard. Allow permission?', 'error');
+      showToast('Failed to read clipboard. Allow permission?', 'error', { position: 'tr' });
     }
   });
 
   copyBtn.addEventListener('click', async () => {
     const outputText = outputTextarea.value.trim();
-    if (!outputText) {
-      showToast('Nothing to copy yet!', 'error');
-      return;
-    }
-
+    if (!outputText) { showToast('Nothing to copy yet!', 'error', { position: 'tr' }); return; }
     try {
       await navigator.clipboard.writeText(outputText);
-      showToast('Copied paraphrased text!', 'success');
+      showToast('Copied paraphrased text!', 'success', { position: 'tr' });
     } catch (err) {
       console.error('Copy failed:', err);
-      showToast('Failed to copy text.', 'error');
+      showToast('Failed to copy text.', 'error', { position: 'tr' });
     }
   });
 
-  
+  // ======= EXPORT HELPERS (TXT, DOCX, PDF) =======
+  function getExportText() {
+    const out = (outputTextarea?.value || '').trim();
+    const inp = (inputTextarea?.value || '').trim();
+    if (out) return out;
+    if (inp) {
+      showToast({ title:'Heads up', message:'No paraphrased text yet — exporting original input.', type:'info' });
+      return inp;
+    }
+    showToast({ title:'Nothing to export', message:'Add some text first.', type:'error' });
+    return '';
+  }
 
-  // 📁 File Upload Logic
-  uploadInput.addEventListener('change', async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  function suggestBaseName() {
+    const source = (outputTextarea?.value || inputTextarea?.value || 'sniptext_paraphrase').trim();
+    const first = source.split(/\s+/).slice(0, 8).join(' ');
+    const slug = first
+      .replace(/[^\p{L}\p{N}\s_-]/gu, '')
+      .replace(/\s+/g, '_')
+      .slice(0, 48) || 'sniptext_paraphrase';
+    const ts = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+    return `${slug}_${ts}`;
+  }
 
-    const name = file.name.toLowerCase();
+  function downloadBlob(blob, filename) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      URL.revokeObjectURL(a.href);
+      a.remove();
+    }, 0);
+  }
+
+  // Export: TXT
+  document.getElementById('qb-export-txt')?.addEventListener('click', () => {
+    const text = getExportText(); if (!text) return;
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    downloadBlob(blob, `${suggestBaseName()}.txt`);
+    showToast({ title:'Exported', message:'Saved .txt file', type:'success' });
+  });
+
+  // Export: DOCX (docx UMD)
+  document.getElementById('qb-export-docx')?.addEventListener('click', async () => {
+    const text = getExportText(); if (!text) return;
+
+    if (!window.docx) {
+      showToast({ title:'DOCX unavailable', message:'The DOCX module did not load. Try again in a moment.', type:'error' });
+      return;
+    }
     try {
-      let text = "";
-
-      const allowedTypes = ['.txt', '.docx'];
-      const ext = name.slice(name.lastIndexOf('.'));
-
-      if (!allowedTypes.includes(ext)) {
-        showToast("Only .txt and .docx files are allowed. Try again.", "error");
-        return;
-      }
-
-      if (ext === '.txt') {
-        text = await file.text();
-      } else if (ext === '.docx') {
-        const arrayBuffer = await file.arrayBuffer();
-        const { value: html } = await mammoth.convertToHtml({ arrayBuffer });
-        text = html;
-      }
-
-      inputTextarea.value = text;
-      inputTextarea.dispatchEvent(new Event("input")); // ⛽ Trigger word/token count update
-      showToast("File uploaded successfully!", "success");
+      const { Document, Packer, Paragraph } = window.docx;
+      const paras = text.split(/\n{2,}/).map(block => new Paragraph({ text: block }));
+      const doc = new Document({
+        sections: [{ properties: {}, children: paras.length ? paras : [new Paragraph(text)] }]
+      });
+      const blob = await Packer.toBlob(doc);
+      downloadBlob(blob, `${suggestBaseName()}.docx`);
+      showToast({ title:'Exported', message:'Saved .docx file', type:'success' });
     } catch (err) {
-      console.error("File read error:", err);
-      showToast("File read failed. Try another one.", "error");
-    } finally {
-      uploadInput.value = ""; // allow same file re-upload
+      console.error('DOCX export error:', err);
+      showToast({ title:'DOCX failed', message:'Couldn’t create the .docx file.', type:'error' });
     }
   });
-});
 
-// === Reveal Animation for Why Section Cards ===
-document.addEventListener('DOMContentLoaded', () => {
+  // Export: PDF (jsPDF UMD)
+  document.getElementById('qb-export-pdf')?.addEventListener('click', () => {
+    const text = getExportText(); if (!text) return;
+
+    const jsPDF = window.jspdf?.jsPDF;
+    if (!jsPDF) {
+      showToast({ title:'PDF unavailable', message:'The PDF module did not load. Try again in a moment.', type:'error' });
+      return;
+    }
+    try {
+      const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+      const margin = 56;
+      const pageW = doc.internal.pageSize.getWidth();
+      const pageH = doc.internal.pageSize.getHeight();
+      const maxW  = pageW - margin * 2;
+
+      doc.setFont('times', 'normal'); // built-in safe font
+      doc.setFontSize(12);
+
+      const lines = doc.splitTextToSize(text, maxW);
+      let y = margin;
+
+      lines.forEach(line => {
+        if (y > pageH - margin) { doc.addPage(); y = margin; }
+        doc.text(line, margin, y);
+        y += 16; // line height
+      });
+
+      doc.save(`${suggestBaseName()}.pdf`);
+      showToast({ title:'Exported', message:'Saved .pdf file', type:'success' });
+    } catch (err) {
+      console.error('PDF export error:', err);
+      showToast({ title:'PDF failed', message:'Couldn’t create the .pdf file.', type:'error' });
+    }
+  });
+
+  // Reveal Animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -483,7 +708,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.2 });
 
-  document.querySelectorAll('.fade-in-box').forEach((box) => {
-    observer.observe(box);
-  });
+  document.querySelectorAll('.fade-in-box').forEach((box) => observer.observe(box));
+
+  // Init counts
+  updateCount();
 });
