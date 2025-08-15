@@ -1,4 +1,7 @@
 /* File: grammarly1.css */
+/* ============================================================================
+   0) THEME TOKENS & GLOBALS
+   ========================================================================== */
 
 /* ======================
    Root Variables (Brand)
@@ -43,7 +46,9 @@
   --brand-used-often-rgb: 232,93,39;
 }
 
-/* Reset + Global */
+/* ============================================================================
+   1) RESET & BASE
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -57,26 +62,29 @@ body {
   width: 100%;
   height: 100%;
 }
+/* Smooth theme transitions for common interactive elements */
 html, body, .pane, .editor-area, .tool-page-header,
 .text-input, .text-output, .icon-btn, .btn-primary, .btn-secondary {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Utility Container */
+/* ============================================================================
+   2) UTILITY CONTAINERS / HELPERS (non-responsive)
+   ========================================================================== */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* NOTE: there is also a second `.hidden` later with !important; keep both */
+.hidden {
+  display: none;
+}
 
-/* ===========================
-   MAIN EDITOR & OUTPUT LAYOUT
-   =========================== */
-
-   /* ===========================
-   Tool Page Header Section
-   =========================== */
+/* ============================================================================
+   3) PAGE HEADER (Title, Subtitle, Theme Toggle wrapper lives in HTML)
+   ========================================================================== */
 .tool-page-header {
   width: 90%;
   max-width: 1200px;
@@ -85,7 +93,7 @@ html, body, .pane, .editor-area, .tool-page-header,
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-page);
   transition: background-color 0.4s ease;
 }
 .title-section {
@@ -96,22 +104,21 @@ html, body, .pane, .editor-area, .tool-page-header,
   align-items: flex-start;
   justify-content: center;
 }
-
 .tool-title {
   font-family: var(--font-heading);
   font-size: 2rem;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
 }
-
 .tool-subtitle {
   font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-
-/* Editor Area */
+/* ============================================================================
+   4) MAIN EDITOR LAYOUT (both panes)
+   ========================================================================== */
 .editor-area {
   padding: 2rem 0;
 }
@@ -122,7 +129,7 @@ html, body, .pane, .editor-area, .tool-page-header,
   flex-wrap: wrap;
 }
 
-/* Pane Common Styles */
+/* Pane (shared) */
 .pane {
   background-color: var(--bg-panel);
   border: 1px solid var(--border-default);
@@ -136,12 +143,24 @@ html, body, .pane, .editor-area, .tool-page-header,
   min-height: 477px;
 }
 
-/* 1) LEFT: EDITOR PANE */
+/* Left Pane: Editor */
 .pane-left {
   flex: 2 1 400px;
 }
 
-/* Editor Toolbar */
+/* Right Pane: Output */
+.pane-right {
+  flex: 1 1 600px;
+}
+.pane-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+/* ============================================================================
+   5) EDITOR TOOLBAR & CONTROLS
+   ========================================================================== */
 .editor-toolbar {
   display: flex;
   justify-content: space-between;
@@ -152,6 +171,12 @@ html, body, .pane, .editor-area, .tool-page-header,
   display: flex;
   gap: 0.5rem;
 }
+.toolbar-right {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Icon buttons (undo/redo/paste/copy) */
 .icon-btn {
   background: none;
   border: none;
@@ -165,10 +190,8 @@ html, body, .pane, .editor-area, .tool-page-header,
   background-color: var(--bg-page);
   color: var(--text-primary);
 }
-.toolbar-right {
-  display: flex;
-  gap: 0.5rem;
-}
+
+/* Secondary button (toolbar) */
 .btn-secondary {
   background-color: var(--bg-page);
   color: var(--text-primary);
@@ -186,7 +209,197 @@ html, body, .pane, .editor-area, .tool-page-header,
   border-color: var(--color-primary);
 }
 
-/* Writing Goals Overlay */
+/* Paste button style (specific) */
+.icon-btn#pasteBtn {
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.icon-btn#pasteBtn:hover {}
+
+/* Output toolbar (right pane top bar) */
+.output-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 0 1rem 0;
+}
+.output-toolbar .icon-btn#copyBtn {
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+/* Copy & Paste shared hover styles */
+.icon-btn#copyBtn,
+.icon-btn#pasteBtn {
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.icon-btn#copyBtn:hover,
+.icon-btn#pasteBtn:hover {
+  background-color: var(--bg-accent-hover);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.icon-btn#copyBtn:hover {}
+
+/* Toggle highlights button hover (border emphasis) */
+#toggleHighlightsBtn:hover {
+  border: 1px solid var(--brand-accent);
+}
+
+/* ============================================================================
+   6) TEXTAREAS (Input & Output) + EDITOR FOOTER
+   ========================================================================== */
+/* Input textarea */
+.text-input {
+  background-color: var(--bg-panel);
+  flex: none;
+  min-height: 430px;          /* ↑ Increase this value as needed */
+  resize: vertical;
+  padding: 1rem;
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.text-input:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px var(--brand-accent);
+}
+
+/* Output textarea */
+.text-output {
+  flex: none;
+  min-height: 433px;          /* ↑ Increase this value as needed */
+  resize: vertical;
+  padding: 1rem;
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  line-height: 1.5;
+}
+.text-output:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px var(--brand-accent);
+}
+
+/* Editor footer (upload + wordcount + check) */
+.editor-footer {
+  /* unified control height for label & button */
+  --cta-h: 42px;
+
+  display: grid;
+  grid-template-columns: 1fr auto;   /* left grows, right hugs content */
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 0 0 0;
+}
+
+/* Left section in footer */
+.footer-left {
+  display: flex;
+  align-items: center;               /* align label + filename on the same baseline */
+  gap: 0.75rem;
+  min-width: 0;    
+}
+
+/* Right wrapper in footer (word count + main CTA) */
+.footer-right-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-self: end; 
+}
+
+/* Word count */
+.word-count {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  margin: 0;    
+}
+
+/* Main CTA button keeps the same height as the upload label */
+.editor-footer .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: var(--cta-h);
+  padding: 0 1.2rem;
+  white-space: nowrap;
+}
+
+/* Main CTA button (Check Grammar) + spinner */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--brand-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-family: var(--font-heading);
+  border: 1px solid var(--border-default) ;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background-color: var(--color-accent);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+.btn-primary#clearGoals {
+  background-color: rgb(233 233 233 / 90%);
+  color: black;
+}
+.btn-primary#clearGoals:hover {
+  background-color: rgba(199, 199, 199, 0.9);
+}
+.btn-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--color-white);
+  border-top: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+/* Loading state for CTA */
+.btn-primary.loading .btn-text {
+  visibility: hidden;
+}
+.btn-primary.loading .btn-spinner {
+  display: inline-block;
+}
+/* Spinner keyframes */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================================
+   7) GOALS OVERLAY (modal-like)
+   ========================================================================== */
 .goals-overlay {
   display: none;
   position: fixed;
@@ -258,7 +471,6 @@ html, body, .pane, .editor-area, .tool-page-header,
 .goals-save {
   align-self: flex-end;
 }
-
 .goals-actions {
   display: flex;
   flex-direction: row;
@@ -278,56 +490,15 @@ html, body, .pane, .editor-area, .tool-page-header,
   color: #333;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-
 .tool-tip-card a {
   color: #4b6cb7;
   text-decoration: underline;
   font-weight: 500;
 }
 
-
-/*  ------------------------------------------Textarea (Input) ------------------------------------------- */
-.text-input {
-  background-color: var(--bg-panel);
-  flex: none;
-  min-height: 399px;          /* ↑ Increase this value as needed */
-  resize: vertical;
-  padding: 1rem;
-  border: 1px solid var(--border-default);
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: var(--font-body);
-  color: var(--text-primary);
-  line-height: 1.5;
-}
-.text-input:focus {
-  outline: none;
-  border-color: var(--brand-accent);
-  box-shadow: 0 0 0 3px var(--brand-accent);
-}
-
-/* Editor Footer */
-.editor-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  /* margin-top: 0.75rem; */
-  padding: 0.75rem 0 0 0;
-}
-
-/* Left side: Word Count + Upload */
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  flex: 1;
-}
-
-/* Upload Modal */
+/* ============================================================================
+   8) UPLOAD MODAL (global modal for file import)
+   ========================================================================== */
 .upload-modal { 
   position: fixed;
   z-index: 9999;
@@ -341,7 +512,6 @@ html, body, .pane, .editor-area, .tool-page-header,
   align-items: center;
   backdrop-filter: blur(3px);
 }
-
 .upload-modal-content {
   background: var(--bg-panel);
   color: var(--text-primary);
@@ -356,7 +526,6 @@ html, body, .pane, .editor-area, .tool-page-header,
   border: 1px solid var(--border-default);
   transition: all 0.3s ease;
 }
-
 .close-upload-modal {
   position: absolute;
   top: 12px;
@@ -367,18 +536,15 @@ html, body, .pane, .editor-area, .tool-page-header,
   cursor: pointer;
   transition: color 0.2s ease;
 }
-
 .close-upload-modal:hover {
   color: var(--brand-accent);
 }
-
 .upload-modal-content h3 {
   font-family: var(--font-heading);
   font-size: 20px;
   margin-bottom: 20px;
   color: var(--brand-accent);
 }
-
 .drop-area {
   border: 2px dashed var(--brand-accent);
   border-radius: 10px;
@@ -388,212 +554,48 @@ html, body, .pane, .editor-area, .tool-page-header,
   background-color: var(--bg-page);
   transition: all 0.2s ease;
 }
-
 .drop-area.hover {
   background-color: var(--bg-accent-hover);
   border-color: rgba(var(--brand-used-often-rgb), 1);
 }
-
 .drop-area p {
   margin: 8px 0;
   font-size: 15px;
   color: var(--text-secondary);
 }
-
 .upload-label {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 500;
-  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  height: var(--cta-h);
+  padding: 0 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-default);
+  background: transparent;
+  color: var(--text-primary, #111);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  user-select: none;
 }
-
 .upload-label:hover {
   background-color: var(--brand-primary);
 }
-
 .upload-instructions p {
   margin: 4px 0;
   font-size: 13px;
   color: var(--text-secondary);
 }
-
 .file-info {
-  margin-top: 10px;
-  font-size: 14px;
-  color: var(--brand-used-often);
-  font-weight: 500;
-}
-
-.hidden {
-  display: none;
-}
-
-
-/* FOOTER RIGHT WRAPPER */
-.footer-right-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: 0.7rem;
-}
-
-/* Word count on the far right */
-.word-count {
-  font-size: 0.9rem;
+  max-width: clamp(160px, 30vw, 360px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: var(--text-secondary);
-  margin-left: auto;
-  white-space: nowrap;
+  line-height: var(--cta-h);
 }
 
-/* Spinner button (Check) */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--brand-primary);
-  color: var(--color-white);
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  font-family: var(--font-heading);
-  border: 1px solid var(--border-default) ;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  white-space: nowrap;
-}
-.btn-primary:hover {
-  background-color: var(--color-accent);
-}
-.btn-primary:active {
-  transform: scale(0.97);
-}
-.btn-primary#clearGoals {
-    background-color: rgb(233 233 233 / 90%);
-    color: black;
-}
-.btn-primary#clearGoals:hover {
-  background-color: rgba(199, 199, 199, 0.9);
-}
-.btn-spinner {
-  display: none;
-  width: 18px;
-  height: 18px;
-  border: 3px solid var(--color-white);
-  border-top: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-/* Show spinner when loading */
-.btn-primary.loading .btn-text {
-  visibility: hidden;
-}
-.btn-primary.loading .btn-spinner {
-  display: inline-block;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* 2) RIGHT: OUTPUT PANE */
-.pane-right {
-  flex: 1 1 600px;
-}
-.pane-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--text-primary);
-}
-.text-output {
-  flex: none;
-  min-height: 400px;          /* ↑ Increase this value as needed */
-  resize: vertical;
-  padding: 1rem;
-  border: 1px solid var(--border-default);
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: var(--font-body);
-  color: var(--text-primary);
-  background-color: var(--bg-page);
-  line-height: 1.5;
-}
-.text-output:focus {
-  outline: none;
-  border-color: var(--brand-accent);
-  box-shadow: 0 0 0 3px var(--brand-accent);
-}
-
-/* Paste button sits alongside undo/redo */
-.icon-btn#pasteBtn {
-  /* background-color: rgba(255, 255, 255, 0.9); */
-  border: 1px solid var(--border-default);
-  border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.icon-btn#pasteBtn:hover {
-  /* background-color: var(--bg-page); */
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-}
-
-/* Output toolbar */
-#toggleHighlightsBtn:hover {
-  border: 1px solid var(--brand-accent);
-}
-.output-toolbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  padding: 0 0 1rem 0;
-}
-.output-toolbar .icon-btn#copyBtn {
-  /* background-color: rgba(255, 255, 255, 0.9); */
-  border: 1px solid var(--border-default);
-  border-radius: 6px;
-  padding: 0.3rem;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-/* ── Copy & Paste Buttons ── */
-.icon-btn#copyBtn,
-.icon-btn#pasteBtn {
-  background-color: var(--bg-panel);
-  color: var(--text-primary);
-  border: 1px solid var(--border-default);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-.icon-btn#copyBtn:hover,
-.icon-btn#pasteBtn:hover {
-  background-color: var(--bg-accent-hover);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.icon-btn#copyBtn:hover {
-  /* background-color: var(--bg-page);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
-}
-
-
-
-
-/* ===========================
-   FEATURES OVERVIEW - PRO (theme-tokenised)
-   =========================== */
+/* ============================================================================
+   9) FEATURES OVERVIEW (marketing section under editor)
+   ========================================================================== */
 .features-overview--pro{
   position: relative;
   padding: clamp(2rem, 5vw, 3.2rem) 0;
@@ -603,8 +605,7 @@ html, body, .pane, .editor-area, .tool-page-header,
   overflow: clip;
   isolation: isolate;
 }
-
-/* Soft gradient blobs + subtle grid (brand-accent + warm) */
+/* Decorative background */
 .features-overview--pro .features-bg{
   position:absolute; inset:0; z-index:-1; pointer-events:none;
   background:
@@ -644,7 +645,7 @@ html, body, .pane, .editor-area, .tool-page-header,
   align-items: stretch;
 }
 
-/* Card with gradient ring, glass body, animated sheen */
+/* Feature cards */
 .feature-card{
   --ring: linear-gradient(120deg, var(--brand-accent), rgb(var(--brand-used-often-rgb)));
   position: relative;
@@ -699,7 +700,7 @@ html, body, .pane, .editor-area, .tool-page-header,
   margin: 0;
 }
 
-/* Staggered entrance */
+/* Staggered entrance animation */
 .feature-card{
   opacity: 0; transform: translateY(10px);
   animation: fadeUp .6s ease forwards;
@@ -713,32 +714,24 @@ html, body, .pane, .editor-area, .tool-page-header,
 .features-grid .feature-card:nth-child(7){ animation-delay: .35s; }
 @keyframes fadeUp{ to{ opacity:1; transform: translateY(0);} }
 
-/* Focus styles */
+/* Focus accessibility */
 .feature-card:focus-within{
   outline: none;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-accent) 36%, transparent);
 }
 .feature-card a:focus-visible{ outline: 2px solid var(--brand-accent); outline-offset: 3px; }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .feature-card, .feature-card::after, .feature-card::before,
-  .feature-icon, .features-heading::after{
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-
-
-
-/* Highlight Feature */
-/* Diff styles */
+/* ============================================================================
+   10) OUTPUT FOOTER + HIGHLIGHT/DIFF STYLES
+   ========================================================================== */
 .output-footer {
-  display: flex;
-  align-items: center;
-  margin: 2rem 1rem 1rem 0;
+    --cta-h: 42px;
+    display: flex;
+    align-content: center;
+    gap: 0.75rem 1rem;
+    padding: 0.75rem 0 0 0;
 }
+/* Download button (right of highlights toggle) */
 .btn-brand {
   color: var(--text-primary);
   background: transparent;
@@ -752,11 +745,10 @@ html, body, .pane, .editor-area, .tool-page-header,
   margin-left: 10px;
   transition: background-color 0.3s ease;
 }
-
 .btn-brand:hover {
   border: 1px solid var(--brand-accent);
 }
-
+/* Toggle highlights button */
 .btn-outline {
   padding: 0.6rem 1.2rem;
   border: 1px solid var(--border-default);
@@ -764,17 +756,16 @@ html, body, .pane, .editor-area, .tool-page-header,
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 1rem;
-  /* font-weight: 600; */
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
 }
-
 .btn-outline.active {
   background-color: var(--color-used-often);
   color: var(--color-white);
   border-color: var(--color-used-often);
 }
+/* Highlight container */
 .highlight-container {
   background-color: var(--bg-panel);
   border: 1px solid var(--border-default);
@@ -789,33 +780,48 @@ html, body, .pane, .editor-area, .tool-page-header,
   height: 300px;
   overflow-y: auto;
 }
-
+/* Diff tokens */
 .diff-added {
   background-color: rgba( var(--brand-used-often-rgb), 0.2 ); /* or define another var */
   color: #0a730a;
   font-weight: bold;
 }
-
 .diff-deleted {
   background-color: #ffd6d6;
   color: #c00;
   text-decoration: line-through;
 }
-
 .diff-equal {
   color: inherit;
 }
+
+/* Utility override (second .hidden wins due to !important; keep after first) */
 .hidden {
   display: none !important;
 }
 
+/* ============================================================================
+   11) STATEFUL UTILITIES
+   ========================================================================== */
+/* Show mobile menu when active */
+.mobile-menu.active {
+  display: flex;
+}
 
+/* ============================================================================
+   12) MEDIA QUERIES (ALL RESPONSIVE + ACCESSIBILITY AT THE END)
+   ========================================================================== */
 
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .feature-card, .feature-card::after, .feature-card::before,
+  .feature-icon, .features-heading::after{
+    animation: none !important;
+    transition: none !important;
+  }
+}
 
-
-/* ==============
-   RESPONSIVE RULES
-   ============== */
+/* ---------- ≥ 0 to 1024px ---------- */
 @media (max-width: 1024px) {
   .editor-container {
     flex-wrap: wrap;
@@ -829,8 +835,10 @@ html, body, .pane, .editor-area, .tool-page-header,
     margin-top: 1rem;
   }
 }
+
+/* ---------- ≥ 0 to 768px ---------- */
 @media (max-width: 768px) {
-   .tool-page-header {
+  .tool-page-header {
     flex-direction: column;
     text-align: center;
     gap: 0.75rem;
@@ -839,75 +847,58 @@ html, body, .pane, .editor-area, .tool-page-header,
     align-items: center;
     text-align: center;
   }
-  .pane-left {
-    padding-bottom: 1rem;
-  }
-  .pane-right {
-    padding-top: 0.5rem;
-  }
+  .pane-left { padding-bottom: 1rem; }
+  .pane-right { padding-top: 0.5rem; }
+
   .features-grid {
     grid-template-columns: 1fr; /* Single column on small screens */
   }
-
-  .feature-card {
-    text-align: left;
-  }
-}
-/* Show mobile menu when active */
-.mobile-menu.active {
-  display: flex;
+  .feature-card { text-align: left; }
 }
 
+/* ---------- ≥ 0 to 480px ---------- */
 @media (max-width: 480px) {
-  .tool-title {
-    font-size: 1.5rem;
-  }
-  .tool-subtitle {
-    font-size: 0.9rem;
-  }
-  .tool-tip-card {
-    font-size: 12px;
-  }
+  .tool-title { font-size: 1.5rem; }
+  .tool-subtitle { font-size: 0.9rem; }
+  .tool-tip-card { font-size: 12px; }
+
   .icon-btn#pasteBtn {
     padding: 0.2rem 0.4rem;
     font-size: 0.75rem;
   }
-  .editor-footer {
-    flex-wrap: nowrap;
+
+  .editor-footer { flex-wrap: nowrap; }
+  .footer-left { align-items: flex-start; }
+  .footer-right-wrapper { align-items: flex-end; }
+
+  
+  .upload-label { font-size: 0.85rem; }
+  .file-info   { font-size: 0.8rem; }
+  .word-count  { font-size: 0.85rem; margin-bottom: 0.7rem;}
+
+  .editor-footer .btn-primary {
+    font-size: 0.9rem;
+    padding: 0 1rem;
   }
-      .footer-left {
-        align-items: flex-start;
-    }
-        .footer-right-wrapper {
-        align-items: flex-end;
-    }
-    .upload-label {
-      font-size: 0.75rem;
-    }
-  .file-info {
-    font-size: 0.75rem;
-    white-space: pre-wrap;
-  }
-  .word-count {
-    margin-left: 0;
-  }
+
   .btn-primary {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
   }
-  .btn-primary .btn-text {
-    font-size: 0.75rem;
-  }
+  .btn-primary .btn-text { font-size: 0.75rem; }
+
   .btn-outline {
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
   }
+
   .icon-btn#copyBtn {
     padding: 0.2rem 0.4rem;
     font-size: 0.75rem;
   }
 }
 
+/* ---------- ≥ 0 to 320px ---------- */
 @media (max-width: 320px) {
   .btn-secondary {
     font-size: 0.75rem;
