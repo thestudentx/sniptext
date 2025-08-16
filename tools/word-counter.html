@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <base href="/tools/">
-  <title>Instant Text Counter - Snip Text</title>
+  <title>Instant Text Counter — Snip Text</title>
 
+  <!-- Global site stylesheet (assumes brand variables are defined here) -->
   <link rel="stylesheet" href="/css/style.css">
 
   <link rel="icon" href="/favicon.png" type="image/png">
@@ -14,129 +15,233 @@
 
   <!-- Page styles (self-contained so this file is portable) -->
   <style>
-/* ===========================
-   WORD COUNTER - UPDATED PALETTE
-   (only colors changed, names preserved)
-   =========================== */
+/* ======================================================
+   WORD COUNTER — BRAND-MAPPED DARK-FIRST THEME
+   (tokens use your global brand vars where possible)
+   ====================================================== */
 :root{
-  --bg-1: linear-gradient(135deg, var(--color-bg-dark) 0%, var(--gradient-hero-end) 60%);
+  /* Backdrop & elevation */
+  --wc-bg: radial-gradient(1200px 520px at 8% -10%, color-mix(in oklab, var(--color-primary) 20%, transparent), transparent 60%),
+           radial-gradient(900px 520px at 100% 0%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 60%),
+           linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-footer-bg) 100%);
+  --wc-card:        rgba(255,255,255,0.06);
+  --wc-glass:       rgba(255,255,255,0.08);
+  --wc-glass-2:     rgba(255,255,255,0.03);
+  --wc-border:      rgba(255,255,255,0.12);
+  --wc-shadow-1:    0 12px 40px rgba(2,6,23,0.55);
 
-  /* Glass / cards tuned for dark theme */
-  --card:        rgba(255,255,255,0.04);
-  --glass:       rgba(255,255,255,0.06);
-  --glass-2:     rgba(255,255,255,0.03);
-  --glass-border:rgba(255,255,255,0.10);
+  /* Accents */
+  --wc-accent-a:    linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  --wc-accent-b:    linear-gradient(90deg, var(--gradient-cta-start), var(--gradient-cta-end)); /* blue → warm CTA */
 
-  /* Brand accents mapped to your theme blues & CTA gradient */
-  --accent-a: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  --accent-b: linear-gradient(90deg, var(--gradient-cta-start), var(--gradient-cta-end));
+  /* Text */
+  --wc-text:        var(--color-white);
+  --wc-muted:       rgba(255,255,255,0.85);
+  --wc-muted-2:     rgba(255,255,255,0.65);
 
-  /* Text tints for dark mode */
-  --muted:   rgba(255,255,255,0.85);
-  --muted-2: rgba(255,255,255,0.65);
+  /* Status */
+  --wc-ok:          #22c55e;
+  --wc-warn:        var(--color-used-often); /* warm brand orange */
+  --wc-danger:      #ef4444;
 
-  /* Unchanged structural tokens */
-  --glass-radius: 14px;
-  --card-shadow:  0 12px 40px rgba(2,6,23,0.55);
-  --max-width:    1200px;
+  /* Structure */
+  --wc-radius:      14px;
+  --wc-radius-lg:   16px;
+  --wc-maxw:        1200px;
 
   color-scheme: dark;
-  font-family: 'Poppins', 'Roboto', 'Rajdhani', sans-serif;
+  font-family: 'Poppins','Roboto','Rajdhani',system-ui,-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;
 }
 
-/* Optional: light-mode tuning for Word Counter */
+/* Light-mode tuning */
 @media (prefers-color-scheme: light){
   :root{
-    --bg-1: linear-gradient(135deg, var(--color-bg-light) 0%, #ffffff 70%);
+    --wc-bg: radial-gradient(1200px 520px at 8% -10%, color-mix(in oklab, var(--color-primary) 10%, transparent), transparent 60%),
+             radial-gradient(900px 520px at 100% 0%, color-mix(in oklab, var(--color-accent) 10%, transparent), transparent 60%),
+             linear-gradient(180deg, var(--color-bg-light) 0%, #ffffff 100%);
+    --wc-card:        #ffffff;
+    --wc-glass:       rgba(0,0,0,0.04);
+    --wc-glass-2:     rgba(0,0,0,0.02);
+    --wc-border:      var(--color-border);
+    --wc-text:        var(--color-text-dark);
+    --wc-muted:       var(--color-text-dark);
+    --wc-muted-2:     var(--color-text-light);
+    --wc-shadow-1:    0 12px 40px rgba(2,6,23,0.12);
 
-    --card:        rgba(0,0,0,0.03);
-    --glass:       rgba(0,0,0,0.04);
-    --glass-2:     rgba(0,0,0,0.02);
-    --glass-border:var(--color-border);
-
-    --accent-a: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-    --accent-b: linear-gradient(90deg, var(--gradient-cta-start), var(--gradient-cta-end));
-
-    --muted:   var(--color-text-dark);
-    --muted-2: var(--color-text-light);
+    --wc-accent-a:    linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    --wc-accent-b:    linear-gradient(90deg, var(--gradient-cta-start), var(--gradient-cta-end));
 
     color-scheme: light;
   }
 }
 
+/* ======================================================
+   BASE
+   ====================================================== */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background: var(--wc-bg);
+  color: var(--wc-text);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  -webkit-text-size-adjust:100%;
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
-    body{
-      background: radial-gradient(900px 360px at 10% 10%, rgba(124,58,237,0.06), transparent), radial-gradient(700px 240px at 90% 90%, rgba(6,182,212,0.03), transparent), #06121b;
-      color:#fff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      -webkit-text-size-adjust:100%;
-    }
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
 
-    a{color:inherit;text-decoration:none}
-    button{font-family:inherit}
+/* ======================================================
+   LAYOUT
+   ====================================================== */
+main#word-counter-text-counter-app{
+  padding:48px 20px;
+  min-height:72vh;
+  display:flex; flex-direction:column; gap:18px; align-items:center
+}
+.word-counter-hero{width:100%;max-width:var(--wc-maxw)}
+.word-counter-hero-inner{
+  display:grid; grid-template-columns:1fr 480px; gap:32px; align-items:start
+}
+@media (max-width:980px){
+  .word-counter-hero-inner{grid-template-columns:1fr}
+}
 
-    /* ======================================================
-       MAIN LAYOUT
-       ====================================================== */
-    main#word-counter-text-counter-app{padding:48px 20px;min-height:72vh;display:flex;flex-direction:column;gap:18px;align-items:center}
-    .word-counter-hero{width:100%;max-width:var(--max-width)}
-    .word-counter-hero-inner{display:grid;grid-template-columns:1fr 460px;gap:32px;align-items:start}
+/* ======================================================
+   LEFT: Heading, controls, stats
+   ====================================================== */
+.word-counter-left{padding:8px 0}
+.word-counter-title{
+  font-size:clamp(1.6rem,2.6vw,2.2rem);
+  margin:0 0 6px; font-weight:700;
+  background:var(--wc-accent-a); -webkit-background-clip:text; background-clip:text; color:transparent
+}
+.word-counter-subtitle{margin:0 0 14px; color:var(--wc-muted-2); font-size:.98rem; max-width:48rem}
 
-    .word-counter-left{padding:8px 0}
-    .word-counter-title{font-size:clamp(1.6rem,2.6vw,2.2rem);margin:0 0 6px;font-weight:700;background:var(--accent-a);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .word-counter-subtitle{margin:0 0 14px;color:var(--muted-2);font-size:0.98rem;max-width:48rem}
+/* Controls */
+.word-counter-controls{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:12px}
+.word-counter-btn{
+  background:var(--wc-glass); padding:10px 14px; border-radius:12px; border:1px solid var(--wc-border);
+  cursor:pointer; backdrop-filter:blur(6px); box-shadow:var(--wc-shadow-1);
+  font-weight:600; color:var(--wc-text); transition:.18s transform ease, .2s filter ease
+}
+.word-counter-btn:hover{transform:translateY(-2px); filter:brightness(1.06)}
+.word-counter-btn.word-counter-small{padding:8px 10px; font-size:.9rem}
+.word-counter-btn.word-counter-outline{background:transparent; border:1px solid color-mix(in oklab, #000 10%, var(--wc-border))}
+.word-counter-btn.word-counter-ghost{background:transparent; border:1px dashed color-mix(in oklab, #000 10%, var(--wc-border))}
 
-    /* controls */
-    .word-counter-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
-    .word-counter-btn{background:var(--glass);padding:10px 14px;border-radius:12px;border:1px solid var(--glass-border);cursor:pointer;backdrop-filter:blur(6px);box-shadow:var(--card-shadow);font-weight:600;color:#fff}
-    .word-counter-btn.word-counter-small{padding:8px 10px;font-size:.9rem}
-    .word-counter-btn.word-counter-outline{background:transparent;border:1px solid rgba(255,255,255,0.06)}
-    .word-counter-btn.word-counter-ghost{background:transparent;border:1px dashed rgba(255,255,255,0.04)}
+/* Stats (core) */
+.word-counter-stats-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:12px
+}
+@media (max-width:980px){ .word-counter-stats-grid{grid-template-columns:repeat(2,1fr)} }
+.word-counter-stat-card{
+  background:linear-gradient(180deg,var(--wc-glass-2),transparent);
+  padding:14px; border-radius:12px; border:1px solid color-mix(in oklab, #000 6%, var(--wc-border));
+  display:flex; flex-direction:column; align-items:flex-start; gap:6px;
+  transition:transform .22s ease, box-shadow .22s ease
+}
+.word-counter-stat-card:hover{transform:translateY(-4px); box-shadow:0 18px 50px rgba(2,6,23,0.35)}
+.word-counter-stat-icon{font-size:1.05rem}
+.word-counter-stat-value{
+  font-size:1.45rem; font-weight:700;
+  background:var(--wc-accent-a); -webkit-background-clip:text; background-clip:text; color:transparent
+}
+.word-counter-stat-label{font-size:.82rem; color:var(--wc-muted-2)}
 
-    /* stats */
-    .word-counter-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:12px}
-    .word-counter-stat-card{background:linear-gradient(180deg,var(--glass-2),transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;align-items:flex-start;gap:6px;transition:transform .22s ease,box-shadow .22s ease}
-    .word-counter-stat-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(2,6,23,0.45)}
-    .word-counter-stat-icon{font-size:1.05rem}
-    .word-counter-stat-value{font-size:1.45rem;font-weight:700;background:var(--accent-a);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .word-counter-stat-label{font-size:.82rem;color:var(--muted-2)}
+.word-counter-meta-row{display:flex; gap:18px; color:var(--wc-muted-2); align-items:center; margin-top:6px; font-size:.95rem}
+@media (max-width:520px){ .word-counter-meta-row{flex-direction:column; align-items:flex-start} }
 
-    .word-counter-meta-row{display:flex;gap:18px;color:var(--muted-2);align-items:center;margin-top:6px;font-size:.95rem}
+/* ======================================================
+   RIGHT: Textarea column
+   ====================================================== */
+.word-counter-right{position:relative}
+textarea#word-counter-theText{
+  width:100%; min-height:420px; resize:vertical; padding:20px; border-radius:12px;
+  border:1px solid color-mix(in oklab, #000 8%, var(--wc-border));
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color:var(--wc-text); font-size:1rem; box-shadow:var(--wc-shadow-1); outline:none;
+  transition:box-shadow .15s ease, transform .12s ease;
+  font-family:'Poppins','Roboto','Rajdhani',system-ui,-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  caret-color: color-mix(in oklab, var(--color-accent) 80%, #fff);
+}
+textarea#word-counter-theText:focus{box-shadow:0 28px 70px rgba(2,6,23,0.45); transform:translateY(-2px)}
+.word-counter-hint{margin-top:8px; color:var(--wc-muted-2); font-size:.92rem}
 
-    /* textarea column */
-    .word-counter-right{position:relative}
-    textarea#word-counter-theText{width:100%;min-height:380px;resize:vertical;padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:#fff;font-size:1rem;box-shadow:var(--card-shadow);outline:none;transition:box-shadow .15s ease, transform .12s ease; font-family: 'Poppins', 'Roboto', 'Rajdhani', sans-serif;}
-    textarea#word-counter-theText:focus{box-shadow:0 28px 70px rgba(2,6,23,0.6);transform:translateY(-4px)}
+/* A11y helpers */
+.word-counter-visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+kbd{background:rgba(255,255,255,0.06); border-radius:6px; padding:6px 8px; font-weight:700; border:1px solid rgba(255,255,255,0.06)}
 
-    .word-counter-hint{margin-top:8px;color:var(--muted-2);font-size:.92rem}
+/* ======================================================
+   ADVANCED: Insights, Goals, Top Words (new)
+   ====================================================== */
+.word-counter-advanced{
+  margin-top:20px;
+  display:grid; grid-template-columns:1.1fr .9fr; gap:16px
+}
+@media (max-width:992px){ .word-counter-advanced{grid-template-columns:1fr} }
 
-    /* accessibility helper */
-    .word-counter-visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
-    kbd{background:rgba(255,255,255,0.06);border-radius:6px;padding:6px 8px;font-weight:700;border:1px solid rgba(255,255,255,0.04)}
+.wc-card{
+  border:1px solid var(--wc-border); background:var(--wc-card);
+  border-radius:var(--wc-radius-lg); box-shadow:var(--wc-shadow-1);
+  overflow:hidden; backdrop-filter: blur(10px)
+}
+.wc-card-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px;
+  background:linear-gradient(90deg, color-mix(in oklab, var(--color-primary) 14%, transparent), color-mix(in oklab, var(--color-accent) 10%, transparent));
+  border-bottom:1px solid var(--wc-border)
+}
+.wc-card-title{margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.9}
 
-    /* responsive */
-    @media (max-width:980px){
-      .word-counter-hero-inner{grid-template-columns:1fr;}
-      .word-counter-stats-grid{grid-template-columns:repeat(2,1fr)}
-      textarea#word-counter-theText{min-height:260px}
-      .word-counter-nav-links{display:none}
-      .word-counter-hamburger{display:flex;margin-left:auto}
-    }
+.wc-grid{
+  padding:14px; display:grid; grid-template-columns:repeat(3, 1fr); gap:10px
+}
+@media (max-width:680px){ .wc-grid{grid-template-columns:1fr 1fr} }
 
-    @media (max-width:520px){
-      .word-counter-controls{gap:8px}
-      .word-counter-meta-row{flex-direction:column;align-items:flex-start}
-      .word-counter-title{font-size:1.4rem}
-    }
+.wc-chip{
+  border:1px solid var(--wc-border); border-radius:12px; padding:10px; font-size:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+}
+.wc-chip b{display:block; color:var(--wc-muted-2); font-weight:600}
+.wc-chip span{font-weight:800; font-size:18px}
 
-    /* small utilities */
-    .word-counter-muted{color:var(--muted-2)}
+/* Goal progress */
+.wc-goal-wrap{padding:14px; display:grid; gap:10px}
+.wc-goal-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.wc-input, .wc-number{
+  padding:8px 10px; border:1px solid var(--wc-border); border-radius:10px;
+  background:transparent; color:var(--wc-text); outline:none; font-size:13px
+}
+.wc-number{width:120px; text-align:center}
+.wc-progress{
+  height:12px; border-radius:999px; background:rgba(255,255,255,.08);
+  border:1px solid var(--wc-border); overflow:hidden
+}
+.wc-progress > i{
+  display:block; height:100%; width:0%;
+  background:var(--wc-accent-b)
+}
 
+/* Top words list */
+.wc-top-wrap{padding:14px; display:grid; gap:12px}
+.wc-top-controls{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.wc-check{display:inline-flex; align-items:center; gap:6px; user-select:none}
+.wc-list{display:grid; grid-template-columns:1fr auto; gap:8px 10px; max-height:300px; overflow:auto; padding-right:6px}
+.wc-list small{opacity:.7}
+
+/* Footer & responsive tweaks */
+@media (max-width:520px){
+  .word-counter-controls{gap:8px}
+  .word-counter-title{font-size:1.4rem}
+}
+
+/* Small utilities */
+.word-counter-muted{color:var(--wc-muted-2)}
   </style>
 </head>
 <body>
 
+<!-- Simple site nav (uses global styles) -->
 <nav id="main-navbar" aria-label="Main navigation">
   <div class="nav-container">
     <div class="logo"><a href="/index.html">Snip Text</a></div>
@@ -163,18 +268,21 @@
       <!-- LEFT: heading, controls, stats -->
       <div class="word-counter-left">
         <h1 class="word-counter-title">Instant Text Counter</h1>
-        <p class="word-counter-subtitle">Word, character, line & sentence counts - live, animated, and lightning fast. Perfect for editors, students, and content creators.</p>
+        <p class="word-counter-subtitle">Word, character, line & sentence counts — live, accurate, and privacy-friendly. Plus advanced insights for editors, students, and creators.</p>
 
         <div class="word-counter-controls" role="toolbar" aria-label="Tool actions">
           <button id="word-counter-sampleBtn" class="word-counter-btn" title="Load sample text">Load sample</button>
           <button id="word-counter-copyBtn" class="word-counter-btn word-counter-outline" title="Copy text to clipboard">Copy</button>
           <button id="word-counter-clearBtn" class="word-counter-btn word-counter-ghost" title="Clear textarea">Clear</button>
           <button id="word-counter-downloadBtn" class="word-counter-btn word-counter-small" title="Download as .txt">Download .txt</button>
+          <button id="word-counter-cleanBtn" class="word-counter-btn word-counter-small" title="Normalize whitespace">Normalize</button>
+          <label class="word-counter-btn word-counter-small" title="Import .txt" style="cursor:pointer;">
+            Import .txt<input id="word-counter-import" type="file" accept=".txt" hidden>
+          </label>
         </div>
 
         <div class="word-counter-stats-grid" role="region" aria-live="polite" aria-atomic="true" aria-label="Text statistics">
-
-          <div class="word-counter-stat-card" aria-hidden="false">
+          <div class="word-counter-stat-card">
             <div class="word-counter-stat-icon" aria-hidden>✍️</div>
             <div class="word-counter-stat-value" id="word-counter-words">0</div>
             <div class="word-counter-stat-label">Words</div>
@@ -197,30 +305,87 @@
             <div class="word-counter-stat-value" id="word-counter-sentences">0</div>
             <div class="word-counter-stat-label">Sentences</div>
           </div>
-
         </div>
 
-        <div class="word-counter-meta-row" aria-hidden="false">
-          <div class="word-counter-reading">Est. reading: <strong id="word-counter-readingTime">0</strong> <span class="word-counter-muted">min</span></div>
-          <div class="word-counter-char-space">Chars (no spaces): <strong id="word-counter-charsNoSpaces">0</strong></div>
+        <div class="word-counter-meta-row">
+          <div>Est. reading: <strong id="word-counter-readingTime">0</strong> <span class="word-counter-muted">min</span></div>
+          <div>Chars (no spaces): <strong id="word-counter-charsNoSpaces">0</strong></div>
         </div>
-
       </div>
 
       <!-- RIGHT: textarea -->
       <div class="word-counter-right">
         <label for="word-counter-theText" class="word-counter-visually-hidden">Enter or paste text</label>
-        <textarea id="word-counter-theText" placeholder="Paste or type your text here - stats update live..." spellcheck="true" autocomplete="off" aria-label="Text input"></textarea>
+        <textarea id="word-counter-theText" placeholder="Paste or type your text here — stats update live…" spellcheck="true" autocomplete="off" aria-label="Text input"></textarea>
+        <p class="word-counter-hint">Tip: press <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd> to clear.</p>
       </div>
     </div>
-  </section>
 
+    <!-- ADVANCED SECTION -->
+    <div class="word-counter-advanced">
+      <!-- Insights -->
+      <section class="wc-card" aria-labelledby="wc-insights-title">
+        <div class="wc-card-head">
+          <h2 id="wc-insights-title" class="wc-card-title">Insights</h2>
+          <div class="word-counter-muted">Live metrics</div>
+        </div>
+        <div class="wc-grid">
+          <div class="wc-chip"><b>Paragraphs</b><span id="word-counter-paragraphs">0</span></div>
+          <div class="wc-chip"><b>Unique words</b><span id="word-counter-uniqueWords">0</span></div>
+          <div class="wc-chip"><b>Vocab density</b><span id="word-counter-vocabDensity">0</span></div>
+          <div class="wc-chip"><b>Avg word length</b><span id="word-counter-avgWordLen">0</span></div>
+          <div class="wc-chip"><b>Avg sentence (w)</b><span id="word-counter-avgSentLen">0</span></div>
+          <div class="wc-chip"><b>Speaking time</b><span id="word-counter-speakingTime">0s</span></div>
+          <div class="wc-chip"><b>Slow read (125wpm)</b><span id="word-counter-slowReading">0s</span></div>
+          <div class="wc-chip"><b>Fast read (300wpm)</b><span id="word-counter-fastReading">0s</span></div>
+          <div class="wc-chip"><b>Reading ease</b><span id="word-counter-readingEase">0</span></div>
+          <div class="wc-chip"><b>Grade level</b><span id="word-counter-gradeLevel">0</span></div>
+          <div class="wc-chip"><b>Longest word</b><span id="word-counter-longestWord"></span></div>
+          <div class="wc-chip"><b>Shortest word</b><span id="word-counter-shortestWord"></span></div>
+        </div>
+      </section>
+
+      <!-- Goals -->
+      <section class="wc-card" aria-labelledby="wc-goal-title">
+        <div class="wc-card-head">
+          <h2 id="wc-goal-title" class="wc-card-title">Goal & Export</h2>
+          <div class="word-counter-muted">Targets & reports</div>
+        </div>
+        <div class="wc-goal-wrap">
+          <div class="wc-goal-row">
+            <label for="word-counter-goal" class="word-counter-visually-hidden">Target words</label>
+            <input id="word-counter-goal" class="wc-number" type="number" min="0" step="50" value="1000" aria-label="Target words">
+            <span id="word-counter-goalLabel" class="word-counter-muted">Target: 1,000 words</span>
+            <button id="word-counter-exportCsv" class="word-counter-btn word-counter-small">Export CSV</button>
+            <button id="word-counter-exportJson" class="word-counter-btn word-counter-small word-counter-outline">Export JSON</button>
+          </div>
+          <div class="wc-progress" aria-label="Goal progress" aria-live="polite">
+            <i id="word-counter-goalbar" style="width:0%"></i>
+          </div>
+        </div>
+
+        <div class="wc-top-wrap">
+          <div class="wc-top-controls">
+            <div class="wc-check">
+              <input type="checkbox" id="word-counter-excludeStop" checked>
+              <label for="word-counter-excludeStop">Exclude stopwords</label>
+            </div>
+            <label>Min length
+              <input id="word-counter-minLen" class="wc-number" type="number" min="1" max="12" value="3">
+            </label>
+            <label>Top N
+              <input id="word-counter-topN" class="wc-number" type="number" min="5" max="50" value="15">
+            </label>
+          </div>
+          <div class="wc-list" id="word-counter-topWords" aria-live="polite" aria-label="Top words list">
+            <!-- Filled by script -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
 </main>
 
-
-
-
-  
 <footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
   <!-- decorative background -->
   <div class="footer-bg" aria-hidden="true"></div>
@@ -242,7 +407,7 @@
       <p>
         &copy; <span id="year"></span>
         <span class="powered-by">
-          Snip Text - powered by
+          Snip Text — powered by
           <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
         </span>
         · All rights reserved.
@@ -258,50 +423,71 @@
   </button>
 </footer>
 
-
-
-
-
 <!-- keep global behavioral scripts (if your project requires them) -->
- <script src="/js/index.js"></script>
+<script src="/js/index.js"></script>
 <script src="/js/auth.js"></script>
 
-<!-- Page script: preserves original logic and animations (optimized & documented) -->
+<!-- Page script (optimized, commented) -->
 <script>
 (function () {
   'use strict';
 
   // ---- Grab elements (guarded) ----
   const ta                 = document.getElementById('word-counter-theText');
-  if (!ta) return; // nothing to do if the textarea isn't present
+  if (!ta) return;
 
   const wordsEl            = document.getElementById('word-counter-words');
   const charsEl            = document.getElementById('word-counter-characters');
   const linesEl            = document.getElementById('word-counter-lines');
   const sentencesEl        = document.getElementById('word-counter-sentences');
   const readingEl          = document.getElementById('word-counter-readingTime');
+  const charsNoSpacesEl    = document.getElementById('word-counter-charsNoSpaces');
+
+  // Advanced metric nodes
+  const paragraphsEl       = document.getElementById('word-counter-paragraphs');
+  const uniqueWordsEl      = document.getElementById('word-counter-uniqueWords');
+  const vocabDensityEl     = document.getElementById('word-counter-vocabDensity');
+  const avgWordLenEl       = document.getElementById('word-counter-avgWordLen');
+  const avgSentLenEl       = document.getElementById('word-counter-avgSentLen');
+  const speakTimeEl        = document.getElementById('word-counter-speakingTime');
+  const slowReadEl         = document.getElementById('word-counter-slowReading');
+  const fastReadEl         = document.getElementById('word-counter-fastReading');
+  const longestWordEl      = document.getElementById('word-counter-longestWord');
+  const shortestWordEl     = document.getElementById('word-counter-shortestWord');
+  const readingEaseEl      = document.getElementById('word-counter-readingEase');
+  const gradeLevelEl       = document.getElementById('word-counter-gradeLevel');
+
+  // Top words & options
+  const topWrap            = document.getElementById('word-counter-topWords');
+  const excludeStopCk      = document.getElementById('word-counter-excludeStop');
+  const minLenInput        = document.getElementById('word-counter-minLen');
+  const topNInput          = document.getElementById('word-counter-topN');
+
+  // Goal & export
+  const goalInput          = document.getElementById('word-counter-goal');
+  const goalLabel          = document.getElementById('word-counter-goalLabel');
+  const goalBar            = document.getElementById('word-counter-goalbar');
+  const exportCsvBtn       = document.getElementById('word-counter-exportCsv');
+  const exportJsonBtn      = document.getElementById('word-counter-exportJson');
+
+  // Buttons
   const sampleBtn          = document.getElementById('word-counter-sampleBtn');
   const clearBtn           = document.getElementById('word-counter-clearBtn');
   const copyBtn            = document.getElementById('word-counter-copyBtn');
   const downloadBtn        = document.getElementById('word-counter-downloadBtn');
-  const charsNoSpacesEl    = document.getElementById('word-counter-charsNoSpaces');
+  const cleanBtn           = document.getElementById('word-counter-cleanBtn');
+  const importInput        = document.getElementById('word-counter-import');
 
-  // Optional advanced metrics (only set if present in DOM)
-  const paragraphsEl       = document.getElementById('word-counter-paragraphs');
-  const uniqueWordsEl      = document.getElementById('word-counter-uniqueWords');
-  const vocabDensityEl     = document.getElementById('word-counter-vocabDensity'); // unique/total
-  const avgWordLenEl       = document.getElementById('word-counter-avgWordLen');
-  const avgSentLenEl       = document.getElementById('word-counter-avgSentLen');  // words per sentence
-  const speakTimeEl        = document.getElementById('word-counter-speakingTime'); // at ~130 wpm (presentation)
-  const slowReadEl         = document.getElementById('word-counter-slowReading');  // 125 wpm
-  const fastReadEl         = document.getElementById('word-counter-fastReading');  // 300 wpm
-  const longestWordEl      = document.getElementById('word-counter-longestWord');
-  const shortestWordEl     = document.getElementById('word-counter-shortestWord');
+  // Decorative: year & simple back-to-top
+  const yearSpan           = document.getElementById('year');
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
   // ---- Helpers ----
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const setText = (el, v) => { if (el) el.textContent = v; };
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
-  // Animation that supports integers or fixed decimals, but skips if reduced motion is set
+  // Animation for counters
   function animateTo(el, from, to, decimals = 0) {
     if (!el) return;
     if (prefersReducedMotion) {
@@ -322,58 +508,63 @@
     requestAnimationFrame(step);
   }
 
-  // Safe setters
-  const setText = (el, v) => { if (el) el.textContent = v; };
-
-  // Detect Unicode property escapes support (modern browsers yes; fall back otherwise)
+  // Regex support
   let unicodePropsOK = true;
   try { new RegExp('\\p{L}', 'u'); } catch { unicodePropsOK = false; }
-
-  // Regexes (with fallbacks)
   const whiteSpaceRe = unicodePropsOK ? /\p{White_Space}/gu : /\s/g;
-
-  // Tokenizer: counts "words" robustly across scripts.
-  // - Latin words can include internal apostrophes/hyphens.
-  // - CJK characters count individually (common behavior among counters).
   const wordTokenRe = unicodePropsOK
     ? /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]|[\p{L}\p{N}]+(?:['’\--‒–-][\p{L}\p{N}]+)*/gu
     : /[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*/g;
 
-  // Sentence count heuristic:
-  //  - Splits on ., !, ? (plus CJK 。！？)
-  //  - Ignores common abbreviations and initials (A. B. Smith)
+  // Sentence split heuristics
   const abbrevRe = /\b(?:mr|mrs|ms|dr|prof|sr|jr|vs|etc|e\.g|i\.e|ph\.?d|u\.s|u\.k|a\.m|p\.m)\.$/i;
   const initialsRe = /(?:\b[A-Z]\.){2,}$/;
 
   function countSentences(text) {
-    const normalized = text
-      .replace(/\u2026/g, '...')  // ellipsis
-      .replace(/(\r\n|\r|\n)+/g, ' ') // newlines to space
-      .trim();
+    const normalized = text.replace(/\u2026/g, '...').replace(/(\r\n|\r|\n)+/g, ' ').trim();
     if (!normalized) return 0;
-
-    // Grab candidate sentence-like chunks ending with terminal punctuation
     const chunks = normalized.match(/[^.!?。！？]+[.!?。！？]+(?=\s|$)/g) || [];
-
-    // Filter out abbreviations/initials at the end of the chunk
     const filtered = chunks.filter(seg => {
       const t = seg.trim();
       return !(abbrevRe.test(t) || initialsRe.test(t));
     });
-
-    // If no terminal punctuation but there's text, consider it one sentence
     if (filtered.length === 0 && normalized) return 1;
     return filtered.length;
   }
 
-  // Count lines accurately (handles trailing newline)
   function countLines(text) {
     if (text.length === 0) return 0;
     const nl = text.match(/\r\n|\r|\n/g);
     return (nl ? nl.length : 0) + 1;
   }
 
-  // Durations
+  // Syllable heuristic (English-ish). Good enough for readability indexes.
+  function syllables(word) {
+    if (!word) return 0;
+    const w = String(word).toLowerCase().replace(/[^a-z]/g, '');
+    if (!w) return 0;
+    // Quick exceptions
+    if (/(?:cia|tia|cius|cious|geous|ion|sia|.ely)$/.test(w)) {}
+    let syl = 0;
+    const vowels = 'aeiouy';
+    let prevVowel = false;
+    for (let i = 0; i < w.length; i++) {
+      const isVowel = vowels.includes(w[i]);
+      if (isVowel && !prevVowel) syl++;
+      prevVowel = isVowel;
+    }
+    // Silent 'e'
+    if (w.endsWith('e')) syl--;
+    // Minimum 1
+    return Math.max(1, syl);
+  }
+
+  // Stopword set (English minimal, extendable)
+  const STOPWORDS = new Set([
+    'the','a','an','and','or','but','if','then','else','when','at','by','for','in','of','on','to','up','as','is','it','its','be','are','was','were','this','that','these','those','with','from','your','you','i','we','they','he','she','them','his','her','our','us','their','my','me','not','no'
+  ]);
+
+  // Durations & formatting
   const secs = (m) => Math.max(0, Math.round(m));
   const formatHM = (seconds) => {
     seconds = Math.max(0, Math.round(seconds));
@@ -382,91 +573,113 @@
     return m > 0 ? `${m}m ${s}s` : `${s}s`;
   };
 
-  // Core counting (precision with code points, supports emojis & surrogate pairs)
+  // Core counting
   function countAll(text) {
-    const codepoints = Array.from(text); // correct char length for emojis, flags, etc.
+    const codepoints = Array.from(text);
     const chars = codepoints.length;
 
     const charsNoSpaces = unicodePropsOK
       ? codepoints.filter(ch => !whiteSpaceRe.test(ch)).length
       : text.replace(/\s+/g, '').length;
 
-    // Words
     const wordMatches = text.match(wordTokenRe);
     const words = wordMatches ? wordMatches.length : (text.trim() ? text.trim().split(/\s+/).filter(Boolean).length : 0);
 
-    // Sentences & lines
     const sentences = countSentences(text);
     const lines = countLines(text);
 
-    // Reading times (minutes as float w/ 1 decimal for main; variants for optional fields)
-    const wpmNormal = 200;
-    const wpmSlow   = 125;
-    const wpmFast   = 300;
-    const wpmSpeak  = 130;
+    const wpmNormal = 200, wpmSlow = 125, wpmFast = 300, wpmSpeak = 130;
 
     const readingMinutes = words > 0 ? (words / wpmNormal) : 0;
     const slowSeconds    = Math.round((words / wpmSlow)  * 60);
     const fastSeconds    = Math.round((words / wpmFast)  * 60);
     const speakSeconds   = Math.round((words / wpmSpeak) * 60);
 
-    // Paragraphs (blank-line separated; fallback to 1 if text exists but no blanks)
     const paraBlocks = text.split(/\n{2,}/).map(s => s.trim()).filter(Boolean);
     const paragraphs = paraBlocks.length || (text.trim() ? 1 : 0);
 
     // Averages & vocab stats
-    let avgWordLen = 0, avgSentLen = 0, uniqueCount = 0, density = 0, longest = '', shortest = '';
+    let avgWordLen = 0, avgSentLen = 0, uniqueCount = 0, density = 0, longest = '', shortest = '', totalSyll = 0;
     if (words > 0 && wordMatches) {
       const normalizedWords = wordMatches.map(w => w.toLocaleLowerCase());
       const set = new Set(normalizedWords);
       uniqueCount = set.size;
       density = +(uniqueCount / words).toFixed(3);
 
-      // average word length in characters (code points)
       const lens = normalizedWords.map(w => Array.from(w).length);
       const totalLen = lens.reduce((a, b) => a + b, 0);
       avgWordLen = +(totalLen / words).toFixed(2);
 
-      // longest/shortest word (by code points)
       normalizedWords.forEach(w => {
         const l = Array.from(w).length;
         if (!longest || l > Array.from(longest).length) longest = w;
         if (!shortest || l < Array.from(shortest).length) shortest = w;
+        totalSyll += syllables(w);
       });
 
-      // average sentence length in words
       avgSentLen = sentences > 0 ? +(words / sentences).toFixed(2) : words;
     }
 
+    // Readability indices (FK + Flesch)
+    let readingEase = 0, fkGrade = 0;
+    if (words > 0 && sentences > 0) {
+      const W = words, S = sentences, Sy = totalSyll;
+      readingEase = +(206.835 - 1.015*(W/S) - 84.6*(Sy/W)).toFixed(1);     // 0–100 (higher easier)
+      fkGrade    = +(0.39*(W/S) + 11.8*(Sy/W) - 15.59).toFixed(1);         // grade level
+      if (!isFinite(readingEase)) readingEase = 0;
+      if (!isFinite(fkGrade)) fkGrade = 0;
+    }
+
     return {
-      words,
-      chars,
-      lines,
-      sentences,
-      charsNoSpaces,
-      readingMinutes, // float
-      slowSeconds,
-      fastSeconds,
-      speakSeconds,
-      paragraphs,
-      uniqueCount,
-      density,
-      avgWordLen,
-      avgSentLen,
-      longest,
-      shortest
+      words, chars, lines, sentences, charsNoSpaces,
+      readingMinutes, slowSeconds, fastSeconds, speakSeconds,
+      paragraphs, uniqueCount, density, avgWordLen, avgSentLen,
+      longest, shortest, readingEase, fkGrade,
+      wordMatches: wordMatches || []
     };
   }
 
+  // Top words (frequency)
+  function topWords(tokens, opts) {
+    const minLen = clamp(+opts.minLen || 1, 1, 32);
+    const topN   = clamp(+opts.topN || 15, 1, 200);
+    const excludeStop = !!opts.excludeStop;
+
+    const freq = new Map();
+    tokens.forEach(w => {
+      const lw = w.toLocaleLowerCase();
+      // Keep alphanum words for frequency viz; ignore single CJK glyphs here (optional)
+      const wordLen = Array.from(lw).length;
+      if (wordLen < minLen) return;
+      if (excludeStop && STOPWORDS.has(lw)) return;
+      // Ignore pure numbers
+      if (/^\d+$/.test(lw)) return;
+      freq.set(lw, (freq.get(lw) || 0) + 1);
+    });
+
+    const sorted = [...freq.entries()].sort((a,b) => b[1] - a[1]).slice(0, topN);
+    return sorted; // [ [word, count], ... ]
+  }
+
+  function renderTop(list) {
+    if (!topWrap) return;
+    topWrap.innerHTML = '';
+    if (list.length === 0) {
+      const p = document.createElement('p');
+      p.className = 'word-counter-muted';
+      p.textContent = 'No frequent words to show yet.';
+      topWrap.appendChild(p);
+      return;
+    }
+    list.forEach(([w, c]) => {
+      const label = document.createElement('div'); label.textContent = w;
+      const val = document.createElement('div'); val.innerHTML = `<small>${c}</small>`;
+      topWrap.appendChild(label); topWrap.appendChild(val);
+    });
+  }
+
   // Keep last values so animateTo can tween smoothly
-  let last = {
-    words: 0,
-    chars: 0,
-    lines: 0,
-    sentences: 0,
-    charsNoSpaces: 0,
-    readingMinutes: 0
-  };
+  let last = { words: 0, chars: 0, lines: 0, sentences: 0, charsNoSpaces: 0, readingMinutes: 0 };
 
   // Main updater
   function updateCounts() {
@@ -481,7 +694,7 @@
     animateTo(charsNoSpacesEl, last.charsNoSpaces, next.charsNoSpaces,   0);
     animateTo(readingEl,       last.readingMinutes,Number(next.readingMinutes.toFixed(1)), 1);
 
-    // Update optional advanced fields (no animation needed)
+    // Advanced (plain set)
     setText(paragraphsEl,  String(next.paragraphs));
     setText(uniqueWordsEl, String(next.uniqueCount));
     setText(vocabDensityEl, next.density ? next.density.toString() : '0');
@@ -492,7 +705,20 @@
     setText(fastReadEl,     formatHM(next.fastSeconds));
     setText(longestWordEl,  next.longest || '');
     setText(shortestWordEl, next.shortest || '');
+    setText(readingEaseEl,  next.readingEase.toString());
+    setText(gradeLevelEl,   next.fkGrade.toString());
 
+    // Goal
+    updateGoal(next.words);
+
+    // Top words
+    renderTop(topWords(next.wordMatches, {
+      minLen: +minLenInput.value || 3,
+      topN: +topNInput.value || 15,
+      excludeStop: !!(excludeStopCk && excludeStopCk.checked)
+    }));
+
+    // Save last for animation
     last = {
       words: next.words,
       chars: next.chars,
@@ -503,117 +729,163 @@
     };
   }
 
-  // ---- Persistence (optional, no errors if blocked) ----
-  const LS_KEY = 'sniptext_word_counter_text';
-  try {
-    const saved = localStorage.getItem(LS_KEY);
-    if (saved != null && typeof saved === 'string') ta.value = saved;
-  } catch (_) {}
-  function persistSoon() {
-    try { localStorage.setItem(LS_KEY, ta.value || ''); } catch (_) {}
+  // Goal logic
+  function formatNum(n){ return (n||0).toLocaleString(); }
+  function updateGoal(currentWords) {
+    if (!goalInput || !goalBar || !goalLabel) return;
+    const target = Math.max(0, parseInt(goalInput.value || '0', 10));
+    goalLabel.textContent = `Target: ${formatNum(target)} words`;
+    const pct = target > 0 ? clamp((currentWords / target) * 100, 0, 100) : 0;
+    goalBar.style.width = `${pct}%`;
+    goalBar.parentElement.setAttribute('aria-valuenow', String(Math.round(pct)));
+    // warm up when done
+    goalBar.style.filter = pct >= 100 ? 'saturate(1.2)' : 'none';
   }
+
+  // ---- Persistence ----
+  const LS_KEY = 'sniptext_word_counter_text';
+  try { const saved = localStorage.getItem(LS_KEY); if (saved != null) ta.value = saved; } catch(_) {}
+  const persistSoon = () => { try { localStorage.setItem(LS_KEY, ta.value || ''); } catch(_) {} };
 
   // ---- Initial render ----
   updateCounts();
 
-  // ---- Real-time updates (kept) with light throttle for big pastes ----
+  // ---- Real-time updates with a small debounce ----
   let typingTimer = null;
   ta.addEventListener('input', () => {
     if (typingTimer) clearTimeout(typingTimer);
     typingTimer = setTimeout(() => { updateCounts(); persistSoon(); }, 70);
   });
 
-  // ---- Buttons (guard each) ----
-  if (sampleBtn) {
-    sampleBtn.addEventListener('click', () => {
-      ta.value = "Paste your text here and get instant counts:\n\n- Words, characters (with/without spaces)\n- Lines and sentences\n- Reading time & more\n\nSnipText keeps it fast, accurate, and private.";
-      updateCounts();
-      ta.focus();
-      persistSoon();
-    });
-  }
-
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      ta.value = '';
-      updateCounts();
-      ta.focus();
-      persistSoon();
-    });
-  }
-
-  if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
-      const prior = copyBtn.textContent;
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(ta.value || '');
-        } else {
-          // Fallback for non-HTTPS or denied clipboard
-          const helper = document.createElement('textarea');
-          helper.value = ta.value || '';
-          helper.setAttribute('readonly', '');
-          helper.style.position = 'absolute';
-          helper.style.left = '-9999px';
-          document.body.appendChild(helper);
-          helper.select();
-          document.execCommand('copy');
-          helper.remove();
-        }
-        copyBtn.textContent = 'Copied!';
-      } catch (_) {
-        copyBtn.textContent = 'Copy failed';
-      } finally {
-        setTimeout(() => (copyBtn.textContent = prior), 900);
-      }
-    });
-  }
-
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      // Include BOM so Windows apps open UTF-8 correctly
-      const bom = '\uFEFF';
-      const blob = new Blob([bom, ta.value || ''], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      const yyyy = new Date().toISOString().slice(0, 10);
-      a.href = url;
-      a.download = `snip-text-${yyyy}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
-  }
-
-  // Keyboard shortcut: clear (Ctrl/Cmd + K)
-  window.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault();
-      ta.value = '';
-      updateCounts();
-      ta.focus();
-      persistSoon();
-    }
+  // ---- Buttons ----
+  if (sampleBtn) sampleBtn.addEventListener('click', () => {
+    ta.value = "Paste your text here and get instant counts.\n\n• Words, characters (with / without spaces)\n• Lines and sentences\n• Reading time, grade level, top words and more\n\nSnip Text keeps it fast, accurate, and private.";
+    updateCounts(); ta.focus(); persistSoon();
   });
 
-  // UX: clicking right column focuses textarea (guarded)
-  const rightCol = document.querySelector('.word-counter-right');
-  if (rightCol) rightCol.addEventListener('click', () => ta.focus());
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    ta.value = ''; updateCounts(); ta.focus(); persistSoon();
+  });
 
-  // Small nav hamburger behavior (guarded)
-  const hamburger = document.getElementById('word-counter-hamburger');
-  const navLinks  = document.getElementById('word-counter-nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', String(!expanded));
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    });
+  if (copyBtn) copyBtn.addEventListener('click', async () => {
+    const prior = copyBtn.textContent;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(ta.value || '');
+      } else {
+        const helper = document.createElement('textarea');
+        helper.value = ta.value || '';
+        helper.setAttribute('readonly','');
+        helper.style.position = 'absolute'; helper.style.left = '-9999px';
+        document.body.appendChild(helper); helper.select(); document.execCommand('copy'); helper.remove();
+      }
+      copyBtn.textContent = 'Copied!';
+    } catch { copyBtn.textContent = 'Copy failed'; }
+    setTimeout(() => (copyBtn.textContent = prior), 900);
+  });
+
+  if (downloadBtn) downloadBtn.addEventListener('click', () => {
+    const bom = '\uFEFF';
+    const blob = new Blob([bom, ta.value || ''], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const yyyy = new Date().toISOString().slice(0, 10);
+    a.href = url; a.download = `snip-text-${yyyy}.txt`;
+    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  });
+
+  if (cleanBtn) cleanBtn.addEventListener('click', () => {
+    const s = (ta.value || '')
+      .replace(/[ \t]+/g, ' ')
+      .replace(/ *\n+/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+    ta.value = s; updateCounts(); persistSoon();
+  });
+
+  if (importInput) importInput.addEventListener('change', () => {
+    const f = importInput.files && importInput.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => { ta.value = String(reader.result || ''); updateCounts(); persistSoon(); };
+    reader.readAsText(f, 'utf-8');
+    importInput.value = '';
+  });
+
+  // Goal & top words options
+  if (goalInput) goalInput.addEventListener('input', () => updateGoal(last.words));
+  [excludeStopCk, minLenInput, topNInput].forEach(el => el && el.addEventListener('input', updateCounts));
+
+  // Export
+  function statsSnapshot(){
+    return {
+      words: +wordsEl.textContent || 0,
+      characters: +charsEl.textContent || 0,
+      lines: +linesEl.textContent || 0,
+      sentences: +sentencesEl.textContent || 0,
+      charsNoSpaces: +charsNoSpacesEl.textContent || 0,
+      readingMinutes: readingEl.textContent,
+      paragraphs: +(paragraphsEl?.textContent || 0),
+      uniqueWords: +(uniqueWordsEl?.textContent || 0),
+      vocabDensity: +(vocabDensityEl?.textContent || 0),
+      avgWordLen: +(avgWordLenEl?.textContent || 0),
+      avgSentLen: +(avgSentLenEl?.textContent || 0),
+      speakingTime: speakTimeEl?.textContent || '',
+      slowReading: slowReadEl?.textContent || '',
+      fastReading: fastReadEl?.textContent || '',
+      readingEase: +(readingEaseEl?.textContent || 0),
+      gradeLevel: +(gradeLevelEl?.textContent || 0)
+    };
   }
+  function downloadBlob(text, filename, mime='text/plain'){
+    const blob = new Blob([text], {type: mime});
+    const url = URL.createObjectURL(blob); const a = document.createElement('a');
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  }
+  if (exportJsonBtn) exportJsonBtn.addEventListener('click', () => {
+    const data = { snapshot: statsSnapshot(), topWords: Array.from(document.querySelectorAll('#word-counter-topWords > div:nth-child(odd)')).map((el, i) => {
+      const word = el.textContent || '';
+      const countEl = el.nextElementSibling?.querySelector('small');
+      const count = countEl ? +countEl.textContent : 0;
+      return { word, count };
+    }) };
+    downloadBlob(JSON.stringify(data, null, 2), 'snip-text-report.json', 'application/json');
+  });
+  if (exportCsvBtn) exportCsvBtn.addEventListener('click', () => {
+    const snap = statsSnapshot();
+    const rows = [
+      ['Metric','Value'],
+      ['Words', snap.words],
+      ['Characters', snap.characters],
+      ['Lines', snap.lines],
+      ['Sentences', snap.sentences],
+      ['Characters (no spaces)', snap.charsNoSpaces],
+      ['Reading (minutes)', snap.readingMinutes],
+      ['Paragraphs', snap.paragraphs],
+      ['Unique words', snap.uniqueWords],
+      ['Vocabulary density', snap.vocabDensity],
+      ['Average word length', snap.avgWordLen],
+      ['Average sentence length', snap.avgSentLen],
+      ['Speaking time', snap.speakingTime],
+      ['Slow read', snap.slowReading],
+      ['Fast read', snap.fastReading],
+      ['Reading ease', snap.readingEase],
+      ['Grade level', snap.gradeLevel]
+    ];
+    const top = Array.from(document.querySelectorAll('#word-counter-topWords > div:nth-child(odd)')).map((el, i) => {
+      const word = el.textContent || '';
+      const countEl = el.nextElementSibling?.querySelector('small');
+      const count = countEl ? +countEl.textContent : 0;
+      return [word, count];
+    });
+    if (top.length) {
+      rows.push([], ['Top words','Count'], ...top);
+    }
+    const csv = rows.map(r => r.map(x => `"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+    downloadBlob(csv, 'snip-text-report.csv', 'text/csv');
+  });
 })();
 </script>
-
 
 </body>
 </html>
