@@ -1,0 +1,11 @@
+# Don’t upload backend or dev stuff to the static deployment
+server/
+node_modules/
+docker-compose.yml
+*.log
+*.test.*
+*.spec.*
+.vscode/
+.idea/
+.DS_Store
+README.md
