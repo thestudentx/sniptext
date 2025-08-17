@@ -1,14 +1,44 @@
+<!-- 7) Emoji Replacer — TOOL PAGE HEAD (/tools) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Emoji Replacer - Replace Words, Convert Emoticons, Remove Emojis | SnipText</title>
+  <base href="/tools/">
 
-  <link rel="stylesheet" href="/css/style.css">
+  <title>Emoji Replacer — Replace Words, Convert Emoticons, Remove Emojis | SnipText</title>
+  <meta name="description" content="Replace words with emojis, convert emoticons to emojis, remove emojis, set skin tones and normalize variants. Free, fast, privacy-friendly." />
+  <meta name="keywords" content="emoji replacer, emoticon to emoji, emoji remover, emoji converter, skin tone, variation selector, VS16" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://checkai.pro/tools/emoji-replacer" />
+  <link rel="alternate" href="https://checkai.pro/tools/emoji-replacer" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/emoji-replacer" hreflang="x-default" />
 
-  <!-- Fonts -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Emoji Replacer — Replace Words, Convert Emoticons, Remove Emojis" />
+  <meta property="og:description" content="Brand-safe replacements with custom dictionary & skin tones." />
+  <meta property="og:url" content="https://checkai.pro/tools/emoji-replacer" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/tools/emoji-replacer-og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Emoji Replacer — Replace Words, Convert Emoticons, Remove Emojis" />
+  <meta name="twitter:description" content="Convert or remove emojis with control over variants & tones." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/emoji-replacer-og.png" />
+
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication",
+   "name":"SnipText Emoji Replacer","url":"https://checkai.pro/tools/emoji-replacer",
+   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
+   "featureList":["Replace words with emojis","Convert emoticons to emojis","Remove emojis","Skin tone settings","VS16 normalization","Custom dictionary & exclusions"]}
+  </script>
+
 
   <!-- =========================
        THEME (variables only)
@@ -338,6 +368,9 @@
       50%{ transform: translateY(-2px); }
     }
   }
+
+  .emoji-replacer-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
+.emoji-replacer-blog-link{color:var(--wc-accent-b); text-decoration:underline}
 </style>
 
 </head>
@@ -537,6 +570,10 @@ rocket = 🚀"></textarea>
         <pre id="emoji-replacer-preview" class="emoji-replacer-preview" aria-live="polite"></pre>
       </article>
     </section>
+
+     <div class="emoji-replacer-guide">
+    <p class="emoji-replacer-guide-p">See Emoji Replacer Guide on SnipText Blog Page <a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html" class="emoji-replacer-blog-link">here</a>.</p>
+  </div>
   </main>
 
   <!-- Toast -->
@@ -595,6 +632,56 @@ rocket = 🚀"></textarea>
        ========================= -->
 
        <script src="/js/index.js"></script>
+
+       <!-- FAQs script for SEO -->
+        <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Is the Emoji Replacer private?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Replacement runs client-side in your browser; no text is uploaded."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"What can it do besides replacing words with emojis?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"It can convert classic emoticons (like :) ) to emojis, remove emojis, normalize variation selectors (VS16), apply skin-tone modifiers, and use a custom dictionary with an exclusions list."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Will emojis look the same on all platforms?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Rendering can vary slightly by device and OS. We use standard Unicode so meaning remains consistent even if style differs."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can replacements change the meaning of text?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Potentially. Review the preview, use the exclusions list for brand-sensitive terms, and tweak the custom dictionary to fit your tone."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I revert or export results?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Use Undo (Ctrl/Cmd+Z) to revert. You can also copy the output or download it as a .txt file."
+      }
+    }
+  ]
+}
+</script>        
 
   <script>
     (function(){

@@ -1,28 +1,81 @@
 {
-  "rewrites": [
-    { "source": "/admin-login",     "destination": "/admin/admin-login.html" },
-    { "source": "/admin",           "destination": "/admin/index.html" },
-    { "source": "/admin/:path*",    "destination": "/admin/:path*" },
-
-    { "source": "/blog/:blogslug",  "destination": "/blog/:blogslug.html" },
-    { "source": "/blog/sniptext-blog",      "destination": "/blog/blog.html" },
-    { "source": "/blog/sniptext-blog",      "destination": "/blog/sniptext-blog.html" },
-    { "source": "/blog/paraphrase-rewrite-summarize",      "destination": "/blog/paraphrase-rewrite-summarize.html" },
-    { "source": "/blog/best-ai-writing-tools-2025",      "destination": "/blog/best-ai-writing-tools-2025.html" },
-
-    { "source": "/",                "destination": "/index.html" },
-    { "source": "/dashboard",       "destination": "/dashboard.html" },
-    { "source": "/features",        "destination": "/features.html" },
-    { "source": "/about",           "destination": "/about.html" },
-    { "source": "/ai-detection",           "destination": "/ai-detection.html" },
-    { "source": "/grammarly1",           "destination": "/grammarly1.html" },
-    { "source": "/quillbot2",           "destination": "/quillbot2.html" },
-    { "source": "/contact",         "destination": "/contact.html" },
-    { "source": "/login",           "destination": "/login.html" },
-    { "source": "/feedback",        "destination": "/feedback.html" },
-    { "source": "/privacy-policy",  "destination": "/privacy-policy.html" },
-    { "source": "/terms-of-use",    "destination": "/terms-of-use.html" }
-  ],
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+
+  "rewrites": [
+    { "source": "/admin-login",  "destination": "/admin/admin-login.html" },
+    { "source": "/admin",        "destination": "/admin/index.html" },
+    { "source": "/admin/:path*", "destination": "/admin/:path*" },
+
+    { "source": "/blog/:blogslug", "destination": "/blog/:blogslug.html" },
+    { "source": "/blog/sniptext-blog", "destination": "/blog/blog.html" },
+    { "source": "/blog/sniptext-blog", "destination": "/blog/sniptext-blog.html" },
+    { "source": "/blog/paraphrase-rewrite-summarize", "destination": "/blog/paraphrase-rewrite-summarize.html" },
+    { "source": "/blog/best-ai-writing-tools-2025", "destination": "/blog/best-ai-writing-tools-2025.html" },
+
+    { "source": "/",              "destination": "/index.html" },
+    { "source": "/dashboard",     "destination": "/dashboard.html" },
+    { "source": "/features",      "destination": "/features.html" },
+    { "source": "/about",         "destination": "/about.html" },
+    { "source": "/ai-detection",  "destination": "/ai-detection.html" },
+    { "source": "/grammarly1",    "destination": "/grammarly1.html" },
+    { "source": "/quillbot2",     "destination": "/quillbot2.html" },
+    { "source": "/contact",       "destination": "/contact.html" },
+    { "source": "/login",         "destination": "/login.html" },
+    { "source": "/feedback",      "destination": "/feedback.html" },
+    { "source": "/privacy-policy","destination": "/privacy-policy.html" },
+    { "source": "/terms-of-use",  "destination": "/terms-of-use.html" },
+
+    { "source": "/tools",                                 "destination": "/tools/free-tools.html" },
+    { "source": "/tools/free-tools",                      "destination": "/tools/free-tools.html" },
+    { "source": "/tools/case-converter",                  "destination": "/tools/case-converter.html" },
+    { "source": "/tools/duplicate-word-finder",           "destination": "/tools/duplicate-word-finder.html" },
+    { "source": "/tools/emoji-replacer",                  "destination": "/tools/emoji-replacer.html" },
+    { "source": "/tools/palindromic-word-finder",         "destination": "/tools/palindromic-word-finder.html" },
+    { "source": "/tools/symbol-character-info",           "destination": "/tools/symbol-character-info.html" },
+    { "source": "/tools/whitespace-and-formatting-cleaner","destination": "/tools/whitespace-and-formatting-cleaner.html" },
+    { "source": "/tools/word-counter",                    "destination": "/tools/word-counter.html" },
+
+    { "source": "/tools/:tool", "destination": "/tools/:tool.html" }
+  ],
+
+  "headers": [
+    {
+      "source": "/(.*)\\.(?:css|js|png|jpg|jpeg|webp|avif|svg|woff2)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(?:html)?",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    },
+    {
+      "source": "/(sitemap\\.xml|sitemap-index\\.xml|robots\\.txt)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+        { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/sitemaps/(.*)\\.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+        { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
+      ]
+    },
+
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Referrer-Policy",            "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Content-Type-Options",     "value": "nosniff" },
+        { "key": "X-Frame-Options",            "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy",         "value": "geolocation=(), microphone=(), camera=()" },
+        { "key": "Strict-Transport-Security",  "value": "max-age=31536000; includeSubDomains; preload" }
+      ]
+    }
+  ]
 }

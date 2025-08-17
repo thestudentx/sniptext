@@ -1,47 +1,52 @@
+<!-- 9) Palindromic Word Finder — TOOL PAGE HEAD (/tools) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Symbol / Character Info - Analyzer & Inspector</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Analyze symbols and characters: count grapheme clusters, view ASCII & Unicode code points, names, UTF encodings, HTML entities, scripts, blocks, and more." />
-  <meta name="keywords" content="symbol, character, unicode, ascii, code point, utf-8, utf-16, html entities, grapheme clusters, emoji, scripts, blocks, analyzer, inspector" />
-  <meta name="author" content="Symbol / Character Info" />
-  <link rel="canonical" href="https://example.com/symbol-character-info" />
-  <meta property="og:title" content="Symbol / Character Info - Analyzer & Inspector" />
-  <meta property="og:description" content="Counts symbols and shows ASCII & Unicode code points and names for selected characters with advanced tools." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.com/symbol-character-info" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#161a36" />
+  <base href="/tools/">
 
+  <title>Palindromic Word Finder — Detect, Highlight & Extract Palindromes | SnipText</title>
+  <meta name="description" content="Detect palindromes in words or phrases, view positions, highlight in context, and export results (CSV/JSON). Free, instant, privacy-friendly." />
+  <meta name="keywords" content="palindromic word finder, palindrome detector, find palindromes, palindrome highlighter, palindrome extractor, text analysis, SnipText" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://checkai.pro/tools/palindromic-word-finder" />
+  <link rel="alternate" href="https://checkai.pro/tools/palindromic-word-finder" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/palindromic-word-finder" hreflang="x-default" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Palindromic Word Finder — Detect, Highlight & Extract Palindromes" />
+  <meta property="og:description" content="Find and export palindromes with positions and context highlights." />
+  <meta property="og:url" content="https://checkai.pro/tools/palindromic-word-finder" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/tools/palindromic-word-finder-og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Palindromic Word Finder — Detect, Highlight & Extract Palindromes" />
+  <meta name="twitter:description" content="Instant palindrome detection with export options." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/palindromic-word-finder-og.png" />
 
   <link rel="stylesheet" href="/css/style.css">
-
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
 
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebApplication",
-    "name":"Symbol / Character Info",
-    "applicationCategory":"Utility",
-    "operatingSystem":"Web",
-    "url":"https://example.com/symbol-character-info",
-    "description":"Analyze and inspect symbols/characters with Unicode details, counts, encodings, and advanced tools.",
-    "featureList":[
-      "Grapheme cluster counting",
-      "ASCII & Unicode code points with names",
-      "UTF-8 / UTF-16 encodings",
-      "HTML entity generation",
-      "Script & block detection",
-      "Normalization (NFC/NFD/NFKC/NFKD)",
-      "Diacritic stripping",
-      "Emoji and invisible visualization",
-      "Favorites and quick-picker",
-      "Transform tools (case, URL encode, escape HTML)"
-    ]
-  }
+  {"@context":"https://schema.org","@type":"WebApplication",
+   "name":"SnipText Palindromic Word Finder","url":"https://checkai.pro/tools/palindromic-word-finder",
+   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
+   "featureList":["Detect palindromes","Positions & ranges","Context highlighting","Export CSV/JSON"]}
   </script>
+
+  <!-- Breadcrumbs -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/"},
+    {"@type":"ListItem","position":3,"name":"Palindromic Word Finder","item":"https://checkai.pro/tools/palindromic-word-finder"}
+  ]}
+  </script>
+
 <style>
   :root {
     /* Color system (light) */
@@ -341,6 +346,9 @@
     .symbol-character-fade, .symbol-character-shimmer::after { animation: none !important; }
     .symbol-character-btn, .symbol-character-chip, .symbol-character-card::before { transition: none !important; }
   }
+
+  .symbol-character-info-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
+.symbol-character-info-blog-link{color:var(--wc-accent-b); text-decoration:underline}
 </style>
 
 </head>
@@ -515,6 +523,10 @@
         </div>
       </div>
     </section>
+
+     <div class="symbol-character-info-guide">
+    <p class="symbol-character-info-guide-p">See Symbol Character Info Guide on SnipText Blog Page <a href="/blog/free-symbol-character-info-count-&-decode-unicode-and-ascii.html" class="symbol-character-info-blog-link">here</a>.</p>
+  </div>
   </div>
 
 
@@ -575,6 +587,55 @@
 
   <script src="/tools/js/free-tools.js"></script>
 
+  <!-- FAQs script for SEO -->
+   <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Is the Symbol/Character Info tool private?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. All analysis runs entirely in your browser; your text never leaves your device."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"What details does it show for each character?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Grapheme cluster counts, Unicode and ASCII code points, official names, scripts and blocks, UTF-8/UTF-16 encodings, and HTML entities."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Does it handle emojis and complex scripts correctly?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. It is grapheme-aware and accounts for emoji sequences, zero-width joiners, combining marks, and characters from many writing systems."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I normalize or transform text?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"You can inspect normalization (NFC/NFD/NFKC/NFKD), strip diacritics, and generate HTML entities and common encodings for interoperability."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I export or copy results?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"You can copy inspected data to the clipboard or export summaries for further analysis and debugging."
+      }
+    }
+  ]
+}
+</script>
 
 
 

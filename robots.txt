@@ -1,6 +1,8 @@
 User-agent: *
-Disallow: /admin
-Disallow: /admin-login
-Disallow: /dashboard
+Allow: /
+Disallow: /admin/
+Disallow: /server/
+Disallow: /dashboard.html
+Disallow: /login.html
 
 Sitemap: https://checkai.pro/sitemap.xml

@@ -1,65 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================
+       Core SEO & Metadata
+  ========================== -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <noscript>
-  <meta http-equiv="refresh" content="0; url=login.html" />
-</noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Privacy Policy | Snip Text</title>
-    <link rel="stylesheet" href="css/style.css" />
+  <title>Privacy Policy | SnipText</title>
+  <meta name="description" content="SnipText Privacy Policy — how we collect, use, retain, and protect your data across our writing tools. Learn about cookies, analytics, legal bases, data rights (GDPR/CCPA), and how to contact us." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://checkai.pro/privacy-policy.html" />
+  <link rel="alternate" href="https://checkai.pro/privacy-policy.html" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/privacy-policy.html" hreflang="x-default" />
 
-  <!-- Favicon -->
-   <link rel="icon" href="/favicon.png" type="image/png">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Privacy Policy | SnipText" />
+  <meta property="og:description" content="Transparent privacy practices: data we collect, why we collect it, how long we keep it, and your choices." />
+  <meta property="og:url" content="https://checkai.pro/privacy-policy.html" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/og/privacy-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Privacy Policy cover" />
 
-  <!-- Google Fonts: Poppins & Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Privacy Policy | SnipText" />
+  <meta name="twitter:description" content="Our privacy commitments, controls, and your rights explained clearly." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/og/privacy-og.png" />
 
+  <!-- Brand / PWA -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Global styles (if your project includes them) -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Structured Data: WebPage + PrivacyPolicy + Breadcrumbs + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Privacy Policy",
+    "url":"https://checkai.pro/privacy-policy.html",
+    "description":"SnipText’s privacy practices covering data collection, usage, retention, and user rights.",
+    "isPartOf":{"@type":"WebSite","name":"SnipText","url":"https://checkai.pro/"},
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "url":"https://checkai.pro/",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    },
+    "datePublished":"2025-06-03",
+    "dateModified":"2025-08-17"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"PrivacyPolicy",
+    "name":"SnipText Privacy Policy",
+    "url":"https://checkai.pro/privacy-policy.html",
+    "inLanguage":"en",
+    "publisher":{"@type":"Organization","name":"SnipText"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Privacy Policy","item":"https://checkai.pro/privacy-policy.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Do you sell my personal information?","acceptedAnswer":{"@type":"Answer","text":"No. We do not sell or rent personal information. We only share data with trusted providers to operate our services (e.g., payments, infrastructure) under strict contracts."}},
+      {"@type":"Question","name":"How can I delete my account or data?","acceptedAnswer":{"@type":"Answer","text":"You can request deletion from your account settings or by contacting support. We will confirm and erase data unless we must retain it to meet legal obligations."}},
+      {"@type":"Question","name":"Do you use cookies?","acceptedAnswer":{"@type":"Answer","text":"Yes. We use essential cookies for security and functionality, and optional analytics cookies to improve the product. You can manage preferences in the Cookie Settings panel."}}
+    ]
+  }
+  </script>
+
+  <!-- =========================
+       Page styles (self-contained)
+       All tokens/classes/ids include "privacy-policy"
+  ========================== -->
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: #f9fafb;
-      color: #111827;
+    /* ---------- Brand mapping for this page ---------- */
+    :root{
+      /* Page-scoped tokens (map to your global brand variables) */
+      --privacy-policy-color-primary: var(--color-primary, #1D4ED8);
+      --privacy-policy-color-accent:  var(--color-accent, #3B82F6);
+      --privacy-policy-color-bg-d:    var(--color-bg-dark, #0F172A);
+      --privacy-policy-color-bg-l:    var(--color-bg-light, #F3F4F6);
+      --privacy-policy-color-white:   var(--color-white, #ffffff);
+      --privacy-policy-color-text-d:  var(--color-text-dark, #1F2937);
+      --privacy-policy-color-text-l:  var(--color-text-light, #6B7280);
+      --privacy-policy-color-border:  var(--color-border, #E5E7EB);
+      --privacy-policy-color-warm:    var(--color-used-often, #e85d27);
+      --privacy-policy-color-footer:  var(--color-footer-bg, #1d1f2f);
+
+      /* Effects */
+      --privacy-policy-radius-xl: 18px;
+      --privacy-policy-radius-lg: 14px;
+      --privacy-policy-radius-md: 10px;
+      --privacy-policy-shadow-1:  0 10px 30px rgba(2,6,23,.20);
+      --privacy-policy-shadow-2:  0 16px 44px rgba(2,6,23,.28);
+
+      /* Layout */
+      --privacy-policy-maxw: 1200px;
     }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+
+    /* ---------- Base ---------- */
+    .privacy-policy-skiplink{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .privacy-policy-skiplink:focus{left:16px;top:16px;width:auto;height:auto;z-index:999;background:var(--privacy-policy-color-white);color:var(--privacy-policy-color-text-d);padding:8px 12px;border-radius:10px;box-shadow:var(--privacy-policy-shadow-1)}
+
+    html, body{
+      height:100%;
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 0% -10%, color-mix(in oklab, var(--privacy-policy-color-primary) 18%, transparent), transparent 65%),
+        radial-gradient(900px 520px at 100% -10%, color-mix(in oklab, var(--privacy-policy-color-accent) 16%, transparent), transparent 60%),
+        linear-gradient(180deg, var(--privacy-policy-color-bg-l) 0%, var(--privacy-policy-color-white) 100%);
+      color:var(--privacy-policy-color-text-d);
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+      font-family: var(--font-body, 'Roboto','Arial',sans-serif);
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: 1.25rem;
-      margin-top: 30px;
-    }
-    p {
-      margin: 15px 0;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    a {
-      color: #2563eb;
-      text-decoration: underline;
-    }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
+
+    @media (prefers-color-scheme: dark){
+      html, body{
+        background:
+          radial-gradient(1200px 600px at 6% -10%, color-mix(in oklab, var(--privacy-policy-color-primary) 22%, transparent), transparent 65%),
+          radial-gradient(900px 520px at 100% -10%, color-mix(in oklab, var(--privacy-policy-color-accent) 20%, transparent), transparent 60%),
+          linear-gradient(180deg, var(--privacy-policy-color-bg-d) 0%, var(--privacy-policy-color-footer) 100%);
+        color:var(--privacy-policy-color-white);
       }
     }
+
+    a.privacy-policy-link{color:var(--privacy-policy-color-primary);text-decoration:none}
+    a.privacy-policy-link:hover{text-decoration:underline}
+
+    /* ---------- Header / Hero ---------- */
+    .privacy-policy-hero{
+      max-width:var(--privacy-policy-maxw);
+      margin:clamp(16px,3vw,40px) auto 0;
+      padding: clamp(16px,2.8vw,28px);
+    }
+    .privacy-policy-hero-card{
+      position:relative; overflow:hidden; isolation:isolate;
+      border:1px solid var(--privacy-policy-color-border);
+      background:linear-gradient(180deg, color-mix(in oklab, var(--privacy-policy-color-white) 86%, transparent), color-mix(in oklab, var(--privacy-policy-color-white) 78%, transparent));
+      border-radius:var(--privacy-policy-radius-xl);
+      box-shadow:var(--privacy-policy-shadow-1);
+      padding: clamp(18px,3vw,28px);
+    }
+    @media (prefers-color-scheme: dark){
+      .privacy-policy-hero-card{
+        background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+        backdrop-filter: blur(8px);
+      }
+    }
+    .privacy-policy-hero-card::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 200px at 10% -5%, color-mix(in oklab, var(--privacy-policy-color-primary) 35%, transparent), transparent 65%),
+        radial-gradient(460px 260px at 85% 0%, color-mix(in oklab, var(--privacy-policy-color-accent) 30%, transparent), transparent 60%);
+      filter: blur(16px);
+      opacity:.65;
+      z-index:-1; pointer-events:none;
+      transition:opacity .4s ease;
+    }
+    .privacy-policy-hero-title{
+      margin:0 0 8px 0;
+      font-family: var(--font-heading, 'Poppins','Segoe UI',sans-serif);
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size: clamp(24px,3.2vw,40px);
+      line-height:1.15;
+      background:linear-gradient(90deg, #fff, color-mix(in oklab, var(--privacy-policy-color-accent) 45%, #fff) 40%, color-mix(in oklab, var(--privacy-policy-color-primary) 55%, #fff) 80%, #fff);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .privacy-policy-hero-meta{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+      color: color-mix(in oklab, var(--privacy-policy-color-text-l) 88%, transparent);
+      font-size:.95rem;
+    }
+    .privacy-policy-badge{
+      display:inline-block; padding:6px 10px; border-radius:999px;
+      background: color-mix(in oklab, var(--privacy-policy-color-accent) 14%, #ffffff00);
+      border:1px solid var(--privacy-policy-color-border);
+      font-weight:600;
+    }
+
+    /* ---------- Layout: TOC + Content ---------- */
+    .privacy-policy-grid{
+      max-width:var(--privacy-policy-maxw);
+      margin: clamp(16px,3vw,40px) auto;
+      display:grid; grid-template-columns: 280px 1fr; gap: clamp(16px,2.8vw,28px);
+      align-items:start;
+      padding: 0 clamp(16px,2.6vw,24px);
+    }
+    @media (max-width: 980px){ .privacy-policy-grid{ grid-template-columns: 1fr; } }
+
+    .privacy-policy-toc{
+      position: sticky; top: 16px;
+      border:1px solid var(--privacy-policy-color-border);
+      background: color-mix(in oklab, var(--privacy-policy-color-white) 92%, transparent);
+      border-radius: var(--privacy-policy-radius-lg);
+      padding: 14px;
+      box-shadow: var(--privacy-policy-shadow-1);
+    }
+    @media (prefers-color-scheme: dark){
+      .privacy-policy-toc{
+        background: rgba(255,255,255,.06);
+        backdrop-filter: blur(6px);
+      }
+    }
+    .privacy-policy-toc-title{
+      margin:0 0 8px; font: 700 14px var(--font-heading, 'Poppins',sans-serif); text-transform:uppercase; letter-spacing:.35px;
+      color: color-mix(in oklab, var(--privacy-policy-color-text-l) 85%, #fff);
+    }
+    .privacy-policy-toc ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+    .privacy-policy-toc a{
+      display:block; padding:8px 10px; border-radius:10px; text-decoration:none;
+      color:inherit; border:1px solid transparent; transition: background .2s ease, transform .15s ease, border-color .2s ease;
+    }
+    .privacy-policy-toc a:hover{ transform: translateX(2px); background: color-mix(in oklab, var(--privacy-policy-color-accent) 8%, transparent); }
+    .privacy-policy-toc a.privacy-policy-active{ border-color: color-mix(in oklab, var(--privacy-policy-color-primary) 40%, var(--privacy-policy-color-border)); }
+
+    .privacy-policy-content{
+      display:grid; gap: clamp(12px,2.2vw,18px);
+    }
+    .privacy-policy-card{
+      border:1px solid var(--privacy-policy-color-border);
+      background: var(--privacy-policy-color-white);
+      border-radius: var(--privacy-policy-radius-lg);
+      padding: clamp(14px,2vw,20px);
+      box-shadow: var(--privacy-policy-shadow-1);
+      overflow:hidden; position:relative;
+      animation: privacy-policy-fade .35s ease both;
+    }
+    @media (prefers-color-scheme: dark){
+      .privacy-policy-card{
+        background: rgba(255,255,255,.06);
+        backdrop-filter: blur(8px);
+      }
+    }
+    .privacy-policy-card h2{
+      margin:0 0 10px; font: 700 clamp(18px,2vw,22px) var(--font-heading,'Poppins',sans-serif);
+    }
+    .privacy-policy-card p{ margin:10px 0; line-height:1.7 }
+    .privacy-policy-list{ padding-left: 18px; margin: 8px 0 }
+    .privacy-policy-list li{ margin: 6px 0 }
+
+    @keyframes privacy-policy-fade { from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)} }
+
+    /* ---------- Utility / Chips / Notes ---------- */
+    .privacy-policy-chip{
+      display:inline-block; padding:6px 10px; border:1px solid var(--privacy-policy-color-border);
+      border-radius:999px; background: color-mix(in oklab, var(--privacy-policy-color-white) 94%, transparent);
+      font-weight:600; font-size:.85rem;
+    }
+    @media (prefers-color-scheme: dark){
+      .privacy-policy-chip{ background: rgba(255,255,255,.05) }
+    }
+    .privacy-policy-note{
+      border-left:4px solid var(--privacy-policy-color-primary);
+      padding:10px 12px; background: color-mix(in oklab, var(--privacy-policy-color-accent) 6%, transparent);
+      border-radius: 8px; margin: 8px 0;
+    }
+
+    /* ---------- Footer ---------- */
+    .privacy-policy-footer{
+      max-width:var(--privacy-policy-maxw);
+      margin: 24px auto 40px;
+      padding: 0 clamp(16px,3vw,24px);
+      color: color-mix(in oklab, var(--privacy-policy-color-text-l) 88%, transparent);
+      font-size: .92rem;
+      display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;
+    }
+
   </style>
 </head>
 <body>
 
 
-
-      
+  
 <nav id="main-navbar">
   <div class="nav-container">
     <div class="logo">
@@ -87,50 +332,130 @@
 
 
 
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <p><strong>Effective Date:</strong> June 3, 2025</p>
 
-    <p>At Snip Text, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your information when you use our website and services.</p>
+  <a href="#privacy-policy-main" class="privacy-policy-skiplink">Skip to content</a>
 
-    <h2>1. Information We Collect</h2>
-    <ul>
-      <li><strong>Personal Information:</strong> Name, email address, payment details, and other info you provide during registration or contact.</li>
-      <li><strong>Usage Data:</strong> Logs, IP addresses, browser types, and session info to improve service quality.</li>
-    </ul>
+  <!-- ===== Hero ===== -->
+  <header class="privacy-policy-hero" role="banner">
+    <div class="privacy-policy-hero-card">
+      <h1 class="privacy-policy-hero-title">Privacy Policy</h1>
+      <div class="privacy-policy-hero-meta">
+        <span class="privacy-policy-badge" aria-label="Effective date">Effective: Jun 3, 2025</span>
+        <span class="privacy-policy-badge" aria-label="Last updated">Last updated: Aug 17, 2025</span>
+        <span class="privacy-policy-badge">SnipText</span>
+      </div>
+      <p style="margin-top:10px;color:color-mix(in oklab, var(--privacy-policy-color-text-l) 88%, transparent)">
+        We respect your privacy and design our tools to minimize data collection while delivering a great experience. This page explains what we collect, why, how long we keep it, your rights, and how to reach us.
+      </p>
+    </div>
+  </header>
 
-    <h2>2. How We Use Your Information</h2>
-    <ul>
-      <li>To provide and maintain our services</li>
-      <li>To personalize user experience</li>
-      <li>To improve customer support</li>
-      <li>To send service-related emails</li>
-    </ul>
+  <!-- ===== TOC + Content ===== -->
+  <div class="privacy-policy-grid">
+    <aside class="privacy-policy-toc" aria-label="On this page">
+      <h2 class="privacy-policy-toc-title">On this page</h2>
+      <ul>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-what-we-collect">What We Collect</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-why-we-collect">Why We Collect (Legal Bases)</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-cookies">Cookies & Tracking</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-retention">Retention</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-sharing">Sharing & Service Providers</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-security">Security</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-rights">Your Rights (GDPR/CCPA)</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-children">Children</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-international">International Transfers</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-changes">Changes</a></li>
+        <li><a class="privacy-policy-toc-link" href="#privacy-policy-contact">Contact</a></li>
+      </ul>
+    </aside>
 
-    <h2>3. Data Sharing</h2>
-    <p>We do <strong>not sell</strong> or rent your personal data. We may share data with trusted third parties for payment processing, infrastructure, or compliance with legal obligations.</p>
+    <main id="privacy-policy-main" class="privacy-policy-content" role="main">
+      <section id="privacy-policy-what-we-collect" class="privacy-policy-card" aria-labelledby="privacy-policy-what-we-collect-h">
+        <h2 id="privacy-policy-what-we-collect-h">1) Information We Collect</h2>
+        <ul class="privacy-policy-list">
+          <li><strong>Account & Contact</strong> — name, email, and authentication data you provide when creating an account or contacting us.</li>
+          <li><strong>Transactional</strong> — payment details processed by our PCI-DSS compliant provider (we don’t store full card numbers).</li>
+          <li><strong>Usage</strong> — device, browser, language, time zone, and basic interactions (e.g., feature toggles) to improve performance and stability.</li>
+          <li><strong>Content You Provide</strong> — text you paste/upload to use our tools. We process it to deliver results and, unless you opt-in, do not use it to train models.</li>
+          <li><strong>Cookies/Similar</strong> — essential cookies for security & login; optional analytics (aggregate) if you consent.</li>
+        </ul>
+        <p class="privacy-policy-note"><strong>Minimization:</strong> We collect the least amount of data necessary to run SnipText securely and reliably.</p>
+      </section>
 
-    <h2>4. Data Security</h2>
-    <p>We implement robust security measures to protect your data. However, no method of transmission over the Internet is 100% secure.</p>
+      <section id="privacy-policy-why-we-collect" class="privacy-policy-card" aria-labelledby="privacy-policy-why-we-collect-h">
+        <h2 id="privacy-policy-why-we-collect-h">2) Why We Collect (Legal Bases)</h2>
+        <ul class="privacy-policy-list">
+          <li><strong>Provide the service</strong> — run features, save settings, prevent abuse (<em>contract</em> & <em>legitimate interests</em>).</li>
+          <li><strong>Customer support</strong> — respond to tickets and technical issues (<em>legitimate interests</em>).</li>
+          <li><strong>Analytics</strong> — privacy-friendly, aggregate usage to improve UX (<em>consent</em> where required).</li>
+          <li><strong>Compliance</strong> — tax, accounting, security logs (<em>legal obligation</em>).</li>
+          <li><strong>Marketing</strong> — only with your opt-in (<em>consent</em>), and you can opt-out anytime.</li>
+        </ul>
+      </section>
 
-    <h2>5. Cookies & Tracking</h2>
-    <p>We use cookies to improve functionality and analyze traffic. You can modify your browser settings to control cookies.</p>
+      <section id="privacy-policy-cookies" class="privacy-policy-card" aria-labelledby="privacy-policy-cookies-h">
+        <h2 id="privacy-policy-cookies-h">3) Cookies & Tracking</h2>
+        <p>We use:</p>
+        <ul class="privacy-policy-list">
+          <li><strong>Essential</strong> — authentication, security, load balancing.</li>
+          <li><strong>Preferences</strong> — UI choices (e.g., theme), language.</li>
+          <li><strong>Analytics (optional)</strong> — aggregate performance/usage; disabled by default in restricted regions.</li>
+        </ul>
+        <p>You can manage preferences via our <span class="privacy-policy-chip">Cookie Settings</span> panel or your browser.</p>
+      </section>
 
-    <h2>6. Your Rights</h2>
-    <ul>
-      <li>Access, update, or delete your personal data</li>
-      <li>Withdraw consent at any time</li>
-      <li>Request data export or portability</li>
-    </ul>
+      <section id="privacy-policy-retention" class="privacy-policy-card" aria-labelledby="privacy-policy-retention-h">
+        <h2 id="privacy-policy-retention-h">4) Data Retention</h2>
+        <p>We retain personal data only as long as necessary for the purposes above:</p>
+        <ul class="privacy-policy-list">
+          <li><strong>Account</strong> — while your account is active and for a limited period after closure for fraud prevention, accounting, and dispute resolution.</li>
+          <li><strong>Content</strong> — ephemeral unless you explicitly choose to save it (e.g., drafts, documents).</li>
+          <li><strong>Logs</strong> — short-lived security logs to detect abuse and ensure reliability.</li>
+        </ul>
+      </section>
 
-    <h2>7. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy periodically. Changes will be posted on this page with an updated revision date.</p>
+      <section id="privacy-policy-sharing" class="privacy-policy-card" aria-labelledby="privacy-policy-sharing-h">
+        <h2 id="privacy-policy-sharing-h">5) Sharing & Service Providers</h2>
+        <p>We do <strong>not sell</strong> or rent personal information. We share limited data with vetted providers (e.g., payments, hosting, support) under data processing agreements requiring confidentiality and security.</p>
+      </section>
 
-    <h2>8. Contact Us</h2>
-    <p>If you have questions about this policy, reach out via <a href="/contact.html">our contact form</a>.</p>
+      <section id="privacy-policy-security" class="privacy-policy-card" aria-labelledby="privacy-policy-security-h">
+        <h2 id="privacy-policy-security-h">6) Security</h2>
+        <p>Defense-in-depth measures include encryption in transit, access controls, monitoring, regular updates, and least-privilege practices. No method is 100% secure, but we continually improve our safeguards.</p>
+      </section>
+
+      <section id="privacy-policy-rights" class="privacy-policy-card" aria-labelledby="privacy-policy-rights-h">
+        <h2 id="privacy-policy-rights-h">7) Your Rights (GDPR/CCPA/CPRA)</h2>
+        <ul class="privacy-policy-list">
+          <li>Access, correction, deletion, and portability of your data.</li>
+          <li>Opt out of non-essential processing (e.g., marketing, analytics).</li>
+          <li>Limit or object to certain processing where permitted.</li>
+          <li>Appeal or complain to your local authority if you believe your rights were infringed.</li>
+        </ul>
+        <p class="privacy-policy-note">To exercise rights, use in-app settings where available or contact us (see below). We will verify your request to protect your account.</p>
+      </section>
+
+      <section id="privacy-policy-children" class="privacy-policy-card" aria-labelledby="privacy-policy-children-h">
+        <h2 id="privacy-policy-children-h">8) Children’s Privacy</h2>
+        <p>SnipText is not directed to children under 13 (or the equivalent age of consent in your region). If you believe we’ve collected data from a child, contact us to remove it.</p>
+      </section>
+
+      <section id="privacy-policy-international" class="privacy-policy-card" aria-labelledby="privacy-policy-international-h">
+        <h2 id="privacy-policy-international-h">9) International Transfers</h2>
+        <p>Where data moves across borders, we rely on appropriate safeguards (e.g., standard contractual clauses) and vendor commitments to ensure adequate protection.</p>
+      </section>
+
+      <section id="privacy-policy-changes" class="privacy-policy-card" aria-labelledby="privacy-policy-changes-h">
+        <h2 id="privacy-policy-changes-h">10) Changes to This Policy</h2>
+        <p>We may update this policy to reflect product, legal, or operational changes. We’ll post updates here and revise the “Last updated” date.</p>
+      </section>
+
+      <section id="privacy-policy-contact" class="privacy-policy-card" aria-labelledby="privacy-policy-contact-h">
+        <h2 id="privacy-policy-contact-h">11) Contact</h2>
+        <p>Questions or requests? Reach us via the <a class="privacy-policy-link" href="/contact.html">Contact page</a> or email <a class="privacy-policy-link" href="mailto:privacy@checkai.pro">privacy@checkai.pro</a>.</p>
+      </section>
+    </main>
   </div>
-
-
 
 
 
@@ -178,11 +503,47 @@
 
 
 
+  <!-- =========================
+       Lightweight JS (deferred)
+       - Active TOC highlight
+       - Smooth scroll (native)
+       - Back-to-top toggle
+       - Current year
+  ========================== -->
+  <script>
+    (function(){
+      'use strict';
+      const yearEl = document.getElementById('privacy-policy-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  <!-- SCRIPT LOADERS -->
+      // TOC active link highlight with IntersectionObserver
+      const links = Array.from(document.querySelectorAll('.privacy-policy-toc-link'));
+      const map = new Map();
+      links.forEach(a => {
+        const id = a.getAttribute('href') && a.getAttribute('href').slice(1);
+        const sec = id ? document.getElementById(id) : null;
+        if (sec) map.set(sec, a);
+      });
+
+      const io = ('IntersectionObserver' in window)
+        ? new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              const link = map.get(entry.target);
+              if (!link) return;
+              if (entry.isIntersecting){
+                links.forEach(l => l.classList.remove('privacy-policy-active'));
+                link.classList.add('privacy-policy-active');
+              }
+            });
+          }, { rootMargin: '-30% 0px -60% 0px', threshold: [0, 0.2, 0.6, 1] })
+        : null;
+
+      if (io) map.forEach((_, sec) => io.observe(sec));
+    })();
+  </script>
+
+  <!-- Keep any global scripts if required by your site (deferred for performance) -->
   <script src="js/index.js" defer></script>
-  <script src="js/auth.js"></script>
-
-
+  <script src="js/auth.js" defer></script>
 </body>
 </html>

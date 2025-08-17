@@ -1,14 +1,52 @@
+<!-- 5) Case Converter — TOOL PAGE HEAD (/tools) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Essentials -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Case Converter (Uppercase · Lowercase · Sentence · Title · Alternating) | SnipText</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <base href="/tools/">
 
-    <link rel="icon" href="/favicon.png" type="image/png">  
-    <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Primary SEO -->
+  <title>Case Converter (Uppercase · Lowercase · Sentence · Title · Alternating) | SnipText</title>
+  <meta name="description" content="Free Case Converter by SnipText: instantly switch between uppercase, lowercase, sentence case, title case and alternating case. Fast, accurate, privacy-friendly." />
+  <meta name="keywords" content="case converter, uppercase converter, lowercase converter, sentence case, title case, alternating case, text case changer, online case converter" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://checkai.pro/tools/case-converter" />
+  <link rel="alternate" href="https://checkai.pro/tools/case-converter" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/case-converter" hreflang="x-default" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Case Converter — Uppercase, Lowercase, Sentence, Title & Alternating" />
+  <meta property="og:description" content="Switch text cases instantly with SnipText’s free converter." />
+  <meta property="og:url" content="https://checkai.pro/tools/case-converter" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/tools/case-converter-og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Case Converter — Uppercase, Lowercase, Sentence, Title & Alternating" />
+  <meta name="twitter:description" content="Free, fast and privacy-friendly case conversion." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/case-converter-og.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts & CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication",
+   "name":"SnipText Case Converter","url":"https://checkai.pro/tools/case-converter",
+   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
+   "featureList":["Uppercase","Lowercase","Sentence case","Title case","Alternating case"],
+   "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png"}}}
+  </script>
+
   <style>
 /* ===========================
    CASE CONVERTER - UPDATED PALETTE (brand mapped)
@@ -342,6 +380,11 @@ html, body{
   }
 }
 
+
+
+.case-converter-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
+.case-converter-blog-link{color:var(--wc-accent-b); text-decoration:underline}
+
   </style>
 </head>
 <body>
@@ -456,6 +499,10 @@ html, body{
         <button class="case-converter-btn case-converter-btn-ghost" id="case-converter-resetBtn" type="button" title="Reset output to original input">Reset</button>
       </div>
     </section>
+
+     <div class="case-converter-guide">
+        <p class="case-converter-guide-p">See Case Converter Guide on SnipText Blog Page <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="case-converter-blog-link">here</a>.</p>
+      </div>
   </main>
 
   <div class="case-converter-toast" id="case-converter-toast" role="status" aria-live="polite"></div>
@@ -504,6 +551,58 @@ html, body{
 
 
   <script src="/js/index.js"></script>  
+
+  <!-- FAQs script for SEO -->
+   <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Is the Case Converter private?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Conversions run entirely in your browser; your text isn’t uploaded to our servers."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Which cases can I convert to?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Uppercase, lowercase, sentence case, title/headline case, and alternating case. You can quickly switch between modes and apply them to any selection."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Does it preserve URLs, numbers, emojis and punctuation?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. The converter keeps URLs, numbers, emojis and most punctuation intact while changing letter casing."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is there a text size limit?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"There’s no hard limit—performance depends on your device and browser memory. It handles long articles comfortably."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I undo or restore the original text?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"You can use your browser’s Undo (Ctrl/Cmd+Z) or copy the converted result into a new document to keep the original safe."
+      }
+    }
+  ]
+}
+</script>
+
+
   <script>
   (function(){
     'use strict';

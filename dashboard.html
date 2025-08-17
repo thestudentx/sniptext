@@ -1,23 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ===== Essentials ===== -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <noscript>
-  <meta http-equiv="refresh" content="0; url=login.html" />
-</noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <noscript><meta http-equiv="refresh" content="0; url=login.html" /></noscript>
 
-  <title>User Dashboard - Snip Text</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="/components/toggleTheme.css">
-    <link rel="stylesheet" href="css/dashboard.css" />
+  <!-- ===== Primary SEO (private area: noindex) ===== -->
+  <title>User Dashboard — SnipText</title>
+  <meta name="description" content="Your SnipText dashboard for saved work, preferences, and premium tools access." />
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://checkai.pro/dashboard.html" />
 
-  <!-- Favicon -->
-   <link rel="icon" href="/favicon.png" type="image/png">
+  <!-- ===== Social (useful if the URL is shared) ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="User Dashboard — SnipText" />
+  <meta property="og:description" content="Access your SnipText workspace: saved items, settings, and premium features." />
+  <meta property="og:url" content="https://checkai.pro/dashboard.html" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/og/dashboard-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText user dashboard preview" />
 
-  <!-- Google Fonts: Poppins & Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="User Dashboard — SnipText" />
+  <meta name="twitter:description" content="Manage your SnipText workspace and preferences." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/og/dashboard-og.png" />
+
+  <!-- ===== Brand / PWA niceties ===== -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- ===== Performance: preconnects ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- ===== Styles (kept) ===== -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/components/toggleTheme.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+
+  <!-- ===== Structured Data ===== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"User Dashboard — SnipText",
+    "url":"https://checkai.pro/dashboard.html",
+    "description":"Your SnipText dashboard for saved work, preferences, and premium tools access.",
+    "isAccessibleForFree": false,
+    "requiresSubscription": true,
+    "publisher": {
+      "@type":"Organization",
+      "name":"SnipText",
+      "url":"https://checkai.pro/",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    },
+    "breadcrumb": {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+        {"@type":"ListItem","position":2,"name":"Dashboard","item":"https://checkai.pro/dashboard.html"}
+      ]
+    }
+  }
+  </script>
 </head>
+
 <body>
 
 

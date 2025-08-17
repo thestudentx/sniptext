@@ -1,21 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online Symbol/Character Info by SnipText. Count grapheme clusters, reveal Unicode & ASCII code points, names, blocks, scripts, and generate UTF-8/UTF-16 bytes and HTML entities. Learn features, use-cases, and pro tips for developers, writers, and designers." />
-    <meta name="keywords" content="symbol character info, unicode inspector, ascii codes, code point, grapheme cluster counter, html entity generator, utf-8 bytes, utf-16 code units, emoji names, unicode blocks, scripts, SnipText" />
-    <meta name="author" content="Larry" />
-    <base href="/blog/">
-    <title>Free Symbol/Character Info: Count & Decode Unicode + ASCII | SnipText Blog</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/blog/css/sniptext-blog.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔣</text></svg>">
-    <link rel="canonical" href="https://checkai.pro/blog/symbol-character-info" />
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/blog/">
+
+  <!-- Primary SEO -->
+  <title>Free Symbol/Character Info — Decode Unicode & ASCII, Grapheme Counts | SnipText</title>
+  <meta name="description" content="Inspect any symbol or character: view Unicode & ASCII code points, names, blocks, scripts, grapheme-cluster counts, UTF-8/UTF-16 bytes, and HTML entities. Free, fast, privacy-friendly." />
+  <meta name="keywords" content="symbol character info, unicode inspector, ascii codes, code point, grapheme cluster, html entity generator, utf-8 bytes, utf-16 code units, emoji names, unicode blocks, scripts, SnipText" />
+  <meta name="author" content="Larry" />
+
+  <!-- Indexing -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/blog/symbol-character-info" />
+  <link rel="alternate" href="https://checkai.pro/blog/symbol-character-info" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/symbol-character-info" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Free Symbol/Character Info — Decode Unicode & ASCII, Grapheme Counts" />
+  <meta property="og:description" content="Count grapheme clusters, reveal Unicode/ASCII code points, names, blocks, scripts, UTF-8/UTF-16 bytes, and HTML entities. Free & privacy-friendly." />
+  <meta property="og:url" content="https://checkai.pro/blog/symbol-character-info" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/tools/symbol-character-info-og.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/assets/images/tools/symbol-character-info-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Symbol/Character Info — interface preview" />
+  <meta property="og:updated_time" content="2025-08-17T00:00:00+05:00" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Free Symbol/Character Info — Decode Unicode & ASCII, Grapheme Counts" />
+  <meta name="twitter:description" content="Instant Unicode & ASCII insights: code points, names, blocks, scripts, graphemes, UTF-8/UTF-16, and HTML entities." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/symbol-character-info-og.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔣</text></svg>">
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: WebApplication (the tool) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Symbol/Character Info",
+    "url":"https://checkai.pro/blog/symbol-character-info",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "screenshot":"https://checkai.pro/assets/images/tools/symbol-character-info-og.png",
+    "featureList":[
+      "Count grapheme clusters (user-perceived characters)",
+      "Show Unicode & ASCII code points and names",
+      "List Unicode blocks and scripts",
+      "Generate UTF-8/UTF-16 bytes and HTML entities",
+      "Emoji support with extended properties"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "url":"https://checkai.pro/",
+      "logo":{
+        "@type":"ImageObject",
+        "url":"https://checkai.pro/favicon.png",
+        "width":512,
+        "height":512
+      }
+    },
+    "potentialAction":{
+      "@type":"UseAction",
+      "target":{
+        "@type":"EntryPoint",
+        "urlTemplate":"https://checkai.pro/blog/symbol-character-info"
+      }
+    }
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog/"},
+      {"@type":"ListItem","position":3,"name":"Symbol/Character Info","item":"https://checkai.pro/blog/symbol-character-info"}
+    ]
+  }
+  </script>
+
+  <!-- Optional: Sitelinks Search for the site -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"SnipText",
+    "url":"https://checkai.pro/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://checkai.pro/blog/search?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
+
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">

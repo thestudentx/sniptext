@@ -1,14 +1,43 @@
+<!-- 11) Whitespace & Formatting Cleaner — TOOL PAGE HEAD (/tools) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Whitespace & Formatting Cleaner | SnipText</title>
+  <base href="/tools/">
 
+  <title>Whitespace & Formatting Cleaner — Trim, Normalize & Fix Indentation | SnipText</title>
+  <meta name="description" content="Trim whitespace, normalize LF/CRLF newlines, remove trailing spaces, collapse blank lines, fix indentation, and strip zero-width characters/BOM. Free & privacy-friendly." />
+  <meta name="keywords" content="whitespace cleaner, formatting cleaner, normalize newlines, remove trailing spaces, collapse blank lines, fix indentation, tabs to spaces, zero-width characters, BOM" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://checkai.pro/tools/whitespace-formatting-cleaner" />
+  <link rel="alternate" href="https://checkai.pro/tools/whitespace-formatting-cleaner" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/whitespace-formatting-cleaner" hreflang="x-default" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Whitespace & Formatting Cleaner — Trim, Normalize & Fix Indentation" />
+  <meta property="og:description" content="Clean and normalize text in seconds." />
+  <meta property="og:url" content="https://checkai.pro/tools/whitespace-formatting-cleaner" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/tools/whitespace-formatting-cleaner-og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Whitespace & Formatting Cleaner — Trim, Normalize & Fix Indentation" />
+  <meta name="twitter:description" content="Trim, normalize and fix formatting—fast & private." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/whitespace-formatting-cleaner-og.png" />
+
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
   <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Fonts (project-wide choice) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication",
+   "name":"Whitespace & Formatting Cleaner","url":"https://checkai.pro/tools/whitespace-formatting-cleaner",
+   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
+   "featureList":["Trim whitespace","Normalize LF/CRLF","Remove trailing spaces","Collapse blank lines","Fix indentation (tabs/spaces)","Strip zero-width characters & BOM"]}
+  </script>
+
 
   <!-- =========================
        THEME (variables only)
@@ -434,6 +463,9 @@
       }
     }
   }
+
+  .whitespace-and-formatting-cleaner-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
+.whitespace-and-formatting-cleaner-blog-link{color:var(--wc-accent-b); text-decoration:underline}
 </style>
 
 </head>
@@ -651,6 +683,10 @@
         <pre id="whitespace-formatting-preview" class="whitespace-formatting-preview" aria-live="polite"></pre>
       </article>
     </section>
+
+     <div class="whitespace-and-formatting-cleaner-guide">
+    <p class="whitespace-and-formatting-cleaner-guide-p">See Whitespace and Formatting Cleaner Guide on SnipText Blog Page <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html" class="whitespace-and-formatting-cleaner-blog-link">here</a>.</p>
+  </div>
   </main>
 
   <!-- Toast -->
@@ -712,6 +748,57 @@
 
 
        <script src="/js/index.js"></script>
+
+       <!-- FAQs script for SEO -->
+        <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Is the Whitespace & Formatting Cleaner private?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Cleaning happens locally in your browser; no text is uploaded to any server."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"What can it clean or normalize?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Trim leading/trailing spaces, remove trailing spaces on each line, collapse blank lines, normalize line endings (LF or CRLF), convert tabs↔spaces, fix indentation, and remove zero-width characters or BOM."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Will it break my code formatting?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"You control each operation with toggles. Use the live preview to review changes before applying them to avoid impacting significant whitespace."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I choose LF vs CRLF?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Pick your preferred newline style (Unix LF or Windows CRLF) to standardize files across teams and editors."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"How do I export results?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Copy the cleaned output to the clipboard or download it as a .txt file for use in your editor or build pipeline."
+      }
+    }
+  ]
+}
+</script>
+
 
   <script>
     (function(){

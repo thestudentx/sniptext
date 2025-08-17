@@ -1,102 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================
+       Essentials & SEO
+  ========================== -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <noscript>
-  <meta http-equiv="refresh" content="0; url=login.html" />
-</noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <noscript><meta http-equiv="refresh" content="0; url=login.html" /></noscript>
 
-  <title>Terms of Use | Snip Text</title>
-    <link rel="stylesheet" href="css/style.css" />
+  <title>Terms of Use | SnipText</title>
+  <meta name="description" content="SnipText Terms of Use — your rights and responsibilities, acceptable use, billing, intellectual property, limitations of liability, and how to contact us." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- Favicon -->
-   <link rel="icon" href="/favicon.png" type="image/png">
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://checkai.pro/terms-of-use.html" />
+  <link rel="alternate" href="https://checkai.pro/terms-of-use.html" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/terms-of-use.html" hreflang="x-default" />
 
-  <!-- Google Fonts: Poppins & Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Terms of Use | SnipText" />
+  <meta property="og:description" content="The official SnipText Terms of Use for our writing tools and services." />
+  <meta property="og:url" content="https://checkai.pro/terms-of-use.html" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/og/terms-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Terms of Use cover" />
+  <meta property="og:updated_time" content="2025-08-17T00:00:00+05:00" />
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Terms of Use | SnipText" />
+  <meta name="twitter:description" content="Read how you may use SnipText, what we expect, and what you can expect from us." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/og/terms-og.png" />
+
+  <!-- Branding / PWA -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Global styles (project) -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data: Terms + Breadcrumbs + WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TermsOfService",
+    "name":"SnipText Terms of Use",
+    "url":"https://checkai.pro/terms-of-use.html",
+    "inLanguage":"en",
+    "description":"Terms governing the use of SnipText services and tools.",
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "url":"https://checkai.pro/",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    },
+    "datePublished":"2025-08-17",
+    "dateModified":"2025-08-17"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Terms of Use","item":"https://checkai.pro/terms-of-use.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Terms of Use",
+    "url":"https://checkai.pro/terms-of-use.html",
+    "isPartOf":{"@type":"WebSite","name":"SnipText","url":"https://checkai.pro/"},
+    "description":"Your rights and responsibilities when using SnipText."
+  }
+  </script>
+
+  <!-- =========================
+       Page Styles (scoped)
+       Brand mapping + smooth micro-animations
+  ========================== -->
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* Brand → Page tokens */
+    :root{
+      --terms-color-primary: var(--color-primary, #1D4ED8);
+      --terms-color-accent:  var(--color-accent,  #3B82F6);
+      --terms-color-bg-l:    var(--color-bg-light, #F3F4F6);
+      --terms-color-bg-d:    var(--color-bg-dark,  #0F172A);
+      --terms-color-white:   var(--color-white,    #ffffff);
+      --terms-text-d:        var(--color-text-dark,#1F2937);
+      --terms-text-l:        var(--color-text-light,#6B7280);
+      --terms-border:        var(--color-border,   #E5E7EB);
+      --terms-footer:        var(--color-footer-bg,#1d1f2f);
+
+      --terms-radius-xl: 18px;
+      --terms-radius-lg: 14px;
+      --terms-radius-md: 10px;
+
+      --terms-shadow-1: 0 10px 30px rgba(2,6,23,.18);
+      --terms-shadow-2: 0 16px 44px rgba(2,6,23,.26);
+
+      --terms-maxw: 1200px;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #1f2937;
-      background-color: #f9fafb;
-  display: flex;
-  flex-direction: column; /* Keep nav at top, wrapper below */
-  min-height: 100vh;
-}
-
-/* ─── Navbar (example) ─── */
-/* (Your existing nav CSS) */
-
-/* ─── Flex‐wrapper to center content ─── */
-.page-wrapper {
-  flex: 1;                           /* Take all remaining height under the nav */
-  display: flex;                     
-  justify-content: center;           /* Center horizontally */
-  align-items: center;               /* Center vertically */
-  padding: 1rem;                     /* Optional: spacing on small screens */
-}
-
-/* ─── Your container styling ─── */
-.container {
-  width: 100%;
-  max-width: 900px;
-      margin: 1rem auto;
-      background-color: #ffffff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    /* Base background w/ brand gradients */
+    html, body{
+      height:100%;
+      margin:0;
+      color: var(--terms-text-d);
+      font-family: var(--font-body, 'Roboto','Arial',sans-serif);
+      background:
+        radial-gradient(1100px 520px at -10% -15%, color-mix(in oklab, var(--terms-color-primary) 15%, transparent), transparent 60%),
+        radial-gradient(800px 520px at 110% -15%, color-mix(in oklab, var(--terms-color-accent) 12%, transparent), transparent 60%),
+        linear-gradient(180deg, var(--terms-color-bg-l) 0%, var(--terms-color-white) 100%);
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
     }
-
-    h1, h2, h3 {
-      color: #111827;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: 2.25rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-    }
-
-    ul {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
+    @media (prefers-color-scheme: dark){
+      html, body{
+        color:#fff;
+        background:
+          radial-gradient(1100px 520px at 0% -15%, color-mix(in oklab, var(--terms-color-primary) 22%, transparent), transparent 60%),
+          radial-gradient(800px 520px at 100% -15%, color-mix(in oklab, var(--terms-color-accent) 20%, transparent), transparent 60%),
+          linear-gradient(180deg, var(--terms-color-bg-d) 0%, var(--terms-footer) 100%);
       }
-      .container {
-        padding: 1.25rem;
-      }
+    }
+
+    /* Skip link */
+    .terms-skip{position:absolute;left:-9999px;top:auto;opacity:0}
+    .terms-skip:focus{left:16px;top:16px;opacity:1;z-index:999;background:#fff;color:#111;padding:8px 12px;border-radius:10px;box-shadow:var(--terms-shadow-1)}
+
+    /* Hero */
+    .terms-hero{
+      max-width: var(--terms-maxw);
+      margin: clamp(16px,3vw,40px) auto 0;
+      padding: 0 clamp(16px,2.6vw,24px);
+    }
+    .terms-hero-card{
+      position:relative; overflow:hidden; isolation:isolate;
+      border:1px solid var(--terms-border);
+      background: linear-gradient(180deg, color-mix(in oklab, var(--terms-color-white) 86%, transparent), color-mix(in oklab, var(--terms-color-white) 78%, transparent));
+      border-radius: var(--terms-radius-xl);
+      box-shadow: var(--terms-shadow-1);
+      padding: clamp(18px,3vw,28px);
+      animation: terms-fade .35s ease both;
+    }
+    @media (prefers-color-scheme: dark){
+      .terms-hero-card{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); backdrop-filter: blur(8px); }
+    }
+    .terms-hero-card::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 200px at 12% -6%, color-mix(in oklab, var(--terms-color-primary) 36%, transparent), transparent 65%),
+        radial-gradient(460px 260px at 85% 0%, color-mix(in oklab, var(--terms-color-accent) 30%, transparent), transparent 60%);
+      filter: blur(16px); opacity:.65; z-index:-1; pointer-events:none;
+      transition: opacity .4s ease;
+    }
+    .terms-title{
+      margin:0 0 8px 0;
+      font-family: var(--font-heading, 'Poppins','Segoe UI',sans-serif);
+      font-weight:800; letter-spacing:.2px;
+      font-size: clamp(24px,3.2vw,40px); line-height:1.15;
+      background: linear-gradient(90deg, #fff, color-mix(in oklab, var(--terms-color-accent) 45%, #fff) 40%, color-mix(in oklab, var(--terms-color-primary) 55%, #fff) 80%, #fff);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .terms-meta{display:flex;gap:10px;flex-wrap:wrap;color:color-mix(in oklab, var(--terms-text-l) 88%, transparent)}
+    .terms-badge{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--terms-border);font-weight:600;background: color-mix(in oklab, var(--terms-color-white) 92%, transparent)}
+    @media (prefers-color-scheme: dark){ .terms-badge{ background: rgba(255,255,255,.06) } }
+
+    /* Grid: TOC + Content */
+    .terms-grid{
+      max-width: var(--terms-maxw);
+      margin: clamp(16px,3vw,40px) auto;
+      padding: 0 clamp(16px,2.6vw,24px);
+      display:grid; grid-template-columns: 280px 1fr; gap: clamp(16px,2.8vw,28px);
+      align-items:start;
+    }
+    @media (max-width: 980px){ .terms-grid{ grid-template-columns: 1fr; } }
+
+    .terms-toc{
+      position: sticky; top: 16px;
+      border:1px solid var(--terms-border);
+      background: color-mix(in oklab, var(--terms-color-white) 92%, transparent);
+      border-radius: var(--terms-radius-lg);
+      padding: 14px;
+      box-shadow: var(--terms-shadow-1);
+      animation: terms-fade .35s ease both .06s;
+    }
+    @media (prefers-color-scheme: dark){
+      .terms-toc{ background: rgba(255,255,255,.06); backdrop-filter: blur(6px); }
+    }
+    .terms-toc h2{margin:0 0 8px; font:700 14px var(--font-heading,'Poppins',sans-serif); letter-spacing:.35px; text-transform:uppercase; color: color-mix(in oklab, var(--terms-text-l) 85%, #fff) }
+    .terms-toc ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+    .terms-toc a{display:block;padding:8px 10px;border-radius:10px;border:1px solid transparent;text-decoration:none;color:inherit;transition: transform .15s ease, background .2s ease, border-color .2s ease}
+    .terms-toc a:hover{ transform: translateX(2px); background: color-mix(in oklab, var(--terms-color-accent) 8%, transparent) }
+    .terms-toc a.terms-active{ border-color: color-mix(in oklab, var(--terms-color-primary) 40%, var(--terms-border)) }
+
+    .terms-content{display:grid;gap: clamp(12px,2.2vw,18px)}
+    .terms-card{
+      border:1px solid var(--terms-border);
+      background: var(--terms-color-white);
+      border-radius: var(--terms-radius-lg);
+      padding: clamp(14px,2vw,20px);
+      box-shadow: var(--terms-shadow-1);
+      overflow:hidden; position:relative;
+      animation: terms-fade .35s ease both;
+    }
+    @media (prefers-color-scheme: dark){ .terms-card{ background: rgba(255,255,255,.06); backdrop-filter: blur(8px); } }
+    .terms-card h2{ margin:0 0 10px; font:700 clamp(18px,2vw,22px) var(--font-heading,'Poppins',sans-serif) }
+    .terms-card p{ margin:10px 0; line-height:1.7 }
+    .terms-list{ padding-left: 18px; margin: 8px 0 }
+    .terms-list li{ margin: 6px 0 }
+
+    .terms-note{
+      border-left:4px solid var(--terms-color-primary);
+      padding:10px 12px; background: color-mix(in oklab, var(--terms-color-accent) 6%, transparent);
+      border-radius: 8px; margin: 8px 0;
+    }
+
+    /* Micro-animations */
+    @keyframes terms-fade{ from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)} }
+    @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
+
+    /* Print */
+    @media print{
+      .terms-toc{ display:none }
+      .terms-hero-card, .terms-card{ box-shadow:none; background:#fff }
+      a{ text-decoration:none; color:#111 }
+      body{ background:#fff; color:#111 }
     }
   </style>
 </head>
 <body>
+  <a class="terms-skip" href="#terms-main">Skip to content</a>
 
 
 
-      
+  
 <nav id="main-navbar">
   <div class="nav-container">
     <div class="logo">
@@ -122,47 +279,144 @@
 
 
 
+ 
 
+  <!-- ===== Hero ===== -->
+  <header class="terms-hero" role="banner">
+    <div class="terms-hero-card">
+      <h1 class="terms-title">Terms of Use</h1>
+      <div class="terms-meta">
+        <span class="terms-badge" aria-label="Effective date">Effective: Aug 17, 2025</span>
+        <span class="terms-badge" aria-label="Version">Version: 1.0</span>
+        <span class="terms-badge">SnipText</span>
+      </div>
+      <p style="margin-top:10px;color:color-mix(in oklab, var(--terms-text-l) 88%, transparent)">
+        Welcome to SnipText. These Terms govern your access to and use of our website, apps, and tools. By using SnipText, you agree to these Terms.
+      </p>
+    </div>
+  </header>
 
-  
-<div class="page-wrapper">
-  <div class="container">
-    <h1>Terms of Use</h1>
-    <p>Welcome to Snip Text. By accessing or using our website, you agree to be bound by the terms and conditions described below. If you do not agree with these terms, please do not use our services.</p>
+  <!-- ===== TOC + Content ===== -->
+  <div class="terms-grid">
+    <aside class="terms-toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>
+        <li><a class="terms-toc-link" href="#terms-acceptance">Acceptance</a></li>
+        <li><a class="terms-toc-link" href="#terms-eligibility">Eligibility & Account</a></li>
+        <li><a class="terms-toc-link" href="#terms-permitted">Permitted Use</a></li>
+        <li><a class="terms-toc-link" href="#terms-prohibited">Prohibited Use</a></li>
+        <li><a class="terms-toc-link" href="#terms-content">User Content & License</a></li>
+        <li><a class="terms-toc-link" href="#terms-ip">Intellectual Property</a></li>
+        <li><a class="terms-toc-link" href="#terms-billing">Subscriptions & Billing</a></li>
+        <li><a class="terms-toc-link" href="#terms-third">Third-Party Services</a></li>
+        <li><a class="terms-toc-link" href="#terms-disclaimers">Disclaimers</a></li>
+        <li><a class="terms-toc-link" href="#terms-liability">Limitation of Liability</a></li>
+        <li><a class="terms-toc-link" href="#terms-indemnity">Indemnification</a></li>
+        <li><a class="terms-toc-link" href="#terms-termination">Termination</a></li>
+        <li><a class="terms-toc-link" href="#terms-governing">Governing Law</a></li>
+        <li><a class="terms-toc-link" href="#terms-dmca">Copyright/DMCA</a></li>
+        <li><a class="terms-toc-link" href="#terms-changes">Changes</a></li>
+        <li><a class="terms-toc-link" href="#terms-contact">Contact</a></li>
+      </ul>
+    </aside>
 
-    <h2>1. Acceptance of Terms</h2>
-    <p>By creating an account or accessing any part of our service, you agree to comply with and be legally bound by these terms of use.</p>
+    <main id="terms-main" class="terms-content" role="main">
+      <section id="terms-acceptance" class="terms-card" aria-labelledby="terms-acceptance-h">
+        <h2 id="terms-acceptance-h">1) Acceptance of Terms</h2>
+        <p>By accessing or using SnipText, you agree to these Terms and our <a href="/privacy-policy.html">Privacy Policy</a>. If you are using SnipText on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.</p>
+      </section>
 
-    <h2>2. User Responsibilities</h2>
-    <ul>
-      <li>Do not share your login credentials with anyone else.</li>
-      <li>Use our services only for lawful purposes.</li>
-      <li>You are responsible for all activities that occur under your account.</li>
-    </ul>
+      <section id="terms-eligibility" class="terms-card" aria-labelledby="terms-eligibility-h">
+        <h2 id="terms-eligibility-h">2) Eligibility & Account</h2>
+        <ul class="terms-list">
+          <li>You must be at least the age of majority in your jurisdiction to use paid services.</li>
+          <li>You are responsible for safeguarding login credentials and for activities under your account.</li>
+          <li>Notify us promptly of any unauthorized access or suspected breach.</li>
+        </ul>
+      </section>
 
-    <h2>3. Account Access & Security</h2>
-    <p>You are responsible for maintaining the confidentiality of your login information. Any unauthorized access must be reported to our support team immediately.</p>
+      <section id="terms-permitted" class="terms-card" aria-labelledby="terms-permitted-h">
+        <h2 id="terms-permitted-h">3) Permitted Use</h2>
+        <p>SnipText grants you a personal, non-exclusive, non-transferable, revocable license to access and use the services in accordance with these Terms and applicable laws.</p>
+      </section>
 
-    <h2>4. Service Usage</h2>
-    <p>Access to specific tools is granted based on admin permissions and user subscriptions. Abuse or misuse of the tools may result in termination of access.</p>
+      <section id="terms-prohibited" class="terms-card" aria-labelledby="terms-prohibited-h">
+        <h2 id="terms-prohibited-h">4) Prohibited Use</h2>
+        <ul class="terms-list">
+          <li>Reverse engineering, scraping, or attempting to circumvent security controls.</li>
+          <li>Uploading unlawful, infringing, or malicious content (including malware or automated spam).</li>
+          <li>Using the services to violate intellectual property or privacy rights, or to train external models without permission.</li>
+          <li>Exceeding fair use limits or abusing free tiers to degrade service for others.</li>
+        </ul>
+        <p class="terms-note"><strong>Abuse prevention:</strong> We may rate-limit or suspend accounts to protect availability and security.</p>
+      </section>
 
-    <h2>5. Intellectual Property</h2>
-    <p>All content on Snip Text, including logos, tool configurations, and UI design, are our property. Reproduction or redistribution without permission is strictly prohibited.</p>
+      <section id="terms-content" class="terms-card" aria-labelledby="terms-content-h">
+        <h2 id="terms-content-h">5) User Content & License</h2>
+        <p>You retain ownership of content you submit. You grant SnipText a limited license to process your content solely to provide and improve the services (e.g., formatting, analysis, outputs). Unless you opt-in, we do not use your content to train public models.</p>
+      </section>
 
-    <h2>6. Termination</h2>
-    <p>We reserve the right to suspend or terminate any account at our discretion, especially in cases of violation of these terms.</p>
+      <section id="terms-ip" class="terms-card" aria-labelledby="terms-ip-h">
+        <h2 id="terms-ip-h">6) Intellectual Property</h2>
+        <p>All site materials, including logos, UI, software, and documentation, are owned by SnipText or its licensors and are protected by applicable IP laws. Except as permitted by these Terms, you may not copy, modify, distribute, sell, or lease any part of our services.</p>
+      </section>
 
-    <h2>7. Changes to Terms</h2>
-    <p>We may revise these terms at any time. We will notify users of major changes, but it's your responsibility to stay updated by reviewing this page.</p>
+      <section id="terms-billing" class="terms-card" aria-labelledby="terms-billing-h">
+        <h2 id="terms-billing-h">7) Subscriptions, Billing & Taxes</h2>
+        <ul class="terms-list">
+          <li>Paid plans renew automatically unless canceled prior to the next billing cycle.</li>
+          <li>Prices may change with prior notice on the website or by email.</li>
+          <li>Taxes and fees may apply based on your location and will be shown at checkout.</li>
+          <li>Refunds are handled per our posted policy or as required by law.</li>
+        </ul>
+      </section>
 
-    <h2>8. Contact</h2>
-    <p>If you have any questions regarding these terms, please reach out to <a href="mailto:contact@checkai.pro">supprt@checkai.pro</a>.</p>
+      <section id="terms-third" class="terms-card" aria-labelledby="terms-third-h">
+        <h2 id="terms-third-h">8) Third-Party Services</h2>
+        <p>We may integrate third-party services (e.g., payments, hosting). Your use of those services may be subject to separate terms and policies. SnipText is not responsible for third-party content or actions.</p>
+      </section>
+
+      <section id="terms-disclaimers" class="terms-card" aria-labelledby="terms-disclaimers-h">
+        <h2 id="terms-disclaimers-h">9) Disclaimers</h2>
+        <p>Services are provided “as is” and “as available” without warranties of any kind, express or implied, including fitness for a particular purpose, merchantability, and non-infringement. We do not guarantee uninterrupted or error-free operation.</p>
+      </section>
+
+      <section id="terms-liability" class="terms-card" aria-labelledby="terms-liability-h">
+        <h2 id="terms-liability-h">10) Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, SnipText and its affiliates will not be liable for indirect, incidental, special, consequential, or exemplary damages, or any loss of profits or data, arising from your use of the services. Our aggregate liability will not exceed the amounts paid by you to SnipText in the 12 months preceding the claim.</p>
+      </section>
+
+      <section id="terms-indemnity" class="terms-card" aria-labelledby="terms-indemnity-h">
+        <h2 id="terms-indemnity-h">11) Indemnification</h2>
+        <p>You agree to defend, indemnify, and hold harmless SnipText from and against claims, liabilities, damages, losses, and expenses arising from your use of the services or violation of these Terms.</p>
+      </section>
+
+      <section id="terms-termination" class="terms-card" aria-labelledby="terms-termination-h">
+        <h2 id="terms-termination-h">12) Suspension & Termination</h2>
+        <p>We may suspend or terminate access for any violation of these Terms, suspected fraud, or security risks. You may stop using the services at any time.</p>
+      </section>
+
+      <section id="terms-governing" class="terms-card" aria-labelledby="terms-governing-h">
+        <h2 id="terms-governing-h">13) Governing Law & Dispute Resolution</h2>
+        <p>These Terms are governed by applicable laws in your region unless superseded by mandatory local law. Venue and dispute resolution procedures may be specified in your plan or order form. Nothing herein limits consumer rights that cannot be waived.</p>
+      </section>
+
+      <section id="terms-dmca" class="terms-card" aria-labelledby="terms-dmca-h">
+        <h2 id="terms-dmca-h">14) Copyright/DMCA</h2>
+        <p>If you believe content infringes your copyright, contact us with sufficient detail to identify the material and your ownership. We may remove content or disable accounts in appropriate circumstances.</p>
+      </section>
+
+      <section id="terms-changes" class="terms-card" aria-labelledby="terms-changes-h">
+        <h2 id="terms-changes-h">15) Changes to These Terms</h2>
+        <p>We may update these Terms to reflect product, legal, or operational changes. Updates will be posted here with a revised “Effective” date. Continued use after changes constitutes acceptance.</p>
+      </section>
+
+      <section id="terms-contact" class="terms-card" aria-labelledby="terms-contact-h">
+        <h2 id="terms-contact-h">16) Contact</h2>
+        <p>Questions about these Terms? Reach us at <a href="mailto:support@checkai.pro">support@checkai.pro</a> or via our <a href="/contact.html">Contact page</a>.</p>
+      </section>
+    </main>
   </div>
-  </div>
-
-
-
-
 
 
 
@@ -208,10 +462,41 @@
 
 
 
-  <!-- SCRIPT LOADERS -->
+  <!-- =========================
+       Lightweight JS (deferred)
+       - TOC highlight (IntersectionObserver)
+       - Native smooth scroll via CSS (global or browser default)
+  ========================== -->
+  <script>
+    (function(){
+      'use strict';
+      const links = Array.from(document.querySelectorAll('.terms-toc-link'));
+      const map = new Map();
+      links.forEach(a => {
+        const id = (a.getAttribute('href')||'').slice(1);
+        const sec = id ? document.getElementById(id) : null;
+        if (sec) map.set(sec, a);
+      });
+
+      if ('IntersectionObserver' in window){
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const link = map.get(entry.target);
+            if (!link) return;
+            if (entry.isIntersecting){
+              links.forEach(l => l.classList.remove('terms-active'));
+              link.classList.add('terms-active');
+            }
+          });
+        }, { rootMargin: '-30% 0px -60% 0px', threshold: [0,0.25,0.6,1] });
+
+        map.forEach((_, sec) => io.observe(sec));
+      }
+    })();
+  </script>
+
+  <!-- Keep your global scripts (nav/footer/back-to-top) -->
   <script src="js/index.js" defer></script>
-  <script src="js/auth.js"></script>
-
-
+  <script src="js/auth.js" defer></script>
 </body>
 </html>
