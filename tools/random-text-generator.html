@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SnipText - Random Text Generator | checkai.pro</title>
+  <meta name="description" content="Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts. Smooth, dark, cozy UI by SnipText (checkai.pro)." />
+
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ======================================================
+       SnipText • RANDOM TEXT GENERATOR (single-file)
+       Dark, cozy theme • All class/id/vars contain "random-text"
+    ======================================================= */
+
+    :root {
+      /* Brand palette mapped to random-text variables */
+      --random-text-color-primary: #1D4ED8; /* primary */
+      --random-text-color-accent:  #3B82F6; /* accent */
+      --random-text-color-bg-dark: #0F172A; /* base bg */
+      --random-text-color-white:   #ffffff;
+      --random-text-color-text-light: #E5E7EB; /* lighten for dark mode */
+      --random-text-color-border:  #233046;
+      --random-text-color-used-often: #e85d27;
+      --random-text-color-footer-bg: #1d1f2f;
+
+      /* Gradients */
+      --random-text-gradient-hero-start: #0F172A;
+      --random-text-gradient-hero-end:   #23253d;
+      --random-text-gradient-cta-start:  var(--random-text-color-accent);
+      --random-text-gradient-cta-end:    #ff7c4c;
+
+      /* Surfaces */
+      --random-text-surface-1: rgba(23, 31, 53, 0.92);
+      --random-text-surface-2: rgba(31, 41, 71, 0.78);
+      --random-text-surface-3: rgba(11, 16, 32, 0.85);
+
+      /* Shadows & radii */
+      --random-text-shadow-xl: 0 25px 50px -12px rgba(0,0,0,0.6);
+      --random-text-shadow-md: 0 10px 30px rgba(0,0,0,0.35);
+      --random-text-radius: 18px;
+
+      /* Typography */
+      --random-text-font-heading: 'Poppins', 'Segoe UI', ui-sans-serif, system-ui, -apple-system, Roboto, Arial, sans-serif;
+      --random-text-font-body: 'Roboto', 'Inter', ui-sans-serif, system-ui, -apple-system, Arial, sans-serif;
+      --random-text-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+      /* Motion */
+      --random-text-transition: 240ms cubic-bezier(.22,.61,.36,1);
+      --random-text-transition-slow: 700ms cubic-bezier(.22,.61,.36,1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body.random-text-body {
+      margin: 0; color: var(--random-text-color-text-light);
+      background:
+        radial-gradient(1200px 800px at 8% -10%, rgba(61, 94, 255, 0.08), transparent 60%),
+        radial-gradient(1000px 700px at 92% 0%, rgba(255, 124, 76, 0.08), transparent 55%),
+        linear-gradient(180deg, var(--random-text-gradient-hero-start), var(--random-text-gradient-hero-end));
+      font-family: var(--random-text-font-body);
+      line-height: 1.5; overflow-y: overlay;
+    }
+
+    /* Cozy ambient blobs */
+    .random-text-ambient { position: fixed; inset: 0; pointer-events: none; z-index: -1; filter: blur(60px) saturate(110%); }
+    .random-text-ambient::before, .random-text-ambient::after {
+      content: ""; position: absolute; border-radius: 50%; opacity: .35; mix-blend-mode: screen;
+      transition: transform var(--random-text-transition-slow);
+    }
+    .random-text-ambient::before { width: 520px; height: 520px; left: -120px; top: -120px; background: radial-gradient(circle at 30% 30%, #4263ff, transparent 60%); animation: random-text-float 18s ease-in-out infinite; }
+    .random-text-ambient::after  { width: 460px; height: 460px; right: -120px; top: 0; background: radial-gradient(circle at 60% 40%, #ff7c4c, transparent 60%); animation: random-text-float 22s ease-in-out infinite reverse; }
+    @keyframes random-text-float { 0%,100%{transform: translateY(0)} 50%{transform: translateY(22px)} }
+
+    /* Header */
+    .random-text-header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(15,23,42,.9), rgba(15,23,42,.55)); border-bottom: 1px solid var(--random-text-color-border); }
+    .random-text-header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 20px; display: flex; align-items: center; gap: 16px; justify-content: space-between; }
+    .random-text-brand { display: flex; align-items: baseline; gap: 10px; }
+    .random-text-logo { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, var(--random-text-color-primary), var(--random-text-color-accent)); box-shadow: var(--random-text-shadow-md); font-weight: 700; font-family: var(--random-text-font-heading); }
+    .random-text-title { font-family: var(--random-text-font-heading); font-weight: 700; letter-spacing: .3px; }
+    .random-text-subtitle { opacity: .85; font-size: .95rem; }
+    .random-text-link { color: var(--random-text-color-text-light); opacity: .85; text-decoration: none; }
+    .random-text-link:hover { opacity: 1; text-decoration: underline; }
+
+    /* Layout */
+    .random-text-shell { max-width: 1200px; margin: 24px auto 80px; padding: 0 20px; }
+
+    /* Hero / Controls */
+    .random-text-hero { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008)); border: 1px solid var(--random-text-color-border); border-radius: var(--random-text-radius); box-shadow: var(--random-text-shadow-xl); padding: 18px; margin-bottom: 16px; position: relative; overflow: hidden; }
+    .random-text-hero::after { content:""; position:absolute; inset:-1px; border-radius:inherit; pointer-events:none; background: radial-gradient(800px 200px at 50% -100px, rgba(255,255,255,.07), transparent 60%); }
+
+    .random-text-controls { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .random-text-controls-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .random-text-field { background: var(--random-text-surface-1); border: 1px solid var(--random-text-color-border); border-radius: 14px; padding: 12px; display: grid; gap: 8px; box-shadow: var(--random-text-shadow-md); }
+    .random-text-field h4 { margin: 0; font-family: var(--random-text-font-heading); font-size: 0.95rem; opacity: .92; }
+    .random-text-inline { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+    .random-text-select, .random-text-input, .random-text-number { width: 100%; padding: 10px 12px; background: rgba(255,255,255,0.05); color: var(--random-text-color-white); border: 1px solid var(--random-text-color-border); border-radius: 10px; outline: none; transition: border var(--random-text-transition), box-shadow var(--random-text-transition); }
+    .random-text-select:focus, .random-text-input:focus, .random-text-number:focus {color: var(--random-text-color-footer-bg);  border-color: var(--random-text-color-accent); box-shadow: 0 0 0 4px rgba(59,130,246,.15); }
+
+    .random-text-range-wrap { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+    .random-text-range { width: 100%; }
+    .random-text-range input[type="range"] { width: 100%; accent-color: var(--random-text-color-accent); }
+    .random-text-badge { padding: 6px 10px; background: rgba(255,255,255,0.06); border: 1px solid var(--random-text-color-border); border-radius: 999px; font-size: .85rem; }
+
+    .random-text-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid var(--random-text-color-border); transition: background var(--random-text-transition), transform var(--random-text-transition); }
+    .random-text-toggle:hover { background: rgba(255,255,255,0.07); transform: translateY(-1px); }
+
+    .random-text-btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+    .random-text-btn { appearance: none; border: 0; cursor: pointer; border-radius: 12px; padding: 10px 14px; font-weight: 600; font-family: var(--random-text-font-body); color: var(--random-text-color-white); background: linear-gradient(135deg, var(--random-text-color-primary), var(--random-text-color-accent)); box-shadow: var(--random-text-shadow-md); transition: transform var(--random-text-transition), filter var(--random-text-transition), opacity var(--random-text-transition); }
+    .random-text-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+    .random-text-btn:active { transform: translateY(0); filter: brightness(.98); }
+    .random-text-btn-ghost { background: rgba(255,255,255,0.05); border: 1px solid var(--random-text-color-border); color: var(--random-text-color-text-light); }
+
+    /* Presets */
+    .random-text-presets { display: flex; flex-wrap: wrap; gap: 8px; }
+    .random-text-chip { color: var(--random-text-color-white); cursor: pointer; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--random-text-color-border); background: rgba(255,255,255,0.05); transition: transform var(--random-text-transition), background var(--random-text-transition); }
+    .random-text-chip:hover { transform: translateY(-1px); background: rgba(255,255,255,0.08); }
+
+    /* Output */
+    .random-text-output { background: var(--random-text-surface-2); border: 1px solid var(--random-text-color-border); border-radius: var(--random-text-radius); overflow: hidden; box-shadow: var(--random-text-shadow-md); }
+    .random-text-output-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border-bottom: 1px dashed var(--random-text-color-border); }
+    .random-text-output-head .random-text-inline { gap: 8px; }
+    .random-text-counts { opacity: .85; font-size: .9rem; }
+    .random-text-output-body { position: relative; }
+    .random-text-output-area { width: 100%; min-height: 260px; max-height: 520px; height: 360px; resize: vertical; padding: 14px; background: transparent; color: var(--random-text-color-text-light); border: 0; outline: none; font: 500 13.5px/1.6 var(--random-text-font-mono); }
+
+    .random-text-preview { display: none; padding: 14px; max-height: 520px; overflow: auto; font: 500 14px/1.75 var(--random-text-font-body); }
+    .random-text-preview.active { display: block; }
+    .random-text-preview p { margin: 0 0 12px; }
+    .random-text-preview ul { margin: 0 0 12px 18px; }
+
+    .random-text-footer { margin-top: 20px; padding: 18px; text-align: center; opacity: .8; font-size: .9rem; }
+
+    /* Toast */
+    .random-text-toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%) translateY(20px); background: rgba(20,27,45,.95); border: 1px solid var(--random-text-color-border); padding: 10px 14px; border-radius: 12px; box-shadow: var(--random-text-shadow-md); opacity: 0; pointer-events: none; transition: all var(--random-text-transition); }
+    .random-text-toast.random-text-toast-show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .random-text-controls-row { grid-template-columns: 1fr; }
+    }
+      .random-text-generator-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
+.random-text-generator-blog-link{color:var(--wc-accent-b); text-decoration:underline}
+  </style>
+</head>
+<body class="random-text-body">
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  
+  <div class="random-text-ambient" aria-hidden="true"></div>
+
+  <header class="random-text-header">
+    <div class="random-text-header-inner">
+      <div class="random-text-brand">
+        <div>
+          <div class="random-text-title">SnipText - Random Text Generator</div>
+          <div class="random-text-subtitle">Generate lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="random-text-shell">
+    <section class="random-text-hero">
+      <div class="random-text-controls">
+        <div class="random-text-controls-row">
+          <div class="random-text-field">
+            <h4>Mode & Quantity</h4>
+            <div class="random-text-inline">
+              <select id="random-text-mode" class="random-text-select" title="Select generation mode">
+                <option value="lorem">Lorem ipsum paragraphs</option>
+                <option value="sentences">Short sentences</option>
+                <option value="paragraphs">Dummy paragraphs</option>
+                <option value="list">Bullet list</option>
+                <option value="headings">Headlines</option>
+              </select>
+              <div class="random-text-range-wrap">
+                <label class="random-text-badge" for="random-text-count">Count</label>
+                <input id="random-text-count" class="random-text-range" type="range" min="1" max="30" value="5" />
+              </div>
+              <span id="random-text-count-val" class="random-text-badge">5</span>
+            </div>
+          </div>
+
+          <div class="random-text-field">
+            <h4>Length & Style</h4>
+            <div class="random-text-inline">
+              <div class="random-text-range-wrap">
+                <label class="random-text-badge" for="random-text-length">Length</label>
+                <input id="random-text-length" class="random-text-range" type="range" min="1" max="5" value="3" />
+              </div>
+              <span id="random-text-length-label" class="random-text-badge">Medium</span>
+              <label class="random-text-toggle"><input id="random-text-opt-html" type="checkbox"> Wrap with HTML tags</label>
+              <label class="random-text-toggle"><input id="random-text-opt-emoji" type="checkbox"> Sprinkle emoji</label>
+              <label class="random-text-toggle"><input id="random-text-opt-numbers" type="checkbox"> Include numbers</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="random-text-controls-row">
+          <div class="random-text-field">
+            <h4>Presets</h4>
+            <div class="random-text-presets">
+              <button class="random-text-chip" data-random-text-preset="lorem">Lorem Ipsum</button>
+              <button class="random-text-chip" data-random-text-preset="microcopy">Microcopy</button>
+              <button class="random-text-chip" data-random-text-preset="paragraphs">Bloggy Paragraphs</button>
+              <button class="random-text-chip" data-random-text-preset="list">Feature List</button>
+              <button class="random-text-chip" data-random-text-preset="headings">Headlines</button>
+            </div>
+          </div>
+
+          <div class="random-text-field">
+            <h4>Seed & Options</h4>
+            <div class="random-text-inline">
+              <input id="random-text-seed" class="random-text-input" placeholder="Optional seed for reproducible results (e.g., sniptext2025)" />
+              <label class="random-text-toggle"><input id="random-text-auto" type="checkbox" checked> Auto‑update</label>
+              <label class="random-text-toggle"><input id="random-text-titlecase" type="checkbox"> Title‑case (Headlines)</label>
+              <label class="random-text-toggle"><input id="random-text-sentences-cap" type="checkbox" checked> Capitalize sentences</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="random-text-btns">
+          <button id="random-text-btn-generate" class="random-text-btn" title="Generate (Ctrl/⌘+Enter)">Generate</button>
+          <button id="random-text-btn-copy" class="random-text-btn random-text-btn-ghost" title="Copy output">Copy</button>
+          <button id="random-text-btn-download" class="random-text-btn random-text-btn-ghost" title="Download .txt or .html">Download</button>
+          <button id="random-text-btn-share" class="random-text-btn random-text-btn-ghost" title="Copy shareable link">Share</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="random-text-output">
+      <div class="random-text-output-head">
+        <div class="random-text-inline">
+          <label class="random-text-toggle"><input id="random-text-view-preview" type="checkbox"> HTML preview</label>
+        </div>
+        <div class="random-text-counts" id="random-text-counts">0 words • 0 chars</div>
+      </div>
+      <div class="random-text-output-body">
+        <textarea id="random-text-output" class="random-text-output-area" spellcheck="false" placeholder="Your generated text will appear here…"></textarea>
+        <div id="random-text-preview" class="random-text-preview"></div>
+      </div>
+    </section>
+
+    <div class="random-text-generator-guide">
+    <p class="random-text-generator-guide-p">See Random Text Generator Guide on SnipText Blog Page <a href="/blog/free-random-text-generator-lorem-ipsum-sentences-&-dummy-parahraphs-sniptext-blog.html" class="random-text-generator-blog-link">here</a>.</p>
+  </div>
+  </main>
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+  <div class="random-text-toast" id="random-text-toast" role="status" aria-live="polite"></div>
+
+
+    <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    // =====================================================
+    // RANDOM TEXT GENERATOR - No external dependencies
+    // =====================================================
+
+    const $ = (s) => document.querySelector(s);
+    const textDiffToast = (msg) => { const el = $('#random-text-toast'); el.textContent = msg; el.classList.add('random-text-toast-show'); clearTimeout(textDiffToast._t); textDiffToast._t = setTimeout(()=> el.classList.remove('random-text-toast-show'), 2200); };
+
+    // Elements
+    const modeSel = $('#random-text-mode');
+    const countRange = $('#random-text-count');
+    const countVal = $('#random-text-count-val');
+    const lengthRange = $('#random-text-length');
+    const lengthLabel = $('#random-text-length-label');
+    const optHTML = $('#random-text-opt-html');
+    const optEmoji = $('#random-text-opt-emoji');
+    const optNumbers = $('#random-text-opt-numbers');
+    const optAuto = $('#random-text-auto');
+    const optTitle = $('#random-text-titlecase');
+    const optCap = $('#random-text-sentences-cap');
+    const seedInput = $('#random-text-seed');
+
+    const btnGen = $('#random-text-btn-generate');
+    const btnCopy = $('#random-text-btn-copy');
+    const btnDownload = $('#random-text-btn-download');
+    const btnShare = $('#random-text-btn-share');
+
+    const outArea = $('#random-text-output');
+    const preview = $('#random-text-preview');
+    const viewPreview = $('#random-text-view-preview');
+    const counts = $('#random-text-counts');
+
+    // Settings persistence
+    const SETTINGS_KEY = 'random-text-gen-settings-v1';
+
+    function saveSettings(){
+      const s = {
+        m: modeSel.value, c: +countRange.value, l: +lengthRange.value,
+        h: !!optHTML.checked, e: !!optEmoji.checked, n: !!optNumbers.checked,
+        a: !!optAuto.checked, t: !!optTitle.checked, p: !!optCap.checked,
+        s: seedInput.value, o: outArea.value
+      };
+      try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); } catch(_){}
+    }
+    function loadSettings(){
+      try { const s = JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}');
+        if (s.m) modeSel.value = s.m;
+        if (s.c) countRange.value = s.c;
+        if (s.l) lengthRange.value = s.l;
+        if ('h' in s) optHTML.checked = !!s.h;
+        if ('e' in s) optEmoji.checked = !!s.e;
+        if ('n' in s) optNumbers.checked = !!s.n;
+        if ('a' in s) optAuto.checked = !!s.a;
+        if ('t' in s) optTitle.checked = !!s.t;
+        if ('p' in s) optCap.checked = !!s.p;
+        if (s.s) seedInput.value = s.s;
+        if (s.o) outArea.value = s.o;
+      } catch(_){}
+      syncLabels();
+      updateCounts();
+    }
+
+    // Seeded RNG (Mulberry32)
+    function xmur3(str){ let h=1779033703^str.length; for(let i=0;i<str.length;i++){ h=Math.imul(h^str.charCodeAt(i),3432918353); h=h<<13|h>>>19;} return ()=>{ h=Math.imul(h^h>>>16,2246822507); h=Math.imul(h^h>>>13,3266489909); return (h^h>>>16)>>>0; } }
+    function mulberry32(a){ return function(){ let t=a+=0x6D2B79F5; t=Math.imul(t^t>>>15,t|1); t^=t+Math.imul(t^t>>>7,t|61); return ((t^t>>>14)>>>0)/4294967296; } }
+    function makeRNG(seedStr){ const seed = seedStr? xmur3(seedStr)(): Math.floor(Math.random()*1e9); return mulberry32(seed); }
+
+    // Word banks
+    const LOREM = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'.split(' ');
+    const TECH  = 'sniptext checkai pro system design elegant interface pixel perfect responsive gradient cozy layout typography utility api token cache lifecycle latency async pipeline sandbox render compile deploy optimize adaptive semantic vector search embedding context engine transform synthesize orchestrate plugin module kernel shard index'.split(' ');
+    const MICRO = 'save changes continue try again learn more view details open settings copy link sync now quick tip friendly reminder heads up success done updated ready secure private offline online experimental beta alpha preview'.split(' ');
+    const EMOJIS = '✨🔥⚡️🚀💡🎯✅🧠🔒🧩🛠️📌📎📐📦📁📄📝📋⏱️🔍'.split('');
+
+    const PUNCT = ['.','!','?'];
+
+    // Helpers
+    const pick = (rng, arr) => arr[Math.floor(rng()*arr.length)];
+    const maybe = (rng, p) => rng() < p;
+    const capFirst = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+    const titleCase = s => s.replace(/\w\S*/g, w => w[0].toUpperCase() + w.slice(1).toLowerCase());
+
+    function lengthToParams(len){
+      // len 1..5 ⇒ sentence/paragraph sizes
+      const wordsPerSentence = [5, 9, 14, 20, 28][len-1];
+      const sentencesPerParagraph = [2, 3, 4, 6, 8][len-1];
+      return { wordsPerSentence, sentencesPerParagraph };
+    }
+
+    function makeWord(rng, bank){
+      let w = pick(rng, bank);
+      if (maybe(rng, 0.1)) w = w + (maybe(rng,0.5)?'-' + pick(rng, bank) : '');
+      if (maybe(rng, 0.05)) w = w + (Math.floor(rng()*1000));
+      return w;
+    }
+
+    function makeSentence(rng, {len, bank, cap=true, emoji=false, numbers=false}){
+      const { wordsPerSentence } = lengthToParams(len);
+      const m = Math.max(2, Math.round(wordsPerSentence * (0.7 + rng()*0.6)));
+      const words = [];
+      for (let i=0;i<m;i++){
+        const pool = numbers && maybe(rng, 0.1) ? [String( Math.floor(rng()*100) )] : bank;
+        words.push(makeWord(rng, pool));
+      }
+      let s = words.join(' ');
+      if (cap) s = capFirst(s);
+      s += pick(rng, PUNCT);
+      if (emoji && maybe(rng, 0.25)) s += ' ' + pick(rng, EMOJIS);
+      return s;
+    }
+
+    function makeParagraph(rng, len, bank, opts){
+      const { sentencesPerParagraph } = lengthToParams(len);
+      const n = Math.max(1, Math.round(sentencesPerParagraph * (0.7 + rng()*0.6)));
+      const arr = [];
+      for (let i=0;i<n;i++) arr.push(makeSentence(rng, {len, bank, cap: opts.cap, emoji: opts.emoji, numbers: opts.numbers}));
+      return arr.join(' ');
+    }
+
+    function bankForMode(mode){
+      if (mode==='lorem') return LOREM;
+      if (mode==='sentences') return [...TECH, ...MICRO, ...LOREM];
+      if (mode==='paragraphs') return [...TECH, ...LOREM, ...MICRO];
+      if (mode==='list') return [...TECH, ...MICRO, ...LOREM];
+      if (mode==='headings') return [...TECH, ...MICRO];
+      return LOREM;
+    }
+
+    function generate(rng){
+      const mode = modeSel.value;
+      const count = +countRange.value;
+      const len = +lengthRange.value;
+      const html = !!optHTML.checked;
+      const emoji = !!optEmoji.checked;
+      const numbers = !!optNumbers.checked;
+      const cap = !!optCap.checked;
+      const title = !!optTitle.checked;
+
+      const bank = bankForMode(mode);
+      const out = [];
+
+      if (mode === 'lorem'){
+        for (let i=0;i<count;i++){
+          let p = makeParagraph(rng, len, LOREM, {emoji, numbers, cap});
+          if (i===0) p = 'Lorem ipsum dolor sit amet, ' + p.replace(/^\w+\s*/, '');
+          out.push(html? `<p>${p}</p>` : p);
+        }
+      }
+      else if (mode === 'sentences'){
+        for (let i=0;i<count;i++) out.push( makeSentence(rng, {len, bank, cap, emoji, numbers}) );
+        if (html) { out.forEach((s,i)=> out[i] = `<p>${s}</p>`); }
+      }
+      else if (mode === 'paragraphs'){
+        for (let i=0;i<count;i++){
+          const p = makeParagraph(rng, len, bank, {emoji, numbers, cap});
+          out.push(html? `<p>${p}</p>` : p);
+        }
+      }
+      else if (mode === 'list'){
+        const items = [];
+        for (let i=0;i<count;i++){
+          const s = makeSentence(rng, {len, bank, cap:false, emoji, numbers});
+          items.push(html? `<li>${capFirst(s.replace(/[.!?]+$/,''))}</li>` : '• ' + capFirst(s.replace(/[.!?]+$/,'')));
+        }
+        out.push(html? `<ul>\n${items.join('\n')}\n</ul>` : items.join('\n'));
+      }
+      else if (mode === 'headings'){
+        for (let i=0;i<count;i++){
+          const s = makeSentence(rng, {len, bank, cap:false, emoji:false, numbers});
+          let h = s.replace(/[.!?]+$/,'');
+          if (title) h = titleCase(h);
+          out.push(html? `<h3>${h}</h3>` : h);
+        }
+      }
+
+      return out.join(html? '\n' : '\n\n');
+    }
+
+    function syncLabels(){
+      countVal.textContent = countRange.value;
+      lengthLabel.textContent = ['Tiny','Short','Medium','Long','XL'][+lengthRange.value-1];
+    }
+
+    function updateCounts(){
+      const txt = outArea.value;
+      const words = (txt.match(/\b\w+\b/g)||[]).length;
+      counts.textContent = `${words} words • ${txt.length} chars`;
+    }
+
+    function render(){
+      const rng = makeRNG(seedInput.value.trim());
+      const txt = generate(rng);
+      outArea.value = txt.replace(/\n{3,}/g,'\n\n');
+      updateCounts();
+      if (viewPreview.checked && optHTML.checked){
+        preview.innerHTML = outArea.value;
+        preview.classList.add('active');
+        outArea.style.display = 'none';
+      } else {
+        preview.classList.remove('active');
+        outArea.style.display = 'block';
+      }
+      saveSettings();
+      textDiffToast('Generated');
+    }
+
+    // Share link (encode options)
+    function encodeShare(){
+      const data = {
+        m: modeSel.value, c: +countRange.value, l: +lengthRange.value, h: !!optHTML.checked,
+        e: !!optEmoji.checked, n: !!optNumbers.checked, a: !!optAuto.checked, t: !!optTitle.checked, p: !!optCap.checked,
+        s: seedInput.value
+      };
+      const json = JSON.stringify(data);
+      const b64 = btoa(unescape(encodeURIComponent(json)));
+      const url = location.origin + location.pathname + '#tg=' + b64;
+      return url;
+    }
+    function decodeShare(){
+      const h = location.hash; if (!h.startsWith('#tg=')) return false;
+      try {
+        const json = decodeURIComponent(escape(atob(h.slice(4))));
+        const d = JSON.parse(json);
+        if (d.m) modeSel.value = d.m;
+        if (d.c) countRange.value = d.c;
+        if (d.l) lengthRange.value = d.l;
+        if ('h' in d) optHTML.checked = !!d.h;
+        if ('e' in d) optEmoji.checked = !!d.e;
+        if ('n' in d) optNumbers.checked = !!d.n;
+        if ('a' in d) optAuto.checked = !!d.a;
+        if ('t' in d) optTitle.checked = !!d.t;
+        if ('p' in d) optCap.checked = !!d.p;
+        if (d.s) seedInput.value = d.s;
+        syncLabels();
+        return true;
+      } catch(_) { return false; }
+    }
+
+    // Buttons
+    btnGen.addEventListener('click', render);
+    btnCopy.addEventListener('click', async ()=>{
+      try {
+        if (viewPreview.checked && optHTML.checked){
+          await navigator.clipboard.writeText(outArea.value);
+        } else {
+          await navigator.clipboard.writeText(outArea.value);
+        }
+        textDiffToast('Copied');
+      } catch { textDiffToast('Copy blocked by browser'); }
+    });
+    btnDownload.addEventListener('click', ()=>{
+      const isHTML = !!optHTML.checked;
+      const mime = isHTML ? 'text/html' : 'text/plain';
+      const ext = isHTML ? 'html' : 'txt';
+      const blob = new Blob([outArea.value], {type: mime});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `random-text.${ext}`; a.click(); URL.revokeObjectURL(url);
+      textDiffToast('Downloaded');
+    });
+    btnShare.addEventListener('click', async ()=>{
+      const url = encodeShare();
+      try { await navigator.clipboard.writeText(url); textDiffToast('Share link copied'); }
+      catch { textDiffToast('Copy blocked - select URL'); }
+      history.replaceState(null, '', url);
+    });
+
+    // Presets
+    document.querySelectorAll('[data-random-text-preset]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const p = el.getAttribute('data-random-text-preset');
+        if (p==='lorem'){ modeSel.value='lorem'; optHTML.checked=true; lengthRange.value=3; countRange.value=4; }
+        if (p==='microcopy'){ modeSel.value='sentences'; optHTML.checked=false; lengthRange.value=2; countRange.value=12; }
+        if (p==='paragraphs'){ modeSel.value='paragraphs'; optHTML.checked=true; lengthRange.value=4; countRange.value=5; }
+        if (p==='list'){ modeSel.value='list'; optHTML.checked=true; lengthRange.value=2; countRange.value=8; }
+        if (p==='headings'){ modeSel.value='headings'; optHTML.checked=false; lengthRange.value=2; countRange.value=10; optTitle.checked=true; }
+        syncLabels();
+        if (optAuto.checked) render(); else textDiffToast('Preset loaded');
+      });
+    });
+
+    // Live updates
+    function onChange(){ syncLabels(); if (optAuto.checked) render(); saveSettings(); }
+    [modeSel, countRange, lengthRange, optHTML, optEmoji, optNumbers, optAuto, optTitle, optCap].forEach(el=> el.addEventListener('input', onChange));
+    seedInput.addEventListener('input', ()=>{ if (optAuto.checked) render(); saveSettings(); });
+
+    // Preview toggle
+    viewPreview.addEventListener('change', ()=>{ if (viewPreview.checked && optHTML.checked){ preview.innerHTML = outArea.value; preview.classList.add('active'); outArea.style.display='none'; } else { preview.classList.remove('active'); outArea.style.display='block'; } });
+
+    // Keyboard shortcut
+    document.addEventListener('keydown', (e)=>{ if ((e.ctrlKey||e.metaKey) && e.key==='Enter'){ e.preventDefault(); render(); } });
+
+    // Initial
+    loadSettings();
+    const hadHash = decodeShare();
+    syncLabels();
+    if (hadHash || optAuto.checked) render();
+  </script>
+</body>
+</html>

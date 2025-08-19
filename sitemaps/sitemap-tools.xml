@@ -1,45 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://checkai.pro/tools/word-counter.html</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://checkai.pro/tools/case-converter.html</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.92</priority>
-  </url>
-  <url>
-    <loc>https://checkai.pro/tools/duplicate-word-finder.html</loc>
-    <lastmod>2025-08-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.92</priority>
-  </url>
-  <url>
-    <loc>https://checkai.pro/tools/emoji-replacer.html</loc>
-    <lastmod>2025-08-17</lastmod>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
+    <loc>https://checkai.pro/tools/duplicate-word-finder.html</loc>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/emoji-replacer.html</loc>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/free-tools.html</loc>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://checkai.pro/tools/palindromic-word-finder.html</loc>
-    <lastmod>2025-08-17</lastmod>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/random-text-generator.html</loc>
+    <lastmod>2025-08-18T17:45:26.703Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/remove-empty-lines.html</loc>
+    <lastmod>2025-08-18T17:45:26.708Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://checkai.pro/tools/symbol-character-info.html</loc>
-    <lastmod>2025-08-17</lastmod>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.90</priority>
   </url>
   <url>
     <loc>https://checkai.pro/tools/whitespace-and-formatting-cleaner.html</loc>
-    <lastmod>2025-08-17</lastmod>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/word-counter.html</loc>
+    <lastmod>2025-08-17T09:51:26+05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>

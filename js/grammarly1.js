@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * =============================== */
   function generateDiffHTML(original, rewritten) {
     if (typeof diff_match_patch !== 'function') {
-      // library not ready—show clean output
+      // library not ready-show clean output
       return esc(rewritten);
     }
     const dmp = new diff_match_patch();

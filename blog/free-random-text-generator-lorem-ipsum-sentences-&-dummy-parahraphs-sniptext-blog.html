@@ -1,0 +1,392 @@
+<!-- 1) Random Text Generator - BLOG ARTICLE HEAD -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/blog/">
+
+  <!-- Primary SEO -->
+  <title>Free Random Text Generator: Lorem Ipsum, Sentences & Dummy Paragraphs | SnipText Blog</title>
+  <meta name="description" content="Free online Random Text Generator by SnipText. Generate lorem ipsum, short sentences, bullet lists, headlines, and dummy paragraphs-with HTML wrapping, emojis, numbers, title case, and seeded reproducibility." />
+  <meta name="keywords" content="random text generator, lorem ipsum generator, dummy text, placeholder text, generate paragraphs, generate sentences, bullet list generator, headline generator, HTML wrapper, title case, seeded output, SnipText" />
+  <meta name="author" content="Larry" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/blog/random-text-generator" />
+  <link rel="alternate" href="https://checkai.pro/blog/random-text-generator" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/random-text-generator" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SnipText Blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Free Random Text Generator: Lorem Ipsum, Sentences & Dummy Paragraphs" />
+  <meta property="og:description" content="Generate placeholder text that matches your layout needs: paragraphs, sentences, lists, and headlines-with HTML wrapping and seeded output for reproducible mocks." />
+  <meta property="og:url" content="https://checkai.pro/blog/random-text-generator" />
+  <meta property="og:image" content="https://checkai.pro/assets/images/blog/random-text-generator-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Random Text Generator interface preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Free Random Text Generator: Lorem Ipsum, Sentences & Dummy Paragraphs" />
+  <meta name="twitter:description" content="Fast, privacy-friendly placeholder text for designers, writers, and developers. Paragraphs, sentences, lists, headlines-HTML-ready." />
+  <meta name="twitter:image" content="https://checkai.pro/assets/images/blog/random-text-generator-og.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/random-text-generator"},
+    "headline":"Free Random Text Generator: Lorem Ipsum, Sentences & Dummy Paragraphs",
+    "description":"Generate placeholder text for mockups and content drafts: lorem ipsum, short sentences, lists, headlines, and paragraphs-with HTML wrapping, emojis, numbers, title case, and seeded reproducibility.",
+    "image":"https://checkai.pro/assets/images/blog/random-text-generator-og.png",
+    "author":{"@type":"Person","name":"Larry"},
+    "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}},
+    "inLanguage":"en",
+    "isAccessibleForFree": true,
+    "articleSection":"Tools"
+  }
+  </script>
+
+  <!-- Breadcrumbs -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+    {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog/"},
+    {"@type":"ListItem","position":3,"name":"Random Text Generator","item":"https://checkai.pro/blog/random-text-generator"}
+  ]}
+  </script>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
+    </div>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- Navigation -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="/index.html" class="brand-link">SnipText</a>
+        </div>
+        <div class="nav-menu">
+            <a href="/blog/blog.html" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#articles" class="nav-link">Articles</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+        <div class="nav-hamburger" id="nav-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="blog-hero-content">
+                <h1 class="hero-title">Random Text Generator</h1>
+                <p class="hero-subtitle">Generate placeholder text-lorem ipsum, short sentences, bullet lists, headlines, and dummy paragraphs-for faster design and content workflows.</p>
+                <div class="hero-cta">
+                    <a href="#articles" class="cta-button">More Articles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+        <div class="container">
+            <article class="article-card featured">
+                <div class="article-meta">
+                    <span class="article-category">Writing Tools</span>
+                    <time datetime="2025-08-18" class="article-date">August 18, 2025</time>
+                </div>
+
+                <h2 class="article-title">Free Random Text Generator: Lorem Ipsum, Sentences & Dummy Paragraphs</h2>
+
+                <p class="article-excerpt">Designers, writers, and developers use placeholder text to unblock layout, copy flow, or UI states. SnipText’s Random Text Generator creates paragraphs, sentences, lists, and headlines-HTML-ready, reproducible, and privacy-friendly.</p>
+
+                <div class="article-content">
+                    <div class="drop-cap-paragraph">
+                        <span class="drop-cap">P</span>laceholder text isn’t just filler-it’s a fast way to pressure-test real layout decisions. With SnipText’s <strong>Random Text Generator</strong>, you can spin up <em>lorem ipsum paragraphs</em>, <em>short sentences</em>, <em>bullet lists</em>, and <em>headlines</em> that match the rhythm and density of your final content. Wrap output in HTML, sprinkle emoji for social mocks, include numbers for data-heavy UI, or keep it plain for clean editorial work. Everything runs instantly in your browser.
+                    </div>
+
+                    <h3>What the Random Text Generator does</h3>
+                    <ul>
+                        <li><strong>Multiple modes:</strong> Lorem ipsum paragraphs, short sentences, blog-style paragraphs, bullet lists, and headings.</li>
+                        <li><strong>Length & count controls:</strong> Dial in Tiny → XL length and 1–30 items to fit cards, modals, or article templates.</li>
+                        <li><strong>HTML wrapping:</strong> Output as <code>&lt;p&gt;</code>, <code>&lt;ul&gt;&lt;li&gt;</code>, or <code>&lt;h3&gt;</code> to paste directly into your CMS or code.</li>
+                        <li><strong>Style options:</strong> Title-case headlines, optional emojis, and number injection for realistic UI.</li>
+                        <li><strong>Seeded output:</strong> Set a seed (e.g., <code>sniptext2025</code>) for reproducible screenshots and diffs.</li>
+                        <li><strong>Preview & share:</strong> Toggle HTML preview, copy a shareable link (settings encoded), or download as .txt/.html.</li>
+                        <li><strong>Privacy-friendly:</strong> No sign-in, no server round-trips-your text stays on your device.</li>
+                    </ul>
+
+                    <h3>How to use it (fast)</h3>
+                    <ol>
+                        <li>Open the SnipText Random Text Generator.</li>
+                        <li>Choose a <strong>Mode</strong> (Paragraphs, Sentences, List, or Headlines) and set <strong>Count</strong> & <strong>Length</strong>.</li>
+                        <li>Toggle extras: <em>HTML wrapping</em>, <em>Emoji</em>, <em>Include numbers</em>, <em>Title-case</em> (for headlines).</li>
+                        <li>(Optional) Add a <strong>Seed</strong> to reproduce exactly the same output later.</li>
+                        <li>Click <strong>Generate</strong> (or press <kbd>Ctrl/⌘ + Enter</kbd>), then <strong>Copy</strong>, <strong>Download</strong>, or <strong>Share</strong>.</li>
+                    </ol>
+
+                    <div class="collapsible-section">
+                        <button class="collapsible-toggle" aria-expanded="false">
+                            <span>Pro tips (click to expand)</span>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div class="collapsible-content">
+                            <ul>
+                                <li><strong>Reproducible mocks:</strong> Set a seed before generating so your screenshots and demos are consistent across revisions.</li>
+                                <li><strong>Match component density:</strong> Use <em>Tiny/Short</em> for buttons and cards; <em>Medium/Long</em> for product pages and blogs.</li>
+                                <li><strong>HTML on, copy once:</strong> Enable <em>HTML wrapping</em> to paste straight into your CMS, Figma code blocks, or React playgrounds.</li>
+                                <li><strong>Social & landing pages:</strong> Add a little emoji for playful mockups; switch it off for client-ready copy.</li>
+                                <li><strong>Accessibility:</strong> Prefer semantic tags (<code>&lt;h3&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;p&gt;</code>) in previews to test headings and list structure.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Why use a random text generator?</h3>
+                    <p>Realistic placeholder text helps you judge line length, vertical rhythm, and truncation behavior before content is final. It prevents “perfect with lorem, broken with copy” surprises, speeds reviews, and keeps teams focused on the design and flow rather than wording debates.</p>
+
+                    <h3>Use cases</h3>
+                    <ul>
+                        <li><strong>Design:</strong> Fill cards, modals, and tables to test responsive breakpoints and spacing.</li>
+                        <li><strong>Development:</strong> Seed predictable output for visual regression tests and storybook examples.</li>
+                        <li><strong>Content:</strong> Draft outline scaffolds-swap in real copy later without re-doing layout.</li>
+                        <li><strong>Marketing:</strong> Prototype hero sections and feature lists with headlines and bullets.</li>
+                    </ul>
+
+                    <h3>About SnipText</h3>
+                    <p>SnipText builds fast, free <strong>writing & formatting tools</strong> that remove friction-<strong>Random Text Generator</strong>, <strong>Text Diff Checker</strong>, <strong>Case Converter</strong>, <strong>Whitespace Cleaner</strong>, <strong>Word Counter</strong>, and more. Private by design, built for speed.</p>
+
+                    <h3>Try it now</h3>
+                    <a href="/tools/random-text-generator.html">Go To Random Text Generator</a>
+
+                    <h3>FAQ</h3>
+                    <dl class="faq grammar-faq" id="grammar-faq">
+                        <dt tabindex="0" aria-expanded="false">Is the Random Text Generator free?</dt>
+                        <dd class="hidden">Yes-use it as much as you like with no sign-in or usage limits.</dd>
+
+                        <dt tabindex="0" aria-expanded="false">Do you store my text?</dt>
+                        <dd class="hidden">No. Generation and previews run in your browser for a fast, privacy-friendly experience.</dd>
+
+                        <dt tabindex="0" aria-expanded="false">Can I choose length and number of items?</dt>
+                        <dd class="hidden">Yes. Use the Length slider (Tiny → XL) and Count (1–30) to match your layout needs.</dd>
+
+                        <dt tabindex="0" aria-expanded="false">How do I make output reproducible?</dt>
+                        <dd class="hidden">Enter a Seed (e.g., <em>sniptext2025</em>) before generating-using the same seed recreates the same text later.</dd>
+
+                        <dt tabindex="0" aria-expanded="false">Can it output HTML?</dt>
+                        <dd class="hidden">Yes. Toggle <em>Wrap with HTML tags</em> to generate <code>&lt;p&gt;</code>, <code>&lt;ul&gt;&lt;li&gt;</code>, or <code>&lt;h3&gt;</code> as needed.</dd>
+                    </dl>
+
+                </div>
+
+                <div class="article-footer">
+                    <div class="article-tags">
+                        <span class="tag">Random Text</span>
+                        <span class="tag">Lorem Ipsum</span>
+                        <span class="tag">Writing Tools</span>
+                    </div>
+                    <div class="article-share">
+                        <span class="share-text">Share:</span>
+                        <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+                        <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+                        <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+
+<section id="articles" class="articles-section">
+    <div class="container">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="articles-grid">    
+
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">Character & Symbol Tools</span>
+                            <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
+                        </div>
+                        <h3 class="article-title">Symbol & Character Info: Count, Identify & Explore Unicode</h3>
+                        <p class="article-excerpt">Discover everything about your selected characters - from symbol counts to ASCII/Unicode code points, official names, and more. Includes advanced analysis and customization options.</p>
+                        <a href="/blog/free-symbol-character-info-count-&-decode-unicode-and-ascii.html" class="read-more">Explore Tool</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">Text Analysis Tools</span>
+                            <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
+                        </div>
+                        <h3 class="article-title">Palindromic Word Finder: Detect & Highlight Symmetrical Text Instantly</h3>
+                        <p class="article-excerpt">Quickly identify palindromes in your text, highlight their positions, and explore advanced detection options. Perfect for linguistic research, creative writing, and wordplay enthusiasts.</p>
+                        <a href="/blog/free-palindromic-word-finder-detect-highlight-in-words-phrases-substrings-blog.html" class="read-more">Read More</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <span class="article-category">Academic Writing</span>
+                            <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
+                        </div>
+                        <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference &amp; When to Use Each</h3>
+                        <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.</p>
+                        <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
+                    </article>
+
+    </div>
+</div>
+
+</section>
+
+<!-- About Section -->
+
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="about-content">
+            <h2 class="section-title">About This Blog</h2>
+            <p class="about-text">At SnipText Blog, we share quick, practical guides to writing and formatting-like our free <strong>Random Text Generator</strong>, <strong>Case Converter</strong>, and <strong>Word Counter</strong> for clean, on-spec text.</p>
+            <p class="about-text">Expect short how-tos, accuracy tips, and privacy-friendly workflows that help you edit faster and publish confidently.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Author Bio Card -->
+
+<aside class="author-bio" id="author-bio">
+    <div class="container">
+        <div class="bio-card">
+            <div class="bio-avatar">
+                <div class="avatar-placeholder">H</div>
+            </div>
+            <div class="bio-content">
+                <h3 class="bio-name">Henry</h3>
+                <p class="bio-title">Chief Content Strategist & Writing Tools Specialist</p>
+                <p class="bio-description">Henry leads content at SnipText and helped shape our fast, privacy-first Random Text Generator. With 5+ years in editing and UX writing, they turn finicky text issues into one-click fixes for students, writers, and teams.</p>
+                <div class="bio-links">
+                    <a href="#" class="bio-link">Portfolio</a>
+                    <a href="#" class="bio-link">Twitter</a>
+                    <a href="#" class="bio-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">SnipText</h4>
+                <p class="footer-text">Creating digital experiences that matter.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SnipText. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <span class="back-to-top-icon">↑</span>
+</button>
+
+<!-- JavaScript -->
+<script src="/blog/js/sniptext-blog.js"></script>
+
+<!-- Small accessible script to toggle FAQ questions (optional, unobtrusive) -->
+<script>
+(function () {
+  const faq = document.getElementById('grammar-faq');
+  if (!faq) return;
+  const dts = faq.querySelectorAll('dt');
+
+  dts.forEach(dt => {
+    const dd = dt.nextElementSibling;
+    // ensure initial state
+    dt.setAttribute('role', 'button');
+    dt.setAttribute('aria-controls', dd ? dd.id || '' : '');
+    dt.setAttribute('tabindex', '0');
+
+    const toggle = () => {
+      const isOpen = dt.classList.toggle('open');
+      if (dd) {
+        dd.classList.toggle('hidden', !isOpen);
+        dt.setAttribute('aria-expanded', String(isOpen));
+      }
+    };
+
+    dt.addEventListener('click', toggle);
+    dt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

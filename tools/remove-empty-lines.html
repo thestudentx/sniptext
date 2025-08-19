@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SnipText - Remove Empty Lines | checkai.pro</title>
+  <meta name="description" content="Quickly strip blank lines, collapse multi line gaps, and optionally trim each line. Privacy friendly and fast." />
+
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ==========================================================
+       SnipText • REMOVE EMPTY LINES (single file)
+       Dark cozy theme • All classes, ids, and vars use remove-empty-lines
+    =========================================================== */
+
+    :root {
+      /* Brand mapped to local vars */
+      --remove-empty-lines-color-primary: #1D4ED8;
+      --remove-empty-lines-color-accent:  #3B82F6;
+      --remove-empty-lines-color-bg-dark: #0F172A;
+      --remove-empty-lines-color-text:    #E5E7EB;
+      --remove-empty-lines-color-border:  #233046;
+      --remove-empty-lines-color-warm:    #e85d27;
+
+      --remove-empty-lines-gradient-start: #0F172A;
+      --remove-empty-lines-gradient-end:   #23253d;
+
+      --remove-empty-lines-surface-1: rgba(23,31,53,.92);
+      --remove-empty-lines-surface-2: rgba(31,41,71,.78);
+      --remove-empty-lines-surface-3: rgba(11,16,32,.85);
+
+      --remove-empty-lines-shadow-xl: 0 25px 50px -12px rgba(0,0,0,.6);
+      --remove-empty-lines-shadow-md: 0 10px 30px rgba(0,0,0,.35);
+      --remove-empty-lines-radius: 18px;
+
+      --remove-empty-lines-font-heading: 'Poppins', 'Segoe UI', ui-sans-serif, system-ui, -apple-system, Roboto, Arial, sans-serif;
+      --remove-empty-lines-font-body: 'Roboto', 'Inter', ui-sans-serif, system-ui, -apple-system, Arial, sans-serif;
+      --remove-empty-lines-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+      --remove-empty-lines-transition: 240ms cubic-bezier(.22,.61,.36,1);
+      --remove-empty-lines-transition-slow: 700ms cubic-bezier(.22,.61,.36,1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body.remove-empty-lines-body {
+      margin: 0;
+      color: var(--remove-empty-lines-color-text);
+      background:
+        radial-gradient(1200px 800px at 8% -10%, rgba(61, 94, 255, 0.08), transparent 60%),
+        radial-gradient(1000px 700px at 92% 0%, rgba(255, 124, 76, 0.08), transparent 55%),
+        linear-gradient(180deg, var(--remove-empty-lines-gradient-start), var(--remove-empty-lines-gradient-end));
+      font-family: var(--remove-empty-lines-font-body);
+      line-height: 1.5;
+      overflow-y: overlay;
+    }
+
+    /* Ambient blobs */
+    .remove-empty-lines-ambient { position: fixed; inset: 0; pointer-events: none; z-index: -1; filter: blur(60px) saturate(110%); }
+    .remove-empty-lines-ambient::before, .remove-empty-lines-ambient::after {
+      content: ""; position: absolute; border-radius: 50%; opacity: .35; mix-blend-mode: screen; transition: transform var(--remove-empty-lines-transition-slow);
+    }
+    .remove-empty-lines-ambient::before { width: 520px; height: 520px; left: -120px; top: -120px; background: radial-gradient(circle at 30% 30%, #4263ff, transparent 60%); animation: remove-empty-lines-float 18s ease-in-out infinite; }
+    .remove-empty-lines-ambient::after  { width: 460px; height: 460px; right: -120px; top: 0; background: radial-gradient(circle at 60% 40%, #ff7c4c, transparent 60%); animation: remove-empty-lines-float 22s ease-in-out infinite reverse; }
+    @keyframes remove-empty-lines-float { 0%,100%{transform: translateY(0)} 50%{transform: translateY(22px)} }
+
+    /* Container */
+    .remove-empty-lines-shell { max-width: 1200px; margin: 28px auto 80px; padding: 0 20px; }
+
+    /* Header */
+    .remove-empty-lines-header { display: grid; gap: 8px; margin-bottom: 16px; }
+    .remove-empty-lines-title { font-family: var(--remove-empty-lines-font-heading); font-weight: 700; font-size: clamp(22px, 2.6vw, 34px); }
+    .remove-empty-lines-subtitle { opacity: .88; }
+
+    /* Panel */
+    .remove-empty-lines-hero { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008)); border: 1px solid var(--remove-empty-lines-color-border); border-radius: var(--remove-empty-lines-radius); box-shadow: var(--remove-empty-lines-shadow-xl); padding: 16px; position: relative; overflow: hidden; }
+    .remove-empty-lines-hero::after { content:""; position:absolute; inset:-1px; border-radius:inherit; pointer-events:none; background: radial-gradient(800px 200px at 50% -100px, rgba(255,255,255,.07), transparent 60%); }
+
+    .remove-empty-lines-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .remove-empty-lines-editor, .remove-empty-lines-output {
+      background: var(--remove-empty-lines-surface-1);
+      border: 1px solid var(--remove-empty-lines-color-border);
+      border-radius: var(--remove-empty-lines-radius);
+      box-shadow: var(--remove-empty-lines-shadow-md);
+      overflow: hidden;
+    }
+    .remove-empty-lines-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-bottom: 1px dashed var(--remove-empty-lines-color-border); background: rgba(255,255,255,.03); }
+    .remove-empty-lines-head-title { font-family: var(--remove-empty-lines-font-heading); font-weight: 600; }
+    .remove-empty-lines-head-tools { display: flex; gap: 8px; }
+
+    .remove-empty-lines-btn { appearance: none; border: 1px solid var(--remove-empty-lines-color-border); background: rgba(255,255,255,.05); color: var(--remove-empty-lines-color-text); border-radius: 10px; padding: 8px 10px; cursor: pointer; transition: transform var(--remove-empty-lines-transition), background var(--remove-empty-lines-transition); }
+    .remove-empty-lines-btn:hover { background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+    .remove-empty-lines-textarea { width: 100%; height: 360px; max-height: 520px; min-height: 220px; resize: vertical; background: transparent; border: 0; outline: none; padding: 12px; color: var(--remove-empty-lines-color-text); font: 500 13.5px/1.6 var(--remove-empty-lines-font-mono); }
+
+    /* Controls */
+    .remove-empty-lines-controls { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
+    .remove-empty-lines-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .remove-empty-lines-field { background: var(--remove-empty-lines-surface-2); border: 1px solid var(--remove-empty-lines-color-border); border-radius: 14px; padding: 12px; box-shadow: var(--remove-empty-lines-shadow-md); }
+    .remove-empty-lines-field h4 { margin: 0 0 8px; font: 600 0.95rem var(--remove-empty-lines-font-heading); opacity: .95; }
+    .remove-empty-lines-inline { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+    .remove-empty-lines-select, .remove-empty-lines-input { width: 100%; padding: 10px 12px; border: 1px solid var(--remove-empty-lines-color-border); border-radius: 10px; background: rgba(255,255,255,.05); color: var(--remove-empty-lines-color-text); outline: none; transition: border var(--remove-empty-lines-transition), box-shadow var(--remove-empty-lines-transition); }
+    .remove-empty-lines-select:focus, .remove-empty-lines-input:focus { border-color: var(--remove-empty-lines-color-accent); box-shadow: 0 0 0 4px rgba(59,130,246,.15); }
+
+    .remove-empty-lines-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid var(--remove-empty-lines-color-border); transition: background var(--remove-empty-lines-transition), transform var(--remove-empty-lines-transition); }
+    .remove-empty-lines-toggle:hover { background: rgba(255,255,255,0.07); transform: translateY(-1px); }
+
+    .remove-empty-lines-cta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+    .remove-empty-lines-primary { background: linear-gradient(135deg, var(--remove-empty-lines-color-primary), var(--remove-empty-lines-color-accent)); color: #fff; border: 0; }
+
+    .remove-empty-lines-stats { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: .92rem; opacity: .9; }
+    .remove-empty-lines-badge { padding: 6px 10px; background: rgba(255,255,255,.06); border: 1px solid var(--remove-empty-lines-color-border); border-radius: 999px; }
+
+    /* Toast */
+    .remove-empty-lines-toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%) translateY(20px); background: rgba(20,27,45,.95); border: 1px solid var(--remove-empty-lines-color-border); padding: 10px 14px; border-radius: 12px; box-shadow: var(--remove-empty-lines-shadow-md); opacity: 0; pointer-events: none; transition: all var(--remove-empty-lines-transition); }
+    .remove-empty-lines-toast.remove-empty-lines-toast-show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .remove-empty-lines-grid, .remove-empty-lines-row { grid-template-columns: 1fr; }
+    }
+    .remove-empty-lines-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
+.remove-empty-lines-blog-link{color:var(--wc-accent-b); text-decoration:underline}
+  </style>
+</head>
+<body class="remove-empty-lines-body">
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  
+  <div class="remove-empty-lines-ambient" aria-hidden="true"></div>
+
+  <main class="remove-empty-lines-shell">
+    <header class="remove-empty-lines-header">
+      <h1 class="remove-empty-lines-title">Remove Empty Lines</h1>
+      <p class="remove-empty-lines-subtitle">Quickly strip blank lines, collapse multi line gaps, and optionally trim each line. Built for designers, writers, and developers.</p>
+    </header>
+
+    <section class="remove-empty-lines-hero">
+      <div class="remove-empty-lines-grid">
+        <div class="remove-empty-lines-editor">
+          <div class="remove-empty-lines-head">
+            <div class="remove-empty-lines-head-title">Input</div>
+            <div class="remove-empty-lines-head-tools">
+              <button class="remove-empty-lines-btn" id="remove-empty-lines-paste" title="Paste">Paste</button>
+              <label class="remove-empty-lines-btn" title="Import file">
+                Import <input type="file" id="remove-empty-lines-file" accept=".txt,.md,.csv,.json,.log,.html" hidden>
+              </label>
+              <button class="remove-empty-lines-btn" id="remove-empty-lines-clear" title="Clear">Clear</button>
+            </div>
+          </div>
+          <textarea id="remove-empty-lines-input" class="remove-empty-lines-textarea" placeholder="Paste or type your text here..."></textarea>
+        </div>
+
+        <div class="remove-empty-lines-output">
+          <div class="remove-empty-lines-head">
+            <div class="remove-empty-lines-head-title">Output</div>
+            <div class="remove-empty-lines-head-tools">
+              <button class="remove-empty-lines-btn" id="remove-empty-lines-copy" title="Copy">Copy</button>
+              <button class="remove-empty-lines-btn" id="remove-empty-lines-download" title="Download">Download</button>
+            </div>
+          </div>
+          <textarea id="remove-empty-lines-output-area" class="remove-empty-lines-textarea" placeholder="Your cleaned text will appear here..." spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <div class="remove-empty-lines-controls">
+        <div class="remove-empty-lines-row">
+          <div class="remove-empty-lines-field">
+            <h4>Mode and spacing</h4>
+            <div class="remove-empty-lines-inline">
+              <label class="remove-empty-lines-toggle"><input id="remove-empty-lines-trim" type="checkbox" checked> Trim each line</label>
+              <label class="remove-empty-lines-toggle"><input id="remove-empty-lines-zero" type="checkbox" checked> Treat zero width as space</label>
+              <label class="remove-empty-lines-toggle"><input id="remove-empty-lines-auto" type="checkbox" checked> Auto update</label>
+            </div>
+            <div class="remove-empty-lines-inline" style="margin-top:8px">
+              <label class="remove-empty-lines-badge" for="remove-empty-lines-keep">Keep consecutive empty lines</label>
+              <select id="remove-empty-lines-keep" class="remove-empty-lines-select" title="How many empty lines to allow in a row">
+                <option value="0">0 (remove all)</option>
+                <option value="1" selected>1 (keep single gap)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label class="remove-empty-lines-badge" for="remove-empty-lines-newlines">Normalize newlines</label>
+              <select id="remove-empty-lines-newlines" class="remove-empty-lines-select" title="Line ending format">
+                <option value="none" selected>None</option>
+                <option value="lf">LF (\n)</option>
+                <option value="crlf">CRLF (\r\n)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="remove-empty-lines-field">
+            <h4>Advanced filters</h4>
+            <div class="remove-empty-lines-inline">
+              <input id="remove-empty-lines-extra-empty" class="remove-empty-lines-input" placeholder="Treat as empty if matches regex, example: ^[.-]+$" />
+              <input id="remove-empty-lines-skip" class="remove-empty-lines-input" placeholder="Never remove if matches regex, example: ^\s*//" />
+              <input id="remove-empty-lines-flags" class="remove-empty-lines-input" placeholder="Regex flags, example: i" />
+            </div>
+          </div>
+        </div>
+
+        <div class="remove-empty-lines-row">
+          <div class="remove-empty-lines-field">
+            <h4>Actions</h4>
+            <div class="remove-empty-lines-cta">
+              <button id="remove-empty-lines-run" class="remove-empty-lines-btn remove-empty-lines-primary" title="Run (Ctrl or Cmd + Enter)">Run</button>
+              <button id="remove-empty-lines-swap" class="remove-empty-lines-btn" title="Swap input and output">Swap</button>
+              <button id="remove-empty-lines-share" class="remove-empty-lines-btn" title="Copy share link with options">Share</button>
+            </div>
+          </div>
+          <div class="remove-empty-lines-field">
+            <h4>Stats</h4>
+            <div class="remove-empty-lines-stats" id="remove-empty-lines-stats">
+              <span class="remove-empty-lines-badge">0 lines in</span>
+              <span class="remove-empty-lines-badge">0 lines out</span>
+              <span class="remove-empty-lines-badge">0 empty removed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="remove-empty-lines-guide">
+    <p class="remove-empty-lines-guide-p">See Remove Empty Lines Guide on SnipText Blog Page <a href="/blog/free-remove-empty-lines-trim-lines-collapse-gaps-normalize-newlines-sniptext-blog.html" class="remove-empty-lines-blog-link">here</a>.</p>
+  </div>
+  </main>
+  
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <div class="remove-empty-lines-toast" id="remove-empty-lines-toast" role="status" aria-live="polite"></div>
+
+      <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    // =========================================================
+    // Remove Empty Lines - No external deps
+    // =========================================================
+    const rel$ = (s) => document.querySelector(s);
+    const relToast = (msg) => { const el = rel$('#remove-empty-lines-toast'); el.textContent = msg; el.classList.add('remove-empty-lines-toast-show'); clearTimeout(relToast._t); relToast._t = setTimeout(()=> el.classList.remove('remove-empty-lines-toast-show'), 2200); };
+
+    // Elements
+    const relInput = rel$('#remove-empty-lines-input');
+    const relOutput = rel$('#remove-empty-lines-output-area');
+
+    const relTrim = rel$('#remove-empty-lines-trim');
+    const relZero = rel$('#remove-empty-lines-zero');
+    const relAuto = rel$('#remove-empty-lines-auto');
+    const relKeep = rel$('#remove-empty-lines-keep');
+    const relNL   = rel$('#remove-empty-lines-newlines');
+
+    const relExtraEmpty = rel$('#remove-empty-lines-extra-empty');
+    const relSkip       = rel$('#remove-empty-lines-skip');
+    const relFlags      = rel$('#remove-empty-lines-flags');
+
+    const relRun = rel$('#remove-empty-lines-run');
+    const relSwap = rel$('#remove-empty-lines-swap');
+    const relShare = rel$('#remove-empty-lines-share');
+
+    const relPaste = rel$('#remove-empty-lines-paste');
+    const relClear = rel$('#remove-empty-lines-clear');
+    const relFile  = rel$('#remove-empty-lines-file');
+
+    const relCopy = rel$('#remove-empty-lines-copy');
+    const relDownload = rel$('#remove-empty-lines-download');
+
+    const relStats = rel$('#remove-empty-lines-stats');
+
+    const SETTINGS_KEY = 'remove-empty-lines-settings-v1';
+
+    function relSave(){
+      const s = {
+        t: relInput.value.slice(0, 200000),
+        tr: !!relTrim.checked,
+        z:  !!relZero.checked,
+        a:  !!relAuto.checked,
+        k:  +relKeep.value,
+        nl: relNL.value,
+        ee: relExtraEmpty.value,
+        sk: relSkip.value,
+        fl: relFlags.value,
+        o:  relOutput.value.slice(0, 200000)
+      };
+      try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); } catch(_){}
+    }
+    function relLoad(){
+      try { const s = JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}');
+        if (typeof s.t === 'string') relInput.value = s.t;
+        if ('tr' in s) relTrim.checked = !!s.tr;
+        if ('z' in s)  relZero.checked = !!s.z;
+        if ('a' in s)  relAuto.checked = !!s.a;
+        if (s.k != null) relKeep.value = s.k;
+        if (s.nl) relNL.value = s.nl;
+        if (s.ee) relExtraEmpty.value = s.ee;
+        if (s.sk) relSkip.value = s.sk;
+        if (s.fl) relFlags.value = s.fl;
+        if (typeof s.o === 'string') relOutput.value = s.o;
+      } catch(_){}
+      relUpdateStats();
+    }
+
+    function relNormalizeNewlines(str){
+      return str.replace(/\r\n?|\n/g, '\n');
+    }
+
+    function relBuildRegex(src, flags){
+      if (!src) return null;
+      try { return new RegExp(src, flags || undefined); } catch(_) { return null; }
+    }
+
+    function relProcess(){
+      let text = relInput.value || '';
+      const keep = +relKeep.value || 0;
+      const trim = !!relTrim.checked;
+      const zero = !!relZero.checked;
+      const norm = relNL.value; // none, lf, crlf
+
+      const flags = (relFlags.value || '').replace(/[^gimsuy]/g,'');
+      const rxExtra = relBuildRegex(relExtraEmpty.value, flags);
+      const rxSkip  = relBuildRegex(relSkip.value, flags);
+
+      // normalize to \n for processing
+      text = relNormalizeNewlines(text);
+
+      const lines = text.split('\n');
+      const out = [];
+      let emptyRun = 0;
+      let emptyRemoved = 0;
+
+      for (let i=0; i<lines.length; i++){
+        let raw = lines[i];
+        let candidate = raw;
+        if (zero) candidate = candidate.replace(/[\u200B-\u200D\uFEFF]/g, '');
+        const toCheck = trim ? candidate.trim() : candidate.replace(/[\t ]+$/,'');
+
+        const isSkip = rxSkip ? rxSkip.test(raw) : false;
+        const treatAsEmpty = (toCheck === '') || (rxExtra ? rxExtra.test(toCheck) : false);
+
+        if (!isSkip && treatAsEmpty){
+          if (emptyRun < keep){
+            out.push('');
+            emptyRun++;
+          } else {
+            emptyRemoved++;
+            // skip
+          }
+          continue;
+        }
+
+        emptyRun = 0;
+        const finalLine = trim ? candidate.trim() : raw;
+        out.push(finalLine);
+      }
+
+      let result = out.join('\n');
+      if (norm === 'lf') result = result.replace(/\r?\n/g, '\n');
+      if (norm === 'crlf') result = result.replace(/\r?\n/g, '\r\n');
+
+      relOutput.value = result;
+      relUpdateStats(emptyRemoved);
+      relSave();
+      relToast('Cleaned');
+    }
+
+    function relUpdateStats(removed=0){
+      const src = relNormalizeNewlines(relInput.value || '');
+      const dst = relNormalizeNewlines(relOutput.value || '');
+      const inLines = src === '' ? 0 : src.split('\n').length;
+      const outLines = dst === '' ? 0 : dst.split('\n').length;
+      relStats.innerHTML = `
+        <span class="remove-empty-lines-badge">${inLines} lines in</span>
+        <span class="remove-empty-lines-badge">${outLines} lines out</span>
+        <span class="remove-empty-lines-badge">${removed} empty removed</span>
+      `;
+    }
+
+    // Buttons
+    relRun.addEventListener('click', relProcess);
+    relSwap.addEventListener('click', ()=>{ const a = relInput.value; relInput.value = relOutput.value; relOutput.value = a; relProcess(); });
+    relShare.addEventListener('click', async ()=>{
+      const data = { tr: relTrim.checked, z: relZero.checked, a: relAuto.checked, k: +relKeep.value, nl: relNL.value, ee: relExtraEmpty.value, sk: relSkip.value, fl: relFlags.value };
+      const json = JSON.stringify(data);
+      const b64 = btoa(unescape(encodeURIComponent(json)));
+      const url = location.origin + location.pathname + '#rel=' + b64;
+      try { await navigator.clipboard.writeText(url); relToast('Share link copied'); } catch { relToast('Copy blocked'); }
+      history.replaceState(null, '', url);
+    });
+
+    // Editor tools
+    relPaste.addEventListener('click', async ()=>{
+      try { relInput.value = await navigator.clipboard.readText(); relToast('Pasted'); if (relAuto.checked) relProcess(); relSave(); } catch { relToast('Clipboard blocked'); }
+    });
+    relClear.addEventListener('click', ()=>{ relInput.value = ''; if (relAuto.checked) relProcess(); relSave(); });
+    relFile.addEventListener('change', async ()=>{
+      const f = relFile.files && relFile.files[0]; if (!f) return;
+      try { relInput.value = await f.text(); relToast('File loaded'); if (relAuto.checked) relProcess(); relSave(); } catch { relToast('Load failed'); }
+    });
+
+    // Copy and download
+    relCopy.addEventListener('click', async ()=>{
+      try { await navigator.clipboard.writeText(relOutput.value || ''); relToast('Copied'); } catch { relToast('Copy blocked'); }
+    });
+    relDownload.addEventListener('click', ()=>{
+      const blob = new Blob([relOutput.value || ''], {type: 'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'cleaned.txt'; a.click(); URL.revokeObjectURL(url);
+      relToast('Downloaded');
+    });
+
+    // Drag and drop
+    function relWireDrop(area){
+      area.addEventListener('dragover', e=>{ e.preventDefault(); area.style.outline = '2px dashed #3B82F6'; });
+      area.addEventListener('dragleave', ()=>{ area.style.outline = 'none'; });
+      area.addEventListener('drop', async e=>{
+        e.preventDefault(); area.style.outline = 'none'; const f = e.dataTransfer.files && e.dataTransfer.files[0]; if (!f) return; area.value = await f.text(); relToast('File dropped'); if (relAuto.checked) relProcess(); relSave();
+      });
+    }
+    relWireDrop(relInput);
+
+    // Live update
+    function relOnChange(){ if (relAuto.checked) relProcess(); relSave(); }
+    [relInput, relTrim, relZero, relAuto, relKeep, relNL, relExtraEmpty, relSkip, relFlags].forEach(el=> el.addEventListener('input', relOnChange));
+
+    // Keyboard shortcut
+    document.addEventListener('keydown', (e)=>{ if ((e.ctrlKey || e.metaKey) && e.key === 'Enter'){ e.preventDefault(); relProcess(); }});
+
+    // Decode share options
+    function relFromHash(){ const h = location.hash; if (!h.startsWith('#rel=')) return false; try { const json = decodeURIComponent(escape(atob(h.slice(5)))); const d = JSON.parse(json); if ('tr' in d) relTrim.checked = !!d.tr; if ('z' in d) relZero.checked = !!d.z; if ('a' in d) relAuto.checked = !!d.a; if (d.k != null) relKeep.value = d.k; if (d.nl) relNL.value = d.nl; if (d.ee != null) relExtraEmpty.value = d.ee; if (d.sk != null) relSkip.value = d.sk; if (d.fl != null) relFlags.value = d.fl; return true; } catch(_) { return false; } }
+
+    // Init
+    relLoad();
+    relFromHash();
+    relProcess();
+  </script>
+</body>
+</html>
