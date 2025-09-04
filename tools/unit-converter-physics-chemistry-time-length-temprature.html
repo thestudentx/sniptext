@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Unit Converter | Physics, Chemistry, Time, Length, Temperature | SnipText</title>
+  <meta name="description" content="Free Unit Converter by SnipText. Academic style conversions for physics, chemistry, and everyday units. Convert length, mass, time, temperature, energy, pressure, power, speed, volume, area, force, frequency, amount of substance, and molar concentration. Works offline in your browser." />
+  <meta name="keywords" content="unit converter, physics units, chemistry units, time converter, length converter, temperature converter, pressure converter, energy converter, power converter, speed converter, volume converter, area converter, force converter, frequency converter, molarity converter, molar concentration converter, scientific notation, significant figures" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/unit-converter" />
+  <link rel="alternate" href="https://checkai.pro/tools/unit-converter" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/unit-converter" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Unit Converter - Academic Style" />
+  <meta property="og:description" content="Fast, private unit conversion for physics and chemistry. Length, time, temperature, energy, pressure, power, speed, volume, area, force, frequency, amount, molarity and more." />
+  <meta property="og:url" content="https://checkai.pro/tools/unit-converter" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Unit Converter - Academic Style" />
+  <meta name="twitter:description" content="Client side unit converter for science and study. Works offline." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Performance: fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Unit Converter",
+    "url":"https://checkai.pro/tools/unit-converter",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Physics and chemistry units",
+      "Scientific notation and precision control",
+      "Convert to many targets at once",
+      "Swap units, favorites, and history",
+      "CSV download and copy",
+      "Client side only"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is the unit converter private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs locally in your browser. Data never leaves your device."}},
+      {"@type":"Question","name":"Which categories are supported?","acceptedAnswer":{"@type":"Answer","text":"Length, mass, time, temperature, area, volume, speed, pressure, energy, power, force, frequency, angle, amount of substance, and molar concentration."}},
+      {"@type":"Question","name":"Can it convert between molarity and g/L?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add the molar mass and enable cross conversion to switch between mol/L and g/L families."}},
+      {"@type":"Question","name":"Does it support scientific notation and significant figures?","acceptedAnswer":{"@type":"Answer","text":"Yes. Toggle scientific notation and set the number of significant figures or decimal places."}}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Free Tools","item":"https://checkai.pro/tools/free-tools"},
+      {"@type":"ListItem","position":3,"name":"Unit Converter","item":"https://checkai.pro/tools/unit-converter"}
+    ]
+  }
+  </script>
+
+  <style>
+  /* =========================
+     SnipText dark page theme
+     ========================= */
+:root{
+  /* Palette (mapped to brand) */
+  --unit-conv-bg:#0F172A;        /* brand dark background */
+  --unit-conv-bg-soft:#111B2E;   /* softer panel/backdrop on dark */
+  --unit-conv-surface:#132136;   /* card surface */
+  --unit-conv-text:#E5E7EB;      /* light text on dark */
+  --unit-conv-muted:#9CA3AF;     /* muted/secondary text */
+  --unit-conv-border:rgba(255,255,255,.14); /* subtle borders on dark */
+
+  /* Accents (from brand) */
+  --unit-conv-accent:#1D4ED8;    /* primary blue */
+  --unit-conv-accent-2:#3B82F6;  /* accent blue */
+  --unit-conv-warm:#FF7C4C;      /* warm CTA hue */
+
+  /* Shapes & effects (unchanged) */
+  --unit-conv-radius-xl:20px;
+  --unit-conv-radius-lg:14px;
+  --unit-conv-radius-md:10px;
+  --unit-conv-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --unit-conv-shadow-2:0 18px 48px rgba(2,6,23,.45);
+  --unit-conv-maxw:1220px;
+
+  /* Fonts (aligned to brand stack, names unchanged) */
+  --unit-conv-head:'Poppins','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --unit-conv-body:'Roboto','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+}
+
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--unit-conv-body);
+  background: var(--unit-conv-bg);
+  color: var(--unit-conv-text);
+}
+
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
+
+
+  /* Page background aurora */
+  .unit-conv-page{
+    position:relative;
+    max-width:var(--unit-conv-maxw);
+    margin: clamp(16px,3vw,40px) auto;
+    padding: clamp(12px,2.5vw,24px);
+    isolation:isolate;
+  }
+  .unit-conv-page::before{
+    content:"";
+    position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1100px 520px at 0% -10%, color-mix(in oklab, var(--unit-conv-accent) 26%, transparent), transparent 60%),
+      radial-gradient(900px 520px at 100% -10%, color-mix(in oklab, var(--unit-conv-accent-2) 22%, transparent), transparent 60%),
+      radial-gradient(840px 520px at 0% 100%, color-mix(in oklab, var(--unit-conv-warm) 18%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--unit-conv-bg) 0%, var(--unit-conv-bg-soft) 100%);
+  }
+
+  /* Hero */
+  .unit-conv-hero{
+    position:relative;
+    padding: clamp(18px,3vw,28px);
+    border:1px solid var(--unit-conv-border);
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--unit-conv-accent) 18%, transparent),
+      color-mix(in oklab, var(--unit-conv-accent-2) 14%, transparent)
+    ) border-box;
+    border-radius:var(--unit-conv-radius-xl);
+    box-shadow:var(--unit-conv-shadow-1);
+    overflow:hidden;
+  }
+  .unit-conv-hero::after{
+    content:"";
+    position:absolute; inset:-6px; filter:blur(20px); opacity:.55; pointer-events:none;
+    background:
+      radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--unit-conv-accent) 28%, transparent), transparent 65%),
+      radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--unit-conv-accent-2) 26%, transparent), transparent 62%);
+  }
+  .unit-conv-hero-title{
+    margin:0 0 6px 0;
+    font-weight:800; letter-spacing:.2px; line-height:1.12;
+    font-family:var(--unit-conv-head);
+    font-size: clamp(22px,3.2vw,36px);
+    background: linear-gradient(90deg,#fff, color-mix(in oklab, var(--unit-conv-accent) 54%, #fff) 38%, color-mix(in oklab, var(--unit-conv-warm) 42%, #fff) 78%, #fff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .unit-conv-hero-sub{margin:6px 0 0 0; color:var(--unit-conv-muted); font-size:clamp(14px,1.8vw,16px);}
+
+  /* Grid */
+  .unit-conv-grid{display:grid; grid-template-columns:1fr; gap:clamp(12px,2.4vw,20px); margin-top:clamp(14px,2.6vw,24px);}
+  @media (min-width:1000px){ .unit-conv-grid{ grid-template-columns: 1.25fr .75fr; } }
+
+  /* Card */
+  .unit-conv-card{
+    border:1px solid var(--unit-conv-border);
+    border-radius:var(--unit-conv-radius-lg);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--unit-conv-surface) 92%, transparent), rgba(255,255,255,.04));
+    box-shadow:var(--unit-conv-shadow-2);
+    backdrop-filter: blur(8px);
+    overflow:hidden;
+  }
+  .unit-conv-card-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:12px 14px; border-bottom:1px solid var(--unit-conv-border);
+    background: linear-gradient(90deg,
+      color-mix(in oklab, var(--unit-conv-accent) 10%, transparent),
+      color-mix(in oklab, var(--unit-conv-accent-2) 10%, transparent)
+    );
+  }
+  .unit-conv-card-title{margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.92; font-family:var(--unit-conv-head);}
+
+  /* Controls */
+  .unit-conv-row{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  .unit-conv-spacer{flex:1 1 auto;}
+
+  .unit-conv-input,.unit-conv-select{
+    background:#0f1b34; color:#e5e7eb; border:1px solid var(--unit-conv-border);
+    border-radius:10px; padding:10px 12px; outline:none; min-height:40px; font-size:14px;
+  }
+  .unit-conv-select{background:#0e1730}
+  .unit-conv-input::placeholder{color:#9aa8c7}
+
+  .unit-conv-btn{
+    --_bg: linear-gradient(180deg, color-mix(in oklab, var(--unit-conv-accent) 72%, transparent), color-mix(in oklab, var(--unit-conv-accent-2) 58%, transparent));
+    --_bd: color-mix(in oklab, #000 14%, var(--unit-conv-accent));
+    appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:#fff;
+    padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+    transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+    box-shadow: 0 10px 20px rgba(14,165,233,.22), 0 6px 14px rgba(99,102,241,.16);
+    font-family:var(--unit-conv-head);
+  }
+  .unit-conv-btn:hover{transform:translateY(-1px); filter:brightness(1.06)}
+  .unit-conv-btn:active{transform:translateY(0); filter:brightness(.98)}
+  .unit-conv-btn-outline{background:transparent; color:var(--unit-conv-text); border:1px solid var(--unit-conv-border); box-shadow:none}
+  .unit-conv-btn-ghost{background:transparent; color:var(--unit-conv-muted); border:1px dashed var(--unit-conv-border); box-shadow:none; font-weight:600}
+
+  .unit-conv-grid-2{display:grid; grid-template-columns:1fr; gap:10px}
+  @media (min-width:680px){ .unit-conv-grid-2{grid-template-columns:1fr 1fr} }
+
+  .unit-conv-toolbar{display:flex; flex-wrap:wrap; gap:8px; padding:12px 14px; border-top:1px solid var(--unit-conv-border);
+    background: linear-gradient(90deg, color-mix(in oklab, var(--unit-conv-accent-2) 10%, transparent), color-mix(in oklab, var(--unit-conv-accent) 11%, transparent));
+  }
+
+  /* Results and lists */
+  .unit-conv-result{
+    font-size:clamp(18px,2.4vw,22px); font-weight:700; letter-spacing:.2px;
+    padding:14px; border-top:1px dashed var(--unit-conv-border); background:rgba(255,255,255,.02);
+    display:flex; align-items:center; gap:10px; justify-content:space-between;
+  }
+  .unit-conv-result-value{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .unit-conv-mini{font-size:12px; color:var(--unit-conv-muted)}
+
+  .unit-conv-ul{list-style:none; margin:0; padding:0}
+  .unit-conv-li{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:10px 14px; border-top:1px solid var(--unit-conv-border);
+  }
+  .unit-conv-li:nth-child(odd){background:rgba(255,255,255,.02)}
+  .unit-conv-li strong{font-family:var(--unit-conv-head)}
+
+  .unit-conv-badge{padding:6px 8px; border:1px solid var(--unit-conv-border); border-radius:999px; color:var(--unit-conv-muted); font-size:12px}
+
+  /* Tabs */
+  .unit-conv-tabs{display:flex; flex-wrap:wrap; gap:8px; padding:12px 14px; border-bottom:1px solid var(--unit-conv-border); background:rgba(255,255,255,.03)}
+  .unit-conv-tab{background:transparent; color:var(--unit-conv-text); border:1px solid var(--unit-conv-border); border-radius:10px; padding:8px 12px; cursor:pointer; font-weight:700; font-size:13px}
+  .unit-conv-tab[aria-selected="true"]{background: linear-gradient(180deg, color-mix(in oklab, var(--unit-conv-accent) 60%, transparent), color-mix(in oklab, var(--unit-conv-accent-2) 50%, transparent)); color:#fff}
+
+  /* Toast */
+  .unit-conv-toast{ position: fixed; inset:auto 16px 16px auto; background:#0b1223ee; color:#e5e7eb; padding:10px 14px; border-radius:12px; border:1px solid var(--unit-conv-border); backdrop-filter: blur(8px); box-shadow: var(--unit-conv-shadow-1); transform: translateY(20px); opacity:0; pointer-events:none; transition: transform .25s ease, opacity .25s ease; z-index:50; }
+  .unit-conv-toast.unit-conv-show{ transform: translateY(0); opacity:1; }
+
+  /* Subtle float animation */
+  @media (prefers-reduced-motion: no-preference){
+    .unit-conv-card{ animation: unit-conv-float 18s ease-in-out infinite; }
+    @keyframes unit-conv-float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-2px) } }
+  }
+
+  /* Helper */
+  .unit-conv-helper{ width:100%; text-align:center; font-size:12px; color:#a3aed0; margin-top:8px; }
+  .unit-conv-link{ color: var(--unit-conv-accent); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+  <main class="unit-conv-page" aria-label="Unit Converter">
+    <!-- Hero -->
+    <section class="unit-conv-hero">
+      <h1 class="unit-conv-hero-title">Unit Converter - Academic Style</h1>
+      <p class="unit-conv-hero-sub">Convert length, mass, time, temperature, pressure, energy, power, speed, area, volume, force, frequency, angle, amount of substance, and molar concentration. Private and instant.</p>
+    </section>
+
+    <section class="unit-conv-grid">
+      <!-- Converter -->
+      <article class="unit-conv-card" id="unit-conv-converter">
+        <header class="unit-conv-card-head">
+          <h2 class="unit-conv-card-title">Convert</h2>
+          <div class="unit-conv-row">
+            <span class="unit-conv-badge" id="unit-conv-badge-cat">Length</span>
+            <button class="unit-conv-btn unit-conv-btn-outline" id="unit-conv-swap" type="button" title="Swap units">Swap</button>
+            <button class="unit-conv-btn unit-conv-btn-ghost" id="unit-conv-clear" type="button" title="Clear">Clear</button>
+          </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="unit-conv-tabs" id="unit-conv-tabs" role="tablist" aria-label="Categories">
+          <!-- filled by JS -->
+        </div>
+
+        <div class="unit-conv-grid-2" style="padding:12px 14px;">
+          <div class="unit-conv-row" style="flex:1;">
+            <input id="unit-conv-input" class="unit-conv-input" type="text" inputmode="decimal" placeholder="Enter value, e.g. 9.81e2" aria-label="Value" />
+          </div>
+          <div class="unit-conv-row" style="flex:1;">
+            <select id="unit-conv-from" class="unit-conv-select" aria-label="From unit"></select>
+          </div>
+          <div class="unit-conv-row" style="flex:1;">
+            <select id="unit-conv-to" class="unit-conv-select" aria-label="To unit"></select>
+          </div>
+          <div class="unit-conv-row" style="flex:1;">
+            <button id="unit-conv-run" class="unit-conv-btn" type="button">Convert</button>
+          </div>
+        </div>
+
+        <div class="unit-conv-toolbar" role="group" aria-label="Options">
+          <div class="unit-conv-row" style="gap:12px">
+            <label class="unit-conv-row" style="gap:6px">
+              <span class="unit-conv-mini">Precision</span>
+              <input id="unit-conv-prec" class="unit-conv-input" type="number" min="0" max="12" value="6" style="width:90px" />
+            </label>
+            <label class="unit-conv-row" style="gap:6px">
+              <input id="unit-conv-sci" type="checkbox" />
+              <span class="unit-conv-mini">Scientific notation</span>
+            </label>
+            <label class="unit-conv-row" style="gap:6px" title="For converting mol/L to g/L and back">
+              <span class="unit-conv-mini">Molar mass</span>
+              <input id="unit-conv-mm" class="unit-conv-input" type="number" min="0" step="any" placeholder="g/mol" style="width:120px" />
+            </label>
+            <label class="unit-conv-row" style="gap:6px">
+              <input id="unit-conv-cross" type="checkbox" />
+              <span class="unit-conv-mini">Enable cross conc</span>
+            </label>
+          </div>
+          <span class="unit-conv-spacer"></span>
+          <button class="unit-conv-btn unit-conv-btn-outline" id="unit-conv-copy" type="button" title="Copy result">Copy</button>
+          <button class="unit-conv-btn unit-conv-btn-outline" id="unit-conv-download" type="button" title="Download CSV">Download</button>
+          <button class="unit-conv-btn unit-conv-btn-ghost" id="unit-conv-fav" type="button" title="Toggle favorites">☆ Favorite</button>
+        </div>
+
+        <div class="unit-conv-result" id="unit-conv-result" role="status" aria-live="polite">
+          <div class="unit-conv-result-value">Result appears here</div>
+          <div class="unit-conv-mini" id="unit-conv-meta"></div>
+        </div>
+
+        <!-- Convert to many -->
+        <div style="padding:8px 14px">
+          <p class="unit-conv-mini">Convert to many targets</p>
+        </div>
+        <ul class="unit-conv-ul" id="unit-conv-many"></ul>
+      </article>
+
+      <!-- Explorer, history, tips -->
+      <aside class="unit-conv-card" id="unit-conv-side">
+        <header class="unit-conv-card-head">
+          <h2 class="unit-conv-card-title">Explore</h2>
+          <div class="unit-conv-row">
+            <input id="unit-conv-search" class="unit-conv-input" type="text" placeholder="Search unit symbol or name" aria-label="Search units" />
+          </div>
+        </header>
+
+        <div style="padding:12px 14px">
+          <p class="unit-conv-mini">Favorites</p>
+          <ul class="unit-conv-ul" id="unit-conv-favs"></ul>
+        </div>
+
+        <div style="padding:12px 14px">
+          <p class="unit-conv-mini">History</p>
+          <ul class="unit-conv-ul" id="unit-conv-history"></ul>
+        </div>
+
+        <div style="padding:12px 14px">
+          <p class="unit-conv-mini">Tips</p>
+          <ul class="unit-conv-ul">
+            <li class="unit-conv-li"><span>Use <strong>Ctrl or Cmd + Enter</strong> to convert</span></li>
+            <li class="unit-conv-li"><span>Press <strong>/</strong> to focus search</span></li>
+            <li class="unit-conv-li"><span>Press <strong>X</strong> to swap units</span></li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <div class="unit-conv-helper">
+      <p>Need Unit Conversion guide? Read our blog guide <a style="color: #ccc;" class="mathx-blog-link" href="/blog/unit-converter-physics-chemistry-convert-si-imperial-length-mass-time-temperature-pressure-energy-power-speed-area-volume-force-and-much-more-sniptext-blog.html">here</a>.</p>
+    </div>
+
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-labelledby="t11">
+        <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+        </div>
+        <h3 id="t11" class="card-title">Math Formula Tool</h3>
+        <p class="card-desc">Easily create, edit, and format mathematical equations online for documents, blogs, and educational use.</p>
+        <a class="card-cta" href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-label="Open Math Formula Tool">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/bibtex-to-citation-to-bibtex.html" aria-labelledby="t11">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M6 4h12v2H6zm0 6h12v2H6zm0 6h8v2H6z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t11" class="card-title">BibTeX to Citation Converter</h3>
+      <p class="card-desc">Convert BibTeX entries into clean academic citations (APA, MLA, Chicago, and more) instantly in your browser.</p>
+      <a class="card-cta" href="/tools/bibtex-to-citation-to-bibtex.html" aria-label="Open BibTeX to Citation Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/symbol-character-info.html" aria-labelledby="t6">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t6" class="card-title">Symbol / Character Info</h3>
+      <p class="card-desc">Counts symbols and shows ASCII & Unicode code points and names for selected characters.</p>
+      <a class="card-cta" href="/tools/symbol-character-info.html" aria-label="Open Symbol/Character Counter">Open →</a>
+    </article>
+
+  </section>
+
+  </main>
+
+  <div class="unit-conv-toast" id="unit-conv-toast" role="status" aria-live="polite"></div>
+
+
+
+  
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+  <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+  <script>
+  (function(){
+    'use strict';
+
+    // ---------- Elements ----------
+    const $ = (id) => document.getElementById(id);
+    const elTabs = $('unit-conv-tabs');
+    const elBadgeCat = $('unit-conv-badge-cat');
+    const elInput = $('unit-conv-input');
+    const elFrom = $('unit-conv-from');
+    const elTo = $('unit-conv-to');
+    const elRun = $('unit-conv-run');
+    const elSwap = $('unit-conv-swap');
+    const elClear = $('unit-conv-clear');
+    const elResult = $('unit-conv-result').querySelector('.unit-conv-result-value');
+    const elMeta = $('unit-conv-meta');
+    const elMany = $('unit-conv-many');
+    const elSearch = $('unit-conv-search');
+    const elFavs = $('unit-conv-favs');
+    const elHistory = $('unit-conv-history');
+    const elToast = $('unit-conv-toast');
+    const elCopy = $('unit-conv-copy');
+    const elDownload = $('unit-conv-download');
+    const elFavToggle = $('unit-conv-fav');
+    const elPrec = $('unit-conv-prec');
+    const elSci = $('unit-conv-sci');
+    const elMM = $('unit-conv-mm');
+    const elCross = $('unit-conv-cross');
+
+    // ---------- State ----------
+    let currentCat = 'length';
+    const favKey = 'unit-conv-favorites';
+    const histKey = 'unit-conv-history';
+    let favorites = JSON.parse(localStorage.getItem(favKey) || '[]');
+    let history = JSON.parse(localStorage.getItem(histKey) || '[]');
+
+    // ---------- Utils ----------
+    const showToast = (msg) => {
+      elToast.textContent = msg;
+      elToast.classList.add('unit-conv-show');
+      setTimeout(()=> elToast.classList.remove('unit-conv-show'), 1400);
+    };
+    const fmt = (num) => {
+      const p = Math.max(0, Math.min(12, parseInt(elPrec.value || '6', 10)));
+      if (!isFinite(num)) return 'NaN';
+      if (elSci.checked){
+        return Number(num).toExponential(p);
+      }
+      return Number(num).toLocaleString(undefined, {maximumFractionDigits:p});
+    };
+    const saveFavs = () => localStorage.setItem(favKey, JSON.stringify(favorites));
+    const saveHist = () => localStorage.setItem(histKey, JSON.stringify(history.slice(-30)));
+
+    // ---------- Units database ----------
+    // Linear categories use factor to base (unit value in base unit)
+    // Nonlinear categories include toBase(v) and fromBase(v)
+    const U = {
+      length:{
+        base:'m',
+        units:{
+          m:{name:'meter', factor:1},
+          km:{name:'kilometer', factor:1e3},
+          cm:{name:'centimeter', factor:1e-2},
+          mm:{name:'millimeter', factor:1e-3},
+          um:{name:'micrometer', factor:1e-6},
+          nm:{name:'nanometer', factor:1e-9},
+          mi:{name:'mile', factor:1609.344},
+          yd:{name:'yard', factor:0.9144},
+          ft:{name:'foot', factor:0.3048},
+          in:{name:'inch', factor:0.0254},
+          au:{name:'astronomical unit', factor:149597870700}
+        }
+      },
+      mass:{
+        base:'kg',
+        units:{
+          kg:{name:'kilogram', factor:1},
+          g:{name:'gram', factor:1e-3},
+          mg:{name:'milligram', factor:1e-6},
+          ug:{name:'microgram', factor:1e-9},
+          t:{name:'tonne', factor:1000},
+          lb:{name:'pound', factor:0.45359237},
+          oz:{name:'ounce', factor:0.028349523125}
+        }
+      },
+      time:{
+        base:'s',
+        units:{
+          s:{name:'second', factor:1},
+          ms:{name:'millisecond', factor:1e-3},
+          us:{name:'microsecond', factor:1e-6},
+          ns:{name:'nanosecond', factor:1e-9},
+          min:{name:'minute', factor:60},
+          h:{name:'hour', factor:3600},
+          day:{name:'day', factor:86400}
+        }
+      },
+      temperature:{
+        base:'K',
+        units:{
+          K:{name:'kelvin', toBase:v=>v, fromBase:v=>v},
+          C:{name:'celsius', toBase:v=>v+273.15, fromBase:v=>v-273.15},
+          F:{name:'fahrenheit', toBase:v=>(v-32)*5/9+273.15, fromBase:v=>(v-273.15)*9/5+32},
+          R:{name:'rankine', toBase:v=>v*5/9, fromBase:v=>v*9/5}
+        }
+      },
+      area:{
+        base:'m2',
+        units:{
+          m2:{name:'square meter', factor:1},
+          km2:{name:'square kilometer', factor:1e6},
+          cm2:{name:'square centimeter', factor:1e-4},
+          mm2:{name:'square millimeter', factor:1e-6},
+          ha:{name:'hectare', factor:1e4},
+          ac:{name:'acre', factor:4046.8564224}
+        }
+      },
+      volume:{
+        base:'m3',
+        units:{
+          m3:{name:'cubic meter', factor:1},
+          L:{name:'liter', factor:1e-3},
+          mL:{name:'milliliter', factor:1e-6},
+          uL:{name:'microliter', factor:1e-9},
+          ft3:{name:'cubic foot', factor:0.028316846592},
+          in3:{name:'cubic inch', factor:1.6387064e-5},
+          gal:{name:'US gallon', factor:0.003785411784},
+          qt:{name:'US quart', factor:0.000946352946},
+          pt:{name:'US pint', factor:0.000473176473},
+          floz:{name:'US fluid ounce', factor:2.95735295625e-5}
+        }
+      },
+      speed:{
+        base:'mps',
+        units:{
+          mps:{name:'meter per second', factor:1},
+          kmph:{name:'kilometer per hour', factor:1000/3600},
+          mph:{name:'mile per hour', factor:1609.344/3600},
+          knot:{name:'knot', factor:1852/3600},
+          ftps:{name:'foot per second', factor:0.3048}
+        }
+      },
+      pressure:{
+        base:'Pa',
+        units:{
+          Pa:{name:'pascal', factor:1},
+          kPa:{name:'kilopascal', factor:1e3},
+          MPa:{name:'megapascal', factor:1e6},
+          bar:{name:'bar', factor:1e5},
+          atm:{name:'standard atmosphere', factor:101325},
+          mmHg:{name:'millimeter mercury', factor:133.3223684211},
+          psi:{name:'pound per square inch', factor:6894.757293168}
+        }
+      },
+      energy:{
+        base:'J',
+        units:{
+          J:{name:'joule', factor:1},
+          kJ:{name:'kilojoule', factor:1e3},
+          Wh:{name:'watt hour', factor:3600},
+          kWh:{name:'kilowatt hour', factor:3.6e6},
+          cal:{name:'calorie (th)', factor:4.184},
+          kcal:{name:'kilocalorie', factor:4184},
+          eV:{name:'electronvolt', factor:1.602176634e-19}
+        }
+      },
+      power:{
+        base:'W',
+        units:{
+          W:{name:'watt', factor:1},
+          kW:{name:'kilowatt', factor:1e3},
+          MW:{name:'megawatt', factor:1e6},
+          hp:{name:'horsepower', factor:745.6998715822702}
+        }
+      },
+      force:{
+        base:'N',
+        units:{
+          N:{name:'newton', factor:1},
+          kN:{name:'kilonewton', factor:1e3},
+          lbf:{name:'pound force', factor:4.4482216152605},
+          dyn:{name:'dyne', factor:1e-5}
+        }
+      },
+      frequency:{
+        base:'Hz',
+        units:{
+          Hz:{name:'hertz', factor:1},
+          kHz:{name:'kilohertz', factor:1e3},
+          MHz:{name:'megahertz', factor:1e6},
+          GHz:{name:'gigahertz', factor:1e9},
+          rpm:{name:'revolution per minute', factor:1/60}
+        }
+      },
+      angle:{
+        base:'rad',
+        units:{
+          rad:{name:'radian', factor:1},
+          deg:{name:'degree', factor:Math.PI/180},
+          grad:{name:'gradian', factor:Math.PI/200},
+          arcmin:{name:'arc minute', factor:Math.PI/(180*60)},
+          arcsec:{name:'arc second', factor:Math.PI/(180*3600)}
+        }
+      },
+      amount:{
+        base:'mol',
+        units:{
+          mol:{name:'mole', factor:1},
+          mmol:{name:'millimole', factor:1e-3},
+          umol:{name:'micromole', factor:1e-6},
+          kmol:{name:'kilomole', factor:1e3},
+          molecule:{name:'molecule', factor:1/6.02214076e23} // molecule to mol
+        }
+      },
+      molarity:{
+        base:'molL',
+        units:{
+          'mol/L':{name:'mole per liter', factor:1},
+          'mmol/L':{name:'millimole per liter', factor:1e-3},
+          'umol/L':{name:'micromole per liter', factor:1e-6}
+        }
+      },
+      massconc:{
+        base:'gL',
+        units:{
+          'g/L':{name:'gram per liter', factor:1},
+          'mg/mL':{name:'milligram per milliliter', factor:1},
+          'mg/L':{name:'milligram per liter', factor:1e-3},
+          'ug/mL':{name:'microgram per milliliter', factor:1e-3}
+        }
+      }
+    };
+
+    // Friendly labels and order
+    const CAT_LABELS = {
+      length:'Length', mass:'Mass', time:'Time', temperature:'Temperature',
+      area:'Area', volume:'Volume', speed:'Speed', pressure:'Pressure',
+      energy:'Energy', power:'Power', force:'Force', frequency:'Frequency',
+      angle:'Angle', amount:'Amount', molarity:'Molarity', massconc:'Mass conc'
+    };
+    const CAT_ORDER = ['length','mass','time','temperature','area','volume','speed','pressure','energy','power','force','frequency','angle','amount','molarity','massconc'];
+
+    // ---------- UI builders ----------
+    function buildTabs(){
+      elTabs.innerHTML = '';
+      CAT_ORDER.forEach(cat=>{
+        const b = document.createElement('button');
+        b.className = 'unit-conv-tab';
+        b.type = 'button';
+        b.setAttribute('role','tab');
+        b.setAttribute('aria-selected', cat===currentCat ? 'true':'false');
+        b.textContent = CAT_LABELS[cat];
+        b.addEventListener('click', ()=> setCategory(cat));
+        elTabs.appendChild(b);
+      });
+    }
+    function fillUnits(){
+      const cat = U[currentCat];
+      const list = Object.keys(cat.units);
+      const mkOpt = (k)=> {
+        const o = document.createElement('option');
+        o.value = k;
+        o.textContent = `${k} - ${cat.units[k].name}`;
+        return o;
+      };
+      elFrom.innerHTML = ''; elTo.innerHTML = '';
+      list.forEach(k=>{ elFrom.appendChild(mkOpt(k)); elTo.appendChild(mkOpt(k).cloneNode(true)); });
+      // sensible defaults
+      if (currentCat==='length'){ elFrom.value='m'; elTo.value='ft'; }
+      if (currentCat==='time'){ elFrom.value='min'; elTo.value='s'; }
+      if (currentCat==='temperature'){ elFrom.value='C'; elTo.value='F'; }
+      if (currentCat==='pressure'){ elFrom.value='atm'; elTo.value='kPa'; }
+      if (currentCat==='energy'){ elFrom.value='kJ'; elTo.value='kcal'; }
+      if (currentCat==='molarity'){ elFrom.value='mol/L'; elTo.value='mmol/L'; }
+      if (currentCat==='massconc'){ elFrom.value='g/L'; elTo.value='mg/mL'; }
+      elBadgeCat.textContent = CAT_LABELS[currentCat];
+      renderMany();
+      updateFavButton();
+    }
+
+    function setCategory(cat){
+      currentCat = cat;
+      [...elTabs.children].forEach(btn=> btn.setAttribute('aria-selected', btn.textContent===CAT_LABELS[cat] ? 'true' : 'false'));
+      fillUnits();
+      runConvert();
+    }
+
+    // ---------- Conversion ----------
+    function toBaseLinear(catKey, unitKey, v){
+      const unit = U[catKey].units[unitKey];
+      return v * unit.factor;
+    }
+    function fromBaseLinear(catKey, unitKey, v){
+      const unit = U[catKey].units[unitKey];
+      return v / unit.factor;
+    }
+    function convert(catKey, fromKey, toKey, val){
+      const cat = U[catKey];
+      if (!cat) return NaN;
+      // temperature nonlinear
+      if (catKey==='temperature'){
+        const f = cat.units[fromKey], t = cat.units[toKey];
+        if (!f || !t) return NaN;
+        const K = f.toBase(val);
+        return t.fromBase(K);
+      }
+      // cross conversion between molarity and mass conc using molar mass
+      if ((catKey==='molarity' || catKey==='massconc') && elCross.checked){
+        const mm = parseFloat(elMM.value);
+        if (!isFinite(mm) || mm<=0) { /* fall back to non cross inside same family */ }
+        else{
+          if (catKey==='molarity' && toKey in U.massconc.units){
+            // mol/L to g/L: multiply by molar mass (g/mol)
+            const molL_base = toBaseLinear('molarity', fromKey, val); // in mol/L
+            const gL = molL_base * mm; // g/L
+            // map to target massconc key factor
+            return fromBaseLinear('massconc', toKey, gL);
+          }
+          if (catKey==='massconc' && toKey in U.molarity.units){
+            // g/L to mol/L: divide by molar mass
+            const gL_base = toBaseLinear('massconc', fromKey, val); // in g/L
+            const molL = gL_base / mm; // mol/L
+            return fromBaseLinear('molarity', toKey, molL);
+          }
+        }
+      }
+      // normal linear conversion within same category
+      if (cat.units[fromKey] && cat.units[toKey]){
+        const base = toBaseLinear(catKey, fromKey, val);
+        return fromBaseLinear(catKey, toKey, base);
+      }
+      // if trying to convert across families without cross enabled, return NaN
+      return NaN;
+    }
+
+    // ---------- Rendering ----------
+    function runConvert(){
+      const raw = (elInput.value || '').trim();
+      if (!raw){ elResult.textContent = 'Result appears here'; elMeta.textContent=''; elMany.innerHTML=''; return; }
+      const value = Number(raw);
+      if (!isFinite(value)){ elResult.textContent = 'NaN'; elMeta.textContent='Invalid input'; return; }
+      const out = convert(currentCat, elFrom.value, elTo.value, value);
+      elResult.textContent = fmt(out);
+      elMeta.textContent = `${value} ${elFrom.value} → ${elTo.value}`;
+      renderMany();
+      // push history
+      const rec = {t:Date.now(), cat:currentCat, v:value, from:elFrom.value, to:elTo.value, out};
+      history.push(rec); saveHist(); renderHistory();
+    }
+
+    function renderMany(){
+      const cat = U[currentCat];
+      if (!cat) return;
+      const raw = Number((elInput.value || '').trim());
+      elMany.innerHTML = '';
+      if (!isFinite(raw)) return;
+      const keys = Object.keys(cat.units);
+      keys.forEach(k=>{
+        let val;
+        if (currentCat==='molarity' && elCross.checked && (k in U.massconc.units)){
+          val = convert('molarity', elFrom.value, k, raw);
+        } else if (currentCat==='massconc' && elCross.checked && (k in U.molarity.units)){
+          val = convert('massconc', elFrom.value, k, raw);
+        } else {
+          val = convert(currentCat, elFrom.value, k, raw);
+        }
+        if (!isFinite(val)) return;
+        const li = document.createElement('li');
+        li.className = 'unit-conv-li';
+        li.innerHTML = `<span><strong>${k}</strong> - ${cat.units[k].name}</span><span>${fmt(val)}</span>`;
+        elMany.appendChild(li);
+      });
+    }
+
+    function renderFavs(){
+      elFavs.innerHTML = '';
+      if (!favorites.length){
+        const li = document.createElement('li');
+        li.className='unit-conv-li';
+        li.innerHTML = `<span class="unit-conv-mini">No favorites yet</span>`;
+        elFavs.appendChild(li);
+        return;
+      }
+      favorites.forEach(f=>{
+        const li = document.createElement('li');
+        li.className='unit-conv-li';
+        li.innerHTML = `<span><strong>${CAT_LABELS[f.cat]}</strong> ${f.from} → ${f.to}</span><button class="unit-conv-btn unit-conv-btn-ghost" type="button">Use</button>`;
+        li.querySelector('button').addEventListener('click', ()=>{
+          setCategory(f.cat);
+          elFrom.value = f.from; elTo.value = f.to;
+          runConvert();
+        });
+        elFavs.appendChild(li);
+      });
+    }
+    function updateFavButton(){
+      const exists = favorites.some(f=> f.cat===currentCat && f.from===elFrom.value && f.to===elTo.value);
+      elFavToggle.textContent = exists ? '★ Favorited' : '☆ Favorite';
+    }
+    function renderHistory(){
+      elHistory.innerHTML = '';
+      const last = history.slice(-8).reverse();
+      last.forEach(r=>{
+        const li = document.createElement('li');
+        li.className='unit-conv-li';
+        li.innerHTML = `<span><strong>${CAT_LABELS[r.cat]}</strong> ${r.v} ${r.from} → ${r.to}</span><span>${fmt(r.out)}</span>`;
+        elHistory.appendChild(li);
+      });
+    }
+
+    // ---------- Search ----------
+    function searchUnits(q){
+      q = q.toLowerCase();
+      // Find any unit key or name across categories
+      const results = [];
+      for (const catKey of Object.keys(U)){
+        for (const k of Object.keys(U[catKey].units)){
+          const nm = U[catKey].units[k].name.toLowerCase();
+          if (k.toLowerCase().includes(q) || nm.includes(q)){
+            results.push({cat:catKey, key:k, name:U[catKey].units[k].name});
+          }
+        }
+      }
+      return results.slice(0,20);
+    }
+
+    // ---------- CSV ----------
+    function downloadCSV(){
+      const cat = U[currentCat];
+      if (!cat) return;
+      const v = Number((elInput.value || '').trim());
+      if (!isFinite(v)) { showToast('Invalid input'); return; }
+      const rows = [['category','input','from','to','value']];
+      for (const k of Object.keys(cat.units)){
+        const out = convert(currentCat, elFrom.value, k, v);
+        if (!isFinite(out)) continue;
+        rows.push([currentCat, v, elFrom.value, k, out]);
+      }
+      const csv = rows.map(r=> r.map(x=> `"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `sniptext-unit-conv-${currentCat}-${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      showToast('CSV downloaded');
+    }
+
+    // ---------- Events ----------
+    elRun.addEventListener('click', ()=>{ runConvert(); showToast('Converted'); });
+    elSwap.addEventListener('click', ()=>{
+      const a = elFrom.value; elFrom.value = elTo.value; elTo.value = a;
+      updateFavButton();
+      runConvert();
+    });
+    elClear.addEventListener('click', ()=>{
+      elInput.value=''; elResult.textContent='Result appears here'; elMeta.textContent=''; elMany.innerHTML=''; showToast('Cleared');
+    });
+    elCopy.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(elResult.textContent || '');
+        showToast('Copied');
+      }catch(_){ showToast('Copy blocked'); }
+    });
+    elDownload.addEventListener('click', downloadCSV);
+    elFavToggle.addEventListener('click', ()=>{
+      const rec = {cat:currentCat, from:elFrom.value, to:elTo.value};
+      const idx = favorites.findIndex(f=> f.cat===rec.cat && f.from===rec.from && f.to===rec.to);
+      if (idx>=0){ favorites.splice(idx,1); } else { favorites.push(rec); }
+      saveFavs(); renderFavs(); updateFavButton();
+    });
+
+    [elFrom, elTo, elPrec, elSci, elMM, elCross].forEach(el=> el.addEventListener('change', ()=>{ updateFavButton(); runConvert(); }));
+
+    elInput.addEventListener('input', ()=>{
+      // live run for nice feel
+      runConvert();
+    });
+
+    elSearch.addEventListener('input', ()=>{
+      const q = elSearch.value.trim();
+      if (!q) return;
+      const hits = searchUnits(q);
+      // show first two as quick apply
+      if (hits.length){
+        const first = hits[0]; setCategory(first.cat); elFrom.value = first.key;
+        if (hits[1]) elTo.value = hits[1].key; else elTo.value = Object.keys(U[first.cat].units).find(k=>k!==first.key) || first.key;
+        runConvert();
+      }
+    });
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e)=>{
+      if (e.key==='/'){ e.preventDefault(); elSearch.focus(); }
+      if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='enter'){ e.preventDefault(); runConvert(); }
+      if (e.key.toLowerCase()==='x'){ e.preventDefault(); elSwap.click(); }
+    });
+
+    // ---------- Init ----------
+    buildTabs();
+    fillUnits();
+    renderFavs();
+    renderHistory();
+    elInput.focus();
+  })();
+  </script>
+</body>
+</html>

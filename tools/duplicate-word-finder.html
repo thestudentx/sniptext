@@ -2,44 +2,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <base href="/tools/">
 
-  <title>Duplicate Word Finder - Highlight & Remove Repeated Words | SnipText</title>
+  <!-- Primary SEO -->
+  <title>Duplicate Word Finder - Highlight and Remove Repeated Words | SnipText</title>
   <meta name="description" content="Find consecutive or repeated words, highlight them in context, and remove duplicates in one click. Free, instant, privacy-friendly." />
   <meta name="keywords" content="duplicate word finder, repeated words, consecutive duplicates, remove duplicate words, highlight repeated words, proofreading tool" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical and hreflang -->
   <link rel="canonical" href="https://checkai.pro/tools/duplicate-word-finder" />
   <link rel="alternate" href="https://checkai.pro/tools/duplicate-word-finder" hreflang="en" />
   <link rel="alternate" href="https://checkai.pro/tools/duplicate-word-finder" hreflang="x-default" />
 
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Duplicate Word Finder - Highlight & Remove Repeated Words" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Duplicate Word Finder - Highlight and Remove Repeated Words" />
   <meta property="og:description" content="Instantly detect and fix duplicate words in your text." />
   <meta property="og:url" content="https://checkai.pro/tools/duplicate-word-finder" />
-  <meta property="og:image" content="https://checkai.pro/assets/images/tools/duplicate-word-finder-og.png" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter (no handles) -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@SnipText" />
-  <meta name="twitter:title" content="Duplicate Word Finder - Highlight & Remove Repeated Words" />
+  <meta name="twitter:title" content="Duplicate Word Finder - Highlight and Remove Repeated Words" />
   <meta name="twitter:description" content="Free online tool to find and remove duplicates." />
-  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/duplicate-word-finder-og.png" />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
 
+  <!-- Theme / Icons -->
   <meta name="theme-color" content="#1D4ED8" />
-  <link rel="icon" href="/favicon.png" type="image/png">  
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
 
-  <link rel="stylesheet" href="/css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
+  <!-- JSON-LD: WebApplication -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication",
-   "name":"SnipText Duplicate Word Finder","url":"https://checkai.pro/tools/duplicate-word-finder",
-   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
-   "featureList":["Highlight duplicates","Remove consecutive duplicates","Context preview","Export fixes"],
-   "publisher":{"@type":"Organization","name":"Snip Text"}}
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Duplicate Word Finder",
+    "url":"https://checkai.pro/tools/duplicate-word-finder",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "featureList":[
+      "Highlight duplicates",
+      "Remove consecutive duplicates",
+      "Context preview",
+      "Export fixes"
+    ],
+    "screenshot":"https://checkai.pro/images/sniptext-default-tools-img.png",
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
   </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/free-tools.html"},
+      {"@type":"ListItem","position":3,"name":"Duplicate Word Finder","item":"https://checkai.pro/tools/duplicate-word-finder"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite (Sitelinks Search) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"SnipText",
+    "url":"https://checkai.pro/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://checkai.pro/blog/search?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
   <!-- =========================
@@ -100,20 +168,35 @@
      PAGE STYLES
      ========================= -->
 <style>
-  html, body{
-    height:100%;
-    margin:0;
-    background:
-      /* brand blues with a whisper of warm CTA at the bottom-left */
-      radial-gradient(1200px 600px at 5% -10%,  color-mix(in oklab, var(--duplicate-word-accent) 24%, transparent), transparent 65%),
-      radial-gradient(1000px 520px at 100% 0%,  color-mix(in oklab, var(--duplicate-word-accent-2) 20%, transparent), transparent 60%),
-      radial-gradient(900px 520px at 0% 100%,   color-mix(in oklab, var(--gradient-cta-end) 10%, transparent), transparent 55%),
-      linear-gradient(180deg, var(--duplicate-word-bg) 0%, var(--duplicate-word-bg-soft) 100%);
-    color:var(--duplicate-word-text);
-    font-family: var(--duplicate-word-font);
-    -webkit-text-size-adjust:100%;
-    text-size-adjust:100%;
-  }
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+
+  background:
+    /* brand blues with a whisper of warm CTA at the bottom-left */
+    radial-gradient(1200px 600px at 5% -10%,  color-mix(in oklab, var(--duplicate-word-accent) 24%, transparent), transparent 65%),
+    radial-gradient(1000px 520px at 100% 0%,  color-mix(in oklab, var(--duplicate-word-accent-2) 20%, transparent), transparent 60%),
+    radial-gradient(900px 520px at 0% 100%,   color-mix(in oklab, var(--gradient-cta-end) 10%, transparent), transparent 55%),
+    linear-gradient(180deg, var(--duplicate-word-bg) 0%, var(--duplicate-word-bg-soft) 100%);
+
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: cover, cover, cover, cover;
+  background-attachment: fixed, fixed, fixed, fixed;
+
+  color: var(--duplicate-word-text);
+  font-family: var(--duplicate-word-font);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Optional fallback for Safari/iOS full height */
+@supports (height: 100svh) {
+  html, body { min-height: 100svh; }
+}
+
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
 
   /* ===== Layout ===== */
   .duplicate-word-page{
@@ -498,8 +581,65 @@
     </section>
 
      <div class="duplicate-word-finder-guide">
-    <p class="duplicate-word-finder-guide-p">See Duplicate Word Finder Guide on SnipText Blog Page <a href="/blog/duplicate-word-finder-blog.html" class="duplicate-word-finder-blog-link">here</a>.</p>
+    <p class="duplicate-word-finder-guide-p">See Duplicate Word Finder Guide on SnipText Blog Page <a href="/blog/free-duplicate-word-finder-highlight-and-remove-repeated-words-sniptext-blog.html" class="duplicate-word-finder-blog-link">here</a>.</p>
   </div>
+
+  
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+  </section>
+
   </main>
 
   <div class="duplicate-word-toast" id="duplicate-word-toast" role="status" aria-live="polite"></div>
@@ -550,6 +690,7 @@
 
 
   <script src="/js/index.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
 
   <!-- FAQs script for SEO -->
    <script type="application/ld+json">

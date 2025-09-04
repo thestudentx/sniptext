@@ -2,50 +2,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Essentials -->
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <base href="/tools/">
 
-  <title>Palindromic Word Finder - Detect, Highlight & Extract Palindromes | SnipText</title>
-  <meta name="description" content="Detect palindromes in words or phrases, view positions, highlight in context, and export results (CSV/JSON). Free, instant, privacy-friendly." />
-  <meta name="keywords" content="palindromic word finder, palindrome detector, find palindromes, palindrome highlighter, palindrome extractor, text analysis, SnipText" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <!-- Primary SEO -->
+  <title>Symbol and Character Info - Decode Unicode and ASCII, Grapheme Counts | SnipText</title>
+  <meta name="description" content="Inspect any symbol or character. See Unicode and ASCII code points, names, blocks, scripts, grapheme counts, UTF-8 or UTF-16 bytes, and HTML entities. Free, fast, privacy-friendly." />
+  <meta name="keywords" content="symbol character info, unicode inspector, ascii codes, code point, grapheme cluster, html entity, utf-8 bytes, utf-16 code units, emoji names, unicode blocks, scripts, SnipText" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <link rel="canonical" href="https://checkai.pro/tools/palindromic-word-finder" />
-  <link rel="alternate" href="https://checkai.pro/tools/palindromic-word-finder" hreflang="en" />
-  <link rel="alternate" href="https://checkai.pro/tools/palindromic-word-finder" hreflang="x-default" />
 
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/symbol-character-info" />
+  <link rel="alternate" href="https://checkai.pro/tools/symbol-character-info" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/symbol-character-info" hreflang="x-default" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Palindromic Word Finder - Detect, Highlight & Extract Palindromes" />
-  <meta property="og:description" content="Find and export palindromes with positions and context highlights." />
-  <meta property="og:url" content="https://checkai.pro/tools/palindromic-word-finder" />
-  <meta property="og:image" content="https://checkai.pro/assets/images/tools/palindromic-word-finder-og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@SnipText" />
-  <meta name="twitter:title" content="Palindromic Word Finder - Detect, Highlight & Extract Palindromes" />
-  <meta name="twitter:description" content="Instant palindrome detection with export options." />
-  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/palindromic-word-finder-og.png" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Symbol and Character Info - Decode Unicode and ASCII, Grapheme Counts" />
+  <meta property="og:description" content="Count grapheme clusters and reveal Unicode or ASCII code points, names, blocks, scripts, UTF-8 or UTF-16 bytes, and HTML entities." />
+  <meta property="og:url" content="https://checkai.pro/tools/symbol-character-info" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
 
-  <link rel="stylesheet" href="/css/style.css">
+  <!-- Twitter (no handles) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Symbol and Character Info - Decode Unicode and ASCII, Grapheme Counts" />
+  <meta name="twitter:description" content="Instant Unicode and ASCII insights with grapheme counts, names, blocks, scripts and byte views." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+
+  <!-- Theme / Icons -->
   <meta name="theme-color" content="#1D4ED8" />
-  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
 
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication",
-   "name":"SnipText Palindromic Word Finder","url":"https://checkai.pro/tools/palindromic-word-finder",
-   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
-   "featureList":["Detect palindromes","Positions & ranges","Context highlighting","Export CSV/JSON"]}
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Symbol and Character Info",
+    "url":"https://checkai.pro/tools/symbol-character-info",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Count grapheme clusters",
+      "Show Unicode and ASCII code points and names",
+      "List Unicode blocks and scripts",
+      "View UTF-8 and UTF-16 bytes",
+      "Generate HTML entities",
+      "Emoji support with extended properties"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
   </script>
 
-  <!-- Breadcrumbs -->
+  <!-- Structured Data: FAQPage -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
-    {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/"},
-    {"@type":"ListItem","position":3,"name":"Palindromic Word Finder","item":"https://checkai.pro/tools/palindromic-word-finder"}
-  ]}
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is the Symbol and Character Info tool private?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. It runs in your browser and does not upload the characters you inspect."}
+      },
+      {
+        "@type":"Question",
+        "name":"What can I see for a character?",
+        "acceptedAnswer":{"@type":"Answer","text":"You can view Unicode and ASCII code points, official names, blocks, scripts, UTF-8 or UTF-16 byte representations, grapheme counts and HTML entities."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does it handle emoji and complex sequences?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. It counts user-perceived characters as grapheme clusters and shows details for emoji sequences and variation selectors where possible."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I copy results?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. You can copy code points, names and entity forms for use in code, docs or HTML."}
+      }
+    ]
+  }
   </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/"},
+      {"@type":"ListItem","position":3,"name":"Symbol and Character Info","item":"https://checkai.pro/tools/symbol-character-info"}
+    ]
+  }
+  </script>
+
 
 <style>
   :root {
@@ -94,18 +167,42 @@
   }
 
   * { box-sizing: border-box; }
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+
+  background:
+    /* cool blue glow top-left */
+    radial-gradient(1200px 600px at -10% -10%, rgba(29,78,216,0.20), transparent 60%),
+    /* softer accent top-right */
+    radial-gradient(900px 600px at 110% -10%, rgba(59,130,246,0.15), transparent 60%),
+    /* warm subtle orange bottom */
+    radial-gradient(900px 700px at 50% 120%, rgba(255,124,76,0.12), transparent 60%),
+    var(--symbol-character-bg);
+
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: cover, cover, cover, cover;
+  background-attachment: fixed, fixed, fixed, fixed;
+
+  color: var(--symbol-character-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.45;
+}
+
+/* Mobile & Safari full height support */
+@supports (height: 100svh) {
   html, body {
-    height: 100%;
-    background:
-      radial-gradient(1200px 600px at -10% -10%, rgba(29,78,216,0.20), transparent 60%),
-      radial-gradient(900px 600px at 110% -10%, rgba(59,130,246,0.15), transparent 60%),
-      radial-gradient(900px 700px at 50% 120%, rgba(255,124,76,0.12), transparent 60%),
-      var(--symbol-character-bg);
-    color: var(--symbol-character-text);
-    margin: 0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-    line-height: 1.45;
+    min-height: 100svh;
   }
+}
+
+  
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
+
+
+
   ::selection { background: var(--symbol-character-selection); }
 
   .symbol-character-app {
@@ -525,8 +622,69 @@
     </section>
 
      <div class="symbol-character-info-guide">
-    <p class="symbol-character-info-guide-p">See Symbol Character Info Guide on SnipText Blog Page <a href="/blog/free-symbol-character-info-count-&-decode-unicode-and-ascii.html" class="symbol-character-info-blog-link">here</a>.</p>
+    <p class="symbol-character-info-guide-p">See Symbol Character Info Guide on SnipText Blog Page <a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html" class="symbol-character-info-blog-link">here</a>.</p>
   </div>
+
+  
+
+  
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/emoji-replacer.html" aria-labelledby="t5">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M8 10h.01M16 10h.01M8 15s1.5 1.5 4 1.5 4-1.5 4-1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t5" class="card-title">Emoji Replacer</h3>
+      <p class="card-desc">Replace words with emojis, convert emoticons to emojis, or remove emoji characters from text.</p>
+      <a class="card-cta" href="/tools/emoji-replacer.html" aria-label="Open Emoji Replacer">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="svg-icon">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 id="t10" class="card-title">Random Text Generator</h3>
+        <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+        <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+    </article>
+
+  </section>
+
   </div>
 
 

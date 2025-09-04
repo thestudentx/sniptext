@@ -1,12 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SnipText - Remove Empty Lines | checkai.pro</title>
-  <meta name="description" content="Quickly strip blank lines, collapse multi line gaps, and optionally trim each line. Privacy friendly and fast." />
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
 
+  <!-- Primary SEO -->
+  <title>Remove Empty Lines: Strip Blank Lines & Collapse Newlines | SnipText</title>
+  <meta name="description" content="Free Remove Empty Lines tool by SnipText. Instantly strip blank lines, collapse multiple newlines, trim each line and normalize whitespace. Works in your browser, private and fast. Copy or download clean text." />
+  <meta name="keywords" content="remove empty lines, strip blank lines, delete blank lines online, collapse newlines, normalize whitespace, trim each line, remove extra spaces, tidy text, clean text tool, CRLF to LF, whitespace fixer, text utility" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/remove-empty-lines" />
+  <link rel="alternate" href="https://checkai.pro/tools/remove-empty-lines" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/remove-empty-lines" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Remove Empty Lines: Strip Blank Lines & Collapse Newlines" />
+  <meta property="og:description" content="Clean text instantly. Remove blank lines, collapse multiple newlines, trim each line and normalize whitespace. Private, in-browser." />
+  <meta property="og:url" content="https://checkai.pro/tools/remove-empty-lines" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter (no handles) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Remove Empty Lines: Strip Blank Lines & Collapse Newlines" />
+  <meta name="twitter:description" content="Free, private text cleanup in your browser. Copy or download the result." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/tools/css/free-tools.css">
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Remove Empty Lines",
+    "url":"https://checkai.pro/tools/remove-empty-lines",
+    "applicationCategory":"UtilityApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Strip blank and empty lines",
+      "Collapse multiple newlines to one",
+      "Trim leading and trailing spaces per line",
+      "Normalize CRLF/LF line endings",
+      "Remove extra spaces or tabs",
+      "Optionally preserve paragraph gaps",
+      "Copy to clipboard and download .txt",
+      "Runs locally for privacy"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is the Remove Empty Lines tool private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs in your browser and your text is never uploaded."}},
+      {"@type":"Question","name":"What does collapsing newlines do?","acceptedAnswer":{"@type":"Answer","text":"It converts multiple consecutive blank lines into a single newline so your text is compact and easier to scan."}},
+      {"@type":"Question","name":"Will it change my line endings?","acceptedAnswer":{"@type":"Answer","text":"You can normalize Windows CRLF and Unix LF line endings for consistent output."}},
+      {"@type":"Question","name":"Can I keep paragraph breaks?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enable the option to preserve one blank line between paragraphs while removing extras."}},
+      {"@type":"Question","name":"Can I remove extra spaces or tabs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Turn on trimming per line and optional whitespace normalization to tidy indentation and trailing spaces."}}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/"},
+      {"@type":"ListItem","position":3,"name":"Remove Empty Lines","item":"https://checkai.pro/tools/remove-empty-lines"}
+    ]
+  }
+  </script>
+
+
   <style>
     /* ==========================================================
        SnipText • REMOVE EMPTY LINES (single file)
@@ -42,19 +143,40 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+}
 
-    body.remove-empty-lines-body {
-      margin: 0;
-      color: var(--remove-empty-lines-color-text);
-      background:
-        radial-gradient(1200px 800px at 8% -10%, rgba(61, 94, 255, 0.08), transparent 60%),
-        radial-gradient(1000px 700px at 92% 0%, rgba(255, 124, 76, 0.08), transparent 55%),
-        linear-gradient(180deg, var(--remove-empty-lines-gradient-start), var(--remove-empty-lines-gradient-end));
-      font-family: var(--remove-empty-lines-font-body);
-      line-height: 1.5;
-      overflow-y: overlay;
-    }
+body.remove-empty-lines-body {
+  margin: 0;
+  color: var(--remove-empty-lines-color-text);
+
+  background:
+    radial-gradient(1200px 800px at 8% -10%, rgba(61, 94, 255, 0.08), transparent 60%),
+    radial-gradient(1000px 700px at 92% 0%, rgba(255, 124, 76, 0.08), transparent 55%),
+    linear-gradient(180deg, var(--remove-empty-lines-gradient-start), var(--remove-empty-lines-gradient-end));
+
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: cover, cover, cover;
+  background-attachment: fixed, fixed, fixed;
+
+  font-family: var(--remove-empty-lines-font-body);
+  line-height: 1.5;
+  overflow-y: overlay;
+}
+
+/* Full viewport fix for Safari/iOS */
+@supports (height: 100svh) {
+  html, body {
+    min-height: 100svh;
+  }
+}
+
+
+     .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
 
     /* Ambient blobs */
     .remove-empty-lines-ambient { position: fixed; inset: 0; pointer-events: none; z-index: -1; filter: blur(60px) saturate(110%); }
@@ -253,6 +375,62 @@
     <div class="remove-empty-lines-guide">
     <p class="remove-empty-lines-guide-p">See Remove Empty Lines Guide on SnipText Blog Page <a href="/blog/free-remove-empty-lines-trim-lines-collapse-gaps-normalize-newlines-sniptext-blog.html" class="remove-empty-lines-blog-link">here</a>.</p>
   </div>
+
+
+  <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+    
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+  </section>
+
   </main>
   
 
@@ -306,6 +484,9 @@
       <!-- Include the JavaScript file for this page -->
   <script src="/js/index.js" defer></script>
   <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+
   <script>
     // =========================================================
     // Remove Empty Lines - No external deps

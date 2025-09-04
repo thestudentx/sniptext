@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Math Formula Renderer: LaTeX to Image PNG or SVG | SnipText</title>
+  <meta name="description" content="Free Math Formula Renderer by SnipText. Type LaTeX and render clean math with MathJax on your device. Export PNG, SVG or WebP, set scale, padding, colors and batch render. Private and fast." />
+  <meta name="keywords" content="latex to image, mathjax renderer, equation to png, latex to svg, math formula image, latex preview, equation editor, client side, batch equations, export math image" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/math-formula-renderer" />
+  <link rel="alternate" href="https://checkai.pro/tools/math-formula-renderer" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/math-formula-renderer" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Math Formula Renderer: LaTeX to Image" />
+  <meta property="og:description" content="Render LaTeX with MathJax on your device and export PNG or SVG. Scale, padding, colors and batch render." />
+  <meta property="og:url" content="https://checkai.pro/tools/math-formula-renderer" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Math Formula Renderer preview" />
+
+  <!-- Twitter (no handles) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Math Formula Renderer: LaTeX to Image" />
+  <meta name="twitter:description" content="Free, private math rendering and export in your browser." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/tools/css/free-tools.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Math Formula Renderer",
+    "url":"https://checkai.pro/tools/math-formula-renderer",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "LaTeX preview with MathJax",
+      "Export PNG, SVG, WebP",
+      "Transparent or solid background",
+      "Scale and padding controls",
+      "Inline or display math",
+      "Batch render by blank lines",
+      "Color pickers and presets",
+      "Copy to clipboard"
+    ],
+    "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}}
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is this renderer private?","acceptedAnswer":{"@type":"Answer","text":"Yes. MathJax runs in your browser and your LaTeX is not uploaded."}},
+      {"@type":"Question","name":"Can I export PNG and SVG?","acceptedAnswer":{"@type":"Answer","text":"Yes. Download PNG, SVG or WebP, and copy images to clipboard in supported browsers."}},
+      {"@type":"Question","name":"Does it support batch render?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enable batch mode and separate formulas with blank lines. Each block renders to its own card with export buttons."}},
+      {"@type":"Question","name":"Can I set background and scale?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose transparent or solid background, adjust padding and scale for high DPI exports."}}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/"},
+      {"@type":"ListItem","position":3,"name":"Math Formula Renderer","item":"https://checkai.pro/tools/math-formula-renderer"}
+    ]
+  }
+  </script>
+
+
+  <style>
+  /* Brand tokens */
+  :root{
+    --color-primary:#1D4ED8;
+    --color-accent:#3B82F6;
+    --color-bg-dark:#0F172A;
+    --color-bg-soft:#0b1225;
+    --color-white:#fff;
+    --color-text:#e5e7eb;
+    --color-text-muted:#b6c1d6;
+    --color-border:rgba(255,255,255,.14);
+
+    --grad-1: color-mix(in oklab, var(--color-primary) 26%, transparent);
+    --grad-2: color-mix(in oklab, var(--color-accent) 20%, transparent);
+    --grad-3: color-mix(in oklab, #ff7c4c 14%, transparent);
+
+    --font-heading: 'Poppins','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    --font-body: 'Roboto','Poppins','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+
+    --radius-xl:20px;
+    --radius-lg:14px;
+    --shadow-1:0 10px 30px rgba(0,0,0,.35);
+    --shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+    --maxw:1200px;
+  }
+  html,body{background:var(--color-bg-dark); color:var(--color-text); font-family:var(--font-body); margin:0}
+
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
+
+  /* Page wrapper with aurora */
+  .mathx-page{position:relative; max-width:var(--maxw); margin:clamp(16px,3vw,40px) auto; padding:clamp(12px,2.5vw,24px); isolation:isolate;}
+  .mathx-page::before{
+    content:""; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, var(--grad-1), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, var(--grad-2), transparent 52%),
+      radial-gradient(800px 520px at 0% 100%, var(--grad-3), transparent 58%),
+      linear-gradient(180deg, var(--color-bg-dark), var(--color-bg-soft));
+  }
+
+  /* Hero */
+  .mathx-hero{
+    position:relative; padding:clamp(18px,3vw,28px);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-xl);
+    background:linear-gradient(135deg, var(--grad-1), var(--grad-2)) border-box;
+    box-shadow:var(--shadow-1); overflow:hidden;
+  }
+  .mathx-hero::after{content:""; position:absolute; inset:-3px; filter:blur(16px); opacity:.6; pointer-events:none;
+    background:
+      radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--color-primary) 28%, transparent), transparent 65%),
+      radial-gradient(460px 280px at 86% 0%, color-mix(in oklab, var(--color-accent) 26%, transparent), transparent 62%);
+  }
+  .mathx-title{
+    margin:0 0 6px 0; font:800 clamp(22px,3.2vw,36px)/1.12 var(--font-heading); letter-spacing:.2px;
+    background:linear-gradient(90deg,#fff, color-mix(in oklab, var(--color-primary) 54%, #fff) 38%, color-mix(in oklab, #ff7c4c 40%, #fff) 78%, #fff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .mathx-sub{margin:6px 0 0 0; color:var(--color-text-muted); font-size:clamp(14px,1.8vw,16px);}
+
+  /* Grid */
+  .mathx-grid{display:grid; grid-template-columns:1fr; gap:clamp(12px,2.4vw,20px); margin-top:clamp(14px,2.6vw,24px);}
+  @media (min-width: 1020px){ .mathx-grid{grid-template-columns:1fr 1fr;} }
+
+  /* Cards */
+  .mathx-card{
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    background:rgba(255,255,255,.06);
+    box-shadow:var(--shadow-2);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    overflow:hidden;
+  }
+  .mathx-card-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:12px 14px; border-bottom:1px solid var(--color-border);
+    background:linear-gradient(90deg, color-mix(in oklab, var(--color-accent) 10%, transparent), color-mix(in oklab, var(--color-primary) 11%, transparent));
+  }
+  .mathx-card-title{margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.92; font-family:var(--font-heading);}
+
+  .mathx-textarea{
+    width:100%; min-height:260px; resize:vertical; border:0; outline:0; background:transparent;
+    color:#fff; padding:16px; font:500 15px/1.55 var(--font-body); caret-color:var(--color-primary);
+  }
+  .mathx-textarea::placeholder{ color:#a5b4d6; }
+
+  .mathx-stats{display:flex; gap:10px; flex-wrap:wrap; padding:10px 14px; border-top:1px solid var(--color-border); color:#a5b4d6; font-size:12px; background:linear-gradient(90deg, rgba(255,255,255,.03), transparent);}
+  .mathx-chip{padding:6px 8px; border:1px solid var(--color-border); border-radius:999px; background:color-mix(in oklab, var(--color-bg-dark) 72%, transparent);}
+
+  /* Toolbar & fields */
+  .mathx-toolbar{display:flex; flex-wrap:wrap; gap:8px; padding:12px 14px; border-top:1px solid var(--color-border);
+    background:linear-gradient(90deg, color-mix(in oklab, var(--color-accent) 10%, transparent), color-mix(in oklab, var(--color-primary) 11%, transparent));}
+  .mathx-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .mathx-spacer{flex:1 1 auto;}
+  .mathx-btn{
+    --_bg:linear-gradient(180deg, color-mix(in oklab, var(--color-primary) 70%, transparent), color-mix(in oklab, var(--color-accent) 62%, transparent));
+    --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--color-primary));
+    appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+    padding:10px 12px; border-radius:12px; font:700 13px/1 var(--font-heading); letter-spacing:.3px; cursor:pointer; position:relative;
+    transition:transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+    box-shadow:0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  }
+  .mathx-btn:hover{transform:translateY(-1px); filter:brightness(1.06);}
+  .mathx-btn:active{transform:translateY(0); filter:brightness(.98);}
+  .mathx-btn[aria-pressed="true"]{outline:2px solid color-mix(in oklab, var(--color-primary) 40%, var(--color-accent)); outline-offset:2px;}
+  .mathx-btn-outline{background:transparent; color:#fff; border:1px solid var(--color-border); box-shadow:none;}
+  .mathx-btn-ghost{background:transparent; color:#cbd5e1; border:1px dashed var(--color-border); box-shadow:none; font-weight:600;}
+
+  .mathx-seg{display:inline-flex; border:1px solid var(--color-border); border-radius:12px; overflow:hidden;}
+  .mathx-seg button{border:0; background:transparent; color:#fff; padding:10px 14px; cursor:pointer; font:700 13px/1 var(--font-heading); letter-spacing:.3px;}
+  .mathx-seg button[aria-pressed="true"]{background:linear-gradient(180deg, color-mix(in oklab, var(--color-primary) 68%, transparent), color-mix(in oklab, var(--color-accent) 60%, transparent));}
+
+  .mathx-options{display:grid; grid-template-columns:1fr; gap:12px; padding:12px 14px;}
+  .mathx-field{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .mathx-field label{font-size:13px; color:#b6c1d6;}
+  .mathx-input, .mathx-select, .mathx-color{
+    background:#0f1b34; color:#e5e7eb; border:1px solid var(--color-border);
+    border-radius:10px; padding:8px 10px; outline:none; min-height:36px;
+  }
+  .mathx-select{background:#0e1730;}
+  .mathx-input[type="number"]{width:100px;}
+  .mathx-color{padding:0; width:42px; height:36px; border-radius:8px;}
+
+  .mathx-switch{position:relative; display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none;}
+  .mathx-switch input{appearance:none; width:40px; height:22px; background:#0f1b34; border:1px solid var(--color-border); border-radius:999px; outline:0; transition:background .2s ease;}
+  .mathx-switch input:checked{background:linear-gradient(90deg, var(--color-primary), var(--color-accent)); border-color:transparent;}
+  .mathx-switch input::after{content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; transition:transform .2s ease; box-shadow:0 3px 10px rgba(0,0,0,.25);}
+  .mathx-switch input:checked::after{transform:translateX(18px);}
+
+  /* Preview and item cards */
+  .mathx-preview{padding:16px; background:#0c1226; border-top:1px solid var(--color-border);}
+  .mathx-preview-inner{min-height:100px; display:flex; align-items:center; justify-content:center; overflow:auto;}
+  .mathx-preview-inner svg{max-width:100%; height:auto; display:block;}
+
+  .mathx-items{display:grid; grid-template-columns:1fr; gap:12px; padding:12px;}
+  @media (min-width:760px){ .mathx-items{grid-template-columns:1fr 1fr;} }
+  .mathx-item{
+    border:1px dashed var(--color-border); border-radius:12px; background:rgba(255,255,255,.04);
+    padding:10px; display:flex; flex-direction:column; gap:8px;
+  }
+  .mathx-item-toolbar{display:flex; gap:8px; flex-wrap:wrap;}
+  .mathx-item-canvas{display:flex; align-items:center; justify-content:center; background:#0b1225; border-radius:8px; padding:10px; min-height:80px; overflow:auto;}
+
+  /* Toast */
+  .mathx-toast{position:fixed; inset:auto 16px 16px auto; background:#0b1223ee; color:#e5e7eb; padding:10px 14px; border-radius:12px; border:1px solid var(--color-border); backdrop-filter:blur(8px); box-shadow:var(--shadow-1); transform:translateY(20px); opacity:0; pointer-events:none; transition:transform .25s ease, opacity .25s ease; z-index:50;}
+  .mathx-toast.show{transform:translateY(0); opacity:1;}
+
+  /* Subtle float anim */
+  @media (prefers-reduced-motion: no-preference){
+    .mathx-card{animation:floaty 18s ease-in-out infinite;}
+    @keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)}}
+  }
+
+  /* Helper link */
+  .mathx-guide{width:100%; text-align:center; font-size:12px; color:#a3aed0; margin-top:8px;}
+  .mathx-blog-link{color:var(--color-accent); text-decoration: underline;}
+  </style>
+
+  <!-- MathJax config -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      },
+      options: {enableMenu:false, skipHtmlTags:{'[+]':['textarea','pre']}},
+      svg: {fontCache:'local', mtextInheritFont:true, displayOverflow:'linebreak'}
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  <main class="mathx-page" aria-label="Math Formula Renderer">
+    <!-- Hero -->
+    <section class="mathx-hero">
+      <h1 class="mathx-title">Math Formula Renderer: LaTeX to Image</h1>
+      <p class="mathx-sub">Type LaTeX and render math with MathJax on your device. Export PNG, SVG, or WebP with scale, padding, and color control. Private and fast.</p>
+    </section>
+
+    <!-- IO -->
+    <section class="mathx-grid">
+      <!-- Input -->
+      <article class="mathx-card">
+        <header class="mathx-card-head">
+          <h2 class="mathx-card-title">Input</h2>
+          <div class="mathx-row">
+            <button class="mathx-btn mathx-btn-outline" id="mx-paste" type="button" title="Paste">Paste</button>
+            <button class="mathx-btn mathx-btn-ghost" id="mx-clear" type="button" title="Clear">Clear</button>
+            <button class="mathx-btn mathx-btn-ghost" id="mx-examples" type="button" title="Insert example">Examples</button>
+          </div>
+        </header>
+        <textarea id="mx-input" class="mathx-textarea" placeholder="Type LaTeX here. Example:
+\\[
+e^{i\\pi}+1=0
+\\]"></textarea>
+        <div class="mathx-stats" aria-live="polite">
+          <span class="mathx-chip" id="mx-char">Characters: 0</span>
+          <span class="mathx-chip" id="mx-lines">Lines: 0</span>
+          <span class="mathx-chip" id="mx-blocks">Blocks: 0</span>
+          <span class="mathx-chip">Tip: drag and drop a .tex file</span>
+        </div>
+      </article>
+
+      <!-- Output -->
+      <article class="mathx-card">
+        <header class="mathx-card-head">
+          <h2 class="mathx-card-title">Preview</h2>
+          <div class="mathx-row">
+            <button class="mathx-btn" id="mx-render" type="button" title="Render">Render</button>
+            <button class="mathx-btn mathx-btn-outline" id="mx-copy-png" type="button" title="Copy PNG">Copy PNG</button>
+            <button class="mathx-btn mathx-btn-outline" id="mx-copy-svg" type="button" title="Copy SVG">Copy SVG</button>
+            <button class="mathx-btn mathx-btn-ghost" id="mx-download-png" type="button" title="Download PNG">Download PNG</button>
+            <button class="mathx-btn mathx-btn-ghost" id="mx-download-svg" type="button" title="Download SVG">Download SVG</button>
+          </div>
+        </header>
+        <div class="mathx-preview">
+          <div id="mx-preview" class="mathx-preview-inner" aria-live="polite" aria-busy="false"></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Controls -->
+    <section class="mathx-card" style="margin-top:clamp(12px,2vw,18px);">
+      <header class="mathx-card-head">
+        <h2 class="mathx-card-title">Options</h2>
+        <div class="mathx-row">
+          <div class="mathx-seg" role="tablist" aria-label="Mode">
+            <button id="mx-mode-inline" type="button" role="tab" aria-pressed="false">Inline</button>
+            <button id="mx-mode-display" type="button" role="tab" aria-pressed="true">Display</button>
+          </div>
+          <span class="mathx-spacer"></span>
+          <label class="mathx-switch" title="Live preview">
+            <input id="mx-live" type="checkbox" checked />
+            <span>Live preview</span>
+          </label>
+          <label class="mathx-switch" title="Batch by blank lines">
+            <input id="mx-batch" type="checkbox" />
+            <span>Batch render</span>
+          </label>
+        </div>
+      </header>
+
+      <div class="mathx-options">
+        <div class="mathx-field" role="group" aria-label="Appearance">
+          <label>Text color</label><input type="color" id="mx-color" class="mathx-color" value="#ffffff" />
+          <label>Background</label>
+          <select id="mx-bg-kind" class="mathx-select">
+            <option value="transparent">Transparent</option>
+            <option value="solid">Solid</option>
+          </select>
+          <input type="color" id="mx-bg" class="mathx-color" value="#0b1225" />
+          <label>Base font px</label><input type="number" id="mx-font" class="mathx-input" min="8" max="64" value="22" />
+        </div>
+
+        <div class="mathx-field" role="group" aria-label="Export">
+          <label>Padding px</label><input type="number" id="mx-pad" class="mathx-input" min="0" max="200" value="12" />
+          <label>Scale</label><input type="number" id="mx-scale" class="mathx-input" min="1" max="8" step="1" value="2" />
+          <label class="mathx-switch" title="Trim transparent edges on export">
+            <input id="mx-trim" type="checkbox" checked /><span>Trim edges</span>
+          </label>
+          <label>Format</label>
+          <select id="mx-format" class="mathx-select">
+            <option value="png">PNG</option>
+            <option value="svg">SVG</option>
+            <option value="webp">WebP</option>
+          </select>
+        </div>
+
+        <div class="mathx-toolbar" role="group" aria-label="Actions">
+          <button class="mathx-btn" id="mx-export" type="button">Export Current</button>
+          <button class="mathx-btn mathx-btn-outline" id="mx-export-all" type="button">Export All</button>
+          <span class="mathx-spacer"></span>
+          <button class="mathx-btn mathx-btn-ghost" id="mx-reset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div id="mx-batch-list" class="mathx-items" style="display:none;"></div>
+    </section>
+
+    <div class="mathx-guide">
+      <p>Need LaTeX basics or quick symbols Cheat Sheet? Read our blog guide <a class="mathx-blog-link" href="/blog/math-formula-renderer-latex-to-image-with-math-png-svg-sniptext-blog.html">here</a>.</p>
+    </div>
+
+
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/unit-converter-physics-chemistry-time-length-temprature.html" aria-labelledby="t12">
+      <div class="card-icon" aria-hidden="true">
+        <!-- Convert icon: bi-directional arrows inside a circle -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M8 8h7m0 0-2-2m2 2-2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M16 16H9m0 0 2 2m-2-2 2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t12" class="card-title">Unit Converter</h3>
+      <p class="card-desc">Academic style conversions for physics and chemistry. Convert length, mass, time, temperature, pressure, energy, power, speed, area, volume, force, frequency, and molarity with precision and scientific notation. Private and instant.</p>
+      <a class="card-cta" href="/tools/unit-converter-physics-chemistry-time-length-temprature.html" aria-label="Open Unit Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/bibtex-to-citation-to-bibtex.html" aria-labelledby="t11">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M6 4h12v2H6zm0 6h12v2H6zm0 6h8v2H6z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t11" class="card-title">BibTeX to Citation Converter</h3>
+      <p class="card-desc">Convert BibTeX entries into clean academic citations (APA, MLA, Chicago, and more) instantly in your browser.</p>
+      <a class="card-cta" href="/tools/bibtex-to-citation-to-bibtex.html" aria-label="Open BibTeX to Citation Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/symbol-character-info.html" aria-labelledby="t6">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t6" class="card-title">Symbol / Character Info</h3>
+      <p class="card-desc">Counts symbols and shows ASCII & Unicode code points and names for selected characters.</p>
+      <a class="card-cta" href="/tools/symbol-character-info.html" aria-label="Open Symbol/Character Counter">Open →</a>
+    </article>
+
+  </section>
+  </main>
+
+  <div class="mathx-toast" id="mx-toast" role="status" aria-live="polite"></div>
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+    <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+  <script>
+  (function(){
+    'use strict';
+
+    // Elements
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    const ta = $('#mx-input');
+    const previewWrap = $('#mx-preview');
+    const toast = $('#mx-toast');
+
+    const statChar = $('#mx-char');
+    const statLines = $('#mx-lines');
+    const statBlocks = $('#mx-blocks');
+
+    const btnPaste = $('#mx-paste');
+    const btnClear = $('#mx-clear');
+    const btnExamples = $('#mx-examples');
+    const btnRender = $('#mx-render');
+    const btnCopyPNG = $('#mx-copy-png');
+    const btnCopySVG = $('#mx-copy-svg');
+    const btnDownloadPNG = $('#mx-download-png');
+    const btnDownloadSVG = $('#mx-download-svg');
+    const btnExport = $('#mx-export');
+    const btnExportAll = $('#mx-export-all');
+    const btnReset = $('#mx-reset');
+
+    const modeInline = $('#mx-mode-inline');
+    const modeDisplay = $('#mx-mode-display');
+
+    const liveToggle = $('#mx-live');
+    const batchToggle = $('#mx-batch');
+
+    const colorPick = $('#mx-color');
+    const bgKind = $('#mx-bg-kind');
+    const bgPick = $('#mx-bg');
+    const baseFont = $('#mx-font');
+    const padInput = $('#mx-pad');
+    const scaleInput = $('#mx-scale');
+    const trimToggle = $('#mx-trim');
+    const formatSel = $('#mx-format');
+
+    const batchList = $('#mx-batch-list');
+
+    // State
+    let mode = 'display'; // 'inline' or 'display'
+    let batching = false;
+    let currentSVG = null; // last rendered single SVG element
+    let currentItems = []; // for batch
+
+    // Utils
+    const showToast = (msg) => {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1300);
+    };
+
+    const normNL = s => (s || '').replace(/\r\n?|\u2028|\u2029/g, '\n');
+    function updateStats(){
+      const s = ta.value || '';
+      const chars = Array.from(s).length;
+      const lines = s ? (s.match(/\n/g)?.length || 0) + 1 : 0;
+      const blocks = batching ? splitBlocks(s).length : (s.trim()?1:0);
+      statChar.textContent = `Characters: ${chars}`;
+      statLines.textContent = `Lines: ${lines}`;
+      statBlocks.textContent = `Blocks: ${blocks}`;
+    }
+
+    // Splitting for batch by blank lines
+    function splitBlocks(src){
+      const s = normNL(src).trim();
+      if (!s) return [];
+      return s.split(/\n{2,}/).map(x => x.trim()).filter(Boolean);
+    }
+
+    // MathJax typeset helpers
+    function wrapLatex(latex, m){
+      if (m === 'inline') return `\\(${latex}\\)`;
+      return `\\[${latex}\\]`;
+    }
+
+    // Render LaTeX string to SVG Element using MathJax
+    async function renderLatexToSVG(latex, m){
+      const holder = document.createElement('div');
+      holder.style.position = 'absolute';
+      holder.style.left = '-99999px';
+      holder.style.top = '0';
+      holder.style.fontSize = (parseInt(baseFont.value,10) || 22) + 'px';
+      holder.style.color = colorPick.value || '#ffffff';
+      holder.innerHTML = wrapLatex(latex, m);
+      document.body.appendChild(holder);
+      await MathJax.typesetPromise([holder]);
+      const svg = holder.querySelector('svg');
+      if (!svg){
+        holder.remove();
+        throw new Error('Render failed');
+      }
+      // apply color to strokes and fills
+      const color = colorPick.value || '#ffffff';
+      svg.querySelectorAll('*').forEach(n=>{
+        if (n.getAttribute('stroke')) n.setAttribute('stroke', color);
+        if (n.getAttribute('fill') && n.getAttribute('fill') !== 'none') n.setAttribute('fill', color);
+      });
+      // Make sure viewBox exists for sizing
+      if (!svg.getAttribute('viewBox')){
+        const w = svg.getAttribute('width') || '300';
+        const h = svg.getAttribute('height') || '150';
+        svg.setAttribute('viewBox', `0 0 ${parseFloat(w)} ${parseFloat(h)}`);
+      }
+      // detach and return
+      svg.remove(); // detach from holder
+      holder.remove();
+      return svg;
+    }
+
+    // Measure ex unit from a hidden element
+    function measureEx(){
+      const probe = document.createElement('span');
+      probe.style.position = 'absolute';
+      probe.style.left = '-99999px';
+      probe.style.fontSize = '100ex';
+      document.body.appendChild(probe);
+      const px = probe.getBoundingClientRect().height / 100;
+      probe.remove();
+      return px || 8; // fallback
+    }
+
+    // Convert SVG element to PNG/WebP canvas and return dataURL
+    async function svgToRasterURL(svg, {format='png', scale=2, padding=12, bg='transparent', trim=true} = {}){
+      // clone and prepare explicit width/height from viewBox or ex units
+      const clone = svg.cloneNode(true);
+      clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+
+      // size calc
+      let vb = clone.viewBox.baseVal;
+      let width = vb && vb.width ? vb.width : null;
+      let height = vb && vb.height ? vb.height : null;
+
+      if (!width || !height){
+        // parse width/height attributes possibly in ex
+        const exPX = measureEx();
+        const wattr = (clone.getAttribute('width') || '').trim();
+        const hattr = (clone.getAttribute('height') || '').trim();
+        const parseDim = (v) => {
+          if (!v) return null;
+          if (v.endsWith('ex')) return parseFloat(v) * exPX;
+          if (v.endsWith('em')) return parseFloat(v) * (parseInt(baseFont.value,10) || 22);
+          if (v.endsWith('px')) return parseFloat(v);
+          const num = parseFloat(v);
+          return isFinite(num) ? num : null;
+        };
+        width = parseDim(wattr) || 300;
+        height = parseDim(hattr) || 150;
+        clone.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      } else {
+        // ensure attributes for image decoding
+        clone.setAttribute('width', `${width}px`);
+        clone.setAttribute('height', `${height}px`);
+      }
+
+      // add background if solid
+      if (bg !== 'transparent'){
+        const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        rect.setAttribute('x','0'); rect.setAttribute('y','0');
+        rect.setAttribute('width', String(width));
+        rect.setAttribute('height', String(height));
+        rect.setAttribute('fill', bg);
+        clone.insertBefore(rect, clone.firstChild);
+      }
+
+      // serialize
+      const svgStr = new XMLSerializer().serializeToString(clone);
+      const blob = new Blob([svgStr], {type:'image/svg+xml'});
+      const url = URL.createObjectURL(blob);
+
+      // load into image
+      const img = new Image();
+      const pad = Math.max(0, parseInt(padding,10) || 0);
+      const scl = Math.max(1, parseInt(scale,10) || 1);
+
+      const dataURL = await new Promise((resolve, reject)=>{
+        img.onload = () => {
+          try{
+            const W = Math.ceil(img.naturalWidth + pad*2);
+            const H = Math.ceil(img.naturalHeight + pad*2);
+            const canvas = document.createElement('canvas');
+            canvas.width = W * scl;
+            canvas.height = H * scl;
+            const ctx = canvas.getContext('2d');
+            if (bg !== 'transparent'){
+              ctx.fillStyle = bg;
+              ctx.fillRect(0,0,canvas.width,canvas.height);
+            }
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(img, pad * scl, pad * scl, img.naturalWidth * scl, img.naturalHeight * scl);
+
+            if (trim){
+              const trimmed = trimCanvas(canvas, bg === 'transparent');
+              resolve(canvasToDataURL(trimmed, format));
+            } else {
+              resolve(canvasToDataURL(canvas, format));
+            }
+          }catch(err){ reject(err); }
+          URL.revokeObjectURL(url);
+        };
+        img.onerror = reject;
+        img.src = url;
+      });
+
+      return dataURL;
+    }
+
+    function canvasToDataURL(canvas, format){
+      if (format === 'webp') return canvas.toDataURL('image/webp');
+      // default png
+      return canvas.toDataURL('image/png');
+    }
+
+    // Trim transparent edges utility
+    function trimCanvas(canvas, transparent){
+      if (!transparent) return canvas;
+      const ctx = canvas.getContext('2d');
+      const {width, height} = canvas;
+      const imgData = ctx.getImageData(0,0,width,height);
+      const data = imgData.data;
+
+      let top = null, bottom = null, left = null, right = null;
+
+      for (let y=0; y<height; y++){
+        for (let x=0; x<width; x++){
+          const idx = (y*width + x) * 4;
+          if (data[idx+3] !== 0){ top = y; break; }
+        }
+        if (top !== null) break;
+      }
+      for (let y=height-1; y>=0; y--){
+        for (let x=0; x<width; x++){
+          const idx = (y*width + x) * 4;
+          if (data[idx+3] !== 0){ bottom = y; break; }
+        }
+        if (bottom !== null) break;
+      }
+      for (let x=0; x<width; x++){
+        for (let y=0; y<height; y++){
+          const idx = (y*width + x) * 4;
+          if (data[idx+3] !== 0){ left = x; break; }
+        }
+        if (left !== null) break;
+      }
+      for (let x=width-1; x>=0; x--){
+        for (let y=0; y<height; y++){
+          const idx = (y*width + x) * 4;
+          if (data[idx+3] !== 0){ right = x; break; }
+        }
+        if (right !== null) break;
+      }
+
+      if (top===null || bottom===null || left===null || right===null) return canvas; // nothing to trim
+
+      const w = right - left + 1;
+      const h = bottom - top + 1;
+      const out = document.createElement('canvas');
+      out.width = w; out.height = h;
+      const octx = out.getContext('2d');
+      octx.putImageData(ctx.getImageData(left, top, w, h), 0, 0);
+      return out;
+    }
+
+    // Render pipeline
+    async function renderSingle(){
+      const latex = (ta.value || '').trim();
+      if (!latex){ previewWrap.innerHTML = ''; currentSVG = null; updateStats(); return; }
+      previewWrap.setAttribute('aria-busy','true');
+      try{
+        const svg = await renderLatexToSVG(latex, mode);
+        // apply base font size via style on SVG
+        svg.style.width = 'auto';
+        svg.style.height = 'auto';
+        previewWrap.innerHTML = '';
+        previewWrap.appendChild(svg);
+        currentSVG = svg;
+      }catch(err){
+        previewWrap.innerHTML = '<div role="alert">Render error. Check your LaTeX syntax.</div>';
+        currentSVG = null;
+      }finally{
+        previewWrap.setAttribute('aria-busy','false');
+        updateStats();
+      }
+    }
+
+    async function renderBatch(){
+      const blocks = splitBlocks(ta.value || '');
+      batchList.innerHTML = '';
+      currentItems = [];
+      if (!blocks.length){ batchList.style.display = 'none'; return; }
+      batchList.style.display = '';
+      for (let i=0;i<blocks.length;i++){
+        const item = document.createElement('div');
+        item.className = 'mathx-item';
+        const head = document.createElement('div');
+        head.style.display='flex'; head.style.justifyContent='space-between'; head.style.alignItems='center';
+        head.innerHTML = `<div style="font:600 13px var(--font-heading);opacity:.9;">Block ${i+1}</div>`;
+        const tools = document.createElement('div');
+        tools.className = 'mathx-item-toolbar';
+        const btnPNG = document.createElement('button'); btnPNG.className='mathx-btn mathx-btn-outline'; btnPNG.textContent='PNG';
+        const btnSVG = document.createElement('button'); btnSVG.className='mathx-btn mathx-btn-ghost'; btnSVG.textContent='SVG';
+        tools.appendChild(btnPNG); tools.appendChild(btnSVG);
+        head.appendChild(tools);
+
+        const canvasWrap = document.createElement('div');
+        canvasWrap.className='mathx-item-canvas';
+        canvasWrap.innerHTML = '<span style="color:#9aa3b2;font-size:12px;">Rendering...</span>';
+
+        item.appendChild(head);
+        item.appendChild(canvasWrap);
+        batchList.appendChild(item);
+
+        try{
+          const svg = await renderLatexToSVG(blocks[i], mode);
+          canvasWrap.innerHTML = '';
+          canvasWrap.appendChild(svg);
+          currentItems.push({svg, source: blocks[i], index: i+1});
+
+          btnPNG.addEventListener('click', async ()=>{
+            const url = await svgToRasterURL(svg, {
+              format: 'png',
+              scale: parseInt(scaleInput.value,10) || 2,
+              padding: parseInt(padInput.value,10) || 12,
+              bg: bgKind.value === 'solid' ? bgPick.value : 'transparent',
+              trim: !!trimToggle.checked
+            });
+            triggerDownload(url, `sniptext-math-${i+1}.png`);
+            showToast(`PNG saved for block ${i+1}`);
+          });
+          btnSVG.addEventListener('click', ()=>{
+            downloadSVG(svg, `sniptext-math-${i+1}.svg`, bgKind.value === 'solid' ? bgPick.value : null);
+            showToast(`SVG saved for block ${i+1}`);
+          });
+        }catch{
+          canvasWrap.innerHTML = '<span role="alert" style="color:#eab308;">Failed to render this block</span>';
+        }
+      }
+    }
+
+    // Downloads
+    function triggerDownload(url, filename){
+      const a = document.createElement('a');
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      // revoke only if object URL, not data URL
+      if (url.startsWith('blob:')) URL.revokeObjectURL(url);
+    }
+    function downloadSVG(svg, filename, bgColor=null){
+      const clone = svg.cloneNode(true);
+      clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+      if (bgColor){
+        const vb = clone.viewBox.baseVal;
+        const w = vb && vb.width ? vb.width : parseFloat(clone.getAttribute('width')) || 300;
+        const h = vb && vb.height ? vb.height : parseFloat(clone.getAttribute('height')) || 150;
+        const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        rect.setAttribute('x','0'); rect.setAttribute('y','0');
+        rect.setAttribute('width', String(w)); rect.setAttribute('height', String(h));
+        rect.setAttribute('fill', bgColor);
+        clone.insertBefore(rect, clone.firstChild);
+      }
+      const str = new XMLSerializer().serializeToString(clone);
+      const blob = new Blob([str], {type:'image/svg+xml'});
+      const url = URL.createObjectURL(blob);
+      triggerDownload(url, filename);
+    }
+
+    // Clipboard helpers
+    async function copySVG(svg){
+      try{
+        const str = new XMLSerializer().serializeToString(svg);
+        await navigator.clipboard.writeText(str);
+        showToast('SVG copied');
+      }catch{ showToast('Copy blocked'); }
+    }
+    async function copyPNG(svg){
+      try{
+        const url = await svgToRasterURL(svg, {
+          format: 'png',
+          scale: parseInt(scaleInput.value,10) || 2,
+          padding: parseInt(padInput.value,10) || 12,
+          bg: bgKind.value === 'solid' ? bgPick.value : 'transparent',
+          trim: !!trimToggle.checked
+        });
+        if (navigator.clipboard && window.ClipboardItem){
+          const data = await (await fetch(url)).blob();
+          await navigator.clipboard.write([new ClipboardItem({[data.type]: data})]);
+          showToast('PNG copied');
+        } else {
+          showToast('Clipboard unsupported');
+        }
+      }catch{ showToast('Copy blocked'); }
+    }
+
+    // Events
+    function setMode(m){
+      mode = m;
+      modeInline.setAttribute('aria-pressed', String(m==='inline'));
+      modeDisplay.setAttribute('aria-pressed', String(m==='display'));
+      liveToggle.checked ? queueRender() : null;
+    }
+    modeInline.addEventListener('click', ()=> setMode('inline'));
+    modeDisplay.addEventListener('click', ()=> setMode('display'));
+
+    batchToggle.addEventListener('change', ()=>{
+      batching = batchToggle.checked;
+      if (batching){
+        previewWrap.innerHTML = '<div style="color:#9aa3b2;font-size:12px;">Batch mode active. Use Export All or per item buttons below.</div>';
+        renderBatch();
+      } else {
+        batchList.style.display='none';
+        renderSingle();
+      }
+      updateStats();
+    });
+
+    // Live input and debounced render
+    let typingTimer = null;
+    function queueRender(){
+      if (typingTimer) clearTimeout(typingTimer);
+      typingTimer = setTimeout(()=> liveToggle.checked ? (batching ? renderBatch() : renderSingle()) : updateStats(), 90);
+    }
+    ta.addEventListener('input', queueRender);
+
+    // Controls that affect appearance
+    [colorPick, bgKind, bgPick, baseFont].forEach(el => el.addEventListener('change', ()=> liveToggle.checked ? (batching ? renderBatch() : renderSingle()) : null));
+
+    // Buttons
+    btnRender.addEventListener('click', ()=> batching ? renderBatch() : renderSingle());
+
+    btnCopySVG.addEventListener('click', ()=> currentSVG ? copySVG(currentSVG) : showToast('Nothing to copy'));
+    btnCopyPNG.addEventListener('click', ()=> currentSVG ? copyPNG(currentSVG) : showToast('Nothing to copy'));
+
+    btnDownloadSVG.addEventListener('click', ()=> currentSVG ? downloadSVG(currentSVG, 'sniptext-math.svg', bgKind.value === 'solid' ? bgPick.value : null) : showToast('Nothing to save'));
+    btnDownloadPNG.addEventListener('click', async ()=>{
+      if (!currentSVG) return showToast('Nothing to save');
+      const url = await svgToRasterURL(currentSVG, {
+        format: 'png',
+        scale: parseInt(scaleInput.value,10) || 2,
+        padding: parseInt(padInput.value,10) || 12,
+        bg: bgKind.value === 'solid' ? bgPick.value : 'transparent',
+        trim: !!trimToggle.checked
+      });
+      triggerDownload(url, 'sniptext-math.png');
+    });
+
+    btnExport.addEventListener('click', async ()=>{
+      if (batching){
+        // export first visible as convenience
+        const first = currentItems[0];
+        if (!first) return showToast('Nothing to export');
+        if (formatSel.value === 'svg') downloadSVG(first.svg, `sniptext-math-1.svg`, bgKind.value === 'solid' ? bgPick.value : null);
+        else {
+          const url = await svgToRasterURL(first.svg, {
+            format: formatSel.value,
+            scale: parseInt(scaleInput.value,10) || 2,
+            padding: parseInt(padInput.value,10) || 12,
+            bg: bgKind.value === 'solid' ? bgPick.value : 'transparent',
+            trim: !!trimToggle.checked
+          });
+          triggerDownload(url, `sniptext-math-1.${formatSel.value}`);
+        }
+      } else if (currentSVG){
+        if (formatSel.value === 'svg') downloadSVG(currentSVG, `sniptext-math.svg`, bgKind.value === 'solid' ? bgPick.value : null);
+        else {
+          const url = await svgToRasterURL(currentSVG, {
+            format: formatSel.value,
+            scale: parseInt(scaleInput.value,10) || 2,
+            padding: parseInt(padInput.value,10) || 12,
+            bg: bgKind.value === 'solid' ? bgPick.value : 'transparent',
+            trim: !!trimToggle.checked
+          });
+          triggerDownload(url, `sniptext-math.${formatSel.value}`);
+        }
+      } else {
+        showToast('Nothing to export');
+      }
+    });
+
+    btnExportAll.addEventListener('click', async ()=>{
+      if (!batching || !currentItems.length) return showToast('Nothing to export');
+      for (let i=0;i<currentItems.length;i++){
+        const item = currentItems[i];
+        if (formatSel.value === 'svg'){
+          downloadSVG(item.svg, `sniptext-math-${i+1}.svg`, bgKind.value === 'solid' ? bgPick.value : null);
+        } else {
+          const url = await svgToRasterURL(item.svg, {
+            format: formatSel.value,
+            scale: parseInt(scaleInput.value,10) || 2,
+            padding: parseInt(padInput.value,10) || 12,
+            bg: bgKind.value === 'solid' ? bgPick.value : 'transparent',
+            trim: !!trimToggle.checked
+          });
+          triggerDownload(url, `sniptext-math-${i+1}.${formatSel.value}`);
+        }
+      }
+      showToast('All files saved');
+    });
+
+    btnReset.addEventListener('click', ()=>{
+      previewWrap.innerHTML = '';
+      currentSVG = null;
+      batchList.innerHTML = '';
+      batchList.style.display='none';
+      ta.value = '';
+      updateStats();
+      showToast('Reset');
+    });
+
+    btnClear.addEventListener('click', ()=>{ ta.value=''; queueRender(); ta.focus(); showToast('Cleared'); });
+    btnPaste.addEventListener('click', async ()=>{
+      try{
+        if (navigator.clipboard?.readText){
+          ta.value = await navigator.clipboard.readText();
+          queueRender(); ta.focus(); showToast('Pasted');
+        } else showToast('Clipboard unavailable');
+      }catch{ showToast('Clipboard blocked'); }
+    });
+
+    // Examples
+    const examples = [
+      '\\[e^{i\\pi}+1=0\\]',
+      '\\[\\int_0^{\\infty} x^{s-1} e^{-x} \\, dx = \\Gamma(s)\\]',
+      '\\[\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}\\]',
+      '\\[\\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\varepsilon_0}\\]',
+      '\\[\\begin{aligned} a^2+b^2&=c^2\\\\ \\frac{d}{dx}e^x&=e^x \\end{aligned}\\]'
+    ];
+    btnExamples.addEventListener('click', ()=>{
+      ta.value = examples.join('\n\n');
+      if (!batchToggle.checked) batchToggle.checked = true;
+      batching = true;
+      renderBatch();
+      updateStats();
+      showToast('Examples added');
+    });
+
+    // Drag and drop .tex
+    document.addEventListener('dragover', e=>{ e.preventDefault(); });
+    document.addEventListener('drop', async e=>{
+      e.preventDefault();
+      const f = e.dataTransfer?.files?.[0];
+      if (!f) return;
+      if (!/\.tex|\.txt|\.md$/i.test(f.name)) return showToast('Drop a .tex, .txt, or .md file');
+      const text = await f.text();
+      ta.value = text;
+      queueRender();
+      showToast('File loaded');
+    });
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e)=>{
+      if (!e.ctrlKey && !e.metaKey) return;
+      const k = e.key.toLowerCase();
+      if (k === 'enter'){ e.preventDefault(); btnRender.click(); }
+      if (k === 'u'){ e.preventDefault(); currentSVG ? copyPNG(currentSVG) : showToast('Nothing to copy'); }
+      if (k === '1'){ e.preventDefault(); setMode('inline'); }
+      if (k === '2'){ e.preventDefault(); setMode('display'); }
+      if (k === 'b'){ e.preventDefault(); batchToggle.checked = !batchToggle.checked; batchToggle.dispatchEvent(new Event('change')); }
+      if (k === 'r'){ e.preventDefault(); btnReset.click(); }
+    });
+
+    // Back to top & year
+    $('#to-top')?.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+    $('#year')?.appendChild(document.createTextNode(new Date().getFullYear()));
+
+    // Init
+    modeDisplay.setAttribute('aria-pressed','true');
+    modeInline.setAttribute('aria-pressed','false');
+    updateStats();
+    // render once if any default text exists
+    queueRender();
+
+  })();
+  </script>
+</body>
+</html>

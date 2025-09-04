@@ -8,44 +8,97 @@
   <base href="/tools/">
 
   <!-- Primary SEO -->
-  <title>Case Converter (Uppercase · Lowercase · Sentence · Title · Alternating) | SnipText</title>
+  <title>Case Converter (Uppercase, Lowercase, Sentence, Title, Alternating) | SnipText</title>
   <meta name="description" content="Free Case Converter by SnipText: instantly switch between uppercase, lowercase, sentence case, title case and alternating case. Fast, accurate, privacy-friendly." />
   <meta name="keywords" content="case converter, uppercase converter, lowercase converter, sentence case, title case, alternating case, text case changer, online case converter" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://checkai.pro/tools/case-converter" />
   <link rel="alternate" href="https://checkai.pro/tools/case-converter" hreflang="en" />
   <link rel="alternate" href="https://checkai.pro/tools/case-converter" hreflang="x-default" />
 
-  <!-- Open Graph / Twitter -->
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Case Converter - Uppercase, Lowercase, Sentence, Title & Alternating" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Case Converter - Uppercase, Lowercase, Sentence, Title, Alternating" />
   <meta property="og:description" content="Switch text cases instantly with SnipText’s free converter." />
   <meta property="og:url" content="https://checkai.pro/tools/case-converter" />
-  <meta property="og:image" content="https://checkai.pro/assets/images/tools/case-converter-og.png" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter (no handles) -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@SnipText" />
-  <meta name="twitter:title" content="Case Converter - Uppercase, Lowercase, Sentence, Title & Alternating" />
+  <meta name="twitter:title" content="Case Converter - Uppercase, Lowercase, Sentence, Title, Alternating" />
   <meta name="twitter:description" content="Free, fast and privacy-friendly case conversion." />
-  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/case-converter-og.png" />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
 
   <!-- Theme / Icons -->
   <meta name="theme-color" content="#1D4ED8" />
-  <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
 
-  <!-- Fonts & CSS -->
-  <link rel="stylesheet" href="/css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <!-- JSON-LD: WebApplication -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication",
-   "name":"SnipText Case Converter","url":"https://checkai.pro/tools/case-converter",
-   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
-   "featureList":["Uppercase","Lowercase","Sentence case","Title case","Alternating case"],
-   "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png"}}}
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Case Converter",
+    "url":"https://checkai.pro/tools/case-converter",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "featureList":["Uppercase","Lowercase","Sentence case","Title case","Alternating case"],
+    "screenshot":"https://checkai.pro/images/sniptext-default-tools-img.png",
+    "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}}
+  }
   </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/free-tools.html"},
+      {"@type":"ListItem","position":3,"name":"Case Converter","item":"https://checkai.pro/tools/case-converter"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite (Sitelinks Search) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"SnipText",
+    "url":"https://checkai.pro/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://checkai.pro/blog/search?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <style>
 /* ===========================
@@ -115,6 +168,9 @@
       radial-gradient(900px 480px at 100% 0%,  color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 52%),
       linear-gradient(180deg, var(--case-converter-bg) 0%, var(--case-converter-bg-soft) 100%);
   }
+
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
 
   /* Light: card header/toolbar subtle tints */
   .case-converter-card-head{
@@ -503,6 +559,61 @@ html, body{
      <div class="case-converter-guide">
         <p class="case-converter-guide-p">See Case Converter Guide on SnipText Blog Page <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="case-converter-blog-link">here</a>.</p>
       </div>
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+  </section>
+
   </main>
 
   <div class="case-converter-toast" id="case-converter-toast" role="status" aria-live="polite"></div>
@@ -551,6 +662,8 @@ html, body{
 
 
   <script src="/js/index.js"></script>  
+  <script src="/js/auth.js"> </script>
+  <script src="/tools/js/free-tools.js"></script>
 
   <!-- FAQs script for SEO -->
    <script type="application/ld+json">

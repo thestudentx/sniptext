@@ -10,7 +10,7 @@
 
     { "source": "/blog", "destination": "/blog/blog.html" },
 
-    { "source": "/blog/free-random-text-generator", "destination": "/blog/free-random-text-generator-lorem-ipsum-sentences-&-dummy-parahraphs-sniptext-blog.html" },
+    { "source": "/blog/free-random-text-generator", "destination": "/blog/free-random-text-generator-lorem-ipsum-sentences-and-dummy-parahraphs-sniptext-blog.html" },
     { "source": "/blog/remove-empty-lines", "destination": "/blog/free-remove-empty-lines-trim-lines-collapse-gaps-normalize-newlines-sniptext-blog.html" },
 
     { "source": "/blog/:blogslug", "destination": "/blog/:blogslug.html" },
@@ -20,16 +20,25 @@
     { "source": "/blog/best-ai-writing-tools-2025", "destination": "/blog/best-ai-writing-tools-2025.html" },
 
     { "source": "/blog/case-converter-upper-lower-sentence-alternative-blog", "destination": "/blog/case-converter-upper-lower-sentence-alternative-blog.html" },
-    { "source": "/blog/duplicate-word-finder-blog", "destination": "/blog/duplicate-word-finder-blog.html" },
+    { "source": "/blog/duplicate-word-finder-blog", "destination": "/blog/free-duplicate-word-finder-highlight-and-remove-repeated-words-sniptext-blog.html" },
     { "source": "/blog/ethical-paraphrasing-in-academia", "destination": "/blog/ethical-paraphrasing-in-academia.html" },
     { "source": "/blog/free-palindromic-word-finder-detect-highlight-in-words-phrases-substrings-blog", "destination": "/blog/free-palindromic-word-finder-detect-highlight-in-words-phrases-substrings-blog.html" },
-    { "source": "/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog", "destination": "/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html" },
-    { "source": "/blog/grammar-check-guide-fix-grammar-puctuation-style-with-ai-ethically-sniptext-blog", "destination": "/blog/grammar-check-guide-fix-grammar-puctuation-style-with-ai-ethically-sniptext-blog.html" },
+    { "source": "/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog", "destination": "/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html" },    
+    { "source": "/blog/grade-calculator-percentage-to-letter-grade-weighted-average-gpa-required-final-score-academic-grading-guide-sniptext-blog", "destination": "/blog/grade-calculator-percentage-to-letter-grade-weighted-average-gpa-required-final-score-academic-grading-guide-sniptext-blog.html" },
+    { "source": "/blog/grammar-check-guide-fix-grammar-puctuation-style-with-ai-ethically-sniptext-blog", "destination": "/blog/grammar-check-guide-fix-grammar-punctuation-style-with-ai-ethically-sniptext-blog.html" },
     { "source": "/blog/paraphrasing-tone-style-modes-an-academic-guide-with-ethical-ai-tips-sniptext-blog", "destination": "/blog/paraphrasing-tone-style-modes-an-academic-guide-with-ethical-ai-tips-sniptext-blog.html" },
     { "source": "/blog/paraphrasing-tool-modes-best-practices-blog", "destination": "/blog/paraphrasing-tool-modes-best-practices-blog.html" },
     { "source": "/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog", "destination": "/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html" },
     { "source": "/blog/top-10-grammar-blunders", "destination": "/blog/top-10-grammar-blunders.html" },
     { "source": "/blog/word-character-line-sentence-counter-blog", "destination": "/blog/word-character-line-sentence-counter-blog.html" },
+
+    { "source": "/blog/bibtex-to-citation-converter", "destination": "/blog/bibtex-to-citation-converter-apa-mla-chicago-ieee-harvard-sniptext-blog.html" },
+    { "source": "/blog/symbol-character-info", "destination": "/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html" },
+    { "source": "/blog/math-formula-renderer-latex-to-image-with-math-png-svg-sniptext-blog", "destination": "/blog/math-formula-renderer-latex-to-image-with-math-png-svg-sniptext-blog.html" },
+    { "source": "/blog/text-to-list-or-list-to-text-converter-split-join-sort-unique-sniptext-blog", "destination": "/blog/text-to-list-or-list-to-text-converter-split-join-sort-unique-sniptext-blog.html" },
+    { "source": "/blog/timeline-maker-create-academic-timelines-project-roadmaps-history-classroom-sniptext-blog", "destination": "/blog/timeline-maker-create-academic-timelines-project-roadmaps-history-classroom-sniptext-blog.html" },
+    { "source": "/blog/unit-converter-physics-chemistry-convert-si-imperial-length-mass-time-temperature-pressure-energy-power-speed-area-volume-force-and-much-more-sniptext-blog", "destination": "/blog/unit-converter-physics-chemistry-convert-si-imperial-length-mass-time-temperature-pressure-energy-power-speed-area-volume-force-and-much-more-sniptext-blog.html" },
+    { "source": "/blog/quick-table-generator-guide-csv-to-responsive-html-table-code-sniptext-blog", "destination": "/blog/quick-table-generator-guide-csv-to-responsive-html-table-code-sniptext-blog.html" },
 
     { "source": "/",              "destination": "/index.html" },
     { "source": "/dashboard",     "destination": "/dashboard.html" },
@@ -45,17 +54,23 @@
     { "source": "/terms-of-use",  "destination": "/terms-of-use.html" },
 
     { "source": "/tools",                                  "destination": "/tools/free-tools.html" },
+    { "source": "/tools/bibtex-to-citation-to-bibtex",               "destination": "/tools/bibtex-to-citation-to-bibtex.html" },
     { "source": "/tools/free-tools",                       "destination": "/tools/free-tools.html" },
+    { "source": "/tools/math-formula-renderer-latex-to-image-png-svg",                       "destination": "/tools/math-formula-renderer-latex-to-image-png-svg.html" },
     { "source": "/tools/case-converter",                   "destination": "/tools/case-converter.html" },
     { "source": "/tools/duplicate-word-finder",            "destination": "/tools/duplicate-word-finder.html" },
     { "source": "/tools/emoji-replacer",                   "destination": "/tools/emoji-replacer.html" },
     { "source": "/tools/palindromic-word-finder",          "destination": "/tools/palindromic-word-finder.html" },
     { "source": "/tools/symbol-character-info",            "destination": "/tools/symbol-character-info.html" },
+    { "source": "/tools/text-to-list-to-text-converter",            "destination": "/tools/text-to-list-to-text-converter.html" },
+    { "source": "/tools/unit-converter-physics-chemistry-time-length-temprature",                     "destination": "/tools/unit-converter-physics-chemistry-time-length-temprature.html" },
     { "source": "/tools/whitespace-and-formatting-cleaner","destination": "/tools/whitespace-and-formatting-cleaner.html" },
     { "source": "/tools/word-counter",                     "destination": "/tools/word-counter.html" },
-
     { "source": "/tools/random-text-generator",            "destination": "/tools/random-text-generator.html" },
     { "source": "/tools/remove-empty-lines",               "destination": "/tools/remove-empty-lines.html" },
+    { "source": "/tools/grade-calculator-percentage-letter-weighted-average-gpa-sniptext",               "destination": "/tools/grade-calculator-percentage-letter-weighted-average-gpa-sniptext.html" },
+    { "source": "/tools/timeline-maker-academic-timeline",               "destination": "/tools/timeline-maker-academic-timeline.html" },
+    { "source": "/tools/quick-table-generator-csv-to-html-table-code",               "destination": "/tools/quick-table-generator-csv-to-html-table-code.html" },
 
     { "source": "/tools/:tool", "destination": "/tools/:tool.html" }
   ],

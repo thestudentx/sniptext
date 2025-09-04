@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Text to List - List to Text Converter | SnipText</title>
+  <meta name="description" content="Free Text to List - List to Text Converter by SnipText. Split paragraphs into clean lists or join list items into readable text. Sort, deduplicate, and customize bullets or separators. Fast, private, and responsive." />
+  <meta name="keywords" content="text to list, list to text, bullet list generator, numbered list, join list to text, split text, deduplicate list, sort list online, csv, newline to csv, custom separators, wrap items" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/text-to-list" />
+  <link rel="alternate" href="https://checkai.pro/tools/text-to-list" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/text-to-list" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Text to List - List to Text Converter" />
+  <meta property="og:description" content="Split text into clean lists or join lists back to text with smart options. Sort, unique, custom bullets and separators." />
+  <meta property="og:url" content="https://checkai.pro/tools/text-to-list" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter (no handles) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Text to List - List to Text Converter" />
+  <meta name="twitter:description" content="Free, private text formatting. Split to lists or join back to text with sort and unique." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Text to List - List to Text Converter",
+    "url":"https://checkai.pro/tools/text-to-list",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Text to List",
+      "List to Text",
+      "Sort and Unique",
+      "Custom bullets and numbering",
+      "Custom separators and joiners",
+      "Trim and wrap items",
+      "CSV and newline helpers",
+      "Copy and download"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is the converter private?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. It runs in your browser and does not upload your text."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I switch both ways between text and lists?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. You can split paragraphs into a clean list or join list items back into readable text."}
+      },
+      {
+        "@type":"Question",
+        "name":"Do you support custom separators and bullets?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Choose bullets or numbers and set custom separators or joiners such as commas, pipes, or line breaks."}
+      },
+      {
+        "@type":"Question",
+        "name":"How do I remove duplicates or sort items?",
+        "acceptedAnswer":{"@type":"Answer","text":"Enable Unique to deduplicate and use Sort to order items alphabetically or by length depending on your settings."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I wrap items with quotes for CSV?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Use the wrap option to add quotes or any prefix and suffix to each item before exporting or copying."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Free Tools","item":"https://checkai.pro/tools/free-tools"},
+      {"@type":"ListItem","position":3,"name":"Text to List","item":"https://checkai.pro/tools/text-to-list"}
+    ]
+  }
+  </script>
+
+
+  <style>
+  /* ==============================
+     SnipText brand root (provided)
+     ============================== */
+  :root {
+    /* COLOR PALETTE */
+    --color-primary: #1D4ED8;
+    --color-accent: #3B82F6;
+    --color-bg-light: #F3F4F6;
+    --color-bg-dark: #0F172A;
+    --color-white: #ffffff;
+    --color-text-dark: #1F2937;
+    --color-text-light: #6B7280;
+    --color-border: #E5E7EB;
+    --color-used-often: #e85d27;
+    --color-footer-bg: #1d1f2f;
+
+    /* ADDITIONAL COMPONENT COLORS */
+    --gradient-hero-end: #23253d;
+    --gradient-timeline-end: #23253d;
+    --gradient-cta-start: var(--color-accent);
+    --gradient-cta-end: #ff7c4c;
+
+    /* FONT STACK */
+    --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+    --font-body: 'Roboto', 'Arial', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+  }
+
+  /* =======================================
+     Page-scoped tokens - all "text-list-*"
+     ======================================= */
+  :root{
+    /* Surfaces */
+    --text-list-bg: var(--color-bg-dark);
+    --text-list-bg-soft: #0b1225; /* slightly deeper than bg-dark */
+    --text-list-surface: rgba(255,255,255,0.06);
+
+    /* Text & border */
+    --text-list-text: var(--color-white);
+    --text-list-text-muted: rgba(255,255,255,.78);
+    --text-list-border: rgba(255,255,255,.14);
+
+    /* Brand accents mapped */
+    --text-list-accent: var(--color-primary);
+    --text-list-accent-2: var(--color-accent);
+    --text-list-warm: var(--gradient-cta-end);
+
+    /* Sizing & effects */
+    --text-list-radius-xl: 20px;
+    --text-list-radius-lg: 14px;
+    --text-list-radius-md: 10px;
+    --text-list-shadow-1: 0 10px 30px rgba(0,0,0,.35);
+    --text-list-shadow-2: 0 18px 48px rgba(17,24,39,.46);
+    --text-list-maxw: 1200px;
+
+    /* Typography */
+    --text-list-font-heading: 'Poppins', 'Rajdhani', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --text-list-font-body: 'Roboto', 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: light){
+    :root{
+      --text-list-bg: var(--color-bg-light);
+      --text-list-bg-soft: #ffffff;
+      --text-list-surface: #ffffffef;
+      --text-list-text: var(--color-text-dark);
+      --text-list-text-muted: var(--color-text-light);
+      --text-list-border: var(--color-border);
+      --text-list-shadow-1: 0 10px 30px rgba(2,6,23,.08);
+      --text-list-shadow-2: 0 18px 48px rgba(2,6,23,.12);
+    }
+  }
+  
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
+
+  /* Page background auroras kept inside wrapper to avoid touching nav/footer */
+  .text-list-page {
+    position: relative;
+    max-width: var(--text-list-maxw);
+    margin: clamp(16px, 3vw, 40px) auto;
+    padding: clamp(12px, 2.5vw, 24px);
+    color: var(--text-list-text);
+    font-family: var(--text-list-font-body);
+    isolation: isolate;
+  }
+  .text-list-page::before{
+    content: "";
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--text-list-accent) 26%, transparent), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--text-list-accent-2) 22%, transparent), transparent 52%),
+      radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--text-list-warm) 12%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--text-list-bg) 0%, var(--text-list-bg-soft) 100%);
+  }
+
+  /* Hero */
+  .text-list-hero{
+    position: relative;
+    padding: clamp(18px, 3vw, 28px);
+    border: 1px solid var(--text-list-border);
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--text-list-accent) 20%, transparent),
+      color-mix(in oklab, var(--text-list-accent-2) 18%, transparent)
+    ) border-box;
+    border-radius: var(--text-list-radius-xl);
+    box-shadow: var(--text-list-shadow-1);
+    overflow: hidden;
+  }
+  .text-list-hero::after{
+    content: ""; position:absolute; inset:-3px; pointer-events:none; filter: blur(16px); opacity:.6;
+    background:
+      radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--text-list-accent) 28%, transparent), transparent 65%),
+      radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--text-list-accent-2) 26%, transparent), transparent 62%);
+  }
+  .text-list-hero-title{
+    margin:0 0 6px 0; font-weight:800; letter-spacing:.2px; line-height:1.12; font-family: var(--text-list-font-heading);
+    font-size: clamp(22px, 3.2vw, 36px);
+    background: linear-gradient(90deg, #fff, color-mix(in oklab, var(--text-list-accent) 54%, #fff) 38%, color-mix(in oklab, var(--text-list-warm) 40%, #fff) 78%, #fff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .text-list-hero-sub{ margin:6px 0 0 0; color: var(--text-list-text-muted); font-size:clamp(14px,1.8vw,16px); }
+
+  /* Grid */
+  .text-list-grid{ display:grid; grid-template-columns: 1fr; gap: clamp(12px,2.4vw,20px); margin-top: clamp(14px,2.6vw,24px); }
+  @media (min-width: 980px){ .text-list-grid{ grid-template-columns: 1fr 1fr; } }
+
+  /* Card */
+  .text-list-card{
+    border:1px solid var(--text-list-border);
+    border-radius: var(--text-list-radius-lg);
+    background: var(--text-list-surface);
+    box-shadow: var(--text-list-shadow-2);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    overflow:hidden;
+  }
+  .text-list-card-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding: 12px 14px; border-bottom:1px solid var(--text-list-border);
+    background: linear-gradient(90deg,
+      color-mix(in oklab, var(--text-list-accent) 11%, transparent),
+      color-mix(in oklab, var(--text-list-accent-2) 9%, transparent)
+    );
+  }
+  .text-list-card-title{ margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.92; font-family: var(--text-list-font-heading); }
+
+  .text-list-textarea{
+    width:100%; min-height: 260px; resize: vertical; border:0; outline:0; background: transparent;
+    color: var(--text-list-text); padding: 16px; font: 500 15px/1.55 var(--text-list-font-body); caret-color: var(--text-list-accent); letter-spacing:.2px;
+  }
+  .text-list-textarea::placeholder{ color: color-mix(in oklab, var(--text-list-text-muted) 80%, transparent); }
+
+  .text-list-stats{ display:flex; gap:10px; flex-wrap:wrap; padding: 10px 14px; border-top:1px solid var(--text-list-border); color:var(--text-list-text-muted); font-size:12px; background: linear-gradient(90deg, rgba(255,255,255,.03), transparent); }
+  .text-list-chip{ padding:6px 8px; border:1px solid var(--text-list-border); border-radius:999px; background: color-mix(in oklab, var(--color-bg-dark) 72%, transparent); backdrop-filter: blur(6px); }
+
+  /* Toolbar & Controls */
+  .text-list-toolbar{ display:flex; flex-wrap:wrap; gap:8px; padding: 12px 14px; border-top:1px solid var(--text-list-border);
+    background: linear-gradient(90deg, color-mix(in oklab, var(--text-list-accent-2) 10%, transparent), color-mix(in oklab, var(--text-list-accent) 11%, transparent)); }
+  .text-list-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .text-list-spacer{ flex:1 1 auto; }
+
+  .text-list-btn{ --_bg: linear-gradient(180deg, color-mix(in oklab, var(--text-list-accent) 70%, transparent), color-mix(in oklab, var(--text-list-accent-2) 62%, transparent));
+    --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--text-list-accent)); appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+    padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer; position:relative; transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease; box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+    font-family: var(--text-list-font-heading);
+  }
+  .text-list-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+  .text-list-btn:active{ transform: translateY(0); filter: brightness(.98); }
+  .text-list-btn[aria-pressed="true"]{ outline:2px solid color-mix(in oklab, var(--text-list-accent) 40%, var(--text-list-accent-2)); outline-offset:2px; }
+
+  .text-list-btn-outline{ background: transparent; color: var(--text-list-text); border:1px solid var(--text-list-border); box-shadow:none; }
+  .text-list-btn-ghost{ background: transparent; color: var(--text-list-text-muted); border:1px dashed var(--text-list-border); box-shadow:none; font-weight:600; }
+
+  .text-list-seg{ display:inline-flex; border:1px solid var(--text-list-border); border-radius: 12px; overflow:hidden; }
+  .text-list-seg button{ border:0; background: transparent; color: var(--text-list-text); padding:10px 14px; cursor:pointer; font-weight:700; font-size:13px; letter-spacing:.3px; }
+  .text-list-seg button[aria-pressed="true"]{ background: linear-gradient(180deg, color-mix(in oklab, var(--text-list-accent) 68%, transparent), color-mix(in oklab, var(--text-list-accent-2) 60%, transparent)); color:#fff; }
+
+  .text-list-options{ display:grid; grid-template-columns: 1fr; gap:12px; padding: 12px 14px; }
+  .text-list-field{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .text-list-field label{ font-size:13px; color:var(--text-list-text-muted); }
+  .text-list-input, .text-list-select{ background: #0f1b34; color:#e5e7eb; border:1px solid var(--text-list-border); border-radius:10px; padding:8px 10px; outline:none; min-height: 36px; }
+  .text-list-select{ background: #0e1730; }
+  .text-list-input::placeholder{ color:#94a3b8; }
+
+  .text-list-switch{ position:relative; display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none; }
+  .text-list-switch input{ appearance:none; width:40px; height:22px; background:#0f1b34; border:1px solid var(--text-list-border); border-radius:999px; outline:0; transition: background .2s ease; }
+  .text-list-switch input:checked{ background: linear-gradient(90deg, var(--text-list-accent), var(--text-list-accent-2)); border-color: transparent; }
+  .text-list-switch input::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; transition: transform .2s ease; box-shadow: 0 3px 10px rgba(0,0,0,.25); }
+  .text-list-switch input:checked::after{ transform: translateX(18px); }
+
+  /* Toast */
+  .text-list-toast{ position: fixed; inset: auto 16px 16px auto; background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--text-list-border); backdrop-filter: blur(8px); box-shadow: var(--text-list-shadow-1); transform: translateY(20px); opacity:0; pointer-events:none; transition: transform .25s ease, opacity .25s ease; z-index: 50; }
+  .text-list-toast.text-list-show{ transform: translateY(0); opacity:1; }
+
+  /* Subtle float animation for cards */
+  @media (prefers-reduced-motion: no-preference){
+    .text-list-card{ animation: text-list-float 18s ease-in-out infinite; }
+    @keyframes text-list-float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-2px) } }
+  }
+
+  /* Helper text */
+  .text-list-guide{ width:100%; text-align:center; font-size:12px; color: #a3aed0; margin-top:8px; }
+  .text-list-blog-link{ color: var(--text-list-accent-2); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+ 
+  <main class="text-list-page" aria-label="Text to List - List to Text Converter">
+    <!-- Hero -->
+    <section class="text-list-hero">
+      <h1 class="text-list-hero-title">Text to List - List to Text Converter</h1>
+      <p class="text-list-hero-sub">Quickly reformat content. Split text into clean lists or join lists back to readable text with smart options.</p>
+    </section>
+
+    <!-- Input & Output -->
+    <section class="text-list-grid">
+      <!-- Input -->
+      <article class="text-list-card">
+        <header class="text-list-card-head">
+          <h2 class="text-list-card-title">Input</h2>
+          <div class="text-list-row">
+            <button class="text-list-btn text-list-btn-outline" id="text-list-paste" type="button" title="Paste">Paste</button>
+            <button class="text-list-btn text-list-btn-ghost" id="text-list-clear" type="button" title="Clear">Clear</button>
+          </div>
+        </header>
+        <textarea class="text-list-textarea" id="text-list-input" placeholder="Type or paste your text or list here…"></textarea>
+        <div class="text-list-stats" id="text-list-input-stats" aria-live="polite">
+          <span class="text-list-chip" id="text-list-in-words">Words: 0</span>
+          <span class="text-list-chip" id="text-list-in-chars">Characters: 0</span>
+          <span class="text-list-chip" id="text-list-in-lines">Lines: 0</span>
+          <span class="text-list-chip" id="text-list-in-items">Items: 0</span>
+        </div>
+      </article>
+
+      <!-- Output -->
+      <article class="text-list-card">
+        <header class="text-list-card-head">
+          <h2 class="text-list-card-title">Output</h2>
+          <div class="text-list-row">
+            <button class="text-list-btn" id="text-list-copy" type="button" title="Copy result">Copy</button>
+            <button class="text-list-btn text-list-btn-outline" id="text-list-download" type="button" title="Download .txt">Download</button>
+            <button class="text-list-btn text-list-btn-ghost" id="text-list-apply-back" type="button" title="Replace input with output">Apply to Input</button>
+          </div>
+        </header>
+        <textarea class="text-list-textarea" id="text-list-output" placeholder="Your result appears here…" readonly></textarea>
+        <div class="text-list-stats" id="text-list-output-stats">
+          <span class="text-list-chip" id="text-list-out-words">Words: 0</span>
+          <span class="text-list-chip" id="text-list-out-chars">Characters: 0</span>
+          <span class="text-list-chip" id="text-list-out-lines">Lines: 0</span>
+          <span class="text-list-chip" id="text-list-out-items">Items: 0</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Controls -->
+    <section class="text-list-card" style="margin-top: clamp(12px,2vw,18px);">
+      <header class="text-list-card-head">
+        <h2 class="text-list-card-title">Transform</h2>
+        <div class="text-list-row">
+          <div class="text-list-seg" role="tablist" aria-label="Mode">
+            <button id="text-list-mode-t2l" type="button" role="tab" aria-pressed="true">Text to List</button>
+            <button id="text-list-mode-l2t" type="button" role="tab" aria-pressed="false">List to Text</button>
+          </div>
+          <span class="text-list-spacer"></span>
+          <button class="text-list-btn text-list-btn-outline" id="text-list-live" type="button" aria-pressed="true" title="Update output as you type">Live Preview</button>
+          <button class="text-list-btn text-list-btn-ghost" id="text-list-reset" type="button" title="Reset output to original input">Reset</button>
+        </div>
+      </header>
+
+      <!-- Text to List Options -->
+      <div class="text-list-options" id="text-list-opt-t2l">
+        <div class="text-list-field" role="group" aria-label="Split by">
+          <label>Split by:</label>
+          <select id="text-list-split-kind" class="text-list-select" title="Select split type">
+            <option value="auto">Auto detect</option>
+            <option value="newline">Newline</option>
+            <option value="comma">Comma</option>
+            <option value="semicolon">Semicolon</option>
+            <option value="pipe">Pipe</option>
+            <option value="slash">Slash</option>
+            <option value="space">Space</option>
+            <option value="custom">Custom regex</option>
+          </select>
+          <input id="text-list-split-custom" class="text-list-input" type="text" placeholder="Custom regex, e.g. \\s*[,;|]\\s*" style="min-width:260px; display:none;" />
+        </div>
+        <div class="text-list-field" role="group" aria-label="List style">
+          <label>List style:</label>
+          <select id="text-list-bullet" class="text-list-select">
+            <option value="hyphen">- item</option>
+            <option value="bullet">• item</option>
+            <option value="num">1. item</option>
+            <option value="lower">a. item</option>
+            <option value="upper">A. item</option>
+            <option value="roman">i. item</option>
+            <option value="checkbox">[ ] item</option>
+          </select>
+          <input id="text-list-start" class="text-list-input" type="number" min="1" value="1" title="Start number" style="width:90px;" />
+          <label class="text-list-switch" title="Mark checkboxes">
+            <input id="text-list-checkbox-mark" type="checkbox" />
+            <span>Mark [x]</span>
+          </label>
+        </div>
+        <div class="text-list-field" role="group" aria-label="Cleaning options">
+          <label class="text-list-switch" title="Trim whitespace around items"><input id="text-list-trim" type="checkbox" checked /><span>Trim</span></label>
+          <label class="text-list-switch" title="Strip leading bullets and numbers from items"><input id="text-list-strip-bullets" type="checkbox" /><span>Strip bullets</span></label>
+          <label class="text-list-switch" title="Remove trailing punctuation like commas and semicolons"><input id="text-list-strip-punct" type="checkbox" /><span>Strip end punctuation</span></label>
+          <label class="text-list-switch" title="Remove empty items"><input id="text-list-no-empty" type="checkbox" checked /><span>No empty</span></label>
+        </div>
+        <div class="text-list-field" role="group" aria-label="Uniq and sort">
+          <label class="text-list-switch" title="Remove duplicate items"><input id="text-list-unique" type="checkbox" /><span>Unique</span></label>
+          <label class="text-list-switch" title="Case sensitive uniqueness"><input id="text-list-unique-case" type="checkbox" /><span>Case sensitive</span></label>
+          <label>Sort:</label>
+          <select id="text-list-sort" class="text-list-select">
+            <option value="none">None</option>
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+            <option value="len">By length</option>
+          </select>
+        </div>
+        <div class="text-list-field" role="group" aria-label="Wrap and affixes">
+          <label>Wrap:</label>
+          <select id="text-list-wrap" class="text-list-select">
+            <option value="none">None</option>
+            <option value="quotes">"item"</option>
+            <option value="single">'item'</option>
+            <option value="backtick">`item`</option>
+          </select>
+          <label>Prefix:</label>
+          <input id="text-list-prefix" class="text-list-input" type="text" placeholder="Optional" />
+          <label>Suffix:</label>
+          <input id="text-list-suffix" class="text-list-input" type="text" placeholder="Optional" />
+        </div>
+        <div class="text-list-toolbar" role="group" aria-label="Run for Text to List">
+          <button class="text-list-btn" id="text-list-run-t2l" type="button">Make List</button>
+          <button class="text-list-btn text-list-btn-outline" id="text-list-copy-list" type="button">Copy List</button>
+          <span class="text-list-spacer"></span>
+          <button class="text-list-btn text-list-btn-ghost" id="text-list-swap-to-l2t" type="button">Switch to List to Text</button>
+        </div>
+      </div>
+
+      <!-- List to Text Options -->
+      <div class="text-list-options" id="text-list-opt-l2t" style="display:none;">
+        <div class="text-list-field" role="group" aria-label="Item cleanup">
+          <label class="text-list-switch" title="Strip common bullets, numbers and checkboxes from each line"><input id="text-list-clean-bullets" type="checkbox" checked /><span>Strip bullets</span></label>
+          <label class="text-list-switch" title="Trim whitespace"><input id="text-list-trim-l2t" type="checkbox" checked /><span>Trim</span></label>
+          <label class="text-list-switch" title="Remove empty items"><input id="text-list-no-empty-l2t" type="checkbox" checked /><span>No empty</span></label>
+          <label class="text-list-switch" title="Unique items"><input id="text-list-unique-l2t" type="checkbox" /><span>Unique</span></label>
+          <label class="text-list-switch" title="Case sensitive uniqueness"><input id="text-list-unique-case-l2t" type="checkbox" /><span>Case sensitive</span></label>
+        </div>
+        <div class="text-list-field" role="group" aria-label="Sorting">
+          <label>Sort:</label>
+          <select id="text-list-sort-l2t" class="text-list-select">
+            <option value="none">None</option>
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+            <option value="len">By length</option>
+          </select>
+        </div>
+        <div class="text-list-field" role="group" aria-label="Joiner">
+          <label>Join with:</label>
+          <select id="text-list-joiner" class="text-list-select">
+            <option value=", ">Comma + space</option>
+            <option value="; ">Semicolon + space</option>
+            <option value=" | ">Pipe</option>
+            <option value=" ">Space</option>
+            <option value="\n">Newline</option>
+            <option value="custom">Custom</option>
+          </select>
+          <input id="text-list-joiner-custom" class="text-list-input" type="text" placeholder="Custom string or \\n for newline" style="min-width:260px; display:none;" />
+        </div>
+        <div class="text-list-field" role="group" aria-label="Wrap and affixes">
+          <label>Wrap:</label>
+          <select id="text-list-wrap-l2t" class="text-list-select">
+            <option value="none">None</option>
+            <option value="quotes">"item"</option>
+            <option value="single">'item'</option>
+            <option value="backtick">`item`</option>
+          </select>
+          <label>Prefix:</label>
+          <input id="text-list-prefix-l2t" class="text-list-input" type="text" placeholder="Optional" />
+          <label>Suffix:</label>
+          <input id="text-list-suffix-l2t" class="text-list-input" type="text" placeholder="Optional" />
+        </div>
+        <div class="text-list-toolbar" role="group" aria-label="Run for List to Text">
+          <button class="text-list-btn" id="text-list-run-l2t" type="button">Make Text</button>
+          <button class="text-list-btn text-list-btn-outline" id="text-list-copy-text" type="button">Copy Text</button>
+          <span class="text-list-spacer"></span>
+          <button class="text-list-btn text-list-btn-ghost" id="text-list-swap-to-t2l" type="button">Switch to Text to List</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-list-guide">
+      <p>See Text ↔ List Guide on SnipText Blog Page <a href="/blog/text-to-list-or-list-to-text-converter-split-join-sort-unique-sniptext-blog.html" class="case-converter-blog-link" style="color: #ccc;">here</a>.</p>
+    </div>
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
+      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
+      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+  </section>
+  
+
+  </main>
+
+  <div class="text-list-toast" id="text-list-toast" role="status" aria-live="polite"></div>
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+    <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is the converter private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs locally in your browser. Your text is not uploaded."}},
+      {"@type":"Question","name":"Can I remove duplicates and sort?","acceptedAnswer":{"@type":"Answer","text":"Yes. Toggle Unique and choose sort order. Sorting is case-aware and can be set by length too."}},
+      {"@type":"Question","name":"Can I customize bullets and separators?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pick from hyphen, bullet, numbers, letters, roman or checkboxes. Choose common separators or a custom pattern."}},
+      {"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"No fixed limit. It depends on your device and browser memory. It handles long articles and lists with ease."}}
+    ]
+  }
+  </script>
+
+  <script>
+  (function(){
+    'use strict';
+
+    // Elements
+    const elIn = document.getElementById('text-list-input');
+    const elOut = document.getElementById('text-list-output');
+    const toast = document.getElementById('text-list-toast');
+
+    const btnPaste = document.getElementById('text-list-paste');
+    const btnClear = document.getElementById('text-list-clear');
+    const btnCopy = document.getElementById('text-list-copy');
+    const btnDownload = document.getElementById('text-list-download');
+    const btnApply = document.getElementById('text-list-apply-back');
+    const btnReset = document.getElementById('text-list-reset');
+    const btnLive = document.getElementById('text-list-live');
+
+    const inWords = document.getElementById('text-list-in-words');
+    const inChars = document.getElementById('text-list-in-chars');
+    const inLines = document.getElementById('text-list-in-lines');
+    const inItems = document.getElementById('text-list-in-items');
+    const outWords = document.getElementById('text-list-out-words');
+    const outChars = document.getElementById('text-list-out-chars');
+    const outLines = document.getElementById('text-list-out-lines');
+    const outItems = document.getElementById('text-list-out-items');
+
+    // Modes
+    const modeT2L = document.getElementById('text-list-mode-t2l');
+    const modeL2T = document.getElementById('text-list-mode-l2t');
+    const optT2L = document.getElementById('text-list-opt-t2l');
+    const optL2T = document.getElementById('text-list-opt-l2t');
+
+    // T2L controls
+    const splitKind = document.getElementById('text-list-split-kind');
+    const splitCustom = document.getElementById('text-list-split-custom');
+    const bullet = document.getElementById('text-list-bullet');
+    const startNo = document.getElementById('text-list-start');
+    const cbMark = document.getElementById('text-list-checkbox-mark');
+
+    const optTrim = document.getElementById('text-list-trim');
+    const optStripBullets = document.getElementById('text-list-strip-bullets');
+    const optStripPunct = document.getElementById('text-list-strip-punct');
+    const optNoEmpty = document.getElementById('text-list-no-empty');
+
+    const optUnique = document.getElementById('text-list-unique');
+    const optUniqueCase = document.getElementById('text-list-unique-case');
+    const optSort = document.getElementById('text-list-sort');
+
+    const optWrap = document.getElementById('text-list-wrap');
+    const optPrefix = document.getElementById('text-list-prefix');
+    const optSuffix = document.getElementById('text-list-suffix');
+
+    const btnRunT2L = document.getElementById('text-list-run-t2l');
+    const btnCopyList = document.getElementById('text-list-copy-list');
+    const btnSwapToL2T = document.getElementById('text-list-swap-to-l2t');
+
+    // L2T controls
+    const cleanBullets = document.getElementById('text-list-clean-bullets');
+    const trimL2T = document.getElementById('text-list-trim-l2t');
+    const noEmptyL2T = document.getElementById('text-list-no-empty-l2t');
+    const uniqueL2T = document.getElementById('text-list-unique-l2t');
+    const uniqueCaseL2T = document.getElementById('text-list-unique-case-l2t');
+    const sortL2T = document.getElementById('text-list-sort-l2t');
+
+    const joiner = document.getElementById('text-list-joiner');
+    const joinerCustom = document.getElementById('text-list-joiner-custom');
+
+    const wrapL2T = document.getElementById('text-list-wrap-l2t');
+    const prefixL2T = document.getElementById('text-list-prefix-l2t');
+
+    const suffixL2T = document.getElementById('text-list-suffix-l2t');
+
+    const btnRunL2T = document.getElementById('text-list-run-l2t');
+    const btnCopyText = document.getElementById('text-list-copy-text');
+    const btnSwapToT2L = document.getElementById('text-list-swap-to-t2l');
+
+    // State
+    let currentMode = 't2l';
+
+    // Utils
+    const showToast = (msg) => {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('text-list-show');
+      setTimeout(()=> toast.classList.remove('text-list-show'), 1400);
+    };
+
+    const countStats = (t) => {
+      const lines = t.length ? (t.match(/\r\n|\r|\n/g)?.length || 0) + 1 : 0;
+      const words = t.trim() ? t.trim().split(/\s+/).filter(Boolean).length : 0;
+      const items = t.trim() ? t.split(/\r\n|\r|\n/).filter(Boolean).length : 0;
+      return { words, chars: Array.from(t).length, lines, items };
+    };
+    const updateStats = () => {
+      const A = countStats(elIn.value || '');
+      const B = countStats(elOut.value || '');
+      inWords.textContent = `Words: ${A.words}`;
+      inChars.textContent = `Characters: ${A.chars}`;
+      inLines.textContent = `Lines: ${A.lines}`;
+      inItems.textContent = `Items: ${A.items}`;
+      outWords.textContent= `Words: ${B.words}`;
+      outChars.textContent= `Characters: ${B.chars}`;
+      outLines.textContent= `Lines: ${B.lines}`;
+      outItems.textContent= `Items: ${B.items}`;
+    };
+
+    const normalizeNewlines = (s) => s.replace(/\r\n?|\u2028|\u2029/g, '\n');
+
+    // Strip common list markers
+    const stripBulletsFromLine = (line) => {
+      // Patterns: -, *, •, [ ] [x], 1. 2) a. A) i. I)
+      return line
+        .replace(/^\s*([\-\*•\u2022\u25E6\u2219]|\[\s?x?\])\s+/i, '')
+        .replace(/^\s*(\(?\d+[\.)\]]|[a-zA-Z][\.)\]]|[ivxlcdm]+[\.)\]])\s+/i, '');
+    };
+
+    // Roman numerals helper
+    const toRoman = (num) => {
+      if (num <= 0) return '';
+      const map = [
+        [1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']
+      ];
+      let out='';
+      for (const [v, sym] of map){ while(num >= v){ out += sym; num -= v; } }
+      return out;
+    };
+
+    // Wrapping helper
+    const wrapItem = (s, kind) => {
+      if (kind === 'quotes') return `"${s.replace(/\"/g,'\"')}"`;
+      if (kind === 'single') return `'${s.replace(/'/g, "'")}'`;
+      if (kind === 'backtick') return '`' + s.replace(/`/g,'`') + '`';
+      return s;
+    };
+
+    // Sorting
+    const sortItems = (arr, mode) => {
+      if (mode === 'none') return arr;
+      if (mode === 'len') return [...arr].sort((a,b) => a.length - b.length);
+      if (mode === 'asc' || mode === 'desc'){
+        const cmp = new Intl.Collator(undefined, {numeric:true, sensitivity:'base'});
+        const sorted = [...arr].sort((a,b) => cmp.compare(a, b));
+        return mode === 'desc' ? sorted.reverse() : sorted;
+      }
+      return arr;
+    };
+
+    // Unique
+    const uniqItems = (arr, caseSensitive) => {
+      const seen = new Set();
+      const out = [];
+      for (let it of arr){
+        const key = caseSensitive ? it : it.toLocaleLowerCase();
+        if (!seen.has(key)){ seen.add(key); out.push(it); }
+      }
+      return out;
+    };
+
+    // Splitters
+    const getSplitter = () => {
+      const kind = splitKind.value;
+      if (kind === 'custom'){
+        try{ return new RegExp(splitCustom.value, 'g'); }
+        catch(_){ return /\s*[;,|\/\n\t]+\s*/g; }
+      }
+      const map = {
+        auto: /\s*[;,|\/\n\t]+\s*/g,
+        newline: /\n+/g,
+        comma: /\s*,\s*/g,
+        semicolon: /\s*;\s*/g,
+        pipe: /\s*\|\s*/g,
+        slash: /\s*\/\s*/g,
+        space: /\s+/g
+      };
+      return map[kind] || map.auto;
+    };
+
+    // Build list text
+    const buildList = (items) => {
+      const b = bullet.value;
+      const start = Math.max(1, parseInt(startNo.value || '1', 10));
+      const mark = cbMark.checked;
+      let n = start;
+      const lines = items.map((it, i) => {
+        const idx = start + i;
+        if (b === 'hyphen') return `- ${it}`;
+        if (b === 'bullet') return `• ${it}`;
+        if (b === 'num') return `${idx}. ${it}`;
+        if (b === 'lower') return `${String.fromCharCode(96 + ((idx-1)%26)+1)}. ${it}`; // a. b. ...
+        if (b === 'upper') return `${String.fromCharCode(64 + ((idx-1)%26)+1)}. ${it}`; // A. B. ...
+        if (b === 'roman') return `${toRoman(idx).toLowerCase()}. ${it}`;
+        if (b === 'checkbox') return `[${mark ? 'x' : ' '}] ${it}`;
+        return `- ${it}`;
+      });
+      return lines.join('\n');
+    };
+
+    // Text to List transform
+    const textToList = (raw) => {
+      let s = normalizeNewlines(raw);
+      // First split
+      const splitter = getSplitter();
+      let parts = s.split(splitter);
+      // Optional cleaning
+      if (optStripBullets.checked){ parts = parts.map(stripBulletsFromLine); }
+      if (optStripPunct.checked){ parts = parts.map(x => x.replace(/[\s]*[;,]+$/g, '')); }
+      if (optTrim.checked){ parts = parts.map(x => x.trim()); }
+      if (optNoEmpty.checked){ parts = parts.filter(Boolean); }
+
+      // Unique and sort
+      if (optUnique.checked){ parts = uniqItems(parts, optUniqueCase.checked); }
+      parts = sortItems(parts, optSort.value);
+
+      // Wrap and affixes
+      const px = optPrefix.value || '';
+      const sx = optSuffix.value || '';
+      const wrapKind = optWrap.value;
+      parts = parts.map(x => px + wrapItem(x, wrapKind) + sx);
+
+      // Build list string
+      return buildList(parts);
+    };
+
+    // List to Text transform
+    const listToText = (raw) => {
+      let s = normalizeNewlines(raw);
+      let lines = s.split(/\n/);
+      if (cleanBullets.checked){ lines = lines.map(stripBulletsFromLine); }
+      if (trimL2T.checked){ lines = lines.map(x => x.trim()); }
+      if (noEmptyL2T.checked){ lines = lines.filter(Boolean); }
+      if (uniqueL2T.checked){ lines = uniqItems(lines, uniqueCaseL2T.checked); }
+      lines = sortItems(lines, sortL2T.value);
+
+      // Wrap and affixes
+      const px = prefixL2T.value || '';
+      const sx = suffixL2T.value || '';
+      const wrapKind = wrapL2T.value;
+      lines = lines.map(x => px + wrapItem(x, wrapKind) + sx);
+
+      let j = joiner.value;
+      if (j === 'custom') j = joinerCustom.value.replace(/\\n/g, '\n');
+      return lines.join(j);
+    };
+
+    // Run according to mode
+    const run = () => {
+      const t = elIn.value || '';
+      let out = '';
+      if (currentMode === 't2l') out = textToList(t);
+      else out = listToText(t);
+      elOut.value = out;
+      updateStats();
+    };
+
+    // Mode switching
+    const setMode = (m) => {
+      currentMode = m;
+      const t2l = m === 't2l';
+      modeT2L.setAttribute('aria-pressed', String(t2l));
+      modeL2T.setAttribute('aria-pressed', String(!t2l));
+      optT2L.style.display = t2l ? '' : 'none';
+      optL2T.style.display = t2l ? 'none' : '';
+      run();
+    };
+
+    modeT2L.addEventListener('click', () => setMode('t2l'));
+    modeL2T.addEventListener('click', () => setMode('l2t'));
+    btnSwapToL2T.addEventListener('click', () => setMode('l2t'));
+    btnSwapToT2L.addEventListener('click', () => setMode('t2l'));
+
+    // Live preview
+    btnLive.setAttribute('aria-pressed', 'true');
+    btnLive.addEventListener('click', () => {
+      const now = btnLive.getAttribute('aria-pressed') === 'true';
+      btnLive.setAttribute('aria-pressed', String(!now));
+      showToast(!now ? 'Live preview on' : 'Live preview off');
+    });
+
+    let typingTimer = null;
+    elIn.addEventListener('input', () => {
+      if (typingTimer) clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        if (btnLive.getAttribute('aria-pressed') === 'true') run();
+        else {
+          const A = countStats(elIn.value || '');
+          inWords.textContent = `Words: ${A.words}`;
+          inChars.textContent = `Characters: ${A.chars}`;
+          inLines.textContent = `Lines: ${A.lines}`;
+          inItems.textContent = `Items: ${A.items}`;
+        }
+      }, 70);
+    });
+
+    // T2L interactive controls
+    splitKind.addEventListener('change', () => {
+      splitCustom.style.display = splitKind.value === 'custom' ? '' : 'none';
+      run();
+    });
+    splitCustom.addEventListener('input', run);
+    [bullet, startNo, cbMark, optTrim, optStripBullets, optStripPunct, optNoEmpty, optUnique, optUniqueCase, optSort, optWrap, optPrefix, optSuffix].forEach(el => el.addEventListener('change', run));
+    btnRunT2L.addEventListener('click', () => { run(); showToast('List created'); });
+    btnCopyList.addEventListener('click', async () => {
+      try{ await navigator.clipboard.writeText(elOut.value || ''); showToast('List copied'); }catch(_){ showToast('Copy blocked'); }
+    });
+
+    // L2T interactive controls
+    joiner.addEventListener('change', () => {
+      joinerCustom.style.display = joiner.value === 'custom' ? '' : 'none';
+      run();
+    });
+    joinerCustom.addEventListener('input', run);
+    [cleanBullets, trimL2T, noEmptyL2T, uniqueL2T, uniqueCaseL2T, sortL2T, wrapL2T, prefixL2T, suffixL2T].forEach(el => el.addEventListener('change', run));
+    btnRunL2T.addEventListener('click', () => { run(); showToast('Text created'); });
+    btnCopyText.addEventListener('click', async () => {
+      try{ await navigator.clipboard.writeText(elOut.value || ''); showToast('Text copied'); }
+      catch(_){ showToast('Copy blocked'); }
+    });
+
+    // Generic buttons
+    btnReset.addEventListener('click', () => {
+      elOut.value = elIn.value || '';
+      updateStats();
+      showToast('Output reset');
+    });
+
+    btnClear.addEventListener('click', () => {
+      elIn.value = '';
+      run();
+      elIn.focus();
+      showToast('Cleared');
+    });
+
+    btnApply.addEventListener('click', () => {
+      elIn.value = elOut.value || '';
+      elIn.focus();
+      run();
+      showToast('Applied to input');
+    });
+
+    btnPaste.addEventListener('click', async () => {
+      try{
+        if (navigator.clipboard?.readText){
+          const txt = await navigator.clipboard.readText();
+          elIn.value = txt;
+          run();
+          elIn.focus();
+          showToast('Pasted');
+        } else {
+          showToast('Clipboard unavailable');
+        }
+      }catch(_){ showToast('Clipboard blocked'); }
+    });
+
+    btnCopy.addEventListener('click', async () => {
+      try{
+        const text = elOut.value || '';
+        if (navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly','');
+          ta.style.position='absolute';
+          ta.style.left='-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        }
+        showToast('Copied result');
+      }catch(_){ showToast('Copy failed'); }
+    });
+
+    btnDownload.addEventListener('click', () => {
+      const bom = '\uFEFF';
+      const blob = new Blob([bom, elOut.value || ''], {type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const yyyy = new Date().toISOString().slice(0,10);
+      a.download = `sniptext-text-list-${yyyy}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast('.txt downloaded');
+    });
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (!e.ctrlKey && !e.metaKey) return;
+      const k = e.key.toLowerCase();
+      if (k === 'u'){ e.preventDefault();
+        try{ navigator.clipboard.writeText(elOut.value || ''); showToast('Copied result'); }
+        catch(_){ showToast('Copy failed'); }
+      }
+      if (k === 'r'){ e.preventDefault(); btnReset.click(); }
+      if (k === '1'){ e.preventDefault(); setMode('t2l'); }
+      if (k === '2'){ e.preventDefault(); setMode('l2t'); }
+    });
+
+    // Init
+    setMode('t2l');
+    run();
+    elIn.focus();
+  })();
+  </script>
+</body>
+</html>

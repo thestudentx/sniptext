@@ -2,42 +2,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <base href="/tools/">
 
+  <!-- Primary SEO -->
   <title>Emoji Replacer - Replace Words, Convert Emoticons, Remove Emojis | SnipText</title>
   <meta name="description" content="Replace words with emojis, convert emoticons to emojis, remove emojis, set skin tones and normalize variants. Free, fast, privacy-friendly." />
-  <meta name="keywords" content="emoji replacer, emoticon to emoji, emoji remover, emoji converter, skin tone, variation selector, VS16" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="keywords" content="emoji replacer, emoticon to emoji, emoji remover, emoji converter, skin tone, variation selector, VS16, custom emoji dictionary" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical and hreflang -->
   <link rel="canonical" href="https://checkai.pro/tools/emoji-replacer" />
   <link rel="alternate" href="https://checkai.pro/tools/emoji-replacer" hreflang="en" />
   <link rel="alternate" href="https://checkai.pro/tools/emoji-replacer" hreflang="x-default" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Emoji Replacer - Replace Words, Convert Emoticons, Remove Emojis" />
-  <meta property="og:description" content="Brand-safe replacements with custom dictionary & skin tones." />
-  <meta property="og:url" content="https://checkai.pro/tools/emoji-replacer" />
-  <meta property="og:image" content="https://checkai.pro/assets/images/tools/emoji-replacer-og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@SnipText" />
-  <meta name="twitter:title" content="Emoji Replacer - Replace Words, Convert Emoticons, Remove Emojis" />
-  <meta name="twitter:description" content="Convert or remove emojis with control over variants & tones." />
-  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/emoji-replacer-og.png" />
-
-  <meta name="theme-color" content="#1D4ED8" />
+  <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css" />
-  <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Emoji Replacer - Replace Words, Convert Emoticons, Remove Emojis" />
+  <meta property="og:description" content="Brand-safe replacements with custom dictionary and skin tones." />
+  <meta property="og:url" content="https://checkai.pro/tools/emoji-replacer" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter (no handles) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Emoji Replacer - Replace Words, Convert Emoticons, Remove Emojis" />
+  <meta name="twitter:description" content="Convert or remove emojis with control over variants and tones." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication",
-   "name":"SnipText Emoji Replacer","url":"https://checkai.pro/tools/emoji-replacer",
-   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
-   "featureList":["Replace words with emojis","Convert emoticons to emojis","Remove emojis","Skin tone settings","VS16 normalization","Custom dictionary & exclusions"]}
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Emoji Replacer",
+    "url":"https://checkai.pro/tools/emoji-replacer",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "featureList":[
+      "Replace words with emojis",
+      "Convert emoticons to emojis",
+      "Remove emojis",
+      "Skin tone settings",
+      "VS16 normalization",
+      "Custom dictionary and exclusions"
+    ],
+    "screenshot":"https://checkai.pro/images/sniptext-default-tools-img.png",
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
   </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is the Emoji Replacer private",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. It runs in your browser so your text is not uploaded."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can it convert emoticons like :) into emojis",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Common emoticons such as :) :( :D and <3 can be converted to their emoji equivalents."}
+      },
+      {
+        "@type":"Question",
+        "name":"How do I control which words map to which emojis",
+        "acceptedAnswer":{"@type":"Answer","text":"Use the custom dictionary to define word to emoji mappings and add exclusions to skip sensitive words."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I remove all emojis from text",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Switch to remove mode to strip emoji characters while keeping other text unchanged."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does it handle skin tones and variation selectors",
+        "acceptedAnswer":{"@type":"Answer","text":"You can set a default skin tone and normalize VS16 variation selectors for consistent display across platforms."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/free-tools.html"},
+      {"@type":"ListItem","position":3,"name":"Emoji Replacer","item":"https://checkai.pro/tools/emoji-replacer"}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: WebSite (Sitelinks Search) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"SnipText",
+    "url":"https://checkai.pro/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://checkai.pro/blog/search?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
   <!-- =========================
@@ -102,6 +209,10 @@
         linear-gradient(180deg, var(--emoji-replacer-bg) 0%, var(--emoji-replacer-bg-soft) 100%);
     }
 
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
+
+
     .emoji-replacer-card-head{
       background: linear-gradient(90deg,
         color-mix(in oklab, var(--emoji-replacer-accent) 8%, transparent),
@@ -123,20 +234,35 @@
 <style>
   *{ box-sizing:border-box; }
 
-  html, body{
-    height:100%;
-    margin:0;
-    background:
-      radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--emoji-replacer-accent) 24%, transparent), transparent 60%),
-      radial-gradient(900px 520px at 100% 0%,  color-mix(in oklab, var(--emoji-replacer-accent-2) 20%, transparent), transparent 55%),
-      /* subtle warm tie-in to CTA orange */
-      radial-gradient(880px 520px at 0% 100%, color-mix(in oklab, var(--gradient-cta-end) 10%, transparent), transparent 55%),
-      linear-gradient(180deg, var(--emoji-replacer-bg) 0%, var(--emoji-replacer-bg-soft) 100%);
-    color:var(--emoji-replacer-text);
-    font-family:var(--emoji-replacer-font-body);
-    -webkit-text-size-adjust:100%;
-    text-size-adjust:100%;
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--emoji-replacer-accent) 24%, transparent), transparent 60%),
+    radial-gradient(900px 520px at 100% 0%,  color-mix(in oklab, var(--emoji-replacer-accent-2) 20%, transparent), transparent 55%),
+    /* subtle warm tie-in to CTA orange */
+    radial-gradient(880px 520px at 0% 100%, color-mix(in oklab, var(--gradient-cta-end) 10%, transparent), transparent 55%),
+    linear-gradient(180deg, var(--emoji-replacer-bg) 0%, var(--emoji-replacer-bg-soft) 100%);
+
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: cover, cover, cover, cover;
+  background-attachment: fixed, fixed, fixed, fixed;
+
+  color: var(--emoji-replacer-text);
+  font-family: var(--emoji-replacer-font-body);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Mobile & Safari fix */
+@supports (height: 100svh) {
+  html, body {
+    min-height: 100svh;
   }
+}
+
 
   a{ color:inherit; text-decoration:none; }
   button{ font-family:var(--emoji-replacer-font-heading); }
@@ -574,6 +700,63 @@ rocket = 🚀"></textarea>
      <div class="emoji-replacer-guide">
     <p class="emoji-replacer-guide-p">See Emoji Replacer Guide on SnipText Blog Page <a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html" class="emoji-replacer-blog-link">here</a>.</p>
   </div>
+
+
+  
+
+  <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/symbol-character-info.html" aria-labelledby="t6">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t6" class="card-title">Symbol / Character Info</h3>
+      <p class="card-desc">Counts symbols and shows ASCII & Unicode code points and names for selected characters.</p>
+      <a class="card-cta" href="/tools/symbol-character-info.html" aria-label="Open Symbol/Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="svg-icon">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 id="t10" class="card-title">Random Text Generator</h3>
+        <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+        <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+  </section>
+
   </main>
 
   <!-- Toast -->
@@ -632,6 +815,7 @@ rocket = 🚀"></textarea>
        ========================= -->
 
        <script src="/js/index.js"></script>
+       <script src="/tools/js/free-tools.js"></script>
 
        <!-- FAQs script for SEO -->
         <script type="application/ld+json">

@@ -86,6 +86,10 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  color: cornflowerblue;
+}
+
 /* Loading Screen */
 .loading-screen {
   position: fixed;
@@ -367,6 +371,94 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px var(--shadow-medium);
 }
+
+/* toc section */
+/* ── Minimal horizontal TOC ───────────────────────────── */
+.article-toc{
+  max-width: var(--content-max-width);
+  margin: var(--spacing-lg) auto;
+  padding: .4rem .6rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+}
+
+.article-toc > strong{
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-right: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+/* one-line list */
+.article-toc ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  /* keep in one line + allow scroll on small screens */
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding: .3rem;
+  /* hide default list spacing */
+  margin-left: 0;
+}
+
+/* links as subtle pills */
+.article-toc a{
+  display: inline-block;
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: .45rem .8rem;
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+/* hover/focus for a “cool but quiet” feel */
+.article-toc a:hover{
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+.article-toc a:focus-visible{
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* active state (optional: set aria-current="true" on the current section link) */
+.article-toc a[aria-current="true"]{
+  color: var(--accent-primary);
+  border-color: color-mix(in hsl, var(--accent-primary) 40%, var(--border-color));
+  background: color-mix(in hsl, var(--accent-primary) 12%, var(--bg-secondary));
+  font-weight: 600;
+}
+
+/* small screens: keep it single-line scroll */
+@media (max-width: 640px){
+  .article-toc{
+    padding: .35rem .5rem;
+  }
+  .article-toc > strong{
+    display: none; /* optional: hides label to save space on mobile */
+  }
+}
+
+/* dark mode inherits your tokens; add subtle glow on hover */
+[data-theme="dark"] .article-toc a:hover{
+  border-color: color-mix(in hsl, var(--accent-primary) 35%, var(--border-color));
+}
+
 
 /* Featured Article */
 .featured-article {

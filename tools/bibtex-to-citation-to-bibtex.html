@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>BibTeX to Citation - Citation to BibTeX Converter | SnipText</title>
+  <meta name="description" content="Free BibTeX ↔ citation converter. Turn BibTeX into APA, MLA, or Chicago author–date, or build a BibTeX skeleton from plain citations. Handles multiple entries, DOI/URL preference, and title-case rules. Private and fast." />
+  <meta name="keywords" content="bibtex to citation, citation to bibtex, bibtex converter, apa citation, mla citation, chicago author date, format references, doi, url, bibliography, reference manager" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/bibtex-to-citation-to-bibtex" />
+  <link rel="alternate" href="https://checkai.pro/tools/bibtex-to-citation-to-bibtex" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/bibtex-to-citation-to-bibtex" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="BibTeX to Citation - Citation to BibTeX Converter" />
+  <meta property="og:description" content="Convert BibTeX to APA, MLA, or Chicago author–date, or build a BibTeX entry from a plain citation. Multiple entries, DOI/URL preference, and title-case rules." />
+  <meta property="og:url" content="https://checkai.pro/tools/bibtex-to-citation-to-bibtex" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText BibTeX ↔ Citation converter interface preview" />
+
+  <!-- Twitter (no handles) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BibTeX to Citation - Citation to BibTeX Converter" />
+  <meta name="twitter:description" content="Free, private, and instant reference formatting in your browser." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>📚</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText BibTeX ↔ Citation Converter",
+    "url":"https://checkai.pro/tools/bibtex-to-citation-to-bibtex",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "featureList":[
+      "BibTeX to APA",
+      "BibTeX to MLA",
+      "BibTeX to Chicago author–date",
+      "Plain citation to BibTeX skeleton",
+      "Batch conversion (multiple entries)",
+      "Prefer DOI or URL",
+      "Title-case rules",
+      "Copy & download"
+    ],
+    "screenshot":"https://checkai.pro/images/sniptext-default-tools-img.png",
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    },
+    "potentialAction":{
+      "@type":"UseAction",
+      "target":{"@type":"EntryPoint","urlTemplate":"https://checkai.pro/tools/bibtex-to-citation-to-bibtex"}
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is this converter private?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs in your browser; your references aren’t uploaded."}
+      },
+      {
+        "@type":"Question",
+        "name":"Which citation styles are supported?",
+        "acceptedAnswer":{"@type":"Answer","text":"APA-like, MLA-like, and Chicago author–date-like outputs for quick drafts. Always check final style guides for edge cases."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I convert many items at once?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Paste multiple BibTeX entries or several plain citations; the tool detects blocks and formats them in sequence."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does it guarantee perfect formatting?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. It’s best-effort for speed. Verify capitalization, special sources, and publisher requirements before submission."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/free-tools.html"},
+      {"@type":"ListItem","position":3,"name":"BibTeX ↔ Citation Converter","item":"https://checkai.pro/tools/bibtex-to-citation-to-bibtex"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite (Sitelinks Search) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"SnipText",
+    "url":"https://checkai.pro/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://checkai.pro/blog/search?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <style>
+  /* =========================
+     Brand tokens from site
+     ========================= */
+  :root {
+    --color-primary: #1D4ED8;
+    --color-accent: #3B82F6;
+    --color-bg-light: #F3F4F6;
+    --color-bg-dark: #0F172A;
+    --color-white: #ffffff;
+    --color-text-dark: #1F2937;
+    --color-text-light: #6B7280;
+    --color-border: #E5E7EB;
+    --color-used-often: #e85d27;
+    --color-footer-bg: #1d1f2f;
+
+    --gradient-hero-end: #23253d;
+    --gradient-cta-start: var(--color-accent);
+    --gradient-cta-end: #ff7c4c;
+
+    --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+    --font-body: 'Roboto', 'Arial', sans-serif;
+  }
+
+  /* =========================
+     Page scoped tokens
+     prefix: bibtex-cite
+     ========================= */
+  :root {
+    --bibtex-cite-bg: var(--color-bg-dark);
+    --bibtex-cite-bg-soft: #0b1225;
+    --bibtex-cite-surface: rgba(255,255,255,0.06);
+
+    --bibtex-cite-text: var(--color-white);
+    --bibtex-cite-text-muted: rgba(255,255,255,.78);
+    --bibtex-cite-border: rgba(255,255,255,.14);
+
+    --bibtex-cite-accent: var(--color-primary);
+    --bibtex-cite-accent-2: var(--color-accent);
+    --bibtex-cite-warm: var(--gradient-cta-end);
+
+    --bibtex-cite-radius-xl: 20px;
+    --bibtex-cite-radius-lg: 14px;
+    --bibtex-cite-radius-md: 10px;
+    --bibtex-cite-shadow-1: 0 10px 30px rgba(0,0,0,.35);
+    --bibtex-cite-shadow-2: 0 18px 48px rgba(17,24,39,.46);
+    --bibtex-cite-maxw: 1200px;
+
+    --bibtex-cite-font-heading: 'Poppins','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+    --bibtex-cite-font-body: 'Roboto','Poppins','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  }
+
+  body { margin:0; font-family: var(--bibtex-cite-font-body); background: var(--bibtex-cite-bg); color: var(--bibtex-cite-text); }
+
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
+
+
+  /* Background aurora under only this page content */
+  .bibtex-cite-page {
+    position: relative;
+    max-width: var(--bibtex-cite-maxw);
+    margin: clamp(16px,3vw,40px) auto;
+    padding: clamp(12px,2.5vw,24px);
+    isolation: isolate;
+  }
+  .bibtex-cite-page::before {
+    content:"";
+    position: fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--bibtex-cite-accent) 26%, transparent), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--bibtex-cite-accent-2) 22%, transparent), transparent 52%),
+      radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--bibtex-cite-warm) 12%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--bibtex-cite-bg) 0%, var(--bibtex-cite-bg-soft) 100%);
+  }
+
+  /* Hero */
+  .bibtex-cite-hero {
+    position:relative;
+    padding: clamp(18px,3vw,28px);
+    border:1px solid var(--bibtex-cite-border);
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--bibtex-cite-accent) 20%, transparent),
+      color-mix(in oklab, var(--bibtex-cite-accent-2) 18%, transparent)
+    ) border-box;
+    border-radius: var(--bibtex-cite-radius-xl);
+    box-shadow: var(--bibtex-cite-shadow-1);
+    overflow:hidden;
+  }
+  .bibtex-cite-hero::after{
+    content:""; position:absolute; inset:-3px; pointer-events:none; filter: blur(16px); opacity:.6;
+    background:
+      radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--bibtex-cite-accent) 28%, transparent), transparent 65%),
+      radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--bibtex-cite-accent-2) 26%, transparent), transparent 62%);
+  }
+  .bibtex-cite-hero-title {
+    margin:0 0 6px 0; font-weight:800; letter-spacing:.2px; line-height:1.12; font-family: var(--font-heading);
+    font-size: clamp(22px,3.2vw,36px);
+    background: linear-gradient(90deg, #fff, color-mix(in oklab, var(--bibtex-cite-accent) 54%, #fff) 38%, color-mix(in oklab, var(--bibtex-cite-warm) 40%, #fff) 78%, #fff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .bibtex-cite-hero-sub { margin:6px 0 0 0; color: var(--bibtex-cite-text-muted); font-size:clamp(14px,1.8vw,16px); }
+
+  /* Grid */
+  .bibtex-cite-grid { display:grid; grid-template-columns: 1fr; gap: clamp(12px,2.4vw,20px); margin-top: clamp(14px,2.6vw,24px); }
+  @media (min-width: 980px){ .bibtex-cite-grid{ grid-template-columns: 1fr 1fr; } }
+
+  /* Card */
+  .bibtex-cite-card {
+    border:1px solid var(--bibtex-cite-border);
+    border-radius: var(--bibtex-cite-radius-lg);
+    background: var(--bibtex-cite-surface);
+    box-shadow: var(--bibtex-cite-shadow-2);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    overflow:hidden;
+  }
+  .bibtex-cite-card-head {
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding: 12px 14px; border-bottom:1px solid var(--bibtex-cite-border);
+    background: linear-gradient(90deg,
+      color-mix(in oklab, var(--bibtex-cite-accent) 11%, transparent),
+      color-mix(in oklab, var(--bibtex-cite-accent-2) 9%, transparent)
+    );
+  }
+  .bibtex-cite-card-title { margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.92; font-family: var(--font-heading); }
+
+  .bibtex-cite-textarea {
+    width:100%; min-height: 260px; resize: vertical; border:0; outline:0; background: transparent;
+    color: var(--bibtex-cite-text); padding: 16px; font: 500 15px/1.55 var(--bibtex-cite-font-body); caret-color: var(--bibtex-cite-accent); letter-spacing:.2px;
+  }
+  .bibtex-cite-textarea::placeholder { color: color-mix(in oklab, var(--bibtex-cite-text-muted) 80%, transparent); }
+
+  .bibtex-cite-stats { display:flex; gap:10px; flex-wrap:wrap; padding: 10px 14px; border-top:1px solid var(--bibtex-cite-border); color:var(--bibtex-cite-text-muted); font-size:12px; background: linear-gradient(90deg, rgba(255,255,255,.03), transparent); }
+  .bibtex-cite-chip { padding:6px 8px; border:1px solid var(--bibtex-cite-border); border-radius:999px; background: color-mix(in oklab, var(--color-bg-dark) 72%, transparent); backdrop-filter: blur(6px); }
+
+  /* Toolbar, buttons, switches */
+  .bibtex-cite-toolbar { display:flex; flex-wrap:wrap; gap:8px; padding: 12px 14px; border-top:1px solid var(--bibtex-cite-border);
+    background: linear-gradient(90deg, color-mix(in oklab, var(--bibtex-cite-accent-2) 10%, transparent), color-mix(in oklab, var(--bibtex-cite-accent) 11%, transparent)); }
+  .bibtex-cite-row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .bibtex-cite-spacer { flex:1 1 auto; }
+
+  .bibtex-cite-btn {
+    --_bg: linear-gradient(180deg, color-mix(in oklab, var(--bibtex-cite-accent) 70%, transparent), color-mix(in oklab, var(--bibtex-cite-accent-2) 62%, transparent));
+    --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--bibtex-cite-accent));
+    appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+    padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer; position:relative;
+    transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+    box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+    font-family: var(--font-heading);
+  }
+  .bibtex-cite-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+  .bibtex-cite-btn:active { transform: translateY(0); filter: brightness(.98); }
+  .bibtex-cite-btn[aria-pressed="true"]{ outline:2px solid color-mix(in oklab, var(--bibtex-cite-accent) 40%, var(--bibtex-cite-accent-2)); outline-offset:2px; }
+  .bibtex-cite-btn-outline { background: transparent; color: var(--bibtex-cite-text); border:1px solid var(--bibtex-cite-border); box-shadow:none; }
+  .bibtex-cite-btn-ghost { background: transparent; color: var(--bibtex-cite-text-muted); border:1px dashed var(--bibtex-cite-border); box-shadow:none; font-weight:600; }
+
+  .bibtex-cite-seg { display:inline-flex; border:1px solid var(--bibtex-cite-border); border-radius: 12px; overflow:hidden; }
+  .bibtex-cite-seg button { border:0; background: transparent; color: var(--bibtex-cite-text); padding:10px 14px; cursor:pointer; font-weight:700; font-size:13px; letter-spacing:.3px; }
+  .bibtex-cite-seg button[aria-pressed="true"]{ background: linear-gradient(180deg, color-mix(in oklab, var(--bibtex-cite-accent) 68%, transparent), color-mix(in oklab, var(--bibtex-cite-accent-2) 60%, transparent)); color:#fff; }
+
+  .bibtex-cite-options { display:grid; grid-template-columns: 1fr; gap:12px; padding: 12px 14px; }
+  .bibtex-cite-field { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .bibtex-cite-field label { font-size:13px; color: var(--bibtex-cite-text-muted); }
+
+  .bibtex-cite-input, .bibtex-cite-select {
+    background:#0f1b34; color:#e5e7eb; border:1px solid var(--bibtex-cite-border);
+    border-radius:10px; padding:8px 10px; outline:none; min-height:36px;
+  }
+  .bibtex-cite-select { background:#0e1730; }
+  .bibtex-cite-input::placeholder { color:#94a3b8; }
+
+  .bibtex-cite-switch { position:relative; display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none; }
+  .bibtex-cite-switch input { appearance:none; width:40px; height:22px; background:#0f1b34; border:1px solid var(--bibtex-cite-border); border-radius:999px; outline:0; transition: background .2s ease; }
+  .bibtex-cite-switch input:checked { background: linear-gradient(90deg, var(--bibtex-cite-accent), var(--bibtex-cite-accent-2)); border-color: transparent; }
+  .bibtex-cite-switch input::after { content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; transition: transform .2s ease; box-shadow: 0 3px 10px rgba(0,0,0,.25); }
+  .bibtex-cite-switch input:checked::after { transform: translateX(18px); }
+
+  .bibtex-cite-toast { position: fixed; inset: auto 16px 16px auto; background:#0b1223ee; color:#e5e7eb; padding:10px 14px; border-radius:12px; border:1px solid var(--bibtex-cite-border); backdrop-filter: blur(8px); box-shadow: var(--bibtex-cite-shadow-1); transform: translateY(20px); opacity:0; pointer-events:none; transition: transform .25s ease, opacity .25s ease; z-index: 50; }
+  .bibtex-cite-toast.bibtex-cite-show { transform: translateY(0); opacity:1; }
+
+  /* Subtle float animation */
+  @media (prefers-reduced-motion: no-preference){
+    .bibtex-cite-card { animation: bibtex-cite-float 18s ease-in-out infinite; }
+    @keyframes bibtex-cite-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+  }
+
+  /* Helper link */
+  .bibtex-cite-guide { width:100%; text-align:center; font-size:12px; color:#a3aed0; margin-top:8px; }
+  .bibtex-cite-blog-link { color: var(--bibtex-cite-accent-2); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Do not style global nav or footer -->
+  <nav id="main-navbar">
+    <div class="nav-container">
+      <div class="logo"><a href="/index.html">Snip Text</a></div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tools/free-tools.html">Free Tools</a></li>
+        <li><a href="/features.html">Features</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/blog/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+        <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="bibtex-cite-page" aria-label="BibTeX to Citation - Citation to BibTeX Converter">
+    <!-- Hero -->
+    <section class="bibtex-cite-hero">
+      <h1 class="bibtex-cite-hero-title">BibTeX to Citation - Citation to BibTeX Converter</h1>
+      <p class="bibtex-cite-hero-sub">Convert BibTeX to APA, MLA, or Chicago author date. Or turn a plain citation into a BibTeX skeleton. Multiple entries, title rules, DOI or URL. Private and fast.</p>
+    </section>
+
+    <!-- IO -->
+    <section class="bibtex-cite-grid">
+      <!-- Input -->
+      <article class="bibtex-cite-card">
+        <header class="bibtex-cite-card-head">
+          <h2 class="bibtex-cite-card-title">Input</h2>
+          <div class="bibtex-cite-row">
+            <button class="bibtex-cite-btn bibtex-cite-btn-outline" id="bibtex-cite-paste" type="button" title="Paste">Paste</button>
+            <button class="bibtex-cite-btn bibtex-cite-btn-ghost" id="bibtex-cite-clear" type="button" title="Clear">Clear</button>
+          </div>
+        </header>
+        <textarea class="bibtex-cite-textarea" id="bibtex-cite-input" placeholder="Paste BibTeX entries or plain citations here..."></textarea>
+        <div class="bibtex-cite-stats" aria-live="polite">
+          <span class="bibtex-cite-chip" id="bibtex-cite-in-entries">Entries: 0</span>
+          <span class="bibtex-cite-chip" id="bibtex-cite-in-chars">Characters: 0</span>
+          <span class="bibtex-cite-chip" id="bibtex-cite-in-lines">Lines: 0</span>
+        </div>
+      </article>
+
+      <!-- Output -->
+      <article class="bibtex-cite-card">
+        <header class="bibtex-cite-card-head">
+          <h2 class="bibtex-cite-card-title">Output</h2>
+          <div class="bibtex-cite-row">
+            <button class="bibtex-cite-btn" id="bibtex-cite-copy" type="button" title="Copy result">Copy</button>
+            <button class="bibtex-cite-btn bibtex-cite-btn-outline" id="bibtex-cite-download" type="button" title="Download .txt">Download</button>
+            <button class="bibtex-cite-btn bibtex-cite-btn-ghost" id="bibtex-cite-apply" type="button" title="Replace input with output">Apply to Input</button>
+          </div>
+        </header>
+        <textarea class="bibtex-cite-textarea" id="bibtex-cite-output" placeholder="Your result appears here..." readonly></textarea>
+        <div class="bibtex-cite-stats">
+          <span class="bibtex-cite-chip" id="bibtex-cite-out-entries">Entries: 0</span>
+          <span class="bibtex-cite-chip" id="bibtex-cite-out-chars">Characters: 0</span>
+          <span class="bibtex-cite-chip" id="bibtex-cite-out-lines">Lines: 0</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Controls -->
+    <section class="bibtex-cite-card" style="margin-top: clamp(12px,2vw,18px);">
+      <header class="bibtex-cite-card-head">
+        <h2 class="bibtex-cite-card-title">Transform</h2>
+        <div class="bibtex-cite-row">
+          <div class="bibtex-cite-seg" role="tablist" aria-label="Mode">
+            <button id="bibtex-cite-mode-b2c" type="button" role="tab" aria-pressed="true">BibTeX to Citation</button>
+            <button id="bibtex-cite-mode-c2b" type="button" role="tab" aria-pressed="false">Citation to BibTeX</button>
+          </div>
+          <span class="bibtex-cite-spacer"></span>
+          <button class="bibtex-cite-btn bibtex-cite-btn-outline" id="bibtex-cite-live" type="button" aria-pressed="true" title="Update output as you type">Live Preview</button>
+          <button class="bibtex-cite-btn bibtex-cite-btn-ghost" id="bibtex-cite-reset" type="button" title="Reset output to original input">Reset</button>
+        </div>
+      </header>
+
+      <!-- Options for BibTeX to Citation -->
+      <div class="bibtex-cite-options" id="bibtex-cite-opt-b2c">
+        <div class="bibtex-cite-field" role="group" aria-label="Style">
+          <label>Style:</label>
+          <select id="bibtex-cite-style" class="bibtex-cite-select" title="Citation style">
+            <option value="apa">APA like</option>
+            <option value="mla">MLA like</option>
+            <option value="chicago">Chicago author date like</option>
+          </select>
+          <label class="bibtex-cite-switch" title="Shorten author list with et al">
+            <input id="bibtex-cite-etal" type="checkbox" />
+            <span>Use et al</span>
+          </label>
+          <input id="bibtex-cite-etal-thresh" class="bibtex-cite-input" type="number" min="2" value="3" title="Et al threshold" style="width:90px;" />
+        </div>
+
+        <div class="bibtex-cite-field" role="group" aria-label="Title case and author format">
+          <label>Title case:</label>
+          <select id="bibtex-cite-titlecase" class="bibtex-cite-select">
+            <option value="auto">Auto by style</option>
+            <option value="sentence">Sentence case</option>
+            <option value="title">Title Case</option>
+            <option value="keep">Keep</option>
+          </select>
+          <label class="bibtex-cite-switch" title="Use initials for given names">
+            <input id="bibtex-cite-initials" type="checkbox" checked />
+            <span>Initials</span>
+          </label>
+        </div>
+
+        <div class="bibtex-cite-field" role="group" aria-label="Links">
+          <label class="bibtex-cite-switch" title="Include DOI or URL at end">
+            <input id="bibtex-cite-include-links" type="checkbox" checked />
+            <span>Include DOI or URL</span>
+          </label>
+          <label class="bibtex-cite-switch" title="Prefer DOI when both are present">
+            <input id="bibtex-cite-prefer-doi" type="checkbox" checked />
+            <span>Prefer DOI</span>
+          </label>
+          <label class="bibtex-cite-switch" title="For MLA add Accessed today">
+            <input id="bibtex-cite-access-date" type="checkbox" />
+            <span>Add access date</span>
+          </label>
+        </div>
+
+        <div class="bibtex-cite-field" role="group" aria-label="Output layout">
+          <label>Combine:</label>
+          <select id="bibtex-cite-join" class="bibtex-cite-select">
+            <option value="newline">One per line</option>
+            <option value="blank">Blank line</option>
+            <option value="numbered">Numbered list</option>
+          </select>
+        </div>
+
+        <div class="bibtex-cite-toolbar" role="group" aria-label="Actions for BibTeX to Citation">
+          <button class="bibtex-cite-btn" id="bibtex-cite-run-b2c" type="button">Make Citations</button>
+          <button class="bibtex-cite-btn bibtex-cite-btn-outline" id="bibtex-cite-copy-cites" type="button">Copy Citations</button>
+          <span class="bibtex-cite-spacer"></span>
+          <button class="bibtex-cite-btn bibtex-cite-btn-ghost" id="bibtex-cite-swap-c2b" type="button">Switch to Citation to BibTeX</button>
+        </div>
+      </div>
+
+      <!-- Options for Citation to BibTeX -->
+      <div class="bibtex-cite-options" id="bibtex-cite-opt-c2b" style="display:none;">
+        <div class="bibtex-cite-field" role="group" aria-label="Detection and defaults">
+          <label>Entry type:</label>
+          <select id="bibtex-cite-default-type" class="bibtex-cite-select">
+            <option value="article">@article</option>
+            <option value="inproceedings">@inproceedings</option>
+            <option value="book">@book</option>
+            <option value="misc" selected>@misc</option>
+          </select>
+          <label class="bibtex-cite-switch" title="Try to detect DOI and URL">
+            <input id="bibtex-cite-detect-links" type="checkbox" checked />
+            <span>Detect links</span>
+          </label>
+          <label class="bibtex-cite-switch" title="Split many citations on newlines">
+            <input id="bibtex-cite-many-cites" type="checkbox" />
+            <span>Multiple citations</span>
+          </label>
+        </div>
+
+        <div class="bibtex-cite-field" role="group" aria-label="Key style">
+          <label>BibTeX key:</label>
+          <select id="bibtex-cite-key-style" class="bibtex-cite-select">
+            <option value="authyear">authorYearTitle</option>
+            <option value="authetalyear">authorEtAlYear</option>
+            <option value="slugyear">slugYear</option>
+          </select>
+        </div>
+
+        <div class="bibtex-cite-toolbar" role="group" aria-label="Actions for Citation to BibTeX">
+          <button class="bibtex-cite-btn" id="bibtex-cite-run-c2b" type="button">Make BibTeX</button>
+          <button class="bibtex-cite-btn bibtex-cite-btn-outline" id="bibtex-cite-copy-bib" type="button">Copy BibTeX</button>
+          <span class="bibtex-cite-spacer"></span>
+          <button class="bibtex-cite-btn bibtex-cite-btn-ghost" id="bibtex-cite-swap-b2c" type="button">Switch to BibTeX to Citation</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="bibtex-cite-guide">
+      <p>Need examples and tips? Read the quick guide on the SnipText Blog <a href="/blog/bibtex-to-citation-converter-apa-mla-chicago-ieee-harvard-sniptext-blog.html" class="bibtex-cite-blog-link">here</a>.</p>
+    </div>
+
+
+    
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-labelledby="t11">
+        <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+        </div>
+        <h3 id="t11" class="card-title">Math Formula Tool</h3>
+        <p class="card-desc">Easily create, edit, and format mathematical equations online for documents, blogs, and educational use.</p>
+        <a class="card-cta" href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-label="Open Math Formula Tool">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
+      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
+      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
+    </article>
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+  </section>
+
+
+  </main>
+
+
+
+
+  <div class="bibtex-cite-toast" id="bibtex-cite-toast" role="status" aria-live="polite"></div>
+
+  <footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+    <div class="footer-bg" aria-hidden="true"></div>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+        <p>Empowering better writing, one tool at a time.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html#contact">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </nav>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Snip Text · All rights reserved.</p>
+      </div>
+    </div>
+    <button class="to-top" id="to-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </footer>
+
+  <!-- Optional site scripts -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+
+  <script src="/tools/js/free-tools.js"></script>
+
+  <script>
+  (function(){
+    'use strict';
+
+    // Elements
+    const $ = (id) => document.getElementById(id);
+    const elIn = $('bibtex-cite-input');
+    const elOut = $('bibtex-cite-output');
+    const toast = $('bibtex-cite-toast');
+
+    const inEntries = $('bibtex-cite-in-entries');
+    const inChars = $('bibtex-cite-in-chars');
+    const inLines = $('bibtex-cite-in-lines');
+    const outEntries = $('bibtex-cite-out-entries');
+    const outChars = $('bibtex-cite-out-chars');
+    const outLines = $('bibtex-cite-out-lines');
+
+    const btnPaste = $('bibtex-cite-paste');
+    const btnClear = $('bibtex-cite-clear');
+    const btnCopy = $('bibtex-cite-copy');
+    const btnDownload = $('bibtex-cite-download');
+    const btnApply = $('bibtex-cite-apply');
+    const btnReset = $('bibtex-cite-reset');
+    const btnLive = $('bibtex-cite-live');
+
+    const modeB2C = $('bibtex-cite-mode-b2c');
+    const modeC2B = $('bibtex-cite-mode-c2b');
+    const optB2C = $('bibtex-cite-opt-b2c');
+    const optC2B = $('bibtex-cite-opt-c2b');
+
+    // B2C options
+    const styleSel = $('bibtex-cite-style');
+    const useEtAl = $('bibtex-cite-etal');
+    const etalThresh = $('bibtex-cite-etal-thresh');
+    const titleCaseSel = $('bibtex-cite-titlecase');
+    const useInitials = $('bibtex-cite-initials');
+    const includeLinks = $('bibtex-cite-include-links');
+    const preferDOI = $('bibtex-cite-prefer-doi');
+    const accessDate = $('bibtex-cite-access-date');
+    const joinSel = $('bibtex-cite-join');
+    const runB2C = $('bibtex-cite-run-b2c');
+    const copyCites = $('bibtex-cite-copy-cites');
+    const swapC2B = $('bibtex-cite-swap-c2b');
+
+    // C2B options
+    const defType = $('bibtex-cite-default-type');
+    const detectLinks = $('bibtex-cite-detect-links');
+    const manyCites = $('bibtex-cite-many-cites');
+    const keyStyle = $('bibtex-cite-key-style');
+    const runC2B = $('bibtex-cite-run-c2b');
+    const copyBib = $('bibtex-cite-copy-bib');
+    const swapB2C = $('bibtex-cite-swap-b2c');
+
+    // State
+    let currentMode = 'b2c';
+
+    // Utils
+    const showToast = (msg) => {
+      toast.textContent = msg;
+      toast.classList.add('bibtex-cite-show');
+      setTimeout(()=> toast.classList.remove('bibtex-cite-show'), 1400);
+    };
+
+    const countStats = (t) => {
+      const chars = Array.from(t).length;
+      const lines = t.length ? (t.match(/\r\n|\r|\n/g)?.length || 0) + 1 : 0;
+      const entries = currentMode === 'b2c' ? splitBibEntries(t).length : splitCitations(t).length;
+      return {chars, lines, entries};
+    };
+
+    const updateStats = () => {
+      const A = countStats(elIn.value || '');
+      const B = {chars: Array.from(elOut.value||'').length, lines: (elOut.value||'').split(/\r\n|\r|\n/).filter(()=>true).length, entries: (elOut.value||'').trim() ? (elOut.value.match(/\n{2,}/) ? (elOut.value.split(/\n{2,}/).length) : (elOut.value.split(/\n/).length)) : 0};
+      inEntries.textContent = `Entries: ${A.entries}`;
+      inChars.textContent = `Characters: ${A.chars}`;
+      inLines.textContent = `Lines: ${A.lines}`;
+      outEntries.textContent = `Entries: ${B.entries}`;
+      outChars.textContent = `Characters: ${B.chars}`;
+      outLines.textContent = `Lines: ${B.lines}`;
+    };
+
+    const normNL = (s) => s.replace(/\r\n?|\u2028|\u2029/g, '\n');
+
+    // ------------- BibTeX parsing -------------
+    function splitBibEntries(src){
+      const s = normNL(src).trim();
+      if (!s) return [];
+      const out = [];
+      let i = 0;
+      while (i < s.length){
+        const at = s.indexOf('@', i);
+        if (at === -1) break;
+        // find the first { or ( after type
+        let j = at + 1;
+        while (j < s.length && /[A-Za-z]/.test(s[j])) j++;
+        while (j < s.length && /\s/.test(s[j])) j++;
+        if (j >= s.length || (s[j] !== '{' && s[j] !== '(')) { i = at + 1; continue; }
+        const open = s[j];
+        const close = open === '{' ? '}' : ')';
+        let depth = 0;
+        let k = j;
+        for (; k < s.length; k++){
+          const ch = s[k];
+          if (ch === open) depth++;
+          else if (ch === close){
+            depth--;
+            if (depth === 0){ k++; break; }
+          }
+          else if (ch === '"'){ // skip quoted strings safely
+            k++;
+            while (k < s.length && s[k] !== '"'){
+              if (s[k] === '\\') k++;
+              k++;
+            }
+          }
+          else if (ch === '\''){ // rare
+            k++;
+            while (k < s.length && s[k] !== '\''){
+              if (s[k] === '\\') k++;
+              k++;
+            }
+          }
+        }
+        const entry = s.slice(at, k).trim();
+        out.push(entry);
+        i = k;
+      }
+      return out;
+    }
+
+    function parseBibtex(entry){
+      // returns {type,key,fields:{k:v}}
+      const m = entry.match(/^@(\w+)\s*[\(\{]\s*([^,]+)\s*,([\s\S]*?)[\)\}]\s*$/);
+      if (!m) return null;
+      const type = m[1].toLowerCase();
+      const key = m[2].trim();
+      const body = m[3];
+
+      // split by commas not inside braces or quotes
+      const pairs = [];
+      let cur = ''; let depth = 0; let inStr = false; let quote = '';
+      for (let i=0;i<body.length;i++){
+        const ch = body[i];
+        if (inStr){
+          cur += ch;
+          if (ch === quote && body[i-1] !== '\\'){ inStr = false; quote = ''; }
+          continue;
+        }
+        if (ch === '"' || ch === '\''){ inStr = true; quote = ch; cur += ch; continue; }
+        if (ch === '{'){ depth++; cur += ch; continue; }
+        if (ch === '}'){ depth = Math.max(0, depth-1); cur += ch; continue; }
+        if (ch === ',' && depth === 0){
+          if (cur.trim()) pairs.push(cur.trim());
+          cur = '';
+        } else {
+          cur += ch;
+        }
+      }
+      if (cur.trim()) pairs.push(cur.trim());
+
+      const fields = {};
+      for (const p of pairs){
+        const ix = p.indexOf('=');
+        if (ix === -1) continue;
+        const k = p.slice(0,ix).trim().toLowerCase();
+        let v = p.slice(ix+1).trim();
+        // remove wrapping braces or quotes
+        v = v.replace(/^\{([\s\S]*)\}$/,'$1').replace(/^\"([\s\S]*)\"$/,'$1').trim();
+        fields[k] = v;
+      }
+      return {type, key, fields};
+    }
+
+    // ------------- Citation formatting helpers -------------
+    const smallWords = new Set(['a','an','the','and','but','or','nor','as','at','by','for','in','of','on','per','to','vs','via','with','without','over','into','onto','from','up','down']);
+
+    function sentenceCaseTitle(s){
+      if (!s) return '';
+      const lower = s.toLocaleLowerCase();
+      return lower.replace(/(^\s*|[.!?]\s+)(["'([{«“‘]*)([a-z])/g,
+        (_,start,lead,chr)=> start+lead+chr.toLocaleUpperCase());
+    }
+
+    function titleCaseTitle(s){
+      if (!s) return '';
+      const tokens = s.split(/(\s+)/);
+      let seenWord = 0;
+      for (let i=0;i<tokens.length;i++){
+        const t = tokens[i];
+        if (/^\s+$/.test(t)) continue;
+        const lead = t.match(/^[("'[{«“‘]+/)?.[0] || '';
+        const trail = t.match(/[)"'\]}»”’.,:;!?]+$/)?.[0] || '';
+        const core = t.slice(lead.length, t.length - trail.length);
+        const isWord = /[A-Za-z]/.test(core);
+        if (!isWord){ tokens[i] = t; continue; }
+        const lower = core.toLocaleLowerCase();
+        const isFirst = seenWord === 0;
+        // check rest non-space to know last
+        const isLast = tokens.slice(i+1).every(x=>/^\s+$/.test(x));
+        const shouldCap = isFirst || isLast || !smallWords.has(lower);
+        const out = shouldCap ? lower.replace(/^./, c=>c.toLocaleUpperCase()) : lower;
+        tokens[i] = lead + out + trail;
+        seenWord++;
+      }
+      return tokens.join('');
+    }
+
+    function chooseTitle(s, style, rule){
+      if (rule === 'keep') return s || '';
+      if (rule === 'sentence') return sentenceCaseTitle(s||'');
+      if (rule === 'title') return titleCaseTitle(s||'');
+      // auto by style
+      if (style === 'apa' || style === 'chicago') return sentenceCaseTitle(s||'');
+      if (style === 'mla') return titleCaseTitle(s||'');
+      return sentenceCaseTitle(s||'');
+    }
+
+    function cleanPages(p){
+      if (!p) return '';
+      return p.replace(/\s+/g,'').replace(/--/g,'-');
+    }
+
+    function formatDOIorURL(obj){
+      if (!includeLinks.checked) return '';
+      const doi = obj.fields.doi && obj.fields.doi.trim();
+      const url = obj.fields.url && obj.fields.url.trim();
+      if (preferDOI.checked && doi) return ` https://doi.org/${doi.replace(/^https?:\/\/(dx\.)?doi\.org\//,'')}`;
+      if (doi) return ` https://doi.org/${doi.replace(/^https?:\/\/(dx\.)?doi\.org\//,'')}`;
+      if (url) return ` ${url}`;
+      return '';
+    }
+
+    function parseAuthors(str){
+      if (!str) return [];
+      // split on ' and ' outside braces
+      const parts = [];
+      let cur=''; let depth=0;
+      for (let i=0;i<str.length;i++){
+        const ch = str[i];
+        if (ch === '{') depth++;
+        else if (ch === '}') depth = Math.max(0, depth-1);
+        if (depth===0 && str.slice(i,i+5).toLowerCase()===' and '){
+          parts.push(cur.trim()); cur=''; i+=4; continue;
+        }
+        cur += ch;
+      }
+      if (cur.trim()) parts.push(cur.trim());
+      return parts.map(name=>{
+        name = name.replace(/[\{\}]/g,'').trim();
+        if (name.includes(',')){
+          const [last, rest] = name.split(',').map(s=>s.trim());
+          return {first: rest || '', last};
+        } else {
+          const bits = name.split(/\s+/);
+          if (bits.length===1) return {first:'', last: bits[0]};
+          const last = bits.pop();
+          const first = bits.join(' ');
+          return {first, last};
+        }
+      });
+    }
+
+    function initialsOf(given){
+      if (!given) return '';
+      return given.split(/\s+/).filter(Boolean).map(w=>{
+        const c = w[0];
+        return /[A-Za-z]/.test(c) ? c.toUpperCase()+'.' : '';
+      }).join(' ');
+    }
+
+    function joinAuthorsAPA(list){
+      const n = list.length;
+      const thr = Math.max(2, parseInt(etalThresh.value || '3',10));
+      if (useEtAl.checked && n >= thr){
+        const a0 = list[0];
+        const first = useInitials.checked ? initialsOf(a0.first) : a0.first;
+        return `${a0.last}, ${useInitials.checked ? first : first} et al.`;
+      }
+      const mapped = list.map(a=>{
+        const given = useInitials.checked ? initialsOf(a.first) : a.first;
+        return `${a.last}, ${given}`;
+      });
+      if (n===1) return mapped[0];
+      if (n===2) return `${mapped[0]} & ${mapped[1]}`;
+      return mapped.slice(0,-1).join(', ') + ', & ' + mapped[n-1];
+    }
+
+    function joinAuthorsMLA(list){
+      const n = list.length;
+      if (n===0) return '';
+      if (n===1){
+        const a = list[0];
+        return `${a.last}, ${a.first}`;
+      }
+      if (useEtAl.checked && n >= Math.max(2, parseInt(etalThresh.value||'3',10))){
+        const a = list[0];
+        return `${a.last}, ${a.first}, et al.`;
+      }
+      const first = `${list[0].last}, ${list[0].first}`;
+      const others = list.slice(1).map(a=>`${a.first} ${a.last}`);
+      if (others.length===1) return `${first} and ${others[0]}`;
+      return `${first}, and ${others[0]}`;
+    }
+
+    function joinAuthorsChicago(list){
+      // similar to APA but no ampersand in author date text refs
+      const n = list.length;
+      const thr = Math.max(2, parseInt(etalThresh.value || '3',10));
+      if (useEtAl.checked && n >= thr){
+        const a0 = list[0];
+        const given = useInitials.checked ? initialsOf(a0.first) : a0.first;
+        return `${a0.last}, ${given}, et al.`;
+      }
+      const mapped = list.map(a=>{
+        const given = useInitials.checked ? initialsOf(a.first) : a.first;
+        return `${a.last}, ${given}`;
+      });
+      if (n===1) return mapped[0];
+      if (n===2) return `${mapped[0]} and ${mapped[1]}`;
+      return mapped.slice(0,-1).join(', ') + ', and ' + mapped[n-1];
+    }
+
+    function formatYear(fields, style){
+      const y = fields.year && fields.year.toString().trim();
+      if (!y) return style==='mla' ? 'n.d.' : '(n.d.)';
+      if (style==='mla') return y;
+      return `(${y})`;
+    }
+
+    // ------------- Format by type -------------
+    function formatCitation(obj, style){
+      const f = obj.fields;
+      const authors = parseAuthors(f.author || '');
+      const title = chooseTitle(f.title || '', style, titleCaseSel.value);
+      const yearStr = formatYear(f, style);
+      const vol = f.volume ? f.volume.trim() : '';
+      const no = f.number ? f.number.trim() : '';
+      const pages = cleanPages(f.pages || '');
+      const journal = f.journal || f.booktitle || '';
+      const publisher = f.publisher || '';
+      const place = f.address || '';
+      const doiOrUrl = formatDOIorURL(obj);
+      const month = f.month || '';
+      const isArticle = obj.type === 'article';
+      const isInproc = obj.type === 'inproceedings' || obj.type === 'incollection';
+      const isBook = obj.type === 'book';
+      const isThesis = obj.type === 'phdthesis' || obj.type === 'mastersthesis';
+
+      if (style === 'apa'){
+        const a = joinAuthorsAPA(authors);
+        if (isArticle){
+          const volNo = vol ? (no ? `${vol}(${no})` : vol) : '';
+          const pg = pages ? `, ${pages}` : '';
+          return `${a}. ${yearStr}. ${title}. ${journal}${volNo ? ', ' + volNo : ''}${pg}.${doiOrUrl}`;
+        } else if (isInproc){
+          const pg = pages ? `, ${pages}` : '';
+          return `${a}. ${yearStr}. ${title}. In ${journal}${pg}. ${publisher ? publisher + '.' : ''}${doiOrUrl}`;
+        } else if (isBook){
+          const loc = place ? `${place}: ` : '';
+          return `${a}. ${yearStr}. ${title}. ${loc}${publisher}.${doiOrUrl}`;
+        } else if (isThesis){
+          const kind = obj.type === 'phdthesis' ? 'PhD thesis' : 'Master thesis';
+          return `${a}. ${yearStr}. ${title}. ${kind}, ${publisher || journal || place}.${doiOrUrl}`;
+        }
+        // misc
+        return `${a}. ${yearStr}. ${title}.${journal ? ' ' + journal + '.' : ''}${doiOrUrl}`;
+      }
+
+      if (style === 'mla'){
+        const a = joinAuthorsMLA(authors);
+        if (isArticle){
+          const volPart = vol ? `, vol. ${vol}` : '';
+          const noPart = no ? `, no. ${no}` : '';
+          const yr = yearStr;
+          const pg = pages ? `, pp. ${pages}` : '';
+          const acc = accessDate.checked && includeLinks.checked && (f.url || f.doi) ? ` Accessed ${new Date().toISOString().slice(0,10)}.` : '';
+          return `${a}. "${title}." ${journal}${volPart}${noPart}, ${yr}${pg}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}${acc}`;
+        } else if (isInproc){
+          const pg = pages ? `, pp. ${pages}` : '';
+          return `${a}. "${title}." ${journal}${pg}. ${publisher ? publisher + ', ' : ''}${yearStr}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+        } else if (isBook){
+          const loc = place ? `${place}: ` : '';
+          return `${a}. ${title}. ${loc}${publisher}, ${yearStr}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+        } else if (isThesis){
+          const kind = obj.type === 'phdthesis' ? 'PhD thesis' : 'Master thesis';
+          return `${a}. "${title}." ${kind}, ${publisher || journal || place}, ${yearStr}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+        }
+        return `${a}. "${title}." ${journal ? journal + '. ' : ''}${yearStr}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+      }
+
+      // chicago author date like
+      const a = joinAuthorsChicago(authors);
+      if (isArticle){
+        const volNo = vol ? (no ? `${vol}, no. ${no}` : `${vol}`) : '';
+        const pg = pages ? `: ${pages}` : '';
+        return `${a}. ${f.year || 'n.d.'}. ${title}. ${journal}${volNo ? ' ' + volNo : ''}${pg}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+      } else if (isInproc){
+        const pg = pages ? `, ${pages}` : '';
+        return `${a}. ${f.year || 'n.d.'}. ${title}. In ${journal}${pg}. ${publisher ? publisher + '.' : ''}${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+      } else if (isBook){
+        const loc = place ? `${place}: ` : '';
+        return `${a}. ${f.year || 'n.d.'}. ${title}. ${loc}${publisher}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+      } else if (isThesis){
+        const kind = obj.type === 'phdthesis' ? 'PhD thesis' : 'Master thesis';
+        return `${a}. ${f.year || 'n.d.'}. ${title}. ${kind}, ${publisher || journal || place}.${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+      }
+      return `${a}. ${f.year || 'n.d.'}. ${title}.${journal ? ' ' + journal + '.' : ''}${doiOrUrl ? ' ' + doiOrUrl.trim() + '.' : ''}`;
+    }
+
+    // ------------- Citation to BibTeX skeleton -------------
+    function splitCitations(src){
+      const s = normNL(src).trim();
+      if (!s) return [];
+      if (manyCites.checked){
+        return s.split(/\n+/).map(x=>x.trim()).filter(Boolean);
+      }
+      // assume one block, but try to split on blank lines
+      const blocks = s.split(/\n{2,}/).map(x=>x.trim()).filter(Boolean);
+      return blocks.length ? blocks : [s];
+    }
+
+    function detectDOI(text){
+      const m = text.match(/10\.\d{4,9}\/\S+/);
+      return m ? m[0].replace(/[)\].,;]+$/, '') : '';
+    }
+    function detectURL(text){
+      const m = text.match(/https?:\/\/[^\s)]+/i);
+      return m ? m[0].replace(/[)\].,;]+$/, '') : '';
+    }
+    function detectYear(text){
+      const m = text.match(/(?:\(|\b)(19|20)\d{2}(?:\)|\b)/);
+      return m ? m[0].replace(/[()]/g,'') : '';
+    }
+    function detectTitle(text){
+      // try quoted first
+      const q = text.match(/"([^"]{3,})"/);
+      if (q) return q[1];
+      // else between year and period
+      const y = detectYear(text);
+      if (y){
+        const ix = text.indexOf(y);
+        if (ix !== -1){
+          const rest = text.slice(ix + y.length);
+          const m = rest.match(/\.?\s*([^\.]{5,})\./);
+          if (m) return m[1].trim();
+        }
+      }
+      // fallback first sentence up to period
+      const m = text.match(/^(.{5,200}?)\.\s/);
+      return m ? m[1].trim() : text.slice(0,120).trim();
+    }
+    function detectAuthors(text){
+      // crude parse: before year or before first quote
+      const y = detectYear(text);
+      let head = text;
+      if (y){
+        const ix = text.indexOf(y);
+        if (ix>0) head = text.slice(0, ix).trim();
+      } else {
+        const qix = text.indexOf('"');
+        if (qix>0) head = text.slice(0, qix).trim();
+      }
+      head = head.replace(/\.$/,'');
+      // split on and, &, comma patterns
+      // normalize Oxford like lists
+      head = head.replace(/\band\b/gi,'&');
+      const chunks = head.split(/\s*&\s*|,\s*and\s*|,\s*/).map(x=>x.trim()).filter(Boolean);
+      return chunks.map(n=>{
+        if (/,/.test(n)){
+          const [last, first=''] = n.split(',').map(s=>s.trim());
+          return `${last}, ${first}`;
+        } else {
+          const parts = n.split(/\s+/);
+          if (parts.length===1) return `${parts[0]}`;
+          const last = parts.pop();
+          const first = parts.join(' ');
+          return `${last}, ${first}`;
+        }
+      }).join(' and ');
+    }
+    function slugify(s){
+      return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40);
+    }
+    function buildKey(auth, year, title){
+      const firstLast = auth.split(/and/)[0] || 'key';
+      const last = firstLast.split(',')[0].trim() || 'key';
+      const tWord = (title||'').split(/\s+/).filter(Boolean)[0] || 'ref';
+      const y = year || 'n.d.';
+      const style = keyStyle.value;
+      if (style==='authyear') return `${last}${y}${tWord}`.replace(/[^A-Za-z0-9]+/g,'');
+      if (style==='authetalyear'){
+        const etal = /and/.test(auth) ? 'EtAl' : '';
+        return `${last}${etal}${y}`.replace(/[^A-Za-z0-9]+/g,'');
+      }
+      return `${slugify(tWord)}${y}`;
+    }
+
+    function citationToBib(item){
+      const text = item.replace(/\s+/g,' ').trim();
+      const year = detectYear(text);
+      const title = detectTitle(text);
+      const authors = detectAuthors(text);
+      const doi = detectDOI(text);
+      const url = detectURL(text);
+      const entryType = defType.value.replace('@','');
+      const key = buildKey(authors, year, title);
+
+      const fields = [];
+      if (authors) fields.push(`  author = {${authors}}`);
+      if (title) fields.push(`  title = {${title}}`);
+      if (year) fields.push(`  year = {${year}}`);
+      if (detectLinks.checked && doi) fields.push(`  doi = {${doi}}`);
+      if (detectLinks.checked && !doi && url) fields.push(`  url = {${url}}`);
+      return `@${entryType}{${key},\n${fields.join(',\n')}\n}`;
+    }
+
+    // ------------- Run transforms -------------
+    function runB2CNow(){
+      const entries = splitBibEntries(elIn.value || '');
+      const style = styleSel.value;
+      const out = entries.map(raw=>{
+        const obj = parseBibtex(raw);
+        if (!obj) return '';
+        // title rules and name initials handled inside helpers
+        return formatCitation(obj, style).replace(/\s+/g,' ').trim();
+      }).filter(Boolean);
+
+      let joined = '';
+      if (joinSel.value === 'newline') joined = out.join('\n');
+      else if (joinSel.value === 'blank') joined = out.join('\n\n');
+      else {
+        joined = out.map((x,i)=>`${i+1}. ${x}`).join('\n');
+      }
+
+      // add access date for MLA if selected and links present
+      if (style==='mla' && accessDate.checked){
+        // already appended in formatter when links present
+      }
+
+      elOut.value = joined;
+      updateStats();
+    }
+
+    function runC2BNow(){
+      const items = splitCitations(elIn.value || '');
+      const out = items.map(citationToBib);
+      elOut.value = out.join('\n\n');
+      updateStats();
+    }
+
+    function run(){
+      if (currentMode==='b2c') runB2CNow();
+      else runC2BNow();
+    }
+
+    function setMode(m){
+      currentMode = m;
+      const isB = m==='b2c';
+      modeB2C.setAttribute('aria-pressed', String(isB));
+      modeC2B.setAttribute('aria-pressed', String(!isB));
+      optB2C.style.display = isB ? '' : 'none';
+      optC2B.style.display = isB ? 'none' : '';
+      run();
+    }
+
+    // Events
+    modeB2C.addEventListener('click', ()=> setMode('b2c'));
+    modeC2B.addEventListener('click', ()=> setMode('c2b'));
+    swapC2B.addEventListener('click', ()=> setMode('c2b'));
+    swapB2C.addEventListener('click', ()=> setMode('b2c'));
+
+    btnLive.setAttribute('aria-pressed','true');
+    btnLive.addEventListener('click', ()=>{
+      const now = btnLive.getAttribute('aria-pressed') === 'true';
+      btnLive.setAttribute('aria-pressed', String(!now));
+      showToast(!now ? 'Live preview on' : 'Live preview off');
+    });
+
+    let typingTimer = null;
+    elIn.addEventListener('input', ()=>{
+      if (typingTimer) clearTimeout(typingTimer);
+      typingTimer = setTimeout(()=>{
+        if (btnLive.getAttribute('aria-pressed') === 'true') run();
+        else updateStats();
+      }, 80);
+    });
+
+    // React to option changes
+    [styleSel, useEtAl, etalThresh, titleCaseSel, useInitials, includeLinks, preferDOI, accessDate, joinSel].forEach(el=> el.addEventListener('change', run));
+    [defType, detectLinks, manyCites, keyStyle].forEach(el=> el.addEventListener('change', run));
+
+    runB2C.addEventListener('click', ()=>{ runB2CNow(); showToast('Citations created'); });
+    copyCites.addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(elOut.value || ''); showToast('Citations copied'); }catch(_){ showToast('Copy blocked'); }
+    });
+
+    runC2B.addEventListener('click', ()=>{ runC2BNow(); showToast('BibTeX created'); });
+    copyBib.addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(elOut.value || ''); showToast('BibTeX copied'); }catch(_){ showToast('Copy blocked'); }
+    });
+
+    // Generic actions
+    btnReset.addEventListener('click', ()=>{
+      elOut.value = elIn.value || '';
+      updateStats();
+      showToast('Output reset');
+    });
+    btnClear.addEventListener('click', ()=>{
+      elIn.value = '';
+      run();
+      elIn.focus();
+      showToast('Cleared');
+    });
+    btnApply.addEventListener('click', ()=>{
+      elIn.value = elOut.value || '';
+      elIn.focus();
+      run();
+      showToast('Applied to input');
+    });
+    btnPaste.addEventListener('click', async ()=>{
+      try{
+        if (navigator.clipboard?.readText){
+          const txt = await navigator.clipboard.readText();
+          elIn.value = txt;
+          run();
+          elIn.focus();
+          showToast('Pasted');
+        } else {
+          showToast('Clipboard unavailable');
+        }
+      }catch(_){ showToast('Clipboard blocked'); }
+    });
+    btnCopy.addEventListener('click', async ()=>{
+      try{
+        const text = elOut.value || '';
+        if (navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+        }
+        showToast('Copied result');
+      }catch(_){ showToast('Copy failed'); }
+    });
+    btnDownload.addEventListener('click', ()=>{
+      const bom = '\uFEFF';
+      const blob = new Blob([bom, elOut.value || ''], {type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const yyyy = new Date().toISOString().slice(0,10);
+      a.download = `sniptext-bibtex-citation-${yyyy}.txt`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      showToast('.txt downloaded');
+    });
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e)=>{
+      if (!e.ctrlKey && !e.metaKey) return;
+      const k = e.key.toLowerCase();
+      if (k==='enter'){ e.preventDefault(); run(); showToast('Converted'); }
+      if (k==='u'){ e.preventDefault();
+        try{ navigator.clipboard.writeText(elOut.value || ''); showToast('Copied result'); }catch(_){ showToast('Copy failed'); }
+      }
+      if (k==='r'){ e.preventDefault(); btnReset.click(); }
+      if (k==='1'){ e.preventDefault(); setMode('b2c'); }
+      if (k==='2'){ e.preventDefault(); setMode('c2b'); }
+    });
+
+    // Init
+    setMode('b2c');
+    run();
+    elIn.focus();
+  })();
+  </script>
+</body>
+</html>

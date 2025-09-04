@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Primary SEO -->
+  <title>Quick Table Generator - Paste CSV to HTML Table Code | SnipText</title>
+  <meta name="description" content="Paste or upload CSV and instantly get clean, responsive HTML table code. Auto-detect delimiter, header toggle, sort, filter, paginate, transpose, sticky header, and one-click copy. Private, in-browser." />
+  <meta name="author" content="Muhammad Waris" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="quick-table-generator-csv-to-html-table-code" />
+  <link rel="alternate" href="quick-table-generator-csv-to-html-table-code" hreflang="en" />
+  <link rel="alternate" href="quick-table-generator-csv-to-html-table-code" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Quick Table Generator - CSV to HTML Table" />
+  <meta property="og:description" content="Turn CSV into clean, responsive HTML tables with sort, filter, paginate, and copy. Runs locally in your browser." />
+  <meta property="og:url" content="quick-table-generator-csv-to-html-table-code" />
+  <!-- default open graph image path remains the same -->
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Quick Table Generator UI showing CSV to HTML table" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Quick Table Generator - CSV to HTML Table" />
+  <meta name="twitter:description" content="Paste CSV and export responsive HTML table code with sticky header, sort, filter, paginate, and transpose." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>📋</text></svg>">
+
+  <!-- Fonts & Global CSS (keep included files the same) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css">
+
+  <!-- Brand theme is assumed to be defined globally via :root on site. Page specific variables + styles below -->
+  <style>:root {
+  /* Component tokens (preserved names) remapped to brand system */
+  --table-gen-primary:  var(--color-primary);             /* brand primary */
+  --table-gen-accent:   var(--color-accent);              /* brand accent */
+
+  /* Surfaces & text mapped to brand dark-first palette */
+  --table-gen-surface:   var(--color-footer-bg);          /* card/base surface */
+  --table-gen-surface-2: var(--color-bg-dark);            /* deeper surface */
+  --table-gen-text:      var(--color-white);              /* light text on dark */
+  --table-gen-muted:     var(--color-text-light);         /* muted copy */
+  --table-gen-border:    var(--color-border);             /* subtle borders */
+  --table-gen-highlight: var(--color-used-often);         /* action/highlight */
+  --table-gen-bg-dark:   var(--color-bg-dark);            /* page background */
+
+  /* Brand-aware gradients (keeps your existing gradient usage) */
+  --table-gen-grad-1: linear-gradient(
+    135deg,
+    var(--gradient-cta-start) 0%,
+    var(--color-accent) 45%,
+    var(--gradient-cta-end) 100%
+  );
+
+  --table-gen-grad-2:
+    radial-gradient(1200px 600px at 10% -10%,
+      color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 60%),
+    radial-gradient(800px 400px at 110% 10%,
+      color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 60%),
+    radial-gradient(600px 400px at 50% 120%,
+      color-mix(in oklab, var(--gradient-cta-end) 12%, transparent), transparent 60%);
+}
+
+/* Optional: light-mode tuning, if your page switches themes */
+@media (prefers-color-scheme: light) {
+  :root {
+    --table-gen-surface:   var(--color-white);
+    --table-gen-surface-2: var(--color-bg-light);
+    --table-gen-text:      var(--color-text-dark);
+    --table-gen-muted:     var(--color-text-light);
+    --table-gen-border:    var(--color-border);
+
+    /* soften background blobs for light */
+    --table-gen-grad-2:
+      radial-gradient(1200px 600px at 10% -10%,
+        color-mix(in oklab, var(--color-accent) 10%, transparent), transparent 60%),
+      radial-gradient(800px 400px at 110% 10%,
+        color-mix(in oklab, var(--color-primary) 10%, transparent), transparent 60%),
+      radial-gradient(600px 400px at 50% 120%,
+        color-mix(in oklab, var(--gradient-cta-end) 8%, transparent), transparent 60%);
+  }
+}
+
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
+
+/* Layout */
+.table-gen-page {
+  min-height: 100svh;
+  background-color: var(--table-gen-bg-dark);
+  background-image: var(--table-gen-grad-2);
+  color: var(--table-gen-text);
+}
+
+.table-gen-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 72px 0;
+}
+
+/* Hero */
+.table-gen-hero {
+  position: relative;
+  padding: 56px 24px 28px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #1E293B, #0F172A);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--table-gen-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  overflow: clip;
+}
+.table-gen-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 12px/1 var(--font-body, 'Roboto', sans-serif);
+  color: var(--table-gen-muted);
+  letter-spacing: 0.02em;
+  padding: 8px 12px;
+  border: 1px solid var(--table-gen-border);
+  border-radius: 999px;
+  background: #0F172A;
+  transform: translateY(-12px);
+}
+.table-gen-badge .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--table-gen-accent); }
+
+.table-gen-title {
+  font: 700 clamp(28px, 3vw, 44px)/1.15 var(--font-heading, 'Poppins', system-ui, sans-serif);
+  letter-spacing: -0.02em;
+  color: var(--table-gen-text);
+  margin: 10px 0 10px;
+}
+.table-gen-subtitle {
+  color: var(--table-gen-muted);
+  max-width: 75ch;
+  margin-bottom: 18px;
+}
+
+/* Buttons */
+.table-gen-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+.table-gen-btn {
+  --shadow: 0 10px 20px rgba(2,6,23,0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--table-gen-border);
+  background: var(--table-gen-surface);
+  color: var(--table-gen-text);
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.table-gen-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.table-gen-btn:disabled { opacity: .6; cursor: not-allowed; }
+.table-gen-btn.table-gen-primary {
+  background: var(--table-gen-grad-1);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* Card grid */
+.table-gen-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 18px;
+  margin-top: 22px;
+}
+@media (max-width: 980px) { .table-gen-grid { grid-template-columns: 1fr; } }
+
+.table-gen-card {
+  background: linear-gradient(145deg, #1E293B, #0F172A);
+  border: 1px solid var(--table-gen-border);
+  color: var(--table-gen-text);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.table-gen-card > header {
+  padding: 14px 16px;
+  border-bottom: 1px dashed var(--table-gen-border);
+  background: linear-gradient(180deg, rgba(59,130,246,0.10), transparent);
+}
+.table-gen-card > header h2 {
+  font: 600 14px/1 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--table-gen-muted);
+}
+.table-gen-card .table-gen-body { padding: 14px; }
+
+/* Inputs */
+.table-gen-field { display: grid; gap: 6px; margin-bottom: 12px; }
+.table-gen-label { font: 600 13px/1 var(--font-body); color: var(--table-gen-text); }
+
+.table-gen-input,
+.table-gen-select,
+.table-gen-textarea {
+  width: 100%;
+  border: 1px solid var(--table-gen-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #0B1120;
+  color: var(--table-gen-text);
+  outline: none;
+  font-family: var(--font-body);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.table-gen-input::placeholder,
+.table-gen-textarea::placeholder { color: #7c87a3; }
+
+.table-gen-textarea {
+  min-height: 180px;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  background-image:
+    linear-gradient(transparent 23px, rgba(255,255,255,0.05) 24px),
+    linear-gradient(transparent 23px, rgba(255,255,255,0.05) 24px);
+  background-size: 100% 24px;
+  background-repeat: repeat;
+}
+
+.table-gen-input:focus,
+.table-gen-select:focus,
+.table-gen-textarea:focus {
+  border-color: var(--table-gen-accent);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+}
+
+/* Inline switches and chips */
+.table-gen-switch {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px dashed var(--table-gen-border);
+  background: #0B1120;
+  color: var(--table-gen-text);
+}
+.table-gen-switch input { accent-color: var(--table-gen-accent); }
+
+/* Preview table wrapper with sticky header and dark scroll area */
+.table-gen-preview-wrap {
+  position: relative;
+  border: 1px solid var(--table-gen-border);
+  border-radius: 14px;
+  overflow: auto;
+  max-height: 420px;
+  background: #0B1120;
+}
+
+/* Table */
+.table-gen-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  color: var(--table-gen-text);
+}
+.table-gen-table thead th {
+  position: sticky; top: 0;
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  border-bottom: 1px solid var(--table-gen-border);
+  z-index: 2;
+  text-align: left;
+  font-weight: 700;
+  padding: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.table-gen-table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--table-gen-border);
+}
+.table-gen-table tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
+.table-gen-table tbody tr:hover { background: rgba(59,130,246,0.12); }
+
+.table-gen-sort-indicator { opacity: 0.9; font-size: 11px; margin-left: 6px; }
+
+/* Code box */
+.table-gen-codebox {
+  position: relative;
+  background: #0B1120;
+  color: #E2E8F0;
+  border-radius: 14px;
+  border: 1px solid var(--table-gen-border);
+  overflow: hidden;
+  font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
+}
+.table-gen-codebox header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px;
+  background: #1E293B;
+  border-bottom: 1px solid var(--table-gen-border);
+}
+.table-gen-codebox pre { margin: 0; padding: 12px; white-space: pre; overflow: auto; }
+
+/* Mini toolbar */
+.table-gen-toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.table-gen-pill {
+  padding: 8px 12px;
+  border: 1px solid var(--table-gen-border);
+  background: #0F172A;
+  color: var(--table-gen-text);
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+.table-gen-pill:hover { border-color: var(--table-gen-accent); background: #152036; }
+.table-gen-pill[aria-pressed="true"] {
+  border-color: var(--table-gen-accent);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+}
+
+/* Pagination */
+.table-gen-pagination {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px;
+  color: var(--table-gen-text);
+}
+.table-gen-pagination .group { display: inline-flex; gap: 6px; }
+.table-gen-pagination button {
+  padding: 8px 10px;
+  border: 1px solid var(--table-gen-border);
+  background: #0F172A;
+  color: var(--table-gen-text);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .15s ease;
+}
+.table-gen-pagination button:hover { background: #152036; border-color: var(--table-gen-accent); transform: translateY(-1px); }
+.table-gen-pagination button:disabled { opacity: .5; cursor: not-allowed; }
+.table-gen-pagination select {
+  padding: 8px 10px;
+  border: 1px solid var(--table-gen-border);
+  border-radius: 10px;
+  background: #0F172A;
+  color: var(--table-gen-text);
+}
+
+/* Animations */
+@keyframes table-gen-fade-slide {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.table-gen-animate-in { animation: table-gen-fade-slide .35s ease both; }
+
+/* Utility */
+.table-gen-hidden { display: none !important; }
+.table-gen-muted { color: var(--table-gen-muted); }
+.table-gen-right { text-align: right; }
+.table-gen-center { text-align: center; }
+.table-gen-nowrap { white-space: nowrap; }
+
+/* Backdrop sparkles for hero */
+.table-gen-hero::after {
+  content: "";
+  position: absolute; inset: -1px;
+  pointer-events: none;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(29,78,216,.18), rgba(59,130,246,.14), rgba(232,93,39,.14), transparent);
+  mask: radial-gradient(80% 60% at 50% 0%, #000 10%, transparent 60%);
+}
+
+  .quick-table-gen-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
+.quick-table-gen-blog-link{color:var(--wc-accent-b); text-decoration:underline}
+</style>
+
+
+  <!-- Structured Data: Organization + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SnipText",
+    "url":"https://checkai.pro/",
+    "logo":"https://checkai.pro/favicon.png",
+    "sameAs":["https://www.linkedin.com","https://twitter.com"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"SnipText",
+    "url":"https://checkai.pro/",
+    "potentialAction":{"@type":"SearchAction","target":"https://checkai.pro/search?q={query}","query-input":"required name=query"}
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"SnipText Quick Table Generator",
+    "applicationCategory":"DeveloperApplication",
+    "operatingSystem":"Web",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "url":"quick-table-generator-csv-to-html-table-code",
+    "featureList":[
+      "Auto-detect delimiter",
+      "Header row toggle",
+      "Sort, filter, paginate",
+      "Transpose table",
+      "Sticky header and zebra rows",
+      "Copy and download HTML"
+    ],
+    "author":{"@type":"Organization","name":"SnipText"}
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is the Table Generator free and private?","acceptedAnswer":{"@type":"Answer","text":"Yes. It runs in your browser and is free for normal use. No sign in required."}},
+      {"@type":"Question","name":"Which delimiters are supported?","acceptedAnswer":{"@type":"Answer","text":"Auto-detect checks comma, semicolon, and tab. You can also set a custom delimiter."}},
+      {"@type":"Question","name":"Can I sort and filter the preview?","acceptedAnswer":{"@type":"Answer","text":"Yes. Click headers to sort. Use the quick filter box to filter visible rows."}},
+      {"@type":"Question","name":"How do I copy the HTML?","acceptedAnswer":{"@type":"Answer","text":"Use the Copy HTML button or press Ctrl-C while focusing the code box."}}
+    ]
+  }
+  </script>
+</head>
+
+<body class="table-gen-page">
+
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+  
+
+
+  
+
+  <main class="table-gen-container" id="home">
+    <section class="table-gen-hero table-gen-animate-in">
+      <span class="table-gen-badge" aria-hidden="true"><span class="dot"></span> Tools · CSV to HTML</span>
+      <h1 class="table-gen-title">Quick Table Generator</h1>
+      <p class="table-gen-subtitle">Type or paste CSV to get clean, responsive HTML table code. Auto-detect delimiter, toggle header, sort and filter, paginate, transpose, and copy or download the markup. Everything runs locally in your browser.</p>
+      <div class="table-gen-actions" role="group" aria-label="Primary actions">
+        <button class="table-gen-btn table-gen-primary" id="table-gen-generate">Generate table</button>
+        <button class="table-gen-btn" id="table-gen-sample">Insert sample CSV</button>
+        <label class="table-gen-btn" for="table-gen-file">
+          <input id="table-gen-file" type="file" accept=".csv,text/csv,text/plain" class="table-gen-hidden" /> Upload CSV
+        </label>
+      </div>
+
+      <div class="table-gen-grid" id="features">
+        <!-- Left: Input and options -->
+        <article class="table-gen-card table-gen-animate-in" style="animation-delay:.05s">
+          <header><h2>CSV input</h2></header>
+          <div class="table-gen-body">
+            <div class="table-gen-field">
+              <label for="table-gen-input" class="table-gen-label">Paste CSV</label>
+              <textarea id="table-gen-input" class="table-gen-textarea" placeholder="name,age,city
+Alice,30,Paris
+Bob,28,Berlin"></textarea>
+              <small class="table-gen-muted">Tip: You can paste from Excel or Google Sheets. Tabs are supported.</small>
+            </div>
+
+            <div class="table-gen-row">
+              <div class="table-gen-field">
+                <label for="table-gen-delim" class="table-gen-label">Delimiter</label>
+                <select id="table-gen-delim" class="table-gen-select">
+                  <option value="auto" selected>Auto-detect</option>
+                  <option value=",">Comma</option>
+                  <option value=";">Semicolon</option>
+                  <option value="tab">Tab</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+              <div class="table-gen-field" id="table-gen-custom-delim-wrap" style="display:none">
+                <label for="table-gen-custom-delim" class="table-gen-label">Custom delimiter</label>
+                <input id="table-gen-custom-delim" class="table-gen-input" maxlength="3" placeholder="| or ^" />
+              </div>
+            </div>
+
+            <div class="table-gen-row">
+              <div class="table-gen-switch"><input type="checkbox" id="table-gen-has-header" checked /> <label for="table-gen-has-header">First row is header</label></div>
+              <div class="table-gen-switch"><input type="checkbox" id="table-gen-trim" checked /> <label for="table-gen-trim">Trim cells</label></div>
+            </div>
+
+            <div class="table-gen-row">
+              <div class="table-gen-switch"><input type="checkbox" id="table-gen-escape" checked /> <label for="table-gen-escape">Escape HTML</label></div>
+              <div class="table-gen-switch"><input type="checkbox" id="table-gen-numeric-align" checked /> <label for="table-gen-numeric-align">Right align numbers</label></div>
+            </div>
+
+            <div class="table-gen-row">
+              <div class="table-gen-field">
+                <label for="table-gen-caption" class="table-gen-label">Caption (optional)</label>
+                <input id="table-gen-caption" class="table-gen-input" placeholder="My data table" />
+              </div>
+              <div class="table-gen-field">
+                <label for="table-gen-id" class="table-gen-label">Table id (optional)</label>
+                <input id="table-gen-id" class="table-gen-input" placeholder="table-gen-custom-id" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Right: Preview controls -->
+        <aside class="table-gen-card table-gen-animate-in" style="animation-delay:.1s">
+          <header><h2>Preview controls</h2></header>
+          <div class="table-gen-body">
+            <div class="table-gen-toolbar" role="group" aria-label="Preview toolbar">
+              <button class="table-gen-pill" id="table-gen-transpose" title="Swap rows and columns">Transpose</button>
+              <button class="table-gen-pill" id="table-gen-clear" title="Clear input">Clear</button>
+              <button class="table-gen-pill" id="table-gen-copy-html" title="Copy HTML">Copy HTML</button>
+              <button class="table-gen-pill" id="table-gen-download-html" title="Download HTML">Download HTML</button>
+            </div>
+            <div class="table-gen-field">
+              <label for="table-gen-filter" class="table-gen-label">Quick filter</label>
+              <input id="table-gen-filter" class="table-gen-input" placeholder="Type to filter visible rows" />
+            </div>
+            <div class="table-gen-field">
+              <label for="table-gen-rows-per-page" class="table-gen-label">Rows per page</label>
+              <select id="table-gen-rows-per-page" class="table-gen-select">
+                <option>10</option><option selected>25</option><option>50</option><option>100</option>
+              </select>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Live preview -->
+      <article class="table-gen-card table-gen-animate-in" style="margin-top:18px; animation-delay:.15s">
+        <header><h2>Preview</h2></header>
+        <div class="table-gen-body">
+          <div class="table-gen-preview-wrap" id="table-gen-preview" tabindex="0" aria-live="polite" aria-label="Table preview will appear here"></div>
+          <div class="table-gen-pagination" id="table-gen-pagination" aria-label="Pagination controls" hidden>
+            <div class="group">
+              <button id="table-gen-prev" aria-label="Previous page">Prev</button>
+              <button id="table-gen-next" aria-label="Next page">Next</button>
+            </div>
+            <div class="group"><span id="table-gen-pageinfo" class="table-gen-muted">Page 1 of 1</span></div>
+            <div class="group">
+              <label for="table-gen-rows-per-page-2" class="table-gen-label" style="position:absolute;opacity:0;pointer-events:none">Rows per page</label>
+              <select id="table-gen-rows-per-page-2">
+                <option>10</option><option selected>25</option><option>50</option><option>100</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Code output -->
+      <article class="table-gen-card table-gen-animate-in" style="margin-top:18px; animation-delay:.2s">
+        <header><h2>Generated HTML code</h2></header>
+        <div class="table-gen-body">
+          <div class="table-gen-codebox" id="table-gen-codebox">
+            <header>
+              <strong>html</strong>
+              <div class="table-gen-actions">
+                <button class="table-gen-btn" id="table-gen-copy-html-2">Copy HTML</button>
+              </div>
+            </header>
+            <pre id="table-gen-code" tabindex="0">&lt;!-- Your HTML table will appear here after Generate --&gt;</pre>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="about" class="table-gen-animate-in" style="margin-top:24px; animation-delay:.25s">
+      <div class="table-gen-card">
+        <header><h2>About this tool</h2></header>
+        <div class="table-gen-body">
+          <p>The Quick Table Generator converts CSV to accessible HTML tables. It supports quoted fields, embedded commas, tabs, semicolons, custom delimiters, sticky headers, zebra rows, and responsive overflow. Sorting toggles aria-sort for screen readers. Nothing uploads to a server.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="table-gen-animate-in" style="margin-top:24px; animation-delay:.3s">
+      <div class="table-gen-card">
+        <header><h2>FAQ</h2></header>
+        <div class="table-gen-body">
+          <details><summary>Does it handle quoted commas and newlines?</summary><p>Yes. The parser follows common CSV rules with quotes and escaped quotes.</p></details>
+          <details><summary>How do I keep wide tables usable on mobile?</summary><p>The preview uses a scrollable container and sticky header. Copy the wrapper snippet for your site if needed.</p></details>
+          <details><summary>Can I keep the header row off?</summary><p>Yes. Uncheck the header option and all rows will render in the table body.</p></details>
+        </div>
+      </div>
+
+      <div class="quick-table-gen-guide">
+    <p class="quick-table-gen-guide-p">See Palindromic Word Finder Guide on SnipText Blog Page <a href="/blog/quick-table-generator-guide-csv-to-responsive-html-table-code-sniptext-blog.html" class="quick-table-gen-blog-link">here</a>.</p>
+  </div>
+
+    </section>
+
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="svg-icon">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 id="t10" class="card-title">Random Text Generator</h3>
+        <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+        <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+    </article>
+
+  </section>
+  </main>
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+
+       <script src="/js/index.js"></script>
+       <script src="/tools/js/free-tools.js"></script>
+
+  <!-- Page JS - all logic is in this file. Global site JS remains included as in your setup if needed. -->
+  <script>
+  (function(){
+    const qs = (s, root=document) => root.querySelector(s);
+    const qsa = (s, root=document) => Array.from(root.querySelectorAll(s));
+
+    // Elements
+    const $input = qs('#table-gen-input');
+    const $generate = qs('#table-gen-generate');
+    const $sample = qs('#table-gen-sample');
+    const $file = qs('#table-gen-file');
+    const $delim = qs('#table-gen-delim');
+    const $customWrap = qs('#table-gen-custom-delim-wrap');
+    const $custom = qs('#table-gen-custom-delim');
+    const $hasHeader = qs('#table-gen-has-header');
+    const $trim = qs('#table-gen-trim');
+    const $escape = qs('#table-gen-escape');
+    const $numAlign = qs('#table-gen-numeric-align');
+    const $caption = qs('#table-gen-caption');
+    const $id = qs('#table-gen-id');
+
+    const $transpose = qs('#table-gen-transpose');
+    const $clear = qs('#table-gen-clear');
+    const $copy1 = qs('#table-gen-copy-html');
+    const $copy2 = qs('#table-gen-copy-html-2');
+    const $download = qs('#table-gen-download-html');
+    const $filter = qs('#table-gen-filter');
+    const $rpp = qs('#table-gen-rows-per-page');
+    const $rpp2 = qs('#table-gen-rows-per-page-2');
+
+    const $preview = qs('#table-gen-preview');
+    const $pagination = qs('#table-gen-pagination');
+    const $prev = qs('#table-gen-prev');
+    const $next = qs('#table-gen-next');
+    const $pageinfo = qs('#table-gen-pageinfo');
+
+    const $code = qs('#table-gen-code');
+
+    // State
+    let parsed = { header: [], rows: [] };
+    let current = { rows: [], header: [] };
+    let filtered = [];
+    let sortCol = -1, sortDir = 1;
+    let page = 1, perPage = Number($rpp.value);
+
+    // Local storage restore
+    try {
+      const saved = JSON.parse(localStorage.getItem('table-gen-state') || '{}');
+      if (saved.csv) $input.value = saved.csv;
+      if (saved.caption) $caption.value = saved.caption;
+      if (saved.tableId) $id.value = saved.tableId;
+      if (typeof saved.hasHeader === 'boolean') $hasHeader.checked = saved.hasHeader;
+      if (typeof saved.trim === 'boolean') $trim.checked = saved.trim;
+      if (typeof saved.escape === 'boolean') $escape.checked = saved.escape;
+      if (typeof saved.numericAlign === 'boolean') $numAlign.checked = saved.numericAlign;
+      if (saved.delim) $delim.value = saved.delim;
+      if (saved.customDelim) { $custom.value = saved.customDelim; $customWrap.style.display = (saved.delim === 'custom') ? '' : 'none'; }
+    } catch {}
+
+    function saveState(){
+      const st = {
+        csv: $input.value, caption: $caption.value, tableId: $id.value,
+        hasHeader: $hasHeader.checked, trim: $trim.checked, escape: $escape.checked,
+        numericAlign: $numAlign.checked, delim: $delim.value, customDelim: $custom.value
+      };
+      localStorage.setItem('table-gen-state', JSON.stringify(st));
+    }
+
+    // Helpers
+    const ESC = s => s.replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+    const detectDelimiter = text => {
+      const lines = text.split(/\r?\n/).slice(0, 6).filter(Boolean);
+      const score = { ',':0, ';':0, '\t':0 };
+      for (const ln of lines) { score[','] += ln.split(',').length; score[';'] += ln.split(';').length; score['\t'] += ln.split('\t').length; }
+      let best = Object.entries(score).sort((a,b) => b[1]-a[1])[0]?.[0] || ',';
+      return best;
+    };
+
+    // RFC-ish CSV parser with quotes and escaped quotes
+    function parseCSV(text, delimiter) {
+      const d = delimiter === 'tab' ? '\t' : delimiter;
+      const rows = []; let row = []; let cell = '';
+      let inQ = false; let i = 0;
+
+      while (i < text.length) {
+        const ch = text[i];
+
+        if (ch === '"') {
+          if (inQ && text[i+1] === '"') { cell += '"'; i += 2; continue; }
+          inQ = !inQ; i++; continue;
+        }
+
+        if (!inQ && (ch === d)) { row.push(cell); cell=''; i++; continue; }
+        if (!inQ && (ch === '\n' || (ch === '\r' && text[i+1] !== '\n'))) {
+          row.push(cell); rows.push(row); row=[]; cell=''; i++; continue;
+        }
+        if (!inQ && ch === '\r' && text[i+1] === '\n') { row.push(cell); rows.push(row); row=[]; cell=''; i+=2; continue; }
+
+        cell += ch; i++;
+      }
+      if (cell.length || row.length) { row.push(cell); rows.push(row); }
+
+      // Normalize widths to the max columns seen
+      const w = rows.reduce((m,r)=>Math.max(m,r.length),0);
+      for (const r of rows) while (r.length < w) r.push('');
+
+      return rows;
+    }
+
+    function getDelimiter(){
+      if ($delim.value === 'auto') return detectDelimiter($input.value);
+      if ($delim.value === 'custom') return $custom.value || ',';
+      return $delim.value;
+    }
+
+    function preprocess(text){
+      if ($trim.checked) {
+        text = text.split(/\r?\n/).map(l => l.trimEnd()).join('\n');
+      }
+      return text;
+    }
+
+    function isNumeric(v){
+      // detect numbers like 1, -2.5, 1,234.56, 1e-3
+      const t = v.replace(/,/g,'').trim();
+      return t !== '' && !isNaN(Number(t));
+    }
+
+    function buildTableHTML(header, rows){
+      const idAttr = $id.value ? ` id="${$id.value}"` : '';
+      const cap = $caption.value ? `  <caption>${$escape.checked ? ESC($caption.value) : $caption.value}</caption>\n` : '';
+      let thead = '';
+      if (header.length) {
+        thead += '  <thead>\n    <tr>\n';
+        for (const h of header) thead += `      <th scope="col">${$escape.checked ? ESC(h) : h}</th>\n`;
+        thead += '    </tr>\n  </thead>\n';
+      }
+      let tbody = '  <tbody>\n';
+      for (const r of rows) {
+        tbody += '    <tr>\n';
+        for (const c of r) {
+          const txt = $escape.checked ? ESC(c) : c;
+          const tdClass = ($numAlign.checked && isNumeric(c)) ? ' class="table-gen-right"' : '';
+          tbody += `      <td${tdClass}>${txt}</td>\n`;
+        }
+        tbody += '    </tr>\n';
+      }
+      tbody += '  </tbody>\n';
+      const html =
+`<div class="table-gen-wrapper" role="region" aria-label="Data table" tabindex="0" style="overflow:auto">
+<table class="table-gen-output table-gen-table"${idAttr}>
+${cap}${thead}${tbody}</table>
+</div>`;
+      return html;
+    }
+
+    function renderPreview(){
+      // pagination window
+      perPage = Number(qs('#table-gen-rows-per-page').value || 25);
+      const start = (page-1)*perPage;
+      const slice = filtered.slice(start, start+perPage);
+
+      const html = buildTableHTML(current.header, slice);
+      $preview.innerHTML = html;
+
+      // attach sorting on headers
+      const table = $preview.querySelector('table');
+      if (table && current.header.length){
+        const ths = table.querySelectorAll('thead th');
+        ths.forEach((th, idx) => {
+          th.setAttribute('role', 'columnheader');
+          th.tabIndex = 0;
+          th.title = 'Click to sort';
+          const mark = document.createElement('span'); mark.className = 'table-gen-sort-indicator'; th.appendChild(mark);
+          const applyIndicator = () => { mark.textContent = idx === sortCol ? (sortDir > 0 ? '▲' : '▼') : ''; th.setAttribute('aria-sort', idx === sortCol ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'); }
+          applyIndicator();
+
+          const doSort = () => {
+            if (sortCol === idx) sortDir *= -1; else { sortCol = idx; sortDir = 1; }
+            filtered.sort((a,b) => {
+              const A = a[idx] ?? ''; const B = b[idx] ?? '';
+              const aN = isNumeric(A), bN = isNumeric(B);
+              if (aN && bN) return (Number(A.replace(/,/g,'')) - Number(B.replace(/,/g,''))) * sortDir;
+              return (''+A).localeCompare(''+B) * sortDir;
+            });
+            page = 1;
+            renderPreview();
+          }
+
+          th.addEventListener('click', doSort);
+          th.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doSort(); }});
+        });
+      }
+
+      // update pagination UI
+      const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+      $pagination.hidden = totalPages <= 1;
+      $pageinfo.textContent = `Page ${Math.min(page,totalPages)} of ${totalPages}`;
+      $prev.disabled = page <= 1; $next.disabled = page >= totalPages;
+
+      // code box
+      $code.textContent = buildTableHTML(current.header, current.rows);
+    }
+
+    function runGenerate(){
+      const raw = preprocess($input.value || '');
+      if (!raw.trim()) {
+        $preview.innerHTML = '<div class="table-gen-muted" style="padding:14px">Paste CSV above, then click Generate.</div>';
+        $code.textContent = '<!-- No data -->';
+        return;
+      }
+      let delimiter = getDelimiter();
+      if (!delimiter) delimiter = ',';
+
+      const rows = parseCSV(raw, delimiter);
+      let header = [], body = rows;
+      if ($hasHeader.checked && rows.length){
+        header = rows[0]; body = rows.slice(1);
+      }
+
+      parsed = { header, rows: body };
+      current = JSON.parse(JSON.stringify(parsed)); // deep-ish clone
+      applyFilter(); // sets filtered and renders
+      saveState();
+    }
+
+    function applyFilter(){
+      const f = ($filter.value || '').toLowerCase();
+      if (!f) { filtered = [...current.rows]; } else {
+        filtered = current.rows.filter(r => r.some(c => (''+c).toLowerCase().includes(f)));
+      }
+      page = 1;
+      renderPreview();
+    }
+
+    function transposeData(){
+      const all = current.header.length ? [current.header, ...current.rows] : [...current.rows];
+      const h = all.length ? Math.max(...all.map(r => r.length)) : 0;
+      const normalized = all.map(r => {
+        const t = r.slice(); while (t.length < h) t.push('');
+        return t;
+      });
+      const transposed = Array.from({length: h}, (_,i) => normalized.map(r => r[i]));
+      if ($hasHeader.checked) {
+        current.header = transposed.shift() || [];
+        current.rows = transposed;
+      } else {
+        current.header = [];
+        current.rows = transposed;
+      }
+      applyFilter();
+    }
+
+    // Events
+    $delim.addEventListener('change', () => { $customWrap.style.display = $delim.value === 'custom' ? '' : 'none'; saveState(); });
+    $rpp.addEventListener('change', e => { $rpp2.value = e.target.value; page = 1; renderPreview(); });
+    $rpp2.addEventListener('change', e => { $rpp.value = e.target.value; page = 1; renderPreview(); });
+    $prev.addEventListener('click', () => { page = Math.max(1, page-1); renderPreview(); });
+    $next.addEventListener('click', () => { page = page+1; renderPreview(); });
+
+    $generate.addEventListener('click', runGenerate);
+    $sample.addEventListener('click', () => {
+      $input.value = `Product,Price,Units Sold,Revenue
+Notebook,2.50,120,300
+Pen,1.20,200,240
+Marker,3.00,90,270
+Ruler,1.00,150,150
+Eraser,0.80,180,144`;
+      runGenerate();
+    });
+    $file.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0]; if (!file) return;
+      const text = await file.text();
+      $input.value = text; runGenerate();
+    });
+    $transpose.addEventListener('click', transposeData);
+    $clear.addEventListener('click', () => { $input.value = ''; runGenerate(); });
+    $filter.addEventListener('input', applyFilter);
+    [$hasHeader,$trim,$escape,$numAlign,$caption,$id,$custom].forEach(el => el.addEventListener('input', () => { saveState(); runGenerate(); }));
+
+    function copyHTML(){
+      const html = $code.textContent || '';
+      navigator.clipboard.writeText(html).then(()=>{
+        toast('HTML copied');
+      }).catch(()=>{ toast('Copy failed. Select and copy manually.'); });
+    }
+    $copy1.addEventListener('click', copyHTML);
+    $copy2.addEventListener('click', copyHTML);
+
+    function downloadHTML(){
+      const blob = new Blob([$code.textContent || ''], {type: 'text/html'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'table-gen.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(a.href);
+    }
+    $download.addEventListener('click', downloadHTML);
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'enter') { e.preventDefault(); runGenerate(); }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c' && document.activeElement === $code) { e.preventDefault(); copyHTML(); }
+    });
+
+    // Tiny toast
+    let toastTimer;
+    function toast(msg){
+      let el = qs('#table-gen-toast');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'table-gen-toast';
+        el.style.cssText = 'position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.25);z-index:9999;font:600 13px/1 var(--font-body);';
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.style.opacity = '1';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ el.style.opacity = '0'; }, 1400);
+    }
+
+    // Initial render
+    runGenerate();
+  })();
+  </script>
+</body>
+</html>

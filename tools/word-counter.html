@@ -2,46 +2,131 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Essentials -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <base href="/tools/">
 
+  <!-- Primary SEO -->
   <title>Instant Text Counter - Words, Characters, Lines & Sentences | SnipText</title>
-  <meta name="description" content="Count words, characters, lines and sentences instantly. Live updates, reading time and advanced metrics-fast, accurate and privacy-friendly." />
-  <meta name="keywords" content="word counter, character counter, line counter, sentence counter, text counter, reading time, online word count" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="description" content="Count words, characters, lines and sentences instantly. Live updates, reading time and advanced metrics. Fast, accurate and privacy-friendly." />
+  <meta name="keywords" content="word counter, character counter, line counter, sentence counter, text counter, reading time, no spaces character count, live word count, text analyzer, online word count" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://checkai.pro/tools/word-counter" />
   <link rel="alternate" href="https://checkai.pro/tools/word-counter" hreflang="en" />
   <link rel="alternate" href="https://checkai.pro/tools/word-counter" hreflang="x-default" />
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Instant Text Counter - Words, Characters, Lines & Sentences" />
-  <meta property="og:description" content="Live counts with reading time and more." />
+  <meta property="og:description" content="Live counts with reading time and advanced metrics. Private and fast in your browser." />
   <meta property="og:url" content="https://checkai.pro/tools/word-counter" />
-  <meta property="og:image" content="https://checkai.pro/assets/images/tools/word-counter-og.png" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@SnipText" />
   <meta name="twitter:title" content="Instant Text Counter - Words, Characters, Lines & Sentences" />
-  <meta name="twitter:description" content="Fast, accurate counters with advanced metrics." />
-  <meta name="twitter:image" content="https://checkai.pro/assets/images/tools/word-counter-og.png" />
+  <meta name="twitter:description" content="Fast, accurate counters with live updates and reading time." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
 
+  <!-- Theme / Icons -->
   <meta name="theme-color" content="#1D4ED8" />
-  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
 
-  <!-- Styles & Fonts -->
-  <link rel="stylesheet" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  <!-- JSON-LD: WebApplication -->
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication",
-   "name":"SnipText Word/Character/Line/Sentence Counter",
-   "url":"https://checkai.pro/tools/word-counter",
-   "applicationCategory":"UtilitiesApplication","operatingSystem":"All","isAccessibleForFree":true,
-   "featureList":["Word/character/line/sentence counts","Reading time","No-spaces character count","Live updates","Advanced metrics"],
-   "publisher":{"@type":"Organization","name":"Snip Text"}}
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Word/Character/Line/Sentence Counter",
+    "url":"https://checkai.pro/tools/word-counter",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "featureList":[
+      "Word, character, line and sentence counts",
+      "Reading time and speaking time",
+      "No-spaces character count",
+      "Live updates and advanced metrics",
+      "Copy and download"
+    ],
+    "screenshot":"https://checkai.pro/images/sniptext-default-tools-img",
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "url":"https://checkai.pro/",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is the counter private?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. The tool runs locally in your browser and does not upload your text."}
+      },
+      {
+        "@type":"Question",
+        "name":"What counts as a word?",
+        "acceptedAnswer":{"@type":"Answer","text":"By default words are tokens separated by whitespace. Punctuation is ignored at boundaries. You can toggle options for hyphenated items if available."}
+      },
+      {
+        "@type":"Question",
+        "name":"What is characters with and without spaces?",
+        "acceptedAnswer":{"@type":"Answer","text":"Characters with spaces includes all visible characters and spaces. No-spaces excludes standard spaces and line breaks to help meet platform limits."}
+      },
+      {
+        "@type":"Question",
+        "name":"How is reading time estimated?",
+        "acceptedAnswer":{"@type":"Answer","text":"Reading time is based on a common average of about 200–250 words per minute. Speaking time uses a slower rate for presentations."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does it handle emojis and non-Latin scripts?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Counting uses grapheme clusters so emojis and characters with combining marks are treated as single user-perceived characters where supported."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Free Tools","item":"https://checkai.pro/tools/free-tools"},
+      {"@type":"ListItem","position":3,"name":"Word Counter","item":"https://checkai.pro/tools/word-counter"}
+    ]
+  }
   </script>
 
 
@@ -111,16 +196,25 @@
    BASE
    ====================================================== */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{
+html, body {
+  height: 100%;
+  margin: 0;
   background: var(--wc-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   color: var(--wc-text);
-  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  -webkit-text-size-adjust:100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
+
 
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
+
+  .tools-grid { margin: 1rem 0; }
+.tool-card {background: var(--color-bg-dark);}
 
 /* ======================================================
    LAYOUT
@@ -423,6 +517,60 @@ kbd{background:rgba(255,255,255,0.06); border-radius:6px; padding:6px 8px; font-
   <div class="word-counter-guide">
     <p class="word-counter-guide-p">See Word Counter Guide on SnipText Blog Page <a href="/blog/word-character-line-sentence-counter-blog.html" class="word-counter-blog-link">here</a>.</p>
   </div>
+
+  <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
+      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
+      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+  </section>
+
 </main>
 
 <footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
@@ -465,6 +613,7 @@ kbd{background:rgba(255,255,255,0.06); border-radius:6px; padding:6px 8px; font-
 <!-- keep global behavioral scripts (if your project requires them) -->
 <script src="/js/index.js"></script>
 <script src="/js/auth.js"></script>
+<script src="/tools/js/free-tools.js"></script>
 
 <!-- FAQs script for SEO -->
  <script type="application/ld+json">

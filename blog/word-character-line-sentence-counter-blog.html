@@ -8,30 +8,36 @@
   <base href="/blog/">
 
   <!-- Primary SEO -->
-  <title>Free Word, Character, Line & Sentence Counter | SnipText Blog</title>
-  <meta name="description" content="Instantly count words, characters, lines and sentences. Why counts matter and how to use SnipText’s fast, privacy-safe counter." />
+  <title>Free Word, Character, Line &amp; Sentence Counter | SnipText Blog</title>
+  <meta name="description" content="Instantly count words, characters, lines and sentences. Why counts matter and how to use SnipText’s fast, privacy-friendly counter." />
   <meta name="keywords" content="word counter, character counter, line counter, sentence counter, count words online, free word counter, online word count, text analyzer, SnipText" />
   <meta name="author" content="Rosewell" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://checkai.pro/blog/word-character-line-sentence-counter" />
-  <link rel="alternate" href="https://checkai.pro/blog/word-character-line-sentence-counter" hreflang="en" />
-  <link rel="alternate" href="https://checkai.pro/blog/word-character-line-sentence-counter" hreflang="x-default" />
+  <!-- Canonical & hreflang (extension-less) -->
+  <link rel="canonical" href="https://checkai.pro/blog/word-character-line-sentence-counter-blog" />
+  <link rel="alternate" href="https://checkai.pro/blog/word-character-line-sentence-counter-blog" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/word-character-line-sentence-counter-blog" hreflang="x-default" />
 
-  <!-- Open Graph / Twitter -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="SnipText Blog" />
-  <meta property="og:title" content="Free Word, Character, Line & Sentence Counter" />
-  <meta property="og:description" content="Counts that update live-plus why each metric matters." />
-  <meta property="og:url" content="https://checkai.pro/blog/word-character-line-sentence-counter" />
-  <meta property="og:image" content="https://checkai.pro/assets/images/blog/word-counter-og.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Free Word, Character, Line &amp; Sentence Counter" />
+  <meta property="og:description" content="Counts that update live plus why each metric matters." />
+  <meta property="og:url" content="https://checkai.pro/blog/word-character-line-sentence-counter-blog" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Blog - default preview image" />
+
+  <!-- Twitter (no handles) -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@SnipText" />
-  <meta name="twitter:title" content="Free Word, Character, Line & Sentence Counter" />
+  <meta name="twitter:title" content="Free Word, Character, Line &amp; Sentence Counter" />
   <meta name="twitter:description" content="Fast, privacy-friendly counts for your text." />
-  <meta name="twitter:image" content="https://checkai.pro/assets/images/blog/word-counter-og.png" />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
 
   <!-- Theme / Icons -->
   <meta name="theme-color" content="#1D4ED8" />
@@ -45,17 +51,73 @@
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
 
-  <!-- JSON-LD -->
+  <!-- Structured Data: BlogPosting (extension-less IDs) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BlogPosting",
-   "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/word-character-line-sentence-counter"},
-   "headline":"Free Word, Character, Line & Sentence Counter",
-   "description":"Instant counts and why each metric matters-using SnipText’s privacy-safe counter.",
-   "image":"https://checkai.pro/assets/images/blog/word-counter-og.png",
-   "author":{"@type":"Person","name":"Rosewell"},
-   "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png"}},
-   "inLanguage":"en","articleSection":"Tools","isAccessibleForFree":true}
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/word-character-line-sentence-counter-blog"},
+    "headline":"Free Word, Character, Line & Sentence Counter",
+    "description":"Instant counts and why each metric matters using SnipText’s privacy-friendly counter.",
+    "image":"https://checkai.pro/images/sniptext-blog-default-image.png",
+    "author":{"@type":"Person","name":"Rosewell"},
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}},
+    "inLanguage":"en",
+    "articleSection":"Tools",
+    "isAccessibleForFree": true
+  }
   </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What does the counter include for words and characters?",
+        "acceptedAnswer":{"@type":"Answer","text":"Words are split on whitespace with punctuation handled cleanly; characters can be counted with or without spaces depending on your selection."}
+      },
+      {
+        "@type":"Question",
+        "name":"How are lines and sentences detected?",
+        "acceptedAnswer":{"@type":"Answer","text":"Lines are separated by newline characters; sentences are detected using common end punctuation such as ., !, and ? with basic abbreviation handling."}
+      },
+      {
+        "@type":"Question",
+        "name":"Is my text sent to a server?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. The counter runs in your browser so your text stays on your device."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does it support emojis and non-English scripts?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Counting is designed to handle Unicode text including emojis and non-Latin scripts."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I copy or export the counts?",
+        "acceptedAnswer":{"@type":"Answer","text":"You can copy totals to your clipboard for reports, assignments, or social captions."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs (extension-less) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog"},
+      {"@type":"ListItem","position":3,"name":"Word, Character, Line & Sentence Counter","item":"https://checkai.pro/blog/word-character-line-sentence-counter-blog"}
+    ]
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
 
 <body>
@@ -71,186 +133,220 @@
 <!-- Scroll Progress Bar -->
 <div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
 
-<!-- Navigation -->
-<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-        <div class="nav-brand">
-            <a href="/index.html" class="brand-link">SnipText</a>
-        </div>
-        <div class="nav-menu">
-            <a href="/blog/blog.html" class="nav-link">Home</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#articles" class="nav-link">Articles</a>
-            <a href="#contact" class="nav-link">Contact</a>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="theme-icon">🌙</span>
-            </button>
-        </div>
-        <div class="nav-hamburger" id="nav-hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+      <div class="nav-brand">
+        <a href="/index.html" class="brand-link">SnipText</a>
+      </div>
+      <div class="nav-menu">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/blog/blog.html" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-</nav>
+  </nav>
 
-<!-- Main Content -->
+
 <main class="main-content">
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="blog-hero-content">
-                <h1 class="hero-title">Word, Character, Line & Sentence Counter</h1>
-                <p class="hero-subtitle">Instant counts. Free. Private. Built by SnipText for writers, students, and teams.</p>
-                <div class="hero-cta">
-                    <a href="#articles" class="cta-button">Get Started</a>
-                </div>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="blog-hero-content">
+        <h1 class="hero-title">Word, Character, Line & Sentence Counter</h1>
+        <p class="hero-subtitle">Instant, accurate counts for words, characters, lines, and sentences. Free, private, and built by SnipText for writers, students, and teams.</p>
+        <div class="hero-cta">
+          <a href="/tools/word-counter.html" class="cta-button">Open Word Counter</a>
+          <a href="#articles" class="cta-button" style="--variant:ghost">More Articles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Article -->
+  <section class="featured-article">
+    <div class="container">
+      <article class="article-card featured" itemscope itemtype="https://schema.org/TechArticle">
+        <div class="article-meta">
+          <span class="article-category" itemprop="articleSection">Writing Tools</span>
+          <time datetime="2025-08-10" class="article-date" itemprop="datePublished">August 10, 2025</time>
+        </div>
+
+        <h2 class="article-title" itemprop="headline">Free Online Word Counter: Word, Character, Line & Sentence Counts</h2>
+
+        <p class="article-excerpt" itemprop="description">Paste or type text to see live totals for words, characters with and without spaces, lines, and sentences. Simple, accurate, and privacy friendly.</p>
+
+        <div class="article-content" itemprop="articleBody">
+          <div class="drop-cap-paragraph">
+            <span class="drop-cap">W</span>hether you are trimming a tweet, meeting a journal’s word limit, or polishing a cover letter, precise length checks matter. The free <a href="/tools/word-counter.html"><strong>SnipText Word Counter</strong></a> updates in real time and reports <strong>word count</strong>, <strong>character count</strong> (with and without spaces), <strong>line count</strong>, and <strong>sentence count</strong> - no sign in, no tracking.
+          </div>
+
+          <!-- In-page navigation -->
+          <nav class="article-toc" aria-label="Quick navigation">
+            <strong>In this guide:</strong>
+            <ul>
+              <li><a href="#what-it-measures">What the counter measures</a></li>
+              <li><a href="#how-to-use">How to use it</a></li>
+              <li><a href="#accuracy">How we count accurately</a></li>
+              <li><a href="#use-cases">Popular use cases</a></li>
+              <li><a href="#optimize-flow">Optimize your writing flow</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </nav>
+
+          <h3 id="what-it-measures">What our counter measures</h3>
+          <ul>
+            <li><strong>Words:</strong> Total words in your text for assignments, posts, abstracts, and essays.</li>
+            <li><strong>Characters:</strong> Characters including spaces and characters excluding spaces for strict platform limits.</li>
+            <li><strong>Lines:</strong> Line breaks - useful for poetry, scripts, code snippets, and formatting checks.</li>
+            <li><strong>Sentences:</strong> A quick signal of flow and density to support readability checks.</li>
+          </ul>
+
+          <h3 id="how-to-use">How to use it (fast)</h3>
+          <ol>
+            <li>Open the <a href="/tools/word-counter.html">SnipText Word Counter</a>.</li>
+            <li>Paste your text or start typing - counts update instantly.</li>
+            <li>Copy your results, then keep writing with confidence.</li>
+          </ol>
+
+          <div class="collapsible-section">
+            <button class="collapsible-toggle" aria-expanded="false">
+              <span>Accuracy tips (click to expand)</span>
+              <span class="toggle-icon">+</span>
+            </button>
+            <div class="collapsible-content">
+              <ul>
+                <li><strong>Clean paste:</strong> Remove extra spaces and hidden characters with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace & Formatting Cleaner</a> for the most reliable numbers.</li>
+                <li><strong>Be consistent:</strong> Platforms define “word” slightly differently. Use the same counter across a project to avoid surprises.</li>
+                <li><strong>Heads up on punctuation:</strong> Abbreviations, emojis, hyphenated terms, and ellipses can affect splits across tools.</li>
+                <li><strong>Tidy structure:</strong> Strip stray blank lines with <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a> and catch doubles with the <a href="/tools/duplicate-word-finder.html">Duplicate Word Finder</a>.</li>
+              </ul>
             </div>
+          </div>
+
+          <h3 id="accuracy">How we count accurately (in plain language)</h3>
+          <ul>
+            <li><strong>Words:</strong> We split on whitespace and common punctuation, then normalize edge cases so “don’t” counts as one word.</li>
+            <li><strong>Characters:</strong> We include all visible characters; the “without spaces” metric removes standard spaces. Emojis and accented characters are supported.</li>
+            <li><strong>Sentences:</strong> We detect sentence-ending punctuation, accounting for abbreviations and common initials where possible.</li>
+            <li><strong>Lines:</strong> We count newline breaks so copy-paste into docs and CMS fields mirrors your layout.</li>
+          </ul>
+
+          <h3 id="use-cases">Why word and character counts matter</h3>
+          <p>Editors, journals, grant portals, app stores, and social platforms all enforce limits. Accurate counts help you fit the brief, price work correctly, and track progress without guesswork.</p>
+          <ul>
+            <li><strong>Academic:</strong> Check abstracts, figure captions, and discussion length. Pair with our <a href="/grammarly1.html">Grammar Checker</a> and <a href="/quillbot2.html">Paraphrasing Tool</a> to refine tone and clarity.</li>
+            <li><strong>Content & marketing:</strong> Hit meta description and headline limits. Convert case quickly with the <a href="/tools/case-converter.html">Case Converter</a>.</li>
+            <li><strong>Product & UX:</strong> Ensure labels and tooltips fit UI components - measure, then trim with the <a href="/blog/paraphrase-rewrite-summarize.html">Paraphrase vs. Rewrite vs. Summarize</a> guide.</li>
+          </ul>
+
+          <h3 id="optimize-flow">Optimize your writing flow</h3>
+          <p>Use the Word Counter alongside other free SnipText tools for a clean, repeatable workflow:</p>
+          <ul>
+            <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace & Formatting Cleaner</a> - trim spaces, normalize newlines, and fix indentation before submission.</li>
+            <li><a href="/tools/case-converter.html">Case Converter</a> - title, sentence, upper, lower, and alternating cases with smart rules.</li>
+            <li><a href="/tools/text-to-list-to-text-converter.html">Text to List - List to Text Converter</a> - split notes into lists or join lists back into paragraphs.</li>
+            <li><a href="/blog/top-10-grammar-blunders.html">Top 10 Grammar Blunders</a> - quick fixes professors expect.</li>
+          </ul>
+
+          <h3>Try it now</h3>
+          <p>Open the <a href="/tools/word-counter.html">Word & Character Counter</a>, paste your draft, and watch the totals update live. Then tighten tone or reword with the <a href="/quillbot2.html">Paraphrasing Tool</a> and run a quick check in the <a href="/grammarly1.html">Grammar Checker</a>.</p>
+
+          <h3 id="faq">FAQ</h3>
+          <dl class="faq grammar-faq" id="grammar-faq">
+            <dt tabindex="0" aria-expanded="false">Is the SnipText word counter free?</dt>
+            <dd class="hidden">Yes. Use it as often as you like - no sign in required.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Do you store my text?</dt>
+            <dd class="hidden">No. Counts are computed instantly in your browser for a private workflow.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Does it count characters with and without spaces?</dt>
+            <dd class="hidden">Yes. You will see both totals, side by side.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Does it support emojis and accented characters?</dt>
+            <dd class="hidden">Yes. We handle modern Unicode so emojis and diacritics are counted correctly.</dd>
+
+            <dt tabindex="0" aria-expanded="false">When should I check line or sentence count?</dt>
+            <dd class="hidden">Use line count for poetry, scripts, and formatted copy. Use sentence count to gauge readability and tone.</dd>
+          </dl>
         </div>
-    </section>
 
-    <!-- Featured Article -->
-    <section class="featured-article">
-        <div class="container">
-            <article class="article-card featured">
-                <div class="article-meta">
-                    <span class="article-category">Writing Tools</span>
-                    <time datetime="2025-08-10" class="article-date">August 10, 2025</time>
-                </div>
-
-                <h2 class="article-title">Free Online Word Counter: Get Word, Character, Line & Sentence Counts</h2>
-
-                <p class="article-excerpt">Paste or type text and see real-time counts for words, characters, lines, and sentences. Simple, accurate, and privacy-friendly-made by SnipText.</p>
-
-                <div class="article-content">
-                    <div class="drop-cap-paragraph">
-                        <span class="drop-cap">W</span>hether you’re trimming a tweet, meeting a journal’s word limit, or polishing a cover letter, knowing your exact text length matters. SnipText’s free counter instantly shows <strong>word count</strong>, <strong>character count</strong>, <strong>line count</strong>, and <strong>sentence count</strong>-no login, no ads clutter, just fast results you can trust.
-                    </div>
-
-                    <h3>What our counter measures</h3>
-                    <ul>
-                        <li><strong>Words:</strong> Total words in your text for assignments, posts, and essays.</li>
-                        <li><strong>Characters:</strong> Counts characters with spaces or without spaces, useful for tight limits.</li>
-                        <li><strong>Lines:</strong> Number of line breaks-handy for poetry, code snippets, and formatting checks.</li>
-                        <li><strong>Sentences:</strong> A quick sense of flow, density, and readability.</li>
-                    </ul>
-
-                    <h3>How to use it (fast)</h3>
-                    <ol>
-                        <li>Open the SnipText Word Counter.</li>
-                        <li>Paste or start typing-counts update instantly.</li>
-                        <li>Copy your results and keep writing with confidence.</li>
-                    </ol>
-
-                    <div class="collapsible-section">
-                        <button class="collapsible-toggle" aria-expanded="false">
-                            <span>Accuracy tips (click to expand)</span>
-                            <span class="toggle-icon">+</span>
-                        </button>
-                        <div class="collapsible-content">
-                            <ul>
-                                <li>Clean paste: remove extra spaces or hidden formatting for the most reliable numbers.</li>
-                                <li>Be consistent: platforms define “word” slightly differently; use the same counter throughout a project.</li>
-                                <li>Heads-up on punctuation: abbreviations, emojis, and hyphenated terms may affect sentence/word splits across tools.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <h3>Why word & character counts matter</h3>
-                    <p>Editors, publishers, grant portals, app stores, and social platforms all enforce limits. Accurate counts help you fit the brief, price work correctly, and track progress without guesswork.</p>
-
-                    <h3>About SnipText</h3>
-                    <p>SnipText offers a growing suite of <strong>free writing tools</strong>-from counters to grammar aids-so you can create clearer content, faster. Start with our Word Counter, then explore the rest of the toolbox when you’re ready.</p>
-
-                    <h3>Try it now</h3>
-                    <a href="/tools/word-counter.html">Go To Word Counter</a>
-
-                    <h3>FAQ</h3>
-                    <dl class="faq grammar-faq" id="grammar-faq">
-                        <dt tabindex="0" aria-expanded="false">Is the SnipText word counter free?</dt>
-                        <dd class="hidden">Yes. It’s free to use as often as you like.</dd>
-
-                        <dt tabindex="0" aria-expanded="false">Do you store my text?</dt>
-                        <dd class="hidden">No. Counts are computed instantly in a privacy-friendly way.</dd>
-
-                        <dt tabindex="0" aria-expanded="false">Does it count characters with and without spaces?</dt>
-                        <dd class="hidden">Yes. You’ll see totals that include spaces and totals that exclude spaces.</dd>
-
-                        <dt tabindex="0" aria-expanded="false">When should I check line or sentence count?</dt>
-                        <dd class="hidden">Use line count for poetry, scripts, and formatted copy; sentence count for readability and tone checks.</dd>
-                    </dl>
-
-                </div>
-
-                <div class="article-footer">
-                    <div class="article-tags">
-                        <span class="tag">Word Counter</span>
-                        <span class="tag">Character Counter</span>
-                        <span class="tag">Writing Tools</span>
-                    </div>
-                    <div class="article-share">
-                        <span class="share-text">Share:</span>
-                        <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
-                        <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
-                        <a href="#" class="share-link" aria-label="Copy link">Copy</a>
-                    </div>
-                </div>
-            </article>
+        <div class="article-footer">
+          <div class="article-tags">
+            <span class="tag">Word Counter</span>
+            <span class="tag">Character Counter</span>
+            <span class="tag">Sentence Counter</span>
+            <span class="tag">Writing Tools</span>
+          </div>
+          <div class="article-share">
+            <span class="share-text">Share:</span>
+            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+          </div>
         </div>
-    </section>
-
-    <!-- Articles Section -->
-
-<section id="articles" class="articles-section">
-    <div class="container">
-        <h2 class="section-title">Latest Articles</h2>
-        <div class="articles-grid">            
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Help</span>
-                            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
-                        </div>
-                        <h3 class="article-title">Free Case Converter: Uppercase, Lowercase, Sentence, Title &amp; Alternating</h3>
-                        <p class="article-excerpt">Convert text casing in one click-upper, lower, sentence, title &amp; alternating-with smart Title Case rules, acronym protection, and hyphen-aware handling.</p>
-                        <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                <article class="article-card">
-                    <div class="article-meta">
-                        <span class="article-category">Writing Tools</span>
-                        <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
-                    </div>
-                    <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference &amp; When to Use Each</h3>
-                    <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.</p>
-                    <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
-                </article>
-
-                <article class="article-card">
-                    <div class="article-meta">
-                        <span class="article-category">Grammar Tips</span>
-                        <time datetime="2025-07-10" class="article-date">July 10, 2025</time>
-                    </div>
-                    <h3 class="article-title">Top 10 Grammar Blunders Professors Hate (And How to Fix Them Instantly)</h3>
-                    <p class="article-excerpt">Real student examples, quick fixes, and how to leverage SnipText’s grammar checker to eliminate common mistakes.</p>
-                    <a href="/blog/top-10-grammar-blunders.html" class="read-more">Read More</a>
-                </article>
+      </article>
     </div>
-</div>
+  </section>
 
-</section>
-
-<!-- About Section -->
-
-<section id="about" class="about-section">
+  <!-- Articles Section -->
+  <section id="articles" class="articles-section">
     <div class="container">
-        <div class="about-content">
-            <h2 class="section-title">About This Blog</h2>
-            <p class="about-text">At SnipText Blog, we share quick, practical guides to writing tools-starting with our free <strong>word counter</strong>, <strong>character counter</strong>, <strong>line counter</strong>, and <strong>sentence counter</strong>. Our mission is to help you hit length limits, stay on brief, and write with confidence.</p>
-            <p class="about-text">Expect short how-tos, accuracy tips, and privacy-friendly workflows. Try the Word Counter, then explore more free SnipText utilities to plan, edit, and polish your text faster.</p>
-        </div>
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="articles-grid">
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="article-category">Writing Help</span>
+            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
+          </div>
+          <h3 class="article-title">Free Case Converter: Uppercase, Lowercase, Sentence, Title & Alternating</h3>
+          <p class="article-excerpt">Convert text case in one click - smart title case rules, acronym protection, and hyphen-aware handling.</p>
+          <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="article-category">Writing Tools</span>
+            <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
+          </div>
+          <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference & When to Use Each</h3>
+          <p class="article-excerpt">Clear definitions, real-world use cases, and integrity tips for choosing the right editing move.</p>
+          <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="article-category">Grammar Tips</span>
+            <time datetime="2025-07-10" class="article-date">July 10, 2025</time>
+          </div>
+          <h3 class="article-title">Top 10 Grammar Blunders Professors Hate (And How to Fix Them Instantly)</h3>
+          <p class="article-excerpt">Real student examples, instant fixes, and quick tips that raise clarity fast.</p>
+          <a href="/blog/top-10-grammar-blunders.html" class="read-more">Read More</a>
+        </article>
+      </div>
     </div>
-</section>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">About This Blog</h2>
+        <p class="about-text">SnipText Blog shares clear, practical guides to writing tools - starting with our free <strong>word counter</strong>, <strong>character counter</strong>, <strong>line counter</strong>, and <strong>sentence counter</strong>. Our mission is to help you hit length limits, stay on brief, and publish with confidence.</p>
+        <p class="about-text">Expect short how-tos, accuracy tips, and privacy-friendly workflows. Try the <a href="/tools/word-counter.html">Word Counter</a>, then explore <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace & Formatting Cleaner</a>, <a href="/quillbot2.html">Paraphrasing Tool</a>, and the <a href="/grammarly1.html">Grammar Checker</a> to round out your editing workflow.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
 
 <!-- Author Bio Card -->
 

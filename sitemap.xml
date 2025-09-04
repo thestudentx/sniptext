@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://checkai.pro/sitemaps/sitemap-pages.xml</lo    <lastmod>2025-08-17T04:51:26.000Z</lastmod>
+    <loc>https://checkai.pro/sitemaps/sitemap-pages.xml</loc>
+    <lastmod>2025-08-17T04:51:26+05:00</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://checkai.pro/sitemaps/sitemap-tools.xml</loc>
-    <lastmod>2025-08-18T17:45:26.708Z</lastmod>
+    <lastmod>2025-08-27T00:00:00+05:00</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://checkai.pro/sitemaps/sitemap-blog.xml</loc>
-    <lastmod>2025-08-18T17:45:30.823Z</lastmod>
-9</lastmod>
+    <lastmod>2025-08-27T00:00:00+05:00</lastmod>
   </sitemap>
 </sitemapindex>

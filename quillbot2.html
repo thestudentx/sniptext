@@ -2,140 +2,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Essentials -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paraphrasing Tool - Snip Text</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- ✅ Primary SEO -->
-<meta name="description" content="Free AI paraphrasing tool by Snip Text. Rephrase sentences and paragraphs with multiple modes (Standard, Creative, Academic), rewrite strength, protected words, and highlight differences. Export to DOCX/PDF. No text storage." />
-<link rel="canonical" href="https://checkai.pro/tools/paraphrasing" />
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-<meta name="theme-color" content="#1D4ED8" />
+  <!-- Primary SEO -->
+  <title>Paraphrasing Tool - Free AI Rewriter (Modes, Protected Words, Exports) | SnipText</title>
+  <meta name="description" content="Free AI paraphrasing tool by SnipText. Rephrase sentences and paragraphs with multiple modes, rewrite strength, protected words, and diff highlights. Export to DOCX/PDF/TXT. No text storage." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <link rel="canonical" href="https://checkai.pro/quillbot2" />
+  <link rel="alternate" href="https://checkai.pro/quillbot2" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/quillbot2" hreflang="x-default" />
 
-<!-- ✅ Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Free AI Paraphrasing Tool | Snip Text" />
-<meta property="og:description" content="Rephrase sentences & paragraphs in seconds. Multiple modes, protected words, rewrite strength, and DOCX/PDF export. We don’t store your text." />
-<meta property="og:url" content="https://checkai.pro/quillbot2" />
-<meta property="og:image" content="https://checkai.pro/images/quilbot-logo.png" />
-<meta property="og:site_name" content="Snip Text" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Free AI Paraphrasing Tool | SnipText" />
+  <meta property="og:description" content="Rephrase text in seconds. Modes, protected words, rewrite strength, and exports. We don’t store your text." />
+  <meta property="og:url" content="https://checkai.pro/quillbot2" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-root-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-root-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText - default preview image" />
 
-<!-- ✅ Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Free AI Paraphrasing Tool | Snip Text" />
-<meta name="twitter:description" content="Fast, secure paraphrasing with modes, tone & style, protected words, and exports." />
-<meta name="twitter:image" content="https://checkai.pro/images/quilbot-logo.png" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SnipText" />
+  <meta name="twitter:title" content="Free AI Paraphrasing Tool | SnipText" />
+  <meta name="twitter:description" content="Fast, secure paraphrasing with modes, tone/style controls, protected words, and exports." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-root-img" />
 
-<!-- (Optional but nice) favicon sizes -->
-<link rel="apple-touch-icon" href="/favicon.png" />
-<link rel="icon" sizes="192x192" href="/favicon.png" />
+  <!-- Brand / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
 
-<!-- ✅ Accessible yet invisible H1 for SEO (keeps your visual H2) -->
-<style>
-  .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-</style>
-
-<!-- ✅ Structured Data: SoftwareApplication -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"SoftwareApplication",
-  "name":"Snip Text Paraphrasing Tool",
-  "applicationCategory":"Writing",
-  "operatingSystem":"Web",
-  "url":"https://checkai.pro/tools/paraphrasing",
-  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-  "featureList":[
-    "Paraphrasing modes (Standard, Creative, Academic, Expand, Shorten, Grammar)",
-    "Style & tone controls",
-    "Protected words",
-    "Rewrite strength slider",
-    "Highlight differences",
-    "DOCX/PDF export",
-    "Zero data storage"
-  ],
-  "creator":{"@type":"Organization","name":"Snip Text","url":"https://checkai.pro"}
-}
-</script>
-
-<!-- ✅ Structured Data: WebSite + SearchAction -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"Snip Text",
-  "url":"https://checkai.pro/",
-  "potentialAction":{
-    "@type":"SearchAction",
-    "target":"https://checkai.pro/search?q={search_term_string}",
-    "query-input":"required name=search_term_string"
-  }
-}
-</script>
-
-<!-- ✅ Structured Data: Breadcrumbs -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"BreadcrumbList",
-  "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
-    {"@type":"ListItem","position":2,"name":"Free Tools","item":"https://checkai.pro/tools/free-tools"},
-    {"@type":"ListItem","position":3,"name":"Paraphrasing Tool","item":"https://checkai.pro/tools/paraphrasing"}
-  ]
-}
-</script>
-
-<!-- ✅ Structured Data: FAQ (matches the FAQ section you’ll add below) -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {
-      "@type":"Question",
-      "name":"Is my text stored or shared?",
-      "acceptedAnswer":{"@type":"Answer","text":"No. Processing is done through a private API and we don’t store your text."}
-    },
-    {
-      "@type":"Question",
-      "name":"How does protected words work?",
-      "acceptedAnswer":{"@type":"Answer","text":"Any words you add as protected will be preserved during rewriting."}
-    },
-    {
-      "@type":"Question",
-      "name":"What paraphrasing modes do you support?",
-      "acceptedAnswer":{"@type":"Answer","text":"Standard, Fluent, Creative, Academic, Expand, Shorten, and Fix Grammar."}
-    },
-    {
-      "@type":"Question",
-      "name":"Can I export the result?",
-      "acceptedAnswer":{"@type":"Answer","text":"Yes, you can export to TXT, DOCX, and PDF in one click."}
-    }
-  ]
-}
-</script>
-
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- Core CSS -->
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="/components/toggleTheme.css">
+  <link rel="stylesheet" href="/components/toggleTheme.css" />
   <link rel="stylesheet" href="css/quillbot2.css" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.png" type="image/png">
-
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  <!-- File Upload: Mammoth -->
+  <!-- File Upload: Mammoth (DOCX) -->
   <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
 
-  <!-- Toast / Icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Paraphrasing Tool",
+    "applicationCategory":"WritingApplication",
+    "operatingSystem":"All",
+    "url":"https://checkai.pro/quillbot2",
+    "description":"AI paraphrasing with modes, rewrite strength, protected words, and diff highlights. Exports to DOCX/PDF/TXT. No text storage.",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "featureList":[
+      "Paraphrasing modes: Standard, Creative, Academic, Expand, Shorten, Fix Grammar",
+      "Tone & style controls",
+      "Protected words",
+      "Rewrite strength slider",
+      "Highlight differences",
+      "DOCX/PDF/TXT export",
+      "Zero data storage"
+    ],
+    "publisher":{"@type":"Organization","name":"SnipText","url":"https://checkai.pro"}
+  }
+  </script>
+
+  <!-- Structured Data: WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Paraphrasing Tool - SnipText",
+    "url":"https://checkai.pro/quillbot2",
+    "description":"Rephrase sentences and paragraphs with multiple modes, protected words, and exports - private by design.",
+    "dateModified":"2025-08-17"
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Free Tools","item":"https://checkai.pro/tools/"},
+      {"@type":"ListItem","position":3,"name":"Paraphrasing Tool","item":"https://checkai.pro/quillbot2"}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is my text stored or shared?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. Processing uses a private API and we don’t store your text."}
+      },
+      {
+        "@type":"Question",
+        "name":"How do protected words work?",
+        "acceptedAnswer":{"@type":"Answer","text":"Words you add to the protected list are preserved during rewriting."}
+      },
+      {
+        "@type":"Question",
+        "name":"What paraphrasing modes are available?",
+        "acceptedAnswer":{"@type":"Answer","text":"Standard, Creative, Academic, Expand, Shorten, and Fix Grammar."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I export the result?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. You can export to TXT, DOCX, and PDF in one click."}
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
   <nav id="main-navbar" aria-label="Primary">
     <div class="nav-container">
