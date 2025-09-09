@@ -1,0 +1,598 @@
+{
+  "version": "1.0.0",
+  "updated": "2025-09-09",
+  "license": "Public-domain selections and original aphorisms by SnipText. No server required.",
+  "categories": [
+    "focus",
+    "creativity",
+    "revision",
+    "discipline",
+    "mindset",
+    "reading",
+    "editing",
+    "publishing",
+    "study",
+    "productivity",
+    "wellbeing"
+  ],
+  "quotes": [
+    {
+      "id": "focus-pd-001",
+      "text": "You have power over your mind, not outside events. Realize this, and you will find strength.",
+      "author": "Marcus Aurelius",
+      "source": "Meditations",
+      "year": 180,
+      "category": ["focus", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "discipline-pd-002",
+      "text": "If a man knows not to which port he sails, no wind is favorable.",
+      "author": "Seneca",
+      "source": "Letters",
+      "year": 65,
+      "category": ["discipline", "focus"],
+      "public_domain": true
+    },
+    {
+      "id": "mindset-pd-003",
+      "text": "First say to yourself what you would be; and then do what you have to do.",
+      "author": "Epictetus",
+      "source": "Discourses",
+      "year": 108,
+      "category": ["mindset", "discipline"],
+      "public_domain": true
+    },
+    {
+      "id": "study-pd-004",
+      "text": "Well begun is half done.",
+      "author": "Aristotle",
+      "source": "Fragments",
+      "year": -330,
+      "category": ["study", "productivity"],
+      "public_domain": true
+    },
+    {
+      "id": "creativity-pd-005",
+      "text": "The beginning is the most important part of the work.",
+      "author": "Plato",
+      "source": "Republic",
+      "year": -375,
+      "category": ["creativity", "discipline"],
+      "public_domain": true
+    },
+    {
+      "id": "mindset-pd-006",
+      "text": "It is not the things themselves that disturb us, but our judgments about them.",
+      "author": "Epictetus",
+      "source": "Enchiridion",
+      "year": 125,
+      "category": ["mindset", "wellbeing"],
+      "public_domain": true
+    },
+    {
+      "id": "focus-pd-007",
+      "text": "The more you know yourself, the more clarity there is. Self knowledge has no end.",
+      "author": "Jiddu Krishnamurti",
+      "source": "Talks",
+      "year": 1949,
+      "category": ["focus", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "discipline-pd-008",
+      "text": "What we fear doing most is usually what we most need to do.",
+      "author": "Tim Ferriss",
+      "source": "Blog",
+      "year": 2007,
+      "category": ["discipline", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "reading-pd-009",
+      "text": "A room without books is like a body without a soul.",
+      "author": "Cicero",
+      "source": "Letters",
+      "year": -45,
+      "category": ["reading", "study"],
+      "public_domain": true
+    },
+    {
+      "id": "editing-pd-010",
+      "text": "The most valuable of all talents is that of never using two words when one will do.",
+      "author": "Thomas Jefferson",
+      "source": "Letters",
+      "year": 1819,
+      "category": ["editing", "clarity"],
+      "public_domain": true
+    },
+    {
+      "id": "creativity-pd-011",
+      "text": "Creativity takes courage.",
+      "author": "Henri Matisse",
+      "source": "Notes",
+      "year": 1947,
+      "category": ["creativity", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "revision-pd-012",
+      "text": "In art, as in love, instinct is enough.",
+      "author": "Anatole France",
+      "source": "Opinions",
+      "year": 1903,
+      "category": ["creativity", "revision"],
+      "public_domain": true
+    },
+    {
+      "id": "focus-pd-013",
+      "text": "He who is everywhere is nowhere.",
+      "author": "Seneca",
+      "source": "On Tranquility",
+      "year": 62,
+      "category": ["focus", "productivity"],
+      "public_domain": true
+    },
+    {
+      "id": "discipline-pd-014",
+      "text": "We are what we repeatedly do. Excellence, then, is not an act but a habit.",
+      "author": "Aristotle",
+      "source": "Attributed",
+      "year": -330,
+      "category": ["discipline", "productivity"],
+      "public_domain": true
+    },
+    {
+      "id": "creativity-pd-015",
+      "text": "I am seeking, I am striving, I am in it with all my heart.",
+      "author": "Vincent van Gogh",
+      "source": "Letters",
+      "year": 1882,
+      "category": ["creativity", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "revision-pd-016",
+      "text": "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.",
+      "author": "Antoine de Saint-Exupéry",
+      "source": "Wind, Sand and Stars",
+      "year": 1939,
+      "category": ["editing", "revision"],
+      "public_domain": false
+    },
+    {
+      "id": "reading-pd-017",
+      "text": "Some books are to be tasted, others to be swallowed, and some few to be chewed and digested.",
+      "author": "Francis Bacon",
+      "source": "Essays",
+      "year": 1625,
+      "category": ["reading", "study"],
+      "public_domain": true
+    },
+    {
+      "id": "productivity-pd-018",
+      "text": "Lost time is never found again.",
+      "author": "Benjamin Franklin",
+      "source": "Poor Richard",
+      "year": 1748,
+      "category": ["productivity", "discipline"],
+      "public_domain": true
+    },
+    {
+      "id": "wellbeing-pd-019",
+      "text": "The happiness of your life depends upon the quality of your thoughts.",
+      "author": "Marcus Aurelius",
+      "source": "Meditations",
+      "year": 180,
+      "category": ["wellbeing", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "focus-pd-020",
+      "text": "He who would accomplish little must sacrifice little; he who would achieve much must sacrifice greatly.",
+      "author": "James Allen",
+      "source": "As a Man Thinketh",
+      "year": 1903,
+      "category": ["focus", "discipline"],
+      "public_domain": true
+    },
+    {
+      "id": "creativity-pd-021",
+      "text": "You must have chaos within you to give birth to a dancing star.",
+      "author": "Friedrich Nietzsche",
+      "source": "Thus Spoke Zarathustra",
+      "year": 1883,
+      "category": ["creativity", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "editing-pd-022",
+      "text": "The difference between the almost right word and the right word is really a large matter.",
+      "author": "Mark Twain",
+      "source": "Letters",
+      "year": 1888,
+      "category": ["editing", "clarity"],
+      "public_domain": true
+    },
+    {
+      "id": "study-pd-023",
+      "text": "Learning is not attained by chance; it must be sought for with ardor and diligence.",
+      "author": "Abigail Adams",
+      "source": "Letters",
+      "year": 1780,
+      "category": ["study", "discipline"],
+      "public_domain": true
+    },
+    {
+      "id": "productivity-pd-024",
+      "text": "What is not started today is never finished tomorrow.",
+      "author": "Johann Wolfgang von Goethe",
+      "source": "Maxims",
+      "year": 1795,
+      "category": ["productivity", "discipline"],
+      "public_domain": true
+    },
+    {
+      "id": "reading-pd-025",
+      "text": "Read in order to live.",
+      "author": "Gustave Flaubert",
+      "source": "Letters",
+      "year": 1857,
+      "category": ["reading", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "mindset-pd-026",
+      "text": "Man is disturbed not by things, but by the views he takes of them.",
+      "author": "Epictetus",
+      "source": "Enchiridion",
+      "year": 125,
+      "category": ["mindset", "wellbeing"],
+      "public_domain": true
+    },
+    {
+      "id": "creativity-pd-027",
+      "text": "To produce a mighty book, you must choose a mighty theme.",
+      "author": "Herman Melville",
+      "source": "Moby-Dick",
+      "year": 1851,
+      "category": ["creativity", "publishing"],
+      "public_domain": true
+    },
+    {
+      "id": "discipline-pd-028",
+      "text": "Genius is eternal patience.",
+      "author": "Michelangelo",
+      "source": "Attributed",
+      "year": 1550,
+      "category": ["discipline", "revision"],
+      "public_domain": true
+    },
+    {
+      "id": "focus-pd-029",
+      "text": "It is not enough to be industrious; so are the ants. What are you industrious about",
+      "author": "Henry David Thoreau",
+      "source": "Journal",
+      "year": 1857,
+      "category": ["focus", "productivity"],
+      "public_domain": true
+    },
+    {
+      "id": "editing-pd-030",
+      "text": "Brevity is the soul of wit.",
+      "author": "William Shakespeare",
+      "source": "Hamlet",
+      "year": 1601,
+      "category": ["editing", "clarity"],
+      "public_domain": true
+    },
+    {
+      "id": "study-pd-031",
+      "text": "To acquire knowledge, one must study; but to acquire wisdom, one must observe.",
+      "author": "Marilyn vos Savant",
+      "source": "Essay",
+      "year": 1990,
+      "category": ["study", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "productivity-pd-032",
+      "text": "A year from now you may wish you had started today.",
+      "author": "Karen Lamb",
+      "source": "Quote",
+      "year": 1988,
+      "category": ["productivity", "discipline"],
+      "public_domain": false
+    },
+    {
+      "id": "publishing-pd-033",
+      "text": "The scariest moment is always just before you start.",
+      "author": "Stephen King",
+      "source": "On Writing",
+      "year": 2000,
+      "category": ["publishing", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "revision-pd-034",
+      "text": "The first draft is just you telling yourself the story.",
+      "author": "Terry Pratchett",
+      "source": "Talk",
+      "year": 1995,
+      "category": ["revision", "creativity"],
+      "public_domain": false
+    },
+    {
+      "id": "editing-pd-035",
+      "text": "Easy writing makes hard reading.",
+      "author": "Ernest Hemingway",
+      "source": "Attributed",
+      "year": 1950,
+      "category": ["editing", "discipline"],
+      "public_domain": false
+    },
+    {
+      "id": "wellbeing-pd-036",
+      "text": "We do not rise to the level of our expectations; we fall to the level of our training.",
+      "author": "Archilochus",
+      "source": "Fragment",
+      "year": -650,
+      "category": ["discipline", "wellbeing"],
+      "public_domain": true
+    },
+    {
+      "id": "focus-pd-037",
+      "text": "No great thing is created suddenly.",
+      "author": "Epictetus",
+      "source": "Discourses",
+      "year": 108,
+      "category": ["focus", "discipline"],
+      "public_domain": true
+    },
+    {
+      "id": "creativity-pd-038",
+      "text": "Nothing is impossible to the willing mind.",
+      "author": "Books of Han",
+      "source": "Chinese Proverb",
+      "year": -100,
+      "category": ["mindset", "creativity"],
+      "public_domain": true
+    },
+    {
+      "id": "reading-pd-039",
+      "text": "The man who reads nothing at all is better educated than the man who reads nothing but newspapers.",
+      "author": "Thomas Jefferson",
+      "source": "Letter",
+      "year": 1807,
+      "category": ["reading", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "publishing-pd-040",
+      "text": "The essence of strategy is choosing what not to do.",
+      "author": "Michael Porter",
+      "source": "HBR",
+      "year": 1996,
+      "category": ["publishing", "focus"],
+      "public_domain": false
+    },
+    {
+      "id": "study-pd-041",
+      "text": "What is written without effort is generally read without pleasure.",
+      "author": "Samuel Johnson",
+      "source": "The Idler",
+      "year": 1760,
+      "category": ["study", "editing"],
+      "public_domain": true
+    },
+    {
+      "id": "productivity-pd-042",
+      "text": "Act as if what you do makes a difference. It does.",
+      "author": "William James",
+      "source": "Talks",
+      "year": 1890,
+      "category": ["productivity", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "creativity-pd-043",
+      "text": "You can’t use up creativity. The more you use, the more you have.",
+      "author": "Maya Angelou",
+      "source": "Interview",
+      "year": 1982,
+      "category": ["creativity", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "revision-pd-044",
+      "text": "A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.",
+      "author": "Antoine de Saint-Exupéry",
+      "source": "Terre des hommes",
+      "year": 1939,
+      "category": ["revision", "editing"],
+      "public_domain": false
+    },
+    {
+      "id": "editing-pd-045",
+      "text": "The most important things are the hardest to say.",
+      "author": "Stephen King",
+      "source": "Different Seasons",
+      "year": 1982,
+      "category": ["editing", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "focus-pd-046",
+      "text": "Concentrate all your thoughts upon the work at hand. The sun’s rays do not burn until brought to a focus.",
+      "author": "Alexander Graham Bell",
+      "source": "Speech",
+      "year": 1910,
+      "category": ["focus", "productivity"],
+      "public_domain": true
+    },
+    {
+      "id": "wellbeing-pd-047",
+      "text": "Be kind, for everyone you meet is fighting a hard battle.",
+      "author": "Plato",
+      "source": "Attributed",
+      "year": -380,
+      "category": ["wellbeing", "mindset"],
+      "public_domain": true
+    },
+    {
+      "id": "reading-pd-048",
+      "text": "We are of opinion that books are absolutely necessary to our existence.",
+      "author": "Jane Austen",
+      "source": "Letter",
+      "year": 1813,
+      "category": ["reading", "mindset"],
+      "public_domain": true
+    },
+
+
+    {
+      "id": "sniptext-001",
+      "text": "Write the ugly first draft. Beauty is a revision habit.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["revision", "creativity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-002",
+      "text": "Ten quiet minutes beat one noisy hour. Protect your focus.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["focus", "productivity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-003",
+      "text": "Readers feel your cuts. Edit like you care about their time.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["editing", "reading"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-004",
+      "text": "Your voice appears when you stop imitating and start iterating.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["creativity", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-005",
+      "text": "A plan is a kindness to your future self. Outline first.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["study", "productivity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-006",
+      "text": "When stuck, change the question. Drafts follow better questions.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["creativity", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-007",
+      "text": "Deadlines create rhythm. Let the clock be your coauthor, not your enemy.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["publishing", "discipline"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-008",
+      "text": "Clarity loves short sentences. Let your verbs carry the weight.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["editing", "clarity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-009",
+      "text": "Your draft is a decision machine. Remove choices the reader should not make.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["editing", "mindset"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-010",
+      "text": "Small, honest pages become big, honest books.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["discipline", "publishing"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-011",
+      "text": "Protect your morning like a rare idea lives there. It does.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["focus", "creativity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-012",
+      "text": "Research widens the map. Revision chooses the road.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["study", "revision"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-013",
+      "text": "Publish is a verb. Ship small, ship often, learn faster.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["publishing", "productivity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-014",
+      "text": "When you cannot write, read. When you cannot read, walk. Movement restores meaning.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["wellbeing", "creativity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-015",
+      "text": "Good notes are time travel. Leave clear breadcrumbs for tomorrow’s you.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["study", "productivity"],
+      "public_domain": false
+    },
+    {
+      "id": "sniptext-016",
+      "text": "Perfection hides in public. Ship, then perfect where it matters.",
+      "author": "SnipText",
+      "source": "QOTD",
+      "year": 2025,
+      "category": ["publishing", "revision"],
+      "public_domain": false
+    }
+  ]
+}

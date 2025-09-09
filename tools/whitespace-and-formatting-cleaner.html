@@ -240,10 +240,6 @@ body {
 }
 
 
-  .tools-grid { margin: 1rem 0; }
-.tool-card {background: var(--color-bg-dark);}
-
-
   a{
     color : inherit;
     text-decoration : none;
@@ -597,12 +593,12 @@ body {
     }
   }
 
-  .whitespace-and-formatting-cleaner-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
-.whitespace-and-formatting-cleaner-blog-link{color:var(--wc-accent-b); text-decoration:underline}
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
 </style>
-
 </head>
-
 <body>
 
 
@@ -817,9 +813,11 @@ body {
       </article>
     </section>
 
-     <div class="whitespace-and-formatting-cleaner-guide">
-    <p class="whitespace-and-formatting-cleaner-guide-p">See Whitespace and Formatting Cleaner Guide on SnipText Blog Page <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html" class="whitespace-and-formatting-cleaner-blog-link">here</a>.</p>
+     <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Whitespace and Formatting Cleaner Guide on SnipText Blog Page <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html" class="free-tools-blog-link">here</a>.</p>
   </div>
+
+  </main>
 
 
   
@@ -879,8 +877,6 @@ body {
     </article>
 
   </section>
-
-  </main>
 
   <!-- Toast -->
   <div id="whitespace-formatting-toast" class="whitespace-formatting-toast" role="status" aria-live="polite"></div>

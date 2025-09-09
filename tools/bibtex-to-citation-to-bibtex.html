@@ -63,7 +63,7 @@
   <!-- Theme / Icons -->
   <meta name="theme-color" content="#1D4ED8" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>📚</text></svg>">
+  <link rel="icon" href="/favicon.png" type="image/png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -219,9 +219,6 @@
 
   body { margin:0; font-family: var(--bibtex-cite-font-body); background: var(--bibtex-cite-bg); color: var(--bibtex-cite-text); }
 
-  .tools-grid { margin: 1rem 0; }
-.tool-card {background: var(--color-bg-dark);}
-
 
   /* Background aurora under only this page content */
   .bibtex-cite-page {
@@ -351,9 +348,10 @@
     @keyframes bibtex-cite-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
   }
 
-  /* Helper link */
-  .bibtex-cite-guide { width:100%; text-align:center; font-size:12px; color:#a3aed0; margin-top:8px; }
-  .bibtex-cite-blog-link { color: var(--bibtex-cite-accent-2); text-decoration: underline; }
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
   </style>
 </head>
 <body>
@@ -536,9 +534,12 @@
       </div>
     </section>
 
-    <div class="bibtex-cite-guide">
-      <p>Need examples and tips? Read the quick guide on the SnipText Blog <a href="/blog/bibtex-to-citation-converter-apa-mla-chicago-ieee-harvard-sniptext-blog.html" class="bibtex-cite-blog-link">here</a>.</p>
+    <div class="free-tools-guide">
+      <p>Need examples and tips? Read the quick guide on the SnipText Blog <a href="/blog/bibtex-to-citation-converter-apa-mla-chicago-ieee-harvard-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
     </div>
+
+
+  </main>
 
 
     
@@ -594,9 +595,6 @@
     </article>
 
   </section>
-
-
-  </main>
 
 
 

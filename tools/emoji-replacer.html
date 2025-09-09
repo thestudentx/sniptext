@@ -228,9 +228,6 @@
         linear-gradient(180deg, var(--emoji-replacer-bg) 0%, var(--emoji-replacer-bg-soft) 100%);
     }
 
-  .tools-grid { margin: 1rem 0; }
-.tool-card {background: var(--color-bg-dark);}
-
 
     .emoji-replacer-card-head{
       background: linear-gradient(90deg,
@@ -514,12 +511,12 @@ html, body {
     }
   }
 
-  .emoji-replacer-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
-.emoji-replacer-blog-link{color:var(--wc-accent-b); text-decoration:underline}
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
 </style>
-
 </head>
-
 <body>
 
 
@@ -716,9 +713,11 @@ rocket = 🚀"></textarea>
       </article>
     </section>
 
-     <div class="emoji-replacer-guide">
-    <p class="emoji-replacer-guide-p">See Emoji Replacer Guide on SnipText Blog Page <a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html" class="emoji-replacer-blog-link">here</a>.</p>
+     <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Emoji Replacer Guide on SnipText Blog Page <a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html" class="free-tools-blog-link">here</a>.</p>
   </div>
+
+  </main>
 
 
   
@@ -776,8 +775,6 @@ rocket = 🚀"></textarea>
 
   </section>
 
-  </main>
-
   <!-- Toast -->
   <div id="emoji-replacer-toast" class="emoji-replacer-toast" role="status" aria-live="polite"></div>
 
@@ -834,6 +831,7 @@ rocket = 🚀"></textarea>
        ========================= -->
 
        <script src="/js/index.js"></script>
+       <script src="/js/auth.js"></script>
        <script src="/tools/js/free-tools.js"></script>
 
        <!-- FAQs script for SEO -->

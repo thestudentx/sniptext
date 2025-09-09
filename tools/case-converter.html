@@ -188,9 +188,6 @@
       linear-gradient(180deg, var(--case-converter-bg) 0%, var(--case-converter-bg-soft) 100%);
   }
 
-  .tools-grid { margin: 1rem 0; }
-.tool-card {background: var(--color-bg-dark);}
-
   /* Light: card header/toolbar subtle tints */
   .case-converter-card-head{
     background: linear-gradient(90deg,
@@ -455,11 +452,10 @@ html, body{
   }
 }
 
-
-
-.case-converter-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
-.case-converter-blog-link{color:var(--wc-accent-b); text-decoration:underline}
-
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
   </style>
 </head>
 <body>
@@ -575,9 +571,11 @@ html, body{
       </div>
     </section>
 
-     <div class="case-converter-guide">
-        <p class="case-converter-guide-p">See Case Converter Guide on SnipText Blog Page <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="case-converter-blog-link">here</a>.</p>
+     <div class="free-tools-guide">
+        <p class="free-tools-guide-p">See Case Converter Guide on SnipText Blog Page <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="free-tools-blog-link">here</a>.</p>
       </div>
+
+  </main>
 
 
       <!-- TOOLS GRID -->
@@ -632,8 +630,6 @@ html, body{
     </article>
 
   </section>
-
-  </main>
 
   <div class="case-converter-toast" id="case-converter-toast" role="status" aria-live="polite"></div>
   

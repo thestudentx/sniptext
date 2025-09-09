@@ -1,0 +1,1015 @@
+<!-- Filename: random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics (keep as-is from your stack) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config', 'G-GE98V48RK8');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/" />
+
+  <!-- Primary SEO -->
+  <title>Random Synonym Finder - Smart Thesaurus, Tone & Length Filters | SnipText</title>
+  <meta name="description" content="Free Random Synonym Finder by SnipText. Highlight any word and spin smart synonyms by tone, formality, length, and frequency. Batch-rewrite text, lock words, compare A/B versions, import your own thesaurus, and export mappings. Private, in-browser." />
+  <meta name="keywords" content="random synonym finder, smart thesaurus, synonym generator, replace words, tone formal casual, short synonyms, long synonyms, vocabulary, rewrite, paraphrase, batch replace, in browser" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/random-synonym-finder" />
+  <link rel="alternate" href="https://checkai.pro/tools/random-synonym-finder" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/random-synonym-finder" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Random Synonym Finder - Smart Thesaurus & Batch Rewrite" />
+  <meta property="og:description" content="Spin synonyms with tone, length, and frequency filters. Lock words, A/B compare, import custom thesaurus, and export mappings. Private, client-side." />
+  <meta property="og:url" content="https://checkai.pro/tools/random-synonym-finder" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Random Synonym Finder interface preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Random Synonym Finder - Smart Thesaurus & Batch Rewrite" />
+  <meta name="twitter:description" content="Find and spin synonyms by tone and length. Fully private and fast in your browser." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Favicons / theme -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+
+  <!-- Brand Theme + Synonym Theme (dark-first) -->
+  <style>
+/* =========================
+   Brand tokens aligned to role model
+   ========================= */
+:root{
+  --color-primary:#1D4ED8;
+  --color-accent:#3B82F6;
+  --color-bg-dark:#0F172A;
+  --color-white:#ffffff;
+  --color-border:rgba(255,255,255,.14);
+  --gradient-cta-end:#ff7c4c;
+
+  --font-heading:'Poppins','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-body:'Roboto','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+
+  /* Page-scoped tokens */
+  --syn-bg:var(--color-bg-dark);
+  --syn-text:#e5e7eb;
+  --syn-muted:rgba(255,255,255,.78);
+  --syn-border:var(--color-border);
+  --syn-accent-1:var(--color-primary);
+  --syn-accent-2:var(--color-accent);
+  --syn-warm:var(--gradient-cta-end);
+
+  --syn-r-xl:20px;
+  --syn-r-lg:14px;
+  --syn-r-md:10px;
+
+  --syn-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --syn-shadow-2:0 18px 48px rgba(17,24,39,.46);
+  --syn-maxw:1200px;
+}
+
+/* =========================
+   Canvas + aurora backdrop
+   ========================= */
+html,body{height:100%}
+body.synonym-body{
+  margin:0; background:var(--syn-bg); color:var(--syn-text);
+  font-family:var(--font-body); line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.synonym-wrap{
+  position:relative; isolation:isolate;
+  width:min(var(--syn-maxw),92vw);
+  margin:clamp(16px,3vw,40px) auto;
+  padding:clamp(12px,2.5vw,24px);
+}
+.synonym-wrap::before{
+  content:""; position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--syn-accent-1) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--syn-accent-2) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--syn-warm) 12%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--syn-bg) 0%, #0b1225 100%);
+}
+
+/* =========================
+   Hero like role model
+   ========================= */
+.synonym-hero{
+  display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center;
+  padding: clamp(18px,3vw,28px);
+  border:1px solid var(--syn-border);
+  border-radius:var(--syn-r-xl);
+  background:linear-gradient(135deg,
+    color-mix(in oklab, var(--syn-accent-1) 20%, transparent),
+    color-mix(in oklab, var(--syn-accent-2) 18%, transparent)
+  ) border-box;
+  box-shadow:var(--syn-shadow-1);
+  overflow:hidden; position:relative;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.synonym-hero::after{
+  content:""; position:absolute; inset:-3px; pointer-events:none; filter:blur(16px); opacity:.6;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--syn-accent-1) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--syn-accent-2) 26%, transparent), transparent 62%);
+}
+.synonym-hero-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:var(--font-heading); font-size:clamp(22px,3.2vw,36px);
+  background:linear-gradient(90deg,#fff,
+    color-mix(in oklab,var(--syn-accent-2) 54%, #fff) 38%,
+    color-mix(in oklab,var(--syn-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.synonym-hero-sub{ margin:6px 0 0; color:var(--syn-muted) }
+.synonym-hero-icon{
+  width:64px; height:64px; border-radius:16px; display:grid; place-items:center;
+  background:linear-gradient(135deg, var(--syn-accent-2), var(--syn-warm));
+  box-shadow:0 10px 24px rgba(59,130,246,.25);
+}
+.synonym-svg{ width:28px; height:28px; color:#fff }
+
+/* =========================
+   Grid to mirror role model
+   ========================= */
+.synonym-grid{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(12px,2.4vw,20px); margin-top:clamp(14px,2.6vw,24px);
+}
+@media (max-width:980px){ .synonym-grid{ grid-template-columns:1fr; } }
+
+/* =========================
+   Cards with glass surface
+   ========================= */
+.synonym-card{
+  border:1px solid var(--syn-border);
+  border-radius:var(--syn-r-lg);
+  background:rgba(255,255,255,.06);
+  box-shadow:var(--syn-shadow-2);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  overflow:hidden;
+}
+.synonym-card-header{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px; border-bottom:1px solid var(--syn-border);
+  background:linear-gradient(90deg,
+    color-mix(in oklab, var(--syn-accent-1) 11%, transparent),
+    color-mix(in oklab, var(--syn-accent-2) 9%, transparent));
+}
+.synonym-card-title{
+  margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.92;
+  font-family:var(--font-heading); color:#e5e7eb;
+}
+.synonym-card-body{ padding:14px; }
+
+/* Subtle float animation like role model */
+@media (prefers-reduced-motion:no-preference){
+  .synonym-card{ animation:syn-float 18s ease-in-out infinite }
+  @keyframes syn-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* =========================
+   Inputs, textareas, hint
+   ========================= */
+.synonym-input,.synonym-output{
+  width:100%; min-height:180px; resize:vertical;
+  background:#0f1b34; color:#e5e7eb; border:1px solid var(--syn-border);
+  border-radius:10px; padding:12px; outline:0;
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Roboto Mono', monospace;
+}
+.synonym-output{ background:#0b1226 }
+.synonym-input::placeholder,.synonym-output::placeholder{ color:#94a3b8 }
+.synonym-input:focus,.synonym-output:focus{
+  border-color:rgba(59,130,246,.55);
+  box-shadow:0 0 0 3px rgba(59,130,246,.25);
+}
+.synonym-hint{ font-size:.9rem; color:var(--syn-muted); margin-top:8px }
+.synonym-hint a {color: beige; text-decoration: underline; text-underline-offset: 2px;}
+
+/* =========================
+   Controls: selects, checkboxes, pills
+   ========================= */
+.synonym-controls{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px }
+.synonym-select,.synonym-number,.synonym-checkbox{
+  background:#0f1b34; color:#e5e7eb; border:1px solid var(--syn-border);
+  border-radius:10px; padding:8px 10px; font-size:.96rem; outline:0;
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.synonym-select{ background:#0e1730 }
+.synonym-number{ width:110px }
+.synonym-checkbox{ display:inline-flex; align-items:center; gap:8px }
+.synonym-checkbox input{ accent-color: var(--syn-accent-2) }
+
+.synonym-pill{
+  padding:10px 14px; border:1px solid var(--syn-border); border-radius:12px;
+  background:transparent; color:#e5e7eb; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition:transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+}
+.synonym-pill:hover{ transform:translateY(-1px); filter:brightness(1.06) }
+.synonym-ghost{ border-style:dashed }
+
+/* Primary CTA matches role model buttons */
+.synonym-cta{
+  --_bg:linear-gradient(135deg, var(--syn-accent-2), var(--syn-warm));
+  appearance:none; border:1px solid transparent; background:var(--_bg); color:#fff;
+  padding:10px 14px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  box-shadow:0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  transition:transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  font-family:var(--font-heading);
+}
+.synonym-cta:hover{ transform:translateY(-1px); filter:brightness(1.06) }
+.synonym-cta:active{ transform:translateY(0); filter:brightness(.98) }
+
+/* Mini toolbar buttons under inputs */
+.synonym-toolbar{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 0 }
+.synonym-mini{
+  padding:8px 12px; border:1px solid var(--syn-border); border-radius:12px;
+  background:transparent; color:#e5e7eb; cursor:pointer; font-weight:700; font-size:13px; letter-spacing:.3px;
+  transition:transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+}
+.synonym-mini:hover{ transform:translateY(-1px); filter:brightness(1.06) }
+
+/* =========================
+   Tabs styled like segmented control
+   ========================= */
+.synonym-tabs{ display:flex; gap:8px; flex-wrap:wrap }
+.synonym-tab{
+  border:1px solid var(--syn-border); border-radius:12px; background:transparent; color:#e5e7eb;
+  padding:10px 14px; cursor:pointer; font-weight:700; font-size:13px; letter-spacing:.3px;
+  transition:transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+}
+.synonym-tab:hover{ transform:translateY(-1px); filter:brightness(1.06) }
+.synonym-tab.active{
+  background:linear-gradient(180deg,
+    color-mix(in oklab, var(--syn-accent-1) 68%, transparent),
+    color-mix(in oklab, var(--syn-accent-2) 60%, transparent)); color:#fff;
+  border-color: color-mix(in oklab, #000 12%, var(--syn-accent-1));
+  box-shadow:0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+}
+
+/* =========================
+   Suggestion list chips and apply button
+   ========================= */
+.synonym-suggest{
+  display:flex; flex-direction:column; gap:10px; max-height:312px; overflow:auto;
+}
+.synonym-chip{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  border:1px solid var(--syn-border); background:#0b1226; padding:10px 12px; border-radius:12px;
+}
+.synonym-chip-main{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+.synonym-chip-word{ font-weight:700 }
+.synonym-chip-meta{ font-size:.86rem; color:var(--syn-muted) }
+.synonym-chip-apply{
+  appearance:none; border:1px solid color-mix(in oklab, #000 12%, var(--syn-accent-1));
+  background:linear-gradient(180deg,
+    color-mix(in oklab, var(--syn-accent-1) 70%, transparent),
+    color-mix(in oklab, var(--syn-accent-2) 62%, transparent));
+  color:#fff; border-radius:10px; padding:8px 10px; cursor:pointer;
+  box-shadow:0 8px 16px rgba(59,130,246,.18);
+}
+.synonym-chip-apply[disabled]{ opacity:.6; cursor:not-allowed }
+
+/* =========================
+   Footer and helpers
+   ========================= */
+.synonym-footer{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap }
+.synonym-changed{ background:rgba(59,130,246,.18); border-radius:6px; padding:2px 3px }
+.free-tools-guide{ margin-top:16px }
+.free-tools-guide-p{ color:var(--syn-muted) }
+.free-tools-blog-link{ color:#bcd3ff; text-decoration:underline; text-underline-offset:2px }
+.free-tools-blog-link:hover{ color:#d7e4ff }
+
+/* Utilities */
+.hidden{ display:none !important }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .synonym-card,.synonym-cta,.synonym-pill,.synonym-mini,.synonym-tab,.synonym-hero,.synonym-input,.synonym-output{ transition:none !important; animation:none !important; }
+}
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Random Synonym Finder",
+    "url":"https://checkai.pro/tools/random-synonym-finder",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree": true,
+    "browserRequirements":"Requires JavaScript; modern browsers",
+    "featureList":[
+      "Highlight a word to get smart synonyms",
+      "Filters by tone, formality, and length",
+      "Randomize with locks & batch replace",
+      "A/B compare and change-highlighting",
+      "Local custom thesaurus import/export",
+      "Private, client-side operation"
+    ],
+    "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}}
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is Random Synonym Finder private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs locally in your browser and nothing is uploaded."}},
+      {"@type":"Question","name":"Can I control tone or length?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use tone, formality, and length filters to narrow suggestions before you spin."}},
+      {"@type":"Question","name":"Does it support batch replace?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can randomize synonyms across the whole text while locking specific words."}},
+      {"@type":"Question","name":"Can I load my own thesaurus?","acceptedAnswer":{"@type":"Answer","text":"Yes. Import a simple JSON map and the tool will merge it. You can also export your edits."}}
+    ]
+  }
+  </script>
+</head>
+
+<body class="synonym-body">
+
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  
+
+
+  <main class="synonym-wrap" aria-labelledby="synonym-title">
+    <!-- HERO -->
+    <header class="synonym-hero">
+      <div>
+        <h1 id="synonym-title" class="synonym-hero-title">Random Synonym Finder</h1>
+        <p class="synonym-hero-sub">Highlight a word and spin smart synonyms by tone, formality, length, and frequency. Batch-rewrite with locks, compare A/B versions, and export your mapping - all private, in-browser.</p>
+      </div>
+      <div class="synonym-hero-icon" aria-hidden="true">
+        <!-- shuffle + sparkle icon -->
+        <svg class="synonym-svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7h4c3 0 5 5 8 5h6M3 17h4c1.8 0 3-2 4-3" />
+          <path d="M17 3l4 4-4 4M17 13l4 4-4 4" />
+          <path d="M7 4.5l.6-1.2.6 1.2 1.2.6-1.2.6-.6 1.2-.6-1.2-1.2-.6 1.2-.6z" stroke-width="1.2"/>
+        </svg>
+      </div>
+    </header>
+
+    <section class="synonym-grid" aria-label="Random Synonym Finder workspace">
+      <!-- LEFT: INPUT + CONTROLS -->
+      <article class="synonym-card">
+        <div class="synonym-card-header">
+          <h2 class="synonym-card-title">Your text</h2>
+          <div class="synonym-tabs" role="tablist" aria-label="Input actions">
+            <button class="synonym-tab active" id="tab-write" aria-selected="true">Write</button>
+            <button class="synonym-tab" id="tab-paste" aria-selected="false">Paste</button>
+          </div>
+        </div>
+        <div class="synonym-card-body">
+          <label for="synonym-input" class="synonym-hint">Tip: double-click a word to get synonyms. Use ⌘/Ctrl + B to batch spin.</label>
+          <textarea id="synonym-input" class="synonym-input" placeholder="Type or paste your text here..."></textarea>
+
+          <div class="synonym-toolbar" role="group" aria-label="Quick actions">
+            <button class="synonym-mini" id="synonym-clear">Clear</button>
+            <button class="synonym-mini" id="synonym-sample">Load sample</button>
+            <button class="synonym-mini" id="synonym-cap">Title case selected</button>
+            <button class="synonym-mini" id="synonym-copy-all">Copy text</button>
+          </div>
+
+          <div class="synonym-controls" aria-label="Synonym filters">
+            <select id="synonym-tone" class="synonym-select" title="Tone">
+              <option value="">Tone: any</option>
+              <option value="simple">Tone: simple</option>
+              <option value="neutral">Tone: neutral</option>
+              <option value="vivid">Tone: vivid</option>
+              <option value="formal">Tone: formal</option>
+              <option value="casual">Tone: casual</option>
+            </select>
+
+            <select id="synonym-formality" class="synonym-select" title="Formality">
+              <option value="">Formality: any</option>
+              <option value="formal">Formality: formal</option>
+              <option value="informal">Formality: informal</option>
+            </select>
+
+            <select id="synonym-length" class="synonym-select" title="Length">
+              <option value="">Length: any</option>
+              <option value="short">Length: short</option>
+              <option value="medium">Length: medium</option>
+              <option value="long">Length: long</option>
+            </select>
+
+            <select id="synonym-frequency" class="synonym-select" title="Frequency">
+              <option value="">Frequency: any</option>
+              <option value="common">Common</option>
+              <option value="uncommon">Uncommon</option>
+            </select>
+
+            <label class="synonym-checkbox">
+              <input type="checkbox" id="synonym-ignore-articles" /> ignore “a, an, the”
+            </label>
+            <label class="synonym-checkbox">
+              <input type="checkbox" id="synonym-case-sensitive" /> case sensitive
+            </label>
+
+            <button id="synonym-spin" class="synonym-cta" title="Spin random synonyms">Spin random synonyms</button>
+            <button id="synonym-reset" class="synonym-pill">Reset changes</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- RIGHT: SUGGESTIONS / OUTPUT / A-B -->
+      <article class="synonym-card">
+        <div class="synonym-card-header">
+          <h2 class="synonym-card-title">Suggestions & output</h2>
+          <div class="synonym-tabs" role="tablist" aria-label="Panels">
+            <button class="synonym-tab active" data-panel="panel-suggest">Suggest</button>
+            <button class="synonym-tab" data-panel="panel-output">Output</button>
+            <button class="synonym-tab" data-panel="panel-compare">A/B Compare</button>
+          </div>
+        </div>
+
+        <div class="synonym-card-body">
+          <!-- Suggest -->
+          <div id="panel-suggest" class="synonym-suggest" role="region" aria-live="polite">
+            <p class="synonym-hint">Double-click a word in your text to see synonyms here. Click “Apply” to replace just that word.</p>
+          </div>
+
+          <!-- Output -->
+          <div id="panel-output" class="hidden" role="region" aria-live="polite">
+            <textarea id="synonym-output" class="synonym-output" placeholder="Your rewritten text will show here..."></textarea>
+            <div class="synonym-footer">
+              <button class="synonym-cta" id="synonym-copy-output">Copy output</button>
+              <button class="synonym-pill" id="synonym-save-b">Save as Version B</button>
+              <button class="synonym-pill synonym-ghost" id="synonym-export-map">Export synonym map</button>
+              <label class="synonym-pill synonym-ghost" style="cursor:pointer">
+                Import thesaurus <input id="synonym-import" type="file" accept="application/json" hidden/>
+              </label>
+            </div>
+            <p class="synonym-hint">Export creates a JSON of all replacements so you can reuse the same style later.</p>
+          </div>
+
+          <!-- Compare -->
+          <div id="panel-compare" class="hidden" role="region" aria-live="polite">
+            <p class="synonym-hint">Version A = your current input • Version B = a saved output snapshot.</p>
+            <div class="synonym-toolbar">
+              <button class="synonym-mini" id="synonym-diff-highlight">Highlight differences</button>
+              <button class="synonym-mini" id="synonym-diff-clear">Clear highlights</button>
+            </div>
+            <textarea id="synonym-compare-a" class="synonym-input" style="margin-top:10px" aria-label="Version A"></textarea>
+            <textarea id="synonym-compare-b" class="synonym-output" style="margin-top:10px" aria-label="Version B"></textarea>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Helper links (smart backlinks) -->
+    <section class="synonym-card" style="margin-top:22px">
+      <div class="synonym-card-header">
+        <h2 class="synonym-card-title">Helpful companions</h2>
+      </div>
+      <div class="synonym-card-body">
+        <p class="synonym-hint">
+          Clean spacing with <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace & Formatting Cleaner</a>,
+          normalize lists via <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a>,
+          fix casing using <a href="/tools/case-converter.html">Case Converter</a>,
+          and check limits with the <a href="/tools/word-counter.html">Word & Character Counter</a>.
+          For deeper editing, see our guide <a href="/blog/grammar-check-guide-fix-grammar-punctuation-style-with-ai-ethically-sniptext-blog.html">Master Grammar with AI</a>.
+        </p>
+      </div>
+    </section>
+
+     <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Synonym Finder Guide on SnipText Blog Page <a href="/blog/random-synonym-finder-generate-smart-synonyms-by-tone-length-frequency-a-b-compare-thesaurus-alternatives-private-in-browser-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+  </main>
+
+
+  
+
+  <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/symbol-character-info.html" aria-labelledby="t6">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t6" class="card-title">Symbol / Character Info</h3>
+      <p class="card-desc">Counts symbols and shows ASCII & Unicode code points and names for selected characters.</p>
+      <a class="card-cta" href="/tools/symbol-character-info.html" aria-label="Open Symbol/Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="svg-icon">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 id="t10" class="card-title">Random Text Generator</h3>
+        <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+        <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+
+       <script src="/js/index.js"></script>
+       <script src="/js/auth.js"></script>
+       <script src="/tools/js/free-tools.js"></script>
+
+  <!-- Logic -->
+  <script>
+  ;(() => {
+    // ---------- Minimal offline thesaurus seed (extendable/importable) ----------
+    // Each entry: lemma: [{w:'word', tone:'simple|neutral|vivid|formal|casual', formality:'formal|informal|', len:'short|medium|long', freq:'common|uncommon'}]
+    const SYNONYM_SEED = {
+      quick: [
+        {w:'fast', tone:'simple', len:'short', freq:'common'},
+        {w:'rapid', tone:'neutral', len:'short', freq:'common'},
+        {w:'swift', tone:'vivid', len:'short', freq:'common'},
+        {w:'expeditious', tone:'formal', len:'long', freq:'uncommon'}
+      ],
+      improve: [
+        {w:'enhance', tone:'formal', len:'medium', freq:'common'},
+        {w:'boost', tone:'casual', len:'short', freq:'common'},
+        {w:'refine', tone:'neutral', len:'medium', freq:'common'},
+        {w:'ameliorate', tone:'formal', len:'long', freq:'uncommon'}
+      ],
+      good: [
+        {w:'great', tone:'casual', len:'short', freq:'common'},
+        {w:'excellent', tone:'formal', len:'long', freq:'common'},
+        {w:'solid', tone:'neutral', len:'short', freq:'common'},
+        {w:'commendable', tone:'formal', len:'long', freq:'uncommon'}
+      ],
+      show: [
+        {w:'display', tone:'formal', len:'medium', freq:'common'},
+        {w:'present', tone:'neutral', len:'medium', freq:'common'},
+        {w:'exhibit', tone:'formal', len:'medium', freq:'uncommon'},
+        {w:'reveal', tone:'vivid', len:'medium', freq:'common'}
+      ],
+      help: [
+        {w:'assist', tone:'formal', len:'medium', freq:'common'},
+        {w:'aid', tone:'formal', len:'short', freq:'common'},
+        {w:'support', tone:'neutral', len:'medium', freq:'common'},
+        {w:'back up', tone:'casual', len:'medium', freq:'common'}
+      ],
+      make: [
+        {w:'create', tone:'neutral', len:'medium', freq:'common'},
+        {w:'craft', tone:'vivid', len:'short', freq:'common'},
+        {w:'produce', tone:'formal', len:'medium', freq:'common'},
+        {w:'generate', tone:'formal', len:'medium', freq:'common'}
+      ],
+      important: [
+        {w:'crucial', tone:'formal', len:'medium', freq:'common'},
+        {w:'vital', tone:'neutral', len:'short', freq:'common'},
+        {w:'key', tone:'simple', len:'short', freq:'common'},
+        {w:'paramount', tone:'formal', len:'long', freq:'uncommon'}
+      ],
+      simple: [
+        {w:'easy', tone:'simple', len:'short', freq:'common'},
+        {w:'straightforward', tone:'neutral', len:'long', freq:'common'},
+        {w:'basic', tone:'simple', len:'short', freq:'common'},
+        {w:'uncomplicated', tone:'formal', len:'long', freq:'uncommon'}
+      ],
+      fast: [
+        {w:'quick', tone:'simple', len:'short', freq:'common'},
+        {w:'rapid', tone:'neutral', len:'short', freq:'common'},
+        {w:'speedy', tone:'casual', len:'short', freq:'common'}
+      ],
+      fix: [
+        {w:'repair', tone:'neutral', len:'medium', freq:'common'},
+        {w:'resolve', tone:'formal', len:'medium', freq:'common'},
+        {w:'patch', tone:'casual', len:'short', freq:'common'}
+      ]
+    };
+
+    // localStorage keys
+    const LS_DICT = 'sniptext_synonym_dict_v1';
+    const LS_B = 'sniptext_synonym_version_b_v1';
+    const LS_MAP = 'sniptext_synonym_map_v1';
+
+    // DOM
+    const $ = s => document.querySelector(s);
+    const panelSuggest = $('#panel-suggest');
+    const panelOutput  = $('#panel-output');
+    const panelCompare = $('#panel-compare');
+    const tabs = document.querySelectorAll('.synonym-tab[data-panel], .synonym-tab#tab-write, .synonym-tab#tab-paste');
+    const input = $('#synonym-input');
+    const output = $('#synonym-output');
+    const compareA = $('#synonym-compare-a');
+    const compareB = $('#synonym-compare-b');
+
+    // State
+    let userDict = loadDict();
+    let replaceMap = {}; // {original: replacement}
+    let lastSelection = '';
+
+    function loadDict(){
+      try{
+        const stored = localStorage.getItem(LS_DICT);
+        if(stored) return {...SYNONYM_SEED, ...JSON.parse(stored)};
+      }catch(e){}
+      return {...SYNONYM_SEED};
+    }
+    function saveDict(dict){
+      try{ localStorage.setItem(LS_DICT, JSON.stringify(dict)) }catch(e){}
+    }
+    function saveMap(){
+      try{ localStorage.setItem(LS_MAP, JSON.stringify(replaceMap)) }catch(e){}
+    }
+
+    // Tab switching
+    document.querySelectorAll('.synonym-tab[data-panel]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.synonym-tab[data-panel]').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const p = btn.getAttribute('data-panel');
+        [panelSuggest,panelOutput,panelCompare].forEach(el=>el.classList.add('hidden'));
+        $('#'+p).classList.remove('hidden');
+      });
+    });
+
+    // Left header tabs (cosmetic)
+    $('#tab-write').addEventListener('click', ()=>{toggleLeftTabs('tab-write','tab-paste')});
+    $('#tab-paste').addEventListener('click', ()=>{toggleLeftTabs('tab-paste','tab-write')});
+    function toggleLeftTabs(on,off){
+      $('#'+on).classList.add('active'); $('#'+on).setAttribute('aria-selected','true');
+      $('#'+off).classList.remove('active'); $('#'+off).setAttribute('aria-selected','false');
+    }
+
+    // Utilities
+    const opts = {
+      tone: $('#synonym-tone'),
+      formality: $('#synonym-formality'),
+      length: $('#synonym-length'),
+      frequency: $('#synonym-frequency'),
+      ignoreArticles: $('#synonym-ignore-articles'),
+      caseSensitive: $('#synonym-case-sensitive')
+    };
+
+    function normalizeWord(w){
+      return w.replace(/[^\p{L}\p{N}\-']/gu,'').trim();
+    }
+    function isArticle(w){
+      return /^(a|an|the)$/i.test(w);
+    }
+    function matchFilters(entry){
+      if(opts.tone.value && entry.tone !== opts.tone.value) return false;
+      if(opts.formality.value && entry.formality !== opts.formality.value) return false;
+      if(opts.length.value && entry.len !== opts.length.value) return false;
+      if(opts.frequency.value && entry.freq !== opts.frequency.value) return false;
+      return true;
+    }
+    function pickRandom(arr){
+      return arr[Math.floor(Math.random()*arr.length)];
+    }
+    function preserveCase(source, replacement){
+      if(source.toUpperCase()===source) return replacement.toUpperCase();
+      if(source[0] && source[0]===source[0].toUpperCase()) return replacement[0].toUpperCase()+replacement.slice(1);
+      return replacement;
+    }
+
+    // Suggest synonyms on double click
+    input.addEventListener('dblclick', ()=>{
+      const {value, selectionStart, selectionEnd} = input;
+      const sel = value.slice(selectionStart, selectionEnd);
+      if(!sel) return;
+      lastSelection = sel;
+      const key = opts.caseSensitive.checked ? normalizeWord(sel) : normalizeWord(sel).toLowerCase();
+      renderSuggestionsFor(key, sel);
+    });
+
+    function renderSuggestionsFor(key, originalRaw){
+      panelSuggest.innerHTML = '';
+      if(!key) { panelSuggest.innerHTML = `<p class="synonym-hint">No word selected.</p>`; return; }
+      const candidates = (userDict[key]||[]).filter(matchFilters);
+      if(candidates.length===0){
+        panelSuggest.innerHTML = `
+          <div class="synonym-chip">
+            <div class="synonym-chip-main">
+              <strong class="synonym-chip-word">${originalRaw}</strong>
+              <span class="synonym-chip-meta">No matches. Try relaxing filters or import your own thesaurus JSON.</span>
+            </div>
+            <button class="synonym-chip-apply" disabled>Apply</button>
+          </div>`;
+        return;
+      }
+      candidates.slice(0,40).forEach(c=>{
+        const row = document.createElement('div');
+        row.className = 'synonym-chip';
+        row.innerHTML = `
+          <div class="synonym-chip-main">
+            <span class="synonym-chip-word">${c.w}</span>
+            <span class="synonym-chip-meta">tone:${c.tone||'-'} • ${c.formality||'-'} • ${c.len||'-'} • ${c.freq||'-'}</span>
+          </div>
+          <button class="synonym-chip-apply">Apply</button>`;
+        row.querySelector('.synonym-chip-apply').addEventListener('click', ()=>{
+          replaceSelection(originalRaw, c.w);
+        });
+        panelSuggest.appendChild(row);
+      });
+    }
+
+    function replaceSelection(from, to){
+      const {selectionStart, selectionEnd, value} = input;
+      const before = value.slice(0, selectionStart);
+      const sel = value.slice(selectionStart, selectionEnd);
+      const after = value.slice(selectionEnd);
+      const newWord = preserveCase(sel, to);
+      input.value = before + newWord + after;
+      replaceMap[sel] = newWord;
+      saveMap();
+      // push to output
+      output.value = highlightChanges(input.value, replaceMap);
+      // refresh comparison A
+      compareA.value = input.value;
+    }
+
+    // Batch spin: random synonyms across the entire text
+    function batchSpin(){
+      const words = input.value.split(/(\s+)/); // keep spaces
+      for(let i=0;i<words.length;i++){
+        const raw = words[i];
+        const keyRaw = normalizeWord(raw);
+        if(!keyRaw) continue;
+        if(opts.ignoreArticles.checked && isArticle(keyRaw)) continue;
+
+        const key = opts.caseSensitive.checked ? keyRaw : keyRaw.toLowerCase();
+        const list = (userDict[key]||[]).filter(matchFilters);
+        if(list.length===0) continue;
+        const picked = pickRandom(list).w;
+        const repl = preserveCase(raw, picked);
+        if(repl && repl !== raw){
+          words[i] = repl;
+          replaceMap[raw] = repl;
+        }
+      }
+      const joined = words.join('');
+      output.value = highlightChanges(joined, replaceMap);
+      compareA.value = input.value;
+    }
+
+    function highlightChanges(text, map){
+      // simple token replacement with span wrappers
+      let result = text;
+      Object.keys(map).forEach(orig=>{
+        if(!orig) return;
+        const safe = orig.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const re = new RegExp(`\\b${safe}\\b`, 'g');
+        result = result.replace(re, (m)=>`<span class="synonym-changed">${map[orig]}</span>`);
+      });
+      // show as text for textarea? We'll convert spans to plain by default
+      // For visual highlight we can render to a temporary container; for simplicity we strip tags for textarea.
+      const tmp = document.createElement('div');
+      tmp.innerHTML = result;
+      return tmp.innerText;
+    }
+
+    // Buttons
+    $('#synonym-spin').addEventListener('click', batchSpin);
+    $('#synonym-reset').addEventListener('click', ()=>{
+      replaceMap = {};
+      saveMap();
+      output.value = '';
+      compareA.value = input.value;
+    });
+    $('#synonym-clear').addEventListener('click', ()=>{
+      input.value = ''; output.value=''; replaceMap = {}; saveMap();
+      panelSuggest.innerHTML = `<p class="synonym-hint">Cleared. Paste or type new text.</p>`;
+    });
+    $('#synonym-sample').addEventListener('click', ()=>{
+      input.value = 'We make quick improvements to show good results and help users fix issues fast.';
+      compareA.value = input.value;
+    });
+    $('#synonym-cap').addEventListener('click', ()=>{
+      const {selectionStart, selectionEnd} = input;
+      if(selectionStart===selectionEnd) return;
+      const txt = input.value;
+      const sel = txt.slice(selectionStart, selectionEnd);
+      const tc = sel.replace(/\w\S*/g, w => w[0].toUpperCase()+w.slice(1).toLowerCase());
+      input.setRangeText(tc, selectionStart, selectionEnd, 'end');
+    });
+    $('#synonym-copy-all').addEventListener('click', ()=>copyText(input.value));
+    $('#synonym-copy-output').addEventListener('click', ()=>copyText(output.value));
+
+    function copyText(t){
+      navigator.clipboard.writeText(t||'').then(()=>notify('Copied')).catch(()=>notify('Copy failed'));
+    }
+    function notify(msg){
+      // small toast
+      const el = document.createElement('div');
+      el.textContent = msg;
+      Object.assign(el.style,{
+        position:'fixed',right:'16px',bottom:'16px',padding:'10px 12px',borderRadius:'10px',
+        background:'rgba(25,35,60,.9)',color:'#fff',border:'1px solid rgba(255,255,255,.1)',zIndex:9999
+      });
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),1200);
+    }
+
+    // Output panel extras
+    $('#synonym-save-b').addEventListener('click', ()=>{
+      localStorage.setItem(LS_B, output.value || input.value);
+      compareB.value = localStorage.getItem(LS_B) || '';
+      notify('Saved as Version B');
+    });
+
+    $('#synonym-export-map').addEventListener('click', ()=>{
+      const blob = new Blob([JSON.stringify(replaceMap, null, 2)], {type:'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'sniptext-synonym-map.json';
+      a.click();
+    });
+
+    // Import a custom thesaurus JSON: { "word":[{"w":"syn","tone":"formal","len":"short","freq":"common"}], ... }
+    $('#synonym-import').addEventListener('change', (e)=>{
+      const file = e.target.files?.[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try{
+          const obj = JSON.parse(reader.result);
+          userDict = {...userDict, ...obj};
+          saveDict(obj);
+          notify('Thesaurus imported');
+        }catch(err){ notify('Invalid JSON') }
+      };
+      reader.readAsText(file);
+    });
+
+    // Compare tab highlights (simple diff: mark words present in B but changed from A)
+    $('#synonym-diff-highlight').addEventListener('click', ()=>{
+      const a = compareA.value.split(/\s+/);
+      const b = compareB.value.split(/\s+/);
+      const outA = [];
+      const outB = [];
+      const len = Math.max(a.length, b.length);
+      for(let i=0;i<len;i++){
+        const wA = a[i]||'';
+        const wB = b[i]||'';
+        if(wA !== wB){
+          outA.push(`[${wA}]`);
+          outB.push(`[${wB}]`);
+        } else {
+          outA.push(wA); outB.push(wB);
+        }
+      }
+      compareA.value = outA.join(' ');
+      compareB.value = outB.join(' ');
+    });
+    $('#synonym-diff-clear').addEventListener('click', ()=>{
+      compareA.value = input.value;
+      compareB.value = localStorage.getItem(LS_B) || '';
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e)=>{
+      if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='b'){
+        e.preventDefault(); batchSpin();
+      }
+    });
+
+    // Init compare A/B values
+    compareA.value = input.value;
+    compareB.value = localStorage.getItem(LS_B) || '';
+  })();
+  </script>
+</body>
+</html>

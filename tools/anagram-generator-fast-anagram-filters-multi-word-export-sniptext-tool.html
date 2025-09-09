@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics (kept) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Anagram Generator - Fast Anagrams, Filters, Multi-word, Export | SnipText</title>
+  <meta name="description" content="Free Anagram Generator by SnipText. Find anagrams and multi-word phrases with smart filters: length, starts with, ends with, include or exclude letters, wildcards, and word count. Paste your own dictionary, score by frequency or Scrabble, and export results. Private and in-browser." />
+  <meta name="keywords" content="anagram generator, anagram solver, multi word anagrams, anagram finder, letter rearrangement, word games, crossword helper, scrabble helper, frequency filter, upload dictionary" />
+  <meta name="author" content="SnipText" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/anagram-generator.html" />
+  <link rel="alternate" href="https://checkai.pro/tools/anagram-generator.html" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/anagram-generator.html" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Anagram Generator - Fast Anagrams with Smart Filters" />
+  <meta property="og:description" content="Find single and multi-word anagrams with length, pattern, and letter filters. Paste your own dictionary, score by frequency or Scrabble, and export. Runs locally in your browser." />
+  <meta property="og:url" content="https://checkai.pro/tools/anagram-generator.html" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Anagram Generator interface preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Anagram Generator - Fast Anagrams with Smart Filters" />
+  <meta name="twitter:description" content="Multi-word anagrams, wildcards, and export. Private, client-side." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Brand base CSS (already on site) -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Anagram Generator",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "url":"https://checkai.pro/tools/anagram-generator.html",
+    "featureList":[
+      "Single and multi-word anagrams",
+      "Length, starts with, ends with, include or exclude letters",
+      "Wildcard pattern support",
+      "Paste or upload custom dictionary",
+      "Word frequency and Scrabble scoring",
+      "Shareable URL presets and export results",
+      "Private, client-side"
+    ],
+    "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}},
+    "screenshot":"https://checkai.pro/images/sniptext-default-tools-img.png"
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Does the Anagram Generator run locally?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs in your browser for privacy. You can paste or upload your own dictionary file too."}},
+      {"@type":"Question","name":"Can I find multi-word anagrams?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose the max word count, set filters, and run search. Results group by word count and length."}},
+      {"@type":"Question","name":"What do the filters do?","acceptedAnswer":{"@type":"Answer","text":"Filter by starts with, ends with, must include letters, banned letters, minimum and maximum length, and wildcard pattern like t??t or *ing."}},
+      {"@type":"Question","name":"How large can inputs be?","acceptedAnswer":{"@type":"Answer","text":"The fast mode handles most words and short phrases instantly. For large phrases, use the smart mode with a time cap and focused filters."}}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Free Tools","item":"https://checkai.pro/tools/free-tools.html"},
+      {"@type":"ListItem","position":3,"name":"Anagram Generator","item":"https://checkai.pro/tools/anagram-generator.html"}
+    ]
+  }
+  </script>
+
+  <style>
+/* =========================
+   Brand tokens (keep)
+   ========================= */
+:root {
+  --color-primary: #1D4ED8;
+  --color-accent: #3B82F6;
+  --color-bg-light: #F3F4F6;
+  --color-bg-dark: #0F172A;
+  --color-white: #ffffff;
+  --color-text-dark: #1F2937;
+  --color-text-light: #E5E7EB;
+  --color-border: rgba(255,255,255,.14);
+  --color-used-often: #e85d27;
+  --color-footer-bg: #1d1f2f;
+
+  --gradient-hero-end: #23253d;
+  --gradient-timeline-end: #23253d;
+  --gradient-cta-start: var(--color-accent);
+  --gradient-cta-end: #ff7c4c;
+
+  --font-heading: 'Poppins','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-body: 'Roboto','Poppins','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+
+  /* Page aurora like model */
+  --aurora-1: color-mix(in oklab, var(--color-primary) 26%, transparent);
+  --aurora-2: color-mix(in oklab, var(--color-accent) 22%, transparent);
+  --aurora-3: color-mix(in oklab, var(--gradient-cta-end) 12%, transparent);
+
+  --radius-xl: 20px;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+
+  --shadow-1: 0 10px 30px rgba(0,0,0,.35);
+  --shadow-2: 0 18px 48px rgba(17,24,39,.46);
+}
+
+/* =========================
+   Base + fixed aurora background
+   ========================= */
+html, body {
+  margin: 0;
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+}
+body::before{
+  content:"";
+  position: fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, var(--aurora-1), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%,  var(--aurora-2), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, var(--aurora-3), transparent 58%),
+    linear-gradient(180deg, var(--color-bg-dark) 0%, #0b1225 100%);
+}
+
+/* App width matches model page */
+.anagram-app {
+  max-width: 1200px;
+  margin: clamp(16px,3vw,40px) auto;
+  padding: clamp(12px,2.5vw,24px);
+  isolation: isolate;
+}
+
+/* =========================
+   Hero card like model page
+   ========================= */
+.anagram-hero{
+  position:relative;
+  padding: clamp(18px,3vw,28px);
+  border:1px solid var(--color-border);
+  background: linear-gradient(135deg,
+      color-mix(in oklab, var(--color-primary) 20%, transparent),
+      color-mix(in oklab, var(--color-accent) 18%, transparent)
+    ) border-box;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-1);
+  overflow:hidden;
+
+  display:grid;
+  gap: clamp(10px,3vw,16px);
+  margin-bottom: clamp(14px,2.6vw,24px);
+}
+.anagram-hero::after{
+  content:"";
+  position:absolute; inset:-3px; pointer-events:none; filter: blur(16px); opacity:.6;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--color-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--color-accent) 26%, transparent), transparent 62%);
+}
+
+.anagram-title{
+  margin:0 0 6px 0;
+  font: 800 clamp(22px,3.2vw,36px)/1.12 var(--font-heading);
+  letter-spacing:.2px;
+  background: linear-gradient(90deg, #fff,
+    color-mix(in oklab, var(--color-primary) 54%, #fff) 38%,
+    color-mix(in oklab, var(--gradient-cta-end) 40%, #fff) 78%,
+    #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.anagram-subtitle{
+  margin:6px 0 0 0;
+  color: color-mix(in oklab, var(--color-text-light) 78%, transparent);
+  font-size:clamp(14px,1.8vw,16px);
+}
+
+/* =========================
+   Two-column shell like model grid
+   ========================= */
+.anagram-shell{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(12px,2.4vw,20px);
+}
+@media (max-width: 980px){
+  .anagram-shell{ grid-template-columns:1fr; }
+}
+
+/* =========================
+   Glass cards + header strip
+   ========================= */
+.anagram-card{
+  border:1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.06);
+  box-shadow: var(--shadow-2);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.anagram-card-head{
+  display:flex; align-items:center; gap:12px;
+  padding: 12px 14px;
+  border-bottom:1px solid var(--color-border);
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--color-accent) 11%, transparent),
+    color-mix(in oklab, var(--color-primary) 9%, transparent)
+  );
+}
+.anagram-card-title{
+  font-family: var(--font-heading);
+  font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.92;
+}
+.anagram-card-body{ padding: 12px 14px; display:grid; gap:14px; }
+
+/* =========================
+   Form controls like model page
+   ========================= */
+.anagram-label{ font-size:13px; color: var(--color-text-light); opacity:.86; }
+
+.anagram-textarea,
+.anagram-input,
+.anagram-select{
+  width:100%;
+  background:#0f1b34;
+  color:#e5e7eb;
+  border:1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding:10px 12px;
+  outline:0;
+  min-height:36px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.anagram-select{ background:#0e1730; }
+.anagram-textarea{ min-height: 120px; resize: vertical; }
+.anagram-textarea::placeholder{ color:#94a3b8; }
+.anagram-textarea:focus,
+.anagram-input:focus,
+.anagram-select:focus{
+  border-color: rgba(59,130,246,.35);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+}
+
+/* rows and responsive stacks */
+.anagram-inputs{ display:grid; gap:12px; }
+.anagram-row{ display:grid; gap:10px; }
+.anagram-row.two{ grid-template-columns:1fr 1fr; }
+.anagram-row.three{ grid-template-columns:1fr 1fr 1fr; }
+@media (max-width: 680px){
+  .anagram-row.two, .anagram-row.three { grid-template-columns:1fr; }
+}
+
+/* =========================
+   Buttons = filled, ghost, danger
+   ========================= */
+.anagram-btn{
+  --_bg: linear-gradient(180deg,
+    color-mix(in oklab, var(--color-primary) 70%, transparent),
+    color-mix(in oklab, var(--color-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--color-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer; position:relative;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family: var(--font-heading);
+}
+.anagram-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+.anagram-btn:active{ transform: translateY(0); filter: brightness(.98); }
+.anagram-btn[disabled]{ opacity:.6; cursor:not-allowed; box-shadow:none; }
+
+.anagram-ghost{
+  background: transparent; color: var(--color-text-light);
+  border:1px dashed var(--color-border); box-shadow:none; font-weight:600;
+}
+.anagram-danger{
+  --_bg: linear-gradient(180deg,
+    color-mix(in oklab, var(--color-used-often) 48%, transparent),
+    color-mix(in oklab, var(--gradient-cta-end) 32%, transparent));
+  --_bd: color-mix(in oklab, #000 18%, var(--color-used-often));
+}
+
+/* Action bar like model toolbar */
+.anagram-actions{
+  display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+  padding: 12px 14px; border-top:1px solid var(--color-border);
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--color-accent) 10%, transparent),
+    color-mix(in oklab, var(--color-primary) 11%, transparent));
+}
+.anagram-meta{ display:flex; gap:12px; flex-wrap:wrap; color: #AAB6C7; font-size:12px; }
+
+/* =========================
+   Tabs = pill chips like model chips/seg
+   ========================= */
+.anagram-tabs{ display:flex; gap:8px; flex-wrap:wrap; }
+.anagram-tab{
+  padding:8px 12px; border-radius:999px;
+  border:1px solid var(--color-border);
+  background: color-mix(in oklab, var(--color-bg-dark) 72%, transparent);
+  backdrop-filter: blur(6px);
+  cursor:pointer; transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  font-weight:700; font-size:.92rem; color: var(--color-text-light);
+}
+.anagram-tab:hover{ transform: translateY(-1px); }
+.anagram-tab.is-active{
+  background: rgba(59,130,246,.22); border-color: var(--color-accent);
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+}
+
+/* Results grid buckets */
+.anagram-bucket{
+  background: rgba(255,255,255,0.06);
+  border:1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding:12px;
+  backdrop-filter: blur(10px);
+  transition: transform .15s ease, background .2s ease;
+}
+.anagram-bucket:hover{ background: rgba(255,255,255,0.08); transform: translateY(-1px); }
+.anagram-bucket h4{
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-white);
+  margin:0 0 6px 0;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.anagram-list{ display:flex; flex-wrap:wrap; gap:8px; }
+
+.anagram-chip{
+  padding:6px 10px; border:1px solid var(--color-border);
+  border-radius:999px; background: color-mix(in oklab, var(--color-bg-dark) 72%, transparent);
+  font-size:.92rem; transition: transform .12s ease, background .2s ease, border-color .2s ease;
+  cursor:pointer; backdrop-filter: blur(6px);
+}
+.anagram-chip:hover{ transform: translateY(-1px); border-color: var(--color-accent); background: rgba(59,130,246,.16); }
+
+.anagram-empty{
+  color:#AAB6C7;
+  padding:12px; border:1px dashed var(--color-border); border-radius: var(--radius-md); text-align:center;
+}
+
+/* Footer links under results */
+.anagram-foot{
+  display:flex; flex-wrap: wrap; gap:10px; align-items:center; justify-content:space-between;
+  padding: 6px 0 0; color:#AAB6C7; font-size:.92rem;
+}
+.anagram-links{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+.anagram-links a{
+  text-decoration:none;
+  border:1px solid var(--color-border);
+  color: var(--color-white);
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.03);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.anagram-links a:hover{
+  transform: translateY(-1px);
+  border-color: var(--color-accent);
+  background: rgba(59,130,246,.18);
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+}
+
+/* Toast matches model placement */
+.anagram-toast{ position: fixed; inset-inline: 0; bottom: 18px; display:grid; place-items:center; z-index:50; pointer-events:none; }
+.anagram-toast-msg{
+  pointer-events:auto; background:#0b1223ee; color:#e5e7eb;
+  border:1px solid var(--color-border);
+  padding:10px 14px; border-radius:12px;
+  box-shadow: var(--shadow-1);
+  transform: translateY(20px); opacity:0;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.anagram-toast-msg.show{ transform: translateY(0); opacity:1; }
+
+/* Motion */
+@media (prefers-reduced-motion: no-preference){
+  .anagram-card { animation: gentle-float 18s ease-in-out infinite; }
+  @keyframes gentle-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+
+  </style>
+</head>
+<body>
+
+
+  <nav id="main-navbar">
+    <div class="nav-container">
+      <div class="logo"><a href="/index.html">Snip Text</a></div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tools/free-tools.html">Free Tools</a></li>
+        <li><a href="/features.html">Features</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/blog/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+        <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<main class="anagram-app" id="anagram-app">
+  <!-- Hero -->
+  <header class="anagram-hero">
+    <h1 class="anagram-title">Anagram Generator</h1>
+    <p class="anagram-subtitle">
+      Rearrange letters to discover single or multi-word anagrams. Use smart filters for length, starts or ends with, must include or exclude letters, and wildcard patterns. Paste your own dictionary, rank by frequency or Scrabble, and export results. All in your browser.
+    </p>
+  </header>
+
+  <section class="anagram-shell">
+    <!-- Left: Input & Controls -->
+    <article class="anagram-card">
+      <div class="anagram-card-head">
+        <svg class="anagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <!-- icon: shuffle letters -->
+          <path d="M4 7h3.5c2.5 0 3.2 3.5 5.8 3.5H20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M16.5 5.5 20 7.8 16.5 10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 17h3.5c2.5 0 3.2-3.5 5.8-3.5H20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M16.5 14.5 20 16.8 16.5 19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="anagram-card-title">Letters & filters</div>
+      </div>
+      <div class="anagram-card-body">
+        <div class="anagram-inputs">
+          <div class="anagram-row">
+            <label class="anagram-label" for="anagram-letters">Letters or phrase</label>
+            <textarea id="anagram-letters" class="anagram-textarea" placeholder="Type letters or a phrase, e.g. 'listen' or 'silent movie'"></textarea>
+            <p class="anagram-tip">Spaces and punctuation are ignored. Case does not matter.</p>
+          </div>
+
+          <div class="anagram-row two">
+            <div>
+              <label class="anagram-label" for="anagram-min">Min length</label>
+              <input id="anagram-min" class="anagram-input" type="number" min="2" value="2" />
+            </div>
+            <div>
+              <label class="anagram-label" for="anagram-max">Max length</label>
+              <input id="anagram-max" class="anagram-input" type="number" min="2" value="15" />
+            </div>
+          </div>
+
+          <div class="anagram-row two">
+            <div>
+              <label class="anagram-label" for="anagram-starts">Starts with</label>
+              <input id="anagram-starts" class="anagram-input" placeholder="optional" />
+            </div>
+            <div>
+              <label class="anagram-label" for="anagram-ends">Ends with</label>
+              <input id="anagram-ends" class="anagram-input" placeholder="optional" />
+            </div>
+          </div>
+
+          <div class="anagram-row three">
+            <div>
+              <label class="anagram-label" for="anagram-include">Must include letters</label>
+              <input id="anagram-include" class="anagram-input" placeholder="e.g. st" />
+            </div>
+            <div>
+              <label class="anagram-label" for="anagram-exclude">Exclude letters</label>
+              <input id="anagram-exclude" class="anagram-input" placeholder="e.g. qxz" />
+            </div>
+            <div>
+              <label class="anagram-label" for="anagram-pattern">Wildcard pattern</label>
+              <input id="anagram-pattern" class="anagram-input" placeholder="e.g. t??t or *ing" />
+            </div>
+          </div>
+
+          <div class="anagram-row two">
+            <div>
+              <label class="anagram-label" for="anagram-words">Max words in phrase</label>
+              <select id="anagram-words" class="anagram-select">
+                <option value="1">1 (single word)</option>
+                <option value="2" selected>2 words</option>
+                <option value="3">3 words</option>
+              </select>
+            </div>
+            <div>
+              <label class="anagram-label" for="anagram-mode">Search mode</label>
+              <select id="anagram-mode" class="anagram-select">
+                <option value="fast" selected>Fast</option>
+                <option value="smart">Smart (balanced)</option>
+                <option value="exhaustive">Exhaustive (slower)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="anagram-row two">
+            <div>
+              <label class="anagram-label" for="anagram-rank">Ranking</label>
+              <select id="anagram-rank" class="anagram-select">
+                <option value="freq" selected>Common first (frequency)</option>
+                <option value="score">Scrabble score</option>
+                <option value="length">Longest first</option>
+                <option value="alpha">Alphabetical</option>
+              </select>
+            </div>
+            <div>
+              <label class="anagram-label" for="anagram-limit">Result limit</label>
+              <input id="anagram-limit" class="anagram-input" type="number" min="10" value="200" />
+            </div>
+          </div>
+        </div>
+
+        <div class="anagram-actions">
+          <button id="anagram-run" class="anagram-btn">Find anagrams</button>
+          <button id="anagram-clear" class="anagram-btn anagram-ghost">Clear</button>
+          <button id="anagram-copy" class="anagram-btn">Copy results</button>
+          <button id="anagram-download" class="anagram-btn">Download .txt</button>
+          <button id="anagram-share" class="anagram-btn">Share link</button>
+          <span id="anagram-status" class="anagram-meta"></span>
+        </div>
+
+        <details class="anagram-advanced">
+          <summary class="anagram-label">Dictionary options</summary>
+          <div class="anagram-row">
+            <label class="anagram-label" for="anagram-dict-text">Paste custom dictionary (one word per line)</label>
+            <textarea id="anagram-dict-text" class="anagram-textarea" placeholder="Paste your list here to override the built-in mini dictionary..."></textarea>
+            <div class="anagram-actions">
+              <input type="file" id="anagram-dict-file" accept=".txt" style="display:none">
+              <button id="anagram-upload" class="anagram-btn anagram-ghost">Upload .txt</button>
+              <button id="anagram-use-built" class="anagram-btn anagram-ghost">Use built-in mini dictionary</button>
+              <span class="anagram-tip">Tip: add proper names if you want them included.</span>
+            </div>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <!-- Right: Results -->
+    <article class="anagram-card">
+      <div class="anagram-card-head">
+        <svg class="anagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <!-- icon: grid results -->
+          <rect x="3" y="3" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <rect x="14" y="3" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <rect x="3" y="14" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <rect x="14" y="14" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        </svg>
+        <div class="anagram-card-title">Results</div>
+      </div>
+      <div class="anagram-card-body">
+        <div class="anagram-tabs" role="tablist" aria-label="Result views">
+          <button class="anagram-tab is-active" role="tab" aria-selected="true" data-view="byLength">By length</button>
+          <button class="anagram-tab" role="tab" aria-selected="false" data-view="byWords">By word count</button>
+          <button class="anagram-tab" role="tab" aria-selected="false" data-view="flat">Flat list</button>
+        </div>
+
+        <div id="anagram-results" class="anagram-results">
+          <div class="anagram-empty">No results yet. Enter letters and click “Find anagrams”.</div>
+        </div>
+
+        <div class="anagram-foot">
+          <div id="anagram-count">0 results</div>
+          <div class="anagram-links">
+            <a href="/tools/word-counter.html">Word counter</a>
+            <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List</a>
+            <a href="/tools/remove-empty-lines.html">Remove empty lines</a>
+            <a href="/tools/random-text-generator.html">Random text</a>
+            <a href="/tools/symbol-character-info.html">Symbol info</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+    <div class="free-tools-guide">
+      <p>Need examples and tips? Read the quick guide on the SnipText Blog <a href="/blog/anagram-generator-word-anagrams-letter-scrambler-crossword-helper-scrabble-solver-writing-ideas-private-fast-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+    </div>
+</main>
+
+
+    
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-labelledby="t11">
+        <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+        </div>
+        <h3 id="t11" class="card-title">Math Formula Tool</h3>
+        <p class="card-desc">Easily create, edit, and format mathematical equations online for documents, blogs, and educational use.</p>
+        <a class="card-cta" href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-label="Open Math Formula Tool">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
+      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
+      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
+    </article>
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+  </section>
+
+<!-- Toast -->
+<div class="anagram-toast" aria-live="polite" aria-atomic="true">
+  <div id="anagram-toast-msg" class="anagram-toast-msg">Copied</div>
+</div>
+
+  <footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+    <div class="footer-bg" aria-hidden="true"></div>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+        <p>Empowering better writing, one tool at a time.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html#contact">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </nav>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Snip Text · All rights reserved.</p>
+      </div>
+    </div>
+    <button class="to-top" id="to-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </footer>
+
+  <!-- Optional site scripts -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+/* ===========================
+   Anagram Generator (client-side)
+   =========================== */
+
+(function(){
+  const el = (id) => document.getElementById(id);
+
+  // UI refs
+  const lettersEl = el('anagram-letters');
+  const minEl = el('anagram-min');
+  const maxEl = el('anagram-max');
+  const startsEl = el('anagram-starts');
+  const endsEl = el('anagram-ends');
+  const includeEl = el('anagram-include');
+  const excludeEl = el('anagram-exclude');
+  const patternEl = el('anagram-pattern');
+  const wordsEl = el('anagram-words');
+  const modeEl = el('anagram-mode');
+  const rankEl = el('anagram-rank');
+  const limitEl = el('anagram-limit');
+
+  const runBtn = el('anagram-run');
+  const clearBtn = el('anagram-clear');
+  const copyBtn = el('anagram-copy');
+  const dlBtn = el('anagram-download');
+  const shareBtn = el('anagram-share');
+
+  const statusEl = el('anagram-status');
+  const resultsWrap = el('anagram-results');
+  const countEl = el('anagram-count');
+
+  const dictTextarea = el('anagram-dict-text');
+  const dictFile = el('anagram-dict-file');
+  const uploadBtn = el('anagram-upload');
+  const useBuiltBtn = el('anagram-use-built');
+
+  const toast = document.getElementById('anagram-toast-msg');
+
+  // Mini built-in dictionary (common words + some handy ones). You can paste/replace with your own.
+  // For better coverage, paste a larger list in the dictionary box or upload a .txt file.
+  let ANAGRAM_DICT = `
+about
+above
+angle
+angel
+alert
+alter
+ante
+ate
+atom
+baker
+bale
+ban
+bane
+bare
+base
+below
+binary
+bleat
+bleak
+brain
+care
+cater
+crate
+clear
+cider
+cinema
+clint
+code
+constrain
+cost
+crate
+cried
+dare
+deal
+dear
+delta
+diner
+edit
+ear
+earth
+eastern
+eat
+elan
+elate
+elate
+finder
+finer
+flare
+frame
+garden
+glean
+grain
+heart
+inch
+integral
+isle
+least
+listen
+melon
+money
+moral
+moon
+near
+note
+pearl
+plate
+pleat
+quiet
+rain
+rescue
+rescued
+rescue
+rest
+save
+secure
+section
+silent
+slate
+stain
+stale
+stare
+steam
+steal
+stone
+table
+tale
+tame
+team
+tear
+time
+tone
+trace
+triage
+vase
+wonder
+words
+writer
+tones
+notes
+onset
+stone
+tens
+nest
+sent
+rats
+arts
+star
+tars
+evil
+vile
+veil
+live
+`;
+  // Scrabble letter scores for ranking
+  const SCRABBLE = { a:1,b:3,c:3,d:2,e:1,f:4,g:2,h:4,i:1,j:8,k:5,l:1,m:3,n:1,o:1,p:3,q:10,r:1,s:1,t:1,u:1,v:4,w:4,x:8,y:4,z:10 };
+
+  // Frequency proxy: shorter + common letter mix; very rough heuristic
+  function freqScore(w){
+    const common = "etaoinshrdlcum";
+    let s = 0;
+    for (const ch of w) s += (common.includes(ch) ? 2 : 0.5);
+    return s - (w.length * 0.05);
+  }
+  function scrabbleScore(w){
+    let s = 0;
+    for (const ch of w) s += (SCRABBLE[ch] || 0);
+    return s;
+  }
+
+  // Parse dictionary text into normalized array
+  function parseDict(text){
+    const set = new Set();
+    text.split(/\r?\n/).forEach(line=>{
+      const w = (line||'').trim().toLowerCase().replace(/[^a-z]/g,'');
+      if (w.length>1) set.add(w);
+    });
+    return Array.from(set);
+  }
+
+  // Build letter counts
+  function counts(s){
+    const c = Object.create(null);
+    for (const ch of s) { c[ch] = (c[ch]||0)+1; }
+    return c;
+  }
+  function fitsCount(word, bag){
+    const map = Object.create(null);
+    for (const ch of word){
+      map[ch] = (map[ch]||0)+1;
+      if (!bag[ch] || map[ch] > bag[ch]) return false;
+    }
+    return true;
+  }
+  function removeFromBag(word, bag){
+    const out = Object.assign(Object.create(null), bag);
+    for (const ch of word) out[ch]--;
+    return out;
+  }
+  function bagIsEmpty(bag){
+    for (const k in bag) if (bag[k] > 0) return false;
+    return true;
+  }
+  // Convert wildcard pattern like t??t or *ing to RegExp
+  function wildcardToRegex(pat){
+    if (!pat) return null;
+    let esc = pat.trim().toLowerCase().replace(/[.+^${}()|[\]\\]/g,'\\$&');
+    esc = esc.replace(/\*/g,'.*').replace(/\?/g,'.');
+    return new RegExp('^'+esc+'$');
+  }
+
+  // Read and prepare dictionary
+  let dict = parseDict(ANAGRAM_DICT);
+  let dictSigMap = null; // { signature: [words] }
+  let dictFilterCache = null;
+
+  function buildSignature(word){ return word.split('').sort().join(''); }
+
+  function buildDictIndex(){
+    dictSigMap = Object.create(null);
+    for (const w of dict){
+      const sig = buildSignature(w);
+      (dictSigMap[sig] ||= []).push(w);
+    }
+    dictFilterCache = null;
+  }
+  buildDictIndex();
+
+  // Filter dictionary quickly to words that could be made from bag
+  function candidatesFromBag(bag, minL, maxL, starts, ends, includeLetters, excludeLetters, regex){
+    if (dictFilterCache && dictFilterCache.key === JSON.stringify({bag,minL,maxL,starts,ends,includeLetters,excludeLetters,rx:regex?.source})) {
+      return dictFilterCache.val;
+    }
+    const incSet = (includeLetters||'').toLowerCase();
+    const excSet = new Set((excludeLetters||'').toLowerCase().split(''));
+
+    const out = [];
+    outer: for (const w of dict){
+      if (w.length < minL || w.length > maxL) continue;
+      if (starts && !w.startsWith(starts)) continue;
+      if (ends && !w.endsWith(ends)) continue;
+      if (incSet) {
+        for (const ch of incSet) if (!w.includes(ch)) continue outer;
+      }
+      if (excSet.size){
+        for (const ch of w) if (excSet.has(ch)) continue outer;
+      }
+      if (regex && !regex.test(w)) continue;
+      if (!fitsCount(w, bag)) continue;
+      out.push(w);
+    }
+    dictFilterCache = { key: JSON.stringify({bag,minL,maxL,starts,ends,includeLetters,excludeLetters,rx:regex?.source}), val: out };
+    return out;
+  }
+
+  // Main search
+  function findAnagrams(opts){
+    const t0 = performance.now();
+    const {
+      text, minL, maxL, starts, ends, includeLetters, excludeLetters, pattern,
+      maxWords, mode, rank, limit
+    } = opts;
+
+    const clean = text.toLowerCase().replace(/[^a-z]/g,'');
+    const bag = counts(clean);
+
+    const rx = wildcardToRegex(pattern);
+    const baseCands = candidatesFromBag(bag, minL, Math.min(maxL, clean.length), starts?.toLowerCase(), ends?.toLowerCase(), includeLetters, excludeLetters, rx);
+
+    // Single word quick path
+    const outSingles = [];
+    if (maxWords >= 1){
+      // exact-length anagrams same letters
+      const sig = buildSignature(clean);
+      const exact = dictSigMap[sig] || [];
+      for (const w of exact){
+        if (w.length>=minL && w.length<=maxL) {
+          if ((!starts || w.startsWith(starts)) && (!ends || w.endsWith(ends))) {
+            if ((!rx || rx.test(w)) && (!excludeLetters || ![...w].some(ch=>excludeLetters.includes(ch)))) {
+              outSingles.push([w]);
+            }
+          }
+        }
+      }
+    }
+
+    // Multi-word (backtracking with time cap)
+    const TIME_CAP = mode==='fast' ? 200 : mode==='smart' ? 600 : 1300;
+    const results = [];
+    const used = new Set();
+    const cands = baseCands.sort((a,b)=> b.length - a.length); // long first to prune quicker
+
+    function backtrack(currBag, pick, startIdx){
+      if (results.length >= limit) return true;
+      if (performance.now() - t0 > TIME_CAP) return true;
+
+      if (bagIsEmpty(currBag)){
+        const phrase = pick.slice().sort((a,b)=> a.localeCompare(b)); // canonical sort to dedupe
+        const key = phrase.join(' ');
+        if (!used.has(key)) {
+          used.add(key);
+          results.push(phrase);
+        }
+        return false;
+      }
+      if (pick.length >= maxWords) return false;
+
+      for (let i=startIdx; i<cands.length; i++){
+        const w = cands[i];
+        if (!fitsCount(w, currBag)) continue;
+        const nextBag = removeFromBag(w, currBag);
+        pick.push(w);
+        const stop = backtrack(nextBag, pick, i); // allow reuse if letters remain
+        pick.pop();
+        if (stop) return true;
+      }
+      return false;
+    }
+
+    if (maxWords > 1 && cands.length){
+      backtrack(bag, [], 0);
+    }
+
+    // Ranking & formatting
+    function rankScore(item){
+      const joined = Array.isArray(item) ? item.join(' ') : item;
+      if (rank === 'alpha') return { key: joined, score: 0 };
+      if (rank === 'length') return { key: -joined.replace(/ /g,'').length, score: 0 };
+      if (rank === 'score') {
+        const s = (Array.isArray(item) ? item.join('') : item);
+        return { key: -scrabbleScore(s), score: 0 };
+      }
+      // default freq
+      const s2 = (Array.isArray(item) ? item.join('') : item);
+      return { key: -freqScore(s2), score: 0 };
+    }
+
+    // Merge singles + multi
+    const all = [];
+    outSingles.forEach(w=> all.push(w));
+    results.forEach(p=> all.push(p));
+
+    // unique
+    const uniq = [];
+    const seen = new Set();
+    for (const arr of all){
+      const key = arr.join(' ');
+      if (!seen.has(key)){
+        seen.add(key);
+        uniq.push(arr);
+      }
+    }
+
+    // sort
+    uniq.sort((a,b)=>{
+      const A = rankScore(a).key;
+      const B = rankScore(b).key;
+      if (A < B) return -1;
+      if (A > B) return 1;
+      // tie-breakers
+      if (rank==='alpha') return a.join(' ').localeCompare(b.join(' '));
+      return 0;
+    });
+
+    const elapsed = Math.round(performance.now()-t0);
+    return { list: uniq.slice(0, limit), elapsed, pool: cands.length, singles: outSingles.length };
+  }
+
+  function renderResults(view, data){
+    const { list } = data;
+    if (!list.length){
+      resultsWrap.innerHTML = `<div class="anagram-empty">No matches. Try increasing max words, relaxing filters, or switching to Smart mode.</div>`;
+      countEl.textContent = '0 results';
+      return;
+    }
+    countEl.textContent = list.length + ' result' + (list.length!==1?'s':'');
+
+    if (view === 'flat'){
+      const chips = list.map(arr=> `<span class="anagram-chip" title="Click to copy">${arr.join(' ')}</span>`).join('');
+      resultsWrap.innerHTML = `
+        <div class="anagram-bucket">
+          <h4>All results <small>${list.length}</small></h4>
+          <div class="anagram-list">${chips}</div>
+        </div>
+      `;
+      bindChipCopy();
+      return;
+    }
+
+    if (view === 'byLength'){
+      // bucket by combined length
+      const buckets = {};
+      for (const arr of list){
+        const len = arr.join('').length;
+        (buckets[len] ||= []).push(arr);
+      }
+      const sections = Object.keys(buckets).sort((a,b)=> b-a).map(k=>{
+        const chips = buckets[k].map(arr=> `<span class="anagram-chip" title="Click to copy">${arr.join(' ')}</span>`).join('');
+        return `<div class="anagram-bucket"><h4>Length ${k} <small>${buckets[k].length}</small></h4><div class="anagram-list">${chips}</div></div>`;
+      });
+      resultsWrap.innerHTML = `<div class="anagram-grid">${sections.join('')}</div>`;
+      bindChipCopy();
+      return;
+    }
+
+    if (view === 'byWords'){
+      const buckets = {};
+      for (const arr of list){
+        const wc = arr.length;
+        (buckets[wc] ||= []).push(arr);
+      }
+      const sections = Object.keys(buckets).sort((a,b)=> a-b).map(k=>{
+        const chips = buckets[k].map(arr=> `<span class="anagram-chip" title="Click to copy">${arr.join(' ')}</span>`).join('');
+        return `<div class="anagram-bucket"><h4>${k} word${k>1?'s':''} <small>${buckets[k].length}</small></h4><div class="anagram-list">${chips}</div></div>`;
+      });
+      resultsWrap.innerHTML = `<div class="anagram-grid">${sections.join('')}</div>`;
+      bindChipCopy();
+      return;
+    }
+  }
+
+  function bindChipCopy(){
+    resultsWrap.querySelectorAll('.anagram-chip').forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        navigator.clipboard.writeText(chip.textContent.trim()).then(()=> showToast('Copied result'));
+      });
+    });
+  }
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    toast.classList.remove('show'); // reset
+    requestAnimationFrame(()=>{
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1400);
+    });
+  }
+
+  // Tabs
+  document.querySelectorAll('.anagram-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.anagram-tab').forEach(t=> t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      const view = tab.dataset.view;
+      if (LAST_RESULT) renderResults(view, LAST_RESULT);
+    });
+  });
+
+  // Run
+  let LAST_RESULT = null;
+
+  function gather(){
+    return {
+      text: lettersEl.value || '',
+      minL: Math.max(2, +minEl.value || 2),
+      maxL: Math.max(2, +maxEl.value || 15),
+      starts: (startsEl.value||'').toLowerCase(),
+      ends: (endsEl.value||'').toLowerCase(),
+      includeLetters: (includeEl.value||'').toLowerCase().replace(/[^a-z]/g,''),
+      excludeLetters: (excludeEl.value||'').toLowerCase().replace(/[^a-z]/g,''),
+      pattern: patternEl.value || '',
+      maxWords: +wordsEl.value || 2,
+      mode: modeEl.value,
+      rank: rankEl.value,
+      limit: Math.max(10, +limitEl.value || 200)
+    };
+  }
+
+  runBtn.addEventListener('click', ()=>{
+    const opts = gather();
+    if (!opts.text.trim()){
+      showToast('Enter letters first');
+      return;
+    }
+    runBtn.disabled = true;
+    statusEl.textContent = 'Searching...';
+    setTimeout(()=>{
+      LAST_RESULT = findAnagrams(opts);
+      const activeTab = document.querySelector('.anagram-tab.is-active')?.dataset.view || 'byLength';
+      renderResults(activeTab, LAST_RESULT);
+      statusEl.textContent = `Done in ${LAST_RESULT.elapsed} ms • pool ${LAST_RESULT.pool}`;
+      runBtn.disabled = false;
+      // update URL share
+      updateURL(opts);
+    }, 20);
+  });
+
+  clearBtn.addEventListener('click', ()=>{
+    lettersEl.value = '';
+    resultsWrap.innerHTML = `<div class="anagram-empty">Cleared. Enter letters and click “Find anagrams”.</div>`;
+    countEl.textContent = '0 results';
+    statusEl.textContent = '';
+  });
+
+  copyBtn.addEventListener('click', ()=>{
+    if (!LAST_RESULT || !LAST_RESULT.list.length) { showToast('Nothing to copy'); return; }
+    const lines = LAST_RESULT.list.map(arr=> arr.join(' ')).join('\n');
+    navigator.clipboard.writeText(lines).then(()=> showToast('Results copied'));
+  });
+
+  dlBtn.addEventListener('click', ()=>{
+    if (!LAST_RESULT || !LAST_RESULT.list.length) { showToast('Nothing to download'); return; }
+    const lines = LAST_RESULT.list.map(arr=> arr.join(' ')).join('\n');
+    const blob = new Blob([lines], {type:'text/plain'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'anagram-results.txt';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // Share link (encode filters into query)
+  function updateURL(opts){
+    const p = new URLSearchParams();
+    p.set('q', opts.text);
+    p.set('min', String(opts.minL));
+    p.set('max', String(opts.maxL));
+    if (opts.starts) p.set('sw', opts.starts);
+    if (opts.ends) p.set('ew', opts.ends);
+    if (opts.includeLetters) p.set('inc', opts.includeLetters);
+    if (opts.excludeLetters) p.set('exc', opts.excludeLetters);
+    if (opts.pattern) p.set('pat', opts.pattern);
+    p.set('wc', String(opts.maxWords));
+    p.set('mode', opts.mode);
+    p.set('rank', opts.rank);
+    p.set('limit', String(opts.limit));
+    history.replaceState(null, '', location.pathname + '?' + p.toString());
+  }
+  shareBtn.addEventListener('click', ()=>{
+    navigator.clipboard.writeText(location.href).then(()=> showToast('Share link copied'));
+  });
+
+  // Restore from URL
+  function restoreFromURL(){
+    const u = new URL(location.href);
+    const p = u.searchParams;
+    if (!p.get('q')) return;
+    lettersEl.value = p.get('q') || '';
+    minEl.value = p.get('min') || 2;
+    maxEl.value = p.get('max') || 15;
+    startsEl.value = p.get('sw') || '';
+    endsEl.value = p.get('ew') || '';
+    includeEl.value = p.get('inc') || '';
+    excludeEl.value = p.get('exc') || '';
+    patternEl.value = p.get('pat') || '';
+    wordsEl.value = p.get('wc') || 2;
+    modeEl.value = p.get('mode') || 'fast';
+    rankEl.value = p.get('rank') || 'freq';
+    limitEl.value = p.get('limit') || 200;
+  }
+  restoreFromURL();
+
+  // Dictionary controls
+  uploadBtn.addEventListener('click', ()=> dictFile.click());
+  dictFile.addEventListener('change', (e)=>{
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      dictTextarea.value = String(ev.target.result || '');
+      dict = parseDict(dictTextarea.value);
+      buildDictIndex();
+      showToast('Dictionary loaded');
+    };
+    reader.readAsText(file);
+  });
+  useBuiltBtn.addEventListener('click', ()=>{
+    dictTextarea.value = '';
+    dict = parseDict(ANAGRAM_DICT);
+    buildDictIndex();
+    showToast('Using built-in dictionary');
+  });
+  dictTextarea.addEventListener('input', ()=>{
+    const txt = dictTextarea.value.trim();
+    if (!txt) return;
+    dict = parseDict(txt);
+    buildDictIndex();
+  });
+
+  // Keyboard shortcuts
+  lettersEl.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      runBtn.click();
+      e.preventDefault();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>

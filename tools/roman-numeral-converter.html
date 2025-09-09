@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Analytics (kept as in your reference) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Primary SEO -->
+  <title>Roman Numeral Converter - Free, Fast, Accurate | SnipText</title>
+  <meta name="description" content="Convert Arabic numbers to Roman numerals and Roman to Arabic instantly. Strict mode, extended overline notation, live validation, keyboard shortcuts, history, and one-click copy. Private and in-browser." />
+  <meta name="author" content="SnipText" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/roman-numeral-converter.html" />
+  <link rel="alternate" href="https://checkai.pro/tools/roman-numeral-converter.html" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/roman-numeral-converter.html" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Roman Numeral Converter - Free, Fast, Accurate" />
+  <meta property="og:description" content="Convert Arabic numbers to Roman and Roman to Arabic with strict rules, extended overlines, and live validation. Private, client-side." />
+  <meta property="og:url" content="https://checkai.pro/tools/roman-numeral-converter.html" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Roman Numeral Converter interface" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Roman Numeral Converter - Free, Fast, Accurate" />
+  <meta name="twitter:description" content="Strict mode, extended overlines, live validation, history, copy, and export. All in your browser." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (your brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <style>
+/* =========================
+   Role-model aligned tokens
+   ========================= */
+:root{
+  --roman2-primary:#1D4ED8;
+  --roman2-accent:#3B82F6;
+  --roman2-warm:#ff7c4c;
+
+  --roman2-bg:#0F172A;
+  --roman2-bg-soft:#0b1226;
+  --roman2-text:#e6eef8;
+  --roman2-muted:rgba(255,255,255,.78);
+  --roman2-border:rgba(255,255,255,.14);
+
+  --roman2-surface:rgba(255,255,255,.06);
+  --roman2-surface-2:rgba(255,255,255,.04);
+
+  --roman2-r-xl:20px;
+  --roman2-r-lg:14px;
+  --roman2-r-md:10px;
+
+  --roman2-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --roman2-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+  --roman2-maxw:1200px;
+
+  --roman2-font-head:'Poppins','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --roman2-font-body:'Roboto','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+
+/* =========================
+   Base + aurora backdrop
+   ========================= */
+html,body{height:100%}
+body{ margin:0; background:var(--roman2-bg); color:var(--roman2-text); font-family:var(--roman2-font-body); line-height:1.55; }
+
+.roman-main{
+  position:relative; isolation:isolate;
+  width:min(var(--roman2-maxw),92vw);
+  margin: clamp(16px,3vw,40px) auto 80px;
+  padding:0;
+}
+.roman-main::before{
+  content:""; position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--roman2-primary) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--roman2-accent) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--roman2-warm) 12%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--roman2-bg) 0%, var(--roman2-bg-soft) 100%);
+}
+
+/* =========================
+   Hero (glassy gradient)
+   ========================= */
+.roman-hero{
+  display:grid; grid-template-columns: 1.12fr .88fr; gap: clamp(14px,2.6vw,24px); align-items:center;
+  border:1px solid var(--roman2-border);
+  border-radius:var(--roman2-r-xl);
+  padding: clamp(18px,3vw,28px);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--roman2-primary) 20%, transparent),
+    color-mix(in oklab, var(--roman2-accent) 18%, transparent)
+  ) border-box;
+  box-shadow: var(--roman2-shadow-1);
+  overflow:hidden; position:relative;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+@media (max-width:960px){ .roman-hero{ grid-template-columns:1fr } }
+
+.roman-hero::after{
+  content:""; position:absolute; inset:-3px; pointer-events:none; filter: blur(16px); opacity:.6;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--roman2-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--roman2-accent) 26%, transparent), transparent 62%);
+}
+
+.roman-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:var(--roman2-font-head);
+  font-size: clamp(22px,3.2vw,36px);
+  background: linear-gradient(90deg,#fff,
+    color-mix(in oklab, var(--roman2-accent) 54%, #fff) 38%,
+    color-mix(in oklab, var(--roman2-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.roman-subtitle{ margin:6px 0 0; color:var(--roman2-muted); font-size:clamp(14px,1.8vw,16px) }
+
+.roman-hero-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.roman-badge{
+  padding:6px 10px; border:1px solid var(--roman2-border); border-radius:999px;
+  background: color-mix(in oklab, var(--roman2-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem;
+}
+
+/* orb artwork stays but gets nicer glow */
+.roman-hero-art{ display:grid; place-items:center; }
+.roman-orb{
+  width: clamp(160px, 26vw, 260px); aspect-ratio:1/1; border-radius:999px;
+  background: conic-gradient(from 120deg, var(--roman2-primary), var(--roman2-accent), var(--roman2-warm), var(--roman2-primary));
+  filter: saturate(115%);
+  box-shadow: inset 0 0 18px rgba(255,255,255,.08), 0 26px 60px rgba(59,130,246,.28);
+  animation: roman-spin 18s linear infinite;
+}
+@keyframes roman-spin{ to{ transform:rotate(360deg) } }
+
+/* =========================
+   Tool layout
+   ========================= */
+.roman-tool{
+  margin-top: clamp(14px,2.6vw,24px);
+  display:grid; grid-template-columns: 1fr 350px; gap: clamp(12px,2.4vw,20px);
+}
+@media (max-width:960px){ .roman-tool{ grid-template-columns:1fr } }
+
+.roman-card{
+  border:1px solid var(--roman2-border);
+  border-radius:var(--roman2-r-lg);
+  background: var(--roman2-surface);
+  box-shadow: var(--roman2-shadow-2);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  padding: 14px;
+  overflow:hidden;
+}
+
+/* =========================
+   Segmented tabs (role-model style)
+   ========================= */
+.roman-tabs{
+  display:flex; gap:8px; flex-wrap:wrap; padding:0 0 10px; margin-bottom:10px;
+  border-bottom:1px solid var(--roman2-border);
+}
+.roman-tab{
+  border:0; background:transparent; color:#e5e7eb; padding:10px 14px; cursor:pointer;
+  font-weight:700; font-size:13px; letter-spacing:.3px; border-radius:12px;
+  transition: transform .15s ease, background .3s ease;
+}
+.roman-tab[aria-selected="true"]{
+  background: linear-gradient(180deg, color-mix(in oklab, var(--roman2-primary) 68%, transparent), color-mix(in oklab, var(--roman2-accent) 60%, transparent));
+  color:#fff;
+}
+.roman-tab:hover{ transform: translateY(-1px) }
+
+/* =========================
+   Inputs, toggles, help
+   ========================= */
+.roman-field{ display:grid; gap:8px; margin:8px 0 10px }
+.roman-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+
+.roman-input{
+  background:#0e1730; color:#e6ecff; border:1px solid var(--roman2-border);
+  border-radius:10px; padding:12px 14px; outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+.roman-input:focus{ border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px) }
+
+.roman-controls{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:6px 0 }
+.roman-check{
+  display:inline-flex; align-items:center; gap:8px; padding:8px 10px;
+  border:1px dashed var(--roman2-border); border-radius:12px; background:#0b1226; color:#cfe0ff; font-size:.92rem;
+}
+.roman-check input{ accent-color: var(--roman2-accent) }
+.roman-help{ color:var(--roman2-muted); font-size:.9rem }
+
+/* =========================
+   Buttons (primary, outline/ghost)
+   ========================= */
+.roman-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:6px }
+.roman-btn{
+  --_bg: linear-gradient(180deg, color-mix(in oklab, var(--roman2-primary) 70%, transparent), color-mix(in oklab, var(--roman2-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--roman2-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family: var(--roman2-font-head);
+}
+.roman-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+.roman-btn:active{ transform: translateY(0); filter: brightness(.98) }
+
+.roman-btn--ok{
+  background: linear-gradient(135deg, var(--roman2-accent), var(--roman2-warm)); border-color: transparent;
+}
+.roman-btn--ghost{
+  background: transparent; color: var(--roman2-text); border:1px dashed var(--roman2-border);
+  box-shadow:none; font-weight:700;
+}
+
+/* =========================
+   Output area
+   ========================= */
+.roman-output{ margin-top:10px; display:grid; gap:8px }
+.roman-output-value{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px; border:1px solid var(--roman2-border); border-radius:12px;
+  background:#0e1730; font-family:var(--roman2-font-head); letter-spacing:.2px;
+}
+.roman-chip{
+  padding:6px 10px; border:1px solid var(--roman2-border); border-radius:999px;
+  background: color-mix(in oklab, var(--roman2-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem;
+}
+.roman-note{ color:var(--roman2-muted); font-size:.9rem; margin-top:8px }
+
+/* =========================
+   Side cards: history + rules
+   ========================= */
+.roman-side{ display:grid; gap:clamp(12px,2.4vw,20px) }
+.roman-side .roman-card{ position:sticky; top:16px }
+
+.roman-side-title{ margin:0 0 6px; font-family:var(--roman2-font-head); font-weight:700; letter-spacing:.2px }
+
+.roman-history{ display:grid; gap:8px; max-height:420px; overflow:auto; padding-right:4px }
+.roman-history-item{
+  display:grid; gap:6px; padding:10px; border:1px solid var(--roman2-border); border-radius:10px;
+  background: var(--roman2-surface-2);
+  transition: border-color .2s ease, background .2s ease;
+}
+.roman-history-item:hover{ border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.06) }
+
+.roman-overline{ position:relative; display:inline-block; padding-top:4px }
+.roman-overline::before{ content:""; position:absolute; left:0; right:0; top:0; height:2px; background: currentColor; opacity:.9 }
+
+/* =========================
+   Subtle float animation
+   ========================= */
+@media (prefers-reduced-motion:no-preference){
+  .roman-card{ animation: roman-float 18s ease-in-out infinite }
+  @keyframes roman-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* =========================
+   Footer guide link
+   ========================= */
+.free-tools-guide{ margin-top:16px }
+.free-tools-guide-p{ color:var(--roman2-muted) }
+.free-tools-blog-link{ color:#bcd3ff; text-decoration:underline; text-underline-offset:2px }
+.free-tools-blog-link:hover{ color:#d7e4ff }
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"SnipText Roman Numeral Converter",
+    "applicationCategory":"EducationApplication",
+    "operatingSystem":"Web",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "url":"https://checkai.pro/tools/roman-numeral-converter.html",
+    "featureList":[
+      "Instant Arabic ↔ Roman conversion",
+      "Strict subtractive rules toggle",
+      "Extended overline notation for large numbers",
+      "Live validation and error hints",
+      "Keyboard shortcuts and copy buttons",
+      "Conversion history and JSON export",
+      "Private, client-side operation"
+    ],
+    "author":{"@type":"Organization","name":"SnipText"}
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What range does the Roman Numeral Converter support?",
+        "acceptedAnswer":{"@type":"Answer","text":"Standard mode supports 1–3999 with strict subtractive rules. Extended mode uses overlines to represent ×1000, enabling much larger values."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does this tool run locally?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. It runs entirely in your browser. Your input is not uploaded to any server."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I convert both ways?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Convert Arabic to Roman and Roman to Arabic. You can copy results with one click and keep a local history."}
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="roman-page">
+
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  
+
+
+  
+  <main class="roman-main" id="roman-main">
+    <!-- Hero -->
+    <section class="roman-hero" aria-labelledby="roman-title">
+      <div class="roman-hero-content">
+        <h1 class="roman-title" id="roman-title">Roman Numeral Converter</h1>
+        <p class="roman-subtitle">Convert Arabic numbers to Roman numerals and Roman to Arabic with strict rules, extended overlines, live validation, and keyboard shortcuts.</p>
+        <div class="roman-hero-badges">
+          <span class="roman-badge">Private & client-side</span>
+          <span class="roman-badge">Strict mode</span>
+          <span class="roman-badge">Overline notation</span>
+          <span class="roman-badge">Copy & history</span>
+        </div>
+      </div>
+      <div class="roman-hero-art" aria-hidden="true">
+        <div class="roman-orb"></div>
+      </div>
+    </section>
+
+    <!-- Tool -->
+    <section class="roman-tool" aria-label="Roman numeral converter tool">
+      <div class="roman-card" id="roman-card-left">
+        <!-- Tabs -->
+        <div class="roman-tabs" role="tablist" aria-label="Conversion direction">
+          <button class="roman-tab" role="tab" aria-selected="true" id="tab-ar-to-ro" data-roman-tab="ar-to-ro">Arabic → Roman</button>
+          <button class="roman-tab" role="tab" aria-selected="false" id="tab-ro-to-ar" data-roman-tab="ro-to-ar">Roman → Arabic</button>
+        </div>
+
+        <!-- Arabic to Roman -->
+        <div class="roman-pane" role="tabpanel" id="pane-ar-to-ro" aria-labelledby="tab-ar-to-ro">
+          <div class="roman-field">
+            <label class="roman-label" for="roman-input-number">Arabic number</label>
+            <input id="roman-input-number" class="roman-input" inputmode="numeric" pattern="[0-9]*" placeholder="e.g., 1999" autocomplete="off" />
+          </div>
+
+          <div class="roman-controls">
+            <label class="roman-check"><input type="checkbox" id="roman-strict-ar" checked /> Strict subtractive rules</label>
+            <label class="roman-check"><input type="checkbox" id="roman-extend-ar" /> Extended overline notation</label>
+            <span class="roman-help">Standard range 1-3999. Extended mode supports larger values via overlines.</span>
+          </div>
+
+          <div class="roman-actions">
+            <button class="roman-btn roman-btn--ok" id="roman-convert-ar">Convert</button>
+            <button class="roman-btn roman-btn--ghost" id="roman-copy-ar">Copy result</button>
+            <button class="roman-btn roman-btn--ghost" id="roman-clear-ar">Clear</button>
+          </div>
+
+          <div class="roman-output" aria-live="polite">
+            <div class="roman-output-value" id="roman-output-ar">
+              <span><strong>Roman:</strong> <span id="roman-result-ar">-</span></span>
+              <span class="roman-chip" id="roman-status-ar">Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Roman to Arabic -->
+        <div class="roman-pane" role="tabpanel" id="pane-ro-to-ar" aria-labelledby="tab-ro-to-ar" hidden>
+          <div class="roman-field">
+            <label class="roman-label" for="roman-input-text">Roman numeral</label>
+            <input id="roman-input-text" class="roman-input" placeholder="e.g., MCMXCIX" autocomplete="off" />
+          </div>
+
+          <div class="roman-controls">
+            <label class="roman-check"><input type="checkbox" id="roman-strict-ro" checked /> Strict validation</label>
+            <label class="roman-check"><input type="checkbox" id="roman-extend-ro" /> Overline input allowed</label>
+            <span class="roman-help">Accepts upper or lower case. Use overlines for ×1000 in extended mode.</span>
+          </div>
+
+          <div class="roman-actions">
+            <button class="roman-btn roman-btn--ok" id="roman-convert-ro">Convert</button>
+            <button class="roman-btn roman-btn--ghost" id="roman-copy-ro">Copy result</button>
+            <button class="roman-btn roman-btn--ghost" id="roman-clear-ro">Clear</button>
+          </div>
+
+          <div class="roman-output" aria-live="polite">
+            <div class="roman-output-value" id="roman-output-ro">
+              <span><strong>Arabic:</strong> <span id="roman-result-ro">-</span></span>
+              <span class="roman-chip" id="roman-status-ro">Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="roman-note">Keyboard: Enter to convert, Ctrl/Cmd+C to copy result. The tool works offline after first load.</p>
+      </div>
+
+      <!-- Side: History and Tips -->
+      <aside class="roman-side">
+        <div class="roman-card">
+          <h3 class="roman-side-title">Recent conversions</h3>
+          <div class="roman-history" id="roman-history"></div>
+          <div class="roman-actions">
+            <button class="roman-btn" id="roman-export-json">Export JSON</button>
+            <button class="roman-btn roman-btn--ghost" id="roman-clear-history">Clear history</button>
+          </div>
+        </div>
+
+        <div class="roman-card">
+          <h3 class="roman-side-title">Roman numeral rules</h3>
+          <ul class="roman-help">
+            <li>I, V, X, L, C, D, M with subtractive pairs like IV, IX, XL, XC, CD, CM in strict mode.</li>
+            <li>Repeat I, X, C, M up to 3 times. V, L, D never repeat in strict mode.</li>
+            <li>Extended mode uses an overline to denote ×1000. Example: <span class="roman-overline">V</span> = 5000.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+     <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Roman Numeral Guide on SnipText Blog Page <a href="/blog/roman-numeral-converter-convert-roman-to-arabic-and-arabic-to-roman-strict-rules-overline-notation-history-private-free-online-tool-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+
+
+  </main>
+
+
+  
+
+  <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/symbol-character-info.html" aria-labelledby="t6">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t6" class="card-title">Symbol / Character Info</h3>
+      <p class="card-desc">Counts symbols and shows ASCII & Unicode code points and names for selected characters.</p>
+      <a class="card-cta" href="/tools/symbol-character-info.html" aria-label="Open Symbol/Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="svg-icon">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 id="t10" class="card-title">Random Text Generator</h3>
+        <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+        <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+
+       <script src="/js/index.js"></script>
+       <script src="/js/auth.js"></script>
+       <script src="/tools/js/free-tools.js"></script>
+
+  <!-- Script -->
+  <script>
+    (function(){
+      // Elements
+      const $ = (sel, el=document) => el.querySelector(sel);
+      const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+
+      const tabAr = $('#tab-ar-to-ro');
+      const tabRo = $('#tab-ro-to-ar');
+      const paneAr = $('#pane-ar-to-ro');
+      const paneRo = $('#pane-ro-to-ar');
+
+      const inNum = $('#roman-input-number');
+      const strictAr = $('#roman-strict-ar');
+      const extendAr = $('#roman-extend-ar');
+      const btnConvAr = $('#roman-convert-ar');
+      const btnCopyAr = $('#roman-copy-ar');
+      const btnClearAr = $('#roman-clear-ar');
+      const outArVal = $('#roman-result-ar');
+      const outArStatus = $('#roman-status-ar');
+
+      const inText = $('#roman-input-text');
+      const strictRo = $('#roman-strict-ro');
+      const extendRo = $('#roman-extend-ro');
+      const btnConvRo = $('#roman-convert-ro');
+      const btnCopyRo = $('#roman-copy-ro');
+      const btnClearRo = $('#roman-clear-ro');
+      const outRoVal = $('#roman-result-ro');
+      const outRoStatus = $('#roman-status-ro');
+
+      const historyEl = $('#roman-history');
+      const btnExport = $('#roman-export-json');
+      const btnClearHistory = $('#roman-clear-history');
+
+      // State
+      const HISTORY_KEY = 'sniptext_roman_history_v1';
+      let history = loadHistory();
+
+      // Helpers
+      function setStatus(el, text, type='') {
+        el.textContent = text;
+        el.className = 'roman-chip roman-status ' + (type ? 'roman-status--'+type : '');
+      }
+
+      function copyText(text){
+        if(!text || text === '-') return;
+        navigator.clipboard.writeText(text).catch(()=>{});
+      }
+
+      function loadHistory(){
+        try {
+          const raw = localStorage.getItem(HISTORY_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch { return []; }
+      }
+      function saveHistory(){
+        try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0,50))); } catch{}
+      }
+      function pushHistory(dir, input, output){
+        const item = { dir, input, output, at: new Date().toISOString() };
+        history.unshift(item);
+        history = history.slice(0, 20);
+        saveHistory();
+        renderHistory();
+      }
+      function renderHistory(){
+        historyEl.innerHTML = '';
+        if(history.length === 0){
+          const empty = document.createElement('div');
+          empty.className = 'roman-help';
+          empty.textContent = 'No conversions yet.';
+          historyEl.appendChild(empty);
+          return;
+        }
+        history.forEach((h, idx)=>{
+          const row = document.createElement('div');
+          row.className = 'roman-history-item';
+          row.innerHTML = `
+            <div class="roman-history-top">
+              <span>${h.dir === 'ar→ro' ? 'Arabic → Roman' : 'Roman → Arabic'}</span>
+              <time datetime="${h.at}">${new Date(h.at).toLocaleString()}</time>
+            </div>
+            <div class="roman-history-vals">
+              <div>Input: ${escapeHtml(h.input)}</div>
+              <div>Output: ${escapeHtml(h.output)}</div>
+            </div>
+            <div class="roman-actions">
+              <button class="roman-btn roman-btn--ghost" data-copy="${escapeAttr(h.output)}">Copy</button>
+              <button class="roman-btn roman-btn--ghost" data-restore='${escapeAttr(JSON.stringify(h))}'>Restore</button>
+            </div>
+          `;
+          historyEl.appendChild(row);
+        });
+        // wire copy/restore
+        $$('.roman-history-item .roman-btn').forEach(btn=>{
+          if(btn.dataset.copy !== undefined){
+            btn.addEventListener('click', ()=>copyText(btn.dataset.copy));
+          } else if(btn.dataset.restore){
+            btn.addEventListener('click', ()=>{
+              const obj = JSON.parse(btn.dataset.restore);
+              if(obj.dir === 'ar→ro'){
+                switchTo('ar-to-ro');
+                inNum.value = obj.input;
+                outArVal.innerHTML = renderRomanWithOverline(obj.output);
+              } else {
+                switchTo('ro-to-ar');
+                inText.value = obj.input;
+                outRoVal.textContent = obj.output;
+              }
+            });
+          }
+        });
+      }
+      const escapeHtml = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      const escapeAttr = s => String(s).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+      // Roman conversion core
+      const ROMAN_MAP = [
+        {v:1000, r:'M'},
+        {v:900,  r:'CM'},
+        {v:500,  r:'D'},
+        {v:400,  r:'CD'},
+        {v:100,  r:'C'},
+        {v:90,   r:'XC'},
+        {v:50,   r:'L'},
+        {v:40,   r:'XL'},
+        {v:10,   r:'X'},
+        {v:9,    r:'IX'},
+        {v:5,    r:'V'},
+        {v:4,    r:'IV'},
+        {v:1,    r:'I'},
+      ];
+      const VALUES = {I:1, V:5, X:10, L:50, C:100, D:500, M:1000};
+
+      function toRoman(n, strict=true){
+        if(!Number.isFinite(n) || n<=0) return '';
+        if(strict && n>3999) return '';
+        // Standard up to 3999
+        if(n<=3999){
+          let res='';
+          for(const {v,r} of ROMAN_MAP){
+            while(n>=v){ res+=r; n-=v; }
+          }
+          return res;
+        }
+        // Extended overline notation for thousands (×1000)
+        // Split into thousands-block and remainder
+        const thousands = Math.floor(n/1000);
+        const remainder = n % 1000;
+        const upper = toRoman(thousands, true); // will be <= 3999
+        const lower = toRoman(remainder, true);
+        return overline(upper) + (lower?(''+lower):'');
+      }
+
+      function fromRoman(str, strict=true, allowOverline=false){
+        if(!str) return 0;
+        let s = str.trim().toUpperCase();
+
+        // Convert overline spans into a marker (e.g., {X} meaning X*1000)
+        if(allowOverline){
+          // support both span class and Unicode combining overline if provided
+          // span version: <span class="roman-overline">X</span>
+          const tmp = document.createElement('div'); tmp.innerHTML = s;
+          // Collect text with markers
+          s = Array.from(tmp.querySelectorAll('*')).length
+              ? getTextWithOverlineMarkers(tmp)
+              : s;
+          // also accept [X] to represent overline as input convenience
+          s = s.replace(/\[([IVXLCDM]+)\]/g, '{$1}');
+        } else {
+          // strip any tags if pasted
+          s = s.replace(/<[^>]*>/g,'');
+        }
+
+        // If we have markers like {M} treat as 1000× segment
+        let total = 0;
+        // Process segments with possible overline markers
+        const segPattern = /(\{[IVXLCDM]+\})|([IVXLCDM]+)/g;
+        let m;
+        while((m = segPattern.exec(s))){
+          const seg = m[0];
+          let mult = 1;
+          let numerals = seg;
+          if(seg.startsWith('{')){
+            mult = 1000;
+            numerals = seg.slice(1,-1);
+          }
+          const val = fromRomanStandard(numerals, strict);
+          if(val===0 && numerals) return 0;
+          total += val * mult;
+        }
+        return total;
+      }
+
+      function getTextWithOverlineMarkers(container){
+        // Convert <span class="roman-overline">X</span> to {X}
+        const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+        let out = '';
+        let node;
+        while(node = walker.nextNode()){
+          if(node.nodeType === Node.TEXT_NODE){
+            out += node.nodeValue;
+          } else if(node.nodeType === Node.ELEMENT_NODE){
+            const el = node;
+            if(el.classList && el.classList.contains('roman-overline')){
+              out += '{' + el.textContent.trim().toUpperCase() + '}';
+              // skip children since we consumed textContent
+              walker.currentNode = el;
+            }
+          }
+        }
+        return out || container.textContent.toUpperCase();
+      }
+
+      function fromRomanStandard(s, strict){
+        if(!/^[IVXLCDM]*$/.test(s)) return 0;
+        let total = 0, i=0, repeatCount=1, lastChar='';
+        while(i<s.length){
+          const curr = VALUES[s[i]];
+          const next = VALUES[s[i+1]] || 0;
+
+          // repetition rules
+          if(s[i] === lastChar) repeatCount++; else repeatCount = 1, lastChar = s[i];
+          if(strict){
+            if((s[i]==='V'||s[i]==='L'||s[i]==='D') && repeatCount>1) return 0;
+            if((s[i]==='I'||s[i]==='X'||s[i]==='C'||s[i]==='M') && repeatCount>3) return 0;
+          }
+
+          if(next>curr){
+            // subtractive pairs check in strict mode
+            const pair = s[i]+s[i+1];
+            if(strict && !isValidSubtractive(pair)) return 0;
+            total += (next - curr);
+            i += 2;
+            repeatCount = 1; lastChar = '';
+          } else {
+            total += curr;
+            i += 1;
+          }
+        }
+        if(strict){
+          // validate by re-encoding
+          const recon = toRoman(total, true);
+          if(recon !== s) return 0;
+        }
+        return total;
+      }
+
+      function isValidSubtractive(pair){
+        return ['IV','IX','XL','XC','CD','CM'].includes(pair);
+      }
+
+      function overline(roman){
+        if(!roman) return '';
+        // Wrap each contiguous group in a span with overline
+        return roman.split('').map(ch => `<span class="roman-overline">${ch}</span>`).join('');
+      }
+
+      function renderRomanWithOverline(roman){
+        // If roman contains raw letters only, display as is.
+        // If includes our special token [OVER:x], we already output spans, so keep.
+        return roman || '-';
+      }
+
+      // Tabs
+      function switchTo(which){
+        const isAr = which==='ar-to-ro';
+        tabAr.setAttribute('aria-selected', isAr?'true':'false');
+        tabRo.setAttribute('aria-selected', !isAr?'true':'false');
+        paneAr.hidden = !isAr;
+        paneRo.hidden = isAr;
+        (isAr ? inNum : inText).focus();
+      }
+      tabAr.addEventListener('click', ()=>switchTo('ar-to-ro'));
+      tabRo.addEventListener('click', ()=>switchTo('ro-to-ar'));
+
+      // Arabic → Roman
+      function handleAr(){
+        const raw = inNum.value.trim();
+        if(!raw){ outArVal.innerHTML='-'; setStatus(outArStatus,'Enter a number'); return; }
+        const n = Number(raw);
+        if(!Number.isFinite(n) || n<=0){ outArVal.innerHTML='-'; setStatus(outArStatus,'Enter a positive integer','warn'); return; }
+        const strict = strictAr.checked;
+        const extended = extendAr.checked;
+
+        if(strict && n>3999 && !extended){
+          outArVal.innerHTML='-'; setStatus(outArStatus,'Enable extended mode for >3999','warn'); return;
+        }
+        let roman = toRoman(n, strict);
+        if(!roman){
+          outArVal.innerHTML='-'; setStatus(outArStatus,'Out of range or invalid','error'); return;
+        }
+        // roman may contain overline spans already if extended
+        outArVal.innerHTML = renderRomanWithOverline(roman);
+        setStatus(outArStatus,'OK','ok');
+        pushHistory('ar→ro', raw, roman);
+        updatePermalink({dir:'ar', val:raw, strict, ext:extended});
+      }
+
+      // Roman → Arabic
+      function handleRo(){
+        const raw = inText.value.trim();
+        if(!raw){ outRoVal.textContent='-'; setStatus(outRoStatus,'Enter a Roman numeral'); return; }
+        const strict = strictRo.checked;
+        const allowOverline = extendRo.checked;
+        const val = fromRoman(raw, strict, allowOverline);
+        if(!val){ outRoVal.textContent='-'; setStatus(outRoStatus,'Invalid numeral','error'); return; }
+        outRoVal.textContent = String(val);
+        setStatus(outRoStatus,'OK','ok');
+        pushHistory('ro→ar', raw, String(val));
+        updatePermalink({dir:'ro', val:raw, strict, ext:allowOverline});
+      }
+
+      // Copy
+      btnCopyAr.addEventListener('click', ()=>copyText($('#roman-result-ar').textContent));
+      btnCopyRo.addEventListener('click', ()=>copyText($('#roman-result-ro').textContent));
+
+      // Clear
+      btnClearAr.addEventListener('click', ()=>{ inNum.value=''; outArVal.innerHTML='-'; setStatus(outArStatus,'Cleared'); });
+      btnClearRo.addEventListener('click', ()=>{ inText.value=''; outRoVal.textContent='-'; setStatus(outRoStatus,'Cleared'); });
+
+      // Convert buttons
+      btnConvAr.addEventListener('click', handleAr);
+      btnConvRo.addEventListener('click', handleRo);
+
+      // Enter to convert, Ctrl/Cmd+C to copy
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter'){
+          if(!paneAr.hidden) handleAr(); else handleRo();
+        }
+        if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='c'){
+          if(!paneAr.hidden) copyText($('#roman-result-ar').textContent);
+          else copyText($('#roman-result-ro').textContent);
+        }
+      });
+
+      // Export JSON
+      btnExport.addEventListener('click', ()=>{
+        const blob = new Blob([JSON.stringify(history, null, 2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'roman-numeral-history.json';
+        document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      });
+
+      btnClearHistory.addEventListener('click', ()=>{ history=[]; saveHistory(); renderHistory(); });
+
+      // Permalink state via hash
+      function updatePermalink(state){
+        try {
+          const hash = new URLSearchParams(state).toString();
+          history.replaceState(null,'','#'+hash);
+        } catch {}
+      }
+      function readPermalink(){
+        try {
+          const p = new URLSearchParams(location.hash.slice(1));
+          const dir = p.get('dir'); const val = p.get('val');
+          const strict = p.get('strict')==='true';
+          const ext = p.get('ext')==='true';
+          if(dir==='ar'){
+            switchTo('ar-to-ro');
+            inNum.value = val||'';
+            strictAr.checked = strict;
+            extendAr.checked = ext;
+            if(val) handleAr();
+          } else if(dir==='ro'){
+            switchTo('ro-to-ar');
+            inText.value = val||'';
+            strictRo.checked = strict;
+            extendRo.checked = ext;
+            if(val) handleRo();
+          }
+        } catch {}
+      }
+
+      // Init
+      renderHistory();
+      readPermalink();
+    })();
+  </script>
+</body>
+</html>

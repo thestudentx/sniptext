@@ -36,6 +36,10 @@
   <link rel="alternate" href="quick-table-generator-csv-to-html-table-code" hreflang="en" />
   <link rel="alternate" href="quick-table-generator-csv-to-html-table-code" hreflang="x-default" />
 
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/tools/css/free-tools.css">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SnipText" />
@@ -59,358 +63,310 @@
   <!-- Theme / Icons -->
   <meta name="theme-color" content="#1D4ED8" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>📋</text></svg>">
+  <link rel="icon" href="/favicon.png" type="image/png" />
 
   <!-- Fonts & Global CSS (keep included files the same) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="/tools/css/free-tools.css">
 
   <!-- Brand theme is assumed to be defined globally via :root on site. Page specific variables + styles below -->
-  <style>:root {
-  /* Component tokens (preserved names) remapped to brand system */
-  --table-gen-primary:  var(--color-primary);             /* brand primary */
-  --table-gen-accent:   var(--color-accent);              /* brand accent */
+  <style>
+/* =========================
+   Brand tokens (same palette as role model)
+   ========================= */
+:root{
+  --tg-primary:#1D4ED8;
+  --tg-accent:#3B82F6;
+  --tg-warm:#ff7c4c;
 
-  /* Surfaces & text mapped to brand dark-first palette */
-  --table-gen-surface:   var(--color-footer-bg);          /* card/base surface */
-  --table-gen-surface-2: var(--color-bg-dark);            /* deeper surface */
-  --table-gen-text:      var(--color-white);              /* light text on dark */
-  --table-gen-muted:     var(--color-text-light);         /* muted copy */
-  --table-gen-border:    var(--color-border);             /* subtle borders */
-  --table-gen-highlight: var(--color-used-often);         /* action/highlight */
-  --table-gen-bg-dark:   var(--color-bg-dark);            /* page background */
+  --tg-bg:#0F172A;
+  --tg-white:#ffffff;
+  --tg-muted:#aab6c7;
+  --tg-border:rgba(255,255,255,.14);
 
-  /* Brand-aware gradients (keeps your existing gradient usage) */
-  --table-gen-grad-1: linear-gradient(
-    135deg,
-    var(--gradient-cta-start) 0%,
-    var(--color-accent) 45%,
-    var(--gradient-cta-end) 100%
+  --tg-font-head:'Poppins','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --tg-font-body:'Roboto','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+
+  --tg-r-xl:20px;
+  --tg-r-lg:14px;
+  --tg-r-md:10px;
+
+  --tg-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --tg-shadow-2:0 18px 48px rgba(17,24,39,.46);
+}
+
+/* =========================
+   Canvas + aurora (fixed underlay like role model)
+   ========================= */
+html,body{height:100%}
+html,body{
+  margin:0; background:var(--tg-bg); color:#fff;
+  font-family:var(--tg-font-body); line-height:1.55;
+}
+.table-gen-page, .table-gen-container{
+  position:relative; isolation:isolate;
+}
+.table-gen-container{
+  width:min(1200px,92vw);
+  margin:clamp(16px,3vw,40px) auto;
+  padding:clamp(12px,2.5vw,24px);
+}
+.table-gen-container::before{
+  content:""; position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--tg-primary) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--tg-accent) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--tg-warm) 12%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--tg-bg) 0%, #0b1225 100%);
+}
+
+/* =========================
+   Hero (glassy gradient, rim glow)
+   ========================= */
+.table-gen-hero{
+  position:relative; padding: clamp(18px,3vw,28px);
+  border:1px solid var(--tg-border);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--tg-primary) 20%, transparent),
+    color-mix(in oklab, var(--tg-accent) 18%, transparent)
+  ) border-box;
+  border-radius: var(--tg-r-xl);
+  box-shadow: var(--tg-shadow-1);
+  overflow:hidden;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.table-gen-hero::after{
+  content:""; position:absolute; inset:-3px; pointer-events:none; filter:blur(16px); opacity:.6;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--tg-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--tg-accent) 26%, transparent), transparent 62%);
+}
+.table-gen-hero::before{
+  content:""; position:absolute; inset:-1px; pointer-events:none;
+  background: conic-gradient(from 180deg at 50% 35%,
+    rgba(29,78,216,.16), rgba(59,130,246,.12), rgba(232,93,39,.10), transparent 60%);
+  mask: radial-gradient(70% 60% at 50% 0%, #000 10%, transparent 60%);
+}
+
+/* Badge */
+.table-gen-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; border:1px solid var(--tg-border); border-radius:999px;
+  background:#0b1329; color:var(--tg-muted); font:600 12px/1 var(--tg-font-body);
+  transform:translateY(-6px);
+}
+.table-gen-badge .dot{width:8px;height:8px;border-radius:999px;background:var(--tg-accent)}
+
+/* Title + subtitle match */
+.table-gen-title{
+  margin:10px 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:var(--tg-font-head); font-size: clamp(22px,3.2vw,36px);
+  background:linear-gradient(90deg,#fff,
+    color-mix(in oklab,var(--tg-accent) 54%, #fff) 38%,
+    color-mix(in oklab,var(--tg-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.table-gen-subtitle{ margin:6px 0 0 0; color: rgba(255,255,255,.78); max-width:80ch; }
+
+/* =========================
+   Grid layout identical spacing
+   ========================= */
+.table-gen-grid{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap: clamp(12px,2.4vw,20px); margin-top: clamp(14px,2.6vw,24px);
+}
+@media (max-width:980px){ .table-gen-grid{ grid-template-columns:1fr; } }
+
+/* =========================
+   Cards (glassy surface + header gradient)
+   ========================= */
+.table-gen-card{
+  border:1px solid var(--tg-border);
+  border-radius: var(--tg-r-lg);
+  background: rgba(255,255,255,.06);
+  box-shadow: var(--tg-shadow-2);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.table-gen-card>header{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px; border-bottom:1px solid var(--tg-border);
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--tg-primary) 11%, transparent),
+    color-mix(in oklab, var(--tg-accent) 9%, transparent)
   );
-
-  --table-gen-grad-2:
-    radial-gradient(1200px 600px at 10% -10%,
-      color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 60%),
-    radial-gradient(800px 400px at 110% 10%,
-      color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 60%),
-    radial-gradient(600px 400px at 50% 120%,
-      color-mix(in oklab, var(--gradient-cta-end) 12%, transparent), transparent 60%);
 }
+.table-gen-card>header h2{
+  margin:0; font-size:14px; letter-spacing:.35px; text-transform:uppercase; opacity:.92;
+  font-family:var(--tg-font-head); color:#e5e7eb;
+}
+.table-gen-body{ padding:14px; }
 
-/* Optional: light-mode tuning, if your page switches themes */
-@media (prefers-color-scheme: light) {
-  :root {
-    --table-gen-surface:   var(--color-white);
-    --table-gen-surface-2: var(--color-bg-light);
-    --table-gen-text:      var(--color-text-dark);
-    --table-gen-muted:     var(--color-text-light);
-    --table-gen-border:    var(--color-border);
-
-    /* soften background blobs for light */
-    --table-gen-grad-2:
-      radial-gradient(1200px 600px at 10% -10%,
-        color-mix(in oklab, var(--color-accent) 10%, transparent), transparent 60%),
-      radial-gradient(800px 400px at 110% 10%,
-        color-mix(in oklab, var(--color-primary) 10%, transparent), transparent 60%),
-      radial-gradient(600px 400px at 50% 120%,
-        color-mix(in oklab, var(--gradient-cta-end) 8%, transparent), transparent 60%);
-  }
+/* Subtle float animation like role model */
+@media (prefers-reduced-motion:no-preference){
+  .table-gen-card{ animation: tgen-float 18s ease-in-out infinite; }
+  @keyframes tgen-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
 }
 
-  .tools-grid { margin: 1rem 0; }
-.tool-card {background: var(--color-bg-dark);}
+/* =========================
+   Actions row -> role model buttons
+   ========================= */
+.table-gen-actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.table-gen-btn{
+  --_bg: linear-gradient(180deg,
+    color-mix(in oklab, var(--tg-primary) 70%, transparent),
+    color-mix(in oklab, var(--tg-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--tg-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer; position:relative;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family: var(--tg-font-head);
+}
+.table-gen-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+.table-gen-btn:active{ transform: translateY(0); filter: brightness(.98); }
+.table-gen-primary{ background: linear-gradient(135deg, var(--tg-accent), var(--tg-warm)); border-color:transparent; }
+.table-gen-btn[disabled]{ opacity:.6; cursor:not-allowed; }
+.table-gen-hidden{ display:none !important; }
 
-/* Layout */
-.table-gen-page {
-  min-height: 100svh;
-  background-color: var(--table-gen-bg-dark);
-  background-image: var(--table-gen-grad-2);
-  color: var(--table-gen-text);
-}
+/* =========================
+   Inputs / selects / textarea (role model look)
+   ========================= */
+.table-gen-field{ display:grid; gap:6px; margin-bottom:12px; }
+.table-gen-label{ font:600 13px/1 var(--tg-font-body); color:#d8e1ff; }
 
-.table-gen-container {
-  width: min(1100px, 92vw);
-  margin: 0 auto;
-  padding: 72px 0;
+.table-gen-input,.table-gen-select,.table-gen-textarea{
+  width:100%; padding:10px 12px; border-radius:10px;
+  background:#0f1b34; color:#e5e7eb; border:1px solid var(--tg-border);
+  outline:none; transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
 }
-
-/* Hero */
-.table-gen-hero {
-  position: relative;
-  padding: 56px 24px 28px;
-  border-radius: 22px;
-  background: linear-gradient(145deg, #1E293B, #0F172A);
-  backdrop-filter: blur(6px);
-  border: 1px solid var(--table-gen-border);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-  overflow: clip;
+.table-gen-select{ background:#0e1730; }
+.table-gen-input::placeholder,.table-gen-textarea::placeholder{ color:#94a3b8; }
+.table-gen-input:focus,.table-gen-select:focus,.table-gen-textarea:focus{
+  border-color: rgba(59,130,246,.55);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.25);
 }
-.table-gen-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font: 500 12px/1 var(--font-body, 'Roboto', sans-serif);
-  color: var(--table-gen-muted);
-  letter-spacing: 0.02em;
-  padding: 8px 12px;
-  border: 1px solid var(--table-gen-border);
-  border-radius: 999px;
-  background: #0F172A;
-  transform: translateY(-12px);
-}
-.table-gen-badge .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--table-gen-accent); }
-
-.table-gen-title {
-  font: 700 clamp(28px, 3vw, 44px)/1.15 var(--font-heading, 'Poppins', system-ui, sans-serif);
-  letter-spacing: -0.02em;
-  color: var(--table-gen-text);
-  margin: 10px 0 10px;
-}
-.table-gen-subtitle {
-  color: var(--table-gen-muted);
-  max-width: 75ch;
-  margin-bottom: 18px;
+.table-gen-textarea{
+  min-height:260px; resize:vertical;
+  font:500 13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,"Roboto Mono",monospace;
 }
 
-/* Buttons */
-.table-gen-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 10px;
+/* Row layout + switches styled like segmented/switches */
+.table-gen-row{ display:grid; gap:10px; grid-template-columns: repeat(2,1fr); }
+@media (max-width:720px){ .table-gen-row{ grid-template-columns:1fr; } }
+
+.table-gen-switch{
+  position:relative; display:inline-flex; align-items:center; gap:10px; padding:8px 10px;
+  border:1px dashed var(--tg-border); border-radius:12px; background:#0b1226; color:#e6ecff;
 }
-.table-gen-btn {
-  --shadow: 0 10px 20px rgba(2,6,23,0.35);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  border: 1px solid var(--table-gen-border);
-  background: var(--table-gen-surface);
-  color: var(--table-gen-text);
-  font-weight: 600;
-  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
-  cursor: pointer;
-  user-select: none;
+.table-gen-switch input{
+  appearance:none; width:40px; height:22px; background:#0f1b34; border:1px solid var(--tg-border);
+  border-radius:999px; outline:0; transition: background .2s ease; cursor:pointer;
 }
-.table-gen-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
-.table-gen-btn:disabled { opacity: .6; cursor: not-allowed; }
-.table-gen-btn.table-gen-primary {
-  background: var(--table-gen-grad-1);
-  color: #fff;
-  border-color: transparent;
+.table-gen-switch input:checked{
+  background: linear-gradient(90deg, var(--tg-primary), var(--tg-accent)); border-color:transparent;
+}
+.table-gen-switch input::after{
+  content:""; position:absolute; width:18px; height:18px; border-radius:999px;
+  background:#fff; box-shadow:0 3px 10px rgba(0,0,0,.25);
+  top:calc(50% - 9px); left:12px; transition: transform .2s ease;
+}
+.table-gen-switch input:checked::after{ transform: translateX(18px); }
+
+/* =========================
+   Toolbar pills -> segmented style
+   ========================= */
+.table-gen-toolbar{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+.table-gen-pill{
+  padding:10px 14px; border:1px solid var(--tg-border); border-radius:12px;
+  background:transparent; color:#e5e7eb; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+}
+.table-gen-pill:hover{ transform:translateY(-1px); filter:brightness(1.06); }
+.table-gen-pill[aria-pressed="true"]{
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--tg-primary) 68%, transparent),
+    color-mix(in oklab, var(--tg-accent) 60%, transparent)); color:#fff;
+  border-color: color-mix(in oklab, #000 12%, var(--tg-primary));
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
 }
 
-/* Card grid */
-.table-gen-grid {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 18px;
-  margin-top: 22px;
+/* =========================
+   Preview / table styles
+   ========================= */
+.table-gen-preview-wrap{
+  position:relative; border:1px solid var(--tg-border); border-radius:14px;
+  overflow:auto; max-height:420px; background:#0b1226;
 }
-@media (max-width: 980px) { .table-gen-grid { grid-template-columns: 1fr; } }
+.table-gen-table{
+  width:100%; border-collapse:separate; border-spacing:0; color:#e6ecff; font-size:14px;
+}
+.table-gen-table thead th{
+  position:sticky; top:0; z-index:2; text-align:left; font-weight:800; cursor:pointer; user-select:none;
+  padding:12px; border-bottom:1px solid var(--tg-border);
+  background: linear-gradient(180deg,#1d2844 0%, #0F172A 100%);
+}
+.table-gen-table tbody td{ padding:10px 12px; border-bottom:1px solid var(--tg-border); }
+.table-gen-table tbody tr:nth-child(odd){ background: rgba(255,255,255,.03); }
+.table-gen-table tbody tr:hover{ background: rgba(59,130,246,.12); }
+.table-gen-right{ text-align:right; }
+.table-gen-sort-indicator{ margin-left:6px; font-size:11px; opacity:.9; }
 
-.table-gen-card {
-  background: linear-gradient(145deg, #1E293B, #0F172A);
-  border: 1px solid var(--table-gen-border);
-  color: var(--table-gen-text);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-  overflow: hidden;
+/* =========================
+   Code box (header band + mono)
+   ========================= */
+.table-gen-codebox{
+  position:relative; border:1px solid var(--tg-border); border-radius:14px; overflow:hidden;
+  background:#0b1226; color:#E2E8F0; box-shadow: var(--tg-shadow-1);
+  font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,"Roboto Mono",monospace;
 }
-.table-gen-card > header {
-  padding: 14px 16px;
-  border-bottom: 1px dashed var(--table-gen-border);
-  background: linear-gradient(180deg, rgba(59,130,246,0.10), transparent);
+.table-gen-codebox>header{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:10px 12px; background: linear-gradient(90deg,
+    color-mix(in oklab, var(--tg-primary) 11%, transparent),
+    color-mix(in oklab, var(--tg-accent) 9%, transparent)); border-bottom:1px solid var(--tg-border);
 }
-.table-gen-card > header h2 {
-  font: 600 14px/1 var(--font-body);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--table-gen-muted);
-}
-.table-gen-card .table-gen-body { padding: 14px; }
+.table-gen-codebox pre{ margin:0; padding:12px; white-space:pre; overflow:auto; }
 
-/* Inputs */
-.table-gen-field { display: grid; gap: 6px; margin-bottom: 12px; }
-.table-gen-label { font: 600 13px/1 var(--font-body); color: var(--table-gen-text); }
-
-.table-gen-input,
-.table-gen-select,
-.table-gen-textarea {
-  width: 100%;
-  border: 1px solid var(--table-gen-border);
-  border-radius: 12px;
-  padding: 10px 12px;
-  background: #0B1120;
-  color: var(--table-gen-text);
-  outline: none;
-  font-family: var(--font-body);
-  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+/* =========================
+   Pagination -> same pill vibe
+   ========================= */
+.table-gen-pagination{
+  display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; color:#e6ecff;
 }
-.table-gen-input::placeholder,
-.table-gen-textarea::placeholder { color: #7c87a3; }
-
-.table-gen-textarea {
-  min-height: 180px;
-  resize: vertical;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
-  font-size: 13px;
-  line-height: 1.6;
-  background-image:
-    linear-gradient(transparent 23px, rgba(255,255,255,0.05) 24px),
-    linear-gradient(transparent 23px, rgba(255,255,255,0.05) 24px);
-  background-size: 100% 24px;
-  background-repeat: repeat;
+.table-gen-pagination .group{ display:inline-flex; gap:8px; }
+.table-gen-pagination button{
+  appearance:none; border:1px solid var(--tg-border); border-radius:12px;
+  background:linear-gradient(180deg, color-mix(in oklab, var(--tg-primary) 26%, transparent),
+                                     color-mix(in oklab, var(--tg-accent) 22%, transparent));
+  color:#fff; padding:8px 12px; font-weight:700; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.16), 0 6px 14px rgba(59,130,246,.12);
+}
+.table-gen-pagination button:hover{ transform:translateY(-1px); filter:brightness(1.06); }
+.table-gen-pagination button:disabled{ opacity:.55; cursor:not-allowed; }
+.table-gen-pagination select{
+  padding:8px 10px; border:1px solid var(--tg-border); border-radius:10px; background:#0e1730; color:#fff;
 }
 
-.table-gen-input:focus,
-.table-gen-select:focus,
-.table-gen-textarea:focus {
-  border-color: var(--table-gen-accent);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
-}
+/* =========================
+   Helper text, guide link, utilities
+   ========================= */
+.table-gen-muted{ color:rgba(255,255,255,.78); }
+.free-tools-guide{ margin-top:16px; }
+.free-tools-guide-p{ color:rgba(255,255,255,.78); }
+.free-tools-blog-link{ color:#bcd3ff; text-decoration:underline; text-underline-offset:2px; }
+.free-tools-blog-link:hover{ color:#d7e4ff; }
 
-/* Inline switches and chips */
-.table-gen-switch {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px dashed var(--table-gen-border);
-  background: #0B1120;
-  color: var(--table-gen-text);
-}
-.table-gen-switch input { accent-color: var(--table-gen-accent); }
+/* Entrance animation timing preserved */
+@keyframes tgen-fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
+.table-gen-animate-in{ animation: tgen-fade .35s ease both; }
 
-/* Preview table wrapper with sticky header and dark scroll area */
-.table-gen-preview-wrap {
-  position: relative;
-  border: 1px solid var(--table-gen-border);
-  border-radius: 14px;
-  overflow: auto;
-  max-height: 420px;
-  background: #0B1120;
-}
+.feature-card-all-pages {margin: 0 3rem;}
+.tools-grid {margin: 1rem 3rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
 
-/* Table */
-.table-gen-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 14px;
-  color: var(--table-gen-text);
-}
-.table-gen-table thead th {
-  position: sticky; top: 0;
-  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
-  border-bottom: 1px solid var(--table-gen-border);
-  z-index: 2;
-  text-align: left;
-  font-weight: 700;
-  padding: 12px;
-  cursor: pointer;
-  user-select: none;
-}
-.table-gen-table tbody td {
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--table-gen-border);
-}
-.table-gen-table tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
-.table-gen-table tbody tr:hover { background: rgba(59,130,246,0.12); }
-
-.table-gen-sort-indicator { opacity: 0.9; font-size: 11px; margin-left: 6px; }
-
-/* Code box */
-.table-gen-codebox {
-  position: relative;
-  background: #0B1120;
-  color: #E2E8F0;
-  border-radius: 14px;
-  border: 1px solid var(--table-gen-border);
-  overflow: hidden;
-  font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Roboto Mono", monospace;
-}
-.table-gen-codebox header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 12px;
-  background: #1E293B;
-  border-bottom: 1px solid var(--table-gen-border);
-}
-.table-gen-codebox pre { margin: 0; padding: 12px; white-space: pre; overflow: auto; }
-
-/* Mini toolbar */
-.table-gen-toolbar {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px;
-}
-.table-gen-pill {
-  padding: 8px 12px;
-  border: 1px solid var(--table-gen-border);
-  background: #0F172A;
-  color: var(--table-gen-text);
-  border-radius: 999px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
-}
-.table-gen-pill:hover { border-color: var(--table-gen-accent); background: #152036; }
-.table-gen-pill[aria-pressed="true"] {
-  border-color: var(--table-gen-accent);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
-}
-
-/* Pagination */
-.table-gen-pagination {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px;
-  color: var(--table-gen-text);
-}
-.table-gen-pagination .group { display: inline-flex; gap: 6px; }
-.table-gen-pagination button {
-  padding: 8px 10px;
-  border: 1px solid var(--table-gen-border);
-  background: #0F172A;
-  color: var(--table-gen-text);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background .2s ease, border-color .2s ease, transform .15s ease;
-}
-.table-gen-pagination button:hover { background: #152036; border-color: var(--table-gen-accent); transform: translateY(-1px); }
-.table-gen-pagination button:disabled { opacity: .5; cursor: not-allowed; }
-.table-gen-pagination select {
-  padding: 8px 10px;
-  border: 1px solid var(--table-gen-border);
-  border-radius: 10px;
-  background: #0F172A;
-  color: var(--table-gen-text);
-}
-
-/* Animations */
-@keyframes table-gen-fade-slide {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.table-gen-animate-in { animation: table-gen-fade-slide .35s ease both; }
-
-/* Utility */
-.table-gen-hidden { display: none !important; }
-.table-gen-muted { color: var(--table-gen-muted); }
-.table-gen-right { text-align: right; }
-.table-gen-center { text-align: center; }
-.table-gen-nowrap { white-space: nowrap; }
-
-/* Backdrop sparkles for hero */
-.table-gen-hero::after {
-  content: "";
-  position: absolute; inset: -1px;
-  pointer-events: none;
-  background: conic-gradient(from 180deg at 50% 50%, rgba(29,78,216,.18), rgba(59,130,246,.14), rgba(232,93,39,.14), transparent);
-  mask: radial-gradient(80% 60% at 50% 0%, #000 10%, transparent 60%);
-}
-
-  .quick-table-gen-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
-.quick-table-gen-blog-link{color:var(--wc-accent-b); text-decoration:underline}
 </style>
 
 
@@ -652,11 +608,12 @@ Bob,28,Berlin"></textarea>
         </div>
       </div>
 
-      <div class="quick-table-gen-guide">
-    <p class="quick-table-gen-guide-p">See Palindromic Word Finder Guide on SnipText Blog Page <a href="/blog/quick-table-generator-guide-csv-to-responsive-html-table-code-sniptext-blog.html" class="quick-table-gen-blog-link">here</a>.</p>
+      <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Quick Table Generator Guide on SnipText Blog Page <a href="/blog/quick-table-generator-guide-csv-to-responsive-html-table-code-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
   </div>
 
     </section>
+  </main>
 
     <!-- TOOLS GRID -->
        <div class="feature-card-all-pages">
@@ -711,7 +668,6 @@ Bob,28,Berlin"></textarea>
     </article>
 
   </section>
-  </main>
 
 
 
@@ -763,6 +719,7 @@ Bob,28,Berlin"></textarea>
        ========================= -->
 
        <script src="/js/index.js"></script>
+       <script src="/js/auth.js"></script>
        <script src="/tools/js/free-tools.js"></script>
 
   <!-- Page JS - all logic is in this file. Global site JS remains included as in your setup if needed. -->

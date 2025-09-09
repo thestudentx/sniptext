@@ -224,9 +224,6 @@
       --text-list-shadow-2: 0 18px 48px rgba(2,6,23,.12);
     }
   }
-  
-  .tools-grid { margin: 1rem 0; }
-.tool-card {background: var(--color-bg-dark);}
 
   /* Page background auroras kept inside wrapper to avoid touching nav/footer */
   .text-list-page {
@@ -352,9 +349,11 @@
     @keyframes text-list-float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-2px) } }
   }
 
-  /* Helper text */
-  .text-list-guide{ width:100%; text-align:center; font-size:12px; color: #a3aed0; margin-top:8px; }
-  .text-list-blog-link{ color: var(--text-list-accent-2); text-decoration: underline; }
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+.card-title {color: #e5e7eb;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
   </style>
 </head>
 <body>
@@ -575,9 +574,12 @@
       </div>
     </section>
 
-    <div class="text-list-guide">
-      <p>See Text ↔ List Guide on SnipText Blog Page <a href="/blog/text-to-list-or-list-to-text-converter-split-join-sort-unique-sniptext-blog.html" class="case-converter-blog-link" style="color: #ccc;">here</a>.</p>
+    <div class="free-tools-guide">
+      <p>See Text ↔ List Guide on SnipText Blog Page <a href="/blog/text-to-list-or-list-to-text-converter-split-join-sort-unique-sniptext-blog.html" class="free-tools-blog-link" style="color: #ccc;">here</a>.</p>
     </div>
+  
+
+  </main>
 
 
       <!-- TOOLS GRID -->
@@ -632,9 +634,6 @@
     </article>
 
   </section>
-  
-
-  </main>
 
   <div class="text-list-toast" id="text-list-toast" role="status" aria-live="polite"></div>
 

@@ -260,12 +260,81 @@
 /*-----------------------------------------------
   TOOLS GRID - standard layout
 -----------------------------------------------*/
+/* base grid stays the same */
 .tools-grid{
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
   align-items: stretch;
+
+  position: relative;            /* needed for the glow layer */
+  isolation: isolate;            /* keep blending contained */
+  background: var(--surface-bg); /* your existing surface bg */
+  border-radius: var(--radius-lg);
+  padding: var(--gap);
+  overflow: hidden;              /* crop any glow overflow */
 }
+
+/* corner glow (top-right by default) */
+.tools-grid::before{
+  content:"";
+  position:absolute;
+  right:-14%;
+  top:-16%;
+  width: var(--glow-size, 42rem);
+  height: var(--glow-size, 42rem);
+  pointer-events:none;
+  z-index: 0;
+
+  /* smooth orange brand glow */
+  background:
+    radial-gradient(60% 60% at 70% 30%,
+      var(--warm-600-strong) 0%,
+      var(--warm-400-soft) 35%,
+      transparent 70%);
+  filter: blur(18px);
+  opacity: var(--glow-opacity, .65);
+
+  /* subtle breathing motion */
+  animation: glowPulse var(--glow-speed, 22s) ease-in-out infinite alternate;
+  transform: translate3d(0,0,0); /* enable GPU compositing */
+}
+
+/* optional utility classes to move the glow to another corner */
+.tools-grid.glow-bottom-left::before{ left:-16%; bottom:-18%; right:auto; top:auto; }
+.tools-grid.glow-top-left::before{ left:-14%; top:-16%; right:auto; bottom:auto; }
+.tools-grid.glow-bottom-right::before{ right:-16%; bottom:-18%; top:auto; }
+
+/* keyframes */
+@keyframes glowPulse {
+  from { transform: translate3d(0,0,0) scale(1);   opacity: var(--glow-opacity, .65); }
+  to   { transform: translate3d(-2%, 3%, 0) scale(1.06); opacity: calc(var(--glow-opacity, .65) + .12); }
+}
+
+/* accessible motion */
+@media (prefers-reduced-motion: reduce){
+  .tools-grid::before{ animation: none; }
+}
+
+/* ---------- theme-aware color tokens for the glow ---------- */
+:root{
+  /* alpha-tuned versions of your brand oranges for light theme */
+  --warm-600-strong: rgba(255,124,76,0.28); /* core glow */
+  --warm-400-soft:   rgba(255,154,106,0.16);
+  --glow-opacity: .62;
+  --glow-size: 42rem;
+  --glow-speed: 22s;
+}
+
+[data-theme="dark"]{
+  /* slightly dimmer for dark backgrounds */
+  --warm-600-strong: rgba(255,124,76,0.20);
+  --warm-400-soft:   rgba(255,138,90,0.12);
+  --glow-opacity: .50;
+  --glow-size: 46rem;   /* a touch larger reads softer in dark */
+  --glow-speed: 26s;    /* slower feels calmer in dark */
+}
+
 
 /*-----------------------------------------------
   TOOL CARD - visuals, spacing, hover/focus
@@ -349,6 +418,25 @@
 }
 .tool-card:hover::after{ opacity:1; transform: translateY(0); }
 
+/* Tools Category Title */
+.tool-category {
+  grid-column: 1 / -1; /* full-width in your CSS grid */
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  padding-bottom: .55rem;
+
+  color: var(--warm-600);
+  border: 0;
+  border-bottom: 2px solid var(--surface-border);
+
+  /* optional gradient underline in supported browsers */
+  border-image: linear-gradient(90deg, var(--warm-600), var(--blue-600)) 1;
+  border-image-slice: 1;
+}
+
+
 /*-----------------------------------------------
   SMALL HELPERS & VARIANTS
 -----------------------------------------------*/
@@ -356,8 +444,9 @@
 .tools-grid .tool-card:nth-child(odd) .card-icon{ background: linear-gradient(135deg,var(--blue-600),var(--blue-400)); color: #fff; }
 .tools-grid .tool-card:nth-child(even) .card-icon{ background: linear-gradient(135deg,var(--warm-600),var(--warm-400)); color: #08203b; }
 
- .free-tools-guide{width:100%; text-align: center; font-size:12px; color:var(--wc-muted-2); margin-top:8px}
-.free-tools-blog-link{color:var(--wc-accent-b); text-decoration:underline}
+ .free-tools-guide{width:100%; text-align: center; font-size:12px; color: #ccc; margin-top:8px}
+.free-tools-blog-link{color: #ccc; text-decoration:underline}
+.free-tools-blog-link:hover{text-decoration:none;}
 
 /*-----------------------------------------------
   RESPONSIVE & MEDIA QUERIES (grouped)

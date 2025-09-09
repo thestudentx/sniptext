@@ -178,273 +178,460 @@ href="data:image/svg+xml;utf8,
   </nav>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="container">
-                <div class="blog-hero-content">
-                    <h1 class="hero-title">Welcome to SnipText Blog</h1>
-                    <p class="hero-subtitle">Where ideas meet elegant design and thoughtful writing</p>
-                    <div class="hero-cta">
-                        <a href="#articles" class="cta-button">Go to Articles</a>
+<main class="main-content">
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="blog-hero-content">
+        <h1 class="hero-title">Welcome to SnipText Blog</h1>
+        <p class="hero-subtitle">Where ideas meet elegant design and thoughtful writing</p>
+        <div class="hero-cta">
+          <a href="#articles" class="cta-button">Go to Articles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter (semantic, JS optional) -->
+  <section class="blog-filter-section" aria-label="Filter articles by category">
+    <div class="container">
+      <nav class="blog-filter" aria-label="Categories">
+        <button class="filter-pill is-active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="guides">Guides & Techniques</button>
+        <button class="filter-pill" data-filter="grammar">Grammar & Style</button>
+        <button class="filter-pill" data-filter="tools">Tools & Workflows</button>
+        <button class="filter-pill" data-filter="academic">Academic & Planning</button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="articles" class="articles-section">
+    <div class="container">
+
+      <!-- Category: Guides & Techniques -->
+      <h2 class="tool-category blog-category">Guides & Techniques</h2>
+      <div class="articles-grid">
+
+        <article class="article-card" data-cat="guides">
+          <div class="article-meta">
+            <span class="article-category">Writing Techniques</span>
+            <time datetime="2025-08-15" class="article-date">August 15, 2025</time>
+          </div>
+          <h3 class="article-title">Mastering Paraphrasing, Tone, Style & Mode for Academic & Creative Writing</h3>
+          <p class="article-excerpt">A complete guide to refining your writing by understanding how paraphrasing, tone, style, and mode shape clarity, originality, and reader engagement - with real examples and expert tips.</p>
+          <a href="/blog/paraphrasing-tone-style-modes-an-academic-guide-with-ethical-ai-tips-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="guides">
+          <div class="article-meta">
+            <span class="article-category">Academic Writing</span>
+            <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
+          </div>
+          <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference & When to Use Each</h3>
+          <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.</p>
+          <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="guides">
+          <div class="article-meta">
+            <span class="article-category">Academic Writing</span>
+            <time datetime="2025-07-20" class="article-date">July 20, 2025</time>
+          </div>
+          <h3 class="article-title">Ethical Paraphrasing in Academia: How to Use AI Without Getting in Trouble</h3>
+          <p class="article-excerpt">Discover best practices for paraphrasing research, proper citation methods, and how SnipText helps you maintain academic integrity.</p>
+          <a href="/blog/ethical-paraphrasing-in-academia.html" class="read-more">Read More</a>
+        </article>
+
+      </div>
+
+      <!-- Category: Grammar & Style -->
+      <h2 class="tool-category blog-category">Grammar & Style</h2>
+      <div class="articles-grid">
+
+        <article class="article-card" data-cat="grammar">
+          <div class="article-meta">
+            <span class="article-category">Grammar Tips</span>
+            <time datetime="2025-07-10" class="article-date">July 10, 2025</time>
+          </div>
+          <h3 class="article-title">Top 10 Grammar Blunders Professors Hate (And How to Fix Them Instantly)</h3>
+          <p class="article-excerpt">Real student examples, quick fixes, and how to leverage SnipText’s grammar checker to eliminate common mistakes.</p>
+          <a href="/blog/top-10-grammar-blunders.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="grammar">
+          <div class="article-meta">
+            <span class="article-category">Grammar & Writing Tips</span>
+            <time datetime="2025-08-15" class="article-date">August 15, 2025</time>
+          </div>
+          <h3 class="article-title">Master Grammar with AI: Fix Mistakes, Improve Clarity & Keep Your Voice</h3>
+          <p class="article-excerpt">Learn how to spot and fix grammar errors, refine tone, and enhance clarity-plus how SnipText’s AI-powered grammar checker goes beyond Grammarly to keep your writing accurate, natural, and plagiarism-free.</p>
+          <a href="/blog/grammar-check-guide-fix-grammar-punctuation-style-with-ai-ethically-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+      </div>
+
+      <!-- -------------------------------------------------------------------------------- -->
+      <!-- Category: Tools & Workflows -->
+      <h2 class="tool-category blog-category">Tools & Workflows</h2>
+      <div class="articles-grid">
+      <!-- -------------------------------------------------------------------------------- -->
+
+      <article class="article-card" data-cat="tools">
+              <div class="article-meta">
+                <span class="article-category">Writing Tools</span>
+                <time datetime="2025-09-09" class="article-date">September 9, 2025</time>
+              </div>
+              <h3 class="article-title">Typing Speed Test Guide: WPM, CPM, Corrected WPM, Accuracy, Heatmap & Rolling Graph</h3>
+              <p class="article-excerpt">
+                Learn how to measure and improve typing speed with clear metrics, a rolling WPM mini graph, and a per-key error heatmap. Practical drills, mode options for words, quotes, and code, plus exportable results.
+              </p>
+              <a href="/blog/typing-speed-test-wpm-accuracy-cpm-corrected-wpm-rolling-graph-error-heatmap-guide-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+
+      <article class="article-card" data-cat="tools">
+            <div class="article-meta">
+              <span class="article-category">Motivation Tools</span>
+              <time datetime="2025-09-09" class="article-date">September 9, 2025</time>
+            </div>
+            <h3 class="article-title">Quote of the Day Widget: Daily Writing Motivation, Streaks, Filters, Easy Embeds</h3>
+            <p class="article-excerpt">
+              Show a fresh, writing-focused quote each day, filter by themes like focus or creativity, track streaks, save favorites, and embed the panel on any page. Free, privacy friendly, and runs in your browser with a local quotes file.
+            </p>
+            <a href="/blog/quote-of-the-day-widget-writing-motivation-daily-quotes-streaks-embed-free-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Tools</span>
+            <time datetime="2025-08-09" class="article-date">August 9, 2025</time>
+          </div>
+          <h3 class="article-title">Best AI Writing Tools 2025: A Practical Toolkit for Writers, Students & Teams</h3>
+          <p class="article-excerpt">A compact, ethically-minded guide to the top AI tools for paraphrasing, citation, plagiarism checks, grammar, and AI-detection - plus a publish-ready workflow you can use today.</p>
+          <a href="/blog/best-ai-writing-tools-2025.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Tools</span>
+            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
+          </div>
+          <h3 class="article-title">SnipText Paraphrasing Tool: Modes, Workflow & Ethical Use</h3>
+          <p class="article-excerpt">Rephrase sentences and paragraphs in Professional, Academic, Casual, Concise, or Creative modes-preserve meaning, protect key terms, and polish style fast.</p>
+          <a href="/blog/paraphrasing-tool-modes-best-practices-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Help</span>
+            <time datetime="2025-08-10" class="article-date">August 10, 2025</time>
+          </div>
+          <h3 class="article-title">Free Word, Character, Line & Sentence Counter</h3>
+          <p class="article-excerpt">Paste or type text and instantly see word, character (with/without spaces), line, and sentence counts-fast, accurate, and privacy-friendly.</p>
+          <a href="/blog/word-character-line-sentence-counter-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Help</span>
+            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
+          </div>
+          <h3 class="article-title">Free Case Converter: Uppercase, Lowercase, Sentence, Title & Alternating</h3>
+          <p class="article-excerpt">Convert text casing in one click-upper, lower, sentence, title & alternating-with smart Title Case rules, acronym protection, and hyphen-aware handling.</p>
+          <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Help</span>
+            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
+          </div>
+          <h3 class="article-title">Duplicate Word Finder: Highlight & Remove Repeated Words</h3>
+          <p class="article-excerpt">Catch repeated words and consecutive duplicates (“the the”) in seconds. Highlight issues, auto-remove doubles, and copy a clean draft.</p>
+          <a href="/blog/free-duplicate-word-finder-highlight-and-remove-repeated-words-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Help</span>
+            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
+          </div>
+          <h3 class="article-title">Free Whitespace & Formatting Cleaner: Trim, Normalize & Fix Indentation</h3>
+          <p class="article-excerpt">Remove trailing spaces, collapse blank lines, normalize LF/CRLF, convert tabs↔spaces, and strip zero-width/BOM-fast, accurate, and privacy-friendly.</p>
+          <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Help</span>
+            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
+          </div>
+          <h3 class="article-title">Free Emoji Replacer: Replace Words, Convert Emoticons & Remove Emojis</h3>
+          <p class="article-excerpt">Swap keywords for emojis, convert emoticons like :) to 🙂, or strip all emoji characters-custom dictionary, skin tones, and brand-safe exclusions included.</p>
+          <a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Character & Symbol Tools</span>
+            <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
+          </div>
+          <h3 class="article-title">Symbol & Character Info: Count, Identify & Explore Unicode</h3>
+          <p class="article-excerpt">Discover everything about your selected characters - from symbol counts to ASCII/Unicode code points, official names, and more. Includes advanced analysis and customization options.</p>
+          <a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html" class="read-more">Explore Tool</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Text Analysis Tools</span>
+            <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
+          </div>
+          <h3 class="article-title">Palindromic Word Finder: Detect & Highlight Symmetrical Text Instantly</h3>
+          <p class="article-excerpt">Quickly identify palindromes in your text, highlight their positions, and explore advanced detection options. Perfect for linguistic research, creative writing, and wordplay enthusiasts.</p>
+          <a href="/blog/free-palindromic-word-finder-detect-highlight-in-words-phrases-substrings-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Text Utilities</span>
+            <time datetime="2025-08-18" class="article-date">August 18, 2025</time>
+          </div>
+          <h3 class="article-title">Random Text Generator: Instantly Create Unique Content Snippets</h3>
+          <p class="article-excerpt">Generate random words, sentences, or paragraphs effortlessly. Ideal for writers, developers, and designers who need placeholder text, brainstorming material, or quick content ideas.</p>
+          <a href="/blog/free-random-text-generator-lorem-ipsum-sentences-and-dummy-parahraphs-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Text Conversion Tools</span>
+            <time datetime="2025-08-20" class="article-date">August 20, 2025</time>
+          </div>
+          <h3 class="article-title">Text ↔ List Converter: Switch Seamlessly Between Lists & Plain Text</h3>
+          <p class="article-excerpt">Convert text into cleanly formatted lists or rejoin lists back into text with ease. Includes bullets, numbering, trimming, sorting, and customizable join/split rules - perfect for writers, developers, and students.</p>
+          <a href="/blog/text-to-list-or-list-to-text-converter-split-join-sort-unique-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Text Conversion Tools</span>
+            <time datetime="2025-09-03" class="article-date">September 3, 2025</time>
+          </div>
+          <h3 class="article-title">Quick Table Generator: CSV to Responsive HTML Table Code</h3>
+          <p class="article-excerpt">Paste or upload CSV and get clean, accessible HTML tables with sort, filter, paginate, transpose, and sticky headers. One click to copy or download. Private, in-browser.</p>
+          <a href="/blog/quick-table-generator-guide-csv-to-responsive-html-table-code-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+              <div class="article-meta">
+                <span class="article-category">Text Utilities</span>
+                <time datetime="2025-09-06" class="article-date">September 6, 2025</time>
+              </div>
+              <h3 class="article-title">Alphabetizer: Sort Words, Lines & Sentences A-Z or Z-A (Natural Sort, Deduplicate)</h3>
+              <p class="article-excerpt">
+                Cleanly alphabetize words, lines, or full sentences with case-insensitive mode, ignore articles (a, an, the), natural numeric sort, and one-click deduplicate. Private, in-browser.
+              </p>
+              <a href="/blog/alphabetizer-sort-words-lines-sentences-a-to-z-reverse-deduplicate-ignore-articles-natural-sort-free-online-tool-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+
+      <article class="article-card" data-cat="tools">
+          <div class="article-meta">
+            <span class="article-category">Writing Tools</span>
+            <time datetime="2025-09-06" class="article-date">September 6, 2025</time>
+          </div>
+          <h3 class="article-title">Random Synonym Finder: Smart Synonyms by Tone, Length & Frequency</h3>
+          <p class="article-excerpt">
+            Find better word choices with filters for tone, formality, length, and usage frequency. Lock key terms, batch-rewrite, A/B compare in context, and export a replacement map - private and fast in your browser.
+          </p>
+          <a href="/blog/random-synonym-finder-generate-smart-synonyms-by-tone-length-frequency-a-b-compare-thesaurus-alternatives-private-in-browser-sniptext-blog.html" class="read-more">Read More</a>
+      </article>
+
+        <article class="article-card" data-cat="tools">
+            <div class="article-meta">
+              <span class="article-category">Writing Tools</span>
+              <time datetime="2025-09-06" class="article-date">September 6, 2025</time>
+            </div>
+            <h3 class="article-title">Anagram Generator Guide: Word Anagrams, Letter Scrambles, Crossword & Scrabble Helper</h3>
+            <p class="article-excerpt">
+              Turn any word or phrase into smart anagrams with length filters, locked letters, wildcards, and “real words only.” Perfect for crosswords, Scrabble practice, naming ideas, and creative prompts-private and fast in your browser.
+            </p>
+            <a href="/blog/anagram-generator-word-anagrams-letter-scrambler-crossword-helper-scrabble-solver-writing-ideas-private-fast-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+            <div class="article-meta">
+              <span class="article-category">Text Tools</span>
+              <time datetime="2025-09-06" class="article-date">September 6, 2025</time>
+            </div>
+            <h3 class="article-title">Pig Latin Converter Guide: Rules, Diff View, Reverse Mode, and Classroom Exports</h3>
+            <p class="article-excerpt">
+              Learn Pig Latin the smart way. See simple rules with examples, handle punctuation and capitalization correctly, compare changes in a diff view, try reverse mode, and export results as TXT, CSV, or JSON. Private and fast in your browser.
+            </p>
+            <a href="/blog/pig-latin-converter-guide-rules-examples-diff-reverse-export-private-in-browser-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="tools">
+              <div class="article-meta">
+                <span class="article-category">Writing Tools</span>
+                <time datetime="2025-09-07" class="article-date">September 7, 2025</time>
+              </div>
+              <h3 class="article-title">Random Writing Prompt Generator Guide: JSON Prompts, Filters, Favorites & Exports</h3>
+              <p class="article-excerpt">
+                Turn blank pages into drafts fast. Learn how to filter by genre and tone, save favorites, import your own JSON list, and export visible results as JSON or CSV-private and classroom friendly in your browser.
+              </p>
+              <a href="/blog/random-writing-prompt-generator-guide-json-prompts-filters-favorites-import-export-private-in-browser-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+
+          <article class="article-card" data-cat="tools">
+              <div class="article-meta">
+                <span class="article-category">Creativity Tools</span>
+                <time datetime="2025-09-07" class="article-date">September 7, 2025</time>
+              </div>
+              <h3 class="article-title">Metaphor Finder Guide: Craft Fresh Metaphors & Similes, Avoid Cliches, Edit in Context</h3>
+              <p class="article-excerpt">
+                Learn a practical workflow for vivid figurative language and see how SnipText’s Metaphor Finder flags cliches, detects mixed imagery, highlights in context, and exports choices as CSV or JSON-private and fast in your browser.
+              </p>
+              <a href="/blog/metaphor-finder-guide-fresh-metaphors-and-similes-avoid-cliches-with-context-highlighter-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+
+          <article class="article-card" data-cat="tools">
+              <div class="article-meta">
+                <span class="article-category">Writing Tools</span>
+                <time datetime="2025-09-08" class="article-date">September 8, 2025</time>
+              </div>
+              <h3 class="article-title">Sentence Expander and Shortener Guide: Rule-based Length Control Without AI Cost</h3>
+              <p class="article-excerpt">
+                Learn how to expand for clarity or shorten for tight limits using transparent, rule-based edits. Set a target percentage, preview diffs, and pair with SnipText’s Grammar Checker, Paraphrasing Tool, and Whitespace Cleaner for a fast, private, in-browser workflow.
+              </p>
+              <a href="/blog/sentence-expander-shortener-rule-based-no-ai-cost-lengthen-or-shorten-sentences-snippets-examples-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+
+          <article class="article-card" data-cat="tools">
+                    <div class="article-meta">
+                      <span class="article-category">Security Tools</span>
+                      <time datetime="2025-09-07" class="article-date">September 7, 2025</time>
                     </div>
-                </div>
+                    <h3 class="article-title">Random Password Generator: Strong, Pronounceable & Passphrases</h3>
+                    <p class="article-excerpt">
+                      Learn how to create secure passwords, pronounceable strings, and Wi-Fi keys with entropy and crack-time feedback. Batch generate, filter ambiguous characters, and export TXT/CSV - all client-side and privacy-friendly.
+                    </p>
+                    <a href="/blog/random-password-generator-strong-pronounceable-passphrases-wifi-sniptext-blog.html" class="read-more">Read More</a>
+                </article>
+
+                <article class="article-card" data-cat="tools">
+                    <div class="article-meta">
+                      <span class="article-category">Productivity</span>
+                      <time datetime="2025-09-08" class="article-date">September 8, 2025</time>
+                    </div>
+                    <h3 class="article-title">Daily Writing Challenge - Random Prompt Every 24 Hours</h3>
+                    <p class="article-excerpt">
+                      Build a daily writing habit with fresh prompts, a streak calendar, a 25 minute focus timer, gentle rerolls, and private local storage. Practical tips plus a full walkthrough of the tool.
+                    </p>
+                    <a href="/blog/daily-writing-challenge-random-prompt-every-24-hours-streaks-focus-timer-guide-sniptext-blog.html" class="read-more">Read More</a>
+                </article>
+
+                <article class="article-card" data-cat="tools">
+                    <div class="article-meta">
+                      <span class="article-category">Study Tools</span>
+                      <time datetime="2025-09-09" class="article-date">September 9, 2025</time>
+                    </div>
+                    <h3 class="article-title">Pomodoro Timer Guide 2025: Focus Cycles, Tasks, Streaks, Ambient Sounds</h3>
+                    <p class="article-excerpt">A practical guide to the Pomodoro method for students and writers — set calm focus blocks, plan tasks, track streaks, and use ambient sounds. Includes templates, pro tips, and a lightweight study stack with SnipText tools.</p>
+                    <a href="/blog/pomodoro-timer-focus-cycles-study-planner-ambient-sounds-streaks-tasks-guide-sniptext-blog.html" class="read-more">Read More</a>
+                </article>
+
+      </div>
+
+
+      <!-- -------------------------------------------------------------------------------- -->
+      <!-- Category: Academic & Planning -->
+      <h2 class="tool-category blog-category">Academic & Planning</h2>
+      <div class="articles-grid">
+      <!-- -------------------------------------------------------------------------------- -->
+
+
+        <article class="article-card" data-cat="academic">
+          <div class="article-meta">
+            <span class="article-category">Text Utilities</span>
+            <time datetime="2025-08-20" class="article-date">August 20, 2025</time>
+          </div>
+          <h3 class="article-title">BibTeX to Citation Converter - Academic-Friendly Tool</h3>
+          <p class="article-excerpt">Easily convert BibTeX entries into clean academic citations for papers, articles, and research documents without hassle.</p>
+          <a href="/blog/bibtex-to-citation-converter-apa-mla-chicago-ieee-harvard-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="academic">
+          <div class="article-meta">
+            <span class="article-category">Academic Tools</span>
+            <time datetime="2025-08-21" class="article-date">August 21, 2025</time>
+          </div>
+          <h3 class="article-title">Math Formula Renderer: LaTeX to Image with MathJax</h3>
+          <p class="article-excerpt">Type LaTeX and export crisp equations as PNG or SVG. Choose inline or display mode, add numbers, set DPI scale, and use transparent backgrounds.</p>
+          <a href="/blog/math-formula-renderer-latex-to-image-with-math-png-svg-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="academic">
+          <div class="article-meta">
+            <span class="article-category">Utility Tools</span>
+            <time datetime="2025-08-21" class="article-date">August 21, 2025</time>
+          </div>
+          <h3 class="article-title">Universal Unit Converter: Convert Any Measurement Instantly</h3>
+          <p class="article-excerpt">Easily convert length, weight, temperature, time, speed, and more with a simple, accurate, and user-friendly unit converter tool.</p>
+          <a href="/blog/unit-converter-physics-chemistry-convert-si-imperial-length-mass-time-temperature-pressure-energy-power-speed-area-volume-force-and-much-more-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="academic">
+          <div class="article-meta">
+            <span class="article-category">Education & Planning</span>
+            <time datetime="2025-09-03" class="article-date">September 3, 2025</time>
+          </div>
+          <h3 class="article-title">Timeline Maker: Create Academic Timelines & Project Roadmaps</h3>
+          <p class="article-excerpt">Enter events and auto-generate clean academic timelines. Import CSV, group by eras and categories, apply color themes, zoom for dense periods, drag-reorder, and export to HTML, SVG, or JSON. Private, in-browser.</p>
+          <a href="/blog/timeline-maker-create-academic-timelines-project-roadmaps-history-classroom-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="academic">
+          <div class="article-meta">
+            <span class="article-category">Academic Tools</span>
+            <time datetime="2025-09-03" class="article-date">September 3, 2025</time>
+          </div>
+          <h3 class="article-title">Grade Calculator: Percentage → Letter Grades, Weighted Average & Required Final</h3>
+          <p class="article-excerpt">
+            Convert percentages to letter grades, compute weighted category averages, drop the lowest scores, estimate GPA, and see the exact score needed on your final to reach a target grade-fast, accurate, and private in your browser.
+          </p>
+          <a href="/blog/grade-calculator-percentage-to-letter-grade-weighted-average-gpa-required-final-score-academic-grading-guide-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="academic">
+            <div class="article-meta">
+              <span class="article-category">Academic Tools</span>
+              <time datetime="2025-09-05" class="article-date">September 5, 2025</time>
             </div>
-        </section>
+            <h3 class="article-title">Roman Numeral Converter: Convert Roman ↔ Arabic, Strict Rules & Overline Notation</h3>
+            <p class="article-excerpt">
+              Convert Roman numerals to Arabic and back with strict subtractive validation, optional overline notation for large values, live hints, one-click copy, and local history – private and fast in your browser.
+            </p>
+            <a href="/blog/roman-numeral-converter-convert-roman-to-arabic-and-arabic-to-roman-strict-rules-overline-notation-history-private-free-online-tool-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
 
 
-        <!-- Articles Section -->
-        <section id="articles" class="articles-section">
-            <div class="container">
-                <h2 class="section-title">Latest Articles</h2>
-                <div class="articles-grid">
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Academic Writing</span>
-                            <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
-                        </div>
-                        <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference &amp; When to Use Each</h3>
-                        <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.</p>
-                        <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
-                    </article>
+      </div>
+    </div>
+  </section>
 
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Tools</span>
-                            <time datetime="2025-08-09" class="article-date">August 9, 2025</time>
-                        </div>
-                        <h3 class="article-title">Best AI Writing Tools 2025: A Practical Toolkit for Writers, Students &amp; Teams</h3>
-                        <p class="article-excerpt">A compact, ethically-minded guide to the top AI tools for paraphrasing, citation, plagiarism checks, grammar, and AI-detection - plus a publish-ready workflow you can use today.</p>
-                        <a href="/blog/best-ai-writing-tools-2025.html" class="read-more">Read More</a>
-                    </article>
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">About This Blog</h2>
+        <p class="about-text">This blog explores the intersection of writing and modern AI - from paraphrasing, rewriting, and summarizing to plagiarism checks, AI-detection, grammar fixes, citation workflows, and practical toolchains. We test and compare real-world tools, explain trade-offs (accuracy vs. privacy vs. cost), and show step-by-step workflows so you can produce better, faster, and more honest writing.</p>
 
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Academic Writing</span>
-                            <time datetime="2025-07-20" class="article-date">July 20, 2025</time>
-                        </div>
-                        <h3 class="article-title">Ethical Paraphrasing in Academia: How to Use AI Without Getting in Trouble</h3>
-                        <p class="article-excerpt">Discover best practices for paraphrasing research, proper citation methods, and how SnipText helps you maintain academic integrity.</p>
-                        <a href="/blog/ethical-paraphrasing-in-academia.html" class="read-more">Read More</a>
-                    </article>
+        <p class="about-text">Our mission is to help writers, students, and content teams use AI responsibly: to speed up drafting, improve clarity, and protect originality. Expect hands-on guides, tool comparisons, privacy notes, and reproducible workflows - all focused on usability, ethics, and results. Want a clean workflow? We show you the exact tools and steps to get from idea to publish-ready.</p>
+      </div>
+    </div>
+  </section>
 
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Grammar Tips</span>
-                            <time datetime="2025-07-10" class="article-date">July 10, 2025</time>
-                        </div>
-                        <h3 class="article-title">Top 10 Grammar Blunders Professors Hate (And How to Fix Them Instantly)</h3>
-                        <p class="article-excerpt">Real student examples, quick fixes, and how to leverage SnipText’s grammar checker to eliminate common mistakes.</p>
-                        <a href="/blog/top-10-grammar-blunders.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Techniques</span>
-                            <time datetime="2025-08-15" class="article-date">August 15, 2025</time>
-                        </div>
-                        <h3 class="article-title">Mastering Paraphrasing, Tone, Style & Mode for Academic & Creative Writing</h3>
-                        <p class="article-excerpt">A complete guide to refining your writing by understanding how paraphrasing, tone, style, and mode shape clarity, originality, and reader engagement - with real examples and expert tips.</p>
-                        <a href="/blog/paraphrasing-tone-style-modes-an-academic-guide-with-ethical-ai-tips-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Tools</span>
-                            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
-                        </div>
-                        <h3 class="article-title">SnipText Paraphrasing Tool: Modes, Workflow &amp; Ethical Use</h3>
-                        <p class="article-excerpt">Rephrase sentences and paragraphs in Professional, Academic, Casual, Concise, or Creative modes-preserve meaning, protect key terms, and polish style fast.</p>
-                        <a href="/blog/paraphrasing-tool-modes-best-practices-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Grammar & Writing Tips</span>
-                            <time datetime="2025-08-15" class="article-date">August 15, 2025</time>
-                        </div>
-                        <h3 class="article-title">Master Grammar with AI: Fix Mistakes, Improve Clarity & Keep Your Voice</h3>
-                        <p class="article-excerpt">Learn how to spot and fix grammar errors, refine tone, and enhance clarity-plus how SnipText’s AI-powered grammar checker goes beyond Grammarly to keep your writing accurate, natural, and plagiarism-free.</p>
-                        <a href="/blog/grammar-check-guide-fix-grammar-punctuation-style-with-ai-ethically-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Help</span>
-                            <time datetime="2025-08-10" class="article-date">August 10, 2025</time>
-                        </div>
-                        <h3 class="article-title">Free Word, Character, Line &amp; Sentence Counter</h3>
-                        <p class="article-excerpt">Paste or type text and instantly see word, character (with/without spaces), line, and sentence counts-fast, accurate, and privacy-friendly.</p>
-                        <a href="/blog/word-character-line-sentence-counter-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Help</span>
-                            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
-                        </div>
-                        <h3 class="article-title">Free Case Converter: Uppercase, Lowercase, Sentence, Title &amp; Alternating</h3>
-                        <p class="article-excerpt">Convert text casing in one click-upper, lower, sentence, title &amp; alternating-with smart Title Case rules, acronym protection, and hyphen-aware handling.</p>
-                        <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Help</span>
-                            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
-                        </div>
-                        <h3 class="article-title">Duplicate Word Finder: Highlight &amp; Remove Repeated Words</h3>
-                        <p class="article-excerpt">Catch repeated words and consecutive duplicates (“the the”) in seconds. Highlight issues, auto-remove doubles, and copy a clean draft.</p>
-                        <a href="/blog/free-duplicate-word-finder-highlight-and-remove-repeated-words-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Help</span>
-                            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
-                        </div>
-                        <h3 class="article-title">Free Whitespace &amp; Formatting Cleaner: Trim, Normalize &amp; Fix Indentation</h3>
-                        <p class="article-excerpt">Remove trailing spaces, collapse blank lines, normalize LF/CRLF, convert tabs↔spaces, and strip zero-width/BOM-fast, accurate, and privacy-friendly.</p>
-                        <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Help</span>
-                            <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
-                        </div>
-                        <h3 class="article-title">Free Emoji Replacer: Replace Words, Convert Emoticons &amp; Remove Emojis</h3>
-                        <p class="article-excerpt">Swap keywords for emojis, convert emoticons like :) to 🙂, or strip all emoji characters-custom dictionary, skin tones, and brand-safe exclusions included.</p>
-                        <a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Character & Symbol Tools</span>
-                            <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
-                        </div>
-                        <h3 class="article-title">Symbol & Character Info: Count, Identify & Explore Unicode</h3>
-                        <p class="article-excerpt">Discover everything about your selected characters - from symbol counts to ASCII/Unicode code points, official names, and more. Includes advanced analysis and customization options.</p>
-                        <a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html" class="read-more">Explore Tool</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Text Analysis Tools</span>
-                            <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
-                        </div>
-                        <h3 class="article-title">Palindromic Word Finder: Detect & Highlight Symmetrical Text Instantly</h3>
-                        <p class="article-excerpt">Quickly identify palindromes in your text, highlight their positions, and explore advanced detection options. Perfect for linguistic research, creative writing, and wordplay enthusiasts.</p>
-                        <a href="/blog/free-palindromic-word-finder-detect-highlight-in-words-phrases-substrings-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Text Utilities</span>
-                            <time datetime="2025-08-18" class="article-date">August 18, 2025</time>
-                        </div>
-                        <h3 class="article-title">Random Text Generator: Instantly Create Unique Content Snippets</h3>
-                        <p class="article-excerpt">Generate random words, sentences, or paragraphs effortlessly. Ideal for writers, developers, and designers who need placeholder text, brainstorming material, or quick content ideas.</p>
-                        <a href="/blog/free-random-text-generator-lorem-ipsum-sentences-and-dummy-parahraphs-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Writing Tools</span>
-                            <time datetime="2025-08-18" class="article-date">August 18, 2025</time>
-                        </div>
-                        <h3 class="article-title">SnipText Remove Empty Lines: Clean & Compact Your Text</h3>
-                        <p class="article-excerpt">Strip blank lines, collapse multi-line gaps, and format text into a neat flow. Perfect for preparing content, code, or documents with zero clutter.</p>
-                        <a href="/blog/free-remove-empty-lines-trim-lines-collapse-gaps-normalize-newlines-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Text Conversion Tools</span>
-                            <time datetime="2025-08-20" class="article-date">August 20, 2025</time>
-                        </div>
-                        <h3 class="article-title">Text ↔ List Converter: Switch Seamlessly Between Lists & Plain Text</h3>
-                        <p class="article-excerpt">Convert text into cleanly formatted lists or rejoin lists back into text with ease. Includes bullets, numbering, trimming, sorting, and customizable join/split rules - perfect for writers, developers, and students.</p>
-                        <a href="/blog/text-to-list-or-list-to-text-converter-split-join-sort-unique-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Text Utilities</span>
-                            <time datetime="2025-08-20" class="article-date">August 20, 2025</time>
-                        </div>
-                        <h3 class="article-title">BibTeX to Citation Converter - Academic-Friendly Tool</h3>
-                        <p class="article-excerpt">Easily convert BibTeX entries into clean academic citations for papers, articles, and research documents without hassle.</p>
-                        <a href="/blog/bibtex-to-citation-converter-apa-mla-chicago-ieee-harvard-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Academic Tools</span>
-                            <time datetime="2025-08-21" class="article-date">August 21, 2025</time>
-                        </div>
-                        <h3 class="article-title">Math Formula Renderer: LaTeX to Image with MathJax</h3>
-                        <p class="article-excerpt">Type LaTeX and export crisp equations as PNG or SVG. Choose inline or display mode, add numbers, set DPI scale, and use transparent backgrounds.</p>
-                        <a href="/blog/math-formula-renderer-latex-to-image-with-math-png-svg-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <span class="article-category">Utility Tools</span>
-                            <time datetime="2025-08-21" class="article-date">August 21, 2025</time>
-                        </div>
-                        <h3 class="article-title">Universal Unit Converter: Convert Any Measurement Instantly</h3>
-                        <p class="article-excerpt">Easily convert length, weight, temperature, time, speed, and more with a simple, accurate, and user-friendly unit converter tool.</p>
-                        <a href="/blog/unit-converter-physics-chemistry-convert-si-imperial-length-mass-time-temperature-pressure-energy-power-speed-area-volume-force-and-much-more-sniptext-blog.html" class="read-more">Read More</a>
-                    </article>
-
-                    <article class="article-card">
-                            <div class="article-meta">
-                                <span class="article-category">Text Conversion Tools</span>
-                                <time datetime="2025-09-03" class="article-date">September 3, 2025</time>
-                            </div>
-                            <h3 class="article-title">Quick Table Generator: CSV to Responsive HTML Table Code</h3>
-                            <p class="article-excerpt">Paste or upload CSV and get clean, accessible HTML tables with sort, filter, paginate, transpose, and sticky headers. One click to copy or download. Private, in-browser.</p>
-                            <a href="/blog/quick-table-generator-guide-csv-to-responsive-html-table-code-sniptext-blog.html" class="read-more">Read More</a>
-                        </article>
-
-                        <article class="article-card">
-                            <div class="article-meta">
-                                <span class="article-category">Education & Planning</span>
-                                <time datetime="2025-09-03" class="article-date">September 3, 2025</time>
-                            </div>
-                            <h3 class="article-title">Timeline Maker: Create Academic Timelines & Project Roadmaps</h3>
-                            <p class="article-excerpt">Enter events and auto-generate clean academic timelines. Import CSV, group by eras and categories, apply color themes, zoom for dense periods, drag-reorder, and export to HTML, SVG, or JSON. Private, in-browser.</p>
-                            <a href="/blog/timeline-maker-create-academic-timelines-project-roadmaps-history-classroom-sniptext-blog.html" class="read-more">Read More</a>
-                        </article>
-
-                        <article class="article-card">
-                                <div class="article-meta">
-                                    <span class="article-category">Academic Tools</span>
-                                    <time datetime="2025-09-03" class="article-date">September 3, 2025</time>
-                                </div>
-                                <h3 class="article-title">Grade Calculator: Percentage → Letter Grades, Weighted Average & Required Final</h3>
-                                <p class="article-excerpt">
-                                    Convert percentages to letter grades, compute weighted category averages, drop the lowest scores, estimate GPA, and see the exact score needed on your final to reach a target grade-fast, accurate, and private in your browser.
-                                </p>
-                                <a href="/blog/grade-calculator-percentage-to-letter-grade-weighted-average-gpa-required-final-score-academic-grading-guide-sniptext-blog.html" class="read-more">Read More</a>
-                            </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="about-content">
-                    <h2 class="section-title">About This Blog</h2>
-                    <p class="about-text">This blog explores the intersection of writing and modern AI - from paraphrasing, rewriting, and summarizing to plagiarism checks, AI-detection, grammar fixes, citation workflows, and practical toolchains. We test and compare real-world tools, explain trade-offs (accuracy vs. privacy vs. cost), and show step-by-step workflows so you can produce better, faster, and more honest writing.</p>
-
-                    <p class="about-text">Our mission is to help writers, students, and content teams use AI responsibly: to speed up drafting, improve clarity, and protect originality. Expect hands-on guides, tool comparisons, privacy notes, and reproducible workflows - all focused on usability, ethics, and results. Want a clean workflow? We show you the exact tools and steps to get from idea to publish-ready.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+</main>
 
     <!-- Footer -->
     <footer class="footer" id="contact">

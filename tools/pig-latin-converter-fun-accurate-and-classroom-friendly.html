@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Pig Latin Converter - Fun, Accurate & Classroom Friendly | SnipText</title>
+  <meta name="description" content="Convert English to Pig Latin with smart punctuation, capitalization, and dialect options. Side-by-side diff, reverse convert, CSV/JSON export, and privacy-friendly offline processing." />
+  <meta name="keywords" content="pig latin converter, pig latin translator, pig latin tool, classroom humor, word play, text tools, SnipText" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/pig-latin-converter" />
+  <link rel="alternate" href="https://checkai.pro/tools/pig-latin-converter" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/pig-latin-converter" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/tools/css/free-tools.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Pig Latin Converter - Fun, Accurate & Classroom Friendly" />
+  <meta property="og:description" content="Smart Pig Latin conversion with dialects, punctuation care, reverse mode, and exports. Free and private in your browser." />
+  <meta property="og:url" content="https://checkai.pro/tools/pig-latin-converter" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText tool preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pig Latin Converter - Fun, Accurate & Classroom Friendly" />
+  <meta name="twitter:description" content="Convert English to Pig Latin with smart rules, reverse mode, and exports." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0B1220" />
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Styles: PigLatin Dark Theme -->
+  <style>
+/* =========================
+   Brand tokens (mapped)
+   ========================= */
+:root{
+  --color-primary:#1D4ED8;
+  --color-accent:#3B82F6;
+  --color-warm:#ff7c4c;
+  --color-bg-dark:#0F172A;
+  --color-white:#ffffff;
+  --color-text-muted:#aab6c7;
+  --color-border:rgba(255,255,255,.14);
+
+  --font-heading:'Poppins','Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-body:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+
+  --pl-radius-xl:20px;
+  --pl-radius-lg:16px;
+  --pl-radius-md:12px;
+
+  --pl-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --pl-shadow-2:0 18px 48px rgba(17,24,39,.46);
+}
+
+/* =========================
+   Base + aurora background
+   ========================= */
+*{box-sizing:border-box}
+html,body{height:100%}
+html,body{
+  margin:0; background:var(--color-bg-dark); color:var(--color-white);
+  font-family:var(--font-body); line-height:1.55;
+}
+.piglatin-page{ position:relative; padding: clamp(16px,2.8vw,28px); min-height:100svh; isolation:isolate; }
+.piglatin-page::before{
+  content:""; position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--color-primary) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--color-accent) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--color-warm) 12%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--color-bg-dark) 0%, #0b1225 100%);
+}
+
+.piglatin-container{ max-width:1200px; margin:0 auto; }
+
+/* =========================
+   Hero like model page
+   ========================= */
+.piglatin-hero{
+  border:1px solid var(--color-border);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--color-primary) 20%, transparent),
+    color-mix(in oklab, var(--color-accent) 18%, transparent)
+  ) border-box;
+  border-radius: var(--pl-radius-xl);
+  box-shadow: var(--pl-shadow-1);
+  overflow:hidden; padding: clamp(18px,3vw,28px);
+  position:relative;
+}
+.piglatin-hero::after{
+  content:""; position:absolute; inset:-3px; pointer-events:none; filter: blur(16px); opacity:.6;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--color-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--color-accent) 26%, transparent), transparent 62%);
+}
+.piglatin-title{
+  margin:0 0 6px 0; font:800 clamp(24px,3.2vw,36px)/1.12 var(--font-heading); letter-spacing:.2px;
+  background: linear-gradient(90deg,#fff,
+    color-mix(in oklab, var(--color-accent) 54%, #fff) 38%,
+    color-mix(in oklab, var(--color-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.piglatin-subtitle{ margin:6px 0 0 0; color: var(--color-text-muted); font-size:clamp(14px,1.8vw,16px); }
+
+/* =========================
+   Main grid
+   ========================= */
+.piglatin-grid{
+  display:grid; gap: clamp(12px,2.4vw,20px); margin-top: clamp(14px,2.6vw,24px);
+  grid-template-columns: 1.1fr .9fr;
+}
+@media (max-width:980px){ .piglatin-grid{ grid-template-columns:1fr; } }
+
+/* =========================
+   Cards
+   ========================= */
+.piglatin-card{
+  border:1px solid var(--color-border);
+  border-radius: var(--pl-radius-lg);
+  background: rgba(255,255,255,0.06);
+  box-shadow: var(--pl-shadow-2);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.piglatin-card-header{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 14px; border-bottom:1px solid var(--color-border);
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--color-primary) 11%, transparent),
+    color-mix(in oklab, var(--color-accent) 9%, transparent)
+  );
+}
+.piglatin-card-title{ margin:0; font:700 14px/1 var(--font-heading); letter-spacing:.35px; text-transform:uppercase; display:flex; gap:10px; align-items:center; }
+.piglatin-chip{ border:1px solid var(--color-border); border-radius:999px; padding:4px 10px; font-size:12px; color:var(--color-text-muted); }
+.piglatin-badges{ display:flex; gap:8px; flex-wrap:wrap; }
+.piglatin-badge{ border:1px dashed var(--color-border); border-radius:999px; padding:4px 8px; font-size:12px; color:var(--color-text-muted); }
+
+.piglatin-card-body{ padding:16px; display:grid; gap:14px; }
+
+/* =========================
+   Inputs, selects, toggles
+   ========================= */
+.piglatin-textarea{
+  width:100%; min-height:230px; resize:vertical; outline:0;
+  background:#0f1b34; color:#e5e7eb; border:1px solid var(--color-border); border-radius: var(--pl-radius-md);
+  padding:14px 14px 40px; font:500 15px/1.55 var(--font-body); caret-color: var(--color-accent);
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.piglatin-textarea::placeholder{ color:#94a3b8; }
+.piglatin-textarea:focus{ border-color: rgba(59,130,246,.35); box-shadow: 0 0 0 6px rgba(59,130,246,.12); }
+
+.piglatin-select, .piglatin-number, .piglatin-toggle{
+  background:#0f1b34; color:#e5e7eb; border:1px solid var(--color-border);
+  border-radius:10px; padding:9px 12px; font-size:14px; outline:none; transition:border-color .2s ease, box-shadow .2s ease;
+}
+.piglatin-select:hover, .piglatin-number:hover, .piglatin-toggle:hover{ border-color:#35518f; }
+.piglatin-toggle{ display:inline-flex; align-items:center; gap:8px; user-select:none; }
+
+/* Row layouts */
+.piglatin-actions{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
+.piglatin-btns-left, .piglatin-btns-right{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.piglatin-flex{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+
+/* =========================
+   Buttons
+   ========================= */
+.piglatin-btn{
+  --_bg: linear-gradient(180deg, color-mix(in oklab, var(--color-primary) 70%, transparent), color-mix(in oklab, var(--color-accent) 62%, transparent));
+  --_bd: color-mix(in oklab, #000 12%, var(--color-primary));
+  appearance:none; border:1px solid var(--_bd); background: linear-gradient(180deg,#0f1730,#0b1224); color:#fff;
+  padding:10px 14px; border-radius:12px; font-weight:700; letter-spacing:.2px; cursor:pointer; font-family:var(--font-heading);
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease, border-color .2s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+}
+.piglatin-btn:hover{ transform:translateY(-1px); border-color:#3a4b7a; filter:brightness(1.06); }
+.piglatin-btn:active{ transform:translateY(0); }
+.piglatin-btn-ghost{ background: transparent; color:#e5e7eb; border:1px dashed var(--color-border); box-shadow:none; font-weight:600; }
+.piglatin-btn-accent{ background: linear-gradient(135deg, var(--color-accent), var(--color-warm)); border-color:transparent; }
+
+/* =========================
+   Output + Diff
+   ========================= */
+.piglatin-split{ display:grid; gap:16px; grid-template-columns:1fr; }
+@media (min-width:720px){ .piglatin-split{ grid-template-columns:1fr 1fr; } }
+
+.piglatin-output{
+  min-height:220px; padding:14px; border-radius:12px; position:relative; overflow:auto;
+  background:#0b142b; border:1px solid var(--color-border);
+}
+.piglatin-output pre{
+  margin:0; white-space:pre-wrap; word-break:break-word;
+  font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,"Roboto Mono",monospace; font-size:14px; color:#dfe8ff;
+}
+.piglatin-diff{ line-height:1.9; }
+.piglatin-diff ins{
+  background: rgba(34,197,94,.14); border:1px solid rgba(34,197,94,.28);
+  border-radius:6px; text-decoration:none; padding:0 3px;
+}
+.piglatin-diff del{
+  background: rgba(168,85,247,.14); border:1px solid rgba(168,85,247,.28);
+  border-radius:6px; text-decoration:line-through; padding:0 3px;
+}
+
+/* =========================
+   Table
+   ========================= */
+.piglatin-table-wrap{ border:1px solid var(--color-border); border-radius:12px; overflow:auto; }
+.piglatin-table{ width:100%; border-collapse:collapse; min-width:520px; }
+.piglatin-table th, .piglatin-table td{
+  padding:10px 12px; border-bottom:1px solid var(--color-border); text-align:left; font-size:14px; color:#e5e7eb;
+}
+.piglatin-table th{
+  position:sticky; top:0; z-index:1;
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--color-primary) 10%, transparent),
+    color-mix(in oklab, var(--color-accent) 8%, transparent));
+  text-transform:uppercase; letter-spacing:.08em; font:700 12px/1 var(--font-heading);
+}
+
+/* =========================
+   Small bits
+   ========================= */
+.piglatin-kbd{
+  font:600 12px/1 var(--font-body);
+  background:#0c1630; border:1px solid var(--color-border); padding:2px 6px; border-radius:6px; color:#e6edff;
+}
+.piglatin-footer-hint{ color:var(--color-text-muted); font-size:13px; margin-top:6px; }
+.piglatin-pill{ border:1px solid var(--color-border); color:var(--color-text-muted); border-radius:999px; padding:6px 10px; font-size:12px; }
+
+/* Toast */
+.piglatin-toast{
+  position: fixed; inset: auto 16px 16px auto;
+  background:#0b1223ee; color:#e5e7eb; padding:12px 14px; border-radius:12px;
+  border:1px solid var(--color-border); box-shadow: var(--pl-shadow-1);
+  transform: translateY(20px); opacity:0; pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease; z-index:50;
+}
+.piglatin-toast.piglatin-show{ transform:translateY(0); opacity:1; }
+
+/* Fun hover sparkle cue */
+.piglatin-sparkle:hover{ box-shadow: 0 0 0 2px rgba(124,92,255,.25), 0 0 0 10px rgba(124,92,255,.06); }
+
+/* =========================
+   Float animation like model
+   ========================= */
+@media (prefers-reduced-motion: no-preference){
+  .piglatin-card{ animation: pl-float 18s ease-in-out infinite; }
+  @keyframes pl-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .piglatin-card, .piglatin-btn:hover{ animation:none !important; transform:none !important; }
+}
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+
+  </style>
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Pig Latin Converter",
+    "url":"https://checkai.pro/tools/pig-latin-converter",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Smart Pig Latin with punctuation and capitalization handling",
+      "Dialect options: way/yay/hay",
+      "Side by side diff highlight",
+      "Reverse converter (beta)",
+      "Export TXT, CSV, JSON",
+      "File import and bulk processing",
+      "Shareable state via URL",
+      "Keyboard shortcuts"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"Snip Text",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is the Pig Latin Converter private?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs in your browser, and your text never leaves your device."}
+      },
+      {
+        "@type":"Question",
+        "name":"Does it preserve punctuation and capitalization?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. It keeps punctuation, spacing, and capitalization as much as possible while converting words."}
+      },
+      {
+        "@type":"Question",
+        "name":"Which Pig Latin styles are supported?",
+        "acceptedAnswer":{"@type":"Answer","text":"Choose classic suffixes like way, yay, or hay, and adjust how Y is treated as a vowel."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I export or import?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. Import TXT files and export results to TXT, CSV, or JSON."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://checkai.pro/tools/"},
+      {"@type":"ListItem","position":3,"name":"Pig Latin Converter","item":"https://checkai.pro/tools/pig-latin-converter"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+ 
+  <main class="piglatin-page" id="piglatin-app">
+    <div class="piglatin-container">
+      <section class="piglatin-hero">
+        <h1 class="piglatin-title">Pig Latin Converter</h1>
+        <p class="piglatin-subtitle">Light humor for students, serious polish for pros. Convert text to Pig Latin with punctuation care, dialect options, side by side diff, reverse mode, and handy exports.</p>
+      </section>
+
+      <section class="piglatin-grid">
+        <!-- Left: Input and Options -->
+        <article class="piglatin-card piglatin-sparkle">
+          <header class="piglatin-card-header">
+            <div class="piglatin-card-title">
+              ✍️ Input
+              <span class="piglatin-chip">Private - in your browser</span>
+            </div>
+            <div class="piglatin-badges">
+              <span class="piglatin-badge">Ctrl + Enter to convert</span>
+              <span class="piglatin-badge">Alt + R to reverse</span>
+            </div>
+          </header>
+          <div class="piglatin-card-body">
+            <textarea id="piglatin-input" class="piglatin-textarea" placeholder="Type or paste your text here...">Hello students, welcome to the Pig Latin day! This tool keeps punctuation and casing tidy.</textarea>
+
+            <div class="piglatin-actions">
+              <div class="piglatin-btns-left">
+                <button class="piglatin-btn piglatin-btn-accent" id="piglatin-convert">Convert to Pig Latin</button>
+                <button class="piglatin-btn" id="piglatin-reverse">Reverse to English (beta)</button>
+                <button class="piglatin-btn piglatin-btn-ghost" id="piglatin-clear">Clear</button>
+                <label class="piglatin-toggle">
+                  <input type="checkbox" id="piglatin-live">
+                  Live convert
+                </label>
+              </div>
+              <div class="piglatin-btns-right">
+                <input type="file" id="piglatin-file" accept=".txt" hidden>
+                <button class="piglatin-btn" id="piglatin-import">Import TXT</button>
+                <button class="piglatin-btn" id="piglatin-copy-in">Copy Input</button>
+              </div>
+            </div>
+
+            <div class="piglatin-flex">
+              <label class="piglatin-toggle"><input type="checkbox" id="piglatin-keepcaps" checked> Preserve capitalization</label>
+              <label class="piglatin-toggle"><input type="checkbox" id="piglatin-keeppunct" checked> Keep punctuation</label>
+              <label class="piglatin-toggle"><input type="checkbox" id="piglatin-keepnums" checked> Keep numbers</label>
+              <label class="piglatin-toggle"><input type="checkbox" id="piglatin-skipshort"> Skip words under</label>
+              <input type="number" id="piglatin-minlen" class="piglatin-number" value="2" min="1" style="width:72px">
+            </div>
+
+            <div class="piglatin-flex">
+              <label for="piglatin-style">Suffix</label>
+              <select id="piglatin-style" class="piglatin-select">
+                <option value="way">way</option>
+                <option value="yay">yay</option>
+                <option value="hay">hay</option>
+              </select>
+
+              <label for="piglatin-yvowel">Treat Y as</label>
+              <select id="piglatin-yvowel" class="piglatin-select">
+                <option value="sometimes">sometimes vowel</option>
+                <option value="always">always vowel</option>
+                <option value="never">never vowel</option>
+              </select>
+
+              <label class="piglatin-toggle"><input type="checkbox" id="piglatin-stopwords"> Skip common stopwords</label>
+            </div>
+
+            <div class="piglatin-hint-row">
+              <div class="piglatin-footer-hint">Tip: Share this conversion with a link. Use the Share button below to encode the text and options into the URL.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Right: Output, Diff, Table -->
+        <article class="piglatin-card piglatin-sparkle">
+          <header class="piglatin-card-header">
+            <div class="piglatin-card-title">
+              🎉 Output
+              <span class="piglatin-chip">Diff and exports</span>
+            </div>
+            <div class="piglatin-btns-right">
+              <button class="piglatin-btn" id="piglatin-copy-out">Copy Output</button>
+              <button class="piglatin-btn" id="piglatin-download-txt">Download TXT</button>
+              <button class="piglatin-btn" id="piglatin-download-csv">Download CSV</button>
+              <button class="piglatin-btn" id="piglatin-download-json">Download JSON</button>
+              <button class="piglatin-btn piglatin-btn-ghost" id="piglatin-share">Share</button>
+            </div>
+          </header>
+          <div class="piglatin-card-body">
+            <div class="piglatin-split">
+              <div class="piglatin-output" aria-live="polite">
+                <pre id="piglatin-output">Ellohay udentsstay, elcomeway otay ethay Igpay Atinlay ayday! Isthay ooltay eepskay unctuationpay andway asingcay idytay.</pre>
+              </div>
+              <div class="piglatin-output">
+                <pre id="piglatin-diff" class="piglatin-diff"><del>Hello</del> <ins>Ellohay</ins> <del>students,</del> <ins>udentsstay,</ins> <del>welcome</del> <ins>elcomeway</ins> <del>to</del> <ins>otay</ins> <del>the</del> <ins>ethay</ins> <del>Pig</del> <ins>Igpay</ins> <del>Latin</del> <ins>Atinlay</ins> <del>day!</del> <ins>ayday!</ins></pre>
+              </div>
+            </div>
+
+            <div class="piglatin-table-wrap">
+              <table class="piglatin-table" id="piglatin-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Original</th>
+                    <th>Pig Latin</th>
+                    <th>Rule</th>
+                  </tr>
+                </thead>
+                <tbody><!-- rows injected --></tbody>
+              </table>
+            </div>
+
+            <div class="piglatin-footer-hint">
+              Shortcuts: <span class="piglatin-kbd">Ctrl + Enter</span> convert, <span class="piglatin-kbd">Alt + R</span> reverse, <span class="piglatin-kbd">Ctrl + C</span> copy selected box.
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Extra: Classroom fun toggles -->
+      <section class="piglatin-card piglatin-sparkle" style="margin-top:16px;">
+        <header class="piglatin-card-header">
+          <div class="piglatin-card-title">🧪 Extras</div>
+          <div class="piglatin-badges">
+            <span class="piglatin-badge">Teacher friendly</span>
+            <span class="piglatin-badge">Student safe</span>
+          </div>
+        </header>
+        <div class="piglatin-card-body">
+          <div class="piglatin-flex">
+            <label class="piglatin-toggle"><input type="checkbox" id="piglatin-jokes"> Add gentle classroom jokes</label>
+            <label class="piglatin-toggle"><input type="checkbox" id="piglatin-reduced" /> Reduce motion</label>
+            <span class="piglatin-pill" id="piglatin-count">0 chars • 0 words</span>
+          </div>
+          <p class="piglatin-footer-hint">Jokes are optional and clean. Motion can be reduced for sensitive users.</p>
+        </div>
+      </section>
+    </div>
+
+     <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Pig Latin Guide on SnipText Blog Page <a href="/blog/pig-latin-converter-guide-rules-examples-diff-reverse-export-private-in-browser-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+
+    <div class="piglatin-toast" id="piglatin-toast" role="status" aria-live="polite">Copied to clipboard</div>
+  </main>
+
+  
+
+  
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+          <article class="tool-card" tabindex="0" data-href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-labelledby="t-synonym">
+                  <div class="card-icon" aria-hidden="true">
+                    <!-- Synonym icon: shuffle arrows + sparkle -->
+                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Random Synonym Finder icon">
+                      <!-- shuffle paths -->
+                      <path d="M3 7h4c2.5 0 4 5 7 5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                      <path d="M3 17h4c1.6 0 2.7-2 3.6-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                      <!-- arrowheads -->
+                      <path d="M17 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <path d="M17 13l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <!-- sparkle -->
+                      <path d="M7 4.5l.6-1.2.6 1.2 1.2.6-1.2.6-.6 1.2-.6-1.2-1.2-.6 1.2-.6z" stroke="currentColor" stroke-width="1.2" fill="none" />
+                    </svg>
+                  </div>
+                  <h3 id="t-synonym" class="card-title">Random Synonym Finder</h3>
+                  <p class="card-desc">
+                    Highlight a word and spin smart synonyms by tone, formality, length, and frequency. Batch-rewrite with locks, A/B compare, and export your replacement map. Private, in-browser.
+                  </p>
+                  <a class="card-cta" href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-label="Open Random Synonym Finder">Open →</a>
+              </article>
+
+              <article class="tool-card anagram-tool-card" tabindex="0" data-href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-labelledby="anagram-tg">
+                  <div class="card-icon anagram-card-icon" aria-hidden="true">
+                    <!-- Anagram icon: shuffled arrows + letter tiles -->
+                    <svg viewBox="0 0 24 24" class="svg-icon anagram-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anagram Generator">
+                      <!-- shuffle arrows -->
+                      <path d="M3 7h4c2 0 3 3 5 3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      <path d="M15.5 5.2 19 7.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M3 17h4c2 0 3-3 5-3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      <path d="M15.5 14.2 19 16.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <!-- letter tiles -->
+                      <rect x="2.8" y="9.4" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                      <text x="5.1" y="12.6" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">A</text>
+                      <rect x="16.6" y="8.1" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".95"/>
+                      <text x="18.9" y="11.3" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">G</text>
+                    </svg>
+                  </div>
+                  <h3 id="anagram-tg" class="card-title anagram-card-title">Anagram Generator</h3>
+                  <p class="card-desc anagram-card-desc">
+                    Rearrange letters into single or multi-word anagrams with smart filters for length, starts/ends with, include or exclude letters, and wildcard patterns. Rank by frequency or Scrabble score, paste your own dictionary, and export results. Private, in-browser.
+                  </p>
+                  <a class="card-cta anagram-card-cta" href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-label="Open Anagram Generator">Open →</a>
+              </article>
+
+
+    <article class="tool-card" tabindex="0" data-href="/tools/bibtex-to-citation-to-bibtex.html" aria-labelledby="t11">
+        <div class="card-icon" aria-hidden="true">
+          <!-- BibTeX to Citation Converter Icon -->
+          <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="BibTeX to Citation Converter icon">
+            <!-- Document outline -->
+            <rect x="4" y="3" width="16" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <!-- Citation lines -->
+            <line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <!-- Quotation mark -->
+            <path d="M9 5c0-1.1.9-2 2-2h.2c.6 0 1 .4 1 .9 0 .3-.2.6-.4.8-.4.4-.8.8-1 1.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 id="t11" class="card-title">BibTeX to Citation Converter</h3>
+        <p class="card-desc">Convert BibTeX entries into clean academic citations (APA, MLA, Chicago, and more) instantly in your browser.</p>
+        <a class="card-cta" href="/tools/bibtex-to-citation-to-bibtex.html" aria-label="Open BibTeX to Citation Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-labelledby="t11">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Math Formula Tool Icon -->
+            <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Math Formula Tool icon">
+              <!-- Sigma (Σ) symbol -->
+              <path d="M8 5h8M8 19h8M9 5l6 7-6 7" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Square root sign -->
+              <path d="M4 14l2 3 2-6h12" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 id="t11" class="card-title">Math Formula Tool</h3>
+          <p class="card-desc">Easily create, edit, and format mathematical equations online for documents, blogs, and educational use.</p>
+          <a class="card-cta" href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-label="Open Math Formula Tool">Open →</a>
+      </article>
+
+  </section>
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+
+  <script src="/tools/js/free-tools.js"></script>
+
+  <!-- Scripts -->
+  <script>
+    // State
+    const $ = (s, p=document) => p.querySelector(s);
+    const $$ = (s, p=document) => [...p.querySelectorAll(s)];
+
+    const piglatinEls = {
+      input: $('#piglatin-input'),
+      output: $('#piglatin-output'),
+      diff: $('#piglatin-diff'),
+      tableBody: $('#piglatin-table tbody'),
+      convert: $('#piglatin-convert'),
+      reverse: $('#piglatin-reverse'),
+      clear: $('#piglatin-clear'),
+      live: $('#piglatin-live'),
+      keepcaps: $('#piglatin-keepcaps'),
+      keeppunct: $('#piglatin-keeppunct'),
+      keepnums: $('#piglatin-keepnums'),
+      skipshort: $('#piglatin-skipshort'),
+      minlen: $('#piglatin-minlen'),
+      style: $('#piglatin-style'),
+      yvowel: $('#piglatin-yvowel'),
+      stopwords: $('#piglatin-stopwords'),
+      copyIn: $('#piglatin-copy-in'),
+      copyOut: $('#piglatin-copy-out'),
+      downloadTxt: $('#piglatin-download-txt'),
+      downloadCsv: $('#piglatin-download-csv'),
+      downloadJson: $('#piglatin-download-json'),
+      file: $('#piglatin-file'),
+      importBtn: $('#piglatin-import'),
+      share: $('#piglatin-share'),
+      jokes: $('#piglatin-jokes'),
+      reduced: $('#piglatin-reduced'),
+      count: $('#piglatin-count'),
+      toast: $('#piglatin-toast'),
+    };
+
+    // Utilities
+    const piglatinStopwords = new Set([
+      "a","an","the","and","or","but","if","then","than","so","to","of","in","on","for","at","by","with","as","is","are","was","were","be","been","being","that","this","those","these","from"
+    ]);
+
+    function piglatinCount(text) {
+      const words = (text.match(/\b[\w']+\b/g)||[]).length;
+      return { chars: text.length, words };
+    }
+
+    function piglatinShowToast(msg="Copied to clipboard") {
+      const t = piglatinEls.toast;
+      t.textContent = msg;
+      t.classList.add('piglatin-show');
+      setTimeout(()=> t.classList.remove('piglatin-show'), 1400);
+    }
+
+    function piglatinDownload(filename, text) {
+      const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function piglatinCSVRow(cols) {
+      return cols.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',') + '\n';
+    }
+
+    // Core rules
+    function piglatinIsVowel(ch, yMode) {
+      ch = ch.toLowerCase();
+      const vowels = ['a','e','i','o','u'];
+      if (vowels.includes(ch)) return true;
+      if (ch === 'y') return yMode === 'always' ? true : yMode === 'sometimes' ? true : false;
+      return false;
+    }
+
+    function piglatinWord(word, opts) {
+      // Handle numbers or empty
+      if (!word) return { out: word, rule: 'skip' };
+      if (opts.keepnums && /^[\d._,:/-]+$/.test(word)) return { out: word, rule: 'number' };
+
+      // Keep punctuation: detach leading and trailing punctuation
+      const m = word.match(/^([(\[{'"“‘\-]*)(.*?)([)\]}'"”’\-\.\,\!\?\;\:]*?)$/);
+      let lead = "", core = word, trail = "";
+      if (opts.keeppunct && m) { lead = m[1]; core = m[2]; trail = m[3]; }
+
+      // Early exits
+      const alphaCore = core.match(/[A-Za-z]+/g)?.join('') || '';
+      if (!alphaCore) return { out: word, rule: 'nonalpha' };
+      if (opts.skipshort && alphaCore.length < Number(opts.minlen||2)) return { out: word, rule: 'short' };
+      if (opts.stopwords && piglatinStopwords.has(alphaCore.toLowerCase())) return { out: word, rule: 'stopword' };
+
+      // Preserve capitalization pattern
+      const isAllCaps = alphaCore === alphaCore.toUpperCase();
+      const isTitle = alphaCore[0] === alphaCore[0]?.toUpperCase() && alphaCore.slice(1) === alphaCore.slice(1)?.toLowerCase();
+
+      // Extract first consonant cluster
+      const chars = [...alphaCore];
+      let i = 0;
+      if (!piglatinIsVowel(chars[0], opts.yvowel)) {
+        while (i < chars.length && !piglatinIsVowel(chars[i], opts.yvowel)) i++;
+      }
+      let outCore;
+      let ruleUsed;
+      if (i === 0) {
+        // starts with vowel
+        outCore = alphaCore + opts.style;
+        ruleUsed = 'vowel+' + opts.style;
+      } else if (i >= chars.length) {
+        // no vowel found
+        outCore = alphaCore + opts.style;
+        ruleUsed = 'novowel+' + opts.style;
+      } else {
+        // move consonant cluster
+        outCore = alphaCore.slice(i) + alphaCore.slice(0, i).toLowerCase() + 'ay';
+        ruleUsed = 'consonant+ay';
+      }
+
+      // Restore capitalization
+      if (opts.keepcaps) {
+        if (isAllCaps) outCore = outCore.toUpperCase();
+        else if (isTitle) outCore = outCore[0].toUpperCase() + outCore.slice(1).toLowerCase();
+      }
+
+      return { out: lead + outCore + trail, rule: ruleUsed };
+    }
+
+    function piglatinConvert(text, opts) {
+      // Split by spaces but keep line breaks and spaces
+      const tokens = text.split(/(\s+)/);
+      const map = [];
+      const converted = tokens.map(tok => {
+        if (/\s+/.test(tok)) return tok;
+        const res = piglatinWord(tok, opts);
+        map.push({ original: tok, pig: res.out, rule: res.rule });
+        return res.out;
+      }).join('');
+      return { converted, map };
+    }
+
+    // Diff builder (word by word)
+    function piglatinDiff(orig, map) {
+      const words = orig.split(/(\s+)/);
+      let iWord = 0;
+      const parts = words.map(w => {
+        if (/\s+/.test(w)) return w;
+        const m = map[iWord++] || { original:w, pig:w, rule:'skip' };
+        if (m.original === m.pig) return w;
+        return `<del>${escapeHtml(m.original)}</del> <ins title="${m.rule}">${escapeHtml(m.pig)}</ins>`;
+      }).join('');
+      return parts;
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    // Reverse (best effort)
+    function piglatinReverse(text, opts) {
+      const tokens = text.split(/(\s+)/);
+      const reverseMap = tokens.map(tok => {
+        if (/\s+/.test(tok)) return { original: tok, english: tok, rule: 'space' };
+
+        // Strip punctuation
+        const m = tok.match(/^([(\[{'"“‘\-]*)(.*?)([)\]}'"”’\-\.\,\!\?\;\:]*?)$/);
+        let lead="", core=tok, trail="";
+        if (m) { lead=m[1]; core=m[2]; trail=m[3]; }
+
+        // Detect suffixes
+        let base = core;
+        let rule = 'unchanged';
+        if (/(.+?)(way|yay|hay)$/i.test(core)) {
+          base = core.replace(/(way|yay|hay)$/i, '');
+          rule = 'vowel-reverse';
+        } else if (/(.+?)ay$/i.test(core)) {
+          base = core.replace(/ay$/i, '');
+          // Try to move trailing consonants back to front until vowel encountered
+          // heuristic: move last consonant cluster to front
+          const m2 = base.match(/^(.*?)([bcdfghjklmnpqrstvwxzy]+)$/i);
+          if (m2) base = m2[2] + m2[1];
+          rule = 'consonant-reverse';
+        }
+        // Basic capitalization heal
+        if (opts.keepcaps) {
+          // if original looked Title, title-case it
+          if (/^[A-Z][a-z]+/.test(core)) base = base.charAt(0).toUpperCase() + base.slice(1).toLowerCase();
+          else if (/^[A-Z]+$/.test(core)) base = base.toUpperCase();
+        }
+        return { original: tok, english: lead + base + trail, rule };
+      });
+
+      const reversed = reverseMap.map(x => x.english).join('');
+      return { reversed, reverseMap };
+    }
+
+    // URL share state
+    function piglatinEncodeState() {
+      const state = {
+        t: piglatinEls.input.value,
+        k: piglatinEls.keepcaps.checked?1:0,
+        p: piglatinEls.keeppunct.checked?1:0,
+        n: piglatinEls.keepnums.checked?1:0,
+        s: piglatinEls.skipshort.checked?1:0,
+        m: Number(piglatinEls.minlen.value||2),
+        d: piglatinEls.style.value,
+        y: piglatinEls.yvowel.value,
+        w: piglatinEls.stopwords.checked?1:0,
+        j: piglatinEls.jokes.checked?1:0
+      };
+      const packed = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
+      history.replaceState(null, '', '#'+packed);
+      piglatinShowToast('Share link ready');
+    }
+
+    function piglatinDecodeState() {
+      if (!location.hash.slice(1)) return;
+      try {
+        const raw = decodeURIComponent(escape(atob(location.hash.slice(1))));
+        const s = JSON.parse(raw);
+        piglatinEls.input.value = s.t || '';
+        piglatinEls.keepcaps.checked = !!s.k;
+        piglatinEls.keeppunct.checked = !!s.p;
+        piglatinEls.keepnums.checked = !!s.n;
+        piglatinEls.skipshort.checked = !!s.s;
+        piglatinEls.minlen.value = s.m ?? 2;
+        piglatinEls.style.value = s.d || 'way';
+        piglatinEls.yvowel.value = s.y || 'sometimes';
+        piglatinEls.stopwords.checked = !!s.w;
+        piglatinEls.jokes.checked = !!s.j;
+      } catch {}
+    }
+
+    // Render table
+    function piglatinRenderTable(map) {
+      const tbody = piglatinEls.tableBody;
+      tbody.innerHTML = '';
+      let idx = 0;
+      for (const row of map) {
+        if (/\s+/.test(row.original)) continue;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${++idx}</td>
+          <td>${escapeHtml(row.original)}</td>
+          <td>${escapeHtml(row.pig)}</td>
+          <td><span class="piglatin-pill">${escapeHtml(row.rule)}</span></td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    // Jokes
+    const piglatinJokes = [
+      "Why did the student bring a ladder to class? The grades were above C level.",
+      "Teacher: Why are you late? Student: I got caught in traffic... on the school Wi-Fi.",
+      "I used to be a baker, but I couldn’t make enough dough.",
+      "Parallel lines have so much in common. It’s a shame they’ll never meet."
+    ];
+    function piglatinMaybeAddJoke(out) {
+      if (!piglatinEls.jokes.checked) return out;
+      const joke = piglatinJokes[Math.floor(Math.random()*piglatinJokes.length)];
+      return out + "\n\n" + "Bonus giggle: " + joke;
+    }
+
+    // Copy helpers
+    async function piglatinCopyFrom(el) {
+      try {
+        await navigator.clipboard.writeText(el.textContent || el.value || '');
+        piglatinShowToast();
+      } catch(e) {
+        piglatinShowToast('Select and press Ctrl+C');
+      }
+    }
+
+    // Downloads
+    function piglatinDownloadCSV(map) {
+      let csv = piglatinCSVRow(['index','original','pig_latin','rule']);
+      let idx = 0;
+      for (const row of map) {
+        if (/\s+/.test(row.original)) continue;
+        csv += piglatinCSVRow([++idx, row.original, row.pig, row.rule]);
+      }
+      piglatinDownload('pig-latin-converter.csv', csv);
+    }
+
+    function piglatinDownloadJSON(map, converted) {
+      const o = { converted, map: map.filter(m=>!/\s+/.test(m.original)) };
+      piglatinDownload('pig-latin-converter.json', JSON.stringify(o, null, 2));
+    }
+
+    // Live render
+    function piglatinDoConvert() {
+      const text = piglatinEls.input.value;
+      const opts = {
+        keepcaps: piglatinEls.keepcaps.checked,
+        keeppunct: piglatinEls.keeppunct.checked,
+        keepnums: piglatinEls.keepnums.checked,
+        skipshort: piglatinEls.skipshort.checked,
+        minlen: piglatinEls.minlen.value,
+        style: piglatinEls.style.value,
+        yvowel: piglatinEls.yvowel.value,
+        stopwords: piglatinEls.stopwords.checked
+      };
+
+      const { converted, map } = piglatinConvert(text, opts);
+      const withJoke = piglatinMaybeAddJoke(converted);
+
+      piglatinEls.output.textContent = withJoke;
+      piglatinEls.diff.innerHTML = piglatinDiff(text, map);
+      piglatinRenderTable(map);
+
+      const { chars, words } = piglatinCount(text);
+      piglatinEls.count.textContent = `${chars} chars • ${words} words`;
+    }
+
+    function piglatinDoReverse() {
+      const text = piglatinEls.input.value;
+      const opts = { keepcaps: piglatinEls.keepcaps.checked };
+      const { reversed } = piglatinReverse(text, opts);
+      piglatinEls.output.textContent = reversed;
+      piglatinEls.diff.textContent = 'Reverse is experimental. Check tricky words manually.';
+      piglatinEls.tableBody.innerHTML = '';
+      const { chars, words } = piglatinCount(reversed);
+      piglatinEls.count.textContent = `${chars} chars • ${words} words`;
+    }
+
+    // Events
+    piglatinEls.convert.addEventListener('click', piglatinDoConvert);
+    piglatinEls.reverse.addEventListener('click', piglatinDoReverse);
+    piglatinEls.clear.addEventListener('click', () => {
+      piglatinEls.input.value = '';
+      piglatinDoConvert();
+    });
+    piglatinEls.live.addEventListener('change', () => {
+      if (piglatinEls.live.checked) piglatinDoConvert();
+    });
+    ['input','change','keyup'].forEach(evt => {
+      piglatinEls.input.addEventListener(evt, () => {
+        const { chars, words } = piglatinCount(piglatinEls.input.value);
+        piglatinEls.count.textContent = `${chars} chars • ${words} words`;
+        if (piglatinEls.live.checked) piglatinDoConvert();
+      });
+    });
+    [piglatinEls.keepcaps, piglatinEls.keeppunct, piglatinEls.keepnums, piglatinEls.skipshort, piglatinEls.minlen, piglatinEls.style, piglatinEls.yvowel, piglatinEls.stopwords, piglatinEls.jokes]
+      .forEach(el => el.addEventListener('change', () => piglatinEls.live.checked && piglatinDoConvert()));
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && e.key === 'Enter') { e.preventDefault(); piglatinDoConvert(); }
+      if (e.altKey && (e.key === 'r' || e.key === 'R')) { e.preventDefault(); piglatinDoReverse(); }
+    });
+
+    // Copy buttons
+    piglatinEls.copyIn.addEventListener('click', () => piglatinCopyFrom(piglatinEls.input));
+    piglatinEls.copyOut.addEventListener('click', () => piglatinCopyFrom(piglatinEls.output));
+
+    // Downloads
+    piglatinEls.downloadTxt.addEventListener('click', () => {
+      piglatinDownload('pig-latin-converter.txt', piglatinEls.output.textContent || '');
+    });
+    piglatinEls.downloadCsv.addEventListener('click', () => {
+      // Reconvert to ensure fresh map
+      const opts = {
+        keepcaps: piglatinEls.keepcaps.checked,
+        keeppunct: piglatinEls.keeppunct.checked,
+        keepnums: piglatinEls.keepnums.checked,
+        skipshort: piglatinEls.skipshort.checked,
+        minlen: piglatinEls.minlen.value,
+        style: piglatinEls.style.value,
+        yvowel: piglatinEls.yvowel.value,
+        stopwords: piglatinEls.stopwords.checked
+      };
+      const { map } = piglatinConvert(piglatinEls.input.value, opts);
+      piglatinDownloadCSV(map);
+    });
+    piglatinEls.downloadJson.addEventListener('click', () => {
+      const opts = {
+        keepcaps: piglatinEls.keepcaps.checked,
+        keeppunct: piglatinEls.keeppunct.checked,
+        keepnums: piglatinEls.keepnums.checked,
+        skipshort: piglatinEls.skipshort.checked,
+        minlen: piglatinEls.minlen.value,
+        style: piglatinEls.style.value,
+        yvowel: piglatinEls.yvowel.value,
+        stopwords: piglatinEls.stopwords.checked
+      };
+      const { converted, map } = piglatinConvert(piglatinEls.input.value, opts);
+      piglatinDownloadJSON(map, converted);
+    });
+
+    // Import
+    piglatinEls.importBtn.addEventListener('click', () => piglatinEls.file.click());
+    piglatinEls.file.addEventListener('change', async e => {
+      const f = e.target.files?.[0];
+      if (!f) return;
+      const text = await f.text();
+      piglatinEls.input.value = text;
+      piglatinDoConvert();
+    });
+
+    // Share
+    piglatinEls.share.addEventListener('click', piglatinEncodeState);
+
+    // Reduced motion toggle
+    piglatinEls.reduced.addEventListener('change', () => {
+      document.documentElement.style.scrollBehavior = piglatinEls.reduced.checked ? 'auto' : 'smooth';
+    });
+
+    // Init from URL, and first render
+    piglatinDecodeState();
+    piglatinDoConvert();
+  </script>
+</body>
+</html>

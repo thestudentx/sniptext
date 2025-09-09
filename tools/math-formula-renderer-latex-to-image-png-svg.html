@@ -150,9 +150,6 @@
   }
   html,body{background:var(--color-bg-dark); color:var(--color-text); font-family:var(--font-body); margin:0}
 
-  .tools-grid { margin: 1rem 0; }
-.tool-card {background: var(--color-bg-dark);}
-
   /* Page wrapper with aurora */
   .mathx-page{position:relative; max-width:var(--maxw); margin:clamp(16px,3vw,40px) auto; padding:clamp(12px,2.5vw,24px); isolation:isolate;}
   .mathx-page::before{
@@ -277,11 +274,11 @@
     @keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)}}
   }
 
-  /* Helper link */
-  .mathx-guide{width:100%; text-align:center; font-size:12px; color:#a3aed0; margin-top:8px;}
-  .mathx-blog-link{color:var(--color-accent); text-decoration: underline;}
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
   </style>
-
   <!-- MathJax config -->
   <script>
     window.MathJax = {
@@ -432,9 +429,10 @@ e^{i\\pi}+1=0
       <div id="mx-batch-list" class="mathx-items" style="display:none;"></div>
     </section>
 
-    <div class="mathx-guide">
-      <p>Need LaTeX basics or quick symbols Cheat Sheet? Read our blog guide <a class="mathx-blog-link" href="/blog/math-formula-renderer-latex-to-image-with-math-png-svg-sniptext-blog.html">here</a>.</p>
+    <div class="free-tools-guide">
+      <p>Need LaTeX basics or quick symbols Cheat Sheet? Read our blog guide <a class="free-tools-blog-link" href="/blog/math-formula-renderer-latex-to-image-with-math-png-svg-sniptext-blog.html">here</a>.</p>
     </div>
+  </main>
 
 
     <!-- TOOLS GRID -->
@@ -493,7 +491,6 @@ e^{i\\pi}+1=0
     </article>
 
   </section>
-  </main>
 
   <div class="mathx-toast" id="mx-toast" role="status" aria-live="polite"></div>
 

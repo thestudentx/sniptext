@@ -601,3 +601,37 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+
+// Filter Pills Functionality (Added separately for clarity)
+document.addEventListener("DOMContentLoaded", () => {
+  const pills = document.querySelectorAll(".filter-pill");
+  const articles = document.querySelectorAll(".article-card");
+
+  pills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      // update active pill
+      pills.forEach(p => {
+        p.classList.remove("is-active");
+        p.setAttribute("aria-pressed", "false");
+      });
+      pill.classList.add("is-active");
+      pill.setAttribute("aria-pressed", "true");
+
+      // get filter category
+      const filter = pill.getAttribute("data-filter");
+
+      // filter articles
+      articles.forEach(article => {
+        if (filter === "all" || article.dataset.cat.includes(filter)) {
+          article.style.display = "";
+        } else {
+          article.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // mark the initial active pill for screen readers
+  const active = document.querySelector(".filter-pill.is-active");
+  if (active) active.setAttribute("aria-pressed", "true");
+});
