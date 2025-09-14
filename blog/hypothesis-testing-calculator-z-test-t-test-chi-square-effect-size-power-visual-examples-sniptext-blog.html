@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/blog/" />
+
+  <!-- Primary SEO -->
+  <title>Hypothesis Testing Calculator Guide: Z test, T test, Chi square with effect sizes, power and examples | SnipText Blog</title>
+  <meta name="description" content="Learn how to run Z tests, T tests and Chi square tests correctly with effect sizes, quick power checks and visual intuition. This guide explains one sample, two sample, paired and proportions tests with examples and links to the free Hypothesis Testing Calculator." />
+  <meta name="author" content="Ayaan Mir" />
+
+  <!-- Indexing -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/blog/hypothesis-testing-calculator-z-test-t-test-chi-square-effect-size-power-visual-examples-sniptext-blog" />
+  <link rel="alternate" href="https://checkai.pro/blog/hypothesis-testing-calculator-z-test-t-test-chi-square-effect-size-power-visual-examples-sniptext-blog" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/hypothesis-testing-calculator-z-test-t-test-chi-square-effect-size-power-visual-examples-sniptext-blog" hreflang="x-default" />
+
+  <!-- Open Graph (article) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SnipText Blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hypothesis Testing Calculator Guide: Z test, T test, Chi square" />
+  <meta property="og:description" content="Run Z, T and Chi square tests with confidence. Learn when to use each test, how to read p values, how to report effect sizes and how to sanity check power. Includes a free browser based calculator and worked examples." />
+  <meta property="og:url" content="https://checkai.pro/blog/hypothesis-testing-calculator-z-test-t-test-chi-square-effect-size-power-visual-examples-sniptext-blog" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText hypothesis testing guide with bell curve and critical regions" />
+  <meta property="article:section" content="Tools & Workflow" />
+  <meta property="article:published_time" content="2025-09-13T00:00:00+05:00" />
+  <meta property="article:modified_time" content="2025-09-13T00:00:00+05:00" />
+  <meta property="og:updated_time" content="2025-09-13T00:00:00+05:00" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <!-- Favicon: Blog Pages (Square Blue + White Book Icon) -->
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='SnipText Blog Icon'>
+  <rect x='0' y='0' width='100' height='100' fill='%231D4ED8'/>
+  <path d='M20 25h25v50H20z M55 25h25v50H55z' fill='%23ffffff'/>
+</svg>" />
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/hypothesis-testing-calculator-z-test-t-test-chi-square-effect-size-power-visual-examples-sniptext-blog"},
+    "headline":"Hypothesis Testing Calculator Guide: Z test, T test, Chi square with effect sizes, power and examples",
+    "description":"Understand Z, T and Chi square tests with clear rules, examples and visual intuition. Use the free SnipText Hypothesis Testing Calculator to compute p values, critical values, and effect sizes with quick power checks.",
+    "image":{"@type":"ImageObject","url":"https://checkai.pro/images/sniptext-blog-default-image","width":1200,"height":630},
+    "author":{"@type":"Person","name":"Ayaan Mir"},
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}},
+    "inLanguage":"en",
+    "isAccessibleForFree": true,
+    "articleSection":"Tools & Workflow",
+    "datePublished":"2025-09-13T00:00:00+05:00",
+    "dateModified":"2025-09-13T00:00:00+05:00",
+    "keywords":[
+      "hypothesis testing calculator",
+      "z test",
+      "t test",
+      "chi square test",
+      "p value",
+      "effect size",
+      "Cohen d",
+      "Cramers V",
+      "power analysis",
+      "Welch t test",
+      "paired t test",
+      "two sample proportion test",
+      "statistics guide",
+      "SnipText tools"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog"},
+      {"@type":"ListItem","position":3,"name":"Hypothesis Testing Calculator Guide","item":"https://checkai.pro/blog/hypothesis-testing-calculator-z-test-t-test-chi-square-effect-size-power-visual-examples-sniptext-blog"}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"When should I use a Z test vs a T test","acceptedAnswer":{"@type":"Answer","text":"Use a Z test when population standard deviation is known or n is large and conditions hold. Use a T test when σ is unknown and you estimate with sample sd. For two groups with unequal variances use Welch t."}},
+      {"@type":"Question","name":"What is the difference between p value and effect size","acceptedAnswer":{"@type":"Answer","text":"The p value tells you how extreme your statistic is under H0. Effect size, such as Cohen d or Cramers V, tells you how large the difference or association is. Report both for practical meaning."}},
+      {"@type":"Question","name":"How do I run a quick power check","acceptedAnswer":{"@type":"Answer","text":"Estimate the smallest meaningful effect and sample size. The calculator provides a quick power number so you can see if your design has a reasonable chance to detect that effect."}}
+    ]
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/index.html" class="brand-link">SnipText</a>
+      </div>
+      <div class="nav-menu">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/blog/blog.html" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="blog-hero-content">
+          <h1 class="hero-title">Hypothesis Testing Calculator - Z test, T test, Chi square</h1>
+          <p class="hero-subtitle">
+            Stop guessing which test to run. This practical guide explains Z, T and Chi square step by step with clean examples, effect sizes and visual intuition. It pairs with our free browser based calculator that is private and fast.
+          </p>
+          <div class="hero-cta">
+            <a href="/tools/hypothesis-testing-calculator.html" class="cta-button">Open the Hypothesis Calculator</a>
+            <a href="#examples" class="cta-button" style="--variant:ghost">See Examples</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+      <div class="container">
+        <article class="article-card featured">
+          <div class="article-meta">
+            <span class="article-category">Tools & Workflow</span>
+            <time datetime="2025-09-13" class="article-date">September 13, 2025</time>
+          </div>
+
+          <h2 class="article-title">How to choose and report Z, T and Chi square correctly</h2>
+
+          <p class="article-excerpt">A clear route from question to test selection to reporting. Learn when to use each test, how to frame H0 and H1, how to compute p values and critical values, and how to add effect sizes that make results understandable.</p>
+
+          <div class="article-content">
+            <div class="drop-cap-paragraph">
+              <span class="drop-cap">H</span>ypothesis testing turns a research question into a numeric decision. The SnipText <strong>Hypothesis Testing Calculator</strong> runs Z tests, T tests and Chi square tests on your device and explains the steps. You choose the tails, set alpha, paste numbers or a contingency table, and get statistic, p value, critical value, effect size and a quick power check. Try it on the <a href="/tools/hypothesis-testing-calculator.html">tool page</a>.
+            </div>
+
+            <!-- Helper links to related tools -->
+            <p><strong>Helpful tools for data work and reporting:</strong>
+              <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+              <a href="/tools/math-formula-renderer-latex-to-image-png-svg.html">Math Formula Renderer</a>,
+              <a href="/tools/word-counter.html">Word & Character Counter</a>,
+              <a href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html">Random Synonym Finder</a>,
+              <a href="/tools/unit-converter-physics-chemistry-time-length-temprature.html">Unit Converter</a>,
+              <a href="/blog/bibtex-to-citation-converter-apa-mla-chicago-ieee-harvard-sniptext-blog.html">Citation formatting guide</a>.
+            </p>
+
+            <nav class="article-toc" aria-label="Quick navigation">
+              <strong>In this guide:</strong>
+              <ul>
+                <li><a href="#what">What this calculator does</a></li>
+                <li><a href="#why">Why hypothesis testing matters</a></li>
+                <li><a href="#choose">How to choose the right test</a></li>
+                <li><a href="#report">How to report results with effect sizes</a></li>
+                <li><a href="#examples">Worked examples</a></li>
+                <li><a href="#insights">Educational insights</a></li>
+                <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </nav>
+
+            <h3 id="what">What this calculator does</h3>
+            <ul>
+              <li><strong>Z tests:</strong> one sample mean with known sigma, two sample means with known sigmas, one sample and two sample proportions.</li>
+              <li><strong>T tests:</strong> one sample, two independent with Welch or pooled option, paired samples.</li>
+              <li><strong>Chi square:</strong> goodness of fit and independence with Cramers V.</li>
+              <li><strong>Explainers:</strong> shows formulas, steps and a small distribution chart with critical regions.</li>
+              <li><strong>Power hint:</strong> a quick power value helps you judge if n is in the right ballpark.</li>
+              <li><strong>Private:</strong> it runs locally so your data stays on your device.</li>
+            </ul>
+
+            <h3 id="why">Why hypothesis testing matters</h3>
+            <p>Without a structured test you risk chasing noise. Hypothesis testing forces you to define H0 and H1, select a defensible alpha and quantify how extreme your data is under H0. When paired with effect size and a short power check, you balance statistical significance with practical significance.</p>
+
+            <h3 id="choose">How to choose the right test</h3>
+            <ol>
+              <li><strong>Type of outcome:</strong> numeric average or proportion leads to Z or T. Categorical counts lead to Chi square.</li>
+              <li><strong>Groups:</strong> one sample, two independent or paired.</li>
+              <li><strong>Variance knowledge:</strong> if sigma is known or n is very large with good conditions, Z is acceptable. Otherwise use T.</li>
+              <li><strong>Variance equality:</strong> for two independent means use Welch by default unless equal variances are justified.</li>
+              <li><strong>Tails:</strong> use two tailed when you care about any difference. Use one tailed only when a direction is justified in advance.</li>
+            </ol>
+
+            <h3 id="report">How to report results with effect sizes</h3>
+            <p>Always include the test statistic, degrees of freedom if relevant, p value, effect size and a confidence interval if available. Clear reporting helps readers understand both statistical and practical meaning.</p>
+            <ul>
+              <li><strong>Means:</strong> report Cohen d or Hedges g with a short interpretation like small, medium or large.</li>
+              <li><strong>Proportions:</strong> consider Cohen h or the raw difference with a confidence interval.</li>
+              <li><strong>Tables:</strong> report Phi or Cramers V for Chi square results.</li>
+            </ul>
+
+            <h3 id="examples">Worked examples</h3>
+            <ul>
+              <li><strong>One sample t:</strong> x̄ = 5.4, μ₀ = 5, s = 1.2, n = 40, two tailed, α = 0.05. The calculator gives t, p, critical t, Cohen d and Hedges g, with a visual marker on the curve.</li>
+              <li><strong>Two proportions z:</strong> x₁ = 45 of 100 vs x₂ = 30 of 100, right tailed. You get z, p, pooled p, Cohen h and a quick power check.</li>
+              <li><strong>Chi square independence:</strong> paste a 3 by 2 table like 12,8 | 14,6 | 9,11. You get χ², df, p, critical χ² and Cramers V.</li>
+            </ul>
+
+            <h3 id="insights">Educational insights</h3>
+            <ul>
+              <li><strong>Alpha is a design choice:</strong> set it before seeing the data. 0.05 is common but not sacred.</li>
+              <li><strong>p values are not the probability H0 is true:</strong> they measure extremeness under H0, not belief.</li>
+              <li><strong>Effect sizes travel better than p values:</strong> they are unit free and easier to compare across studies.</li>
+              <li><strong>Power depends on meaningful effect:</strong> define the smallest effect worth detecting before collecting data.</li>
+              <li><strong>Assumptions matter:</strong> check independence and rough normality for means, and expected counts for Chi square.</li>
+            </ul>
+
+            <h3 id="try">Try it now</h3>
+            <p>
+              Open the calculator, run a test, and copy the result block into your report:
+              <a href="/tools/hypothesis-testing-calculator.html">Go to Hypothesis Testing Calculator</a>.
+              Format your tables with the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a> and render equations with the
+              <a href="/tools/math-formula-renderer-latex-to-image-png-svg.html">Math Formula Renderer</a>.
+            </p>
+          </div>
+
+          
+
+        <h2 class="article-title">Frequently asked questions</h2>
+        <dl class="faq grammar-faq" id="grammar-faq">
+          <dt tabindex="0" aria-expanded="false">Are Welch and pooled t both available</dt>
+          <dd class="hidden">Yes. Welch is the default since it does not assume equal variances. Choose pooled only if you have a clear justification.</dd>
+
+          <dt tabindex="0" aria-expanded="false">What if my expected cell count is below 5</dt>
+          <dd class="hidden">For Chi square independence, low expected counts can inflate Type I error. Combine sparse categories or use an exact test. The calculator warns if a cell has zero expected.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Can I share my results</dt>
+          <dd class="hidden">Yes. Use the share link in the calculator to copy a permalink with your inputs. You can also copy the result block or export CSV.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Is my data uploaded anywhere</dt>
+          <dd class="hidden">No. All calculations run in your browser for speed and privacy.</dd>
+        </dl>
+
+          <div class="article-footer">
+            <div class="article-tags">
+              <span class="tag">Statistics</span>
+              <span class="tag">Hypothesis Testing</span>
+              <span class="tag">Z test</span>
+              <span class="tag">T test</span>
+              <span class="tag">Chi square</span>
+            </div>
+            <div class="article-share">
+              <span class="share-text">Share:</span>
+              <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+              <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+              <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="articles-section">
+      <div class="container">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="articles-grid">
+
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Writing Tools</span>
+    <time datetime="2025-09-12" class="article-date">September 12, 2025</time>
+  </div>
+  <h3 class="article-title">Readability Score Checker Guide - Flesch Kincaid, Gunning Fog, SMOG</h3>
+  <p class="article-excerpt">
+    Understand how readability scores work and when to use each one. Learn to cut grade level, highlight hard sentences, spot passive voice, and export quick reports. Private and in your browser.
+  </p>
+  <a href="/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog.html" class="read-more">Read More</a>
+</article>
+
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Security Tools</span>
+    <time datetime="2025-09-12" class="article-date">September 12, 2025</time>
+  </div>
+  <h3 class="article-title">Hash Generator Guide - MD5, SHA1, SHA256</h3>
+  <p class="article-excerpt">
+    Learn how to generate and verify MD5, SHA1, and SHA256 hashes. Includes HMAC for authenticity, salting for password safety, and checksum verification for file downloads. Runs privately in your browser.
+  </p>
+  <a href="/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog.html" class="read-more">Read More</a>
+</article>
+
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Workflow Tools</span>
+    <time datetime="2025-09-11" class="article-date">September 11, 2025</time>
+  </div>
+  <h3 class="article-title">Age and Birthday Calculator Guide: Exact Age, Next Birthday, Working Days</h3>
+  <p class="article-excerpt">
+    Learn how to calculate exact age in years, months, days, hours and seconds, get a live countdown to your next birthday, and compare any two dates with optional working day counts. Includes leap day rules, zodiac view, and a fun age on planets panel.
+  </p>
+  <a href="/blog/age-birthday-calculator-exact-age-next-birthday-date-difference-working-days-zodiac-planets-sniptext-blog.html" class="read-more">Read More</a>
+</article>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-content">
+          <h2 class="section-title">About This Blog</h2>
+          <p class="about-text">
+            SnipText Blog covers clear methods for data analysis, writing and academic planning. Our posts pair plain language explanations with private by design tools like the
+            <a href="/tools/hypothesis-testing-calculator.html"><strong>Hypothesis Testing Calculator</strong></a>,
+            <a href="/tools/quick-table-generator-csv-to-html-table-code.html"><strong>Quick Table Generator</strong></a>,
+            <a href="/tools/math-formula-renderer-latex-to-image-png-svg.html"><strong>Math Formula Renderer</strong></a>,
+            <a href="/tools/word-counter.html"><strong>Word & Character Counter</strong></a>,
+            and the <a href="/tools/timeline-maker-academic-timeline.html"><strong>Timeline Maker</strong></a>.
+          </p>
+          <p class="about-text">
+            If you need more automation or team features, explore our paid plans on the main site. They unlock presets, export packs and faster workflows for labs and classrooms.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Author Bio Card -->
+  <aside class="author-bio" id="author-bio">
+    <div class="container">
+      <div class="bio-card">
+        <div class="bio-avatar">
+          <div class="avatar-placeholder">AM</div>
+        </div>
+        <div class="bio-content">
+          <h3 class="bio-name">Ayaan Mir</h3>
+          <p class="bio-title">Data Methods Writer</p>
+          <p class="bio-description">
+            Ayaan explains statistics without jargon. At SnipText he collaborates with the tool team to validate calculators, write examples and cross link guides so readers can move from concept to result with confidence.
+          </p>
+          <div class="bio-links">
+            <a href="/blog/blog.html" class="bio-link">All Posts</a>
+            <a href="/tools/free-tools.html" class="bio-link">Free Tools</a>
+            <a href="/contact.html" class="bio-link">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="footer-title">SnipText</h4>
+          <p class="footer-text">Practical tools for clean analysis, fast writing and better planning.</p>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="/blog/blog.html">Articles</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Connect</h4>
+          <ul class="footer-links">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SnipText. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <span class="back-to-top-icon">↑</span>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="/blog/js/sniptext-blog.js"></script>
+
+  <!-- Accessible FAQ toggle (kept; uses existing ID) -->
+  <script>
+    (function () {
+      const faq = document.getElementById('grammar-faq');
+      if (!faq) return;
+      const dts = faq.querySelectorAll('dt');
+
+      dts.forEach(dt => {
+        const dd = dt.nextElementSibling;
+        if (dd && !dd.id) dd.id = 'faq-' + Math.random().toString(36).slice(2,9);
+
+        dt.setAttribute('role', 'button');
+        dt.setAttribute('aria-controls', dd ? dd.id : '');
+        dt.setAttribute('tabindex', '0');
+
+        const toggle = () => {
+          const isOpen = dt.classList.toggle('open');
+          if (dd) {
+            dd.classList.toggle('hidden', !isOpen);
+            dt.setAttribute('aria-expanded', String(isOpen));
+          }
+        };
+
+        dt.addEventListener('click', toggle);
+        dt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

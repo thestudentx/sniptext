@@ -1,0 +1,1169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Analytics (kept like reference) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config', 'G-GE98V48RK8');
+  </script>
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Random Number and Name Picker | SnipText</title>
+  <meta name="description" content="Free Random Picker by SnipText. Pick names or numbers fairly with no repeats, weights, seeding, teams, and history. Fast, elegant, privacy friendly.">
+  <meta name="keywords" content="random picker, name picker, number picker, raffle picker, classroom picker, team generator, weighted random, seed random">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/random-picker">
+  <link rel="alternate" href="https://checkai.pro/tools/random-picker" hreflang="en">
+  <link rel="alternate" href="https://checkai.pro/tools/random-picker" hreflang="x-default">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/tools/css/free-tools.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SnipText">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Random Number and Name Picker">
+  <meta property="og:description" content="Pick winners fairly with history, weights, and seeding.">
+  <meta property="og:url" content="https://checkai.pro/tools/random-picker">
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png">
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SnipText tool preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Random Number and Name Picker">
+  <meta name="twitter:description" content="Free, fast, privacy friendly random picker for games, raffles, and classrooms.">
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png">
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.png" type="image/png"><!-- keep favicon same -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Random Picker",
+    "url":"https://checkai.pro/tools/random-picker",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "featureList":["Name picker","Number picker","No repeats","Weights","Seeded draws","Team generator","History export"],
+    "screenshot":"https://checkai.pro/images/sniptext-default-tools-img.png",
+    "publisher":{"@type":"Organization","name":"Snip Text","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}}
+  }
+  </script>
+
+  <!-- Styles: dark theme with brand colors. Variable names include picker -->
+  <style>
+    :root{
+      /* brand palette from user */
+      --color-primary: #1D4ED8;
+      --color-accent:  #3B82F6;
+      --color-bg-light:#F3F4F6;
+      --color-bg-dark: #0F172A;
+      --color-white:   #ffffff;
+      --color-text-dark:#1F2937;
+      --color-text-light:#6B7280;
+      --color-border:  #E5E7EB;
+      --color-used-often:#e85d27;
+      --color-footer-bg:#1d1f2f;
+      --gradient-hero-end:#23253d;
+      --gradient-cta-start:#3B82F6;
+      --gradient-cta-end:#ff7c4c;
+      --font-heading:'Poppins','Segoe UI',system-ui,sans-serif;
+      --font-body:'Roboto','Arial',system-ui,sans-serif;
+
+      /* picker scoped tokens */
+      --picker-bg: var(--color-bg-dark);
+      --picker-bg-soft:#0c1329;
+      --picker-surface: rgba(255,255,255,0.06);
+      --picker-surface-2: rgba(255,255,255,0.08);
+      --picker-text: #e8eefc;
+      --picker-text-muted: #b8c3e0;
+      --picker-border: rgba(255,255,255,0.14);
+      --picker-primary: var(--color-primary);
+      --picker-accent: var(--color-accent);
+      --picker-warm: var(--color-used-often);
+      --picker-ok:#16a34a;
+      --picker-bad:#ef4444;
+      --picker-radius-xl:18px;
+      --picker-radius-lg:14px;
+      --picker-radius-md:10px;
+      --picker-shadow-1: 0 10px 30px rgba(0,0,0,.35);
+      --picker-shadow-2: 0 18px 46px rgba(2,6,23,.55);
+      --picker-maxw: 1200px;
+    }
+
+    /* page background with gradient mix ups */
+    html, body{
+      height:100%;
+      margin:0;
+      color:var(--picker-text);
+      background:
+        radial-gradient(1200px 600px at 8% -10%, color-mix(in oklab, var(--picker-primary) 28%, transparent), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--picker-accent) 22%, transparent), transparent 50%),
+        radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--gradient-cta-end) 10%, transparent), transparent 55%),
+        linear-gradient(180deg, var(--picker-bg) 0%, var(--picker-bg-soft) 100%);
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+      font-family: var(--font-body);
+      background-attachment: fixed;
+    }
+
+    .picker-page{
+      max-width: var(--picker-maxw);
+      margin: clamp(16px,3vw,40px) auto;
+      padding: clamp(12px,2.5vw,24px);
+    }
+
+    .picker-hero{
+      position:relative;
+      padding: clamp(18px,3vw,28px);
+      border:1px solid var(--picker-border);
+      border-radius: var(--picker-radius-xl);
+      box-shadow: var(--picker-shadow-1);
+      background:
+        linear-gradient(135deg,
+          color-mix(in oklab, var(--picker-primary) 22%, transparent),
+          color-mix(in oklab, var(--picker-accent) 18%, transparent)
+        );
+      overflow:hidden; isolation:isolate;
+    }
+    .picker-hero::after{
+      content:""; position:absolute; inset:-2px; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(600px 220px at 20% -5%, color-mix(in oklab, var(--picker-primary) 28%, transparent), transparent 65%),
+        radial-gradient(420px 260px at 85% 0%,  color-mix(in oklab, var(--picker-accent) 26%, transparent), transparent 60%);
+      filter: blur(16px); opacity:.55;
+    }
+    .picker-title{
+      margin:0 0 6px 0; font:700 clamp(22px,3.2vw,36px)/1.15 var(--font-heading); letter-spacing:.2px;
+      background:linear-gradient(90deg,#fff,
+        color-mix(in oklab, var(--picker-accent) 55%, #fff) 38%,
+        color-mix(in oklab, var(--gradient-cta-end) 40%, #fff) 78%,#fff);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .picker-sub{ margin:6px 0 0 0; color:var(--picker-text-muted); font-size:clamp(14px,1.8vw,16px); }
+
+    .picker-grid{
+      display:grid; gap: clamp(12px,2.4vw,20px); margin-top: clamp(14px,2.6vw,24px);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 1000px){ .picker-grid{ grid-template-columns: 1fr 1fr; } }
+
+    .picker-card{
+      border:1px solid var(--picker-border);
+      border-radius: var(--picker-radius-lg);
+      background: var(--picker-surface);
+      box-shadow: var(--picker-shadow-2);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .picker-card-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px 14px; border-bottom:1px solid var(--picker-border);
+      background: linear-gradient(90deg,
+        color-mix(in oklab, var(--picker-primary) 12%, transparent),
+        color-mix(in oklab, var(--picker-accent) 10%, transparent)
+      );
+    }
+    .picker-card-title{ margin:0; font:600 14px var(--font-heading); letter-spacing:.35px; text-transform:uppercase; opacity:.9; }
+
+    .picker-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .picker-spacer{ flex:1 1 auto; }
+
+    .picker-textarea{
+      width:100%; min-height: 220px; resize: vertical; border:0; outline:0; background:transparent;
+      color:var(--picker-text); padding:16px; font:500 15px/1.55 var(--font-body); caret-color: var(--picker-accent);
+    }
+    .picker-textarea::placeholder{ color: color-mix(in oklab, var(--picker-text-muted) 80%, transparent); }
+
+    .picker-toolbar{
+      display:flex; flex-wrap:wrap; gap:8px; padding: 12px 14px; border-top:1px solid var(--picker-border);
+      background: linear-gradient(90deg,
+        color-mix(in oklab, var(--picker-accent) 10%, transparent),
+        color-mix(in oklab, var(--picker-primary) 12%, transparent)
+      );
+    }
+
+    .picker-btn{
+      --_bg: linear-gradient(180deg,
+               color-mix(in oklab, var(--picker-primary) 72%, transparent),
+               color-mix(in oklab, var(--picker-accent) 64%, transparent));
+      --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--picker-primary));
+      appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+      padding:10px 12px; border-radius:12px; font:700 13px var(--font-heading); letter-spacing:.3px; cursor:pointer;
+      transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+      box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+    }
+    .picker-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+    .picker-btn:active{ transform: translateY(0); filter: brightness(.98); }
+    .picker-btn-outline{ background:transparent; color:var(--picker-text); border:1px solid var(--picker-border); box-shadow:none; }
+    .picker-btn-ghost{ background:transparent; color:var(--picker-text-muted); border:1px dashed var(--picker-border); box-shadow:none; font-weight:600; }
+
+    .picker-chip{
+      padding:6px 8px; border:1px solid var(--picker-border); border-radius:999px;
+      background: color-mix(in oklab, var(--picker-bg) 72%, transparent);
+      color: var(--picker-text-muted); font-size:12px;
+    }
+
+    .picker-options{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; color:var(--picker-text-muted); font-size:13px; }
+    .picker-switch{ position:relative; display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none; }
+    .picker-switch input{ appearance:none; width:40px; height:22px; background:#0f1b34; border:1px solid var(--picker-border); border-radius:999px; position:relative; outline:0; transition: background .2s ease; }
+    .picker-switch input:checked{ background: linear-gradient(90deg, var(--picker-primary), var(--picker-accent)); border-color: transparent; }
+    .picker-switch input::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; transition: transform .2s ease; box-shadow: 0 3px 10px rgba(0,0,0,.25); }
+    .picker-switch input:checked::after{ transform: translateX(18px); }
+
+    .picker-stats{ display:flex; gap:10px; flex-wrap:wrap; padding: 10px 14px; border-top:1px solid var(--picker-border); color:var(--picker-text-muted); font-size:12px; background: linear-gradient(90deg, rgba(255,255,255,.03), transparent); }
+
+    .picker-candidates{
+      display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:8px; padding: 14px;
+    }
+    @media (min-width: 640px){ .picker-candidates{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    @media (min-width: 1100px){ .picker-candidates{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
+
+    .picker-pill{
+      background: var(--picker-surface-2);
+      border:1px solid var(--picker-border);
+      padding:10px 12px;
+      border-radius:12px;
+      display:flex; align-items:center; gap:8px; min-height:44px;
+      transition: transform .12s ease, box-shadow .2s ease, background .25s ease, border-color .2s ease;
+      cursor:default;
+    }
+    .picker-pill:hover{ transform: translateY(-1px); box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+    .picker-pill[data-active="true"]{
+      background: linear-gradient(180deg, color-mix(in oklab, var(--picker-primary) 24%, transparent), color-mix(in oklab, var(--picker-accent) 16%, transparent));
+      border-color: color-mix(in oklab, var(--picker-primary) 40%, var(--picker-accent));
+      box-shadow: 0 10px 26px rgba(30,58,138,.45);
+    }
+    .picker-index{ font:700 12px var(--font-heading); color:#c7d2fe; opacity:.9; }
+    .picker-name{ font:600 14px var(--font-body); letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+    .picker-result{
+      padding: 18px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+      border-top:1px solid var(--picker-border);
+    }
+    .picker-result-text{
+      font:700 clamp(18px,2.2vw,24px) var(--font-heading);
+      background:linear-gradient(90deg,#fff, color-mix(in oklab, var(--picker-accent) 55%, #fff) 60%, #fff);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .picker-result-sub{ color:var(--picker-text-muted); font-size:13px; }
+
+    .picker-result-badge{
+      padding:8px 12px; border-radius:999px; border:1px solid var(--picker-border); background:color-mix(in oklab, var(--picker-bg) 72%, transparent);
+      font:700 12px var(--font-heading); letter-spacing:.2px; color:#dbeafe;
+    }
+
+    .picker-toast{
+      position: fixed; inset: auto 16px 16px auto;
+      background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--picker-border);
+      backdrop-filter: blur(8px); box-shadow: var(--picker-shadow-1);
+      transform: translateY(20px); opacity:0; pointer-events:none;
+      transition: transform .25s ease, opacity .25s ease;
+      z-index: 60;
+    }
+    .picker-toast.show{ transform: translateY(0); opacity:1; }
+
+    .picker-flex{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .picker-input, .picker-number{
+      background: #0f1b34; border:1px solid var(--picker-border); color:var(--picker-text);
+      border-radius:10px; padding:10px 12px; outline:0; min-width: 0;
+      transition: border-color .2s ease, box-shadow .2s ease;
+      font:500 14px var(--font-body);
+    }
+    .picker-input::placeholder{ color:#93a2c9; }
+    .picker-number{ width:110px; }
+    .picker-input:focus, .picker-number:focus{
+      border-color: color-mix(in oklab, var(--picker-primary) 55%, var(--picker-accent));
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--picker-primary) 20%, transparent);
+    }
+
+    .picker-mini{
+      display:grid; gap:8px; grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    @media (min-width: 680px){ .picker-mini{ grid-template-columns: repeat(4, minmax(0,1fr)); } }
+
+    .picker-badge{ font:700 11px var(--font-heading); padding:6px 8px; border-radius:999px; border:1px solid var(--picker-border); background:rgba(255,255,255,.06); color:#cbd5e1; }
+
+    /* subtle float for cards */
+    @media (prefers-reduced-motion:no-preference){
+      .picker-card{ animation: picker-float 18s ease-in-out infinite; }
+      @keyframes picker-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+    }
+
+    /* focus rings */
+    :focus-visible{ outline:2px solid color-mix(in oklab, var(--picker-primary) 40%, var(--picker-accent)); outline-offset:2px; border-radius:10px; }
+
+    /* confetti canvas */
+    #picker-confetti{ position: fixed; inset:0; pointer-events:none; z-index: 55; }
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+<body>
+
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+  
+
+
+  
+
+
+  <canvas id="picker-confetti" aria-hidden="true"></canvas>
+
+  <main class="picker-page" aria-label="Random Picker">
+    <!-- Hero -->
+    <section class="picker-hero">
+      <h1 class="picker-title">Random Number and Name Picker</h1>
+      <p class="picker-sub">Pick winners fairly for games, raffles, and classrooms. Add names or choose a number range, then press Pick. You can avoid repeats, use weights, split teams, seed draws, and export history.</p>
+    </section>
+
+    <!-- Grid -->
+    <section class="picker-grid" id="picker-layout">
+      <!-- Left: Data entry -->
+      <article class="picker-card" aria-labelledby="picker-input-title">
+        <header class="picker-card-head">
+          <h2 class="picker-card-title" id="picker-input-title">Entries</h2>
+          <div class="picker-row">
+            <button class="picker-btn picker-btn-outline" id="picker-paste" type="button" title="Paste">Paste</button>
+            <button class="picker-btn picker-btn-ghost" id="picker-clear" type="button" title="Clear">Clear</button>
+          </div>
+        </header>
+
+        <div style="padding:14px">
+          <div class="picker-flex" style="margin-bottom:10px">
+            <label class="picker-switch" title="Switch between Name mode and Number mode">
+              <input id="picker-mode" type="checkbox" aria-label="Toggle number mode">
+              <span>Number mode</span>
+            </label>
+
+            <span class="picker-spacer"></span>
+
+            <div class="picker-flex" role="group" aria-label="Quick tools">
+              <button class="picker-btn picker-btn-outline" id="picker-dedupe" type="button">Dedupe</button>
+              <button class="picker-btn picker-btn-outline" id="picker-trim" type="button">Trim</button>
+              <label for="picker-file" class="picker-btn picker-btn-outline" title="Import .txt or .csv">Import</label>
+              <input id="picker-file" type="file" accept=".txt,.csv" hidden>
+              <button class="picker-btn picker-btn-outline" id="picker-export" type="button" title="Export entries">Export</button>
+            </div>
+          </div>
+
+          <!-- Name mode input -->
+          <textarea id="picker-input" class="picker-textarea" placeholder="Enter names, one per line. You can add optional weights after a colon, like:
+Alice:3
+Bob:1
+Charlie:2
+"></textarea>
+
+          <!-- Number mode controls -->
+          <div id="picker-number-panel" class="picker-mini" style="margin-top:12px; display:none">
+            <div>
+              <label for="picker-min" class="picker-badge">Min</label>
+              <input id="picker-min" type="number" class="picker-number" value="1" aria-label="Minimum number">
+            </div>
+            <div>
+              <label for="picker-max" class="picker-badge">Max</label>
+              <input id="picker-max" type="number" class="picker-number" value="100" aria-label="Maximum number">
+            </div>
+            <div>
+              <label for="picker-count" class="picker-badge">Draw count</label>
+              <input id="picker-count" type="number" class="picker-number" value="1" min="1" aria-label="How many numbers to draw">
+            </div>
+            <div>
+              <label for="picker-exclude" class="picker-badge">Exclude (comma)</label>
+              <input id="picker-exclude" type="text" class="picker-input" placeholder="5, 9, 42" aria-label="Numbers to exclude">
+            </div>
+          </div>
+        </div>
+
+        <div class="picker-stats" id="picker-input-stats" aria-live="polite">
+          <span class="picker-chip" id="picker-entries-chip">Entries: 0</span>
+          <span class="picker-chip" id="picker-weights-chip">Total weight: 0</span>
+          <span class="picker-chip" title="Keyboard shortcut">Pick <span class="picker-badge">Enter</span></span>
+        </div>
+      </article>
+
+      <!-- Right: Candidates and result -->
+      <article class="picker-card" aria-labelledby="picker-output-title">
+        <header class="picker-card-head">
+          <h2 class="picker-card-title" id="picker-output-title">Picker</h2>
+          <div class="picker-row">
+            <button class="picker-btn" id="picker-pick" type="button" title="Pick a winner">Pick</button>
+            <button class="picker-btn picker-btn-outline" id="picker-undo" type="button" title="Undo last pick">Undo</button>
+            <button class="picker-btn picker-btn-ghost" id="picker-reset" type="button" title="Reset history and repeats">Reset</button>
+          </div>
+        </header>
+
+        <div class="picker-candidates" id="picker-candidates" aria-live="polite" aria-label="Candidate list">
+          <!-- Pills rendered here -->
+        </div>
+
+        <div class="picker-result" role="status" aria-live="assertive">
+          <div>
+            <div id="picker-result-text" class="picker-result-text">No pick yet</div>
+            <div id="picker-result-sub" class="picker-result-sub">Press Pick or hit Enter</div>
+          </div>
+          <div class="picker-flex">
+            <button id="picker-copy-result" class="picker-btn picker-btn-outline" type="button" title="Copy result">Copy</button>
+            <span id="picker-result-badge" class="picker-result-badge" hidden>Winner</span>
+          </div>
+        </div>
+
+        <div class="picker-toolbar">
+          <div class="picker-options" role="group" aria-label="Picker options">
+            <label class="picker-switch" title="Prevent picking the same winner again">
+              <input id="picker-no-repeat" type="checkbox" checked>
+              <span>No repeats</span>
+            </label>
+            <label class="picker-switch" title="Use weighted draws if weights are provided">
+              <input id="picker-use-weights" type="checkbox" checked>
+              <span>Use weights</span>
+            </label>
+            <label class="picker-switch" title="Use a custom seed for reproducible draws">
+              <input id="picker-use-seed" type="checkbox">
+              <span>Seeded</span>
+            </label>
+            <input id="picker-seed" class="picker-input" type="text" placeholder="Seed (text or number)" style="width:210px" aria-label="Seed value" disabled>
+          </div>
+
+          <span class="picker-spacer"></span>
+
+          <div class="picker-flex" role="group" aria-label="Extra actions">
+            <button class="picker-btn picker-btn-outline" id="picker-share" type="button" title="Share current state">Share</button>
+            <button class="picker-btn picker-btn-outline" id="picker-download-history" type="button" title="Download history CSV">History CSV</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Teams and history -->
+    <section class="picker-grid" style="margin-top:12px">
+      <article class="picker-card" aria-labelledby="picker-teams-title">
+        <header class="picker-card-head">
+          <h2 class="picker-card-title" id="picker-teams-title">Team generator</h2>
+          <div class="picker-row">
+            <input id="picker-team-count" class="picker-number" type="number" value="2" min="2" aria-label="Number of teams">
+            <button class="picker-btn" id="picker-make-teams" type="button">Make teams</button>
+            <button class="picker-btn picker-btn-outline" id="picker-copy-teams" type="button">Copy teams</button>
+          </div>
+        </header>
+        <div id="picker-teams" style="padding:14px">
+          <p class="picker-result-sub">Teams will appear here. We balance by weights if available.</p>
+        </div>
+      </article>
+
+      <article class="picker-card" aria-labelledby="picker-history-title">
+        <header class="picker-card-head">
+          <h2 class="picker-card-title" id="picker-history-title">History</h2>
+          <div class="picker-row">
+            <span class="picker-badge" id="picker-history-count">0 picks</span>
+            <button class="picker-btn picker-btn-outline" id="picker-clear-history" type="button">Clear history</button>
+          </div>
+        </header>
+        <div id="picker-history" style="padding:14px; display:grid; gap:8px;">
+          <!-- history rows -->
+        </div>
+      </article>
+    </section>
+
+    <!-- Quick guide -->
+    <section class="picker-card" style="margin-top:12px" aria-labelledby="picker-guide-title">
+      <header class="picker-card-head">
+        <h2 class="picker-card-title" id="picker-guide-title">Tips</h2>
+      </header>
+      <div style="padding:14px; display:grid; gap:10px">
+        <div class="picker-flex" style="gap:10px">
+          <span class="picker-badge">Weights</span>
+          <span class="picker-result-sub">Write as Name:weight on each line. Higher weight increases chance.</span>
+        </div>
+        <div class="picker-flex" style="gap:10px">
+          <span class="picker-badge">Seed</span>
+          <span class="picker-result-sub">Enable Seeded and enter any text to reproduce the same sequence for audits.</span>
+        </div>
+        <div class="picker-flex" style="gap:10px">
+          <span class="picker-badge">Shortcuts</span>
+          <span class="picker-result-sub">Enter to pick, Ctrl or Cmd Z to undo, Ctrl or Cmd C to copy winner.</span>
+        </div>
+      </div>
+    </section>
+
+      <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Random Name & Number Picker Guide on SnipText Blog Page <a href="/blog/random-number-name-picker-fair-draws-weights-seeding-no-repeat-teams-audit-trail-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+  </main>
+
+  <div id="picker-toast" class="picker-toast" role="status" aria-live="polite"></div>
+
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="svg-icon">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <h3 id="t10" class="card-title">Random Text Generator</h3>
+        <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+        <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+
+       <script src="/js/index.js"></script>
+       <script src="/js/auth.js"></script>
+       <script src="/tools/js/free-tools.js"></script>
+
+  <!-- Script -->
+  <script>
+  ;(()=>{
+
+    /* ---------- utilities ---------- */
+
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    const toast = (msg)=> {
+      const el = $('#picker-toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      window.clearTimeout(el._t);
+      el._t = setTimeout(()=>el.classList.remove('show'), 2000);
+    };
+
+    const downloadFile = (name, content, type='text/plain')=>{
+      const blob = new Blob([content], {type});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name; document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+    };
+
+    const parseCSV = (text)=>{
+      // simple csv split by newlines and commas or tabs
+      return text.split(/\r?\n/).flatMap(line=>{
+        const parts = line.split(/,|\t/).map(s=>s.trim()).filter(Boolean);
+        return parts;
+      });
+    };
+
+    /* ---------- seeded random ---------- */
+
+    function xmur3(str){
+      let h = 1779033703 ^ str.length;
+      for (let i=0; i<str.length; i++){
+        h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+        h = h << 13 | h >>> 19;
+      }
+      return ()=> {
+        h = Math.imul(h ^ (h>>>16), 2246822507);
+        h = Math.imul(h ^ (h>>>13), 3266489909);
+        return (h ^= h>>>16) >>> 0;
+      };
+    }
+    function mulberry32(a){ return function(){ let t = a += 0x6D2B79F5; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; } }
+
+    const rng = {
+      seeded: false,
+      seedText: '',
+      rand: Math.random,
+      setSeed(text){
+        this.seeded = !!text;
+        this.seedText = text || '';
+        if(!text){ this.rand = Math.random; return; }
+        const seedFn = xmur3(String(text));
+        this.rand = mulberry32(seedFn());
+      },
+      next(){ return this.rand(); },
+      choiceWeighted(items, weights){
+        const total = weights.reduce((a,b)=>a+b,0);
+        let r = this.next() * total;
+        for(let i=0;i<items.length;i++){
+          if((r -= weights[i]) < 0) return i;
+        }
+        return items.length - 1;
+      }
+    };
+
+    /* ---------- state ---------- */
+
+    const state = {
+      modeNumber: false,
+      entries: [],        // [{name, weight, id}]
+      pool: [],           // indices available for pick when no-repeat
+      picked: [],         // history [{value, ts}]
+      noRepeat: true,
+      useWeights: true,
+      usedIds: new Set(),
+    };
+
+    /* ---------- elements ---------- */
+
+    const elInput = $('#picker-input');
+    const elEntriesChip = $('#picker-entries-chip');
+    const elWeightsChip = $('#picker-weights-chip');
+    const elCandidates = $('#picker-candidates');
+    const elResultText = $('#picker-result-text');
+    const elResultSub = $('#picker-result-sub');
+    const elResultBadge = $('#picker-result-badge');
+    const elHistory = $('#picker-history');
+    const elHistoryCount = $('#picker-history-count');
+    const elTeams = $('#picker-teams');
+
+    /* ---------- render ---------- */
+
+    function renderStats(){
+      elEntriesChip.textContent = `Entries: ${state.entries.length}`;
+      const tw = state.entries.reduce((a,e)=>a+Number(e.weight||1),0);
+      elWeightsChip.textContent = `Total weight: ${tw}`;
+    }
+
+    function renderCandidates(highlightIndex = -1){
+      elCandidates.innerHTML = '';
+      state.entries.forEach((e, i)=>{
+        const pill = document.createElement('div');
+        pill.className = 'picker-pill';
+        pill.dataset.active = (i === highlightIndex);
+        pill.innerHTML = `
+          <span class="picker-index" aria-hidden="true">${i+1}</span>
+          <span class="picker-name" title="${e.name.replace(/"/g,'&quot;')}">${e.name}</span>
+          ${Number(e.weight||1) !== 1 ? `<span class="picker-badge" style="margin-left:auto">x${e.weight}</span>`:''}
+        `;
+        elCandidates.appendChild(pill);
+      });
+    }
+
+    function pushHistory(value){
+      const ts = new Date();
+      state.picked.unshift({value, ts});
+      elHistoryCount.textContent = `${state.picked.length} picks`;
+      const row = document.createElement('div');
+      row.className = 'picker-pill';
+      row.innerHTML = `
+        <span class="picker-badge" title="time">${ts.toLocaleTimeString()}</span>
+        <span class="picker-name" style="max-width:60%">${value}</span>
+        <button class="picker-btn picker-btn-ghost" style="margin-left:auto" title="Copy">Copy</button>
+      `;
+      row.querySelector('button').addEventListener('click',()=>navigator.clipboard.writeText(value).then(()=>toast('Copied')));
+      elHistory.prepend(row);
+    }
+
+    function resetHistory(){
+      state.picked = [];
+      elHistoryCount.textContent = `0 picks`;
+      elHistory.innerHTML = '';
+    }
+
+    /* ---------- parsing entries ---------- */
+
+    function parseTextToEntries(text){
+      const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+      const out = [];
+      let idCounter = 0;
+      for(const line of lines){
+        const m = line.match(/^(.+?)(?::\s*([0-9]+(?:\.[0-9]+)?))?$/);
+        if(!m) continue;
+        const name = m[1].trim();
+        const weight = m[2] ? Math.max(0, Number(m[2])) : 1;
+        out.push({name, weight, id: idCounter++});
+      }
+      return out;
+    }
+
+    function buildNumberEntries(){
+      const min = Number($('#picker-min').value || 1);
+      const max = Number($('#picker-max').value || 100);
+      const exclude = ($('#picker-exclude').value || '').split(/,|\s/).map(s=>s.trim()).filter(Boolean).map(Number);
+      const setEx = new Set(exclude);
+      const arr = [];
+      let id = 0;
+      for(let n = Math.min(min,max); n <= Math.max(min,max); n++){
+        if(setEx.has(n)) continue;
+        arr.push({name: String(n), weight: 1, id: id++});
+      }
+      return arr;
+    }
+
+    function refreshEntries(){
+      state.entries = state.modeNumber ? buildNumberEntries() : parseTextToEntries(elInput.value);
+      buildPool();
+      renderStats();
+      renderCandidates();
+      if(state.entries.length === 0){
+        elResultText.textContent = 'No pick yet';
+        elResultSub.textContent = state.modeNumber ? 'Set your range and press Pick' : 'Add some names then press Pick';
+        elResultBadge.hidden = true;
+      }
+    }
+
+    function buildPool(){
+      const n = state.entries.length;
+      state.pool = Array.from({length:n},(_,i)=>i);
+      if(state.noRepeat){
+        // remove already used by id
+        state.pool = state.pool.filter(i=>!state.usedIds.has(state.entries[i].id));
+      }
+    }
+
+    /* ---------- picking animation ---------- */
+
+    function animatePick(index){
+      // quick roulette highlight
+      const total = state.entries.length;
+      if(total === 0) return;
+      let steps = Math.min(24 + Math.floor(rng.next()*20), 60);
+      let current = Math.floor(rng.next()*total);
+      let t = 0;
+      const run = ()=>{
+        current = (current + 1) % total;
+        renderCandidates(current);
+        t++;
+        const speed = 30 + (t/steps)*90; // slow down
+        if(t < steps) { animId = setTimeout(run, speed); }
+        else {
+          renderCandidates(index);
+          confettiBurst();
+          elResultText.textContent = state.entries[index].name;
+          elResultSub.textContent = 'Winner';
+          elResultBadge.hidden = false;
+        }
+      };
+      let animId = setTimeout(run, 30);
+    }
+
+    /* ---------- confetti ---------- */
+
+    const canvas = $('#picker-confetti');
+    const ctx = canvas.getContext('2d');
+    let confetti = [];
+    function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    function confettiBurst(){
+      const count = 120;
+      for(let i=0;i<count;i++){
+        confetti.push({
+          x: canvas.width/2,
+          y: canvas.height*0.25,
+          vx: (rng.next()-0.5)*8,
+          vy: rng.next()*-6 - 2,
+          g: 0.12 + rng.next()*0.08,
+          size: 4 + rng.next()*4,
+          rot: rng.next()*Math.PI,
+          vr: (rng.next()-0.5)*0.3,
+          color: rng.next()<0.33 ? '#60a5fa' : (rng.next()<0.5 ? '#1d4ed8' : '#ff7c4c')
+        });
+      }
+    }
+
+    (function confettiLoop(){
+      requestAnimationFrame(confettiLoop);
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confetti = confetti.filter(p=>p.y < canvas.height + 10);
+      for(const p of confetti){
+        p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+        ctx.restore();
+      }
+    })();
+
+    /* ---------- core pick ---------- */
+
+    function pickOne(){
+      if(state.entries.length === 0){ toast('No entries'); return; }
+      // rebuild pool if empty
+      if(state.noRepeat && state.pool.length === 0){
+        toast('All entries have been picked');
+        return;
+      }
+
+      let chosenIndex;
+      if(state.useWeights){
+        // build arrays limited to pool
+        const pIdx = state.noRepeat ? state.pool : state.entries.map((_,i)=>i);
+        const items = pIdx.map(i=>state.entries[i]);
+        const weights = items.map(e=>Math.max(0, Number(e.weight)||1));
+        const rel = rng.choiceWeighted(items, weights);
+        chosenIndex = pIdx[rel];
+      } else {
+        const pIdx = state.noRepeat ? state.pool : state.entries.map((_,i)=>i);
+        chosenIndex = pIdx[Math.floor(rng.next()*pIdx.length)];
+      }
+
+      const winner = state.entries[chosenIndex];
+      if(state.noRepeat){
+        state.usedIds.add(winner.id);
+        state.pool = state.pool.filter(i=>i !== chosenIndex);
+      }
+      pushHistory(winner.name);
+      // update URL fragment for shareable state with latest winner
+      saveToHash();
+
+      animatePick(chosenIndex);
+    }
+
+    /* ---------- teams ---------- */
+
+    function makeTeams(k){
+      const people = [...state.entries];
+      if(people.length < k){ toast('Not enough entries'); return; }
+      // sort by weight descending to balance
+      const list = people.map((p,i)=>({i, w:Number(p.weight||1)})).sort((a,b)=>b.w-a.w);
+      const teams = Array.from({length:k},()=>({w:0, members:[]}));
+      for(const item of list){
+        // put into team with smallest total weight
+        teams.sort((a,b)=>a.w-b.w);
+        teams[0].members.push(state.entries[item.i].name + (item.w!==1?` (x${item.w})`:``));
+        teams[0].w += item.w;
+      }
+      // render
+      elTeams.innerHTML = '';
+      const wrap = document.createElement('div');
+      wrap.style.display = 'grid';
+      wrap.style.gap = '10px';
+      wrap.style.gridTemplateColumns = 'repeat(auto-fit,minmax(220px,1fr))';
+      teams.forEach((t,idx)=>{
+        const card = document.createElement('div');
+        card.className = 'picker-pill';
+        const listHtml = t.members.map(m=>`<li>${m}</li>`).join('');
+        card.innerHTML = `<div>
+          <div class="picker-flex" style="justify-content:space-between">
+            <span class="picker-badge">Team ${idx+1}</span>
+            <span class="picker-badge" title="total weight">Σ ${t.w}</span>
+          </div>
+          <ul style="margin:8px 0 0 18px; padding:0; line-height:1.6">${listHtml}</ul>
+        </div>`;
+        wrap.appendChild(card);
+      });
+      elTeams.appendChild(wrap);
+    }
+
+    /* ---------- history export ---------- */
+
+    function downloadHistoryCSV(){
+      const rows = state.picked.map(p=>`${JSON.stringify(p.value)},${p.ts.toISOString()}`);
+      const csv = `value,timestamp\n${rows.join('\n')}\n`;
+      downloadFile('random-picker-history.csv', csv, 'text/csv');
+    }
+
+    /* ---------- share state via hash ---------- */
+
+    function saveToHash(){
+      const payload = {
+        m: state.modeNumber ? 1 : 0,
+        t: state.modeNumber ? null : elInput.value,
+        min: $('#picker-min').value,
+        max: $('#picker-max').value,
+        excl: $('#picker-exclude').value,
+        norep: state.noRepeat ? 1 : 0,
+        w: state.useWeights ? 1 : 0,
+        seed: rng.seeded ? state.seedText : ''
+      };
+      location.hash = encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
+    }
+    function loadFromHash(){
+      if(!location.hash.slice(1)) return;
+      try{
+        const json = decodeURIComponent(escape(atob(decodeURIComponent(location.hash.slice(1)))));
+        const s = JSON.parse(json);
+        if(s.m){ $('#picker-mode').checked = true; state.modeNumber = true; toggleMode(); }
+        if(typeof s.t === 'string'){ elInput.value = s.t; }
+        if(s.min) $('#picker-min').value = s.min;
+        if(s.max) $('#picker-max').value = s.max;
+        if(typeof s.excl === 'string') $('#picker-exclude').value = s.excl;
+        $('#picker-no-repeat').checked = !!s.norep; state.noRepeat = !!s.norep;
+        $('#picker-use-weights').checked = !!s.w; state.useWeights = !!s.w;
+        if(s.seed){ $('#picker-use-seed').checked = true; $('#picker-seed').disabled = false; $('#picker-seed').value = s.seed; rng.setSeed(s.seed); state.seedText = s.seed; }
+        refreshEntries();
+      }catch(e){ /* ignore */ }
+    }
+
+    /* ---------- events ---------- */
+
+    function toggleMode(){
+      state.modeNumber = $('#picker-mode').checked;
+      $('#picker-number-panel').style.display = state.modeNumber ? '' : 'none';
+      $('#picker-input').style.display = state.modeNumber ? 'none' : '';
+      refreshEntries();
+    }
+
+    $('#picker-mode').addEventListener('change', ()=>{ toggleMode(); saveToHash(); });
+
+    elInput.addEventListener('input', ()=>{ refreshEntries(); saveToHash(); });
+
+    $('#picker-paste').addEventListener('click', async ()=>{
+      try{
+        const text = await navigator.clipboard.readText();
+        const lines = parseCSV(text);
+        if(lines.length > 1){ elInput.value = lines.join('\n'); }
+        else { elInput.value += (elInput.value ? '\n' : '') + text.trim(); }
+        refreshEntries(); toast('Pasted');
+      }catch{ toast('Clipboard blocked'); }
+    });
+    $('#picker-clear').addEventListener('click', ()=>{ if(!state.modeNumber){ elInput.value=''; } else { $('#picker-exclude').value=''; } refreshEntries(); toast('Cleared'); });
+
+    $('#picker-dedupe').addEventListener('click', ()=>{
+      if(state.modeNumber){ toast('Not needed in number mode'); return; }
+      const set = new Set();
+      const lines = elInput.value.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+      const out = [];
+      for(const line of lines){ const key = line.toLowerCase(); if(!set.has(key)){ set.add(key); out.push(line); } }
+      elInput.value = out.join('\n'); refreshEntries(); toast('Removed duplicates');
+    });
+    $('#picker-trim').addEventListener('click', ()=>{
+      if(state.modeNumber){ refreshEntries(); toast('Range updated'); return; }
+      elInput.value = elInput.value.split(/\r?\n/).map(l=>l.trim()).filter(Boolean).join('\n');
+      refreshEntries(); toast('Trimmed entries');
+    });
+
+    $('#picker-file').addEventListener('change', async (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      const text = await f.text();
+      const arr = parseCSV(text);
+      elInput.value = arr.join('\n');
+      refreshEntries(); toast('Imported entries');
+      e.target.value = '';
+    });
+
+    $('#picker-export').addEventListener('click', ()=>{
+      const content = state.modeNumber ? `Range: ${$('#picker-min').value}-${$('#picker-max').value}\nExclude: ${$('#picker-exclude').value}\n` :
+        elInput.value;
+      downloadFile('random-picker-entries.txt', content);
+    });
+
+    // number controls
+    ['picker-min','picker-max','picker-exclude','picker-count'].forEach(id=>{
+      $('#'+id).addEventListener('input', ()=>{ refreshEntries(); saveToHash(); });
+    });
+
+    // options
+    $('#picker-no-repeat').addEventListener('change', (e)=>{ state.noRepeat = e.target.checked; buildPool(); saveToHash(); });
+    $('#picker-use-weights').addEventListener('change', (e)=>{ state.useWeights = e.target.checked; saveToHash(); });
+
+    $('#picker-use-seed').addEventListener('change', (e)=>{
+      $('#picker-seed').disabled = !e.target.checked;
+      const val = e.target.checked ? $('#picker-seed').value : '';
+      rng.setSeed(val);
+      state.seedText = val;
+      saveToHash();
+    });
+    $('#picker-seed').addEventListener('input', (e)=>{ rng.setSeed(e.target.value); state.seedText = e.target.value; saveToHash(); });
+
+    // main actions
+    $('#picker-pick').addEventListener('click', ()=>{
+      const multi = state.modeNumber ? Math.max(1, Number($('#picker-count').value||1)) : 1;
+      for(let i=0;i<multi;i++) pickOne();
+    });
+    $('#picker-undo').addEventListener('click', ()=>{
+      const last = state.picked.shift();
+      if(!last){ toast('Nothing to undo'); return; }
+      elHistory.removeChild(elHistory.firstElementChild);
+      elHistoryCount.textContent = `${state.picked.length} picks`;
+      // free up in no-repeat mode
+      const idx = state.entries.findIndex(e=>e.name === last.value);
+      if(idx >= 0){ state.usedIds.delete(state.entries[idx].id); buildPool(); }
+      elResultText.textContent = state.picked[0]?.value || 'No pick yet';
+      elResultSub.textContent = state.picked[0] ? 'Last winner' : 'Press Pick or hit Enter';
+      toast('Undone');
+    });
+    $('#picker-reset').addEventListener('click', ()=>{
+      state.usedIds.clear(); buildPool(); resetHistory(); renderCandidates(); elResultText.textContent = 'No pick yet'; elResultSub.textContent='Press Pick or hit Enter'; elResultBadge.hidden = true; toast('Reset');
+    });
+
+    $('#picker-copy-result').addEventListener('click', ()=>{
+      const text = elResultText.textContent.trim();
+      if(!text || text === 'No pick yet'){ toast('Nothing to copy'); return; }
+      navigator.clipboard.writeText(text).then(()=>toast('Winner copied'));
+    });
+
+    $('#picker-download-history').addEventListener('click', downloadHistoryCSV);
+
+    $('#picker-share').addEventListener('click', ()=>{
+      saveToHash();
+      const url = location.href;
+      navigator.clipboard.writeText(url).then(()=>toast('Share link copied'));
+    });
+
+    $('#picker-make-teams').addEventListener('click', ()=>{
+      const k = Math.max(2, Number($('#picker-team-count').value||2));
+      makeTeams(k);
+    });
+    $('#picker-copy-teams').addEventListener('click', ()=>{
+      const text = elTeams.innerText.trim();
+      if(!text){ toast('Nothing to copy'); return; }
+      navigator.clipboard.writeText(text).then(()=>toast('Teams copied'));
+    });
+
+    $('#picker-clear-history').addEventListener('click', ()=>{ resetHistory(); toast('History cleared'); });
+
+    // keyboard
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter'){ e.preventDefault(); $('#picker-pick').click(); }
+      if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='z'){ e.preventDefault(); $('#picker-undo').click(); }
+      if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='c'){ e.preventDefault(); $('#picker-copy-result').click(); }
+    });
+
+    // init
+    loadFromHash();
+    if(state.entries.length === 0){
+      elInput.value = ['Alice:2','Bob:1','Charlie:3','Dan:1','Eve:2'].join('\n');
+    }
+    refreshEntries();
+
+  })();
+  </script>
+</body>
+</html>

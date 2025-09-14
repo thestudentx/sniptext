@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Code Diff Checker - Side by Side Comparison, Inline View, Word Level Highlights, Patch Export | SnipText</title>
+  <meta name="description" content="Compare code side by side or inline. Highlights inserted, deleted and changed lines with word level diffs. Ignore whitespace or case, sync scroll, drag and drop files, copy results, and export as unified diff patch. Runs privately in your browser." />
+  <meta name="keywords" content="code diff checker, side by side diff, inline diff, word diff, unified diff patch, compare files online, whitespace ignore, case insensitive diff, code compare tool, private in browser" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/code-diff-checker-side-by-side" />
+  <link rel="alternate" href="https://checkai.pro/tools/code-diff-checker-side-by-side" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/code-diff-checker-side-by-side" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Code Diff Checker - Side by Side Comparison" />
+  <meta property="og:description" content="Fast, private and clean code comparison with word level highlights and patch export." />
+  <meta property="og:url" content="https://checkai.pro/tools/code-diff-checker-side-by-side" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Code Diff Checker with side by side panels and highlights" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Code Diff Checker - Side by Side Comparison" />
+  <meta name="twitter:description" content="Compare code with word level highlights, ignore whitespace or case, export patches and share a tiny link. Private and fast." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Code Diff Checker",
+    "url":"https://checkai.pro/tools/code-diff-checker-side-by-side",
+    "applicationCategory":"DeveloperApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Side by side and inline diff views",
+      "Word level highlights with insert, delete and replace",
+      "Ignore whitespace, empty lines and case",
+      "Drag and drop files or paste from clipboard",
+      "Sync scroll and minimap overview",
+      "Copy HTML diff or export unified patch",
+      "Tiny share link for small inputs"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is the comparison private",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. The Code Diff Checker runs locally in your browser. Your files do not leave your device."}},
+      {"@type":"Question","name":"Can I compare large files",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. The tool is optimized for a few thousand lines per pane. For very large files, disable word level diff and animations for best speed."}},
+      {"@type":"Question","name":"Can I export a patch",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. Use Export Patch to download a unified diff that can be applied with standard tools."}}
+    ]
+  }
+  </script>
+
+  <style>
+/* ==========================================================
+   SNIPTEXT • CODE DIFF CHECKER (Side by Side)
+   Dark themed with brand gradients • classes/ids include 'cod-dif-che'
+   ========================================================== */
+:root{
+  /* Brand tokens with tool specific names */
+  --codif-primary:#1D4ED8;   /* color-primary */
+  --codif-accent:#3B82F6;    /* color-accent */
+  --codif-bg:#0F172A;        /* color-bg-dark */
+  --codif-bg-soft:#1d1f2f;   /* color-footer-bg */
+  --codif-white:#ffffff;
+  --codif-text:#E6EEF8;
+  --codif-muted:#AAB6C7;
+  --codif-border:rgba(255,255,255,0.14);
+  --codif-warm:#ff7c4c;      /* gradient cta end */
+  --codif-warm-2:#e85d27;    /* used often */
+  --codif-green:#10B981;
+  --codif-red:#EF4444;
+  --codif-yellow:#F59E0B;
+
+  --codif-radius-xl:20px;
+  --codif-radius-lg:14px;
+  --codif-radius-md:10px;
+
+  --codif-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --codif-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--codif-text);
+  font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 12% -10%, color-mix(in oklab, var(--codif-primary) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, color-mix(in oklab, var(--codif-accent) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--codif-warm) 14%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--codif-bg) 0%, var(--codif-bg-soft) 100%);
+  background-attachment: fixed;
+}
+
+/* Page shell */
+.cod-dif-che-main{
+  width:min(1200px,92vw);
+  margin: clamp(16px,3vw,40px) auto 80px;
+}
+
+/* Hero */
+.cod-dif-che-hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+  border:1px solid var(--codif-border); border-radius:var(--codif-radius-xl);
+  padding: clamp(18px,3vw,28px);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--codif-primary) 20%, transparent),
+    color-mix(in oklab, var(--codif-accent) 18%, transparent)
+  ) border-box;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--codif-shadow-1);
+  position:relative; overflow:hidden;
+}
+.cod-dif-che-hero::after{
+  content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.6; pointer-events:none;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--codif-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--codif-accent) 26%, transparent), transparent 62%);
+}
+@media (max-width:980px){ .cod-dif-che-hero{ grid-template-columns:1fr } }
+
+.cod-dif-che-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:'Poppins','Segoe UI',sans-serif;
+  font-size: clamp(22px,3.2vw,36px);
+  background: linear-gradient(90deg,#fff,
+    color-mix(in oklab, var(--codif-accent) 54%, #fff) 38%,
+    color-mix(in oklab, var(--codif-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.cod-dif-che-sub{ margin:6px 0 0; color:var(--codif-muted); font-size:clamp(14px,1.8vw,16px) }
+.cod-dif-che-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.cod-dif-che-badge{
+  padding:6px 10px; border:1px solid var(--codif-border); border-radius:999px;
+  background: color-mix(in oklab, var(--codif-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem;
+}
+
+/* --- Code Diff hero icon animations --- */
+.cod-dif-che-hero-art svg.codif-svg { justify-self: end; width:min(260px,42vw); height:auto; display:block; color:#d6e2ff }
+
+/* Base stroke styling for animated elements */
+.codif-lines path,
+.codif-arrows path {
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: .9;
+}
+
+/* Left vs right subtle contrast */
+.codif-lines-right path { opacity: .65 }
+
+/* Draw-on effect: use dash animation */
+.codif-lines path {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: codif-draw 1.6s ease forwards;
+}
+
+/* Stagger each line slightly for a flowing build */
+.codif-lines-left path:nth-child(1){ animation-delay:.05s }
+.codif-lines-left path:nth-child(2){ animation-delay:.15s }
+.codif-lines-left path:nth-child(3){ animation-delay:.25s }
+.codif-lines-left path:nth-child(4){ animation-delay:.35s }
+.codif-lines-left path:nth-child(5){ animation-delay:.45s }
+
+.codif-lines-right path:nth-child(1){ animation-delay:.25s }
+.codif-lines-right path:nth-child(2){ animation-delay:.35s }
+.codif-lines-right path:nth-child(3){ animation-delay:.45s }
+.codif-lines-right path:nth-child(4){ animation-delay:.55s }
+.codif-lines-right path:nth-child(5){ animation-delay:.65s }
+
+/* Gentle arrow pulse + nudge to suggest diff direction */
+.codif-arrows path {
+  stroke-width: 2;
+  animation: codif-pulse 2.2s ease-in-out infinite;
+}
+.codif-arrows path:nth-child(2){ animation-delay: .6s }
+
+/* Soft scanning sweep inside each panel (subtle, low opacity) */
+.codif-scan {
+  --codif-scan-c1: rgba(255,255,255,.00);
+  --codif-scan-c2: rgba(255,255,255,.06);
+  --codif-scan-c3: rgba(255,255,255,.00);
+  fill: linear-gradient(180deg, var(--codif-scan-c1), var(--codif-scan-c2), var(--codif-scan-c3));
+  background: linear-gradient(180deg, var(--codif-scan-c1), var(--codif-scan-c2), var(--codif-scan-c3));
+  /* Use background and translate to simulate sweep since SVG rect uses fill */
+}
+.codif-scan-left,
+.codif-scan-right {
+  /* Use CSS paint via pseudo-element approach with mask */
+}
+.codif-scan-left::before,
+.codif-scan-right::before { content:"" }
+
+/* Use a trick: animate via transform on the <rect> element with low opacity fill */
+.codif-scan-left { opacity:.35; animation: codif-scan-y 3.2s linear infinite }
+.codif-scan-right{ opacity:.28; animation: codif-scan-y 3.6s linear infinite .25s }
+
+/* Keyframes */
+@keyframes codif-draw {
+  to { stroke-dashoffset: 0 }
+}
+@keyframes codif-pulse {
+  0%,100% { transform: translateX(0); opacity:.9 }
+  50%     { transform: translateX(1.2px); opacity:1 }
+}
+@keyframes codif-scan-y {
+  0%   { transform: translateY(-140px) }
+  100% { transform: translateY(140px) }
+}
+
+/* Respect user preference */
+@media (prefers-reduced-motion: reduce){
+  .codif-lines path,
+  .codif-arrows path,
+  .codif-scan-left,
+  .codif-scan-right { animation: none }
+  .codif-lines path { stroke-dashoffset: 0 }
+}
+
+
+/* Grid */
+.cod-dif-che-grid{
+  margin-top: clamp(14px,2.6vw,24px);
+  display:grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,2.4vw,20px);
+}
+@media (max-width:1100px){ .cod-dif-che-grid{ grid-template-columns:1fr } }
+
+/* Cards */
+.cod-dif-che-card{
+  border:1px solid var(--codif-border);
+  border-radius:var(--codif-radius-lg);
+  background: rgba(255,255,255,.06);
+  box-shadow: var(--codif-shadow-2);
+  backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.cod-dif-che-card-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px;
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--codif-primary) 12%, transparent),
+    color-mix(in oklab, var(--codif-accent) 10%, transparent)
+  );
+  border-bottom:1px solid var(--codif-border);
+}
+.cod-dif-che-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family:'Poppins','Segoe UI',sans-serif }
+.cod-dif-che-section{ padding:12px 14px; display:grid; gap:12px }
+
+/* Inputs */
+.cod-dif-che-field{ display:grid; gap:6px }
+.cod-dif-che-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+.cod-dif-che-input, .cod-dif-che-select, .cod-dif-che-textarea{
+  background:#0e1730; color:#e6ecff; border:1px solid var(--codif-border);
+  border-radius:10px; padding:12px 14px; outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+  min-height:44px;
+}
+.cod-dif-che-textarea{
+  min-height:220px; resize:vertical; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  line-height:1.45; font-size:13px; white-space:pre;
+}
+.cod-dif-che-select{ appearance:none }
+.cod-dif-che-input:focus, .cod-dif-che-select:focus, .cod-dif-che-textarea:focus{
+  border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px)
+}
+.cod-dif-che-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+/* Buttons */
+.cod-dif-che-btn{
+  --_bg: linear-gradient(180deg, color-mix(in oklab, var(--codif-primary) 70%, transparent), color-mix(in oklab, var(--codif-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--codif-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family:'Poppins','Segoe UI',sans-serif;
+}
+.cod-dif-che-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+.cod-dif-che-btn:active{ transform: translateY(0); filter: brightness(.98) }
+.cod-dif-che-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--codif-border); box-shadow:none }
+.cod-dif-che-btn-warm{ background: linear-gradient(135deg, var(--codif-accent), var(--codif-warm)); border-color:transparent }
+.cod-dif-che-btn-red{ background: linear-gradient(135deg, #EF4444, #F59E0B); border-color: transparent }
+
+/* Output: diff wrapper */
+.cod-dif-che-result{ display:grid; gap:10px }
+.cod-dif-che-split{
+  display:grid; grid-template-columns: 1fr 1fr; gap:10px;
+}
+@media (max-width:1100px){ .cod-dif-che-split{ grid-template-columns:1fr } }
+
+.cod-dif-che-pane{
+  border:1px solid var(--codif-border); border-radius:10px; overflow:auto; background: rgba(14,23,48,.6);
+  max-height:520px; position:relative;
+}
+.cod-dif-che-lines{ counter-reset: ln }
+.cod-dif-che-line{
+  display:grid; grid-template-columns: 52px 1fr; gap:8px; padding:6px 10px; white-space:pre-wrap; word-break:break-word;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.cod-dif-che-gutter{
+  text-align:right; opacity:.65; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.cod-dif-che-op{ font-weight:700; width:16px; display:inline-block; text-align:center }
+.cod-dif-che-content code{ font-family: inherit }
+
+/* Line states */
+.cod-dif-che-add{ background: color-mix(in oklab, var(--codif-green) 20%, transparent) }
+.cod-dif-che-del{ background: color-mix(in oklab, var(--codif-red) 18%, transparent) }
+.cod-dif-che-chg{ background: color-mix(in oklab, var(--codif-yellow) 14%, transparent) }
+
+/* Word level spans */
+.cod-dif-che-wadd{ background: rgba(16,185,129,.28); border-radius:6px; padding:0 2px }
+.cod-dif-che-wdel{ background: rgba(239,68,68,.28); border-radius:6px; padding:0 2px }
+.cod-dif-che-wchg{ background: rgba(245,158,11,.28); border-radius:6px; padding:0 2px }
+
+/* Minimap */
+.cod-dif-che-minimap{
+  height:72px; border:1px solid var(--codif-border); border-radius:10px; overflow:hidden; background: rgba(255,255,255,.04); position:relative;
+}
+.cod-dif-che-mini-bar{ position:absolute; left:0; right:0; height:4px }
+
+/* Pills and meta */
+.cod-dif-che-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border:1px solid var(--codif-border); border-radius:999px;
+  background: color-mix(in oklab, var(--codif-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem;
+}
+
+/* Toast */
+.cod-dif-che-toast{
+  position: fixed; inset: auto 16px 16px auto;
+  background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--codif-border);
+  backdrop-filter: blur(8px); box-shadow: var(--codif-shadow-1);
+  transform: translateY(20px); opacity:0; pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease;
+  z-index: 50;
+}
+.cod-dif-che-toast.show{ transform: translateY(0); opacity:1 }
+
+/* Subtle float */
+@media (prefers-reduced-motion:no-preference){
+  .cod-dif-che-card{ animation: codif-float 18s ease-in-out infinite }
+  @keyframes codif-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* Utility */
+.kbd{
+  font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  background: color-mix(in oklab, var(--codif-bg) 78%, transparent); color:#cbd5e1;
+  padding:3px 6px; border-radius:8px; border:1px solid var(--codif-border);
+}
+
+/* Accessible focus */
+:focus-visible{ outline:2px solid color-mix(in oklab, var(--codif-accent) 60%, #fff); outline-offset:2px }
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+<body>
+
+
+
+    
+
+<nav id="main-navbar" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="logo"><a href="/index.html">Snip Text</a></div>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+<main class="cod-dif-che-main" id="cod-dif-che-main" aria-label="Code Diff Checker">
+  <!-- HERO -->
+  <section class="cod-dif-che-hero" aria-labelledby="cod-dif-che-title">
+    <div>
+      <h1 class="cod-dif-che-title" id="cod-dif-che-title">Code Diff Checker - Side by Side</h1>
+      <p class="cod-dif-che-sub">
+        Paste or drop two files to compare. Get clean line and word highlights, inline or side by side view, ignore whitespace or case, export a unified patch, and copy a tiny link for small diffs. Private and fast.
+      </p>
+      <div class="cod-dif-che-badges">
+        <span class="cod-dif-che-badge">Local only</span>
+        <span class="cod-dif-che-badge">Word level</span>
+        <span class="cod-dif-che-badge">Patch export</span>
+        <span class="cod-dif-che-badge">Sync scroll</span>
+      </div>
+    </div>
+    <!-- Animated hero icon: bracket panels + delta arrows + scan sweep -->
+<div class="cod-dif-che-hero-art" aria-hidden="true">
+  <svg class="codif-svg" viewBox="0 0 200 160" role="img" aria-label="Code panels icon">
+    <defs>
+      <!-- Soft glow for active strokes -->
+      <filter id="codif-glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="0" stdDeviation="1.6" flood-color="currentColor" flood-opacity=".35"/>
+      </filter>
+
+      <!-- Panel clipping paths so inner sweeps stay inside each panel -->
+      <clipPath id="codif-left-clip">
+        <rect x="8" y="8" width="86" height="144" rx="10"/>
+      </clipPath>
+      <clipPath id="codif-right-clip">
+        <rect x="106" y="8" width="86" height="144" rx="10"/>
+      </clipPath>
+    </defs>
+
+    <!-- Panels -->
+    <rect x="8" y="8" width="86" height="144" rx="10" fill="none" stroke="currentColor" opacity=".25"/>
+    <rect x="106" y="8" width="86" height="144" rx="10" fill="none" stroke="currentColor" opacity=".25"/>
+
+    <!-- Left panel sweep -->
+    <g clip-path="url(#codif-left-clip)">
+      <rect class="codif-scan codif-scan-left" x="8" y="8" width="86" height="144" />
+    </g>
+
+    <!-- Right panel sweep -->
+    <g clip-path="url(#codif-right-clip)">
+      <rect class="codif-scan codif-scan-right" x="106" y="8" width="86" height="144" />
+    </g>
+
+    <!-- Left code lines (animated draw) -->
+    <g class="codif-lines codif-lines-left" filter="url(#codif-glow)">
+      <path d="M44 36h14"  />
+      <path d="M26 54h38"  />
+      <path d="M26 72h50"  />
+      <path d="M26 90h24"  />
+      <path d="M26 108h46" />
+    </g>
+
+    <!-- Right code lines (animated draw, slightly dimmer) -->
+    <g class="codif-lines codif-lines-right">
+      <path d="M142 36h14" />
+      <path d="M124 54h38" />
+      <path d="M124 72h18" />
+      <path d="M124 90h50" />
+      <path d="M124 108h20"/>
+    </g>
+
+    <!-- Delta arrows between panels (gentle pulse) -->
+    <g class="codif-arrows" filter="url(#codif-glow)">
+      <path d="M98 24l8 8-8 8" fill="none"/>
+      <path d="M98 84l8 8-8 8" fill="none"/>
+    </g>
+  </svg>
+</div>
+
+  </section>
+
+  <!-- GRID -->
+  <section class="cod-dif-che-grid">
+    <!-- LEFT: Inputs -->
+    <article class="cod-dif-che-card">
+      <header class="cod-dif-che-card-head">
+        <h2 class="cod-dif-che-card-title">Enter or drop code</h2>
+        <div class="cod-dif-che-row">
+          <button class="cod-dif-che-btn cod-dif-che-btn-ghost" id="cod-dif-che-clear">Clear</button>
+          <button class="cod-dif-che-btn" id="cod-dif-che-sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="cod-dif-che-section">
+        <div class="cod-dif-che-row" style="align-items:flex-start">
+          <div class="cod-dif-che-field" style="flex:1 1 380px">
+            <label class="cod-dif-che-label" for="cod-dif-che-left">Left code</label>
+            <textarea id="cod-dif-che-left" class="cod-dif-che-textarea" placeholder="Paste or drop file here" aria-label="Left code" spellcheck="false"></textarea>
+            <div class="cod-dif-che-row">
+              <input type="file" id="cod-dif-che-left-file" class="cod-dif-che-input" accept=".txt,.js,.ts,.json,.py,.java,.cs,.cpp,.c,.html,.css,.md,.yaml,.yml,.sh" />
+              <button class="cod-dif-che-btn cod-dif-che-btn-ghost" id="cod-dif-che-paste-left" title="Paste from clipboard"><span class="kbd">Ctrl</span>+<span class="kbd">V</span> paste</button>
+            </div>
+          </div>
+
+          <div class="cod-dif-che-field" style="flex:1 1 380px">
+            <label class="cod-dif-che-label" for="cod-dif-che-right">Right code</label>
+            <textarea id="cod-dif-che-right" class="cod-dif-che-textarea" placeholder="Paste or drop file here" aria-label="Right code" spellcheck="false"></textarea>
+            <div class="cod-dif-che-row">
+              <input type="file" id="cod-dif-che-right-file" class="cod-dif-che-input" accept=".txt,.js,.ts,.json,.py,.java,.cs,.cpp,.c,.html,.css,.md,.yaml,.yml,.sh" />
+              <button class="cod-dif-che-btn cod-dif-che-btn-ghost" id="cod-dif-che-paste-right" title="Paste from clipboard"><span class="kbd">Ctrl</span>+<span class="kbd">V</span> paste</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cod-dif-che-row">
+          <button class="cod-dif-che-btn" id="cod-dif-che-compare" title="Compare (Enter to run)"><span class="kbd">Enter</span> Compare</button>
+          <button class="cod-dif-che-btn cod-dif-che-btn-ghost" id="cod-dif-che-swap" title="Swap sides">Swap</button>
+          <button class="cod-dif-che-btn cod-dif-che-btn-warm" id="cod-dif-che-copy-html" title="Copy HTML diff">Copy HTML</button>
+          <button class="cod-dif-che-btn cod-dif-che-btn-ghost" id="cod-dif-che-export-patch" title="Download unified diff patch">Export Patch</button>
+          <button class="cod-dif-che-btn cod-dif-che-btn-warm" id="cod-dif-che-share" title="Copy tiny link for small inputs">Copy link</button>
+        </div>
+
+        <div class="cod-dif-che-row">
+          <label class="cod-dif-che-label" for="cod-dif-che-mode">View</label>
+          <select id="cod-dif-che-mode" class="cod-dif-che-select" aria-label="Diff view mode">
+            <option value="split">Side by side</option>
+            <option value="inline">Inline</option>
+          </select>
+
+          <label class="cod-dif-che-label" for="cod-dif-che-gran">Granularity</label>
+          <select id="cod-dif-che-gran" class="cod-dif-che-select" aria-label="Diff granularity">
+            <option value="word">Word level</option>
+            <option value="char">Character level</option>
+            <option value="line">Line only</option>
+          </select>
+
+          <label class="cod-dif-che-label"><input type="checkbox" id="cod-dif-che-ignore-ws" /> Ignore whitespace</label>
+          <label class="cod-dif-che-label"><input type="checkbox" id="cod-dif-che-ignore-case" /> Ignore case</label>
+          <label class="cod-dif-che-label"><input type="checkbox" id="cod-dif-che-trim-empty" checked /> Trim empty lines</label>
+          <label class="cod-dif-che-label"><input type="checkbox" id="cod-dif-che-live" /> Live compare</label>
+        </div>
+
+        <p class="cod-dif-che-sub" style="margin:4px 0 0">Keyboard: <span class="kbd">Enter</span> compare, <span class="kbd">Ctrl</span>+<span class="kbd">S</span> export patch, <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">C</span> copy HTML.</p>
+        <p class="cod-dif-che-sub" style="margin:0">Drop files on either textarea. Your data never leaves your device.</p>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="cod-dif-che-card" aria-live="polite">
+      <header class="cod-dif-che-card-head">
+        <h2 class="cod-dif-che-card-title">Results</h2>
+        <div class="cod-dif-che-row">
+          <span class="cod-dif-che-pill" id="cod-dif-che-stat-lines">Lines: -</span>
+          <span class="cod-dif-che-pill" id="cod-dif-che-stat-add">+0</span>
+          <span class="cod-dif-che-pill" id="cod-dif-che-stat-del">-0</span>
+          <span class="cod-dif-che-pill" id="cod-dif-che-stat-chg">~0</span>
+        </div>
+      </header>
+
+      <div class="cod-dif-che-section cod-dif-che-result" id="cod-dif-che-result" hidden>
+        <div class="cod-dif-che-minimap" id="cod-dif-che-minimap" aria-label="Diff minimap"></div>
+
+        <!-- Container switches between split and inline -->
+        <div id="cod-dif-che-view">
+          <div class="cod-dif-che-split" id="cod-dif-che-split">
+            <div class="cod-dif-che-pane" id="cod-dif-che-left-pane" aria-label="Left code result"><div class="cod-dif-che-lines" id="cod-dif-che-left-lines"></div></div>
+            <div class="cod-dif-che-pane" id="cod-dif-che-right-pane" aria-label="Right code result"><div class="cod-dif-che-lines" id="cod-dif-che-right-lines"></div></div>
+          </div>
+          <div class="cod-dif-che-pane" id="cod-dif-che-inline" hidden aria-label="Inline diff result"><div class="cod-dif-che-lines" id="cod-dif-che-inline-lines"></div></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <div style="margin-top:16px">
+    <p class="cod-dif-che-sub">More you might like:
+      <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+      <a href="/tools/symbol-character-info.html">Symbol Character Info</a>,
+      <a href="/tools/word-counter.html">Word Counter</a>,
+      <a href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html">Random Synonym Finder</a>.
+    </p>
+  </div>
+
+     <div class="free-tools-guide">
+        <p class="free-tools-guide-p">See Code Diff Checker Guide on SnipText Blog Page <a href="/blog/code-diff-checker-guide-side-by-side-inline-diff-unified-patch-export-git-workflows-private-browser-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+      </div>
+</main>
+
+<!-- Toast -->
+<div class="cod-dif-che-toast" id="cod-dif-che-toast" role="status" aria-live="polite"></div>
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+  </section>
+  
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+  <script src="/js/index.js"></script>  
+  <script src="/js/auth.js"> </script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+/* ==========================================================
+   CODE DIFF CHECKER • Private, client side
+   - Lightweight LCS based diff for lines, then words/chars
+   - Split or inline view, sync scroll, minimap
+   - Ignore whitespace/case, trim empty lines
+   - Drag & drop, paste helpers, patch export, copy HTML
+   ========================================================== */
+
+const $ = (s, root=document) => root.querySelector(s);
+const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
+const toast = (msg) => {
+  const t = $('#cod-dif-che-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast._id);
+  toast._id = setTimeout(()=>t.classList.remove('show'), 1800);
+};
+
+/* ---------- Inputs ---------- */
+const elLeft = $('#cod-dif-che-left');
+const elRight = $('#cod-dif-che-right');
+const leftFile = $('#cod-dif-che-left-file');
+const rightFile = $('#cod-dif-che-right-file');
+
+const opts = {
+  mode: $('#cod-dif-che-mode'),
+  gran: $('#cod-dif-che-gran'),
+  ignoreWS: $('#cod-dif-che-ignore-ws'),
+  ignoreCase: $('#cod-dif-che-ignore-case'),
+  trimEmpty: $('#cod-dif-che-trim-empty'),
+  live: $('#cod-dif-che-live'),
+};
+
+$('#cod-dif-che-sample').addEventListener('click', () => {
+  elLeft.value =
+`function sum(a, b){
+  return a + b
+}
+
+export function format(n){
+  return n.toLocaleString()
+}`;
+  elRight.value =
+`function sum(a, b, c = 0) {
+  return a + b + c;
+}
+
+export const format = (n) => {
+  return Number(n).toLocaleString('en-US');
+}`;
+  compare();
+});
+
+$('#cod-dif-che-clear').addEventListener('click', () => {
+  elLeft.value = ''; elRight.value = '';
+  $('#cod-dif-che-result').hidden = true;
+  toast('Cleared');
+});
+
+$('#cod-dif-che-swap').addEventListener('click', () => {
+  [elLeft.value, elRight.value] = [elRight.value, elLeft.value];
+  compare();
+});
+
+$('#cod-dif-che-compare').addEventListener('click', compare);
+document.addEventListener('keydown', (e)=>{
+  if (e.key === 'Enter' && (document.activeElement === elLeft || document.activeElement === elRight)) {
+    e.preventDefault(); compare();
+  }
+  if (e.ctrlKey && e.key.toLowerCase() === 's'){ e.preventDefault(); exportPatch(); }
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c'){ e.preventDefault(); copyHTML(); }
+});
+
+/* Paste helpers */
+$('#cod-dif-che-paste-left').addEventListener('click', async ()=>{
+  try{ elLeft.value = await navigator.clipboard.readText(); compareLive(); toast('Pasted to left') }catch{ toast('Clipboard blocked') }
+});
+$('#cod-dif-che-paste-right').addEventListener('click', async ()=>{
+  try{ elRight.value = await navigator.clipboard.readText(); compareLive(); toast('Pasted to right') }catch{ toast('Clipboard blocked') }
+});
+
+/* Drag and drop */
+for (const ta of [elLeft, elRight]){
+  ta.addEventListener('dragover', e=>{ e.preventDefault(); ta.style.outline='2px solid #3B82F6' });
+  ta.addEventListener('dragleave', e=>{ ta.style.outline='' });
+  ta.addEventListener('drop', async e=>{
+    e.preventDefault(); ta.style.outline='';
+    const f = e.dataTransfer.files?.[0]; if(!f) return;
+    const txt = await f.text(); ta.value = txt; compareLive(); toast('File dropped');
+  });
+}
+/* File inputs */
+leftFile.addEventListener('change', async e=>{
+  const f = leftFile.files?.[0]; if(!f) return;
+  elLeft.value = await f.text(); compareLive(); toast('Loaded left file');
+});
+rightFile.addEventListener('change', async e=>{
+  const f = rightFile.files?.[0]; if(!f) return;
+  elRight.value = await f.text(); compareLive(); toast('Loaded right file');
+});
+
+/* Options */
+for (const el of [opts.mode, opts.gran, opts.ignoreWS, opts.ignoreCase, opts.trimEmpty]){
+  el.addEventListener('change', compareLive);
+}
+opts.live.addEventListener('change', ()=> toast(opts.live.checked ? 'Live compare on' : 'Live compare off'));
+elLeft.addEventListener('input', compareLive);
+elRight.addEventListener('input', compareLive);
+function compareLive(){ if (opts.live.checked) compare(); }
+
+/* ---------- Diff engine ---------- */
+/* LCS for arrays (iterative DP with backtrack) */
+function lcs(a, b){
+  const n=a.length, m=b.length;
+  const dp = Array.from({length:n+1}, ()=> new Uint16Array(m+1));
+  for (let i=1;i<=n;i++){
+    const ai = a[i-1];
+    for (let j=1;j<=m;j++){
+      dp[i][j] = ai===b[j-1] ? dp[i-1][j-1]+1 : (dp[i-1][j]>dp[i][j-1]? dp[i-1][j] : dp[i][j-1]);
+    }
+  }
+  const seq=[];
+  let i=n, j=m;
+  while(i>0 && j>0){
+    if (a[i-1]===b[j-1]){ seq.push([i-1,j-1]); i--; j--; }
+    else if (dp[i-1][j]>=dp[i][j-1]) i--; else j--;
+  }
+  seq.reverse();
+  return seq;
+}
+
+/* Create line tokens with options */
+function prepLines(txt, {ignoreWS, ignoreCase, trimEmpty}){
+  let lines = txt.replace(/\r\n/g,'\n').split('\n');
+  if (trimEmpty){
+    // normalize leading/trailing empty blocks but keep relative counts inside
+    while(lines.length && lines[0].trim()==='') lines.shift();
+    while(lines.length && lines[lines.length-1].trim()==='') lines.pop();
+  }
+  const display = lines.slice();
+  if (ignoreWS) lines = lines.map(s=>s.replace(/\s+/g,' '));
+  if (ignoreCase) lines = lines.map(s=>s.toLowerCase());
+  return {raw: display, norm: lines};
+}
+
+/* Word or char diff for changed lines */
+function diffInline(a, b, gran='word'){
+  const aT = gran==='char' ? a.split('') : a.split(/(\s+)/);
+  const bT = gran==='char' ? b.split('') : b.split(/(\s+)/);
+  const pairs = lcs(aT, bT);
+  let i=0, j=0, htmlA='', htmlB='';
+  let p=0;
+  while(i<aT.length || j<bT.length){
+    const step = p<pairs.length ? pairs[p] : null;
+    const ai = step? step[0] : aT.length;
+    const bj = step? step[1] : bT.length;
+
+    // deletions in A
+    while(i<ai){ const tok = aT[i++]; htmlA += `<span class="cod-dif-che-wdel">${escapeHTML(tok)}</span>`; }
+    // insertions in B
+    while(j<bj){ const tok = bT[j++]; htmlB += `<span class="cod-dif-che-wadd">${escapeHTML(tok)}</span>`; }
+
+    if (step){
+      const tokA = aT[i++], tokB = bT[j++];
+      if (tokA === tokB){
+        const safe = escapeHTML(tokA);
+        htmlA += safe; htmlB += safe;
+      }else{
+        htmlA += `<span class="cod-dif-che-wchg">${escapeHTML(tokA)}</span>`;
+        htmlB += `<span class="cod-dif-che-wchg">${escapeHTML(tokB)}</span>`;
+      }
+      p++;
+    }
+  }
+  return {a: htmlA, b: htmlB};
+}
+
+/* Compute unified patch (simple format) */
+function buildPatch(leftRaw, rightRaw, hunks){
+  const header = [
+    '--- left',
+    '+++ right'
+  ];
+  const lines = [...header];
+  for (const h of hunks){
+    lines.push(`@@ -${h.aStart+1},${h.aLen} +${h.bStart+1},${h.bLen} @@`);
+    for (const rec of h.rows){
+      if (rec.type==='eq') lines.push(' ' + rec.a);
+      if (rec.type==='del') lines.push('-' + rec.a);
+      if (rec.type==='add') lines.push('+' + rec.b);
+      if (rec.type==='chg'){
+        lines.push('-' + rec.a);
+        lines.push('+' + rec.b);
+      }
+    }
+  }
+  return lines.join('\n');
+}
+
+/* ---------- Rendering ---------- */
+const leftLinesEl = $('#cod-dif-che-left-lines');
+const rightLinesEl = $('#cod-dif-che-right-lines');
+const inlineLinesEl = $('#cod-dif-che-inline-lines');
+const paneLeft = $('#cod-dif-che-left-pane');
+const paneRight = $('#cod-dif-che-right-pane');
+const paneInline = $('#cod-dif-che-inline');
+const splitWrap = $('#cod-dif-che-split');
+
+function compare(){
+  const prepL = prepLines(elLeft.value, opts);
+  const prepR = prepLines(elRight.value, opts);
+
+  const a = prepL.norm;
+  const b = prepR.norm;
+
+  const pairs = lcs(a, b);
+  // Walk through to produce rows
+  let i=0, j=0, p=0;
+  const rows = []; // {type:'eq'|'add'|'del'|'chg', a, b, ai, bj, wordA?, wordB?}
+  while(i<a.length || j<b.length){
+    if (p<pairs.length){
+      const [ai,bj] = pairs[p];
+      // deletions
+      while(i<ai){ rows.push({type:'del', a: prepL.raw[i], b:'', ai:i, bj:null}); i++; }
+      // additions
+      while(j<bj){ rows.push({type:'add', a:'', b: prepR.raw[j], ai:null, bj:j}); j++; }
+      // equal line
+      rows.push({type:'eq', a: prepL.raw[ai], b: prepR.raw[bj], ai:ai, bj:bj});
+      i=ai+1; j=bj+1; p++;
+    }else{
+      while(i<a.length){ rows.push({type:'del', a: prepL.raw[i], b:'', ai:i, bj:null}); i++; }
+      while(j<b.length){ rows.push({type:'add', a:'', b: prepR.raw[j], ai:null, bj:j}); j++; }
+    }
+  }
+
+  // detect changes where both a and b exist at near positions (convert del+add pair into chg when sequences align)
+  const merged = [];
+  for (let k=0;k<rows.length;k++){
+    const r = rows[k];
+    const nxt = rows[k+1];
+    if (r.type==='del' && nxt && nxt.type==='add'){
+      merged.push({type:'chg', a:r.a, b:nxt.b, ai:r.ai, bj:nxt.bj});
+      k++; continue;
+    }
+    merged.push(r);
+  }
+
+  // Word level processing for chg
+  const gran = opts.gran.value;
+  for (const r of merged){
+    if (r.type==='chg'){
+      if (gran==='line'){ r.wordA = escapeHTML(r.a); r.wordB = escapeHTML(r.b); }
+      else {
+        const {a:wa, b:wb} = diffInline(r.a, r.b, gran);
+        r.wordA = wa; r.wordB = wb;
+      }
+    }
+  }
+
+  // Stats
+  let add=0, del=0, chg=0;
+  for (const r of merged){ if (r.type==='add') add++; else if (r.type==='del') del++; else if (r.type==='chg') chg++; }
+  $('#cod-dif-che-stat-lines').textContent = `Lines: ${merged.length}`;
+  $('#cod-dif-che-stat-add').textContent = `+${add}`;
+  $('#cod-dif-che-stat-del').textContent = `-${del}`;
+  $('#cod-dif-che-stat-chg').textContent = `~${chg}`;
+
+  // Build hunks for patch and minimap
+  const hunks = [];
+  let cur=null;
+  for (let idx=0; idx<merged.length; idx++){
+    const r=merged[idx];
+    const isDiff = r.type!=='eq';
+    if (isDiff && !cur){
+      cur = {aStart: r.ai ?? (merged[idx-1]?.ai??0), bStart: r.bj ?? (merged[idx-1]?.bj??0), aLen:0, bLen:0, rows:[]};
+    }
+    if (cur){
+      cur.rows.push(r);
+      if (r.type==='eq'){ /* close hunk if we hit context gap */ }
+      if (r.type==='del' || r.type==='chg') cur.aLen++;
+      if (r.type==='add' || r.type==='chg') cur.bLen++;
+      const nextIsEq = merged[idx+1]?.type==='eq' || !merged[idx+1];
+      if (nextIsEq){ hunks.push(cur); cur=null; }
+    }
+  }
+  compare._hunks = hunks;
+  compare._merged = merged;
+  $('#cod-dif-che-result').hidden = false;
+
+  renderSplit(merged);
+  renderInline(merged);
+  updateView();
+  buildMinimap(merged);
+  syncScroll();
+}
+
+/* Rendering helpers */
+function renderSplit(rows){
+  leftLinesEl.innerHTML=''; rightLinesEl.innerHTML='';
+  const fragL = document.createDocumentFragment();
+  const fragR = document.createDocumentFragment();
+  rows.forEach((r, idx)=>{
+    // left
+    const lineL = document.createElement('div');
+    lineL.className = 'cod-dif-che-line ' + (r.type==='del'?'cod-dif-che-del': r.type==='chg'?'cod-dif-che-chg':'');
+    const lnL = r.ai!=null ? r.ai+1 : '';
+    const contentL = r.type==='chg' ? r.wordA : escapeHTML(r.a);
+    lineL.innerHTML = `<div class="cod-dif-che-gutter">${lnL} <span class="cod-dif-che-op">${r.type==='del'?'−':r.type==='chg'?'~':' '}</span></div><div class="cod-dif-che-content"><code>${contentL||''}</code></div>`;
+    fragL.appendChild(lineL);
+
+    // right
+    const lineR = document.createElement('div');
+    lineR.className = 'cod-dif-che-line ' + (r.type==='add'?'cod-dif-che-add': r.type==='chg'?'cod-dif-che-chg':'');
+    const lnR = r.bj!=null ? r.bj+1 : '';
+    const contentR = r.type==='chg' ? r.wordB : escapeHTML(r.b);
+    lineR.innerHTML = `<div class="cod-dif-che-gutter">${lnR} <span class="cod-dif-che-op">${r.type==='add'?'+':r.type==='chg'?'~':' '}</span></div><div class="cod-dif-che-content"><code>${contentR||''}</code></div>`;
+    fragR.appendChild(lineR);
+  });
+  leftLinesEl.appendChild(fragL);
+  rightLinesEl.appendChild(fragR);
+}
+
+function renderInline(rows){
+  inlineLinesEl.innerHTML='';
+  const frag = document.createDocumentFragment();
+  rows.forEach(r=>{
+    const line = document.createElement('div');
+    let cls = 'cod-dif-che-line';
+    if (r.type==='add') cls += ' cod-dif-che-add';
+    if (r.type==='del') cls += ' cod-dif-che-del';
+    if (r.type==='chg') cls += ' cod-dif-che-chg';
+    const op = r.type==='add'?'+': r.type==='del'?'−': r.type==='chg'?'~':' ';
+    let content = '';
+    if (r.type==='eq') content = escapeHTML(r.a);
+    else if (r.type==='add') content = `<span class="cod-dif-che-wadd">${escapeHTML(r.b)}</span>`;
+    else if (r.type==='del') content = `<span class="cod-dif-che-wdel">${escapeHTML(r.a)}</span>`;
+    else if (r.type==='chg') content = `<div><b>–</b> <code>${r.wordA}</code></div><div><b>+</b> <code>${r.wordB}</code></div>`;
+    line.className = cls;
+    line.innerHTML = `<div class="cod-dif-che-gutter">${(r.ai!=null?r.ai+1:'')}/${(r.bj!=null?r.bj+1:'')} <span class="cod-dif-che-op">${op}</span></div><div class="cod-dif-che-content"><code>${content||''}</code></div>`;
+    frag.appendChild(line);
+  });
+  inlineLinesEl.appendChild(frag);
+}
+
+function updateView(){
+  const mode = opts.mode.value;
+  if (mode==='split'){
+    splitWrap.hidden = false; paneInline.hidden = true;
+  } else {
+    splitWrap.hidden = true; paneInline.hidden = false;
+  }
+}
+
+/* Minimap bars */
+function buildMinimap(rows){
+  const map = $('#cod-dif-che-minimap');
+  map.innerHTML='';
+  const h = map.clientHeight || 72;
+  rows.forEach((r, i)=>{
+    if (r.type==='eq') return;
+    const bar = document.createElement('div');
+    bar.className = 'cod-dif-che-mini-bar';
+    bar.style.top = Math.round((i/rows.length) * (h-4)) + 'px';
+    bar.style.background = r.type==='add' ? 'rgba(16,185,129,.7)' :
+                           r.type==='del' ? 'rgba(239,68,68,.7)' :
+                                            'rgba(245,158,11,.7)';
+    map.appendChild(bar);
+  });
+}
+
+/* Sync scroll panes */
+function syncScroll(){
+  const lock = {on:false};
+  function link(a,b){
+    a.addEventListener('scroll', ()=>{
+      if (lock.on) return;
+      lock.on = true;
+      b.scrollTop = a.scrollTop * (b.scrollHeight - b.clientHeight) / Math.max(1, (a.scrollHeight - a.clientHeight));
+      lock.on = false;
+    }, {passive:true});
+  }
+  link(paneLeft, paneRight); link(paneRight, paneLeft);
+}
+
+/* ---------- Utilities ---------- */
+function escapeHTML(str=''){
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* Export unified diff patch */
+function exportPatch(){
+  const hunks = compare._hunks || [];
+  const patch = buildPatch(elLeft.value, elRight.value, hunks);
+  const blob = new Blob([patch], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'diff.patch';
+  document.body.appendChild(a); a.click(); a.remove();
+  toast('Patch downloaded');
+}
+
+/* Copy HTML diff */
+async function copyHTML(){
+  const mode = opts.mode.value;
+  const html = mode==='split'
+    ? `<div class="split">${leftLinesEl.innerHTML}\n<hr/>\n${rightLinesEl.innerHTML}</div>`
+    : `<div class="inline">${inlineLinesEl.innerHTML}</div>`;
+  try{
+    await navigator.clipboard.writeText(html);
+    toast('HTML copied');
+  }catch{ toast('Clipboard blocked'); }
+}
+
+/* Tiny share link (encodes up to ~2000 chars combined) */
+$('#cod-dif-che-share').addEventListener('click', ()=>{
+  const max = 2000;
+  const payload = JSON.stringify({
+    l: elLeft.value, r: elRight.value,
+    m: opts.mode.value, g: opts.gran.value,
+    iw: opts.ignoreWS.checked, ic: opts.ignoreCase.checked, te: opts.trimEmpty.checked
+  });
+  const enc = btoa(unescape(encodeURIComponent(payload)));
+  if (enc.length > max){ toast('Content too large for tiny link'); return; }
+  const url = `${location.origin}/tools/code-diff-checker-side-by-side#d=${enc}`;
+  navigator.clipboard.writeText(url).then(()=>toast('Link copied')).catch(()=>toast('Clipboard blocked'));
+});
+
+/* On load: parse tiny link */
+(function restoreFromHash(){
+  const m = location.hash.match(/#d=([^&]+)/);
+  if (!m) return;
+  try{
+    const obj = JSON.parse(decodeURIComponent(escape(atob(m[1]))));
+    elLeft.value = obj.l || ''; elRight.value = obj.r || '';
+    opts.mode.value = obj.m || 'split';
+    opts.gran.value = obj.g || 'word';
+    opts.ignoreWS.checked = !!obj.iw;
+    opts.ignoreCase.checked = !!obj.ic;
+    opts.trimEmpty.checked = obj.te!==false;
+    compare();
+    toast('Loaded from link');
+  }catch{}
+})();
+
+/* Wire buttons */
+$('#cod-dif-che-export-patch').addEventListener('click', exportPatch);
+$('#cod-dif-che-copy-html').addEventListener('click', copyHTML);
+
+/* Initial state */
+</script>
+</body>
+</html>

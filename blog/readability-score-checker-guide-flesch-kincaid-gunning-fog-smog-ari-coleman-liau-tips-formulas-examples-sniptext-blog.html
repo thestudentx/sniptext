@@ -1,0 +1,461 @@
+<!-- Filename: readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/blog/">
+
+  <!-- Primary SEO -->
+  <title>Readability Score Checker Guide - Flesch Kincaid, Gunning Fog, SMOG, ARI, Coleman Liau with Tips, Formulas, Examples | SnipText Blog</title>
+  <meta name="description" content="A practical guide to readability scores including Flesch Kincaid, Gunning Fog, SMOG, ARI, and Coleman Liau. Learn what each metric means, how to improve grade level, and how to use SnipText’s Readability Score Checker with sentence highlights, passive voice hints, and exportable reports." />
+  <meta name="keywords" content="readability score, Flesch Kincaid, Gunning Fog, SMOG index, ARI, Coleman Liau, reading ease, grade level, readability formulas, readability checker, passive voice, long sentences, sentence highlights, content editing, UX writing, academic writing" />
+  <meta name="author" content="Sana Qureshi" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog" />
+  <link rel="alternate" href="https://checkai.pro/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SnipText Blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Readability Score Checker Guide - Flesch Kincaid, Gunning Fog, SMOG, ARI, Coleman Liau" />
+  <meta property="og:description" content="Everything you need to know about readability scores with clear steps to improve your writing and hit the right grade level." />
+  <meta property="og:url" content="https://checkai.pro/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Readability score charts and tips by SnipText" />
+  <meta property="article:published_time" content="2025-09-12T00:00:00+05:00" />
+  <meta property="article:modified_time" content="2025-09-12T00:00:00+05:00" />
+  <meta property="article:section" content="Tools" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Readability Score Checker Guide - Flesch Kincaid, Gunning Fog, SMOG, ARI, Coleman Liau" />
+  <meta name="twitter:description" content="Understand readability scores and improve grade level with SnipText’s Readability Score Checker." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <!-- Favicon: Blog Pages (Square Blue + White Book Icon) -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml;utf8,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='SnipText Blog Icon'>
+      <rect x='0' y='0' width='100' height='100' fill='%231D4ED8'/>
+      <path d='M20 25h25v50H20z M55 25h25v50H55z' fill='%23ffffff'/>
+    </svg>" />
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog"},
+    "headline":"Readability Score Checker Guide - Flesch Kincaid, Gunning Fog, SMOG, ARI, Coleman Liau",
+    "description":"A practical guide to readability scores with steps to improve your grade level using SnipText’s Readability Score Checker.",
+    "image":{"@type":"ImageObject","url":"https://checkai.pro/images/sniptext-blog-default-image.png","width":1200,"height":630},
+    "author":{"@type":"Person","name":"Sana Qureshi"},
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}},
+    "inLanguage":"en",
+    "isAccessibleForFree": true,
+    "articleSection":"Tools",
+    "datePublished":"2025-09-12T00:00:00+05:00",
+    "dateModified":"2025-09-12T00:00:00+05:00",
+    "keywords":["readability score","Flesch Kincaid","Gunning Fog","SMOG","ARI","Coleman Liau","grade level","reading ease","readability checker","writing tools"]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog"},
+      {"@type":"ListItem","position":3,"name":"Readability Score Checker Guide","item":"https://checkai.pro/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog"}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Which readability scores should I use",
+       "acceptedAnswer":{"@type":"Answer","text":"Use Flesch Kincaid Grade for an easy grade estimate, Flesch Reading Ease for a quick difficulty label, and Gunning Fog or SMOG when you want a stricter view of complex words. ARI and Coleman Liau rely on characters and sentence length, which can be helpful for technical copy."}},
+      {"@type":"Question","name":"Does the SnipText checker upload my text",
+       "acceptedAnswer":{"@type":"Answer","text":"No. The SnipText Readability Score Checker runs in your browser. Your text is not uploaded or stored."}},
+      {"@type":"Question","name":"How do I reduce my grade level fast",
+       "acceptedAnswer":{"@type":"Answer","text":"Split long sentences, replace rare words with common ones, prefer active voice, and remove stacked modifiers. Aim for an average sentence length of 14 to 18 words."}},
+      {"@type":"Question","name":"Can I export a report",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. You can copy a JSON summary or export a CSV with sentence level metrics to share with teammates or attach to QA checklists."}}
+    ]
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/index.html" class="brand-link">SnipText</a>
+      </div>
+      <div class="nav-menu">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/blog/blog.html" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="blog-hero-content">
+          <h1 class="hero-title">Readability Score Checker Guide</h1>
+          <p class="hero-subtitle">Understand Flesch Kincaid, Gunning Fog, SMOG, ARI, and Coleman Liau. Learn when to use each score, how to improve grade level, and how to export a shareable report with SnipText’s Readability Score Checker.</p>
+          <div class="hero-cta">
+            <a href="/tools/readability-score-checker.html" class="cta-button">Open Readability Checker</a>
+            <a href="#articles" class="cta-button" style="--variant:ghost">More Articles</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+      <div class="container">
+        <article class="article-card featured" itemscope itemtype="https://schema.org/TechArticle">
+          <div class="article-meta">
+            <span class="article-category" itemprop="articleSection">Writing Tools</span>
+            <time datetime="2025-09-12" class="article-date" itemprop="datePublished">September 12, 2025</time>
+          </div>
+
+          <h2 class="article-title" itemprop="headline">Practical Readability - Scores That Help You Ship Better Writing</h2>
+
+          <p class="article-excerpt" itemprop="description">This guide explains the main readability formulas, how to interpret grade levels, and how to use sentence highlights and passive voice hints to edit faster.</p>
+
+          <div class="article-content" itemprop="articleBody">
+            <div class="drop-cap-paragraph">
+              <span class="drop-cap">R</span>eaders value clarity. Whether you write help docs, UX copy, research abstracts, or blog posts, readability scores help you match your audience. The SnipText <a href="/tools/readability-score-checker.html"><strong>Readability Score Checker</strong></a> runs locally and reports <strong>Flesch Reading Ease</strong>, <strong>Flesch Kincaid Grade</strong>, <strong>Gunning Fog</strong>, <strong>SMOG</strong>, <strong>ARI</strong>, and <strong>Coleman Liau</strong> with sentence level insights and export options.
+            </div>
+
+            <!-- In-page navigation -->
+            <nav class="article-toc" aria-label="Quick navigation">
+              <strong>In this guide:</strong>
+              <ul>
+                <li><a href="#what-it-is">What the checker measures</a></li>
+                <li><a href="#why-it-matters">Why readability matters</a></li>
+                <li><a href="#scores">Score breakdown</a></li>
+                <li><a href="#improve">How to lower a grade level</a></li>
+                <li><a href="#workflow">Editing workflow with SnipText</a></li>
+                <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </nav>
+
+            <h3 id="what-it-is">What the checker measures</h3>
+            <ul>
+              <li><strong>Flesch Reading Ease:</strong> A higher number means easier reading. Good for a quick difficulty label.</li>
+              <li><strong>Flesch Kincaid Grade:</strong> Estimated US school grade. Many public sites aim for grade 8.</li>
+              <li><strong>Gunning Fog:</strong> Emphasizes complex words. Useful for technical and legal copy checks.</li>
+              <li><strong>SMOG:</strong> Based on polysyllabic words. Conservative for short documents.</li>
+              <li><strong>ARI and Coleman Liau:</strong> Character and sentence length based. Helpful when word tokenization is noisy.</li>
+            </ul>
+
+            <h3 id="why-it-matters">Why readability matters</h3>
+            <p>Editors, product teams, and academics rely on consistent reading difficulty. Scores help you hit brand guidelines, meet accessibility targets, and reduce support load. A lower grade level usually improves completion rates and trust unless you write for specialists.</p>
+
+            <h3 id="scores">Score breakdown with quick interpretations</h3>
+            <ul>
+              <li><strong>Reading Ease:</strong> 90 to 100 very easy, 60 to 70 standard, under 50 hard. Use as a friendly label for stakeholders.</li>
+              <li><strong>FK Grade:</strong> Grade 6 to 8 is public friendly, 9 to 12 is high school, 13 plus reads like college material.</li>
+              <li><strong>Fog vs SMOG:</strong> If both mark a sentence as tough, focus edits there first.</li>
+              <li><strong>Cross checking:</strong> Take an average of grade style scores for a stable target, then validate with Reading Ease.</li>
+            </ul>
+
+            <h3 id="improve">How to lower a grade level in minutes</h3>
+            <ol>
+              <li>Split long sentences. Aim for 14 to 18 words on average.</li>
+              <li>Swap rare words for common ones when meaning is the same.</li>
+              <li>Prefer active voice when it fits the goal.</li>
+              <li>Remove stacked modifiers and filler like very, actually, and really.</li>
+              <li>Use concrete examples and define terms once, then link to a glossary.</li>
+            </ol>
+
+            <div class="collapsible-section">
+              <button class="collapsible-toggle" aria-expanded="false">
+                <span>Power tips for teams</span>
+                <span class="toggle-icon">+</span>
+              </button>
+              <div class="collapsible-content">
+                <ul>
+                  <li><strong>Target grade slider:</strong> In the checker, set a goal like 8. Edit until the meter shows a close match.</li>
+                  <li><strong>Sentence highlights:</strong> Sort by difficulty to fix hard lines first. Toggle passive mode to catch weak constructions.</li>
+                  <li><strong>Export CSV:</strong> Share sentence metrics in QA checklists or with translators.</li>
+                  <li><strong>Private workflow:</strong> Everything runs in your browser so drafts never leave your device.</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 id="workflow">Editing workflow with SnipText</h3>
+            <p>For fast improvements, pair the checker with these tools and guides:</p>
+            <ul>
+              <li><a href="/grammarly1.html">Grammar Checker</a> - catch grammar and punctuation issues after you simplify structure.</li>
+              <li><a href="/quillbot2.html">Paraphrasing Tool</a> - try shorter rewrites for stubborn sentences.</li>
+              <li><a href="/tools/word-counter.html">Word and Character Counter</a> - confirm limits for abstracts, captions, and meta descriptions.</li>
+              <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - normalize spacing before analysis.</li>
+              <li>Guides: <a href="/blog/grammar-check-guide-fix-grammar-puctuation-style-with-ai-ethically-sniptext-blog.html">Grammar Check Guide</a> and <a href="/blog/paraphrasing-tool-modes-best-practices-blog.html">Paraphrasing Best Practices</a>.</li>
+            </ul>
+
+            <h3>Try it now</h3>
+            <p>Open the <a href="/tools/readability-score-checker.html">Readability Score Checker</a>, paste a paragraph, set a target grade, and fix the top three hard sentences. Then run a quick pass in the <a href="/grammarly1.html">Grammar Checker</a> and confirm length with the <a href="/tools/word-counter.html">Word and Character Counter</a>.</p>
+
+            <h3 id="faq">FAQ</h3>
+            <dl class="faq grammar-faq" id="grammar-faq">
+              <dt tabindex="0" aria-expanded="false">Do readability scores guarantee comprehension</dt>
+              <dd class="hidden">No. Scores are helpful signals. Clear structure, visuals, and examples still matter.</dd>
+
+              <dt tabindex="0" aria-expanded="false">Is there a single best score</dt>
+              <dd class="hidden">Each formula weighs text differently. Use two or three and focus on the average and outliers.</dd>
+
+              <dt tabindex="0" aria-expanded="false">Can I use this for academic writing</dt>
+              <dd class="hidden">Yes. Many journals still prefer concise, active writing. Use the checker to reduce unnecessary complexity while keeping required terms.</dd>
+
+              <dt tabindex="0" aria-expanded="false">Does the checker support exports</dt>
+              <dd class="hidden">Yes. Copy a JSON summary or export a CSV with sentence level metrics for audits and handoffs.</dd>
+            </dl>
+          </div>
+
+          <div class="article-footer">
+            <div class="article-tags">
+              <span class="tag">Readability</span>
+              <span class="tag">Grade Level</span>
+              <span class="tag">Writing Tools</span>
+              <span class="tag">Editing</span>
+              <span class="tag">Accessibility</span>
+            </div>
+            <div class="article-share">
+              <span class="share-text">Share:</span>
+              <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+              <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+              <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="articles-section">
+      <div class="container">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="articles-grid">
+
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Security Tools</span>
+    <time datetime="2025-09-12" class="article-date">September 12, 2025</time>
+  </div>
+  <h3 class="article-title">Hash Generator Guide - MD5, SHA1, SHA256</h3>
+  <p class="article-excerpt">
+    Learn how to generate and verify MD5, SHA1, and SHA256 hashes. Includes HMAC for authenticity, salting for password safety, and checksum verification for file downloads. Runs privately in your browser.
+  </p>
+  <a href="/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog.html" class="read-more">Read More</a>
+</article>
+
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Workflow Tools</span>
+    <time datetime="2025-09-11" class="article-date">September 11, 2025</time>
+  </div>
+  <h3 class="article-title">Age and Birthday Calculator Guide: Exact Age, Next Birthday, Working Days</h3>
+  <p class="article-excerpt">
+    Learn how to calculate exact age in years, months, days, hours and seconds, get a live countdown to your next birthday, and compare any two dates with optional working day counts. Includes leap day rules, zodiac view, and a fun age on planets panel.
+  </p>
+  <a href="/blog/age-birthday-calculator-exact-age-next-birthday-date-difference-working-days-zodiac-planets-sniptext-blog.html" class="read-more">Read More</a>
+</article>
+
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Tools & Workflow</span>
+    <time datetime="2025-09-11" class="article-date">September 11, 2025</time>
+  </div>
+  <h3 class="article-title">Love Calculator Guide: Explainable Weights, Phonetics, Numerology & Zodiac</h3>
+  <p class="article-excerpt">Understand how our dark themed Love Calculator blends name similarity, phonetic signals, numerology, and zodiac with adjustable weights. See a transparent breakdown, generate a share card, and keep everything private in your browser.</p>
+  <a href="/blog/love-calculator-smart-compatibility-score-explainable-weights-phonetics-numerology-zodiac-sniptext-blog.html" class="read-more">Read More</a>
+</article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-content">
+          <h2 class="section-title">About This Blog</h2>
+          <p class="about-text">SnipText Blog shares practical, evidence based writing guides that you can apply in minutes. We focus on tools that run in your browser for privacy and speed, including the <strong>Readability Score Checker</strong>, <strong>Word and Character Counter</strong>, <strong>Case Converter</strong>, and more.</p>
+          <p class="about-text">Explore our free tools in the <a href="/tools/free-tools.html">Free Tools hub</a> or try premium editing flows with the <a href="/quillbot2.html">Paraphrasing Tool</a> and <a href="/grammarly1.html">Grammar Checker</a>. Each article includes steps, examples, and tradeoffs so your writing ships faster.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Author Bio Card -->
+  <aside class="author-bio" id="author-bio">
+    <div class="container">
+      <div class="bio-card">
+        <div class="bio-avatar">
+          <div class="avatar-placeholder">SQ</div>
+        </div>
+        <div class="bio-content">
+          <h3 class="bio-name">Sana Qureshi</h3>
+          <p class="bio-title">Content Strategist and UX Writing Specialist</p>
+          <p class="bio-description">Sana helps teams simplify complex ideas without losing accuracy. She writes guides and builds workflows around SnipText tools so writers can measure, edit, and publish with confidence.</p>
+          <div class="bio-links">
+            <a href="/blog/blog.html" class="bio-link">All Posts</a>
+            <a href="/tools/free-tools.html" class="bio-link">Free Tools</a>
+            <a href="/contact.html" class="bio-link">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="footer-title">SnipText</h4>
+          <p class="footer-text">Clear writing starts with clear tools.</p>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Connect</h4>
+          <ul class="footer-links">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SnipText. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <span class="back-to-top-icon">↑</span>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="/blog/js/sniptext-blog.js"></script>
+
+  <!-- Small accessible script to toggle FAQ questions -->
+  <script>
+  (function () {
+    const faq = document.getElementById('grammar-faq');
+    if (!faq) return;
+    const dts = faq.querySelectorAll('dt');
+
+    dts.forEach(dt => {
+      const dd = dt.nextElementSibling;
+      dt.setAttribute('role', 'button');
+      dt.setAttribute('aria-controls', dd ? dd.id || '' : '');
+      dt.setAttribute('tabindex', '0');
+
+      const toggle = () => {
+        const isOpen = dt.classList.toggle('open');
+        if (dd) {
+          dd.classList.toggle('hidden', !isOpen);
+          dt.setAttribute('aria-expanded', String(isOpen));
+        }
+      };
+
+      dt.addEventListener('click', toggle);
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

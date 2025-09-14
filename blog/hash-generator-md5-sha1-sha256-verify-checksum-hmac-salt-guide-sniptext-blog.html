@@ -1,0 +1,469 @@
+<!-- Hash Generator - BLOG ARTICLE FILE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GE98V48RK8');
+</script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/blog/">
+
+  <!-- Primary SEO -->
+  <title>Hash Generator Guide - MD5, SHA1, SHA256, HMAC, Salting, and Checksum Verification | SnipText Blog</title>
+  <meta name="description" content="A practical guide to hashing with MD5, SHA1, and SHA256. Learn how hashes work, when to use HMAC, how to add salt, and how to verify file checksums using SnipText’s private, in browser Hash Generator." />
+  <meta name="keywords" content="hash generator, md5, sha1, sha256, checksum verification, file integrity, hmac, salt, cryptographic hash, calculate checksum online, private hash tool, sniptext hash generator" />
+  <meta name="author" content="Maya Idris" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang (extension-less URLs ok) -->
+  <link rel="canonical" href="https://checkai.pro/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog" />
+  <link rel="alternate" href="https://checkai.pro/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SnipText Blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hash Generator Guide - MD5, SHA1, SHA256, HMAC, and Checksum Verification" />
+  <meta property="og:description" content="Understand hashing, HMAC, and salting. Verify file integrity with SHA256 using SnipText’s private, in browser Hash Generator." />
+  <meta property="og:url" content="https://checkai.pro/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Blog - Hash Generator guide preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hash Generator Guide - MD5, SHA1, SHA256, HMAC, and Checksum Verification" />
+  <meta name="twitter:description" content="Learn how to generate and verify hashes, when to use HMAC, and how salting protects stored passwords." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <!-- Favicon: Blog Pages (Square Blue + White Book Icon) -->
+  <link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='SnipText Blog Icon'>
+  <rect x='0' y='0' width='100' height='100' fill='%231D4ED8'/>
+  <path d='M20 25h25v50H20z M55 25h25v50H55z' fill='%23ffffff'/>
+</svg>" />
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog"},
+    "headline":"Hash Generator Guide - MD5, SHA1, SHA256, HMAC, and Checksum Verification",
+    "description":"A practical, privacy friendly guide for generating hashes, using HMAC, salting passwords, and verifying file checksums with SnipText’s in browser Hash Generator.",
+    "image":"https://checkai.pro/images/sniptext-blog-default-image.png",
+    "author":{"@type":"Person","name":"Maya Idris"},
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}},
+    "inLanguage":"en",
+    "articleSection":"Tools",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"What is a cryptographic hash",
+       "acceptedAnswer":{"@type":"Answer","text":"A hash is a fixed length fingerprint of data. Small changes to input create large, unpredictable changes to the output. Good hashes are one way and hard to reverse."}},
+      {"@type":"Question","name":"When should I use HMAC",
+       "acceptedAnswer":{"@type":"Answer","text":"Use HMAC when you need to verify both integrity and authenticity. It combines a secret key with the message so only someone with the key can produce a valid digest."}},
+      {"@type":"Question","name":"Is MD5 safe",
+       "acceptedAnswer":{"@type":"Answer","text":"MD5 is fast and widely available but collision prone. It is fine for non security checks like quick dedupe. Use SHA256 for integrity. Never use MD5 for storing passwords."}},
+      {"@type":"Question","name":"Do you upload my files",
+       "acceptedAnswer":{"@type":"Answer","text":"No. SnipText’s Hash Generator runs in your browser so your text and files stay local."}}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog"},
+      {"@type":"ListItem","position":3,"name":"Hash Generator Guide","item":"https://checkai.pro/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog"}
+    ]
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/index.html" class="brand-link">SnipText</a>
+      </div>
+      <div class="nav-menu">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/blog/blog.html" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+<main class="main-content">
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="blog-hero-content">
+        <h1 class="hero-title">Hash Generator - MD5, SHA1, and SHA256 Explained</h1>
+        <p class="hero-subtitle">Generate and verify hashes locally. Learn how hashing works, when to use HMAC, how to add salt, and how to confirm file integrity with SHA256.</p>
+        <div class="hero-cta">
+          <a href="/tools/hash-generator-md5-sha1-sha256.html" class="cta-button">Open Hash Generator</a>
+          <a href="#articles" class="cta-button" style="--variant:ghost">More Articles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Article -->
+  <section class="featured-article">
+    <div class="container">
+      <article class="article-card featured" itemscope itemtype="https://schema.org/TechArticle">
+        <div class="article-meta">
+          <span class="article-category" itemprop="articleSection">Security Tools</span>
+          <time datetime="2025-09-12" class="article-date" itemprop="datePublished">September 12, 2025</time>
+        </div>
+
+        <h2 class="article-title" itemprop="headline">Hash Generator Guide - From MD5 to SHA256 with HMAC and Salting</h2>
+
+        <p class="article-excerpt" itemprop="description">This guide explains hashing in plain language and shows how to generate MD5, SHA1, and SHA256 for text and files. You will also learn when to use HMAC and how to verify checksums safely.</p>
+
+        <div class="article-content" itemprop="articleBody">
+          <div class="drop-cap-paragraph">
+            <span class="drop-cap">H</span>ashes are fingerprints of data. If even one byte changes, the hash changes. That is why developers and researchers use hashes to detect tampering, confirm downloads, and compare versions. The <a href="/tools/hash-generator-md5-sha1-sha256.html"><strong>SnipText Hash Generator</strong></a> runs in your browser and supports <strong>MD5</strong>, <strong>SHA1</strong>, and <strong>SHA256</strong> for both text and files, plus <strong>HMAC</strong> for keyed integrity checks.
+          </div>
+
+          <!-- In-page navigation -->
+          <nav class="article-toc" aria-label="Quick navigation">
+            <strong>In this guide:</strong>
+            <ul>
+              <li><a href="#what-is-hash">What a hash is</a></li>
+              <li><a href="#why-it-matters">Why hashing matters</a></li>
+              <li><a href="#generate-hash">How to generate hashes</a></li>
+              <li><a href="#verify-checksum">How to verify a checksum</a></li>
+              <li><a href="#hmac">When to use HMAC</a></li>
+              <li><a href="#salting">What salting does</a></li>
+              <li><a href="#best-practices">Best practices and pitfalls</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </nav>
+
+          <h3 id="what-is-hash">What a hash is</h3>
+          <p>A cryptographic hash is a one way function that maps any input to a fixed length output. For example, SHA256 always returns a 64 character hexadecimal string. Good hash functions are deterministic, fast to compute, and hard to reverse. They also have the avalanche effect where tiny input changes produce very different outputs.</p>
+
+          <h3 id="why-it-matters">Why hashing matters</h3>
+          <ul>
+            <li><strong>File integrity:</strong> Confirm that a download was not corrupted. Compare your local SHA256 with a publisher’s checksum.</li>
+            <li><strong>Deduplication:</strong> Detect identical content across folders or datasets by comparing MD5 or SHA256.</li>
+            <li><strong>Authentication with HMAC:</strong> Prove that a message came from someone who knows a shared secret.</li>
+            <li><strong>Password storage:</strong> Store salted, slow hashes rather than plain text. Salting prevents rainbow table attacks.</li>
+          </ul>
+
+          <h3 id="generate-hash">How to generate hashes in SnipText</h3>
+          <ol>
+            <li>Open the <a href="/tools/hash-generator-md5-sha1-sha256.html">Hash Generator</a>.</li>
+            <li>Paste text or drag and drop files. You can add an optional salt to the text input.</li>
+            <li>Click Generate to see MD5, SHA1, SHA256, and HMAC in one view.</li>
+            <li>Use Copy or Download to save results. Export a .sha256 list for batch file checks.</li>
+          </ol>
+          <p>For longer writing projects, pair this with the <a href="/tools/word-counter.html">Word Counter</a> and the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> to keep your workflow tidy.</p>
+
+          <h3 id="verify-checksum">How to verify a checksum</h3>
+          <ol>
+            <li>Find the publisher’s SHA256 on the download page.</li>
+            <li>Hash your downloaded file using the tool. You can paste files directly from the clipboard.</li>
+            <li>Paste the expected SHA256 into the Verify box. If it matches, you will see a clear match signal.</li>
+          </ol>
+          <p>You can also import a checksum file where each line is formatted like <code>hash  filename</code>. The table will show match or no for each file.</p>
+
+          <div class="collapsible-section">
+            <button class="collapsible-toggle" aria-expanded="false">
+              <span>Pro tips for accurate verification</span>
+              <span class="toggle-icon">+</span>
+            </button>
+            <div class="collapsible-content">
+              <ul>
+                <li><strong>Hash the final file:</strong> Do not hash partial downloads or archives before extraction unless that is the published checksum.</li>
+                <li><strong>Use SHA256:</strong> SHA256 is the common choice for file integrity. MD5 can collide and should only be used for quick dedupe or non security tasks.</li>
+                <li><strong>Beware whitespace:</strong> When pasting a published checksum, remove stray spaces and line breaks.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 id="hmac">When to use HMAC</h3>
+          <p>HMAC adds a secret key to the hashing process. It solves a different problem than plain hashing. HMAC proves that the sender knew the key and that the content was not changed in transit. Use HMAC for webhooks, API signatures, and message authentication. In the SnipText tool you can select HMAC SHA256 or HMAC SHA1 and supply your key locally.</p>
+
+          <h3 id="salting">What salting does</h3>
+          <p>Salting adds unique random data to each password before hashing. It makes precomputed rainbow tables useless. Salts do not need to be secret, but they must be unique per record. Our tool offers prefix, suffix, or both for quick experiments, but production systems should use per user random salts with slow KDFs like bcrypt, scrypt, or Argon2.</p>
+
+          <h3 id="best-practices">Best practices and pitfalls</h3>
+          <ul>
+            <li><strong>Use SHA256 for integrity:</strong> Prefer SHA256 over MD5 and SHA1 for file checks.</li>
+            <li><strong>Do not store raw passwords:</strong> Use salted, slow hashing algorithms designed for passwords.</li>
+            <li><strong>Separate use cases:</strong> HMAC for authenticity, hashes for integrity, encryption for secrecy.</li>
+            <li><strong>Keep it private:</strong> SnipText tools run in your browser, so text and files never leave your device.</li>
+          </ul>
+
+          <h3>Try the tool</h3>
+          <p>Open the <a href="/tools/hash-generator-md5-sha1-sha256.html">Hash Generator</a>, paste text or drop files, and compare results instantly. For documentation style exports and reports, you can also use the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a> to format checksum lists for sharing.</p>
+
+          <h3 id="faq">FAQ</h3>
+          <dl class="faq grammar-faq" id="grammar-faq">
+            <dt tabindex="0" aria-expanded="false">Is the SnipText Hash Generator free and private?</dt>
+            <dd class="hidden">Yes. It runs completely in your browser, with zero uploads.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Can I hash multiple files at once?</dt>
+            <dd class="hidden">Yes. Drag and drop several files to get a table of SHA256 values and export a .sha256 list.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Does it support HMAC?</dt>
+            <dd class="hidden">Yes. Enter a key and choose HMAC SHA256 or HMAC SHA1 for text inputs.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Where can I learn more security basics?</dt>
+            <dd class="hidden">Start with our practical tools and guides: <a href="/blog/best-ai-writing-tools-2025.html">Best AI Writing Tools</a> for workflow choices, and <a href="/tools/random-password-generator-strong-pronounceable-passphrases-wifi-sniptext.html">Random Password Generator</a> for strong credentials.</dd>
+          </dl>
+        </div>
+
+        <div class="article-footer">
+          <div class="article-tags">
+            <span class="tag">SHA256</span>
+            <span class="tag">HMAC</span>
+            <span class="tag">Checksum</span>
+            <span class="tag">Security Tools</span>
+          </div>
+          <div class="reading-meta">
+            <span>Slow read (125wpm) 6m 30s   |   Fast read (300wpm) 2m 40s   |   ~ 800 words</span>
+          </div>
+          <div class="article-share">
+            <span class="share-text">Share:</span>
+            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="articles" class="articles-section">
+    <div class="container">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="articles-grid">
+
+        <article class="article-card" data-cat="grammar">
+          <div class="article-meta">
+            <span class="article-category">Grammar Tips</span>
+            <time datetime="2025-07-10" class="article-date">July 10, 2025</time>
+          </div>
+          <h3 class="article-title">Top 10 Grammar Blunders Professors Hate (And How to Fix Them Instantly)</h3>
+          <p class="article-excerpt">Real student examples, quick fixes, and how to leverage SnipText’s grammar checker to eliminate common mistakes.</p>
+          <a href="/blog/top-10-grammar-blunders.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="grammar">
+          <div class="article-meta">
+            <span class="article-category">Grammar & Writing Tips</span>
+            <time datetime="2025-08-15" class="article-date">August 15, 2025</time>
+          </div>
+          <h3 class="article-title">Master Grammar with AI: Fix Mistakes, Improve Clarity & Keep Your Voice</h3>
+          <p class="article-excerpt">Learn how to spot and fix grammar errors, refine tone, and enhance clarity-plus how SnipText’s AI-powered grammar checker goes beyond Grammarly to keep your writing accurate, natural, and plagiarism-free.</p>
+          <a href="/blog/grammar-check-guide-fix-grammar-punctuation-style-with-ai-ethically-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+      <article class="article-card" data-cat="academic">
+              <div class="article-meta">
+                <span class="article-category">Academic & Planning</span>
+                <time datetime="2025-09-10" class="article-date">September 10, 2025</time>
+              </div>
+              <h3 class="article-title">Flashcard Creator Guide: Export to Anki, Cloze Deletions, Bulk Import, Tags & Study Workflow</h3>
+              <p class="article-excerpt">
+                Build better study cards fast. Create Basic, Reverse and Cloze notes, add tags and hints, import from lists or CSV/TSV, then export cleanly to Anki. Includes evidence-based tips on active recall, spaced repetition, and a Pomodoro-friendly review routine.
+              </p>
+              <a href="/blog/flashcard-creator-export-to-anki-cloze-bulk-import-tags-review-workflow-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">About This Blog</h2>
+        <p class="about-text">SnipText Blog covers real world workflows for creators, students, engineers, and researchers. We publish clear guides on tools like our <a href="/tools/hash-generator-md5-sha1-sha256.html">Hash Generator</a>, <a href="/tools/word-counter.html">Word Counter</a>, and <a href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html">Random Synonym Finder</a>.</p>
+        <p class="about-text">Most articles include hands on steps, accuracy tips, and private, in browser tools. Explore more: <a href="/tools/free-tools.html">Free Tools</a>, <a href="/features.html">Premium features</a>, and the <a href="/blog/blog.html">full blog index</a>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Author Bio Card -->
+<aside class="author-bio" id="author-bio">
+  <div class="container">
+    <div class="bio-card">
+      <div class="bio-avatar">
+        <div class="avatar-placeholder" aria-label="Author avatar">M</div>
+      </div>
+      <div class="bio-content">
+        <h3 class="bio-name">Maya Idris</h3>
+        <p class="bio-title">Technical Writer and Workflow Educator</p>
+        <p class="bio-description">Maya writes practical guides that make technical topics easy. She helps teams adopt private, browser based tools for safer and faster work.</p>
+        <div class="bio-links">
+          <a href="/blog/blog.html" class="bio-link">All Posts</a>
+          <a href="/tools/free-tools.html" class="bio-link">Free Tools</a>
+          <a href="/contact.html" class="bio-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4 class="footer-title">SnipText</h4>
+        <p class="footer-text">Fast, private web tools for real work.</p>
+      </div>
+      <div class="footer-section">
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 class="footer-title">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SnipText. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">
+  <span class="back-to-top-icon">↑</span>
+</button>
+
+<!-- JavaScript -->
+<script src="/blog/js/sniptext-blog.js"></script>
+
+<!-- Small accessible script to toggle FAQ questions -->
+<script>
+(function () {
+  const faq = document.getElementById('grammar-faq');
+  if (!faq) return;
+  const dts = faq.querySelectorAll('dt');
+
+  dts.forEach(dt => {
+    const dd = dt.nextElementSibling;
+    dt.setAttribute('role', 'button');
+    dt.setAttribute('aria-controls', dd ? dd.id || '' : '');
+    dt.setAttribute('tabindex', '0');
+
+    const toggle = () => {
+      const isOpen = dt.classList.toggle('open');
+      if (dd) {
+        dd.classList.toggle('hidden', !isOpen);
+        dt.setAttribute('aria-expanded', String(isOpen));
+      }
+    };
+
+    dt.addEventListener('click', toggle);
+    dt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
+  // Simple share copy for the article
+  const shareLinks = document.querySelectorAll('.article-share .share-link[aria-label="Copy link"]');
+  shareLinks.forEach(link => {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      try {
+        await navigator.clipboard.writeText(location.href);
+        link.textContent = 'Copied';
+        setTimeout(()=> link.textContent = 'Copy', 1200);
+      } catch {}
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Survey Question Randomizer - Block and Stratified Sets, Seeded Shuffle, No-Repeat Memory | SnipText</title>
+  <meta name="description" content="Create randomized survey question sets for research. Supports block randomization, stratified by tags, seeded shuffle, no-repeat memory, anchors, exclusion rules, CSV import and export. All private in your browser." />
+  <meta name="keywords" content="survey question randomizer, randomized survey, block randomization, stratified randomization, seeded shuffle, balanced questionnaire, research tool, CSV export, anchors, exclusions" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/survey-question-randomizer" />
+  <link rel="alternate" href="https://checkai.pro/tools/survey-question-randomizer" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/survey-question-randomizer" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Survey Question Randomizer - Seeded, Balanced, Private" />
+  <meta property="og:description" content="Build randomized, balanced survey sets with blocks, tags and anchors. Export CSV. Private and fast." />
+  <meta property="og:url" content="https://checkai.pro/tools/survey-question-randomizer" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Survey Question Randomizer with animated shuffle cards" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Survey Question Randomizer - Seeded, Balanced, Private" />
+  <meta name="twitter:description" content="Randomize survey questions with blocks, tags, anchors and seeds. Export CSV. Private in browser." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Survey Question Randomizer",
+    "url":"https://checkai.pro/tools/survey-question-randomizer",
+    "applicationCategory":"BusinessApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Seeded shuffle for reproducibility",
+      "Block randomization and stratified sampling by tags",
+      "Anchors to pin questions to fixed positions",
+      "No-repeat memory per project and per user",
+      "Exclusion rules and adjacency guards",
+      "CSV import and export",
+      "Respondent simulator for balance checks"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is my data private",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. The randomizer runs locally in your browser. Nothing is uploaded."}},
+      {"@type":"Question","name":"Can I reproduce the same order",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. Use a numeric seed to generate the same randomized sets again."}},
+      {"@type":"Question","name":"How do I group questions",
+       "acceptedAnswer":{"@type":"Answer","text":"Add tags like [block:A] or [tag:UX] to your lines. Use [anchor:1] to pin a position."}}
+    ]
+  }
+  </script>
+
+  <style>
+  /* ==========================================================
+     SNIPTEXT • SURVEY QUESTION RANDOMIZER
+     Dark themed with brand gradients • classes/ids include 'sur-que-*'
+     ========================================================== */
+  :root{
+    /* Brand palette from instructions */
+    --color-primary: #1D4ED8;
+    --color-accent: #3B82F6;
+    --color-bg-light: #F3F4F6;
+    --color-bg-dark: #0F172A;
+    --color-white: #ffffff;
+    --color-text-dark: #1F2937;
+    --color-text-light: #6B7280;
+    --color-border: #E5E7EB;
+    --color-used-often: #e85d27;
+    --color-footer-bg: #1d1f2f;
+    --gradient-hero-end: #23253d;
+    --gradient-timeline-end: #23253d;
+    --gradient-cta-start: var(--color-accent);
+    --gradient-cta-end: #ff7c4c;
+    --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+    --font-body: 'Roboto', 'Arial', sans-serif;
+
+    /* Tool specific tokens using tool name */
+    --surque-primary:#1D4ED8;
+    --surque-accent:#3B82F6;
+    --surque-bg:#0F172A;
+    --surque-bg-soft:#1d1f2f;
+    --surque-text:#E6EEF8;
+    --surque-muted:#AAB6C7;
+    --surque-border:rgba(255,255,255,0.14);
+    --surque-warm:#ff7c4c;
+    --surque-warm-2:#e85d27;
+    --surque-good:#10B981;
+    --surque-warn:#F59E0B;
+    --surque-bad:#EF4444;
+
+    --surque-rad-xl:20px;
+    --surque-rad-lg:14px;
+    --surque-rad-md:10px;
+
+    --surque-shadow-1:0 10px 30px rgba(0,0,0,.35);
+    --surque-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--surque-text);
+    font-family: var(--font-body);
+    background:
+      radial-gradient(1200px 600px at 12% -10%, color-mix(in oklab, var(--surque-primary) 26%, transparent), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, color-mix(in oklab, var(--surque-accent) 22%, transparent), transparent 52%),
+      radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--surque-warm) 14%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--surque-bg) 0%, var(--surque-bg-soft) 100%);
+    background-attachment: fixed;
+  }
+
+  /* Page shell */
+  main.sur-que-main{ width:min(1200px,92vw); margin: clamp(16px,3vw,40px) auto 80px; }
+
+  /* Hero */
+  .sur-que-hero{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+    border:1px solid var(--surque-border); border-radius:var(--surque-rad-xl);
+    padding: clamp(18px,3vw,28px);
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--surque-primary) 20%, transparent),
+      color-mix(in oklab, var(--surque-accent) 18%, transparent)
+    ) border-box;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--surque-shadow-1);
+    position:relative; overflow:hidden;
+  }
+  .sur-que-hero::after{
+    content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.6; pointer-events:none;
+    background:
+      radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--surque-primary) 28%, transparent), transparent 65%),
+      radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--surque-accent) 26%, transparent), transparent 62%);
+  }
+  @media (max-width:980px){ .sur-que-hero{ grid-template-columns:1fr } }
+
+  .sur-que-title{ margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12; font-family: var(--font-heading);
+    font-size: clamp(22px,3.2vw,36px);
+    background: linear-gradient(90deg,#fff,
+      color-mix(in oklab, var(--surque-accent) 54%, #fff) 38%,
+      color-mix(in oklab, var(--surque-warm) 40%, #fff) 78%, #fff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .sur-que-sub{ margin:6px 0 0; color:var(--surque-muted); font-size:clamp(14px,1.8vw,16px) }
+  .sur-que-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+  .sur-que-badge{ padding:6px 10px; border:1px solid var(--surque-border); border-radius:999px; background: color-mix(in oklab, var(--surque-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem }
+
+  /* Animated hero icon: shuffling cards signifying randomized questions */
+  .sur-que-hero-art{ justify-self:end }
+  svg.surque-svg{ width:min(280px,42vw); height:auto; display:block; color:#d6e2ff }
+
+  .surque-card{ transform-origin: 50% 70%; filter: drop-shadow(0 8px 20px rgba(0,0,0,.35)); }
+  .surque-card:nth-child(1){ animation: surque-shuffle 4.6s ease-in-out infinite; }
+  .surque-card:nth-child(2){ animation: surque-shuffle 4.6s ease-in-out infinite .35s; }
+  .surque-card:nth-child(3){ animation: surque-shuffle 4.6s ease-in-out infinite .7s; }
+
+  .surque-stars path{ opacity:.8; animation: surque-spark 2.8s ease-in-out infinite }
+  .surque-stars path:nth-child(2){ animation-delay:.6s }
+  .surque-stars path:nth-child(3){ animation-delay:1.2s }
+
+  @keyframes surque-shuffle{
+    0%   { transform: translate(0,0) rotate(0) }
+    20%  { transform: translate(-6px,-10px) rotate(-6deg) }
+    40%  { transform: translate(10px,-6px) rotate(4deg) }
+    60%  { transform: translate(-4px,8px) rotate(-3deg) }
+    80%  { transform: translate(6px,-2px) rotate(5deg) }
+    100% { transform: translate(0,0) rotate(0) }
+  }
+  @keyframes surque-spark{
+    0%,100%{ opacity:.35; transform: scale(1) }
+    50%    { opacity:1; transform: scale(1.2) }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .surque-card, .surque-stars path{ animation: none }
+  }
+
+  /* Grid */
+  .sur-que-grid{ margin-top: clamp(14px,2.6vw,24px); display:grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,2.4vw,20px); }
+  @media (max-width:1100px){ .sur-que-grid{ grid-template-columns:1fr } }
+
+  /* Cards */
+  .sur-que-card{ border:1px solid var(--surque-border); border-radius:var(--surque-rad-lg); background: rgba(255,255,255,.06); box-shadow: var(--surque-shadow-2); backdrop-filter: blur(10px); overflow:hidden }
+  .sur-que-card-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; background: linear-gradient(90deg, color-mix(in oklab, var(--surque-primary) 12%, transparent), color-mix(in oklab, var(--surque-accent) 10%, transparent)); border-bottom:1px solid var(--surque-border) }
+  .sur-que-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family: var(--font-heading) }
+  .sur-que-section{ padding:12px 14px; display:grid; gap:12px }
+
+  /* Inputs */
+  .sur-que-field{ display:grid; gap:6px }
+  .sur-que-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+  .sur-que-input, .sur-que-select, .sur-que-textarea{ background:#0e1730; color:#e6ecff; border:1px solid var(--surque-border); border-radius:10px; padding:12px 14px; outline:none; transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease; min-height:44px }
+  .sur-que-textarea{ min-height:240px; resize:vertical; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace; line-height:1.45; font-size:13px; white-space:pre }
+  .sur-que-select{ appearance:none }
+  .sur-que-input:focus, .sur-que-select:focus, .sur-que-textarea:focus{ border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px) }
+  .sur-que-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+  /* Buttons */
+  .sur-que-btn{ --_bg: linear-gradient(180deg, color-mix(in oklab, var(--surque-primary) 70%, transparent), color-mix(in oklab, var(--surque-accent) 62%, transparent)); --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--surque-primary)); appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt); padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer; transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease; box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16); font-family: var(--font-heading) }
+  .sur-que-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+  .sur-que-btn:active{ transform: translateY(0); filter: brightness(.98) }
+  .sur-que-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--surque-border); box-shadow:none }
+  .sur-que-btn-warm{ background: linear-gradient(135deg, var(--surque-accent), var(--surque-warm)); border-color:transparent }
+  .sur-que-btn-red{ background: linear-gradient(135deg, #EF4444, #F59E0B); border-color: transparent }
+
+  /* Output panes */
+  .sur-que-result{ display:grid; gap:10px }
+  .sur-que-pane{ border:1px solid var(--surque-border); border-radius:10px; overflow:auto; background: rgba(14,23,48,.6); max-height:540px; position:relative }
+  .sur-que-list{ list-style:none; margin:0; padding:0 }
+  .sur-que-item{ padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.06); display:flex; gap:10px; align-items:flex-start }
+  .sur-que-num{ width:28px; text-align:right; opacity:.7; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace }
+  .sur-que-tags{ display:flex; gap:6px; flex-wrap:wrap }
+  .sur-que-tag{ font:600 11px/1.1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace; background: color-mix(in oklab, var(--surque-bg) 78%, transparent); color:#cbd5e1; padding:3px 6px; border-radius:8px; border:1px solid var(--surque-border) }
+
+  /* Pills and meta */
+  .sur-que-pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid var(--surque-border); border-radius:999px; background: color-mix(in oklab, var(--surque-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem }
+
+  /* Toast */
+  .sur-que-toast{ position: fixed; inset: auto 16px 16px auto; background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--surque-border); backdrop-filter: blur(8px); box-shadow: var(--surque-shadow-1); transform: translateY(20px); opacity:0; pointer-events:none; transition: transform .25s ease, opacity .25s ease; z-index: 50 }
+  .sur-que-toast.show{ transform: translateY(0); opacity:1 }
+
+  /* Mini viz */
+  .sur-que-viz{ height:72px; border:1px solid var(--surque-border); border-radius:10px; overflow:hidden; background: rgba(255,255,255,.04); display:grid; grid-template-columns: repeat(var(--cols,10),1fr) }
+  .sur-que-viz > div{ min-width:6px }
+
+  /* Small float */
+  @media (prefers-reduced-motion:no-preference){
+    .sur-que-card{ animation: surque-float 18s ease-in-out infinite }
+    @keyframes surque-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+  }
+
+  /* Utility */
+  .kbd{ font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace; background: color-mix(in oklab, var(--surque-bg) 78%, transparent); color:#cbd5e1; padding:3px 6px; border-radius:8px; border:1px solid var(--surque-border) }
+  :focus-visible{ outline:2px solid color-mix(in oklab, var(--surque-accent) 60%, #fff); outline-offset:2px }
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+
+  /* Adjacency guard badges */
+  .guard-ok{ background: color-mix(in oklab, var(--surque-good) 18%, transparent) }
+  .guard-warn{ background: color-mix(in oklab, var(--surque-warn) 18%, transparent) }
+  .guard-bad{ background: color-mix(in oklab, var(--surque-bad) 18%, transparent) }
+
+  .feature-card-all-pages {margin: 0 2rem;}
+  .tools-grid {margin: 1rem; background: #0e1730;}
+  .tool-card {background: #0f1b34;}
+  @media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+<body>
+
+
+
+    
+
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  
+
+
+  
+
+<main class="sur-que-main" id="sur-que-main" aria-label="Survey Question Randomizer">
+  <!-- HERO -->
+  <section class="sur-que-hero" aria-labelledby="sur-que-title">
+    <div>
+      <h1 class="sur-que-title" id="sur-que-title">Survey Question Randomizer</h1>
+      <p class="sur-que-sub">Paste or import your questions, add optional tags and rules, then generate perfectly balanced randomized sets. Runs private on your device, supports seeds for reproducibility and remembers what was shown last time.</p>
+      <div class="sur-que-badges">
+        <span class="sur-que-badge">Seeded and reproducible</span>
+        <span class="sur-que-badge">Blocks and strata</span>
+        <span class="sur-que-badge">No-repeat memory</span>
+        <span class="sur-que-badge">CSV import and export</span>
+      </div>
+    </div>
+    <!-- Animated hero art: shuffling cards representing randomized questions -->
+    <div class="sur-que-hero-art" aria-hidden="true">
+      <svg class="surque-svg" viewBox="0 0 220 180" role="img" aria-label="Shuffling survey cards icon">
+        <defs>
+          <linearGradient id="surque-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3B82F6"/>
+            <stop offset="100%" stop-color="#ff7c4c"/>
+          </linearGradient>
+        </defs>
+        <g class="surque-stars" fill="url(#surque-grad)">
+          <path d="M16 24h2v2h-2zM30 10h2v2h-2zM44 22h2v2h-2z"/>
+        </g>
+        <g transform="translate(40,24)">
+          <rect class="surque-card" x="20" y="10" rx="8" width="90" height="130" fill="#0f1b34" stroke="url(#surque-grad)" stroke-opacity=".6"/>
+          <rect class="surque-card" x="34" y="0" rx="8" width="90" height="130" fill="#0f1b34" stroke="url(#surque-grad)" stroke-opacity=".6"/>
+          <rect class="surque-card" x="48" y="14" rx="8" width="90" height="130" fill="#0f1b34" stroke="url(#surque-grad)" stroke-opacity=".6"/>
+          <!-- icons on top card -->
+          <g transform="translate(56,28)" stroke="#94b8ff" stroke-width="2" stroke-linecap="round">
+            <path d="M0 0h56"/>
+            <path d="M0 14h42"/>
+            <path d="M0 28h56"/>
+            <path d="M0 42h34"/>
+          </g>
+          <g transform="translate(100,112)" fill="url(#surque-grad)">
+            <path d="M0 0h18v8H0z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="sur-que-grid">
+    <!-- LEFT: Inputs -->
+    <article class="sur-que-card">
+      <header class="sur-que-card-head">
+        <h2 class="sur-que-card-title">Enter or drop questions</h2>
+        <div class="sur-que-row">
+          <button class="sur-que-btn sur-que-btn-ghost" id="sur-que-clear">Clear</button>
+          <button class="sur-que-btn" id="sur-que-sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="sur-que-section">
+        <div class="sur-que-row" style="align-items:flex-start">
+          <div class="sur-que-field" style="flex:1 1 560px">
+            <label class="sur-que-label" for="sur-que-questions">Questions list</label>
+            <textarea id="sur-que-questions" class="sur-que-textarea" placeholder="One question per line. Add optional parts like [tag:UX] [block:A] {weight:2} [anchor:1] [exclude:Q5]" aria-label="Questions" spellcheck="false"></textarea>
+            <div class="sur-que-row">
+              <input type="file" id="sur-que-file" class="sur-que-input" accept=".txt,.csv" />
+              <button class="sur-que-btn sur-que-btn-ghost" id="sur-que-paste" title="Paste from clipboard"><span class="kbd">Ctrl</span>+<span class="kbd">V</span> paste</button>
+            </div>
+          </div>
+          <div class="sur-que-field" style="flex:1 1 280px">
+            <label class="sur-que-label" for="sur-que-rules">Quick help</label>
+            <div class="sur-que-pane" style="padding:12px" id="sur-que-help" aria-live="polite">
+              <p class="sur-que-sub" style="margin:0 0 8px">Syntax per line:</p>
+              <ul>
+                <li><strong>Q text</strong> [tag:UX] [block:A] {weight:2}</li>
+                <li>[anchor:1] pins absolute position 1</li>
+                <li>[exclude:QID] excludes if that id present</li>
+                <li>Prefix with <strong>QID:</strong> like <em>Q5: How often do you... [tag:freq]</em></li>
+              </ul>
+              <p class="sur-que-sub" style="margin:8px 0 0">Drop a .csv with columns: id,text,tags,block,weight,anchor</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sur-que-row">
+          <div class="sur-que-field">
+            <label class="sur-que-label" for="sur-que-count">Questions per set</label>
+            <input id="sur-que-count" class="sur-que-input" type="number" min="1" value="8" />
+          </div>
+          <div class="sur-que-field">
+            <label class="sur-que-label" for="sur-que-sets">Number of sets</label>
+            <input id="sur-que-sets" class="sur-que-input" type="number" min="1" value="3" />
+          </div>
+          <div class="sur-que-field">
+            <label class="sur-que-label" for="sur-que-seed">Seed</label>
+            <input id="sur-que-seed" class="sur-que-input" type="number" placeholder="Optional for reproducibility" />
+          </div>
+          <div class="sur-que-field">
+            <label class="sur-que-label" for="sur-que-project">Project name</label>
+            <input id="sur-que-project" class="sur-que-input" type="text" placeholder="Used for no-repeat memory" />
+          </div>
+        </div>
+
+        <div class="sur-que-row">
+          <label class="sur-que-label"><input type="checkbox" id="sur-que-strata" /> Include at least 1 per tag</label>
+          <label class="sur-que-label"><input type="checkbox" id="sur-que-blocks" checked /> Block randomization</label>
+          <label class="sur-que-label"><input type="checkbox" id="sur-que-adj" checked /> Avoid same tag adjacent</label>
+          <label class="sur-que-label"><input type="checkbox" id="sur-que-norepeat" checked /> No-repeat until all asked</label>
+          <label class="sur-que-label"><input type="checkbox" id="sur-que-live" /> Live update</label>
+        </div>
+
+        <div class="sur-que-row">
+          <button class="sur-que-btn" id="sur-que-generate" title="Generate sets"><span class="kbd">Enter</span> Generate</button>
+          <button class="sur-que-btn sur-que-btn-ghost" id="sur-que-swap" title="Shuffle seed">Shuffle seed</button>
+          <button class="sur-que-btn sur-que-btn-warm" id="sur-que-copy" title="Copy results">Copy results</button>
+          <button class="sur-que-btn sur-que-btn-ghost" id="sur-que-export" title="Download CSV">Export CSV</button>
+          <button class="sur-que-btn sur-que-btn-warm" id="sur-que-share" title="Copy tiny link">Copy link</button>
+        </div>
+        <p class="sur-que-sub" style="margin:4px 0 0">Keyboard: <span class="kbd">Enter</span> generate, <span class="kbd">Ctrl</span>+<span class="kbd">S</span> export CSV, <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">C</span> copy results.</p>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="sur-que-card" aria-live="polite">
+      <header class="sur-que-card-head">
+        <h2 class="sur-que-card-title">Results and checks</h2>
+        <div class="sur-que-row">
+          <span class="sur-que-pill" id="sur-que-stat-q">Questions: -</span>
+          <span class="sur-que-pill" id="sur-que-stat-tags">Tags: -</span>
+          <span class="sur-que-pill" id="sur-que-stat-fair">Fairness: -</span>
+        </div>
+      </header>
+      <div class="sur-que-section sur-que-result" id="sur-que-result" hidden>
+        <div style="display:grid; gap:8px">
+          <div class="sur-que-row">
+            <label class="sur-que-label" for="sur-que-sim">Simulate respondents</label>
+            <input id="sur-que-sim" class="sur-que-input" type="number" min="1" value="100" style="width:120px" />
+            <button class="sur-que-btn" id="sur-que-run-sim">Run</button>
+          </div>
+          <div class="sur-que-viz" id="sur-que-viz" aria-label="Balance visual" title="Each column is one set. Colors represent tags."></div>
+        </div>
+
+        <div class="sur-que-pane" id="sur-que-output" aria-label="Generated sets">
+          <ol id="sur-que-sets-list" class="sur-que-list"></ol>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <div style="margin-top:16px">
+    <p class="sur-que-sub">More you might like:
+      <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+      <a href="/tools/word-counter.html">Word Counter</a>,
+      <a href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html">Random Synonym Finder</a>.
+    </p>
+  </div>
+
+  <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Survey Randomizer Guide on SnipText Blog Page <a href="/blog/survey-question-randomizer-balanced-block-stratified-seeded-guide-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+</main>
+
+<div class="sur-que-toast" id="sur-que-toast" role="status" aria-live="polite">Copied</div>
+
+
+  
+
+  <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+              <article class="tool-card piglatin-card-teaser" tabindex="0"
+                  data-href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
+                  aria-labelledby="t-piglatin">
+                  <div class="card-icon" aria-hidden="true">
+                    <!-- Pig Latin icon: pig snout + speech bubble "ay" motif -->
+                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Pig Latin Converter icon">
+                      <!-- head -->
+                      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <!-- ears -->
+                      <path d="M7.2 6.5l-2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16.8 6.5l2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <!-- snout -->
+                      <ellipse cx="12" cy="14" rx="4.2" ry="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <circle cx="10.7" cy="14" r="0.7" fill="currentColor"/>
+                      <circle cx="13.3" cy="14" r="0.7" fill="currentColor"/>
+                      <!-- smile hint -->
+                      <path d="M9 11.2c.8.5 2 .5 3 0" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                      <!-- speech bubble tail with tiny 'ay' strokes -->
+                      <path d="M18 9.2c1.9 0 3.3 1.4 3.3 3.1 0 1.8-1.4 3.2-3.3 3.2h-1.1l-1.2 1.3v-1.3h-0.2"
+                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M17.2 11.5l.5 1.6m1-1.6l-.5 1.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <h3 id="t-piglatin" class="card-title">Pig Latin Converter</h3>
+                  <p class="card-desc">
+                    Turn English into Pig Latin with smart punctuation and capitalization, choose suffix styles, see side by side diffs, try reverse mode, and export TXT, CSV, or JSON. Private, in browser.
+                  </p>
+                  <a class="card-cta"
+                    href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
+                    aria-label="Open Pig Latin Converter">Open →</a>
+              </article>
+
+              <article class="tool-card writingprompt-tool-card" tabindex="0"
+                      data-href="/tools/random-writing-prompt-generator-json-list-filters-export.html"
+                      aria-labelledby="writingprompt-tg">
+                      <div class="card-icon writingprompt-card-icon" aria-hidden="true">
+                        <!-- Writing Prompt icon: dice + pencil + spark -->
+                        <svg viewBox="0 0 24 24" class="svg-icon writingprompt-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Random Writing Prompt Generator">
+                          <!-- dice -->
+                          <rect x="2.5" y="2.5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                          <circle cx="5.3" cy="5.3" r="0.9" fill="currentColor"/>
+                          <circle cx="8.7" cy="5.3" r="0.9" fill="currentColor"/>
+                          <circle cx="7" cy="8.7" r="0.9" fill="currentColor"/>
+                          <!-- pencil -->
+                          <path d="M14.2 6.8l6.6 6.6c.5.5.5 1.3 0 1.8l-3.6 3.6c-.5.5-1.3.5-1.8 0l-6.6-6.6 5.4-5.4z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                          <path d="M7.9 12.1l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                          <!-- pencil tip fill -->
+                          <path d="M20.8 13.6l-1.8-1.8-1.5 1.5 1.8 1.8 1.5-1.5z" fill="currentColor"/>
+                          <!-- spark -->
+                          <path d="M12.2 2.6l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1.1" fill="none"/>
+                        </svg>
+                      </div>
+                      <h3 id="writingprompt-tg" class="card-title writingprompt-card-title">Random Writing Prompt Generator</h3>
+                      <p class="card-desc writingprompt-card-desc">
+                        Generate story ideas with genre, tone, and length filters. Save favorites, search the library, import your own JSON list, and export visible results as JSON or CSV. Share a link to your exact settings. Private, in-browser.
+                      </p>
+                      <a class="card-cta writingprompt-card-cta"
+                        href="/tools/random-writing-prompt-generator-json-list-filters-export.html"
+                        aria-label="Open Random Writing Prompt Generator">Open →</a>
+                  </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Random Text Generator Icon -->
+            <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Random Text Generator icon">
+              <!-- Random scattered lines -->
+              <line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="10" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="6" y1="14" x2="16" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="8" y1="18" x2="18" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Shuffle arrows -->
+              <path d="M3 12h3l2-2m-2 4l2-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 12h-3l-2-2m2 4l-2-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 id="t10" class="card-title">Random Text Generator</h3>
+          <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+          <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+      </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/symbol-character-info.html" aria-labelledby="t6">
+        <div class="card-icon" aria-hidden="true">
+          <!-- Symbol/Character Info Icon -->
+          <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Symbol and Character Info icon">
+            <!-- Outer square -->
+            <rect x="3" y="3" width="18" height="18" rx="3" ry="3" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <!-- Omega symbol -->
+            <path d="M8 8a4 4 0 0 1 8 0v6a4 4 0 0 1-8 0z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <!-- Small info dot -->
+            <circle cx="12" cy="18" r="1.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3 id="t6" class="card-title">Symbol / Character Info</h3>
+        <p class="card-desc">Counts symbols and shows ASCII & Unicode code points and names for selected characters.</p>
+        <a class="card-cta" href="/tools/symbol-character-info.html" aria-label="Open Symbol/Character Counter">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+
+  <!-- =========================
+       SCRIPT
+       ========================= -->
+
+       <script src="/js/index.js"></script>
+       <script src="/js/auth.js"></script>
+       <script src="/tools/js/free-tools.js"></script>
+
+<script>
+// ==========================================================
+// SURVEY QUESTION RANDOMIZER • all in one file
+// Classes and ids include 'sur-que-*' • Private in browser
+// ==========================================================
+(function(){
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+  const el = {
+    ta: $('#sur-que-questions'),
+    file: $('#sur-que-file'),
+    paste: $('#sur-que-paste'),
+    clear: $('#sur-que-clear'),
+    sample: $('#sur-que-sample'),
+    count: $('#sur-que-count'),
+    sets: $('#sur-que-sets'),
+    seed: $('#sur-que-seed'),
+    project: $('#sur-que-project'),
+    strata: $('#sur-que-strata'),
+    blocks: $('#sur-que-blocks'),
+    adj: $('#sur-que-adj'),
+    norepeat: $('#sur-que-norepeat'),
+    live: $('#sur-que-live'),
+    gen: $('#sur-que-generate'),
+    swap: $('#sur-que-swap'),
+    copy: $('#sur-que-copy'),
+    export: $('#sur-que-export'),
+    share: $('#sur-que-share'),
+    result: $('#sur-que-result'),
+    list: $('#sur-que-sets-list'),
+    toast: $('#sur-que-toast'),
+    statQ: $('#sur-que-stat-q'),
+    statTags: $('#sur-que-stat-tags'),
+    statFair: $('#sur-que-stat-fair'),
+    viz: $('#sur-que-viz'),
+    simN: $('#sur-que-sim'),
+    simBtn: $('#sur-que-run-sim')
+  };
+
+  // URL hash state
+  function encodeState(obj){
+    const s = JSON.stringify(obj);
+    return btoa(unescape(encodeURIComponent(s)));
+  }
+  function decodeState(str){
+    try{ return JSON.parse(decodeURIComponent(escape(atob(str)))) }catch(e){ return null }
+  }
+
+  // PRNG for seeding
+  function mulberry32(a){
+    return function(){
+      var t = a += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+  }
+
+  function shuffle(arr, rnd){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(rnd()* (i+1));
+      [arr[i],arr[j]] = [arr[j],arr[i]];
+    }
+    return arr;
+  }
+
+  // Parse input text or CSV
+  function parseLines(text){
+    const lines = text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    const items = [];
+    for(const line of lines){
+      // CSV simple detection by commas and possible header
+      if(/,/.test(line) && /(id|text|tags|block|weight|anchor)/i.test(lines[0])){
+        // Skip here, handled by CSV path below
+        continue;
+      }
+      const obj = { id:"", text:"", tags:new Set(), block:"", weight:1, anchor:null, excludes:new Set() };
+      // optional id prefix like Q5: ...
+      let rest = line;
+      const mId = rest.match(/^([^:]{1,40}):\s*(.*)$/);
+      if(mId){ obj.id = mId[1].trim(); rest = mId[2]; }
+      obj.text = rest.replace(/\[(tag|block|anchor|exclude):[^\]]+\]|\{weight:[^}]+\}/gi, '').trim();
+      // tags
+      const re = /\[(tag|block|anchor|exclude):([^\]]+)\]|\{weight:([^}]+)\}/gi; let m;
+      while((m = re.exec(rest))){
+        const k = m[1];
+        if(k === 'tag'){ obj.tags.add(m[2].trim()) }
+        if(k === 'block'){ obj.block = m[2].trim() }
+        if(k === 'anchor'){ const v = parseInt(m[2],10); if(!Number.isNaN(v)) obj.anchor = v }
+        if(k === 'exclude'){ obj.excludes.add(m[2].trim()) }
+        if(!k && m[3] != null){ const w = parseFloat(m[3]); if(!Number.isNaN(w)) obj.weight = Math.max(0,w) }
+      }
+      if(!obj.id){ obj.id = 'Q'+(items.length+1) }
+      items.push(obj);
+    }
+
+    // CSV block if header present
+    if(lines[0] && /,/.test(lines[0]) && /(id|text|tags|block|weight|anchor)/i.test(lines[0])){
+      const rows = lines.map(r=>r.split(',').map(c=>c.trim()));
+      const header = rows.shift().map(h=>h.toLowerCase());
+      for(const row of rows){
+        const get = (name)=>{ const i = header.indexOf(name); return i>=0? row[i]||'':'' };
+        const obj = {
+          id: get('id') || 'Q'+(items.length+1),
+          text: get('text'),
+          tags: new Set((get('tags')||'').split('|').map(s=>s.trim()).filter(Boolean)),
+          block: get('block')||'',
+          weight: parseFloat(get('weight')||'1')||1,
+          anchor: get('anchor')? parseInt(get('anchor'),10): null,
+          excludes: new Set((get('exclude')||get('excludes')||'').split('|').map(s=>s.trim()).filter(Boolean))
+        };
+        if(obj.text) items.push(obj);
+      }
+    }
+
+    return items;
+  }
+
+  function stats(items){
+    const tagCount = new Map();
+    for(const it of items){ for(const t of it.tags){ tagCount.set(t,(tagCount.get(t)||0)+1) } }
+    return { total: items.length, tags: tagCount };
+  }
+
+  // No-repeat memory per project
+  function takeWithoutRepeat(items, need, project){
+    if(!project) return items.slice(0,need);
+    const key = 'surque-memory-'+project;
+    const seen = new Set(JSON.parse(localStorage.getItem(key)||'[]'));
+    const unseen = items.filter(it=>!seen.has(it.id));
+    const chosen = [];
+    for(const it of unseen){ if(chosen.length<need) chosen.push(it); }
+    if(chosen.length<need){
+      // reset cycle
+      localStorage.setItem(key, JSON.stringify([]));
+      const more = items.filter(it=>!chosen.includes(it));
+      while(chosen.length<need && more.length){ chosen.push(more.shift()) }
+    }
+    const nextSeen = new Set(seen);
+    chosen.forEach(it=>nextSeen.add(it.id));
+    localStorage.setItem(key, JSON.stringify(Array.from(nextSeen)));
+    return chosen;
+  }
+
+  // Build weighted pool
+  function weightedPool(arr){
+    const pool=[]; for(const a of arr){ const w = Math.max(0, a.weight||1); for(let i=0;i<w;i++) pool.push(a) } return pool;
+  }
+
+  // Main generator
+  function generateSets(allItems, opts){
+    const { perSet, nSets, seed, strata, useBlocks, avoidAdj, norepeat, project } = opts;
+    const rnd = seed != null ? mulberry32(seed) : Math.random;
+
+    // Respect anchors first
+    const anchorsMap = new Map(); // pos -> item
+    for(const it of allItems){ if(it.anchor && Number.isInteger(it.anchor) && it.anchor>0) anchorsMap.set(it.anchor, it); }
+
+    // Group by block
+    const byBlock = new Map();
+    for(const it of allItems){ const b = useBlocks && it.block? it.block : '__'; if(!byBlock.has(b)) byBlock.set(b, []); byBlock.get(b).push(it) }
+
+    // For each set
+    const out = [];
+    const tagUniverse = Array.from(new Set(allItems.flatMap(i=>Array.from(i.tags))));
+
+    for(let s=0;s<nSets;s++){
+      let pickPool = allItems.slice();
+      // apply no-repeat selection pre-pick if enabled
+      if(norepeat){ pickPool = takeWithoutRepeat(shuffle(pickPool.slice(), rnd), Math.min(perSet, pickPool.length), project); }
+
+      // start with anchored positions
+      const arr = new Array(perSet).fill(null);
+      anchorsMap.forEach((item, pos)=>{ if(pos-1 < perSet) arr[pos-1] = item });
+
+      // helper to check adjacency by tag
+      const adjBad = (a,b)=>{
+        if(!avoidAdj || !a || !b) return false;
+        const setA = a.tags; const setB = b.tags;
+        for(const t of setA){ if(setB.has(t)) return true }
+        return false;
+      };
+
+      // candidate pool after excluding anchored ones
+      let remaining = pickPool.filter(it=>!arr.includes(it));
+
+      // stratified guarantee: try to include at least one per tag
+      const required = [];
+      if(strata && tagUniverse.length>0){
+        for(const tag of tagUniverse){
+          const cand = remaining.filter(it=>it.tags.has(tag));
+          if(cand.length) required.push(cand[Math.floor(rnd()*cand.length)]);
+        }
+      }
+
+      // assemble order with blocks when requested
+      const blocksSeq = useBlocks ? Array.from(byBlock.keys()).filter(b=>b!=='__') : ['__'];
+      if(useBlocks){ shuffle(blocksSeq, rnd); }
+
+      const pushIfOk = (idx, item)=>{
+        if(arr[idx]) return false;
+        // check excludes
+        for(const ex of item.excludes){ if(arr.some(x=>x && (x.id===ex))) return false }
+        // check adjacency once placed
+        const left = idx>0? arr[idx-1] : null;
+        if(adjBad(left, item)) return false;
+        arr[idx] = item; return true;
+      };
+
+      // prefill with required items at random free slots
+      shuffle(required, rnd);
+      for(const req of required){
+        // find free slot
+        const slots = arr.map((v,i)=>v?null:i).filter(i=>i!=null);
+        if(slots.length===0) break;
+        const idx = slots[Math.floor(rnd()*slots.length)];
+        pushIfOk(idx, req);
+      }
+
+      // fill rest from weighted pools with optional block ordering
+      const flatBlockSeq = useBlocks ? blocksSeq.concat(['__']) : ['__'];
+      for(const block of flatBlockSeq){
+        let pool = (block==='__' ? remaining : remaining.filter(it=>it.block===block));
+        if(pool.length===0) continue;
+        pool = weightedPool(pool);
+        shuffle(pool, rnd);
+        for(const item of pool){
+          if(arr.every(Boolean)) break;
+          // try to place in first available slot that keeps adjacency ok
+          for(let i=0;i<perSet;i++){
+            if(!arr[i]){
+              // check adjacency with right neighbor too if exists
+              const right = (i+1<perSet)? arr[i+1] : null;
+              if(adjBad(arr[i-1], item)) continue;
+              if(right && adjBad(item, right)) continue;
+              // ensure not violating excludes with already placed ones
+              let exBad = false;
+              for(const ex of item.excludes){ if(arr.some(x=>x && (x.id===ex))) { exBad = true; break; } }
+              if(exBad) continue;
+              arr[i] = item; break;
+            }
+          }
+        }
+      }
+
+      // final pass to fill any gaps from remaining
+      remaining = allItems.filter(it=>!arr.includes(it));
+      shuffle(remaining, rnd);
+      for(let i=0;i<perSet;i++){
+        if(!arr[i] && remaining.length){ arr[i] = remaining.pop() }
+      }
+
+      // trim nulls
+      out.push(arr.filter(Boolean));
+    }
+
+    return { sets: out, tags: tagUniverse };
+  }
+
+  function renderSets(sets){
+    el.list.innerHTML = '';
+    sets.forEach((set, idx)=>{
+      const li = document.createElement('li');
+      li.style.listStyle = 'none';
+      li.innerHTML = `<div class="sur-que-item guard-ok" style="border-radius:10px; margin:8px 0; background:rgba(59,130,246,.08); border:1px solid var(--surque-border)"><div class="sur-que-num">S${idx+1}</div><div><div class="sur-que-tags" style="margin-bottom:6px">${set.map((q,i)=>`<span class="sur-que-tag" title="${Array.from(q.tags).join('|')||'no-tag'}">${i+1}</span>`).join('')}</div><ol class="sur-que-list">${set.map((q,i)=>`<li class="sur-que-item"><div class="sur-que-num">${i+1}</div><div class="sur-que-content"><div>${escapeHtml(q.text)}</div><div class="sur-que-tags">${q.id?`<span class='sur-que-tag'>${q.id}</span>`:''}${Array.from(q.tags).map(t=>`<span class='sur-que-tag'>${t}</span>`).join('')}${q.block?`<span class='sur-que-tag'>blk:${q.block}</span>`:''}${q.anchor?`<span class='sur-que-tag'>anch:${q.anchor}</span>`:''}</div></div></li>`).join('')}</ol></div></div>`;
+      el.list.appendChild(li);
+    });
+  }
+
+  function escapeHtml(s){ return s.replace(/[&<>]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])) }
+
+  function fairnessScore(sets, tags){
+    if(tags.length===0) return 1;
+    const counts = tags.map(()=>0);
+    for(const set of sets){
+      for(const q of set){ tags.forEach((t,ti)=>{ if(q.tags.has(t)) counts[ti]++ }) }
+    }
+    const mean = counts.reduce((a,b)=>a+b,0)/counts.length || 1;
+    const variance = counts.reduce((a,b)=> a + Math.pow(b-mean,2), 0) / counts.length;
+    const std = Math.sqrt(variance);
+    const coef = mean? std/mean : 0;
+    return Math.max(0, 1 - Math.min(1, coef)); // closer to 1 is fair
+  }
+
+  function colorForTag(tag){
+    // deterministic pastel by hash
+    let h=0; for(let i=0;i<tag.length;i++){ h = (h*31 + tag.charCodeAt(i))>>>0 }
+    const hue = h % 360; const sat = 70; const light = 55;
+    return `hsl(${hue} ${sat}% ${light}%)`;
+  }
+
+  function renderViz(sets, tags){
+    const cols = sets.length || 1;
+    el.viz.style.setProperty('--cols', cols);
+    el.viz.innerHTML = '';
+    // each column is a set with stacked bars per question colored by first tag
+    sets.forEach(col=>{
+      const d = document.createElement('div');
+      d.style.display='grid'; d.style.gridTemplateRows=`repeat(${Math.max(col.length,1)},1fr)`;
+      col.forEach(q=>{
+        const t = Array.from(q.tags)[0] || 'untagged';
+        const cell = document.createElement('div');
+        cell.title = `${t} • ${q.id}`; cell.style.background = colorForTag(t); cell.style.opacity = '.9';
+        d.appendChild(cell);
+      });
+      el.viz.appendChild(d);
+    });
+  }
+
+  function copyToClipboard(text){
+    navigator.clipboard.writeText(text).then(()=>showToast('Copied'))
+      .catch(()=>{ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); showToast('Copied')}catch(e){showToast('Copy failed')} ta.remove(); });
+  }
+  function showToast(msg){ el.toast.textContent = msg; el.toast.classList.add('show'); setTimeout(()=>el.toast.classList.remove('show'), 1400) }
+
+  function download(name, content, type='text/plain'){
+    const blob = new Blob([content], {type});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); URL.revokeObjectURL(a.href);
+  }
+
+  function tinyLink(state){
+    const hash = encodeState(state);
+    const url = location.origin + location.pathname + '#' + hash;
+    return url.length <= 2000 ? url : null;
+  }
+
+  function readState(){
+    const h = location.hash.slice(1);
+    const st = h? decodeState(h) : null;
+    if(st){
+      el.ta.value = st.q || '';
+      el.count.value = st.c || 8; el.sets.value = st.n || 3; el.seed.value = st.s ?? '';
+      el.project.value = st.p || '';
+      el.strata.checked = !!st.st; el.blocks.checked = !!st.bl; el.adj.checked = !!st.ad; el.norepeat.checked = !!st.nr;
+    }
+  }
+
+  function writeState(){
+    const st = { q: el.ta.value, c:+el.count.value, n:+el.sets.value, s: el.seed.value? +el.seed.value : undefined, p: el.project.value, st: el.strata.checked, bl: el.blocks.checked, ad: el.adj.checked, nr: el.norepeat.checked };
+    const tl = tinyLink(st);
+    if(tl){ history.replaceState(null, '', tl) }
+    return st;
+  }
+
+  function doGenerate(){
+    const q = el.ta.value.trim(); if(!q){ showToast('Add some questions first'); return }
+    const items = parseLines(q);
+    const st = stats(items);
+    el.statQ.textContent = `Questions: ${st.total}`;
+    el.statTags.textContent = `Tags: ${st.tags.size}`;
+
+    const seedVal = el.seed.value? +el.seed.value : Math.floor(Math.random()*1e9);
+    if(!el.seed.value){ el.seed.value = seedVal }
+
+    const res = generateSets(items, {
+      perSet: Math.max(1, +el.count.value||1),
+      nSets: Math.max(1, +el.sets.value||1),
+      seed: seedVal,
+      strata: el.strata.checked,
+      useBlocks: el.blocks.checked,
+      avoidAdj: el.adj.checked,
+      norepeat: el.norepeat.checked,
+      project: el.project.value.trim()
+    });
+
+    renderSets(res.sets);
+    renderViz(res.sets, res.tags);
+    const fair = fairnessScore(res.sets, res.tags);
+    const fairPct = Math.round(fair*100);
+    el.statFair.textContent = `Fairness: ${fairPct}%`;
+    el.result.hidden = false;
+
+    // cache state
+    writeState();
+
+    return { items, res };
+  }
+
+  // Events
+  el.gen.addEventListener('click', doGenerate);
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Enter' && (e.metaKey || e.ctrlKey || e.target===document.body)) { e.preventDefault(); doGenerate(); }
+    if(e.key==='Enter' && e.target===el.ta){ e.preventDefault(); doGenerate(); }
+    if(e.key.toLowerCase()==='s' && (e.ctrlKey||e.metaKey)){ e.preventDefault(); $('#sur-que-export').click(); }
+    if(e.key.toLowerCase()==='c' && e.shiftKey && (e.ctrlKey||e.metaKey)){ e.preventDefault(); $('#sur-que-copy').click(); }
+  });
+
+  el.swap.addEventListener('click', ()=>{ el.seed.value = Math.floor(Math.random()*1e9); showToast('New seed'); if(el.live.checked) doGenerate(); });
+
+  el.copy.addEventListener('click', ()=>{
+    const text = $$('#sur-que-sets-list .sur-que-item').map(li=>li.textContent.replace(/\s+/g,' ').trim()).join('\n');
+    copyToClipboard(text);
+  });
+
+  el.export.addEventListener('click', ()=>{
+    const setsEls = $$('#sur-que-sets-list > li');
+    if(setsEls.length===0){ showToast('Generate first'); return }
+    const rows = [['set','order','id','text','tags','block','anchor']];
+    let setIdx = 0;
+    for(const card of setsEls){
+      const lines = Array.from(card.querySelectorAll('ol > li'));
+      setIdx++;
+      lines.forEach((ln,i)=>{
+        const id = (ln.querySelector('.sur-que-tag')||{}).textContent||'';
+        const text = (ln.querySelector('.sur-que-content > div')||{}).textContent||'';
+        const tags = Array.from(ln.querySelectorAll('.sur-que-tags .sur-que-tag')).slice(1).map(x=>x.textContent).join('|');
+        const blkNode = Array.from(ln.querySelectorAll('.sur-que-tags .sur-que-tag')).find(x=>x.textContent.startsWith('blk:'));
+        const anchNode = Array.from(ln.querySelectorAll('.sur-que-tags .sur-que-tag')).find(x=>x.textContent.startsWith('anch:'));
+        rows.push([`S${setIdx}`, i+1, id, text.replaceAll('"','""'), tags, blkNode? blkNode.textContent.split(':')[1]:'', anchNode? anchNode.textContent.split(':')[1]:'']);
+      });
+    }
+    const csv = rows.map(r=>r.map(v=>`"${String(v||'')}"`).join(',')).join('\n');
+    download('survey-sets.csv', csv, 'text/csv');
+  });
+
+  el.share.addEventListener('click', ()=>{
+    const st = writeState();
+    const link = tinyLink(st);
+    if(link){ copyToClipboard(link) } else { showToast('Link too long') }
+  });
+
+  // Import file
+  el.file.addEventListener('change', async (e)=>{
+    const f = e.target.files[0]; if(!f) return;
+    const text = await f.text();
+    el.ta.value = text; if(el.live.checked) doGenerate();
+  });
+
+  el.paste.addEventListener('click', async ()=>{
+    try{ const t = await navigator.clipboard.readText(); if(t){ el.ta.value = t; if(el.live.checked) doGenerate(); } }catch(err){ showToast('Clipboard blocked') }
+  });
+
+  // Drag drop
+  ;['dragover','drop'].forEach(ev=>{
+    el.ta.addEventListener(ev, e=>{ e.preventDefault(); if(ev==='drop'){ const f = e.dataTransfer.files[0]; if(f){ f.text().then(txt=>{ el.ta.value = txt; if(el.live.checked) doGenerate(); }) } } });
+  });
+
+  el.clear.addEventListener('click', ()=>{ el.ta.value=''; el.result.hidden=true; showToast('Cleared') });
+  el.sample.addEventListener('click', ()=>{
+    el.ta.value = [
+      'Q1: How satisfied are you with our app [tag:UX] {weight:2}',
+      'Q2: How likely are you to recommend us to a friend [tag:NPS] [block:A]',
+      'Q3: Which feature do you use the most [tag:usage] [block:B]',
+      'Q4: What almost stopped you from signing up [tag:friction] [block:B]',
+      'Q5: How often do you use dark mode [tag:pref] {weight:2}',
+      'Q6: Rate the performance on your device [tag:perf] [block:A]',
+      'Q7: What is one thing we should improve next [tag:open]',
+      'Q8: Did you face any bugs this week [tag:qa]',
+      'Q9: Please read and accept the privacy note [anchor:1] [tag:consent]',
+      'Q10: Choose your current plan [tag:billing] [exclude:Q12]',
+      'Q11: Pick your top 3 categories [tag:pref] {weight:3}',
+      'Q12: Why did you cancel last time [tag:churn] [block:C]'
+    ].join('\n');
+    doGenerate();
+  });
+
+  // Live toggle
+  $$('#sur-que-count, #sur-que-sets, #sur-que-seed, #sur-que-project, #sur-que-strata, #sur-que-blocks, #sur-que-adj, #sur-que-norepeat').forEach(n=>{
+    n.addEventListener('input', ()=>{ if(el.live.checked) doGenerate(); });
+  });
+  el.ta.addEventListener('input', ()=>{ if(el.live.checked) doGenerate(); });
+
+  // Simulator
+  el.simBtn.addEventListener('click', ()=>{
+    const { res } = doGenerate() || {};
+    if(!res) return;
+    const n = Math.max(1, +el.simN.value||1);
+    // simulate n respondents by cycling seeds
+    const tags = res.tags;
+    const counts = Object.fromEntries(tags.map(t=>[t,0]));
+    let seedBase = +el.seed.value || 1;
+    for(let i=0;i<n;i++){
+      const again = generateSets(parseLines(el.ta.value), {
+        perSet: Math.max(1, +el.count.value||1),
+        nSets: 1,
+        seed: seedBase+i,
+        strata: el.strata.checked,
+        useBlocks: el.blocks.checked,
+        avoidAdj: el.adj.checked,
+        norepeat: false,
+        project: ''
+      });
+      for(const q of again.sets[0]){ for(const t of q.tags){ counts[t] = (counts[t]||0)+1 } }
+    }
+    const total = Object.values(counts).reduce((a,b)=>a+b,0) || 1;
+    const lines = Object.entries(counts).map(([t,c])=>`${t}: ${(100*c/total).toFixed(1)}%`).join('  ');
+    showToast('Simulated balance ready');
+    // also add a small legend under viz
+    const legend = Object.entries(counts).map(([t,c])=>`<span class='sur-que-tag' style='border-color:transparent; background:${colorForTag(t)}; color:#0f172a'>${t} ${c}</span>`).join(' ');
+    el.viz.insertAdjacentHTML('afterend', `<div class='sur-que-tags' style='margin-top:6px'>${legend}</div>`);
+  });
+
+  // Load state from URL on init
+  readState();
+
+  // Accessibility improvements
+  document.body.addEventListener('click', e=>{
+    const btn = e.target.closest('button'); if(btn) btn.blur();
+  });
+
+})();
+</script>
+
+</body>
+</html>

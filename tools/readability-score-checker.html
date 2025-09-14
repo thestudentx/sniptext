@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Readability Score Checker - Flesch Kincaid, Gunning Fog, SMOG, ARI, Coleman Liau | SnipText</title>
+  <meta name="description" content="Check readability scores for any text with Flesch Kincaid, Gunning Fog, SMOG, ARI, and Coleman Liau. Get sentence level highlights, target grade tips, reading time, passive voice hints, and exportable reports. Private and runs in your browser." />
+  <meta name="keywords" content="readability score, Flesch Kincaid, Gunning Fog, SMOG index, reading ease, grade level, ARI, Coleman Liau, readability checker, passive voice detector, highlight complex sentences" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/readability-score-checker" />
+  <link rel="alternate" href="https://checkai.pro/tools/readability-score-checker" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/readability-score-checker" hreflang="x-default" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/tools/css/free-tools.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Readability Score Checker" />
+  <meta property="og:description" content="Instant readability scores with smart highlights and exportable reports. All local, no upload." />
+  <meta property="og:url" content="https://checkai.pro/tools/readability-score-checker" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Readability tool preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Readability Score Checker" />
+  <meta name="twitter:description" content="Flesch Kincaid, Gunning Fog, SMOG, ARI, Coleman Liau with sentence highlights and tips. Private and fast." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Readability Score Checker",
+    "url":"https://checkai.pro/tools/readability-score-checker",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Flesch Kincaid Reading Ease and Grade Level",
+      "Gunning Fog and SMOG index",
+      "Automated Readability Index and Coleman Liau",
+      "Sentence highlights by difficulty",
+      "Passive voice and long sentence hints",
+      "Target grade slider with tips",
+      "Export JSON or CSV report",
+      "Permalink with query and options"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <style>
+/* ==============================================
+   SNIPTEXT • READABILITY SCORE CHECKER
+   Dark theme with brand gradients
+   Classes/IDs use 'reasco' (Readability + Score) and 'che' (Checker)
+   ============================================== */
+:root{
+  /* Brand palette with tool scoped variable names */
+  --reasco-primary:#1D4ED8;   /* brand primary */
+  --reasco-accent:#3B82F6;    /* brand accent */
+  --reasco-bg:#0F172A;        /* dark background */
+  --reasco-bg-soft:#1d1f2f;   /* soft panels */
+  --reasco-white:#ffffff;
+  --reasco-text:#E6EEF8;
+  --reasco-muted:#AAB6C7;
+  --reasco-border:rgba(255,255,255,0.14);
+  --reasco-warm:#ff7c4c;      /* gradient end */
+  --reasco-warm-2:#e85d27;
+
+  --reasco-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --reasco-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+  --reasco-r-xl:20px;
+  --reasco-r-lg:14px;
+  --reasco-r-md:10px;
+
+  color-scheme: dark;
+}
+
+html,body{height:100%}
+body{
+  margin:0; color:var(--reasco-text);
+  font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--reasco-primary) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--reasco-accent) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--reasco-warm) 14%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--reasco-bg) 0%, var(--reasco-bg-soft) 100%);
+  background-attachment: fixed;
+}
+
+/* Page shell */
+.reasco-main{
+  width:min(1200px,92vw);
+  margin: clamp(16px,3vw,40px) auto 80px;
+}
+
+/* Hero */
+.reasco-hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+  border:1px solid var(--reasco-border); border-radius:var(--reasco-r-xl);
+  padding: clamp(18px,3vw,28px);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--reasco-primary) 20%, transparent),
+    color-mix(in oklab, var(--reasco-accent) 18%, transparent)
+  ) border-box;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--reasco-shadow-1);
+  position:relative; overflow:hidden;
+}
+.reasco-hero::after{
+  content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.6; pointer-events:none;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--reasco-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--reasco-accent) 26%, transparent), transparent 62%);
+}
+@media (max-width:980px){ .reasco-hero{ grid-template-columns:1fr } }
+
+.reasco-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:'Poppins','Segoe UI',sans-serif;
+  font-size: clamp(22px,3.2vw,36px);
+  background: linear-gradient(90deg,#fff,
+    color-mix(in oklab, var(--reasco-accent) 54%, #fff) 38%,
+    color-mix(in oklab, var(--reasco-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.reasco-sub{ margin:6px 0 0; color:var(--reasco-muted); font-size:clamp(14px,1.8vw,16px) }
+.reasco-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.reasco-badge{
+  padding:6px 10px; border:1px solid var(--reasco-border); border-radius:999px;
+  background: color-mix(in oklab, var(--reasco-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem;
+}
+
+/* Right hero art */
+.reasco-hero-art{
+  justify-self:end;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid var(--reasco-border);
+  border-radius:var(--reasco-r-lg);
+  padding:18px; box-shadow: var(--reasco-shadow-1);
+}
+.reasco-hero-art svg{ width:min(260px,42vw); height:auto; display:block; color:#d6e2ff }
+@media (max-width:980px){ .reasco-hero-art{ justify-self:start }}
+
+/* Grid */
+.reasco-grid{
+  margin-top: clamp(14px,2.6vw,24px);
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(12px,2.4vw,20px);
+}
+@media (max-width:980px){ .reasco-grid{ grid-template-columns:1fr } }
+
+.reasco-card{
+  border:1px solid var(--reasco-border);
+  border-radius:var(--reasco-r-lg);
+  background: rgba(255,255,255,.06);
+  box-shadow: var(--reasco-shadow-2);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.reasco-card-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px;
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--reasco-primary) 12%, transparent),
+    color-mix(in oklab, var(--reasco-accent) 10%, transparent)
+  );
+  border-bottom:1px solid var(--reasco-border);
+}
+.reasco-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family:'Poppins','Segoe UI',sans-serif }
+.reasco-section{ padding:12px 14px; display:grid; gap:12px }
+
+/* Inputs */
+.reasco-field{ display:grid; gap:6px }
+.reasco-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+.reasco-input, .reasco-select, .reasco-textarea{
+  background:#0e1730; color:#e6ecff; border:1px solid var(--reasco-border);
+  border-radius:10px; padding:12px 14px; outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+  min-height:44px;
+}
+.reasco-textarea{ min-height:220px; resize:vertical; line-height:1.5 }
+.reasco-select{ appearance:none }
+.reasco-input:focus, .reasco-select:focus, .reasco-textarea:focus{
+  border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px)
+}
+.reasco-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+/* Buttons */
+.reasco-btn{
+  --_bg: linear-gradient(180deg, color-mix(in oklab, var(--reasco-primary) 70%, transparent), color-mix(in oklab, var(--reasco-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--reasco-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family:'Poppins','Segoe UI',sans-serif;
+}
+.reasco-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+.reasco-btn:active{ transform: translateY(0); filter: brightness(.98) }
+.reasco-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--reasco-border); box-shadow:none }
+.reasco-btn-warm{ background: linear-gradient(135deg, var(--reasco-accent), var(--reasco-warm)); border-color:transparent }
+
+/* Output elements */
+.reasco-result{ display:grid; gap:10px; }
+.reasco-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border:1px solid var(--reasco-border); border-radius:999px;
+  background: color-mix(in oklab, var(--reasco-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem;
+}
+.reasco-kv{ display:grid; grid-template-columns: 1fr 1fr; gap:8px }
+.reasco-kv div{ background: rgba(255,255,255,.04); border:1px solid var(--reasco-border); border-radius:10px; padding:10px }
+.reasco-kv b{ display:block; font-size:.8rem; color:#c8d7ff; margin-bottom:3px }
+
+.reasco-meter{
+  display:grid; gap:8px;
+}
+.reasco-bar{ height:10px; border-radius:999px; background:rgba(255,255,255,.1); overflow:hidden }
+.reasco-bar>i{ display:block; height:100%; width:0%; background: linear-gradient(90deg, var(--reasco-warm), var(--reasco-accent)); transition:width .4s ease }
+
+/* Sentence list */
+.reasco-sent-list{ display:grid; gap:8px; max-height:320px; overflow:auto; padding-right:4px }
+.reasco-sent{ padding:10px; border:1px solid var(--reasco-border); border-radius:10px; background:rgba(255,255,255,.04); position:relative }
+.reasco-sent[data-diff="hard"]{ border-color:#ff7c4caa; background:linear-gradient(180deg,rgba(255,124,76,.06),rgba(255,124,76,.02)) }
+.reasco-sent[data-diff="med"]{ border-color:#3b82f6aa }
+.reasco-sent[data-passive="1"]::after{
+  content:"Passive"; position:absolute; top:8px; right:10px; font-size:.7rem; color:#ffd7c3; opacity:.9
+}
+
+/* Toast */
+.reasco-toast{
+  position: fixed; inset: auto 16px 16px auto;
+  background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--reasco-border);
+  backdrop-filter: blur(8px); box-shadow: var(--reasco-shadow-1);
+  transform: translateY(20px); opacity:0; pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease;
+  z-index: 50;
+}
+.reasco-toast.show{ transform: translateY(0); opacity:1 }
+
+/* Subtle float */
+@media (prefers-reduced-motion:no-preference){
+  .reasco-card{ animation: reasco-float 18s ease-in-out infinite }
+  @keyframes reasco-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* Utility */
+.kbd{
+  font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  background: color-mix(in oklab, var(--reasco-bg) 78%, transparent); color:#cbd5e1;
+  padding:3px 6px; border-radius:8px; border:1px solid var(--reasco-border);
+}
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+
+<body>
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  
+ 
+
+<main class="reasco-main" id="reasco-main" aria-label="Readability Score Checker">
+  <!-- HERO -->
+  <section class="reasco-hero" aria-labelledby="reasco-title">
+    <div>
+      <h1 class="reasco-title" id="reasco-title">Readability Score Checker</h1>
+      <p class="reasco-sub">Paste text or drop a file to see Flesch Kincaid, Gunning Fog, SMOG, ARI, and Coleman Liau. Get sentence highlights, passive voice hints, target grade tips, and exportable reports. Everything runs in your browser.</p>
+      <div class="reasco-badges">
+        <span class="reasco-badge">No sign in</span>
+        <span class="reasco-badge">Local only</span>
+        <span class="reasco-badge">Copy & export</span>
+      </div>
+    </div>
+    <div class="reasco-hero-art" aria-hidden="true">
+      <!-- Book + gauge icon -->
+      <svg viewBox="0 0 200 160" role="img" aria-label="Readability gauge">
+        <defs>
+          <linearGradient id="rg" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#ff7c4c"/>
+          </linearGradient>
+        </defs>
+        <!-- book -->
+        <rect x="24" y="34" width="64" height="88" rx="8" fill="none" stroke="currentColor" opacity=".6"/>
+        <rect x="112" y="34" width="64" height="88" rx="8" fill="none" stroke="currentColor" opacity=".6"/>
+        <line x1="88" y1="34" x2="112" y2="34" stroke="currentColor" opacity=".6"/>
+        <!-- gauge arc -->
+        <path d="M48 130 A52 52 0 0 1 152 130" fill="none" stroke="url(#rg)" stroke-width="8" opacity=".9"/>
+        <!-- needle -->
+        <line x1="100" y1="130" x2="140" y2="104" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="100" cy="130" r="4" fill="currentColor"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="reasco-grid">
+    <!-- LEFT: Inputs -->
+    <article class="reasco-card" aria-labelledby="reasco-inputs-title">
+      <header class="reasco-card-head">
+        <h2 class="reasco-card-title" id="reasco-inputs-title">Enter text</h2>
+        <div class="reasco-row">
+          <button class="reasco-btn reasco-btn-ghost" id="reasco-che-clear">Clear</button>
+          <button class="reasco-btn" id="reasco-che-sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="reasco-section">
+        <div class="reasco-field" style="flex:1 1 auto">
+          <label class="reasco-label" for="reasco-che-text">Text</label>
+          <textarea id="reasco-che-text" class="reasco-textarea" placeholder="Paste or type your text here. You can also drop a .txt or .md file."></textarea>
+        </div>
+
+        <div class="reasco-row">
+          <div class="reasco-field" style="width:220px">
+            <label class="reasco-label" for="reasco-che-target">Target grade</label>
+            <input id="reasco-che-target" class="reasco-input" type="range" min="3" max="16" value="8" />
+            <div class="reasco-sub">Tip focus: <span id="reasco-che-target-label">Grade 8</span></div>
+          </div>
+          <div class="reasco-field" style="width:220px">
+            <label class="reasco-label" for="reasco-che-lang">Language</label>
+            <select id="reasco-che-lang" class="reasco-select">
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="reasco-field" style="width:220px">
+            <label class="reasco-label" for="reasco-che-mode">Highlight mode</label>
+            <select id="reasco-che-mode" class="reasco-select">
+              <option value="difficulty">By difficulty</option>
+              <option value="passive">Passive voice</option>
+              <option value="length">By length</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="reasco-row">
+          <button class="reasco-btn" id="reasco-che-run" title="Analyze (Enter to run)"><span class="kbd">Enter</span> Analyze</button>
+          <button class="reasco-btn reasco-btn-ghost" id="reasco-che-copy">Copy report</button>
+          <button class="reasco-btn reasco-btn-ghost" id="reasco-che-export">Export CSV</button>
+          <button class="reasco-btn reasco-btn-warm" id="reasco-che-share">Copy link</button>
+        </div>
+
+        <p class="reasco-sub" style="margin:4px 0 0">Keyboard: <span class="kbd">Enter</span> analyze, <span class="kbd">C</span> copy, <span class="kbd">L</span> copy link.</p>
+        <p class="reasco-sub" style="margin:0">Privacy: all processing happens on your device.</p>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="reasco-card" aria-live="polite">
+      <header class="reasco-card-head">
+        <h2 class="reasco-card-title">Scores & insights</h2>
+        <div class="reasco-row">
+          <span class="reasco-pill" id="reasco-pill-words">Words: -</span>
+          <span class="reasco-pill" id="reasco-pill-sent">Sentences: -</span>
+          <span class="reasco-pill" id="reasco-pill-time">Reading time: -</span>
+        </div>
+      </header>
+
+      <div class="reasco-section reasco-result" id="reasco-result" hidden>
+        <div class="reasco-kv">
+          <div><b>Flesch Reading Ease</b><span id="reasco-kv-fre">-</span></div>
+          <div><b>Flesch Kincaid Grade</b><span id="reasco-kv-fkg">-</span></div>
+          <div><b>Gunning Fog</b><span id="reasco-kv-gfi">-</span></div>
+          <div><b>SMOG</b><span id="reasco-kv-smog">-</span></div>
+          <div><b>ARI</b><span id="reasco-kv-ari">-</span></div>
+          <div><b>Coleman Liau</b><span id="reasco-kv-cli">-</span></div>
+        </div>
+
+        <div class="reasco-meter" aria-label="Readability meter">
+          <div class="reasco-sub">Target grade match</div>
+          <div class="reasco-bar"><i id="reasco-bar-target"></i></div>
+          <div class="reasco-sub" id="reasco-tip">Tips will appear here based on your target.</div>
+        </div>
+
+        <div>
+          <h3 class="reasco-card-title" style="text-transform:none">Sentence highlights</h3>
+          <div class="reasco-sent-list" id="reasco-sent-list" aria-label="Highlighted sentences"></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="reasco-grid" aria-label="How to improve">
+    <article class="reasco-card">
+      <header class="reasco-card-head">
+        <h2 class="reasco-card-title">Quick improvements</h2>
+        <div class="reasco-row"></div>
+      </header>
+      <div class="reasco-section">
+        <ul class="reasco-sub" style="margin:0;line-height:1.6">
+          <li>Shorten long sentences. Aim for 14 to 18 words on average.</li>
+          <li>Prefer concrete words. Swap abstractions for examples.</li>
+          <li>Cut filler and stacked modifiers.</li>
+          <li>Use active voice when it fits the goal.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="reasco-card">
+      <header class="reasco-card-head">
+        <h2 class="reasco-card-title">More tools</h2>
+      </header>
+      <div class="reasco-section">
+        <p class="reasco-sub">Keep polishing with SnipText:</p>
+        <p class="reasco-sub">
+          <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace & Formatting Cleaner</a> •
+          <a href="/tools/case-converter.html">Case Converter</a> •
+          <a href="/grammarly1.html">Grammar Checker</a> •
+          <a href="/quillbot2.html">Paraphrasing Tool</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+    <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Random Prompt Generator Guide on SnipText Blog Page <a href="/blog/readability-score-checker-guide-flesch-kincaid-gunning-fog-smog-ari-coleman-liau-tips-formulas-examples-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="reasco-toast" id="reasco-toast" role="status" aria-live="polite">Copied</div>
+
+
+  <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+          <article class="tool-card" tabindex="0" data-href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-labelledby="t-synonym">
+                  <div class="card-icon" aria-hidden="true">
+                    <!-- Synonym icon: shuffle arrows + sparkle -->
+                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Random Synonym Finder icon">
+                      <!-- shuffle paths -->
+                      <path d="M3 7h4c2.5 0 4 5 7 5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                      <path d="M3 17h4c1.6 0 2.7-2 3.6-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                      <!-- arrowheads -->
+                      <path d="M17 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <path d="M17 13l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <!-- sparkle -->
+                      <path d="M7 4.5l.6-1.2.6 1.2 1.2.6-1.2.6-.6 1.2-.6-1.2-1.2-.6 1.2-.6z" stroke="currentColor" stroke-width="1.2" fill="none" />
+                    </svg>
+                  </div>
+                  <h3 id="t-synonym" class="card-title">Random Synonym Finder</h3>
+                  <p class="card-desc">
+                    Highlight a word and spin smart synonyms by tone, formality, length, and frequency. Batch-rewrite with locks, A/B compare, and export your replacement map. Private, in-browser.
+                  </p>
+                  <a class="card-cta" href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-label="Open Random Synonym Finder">Open →</a>
+              </article>
+
+              <article class="tool-card anagram-tool-card" tabindex="0" data-href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-labelledby="anagram-tg">
+                  <div class="card-icon anagram-card-icon" aria-hidden="true">
+                    <!-- Anagram icon: shuffled arrows + letter tiles -->
+                    <svg viewBox="0 0 24 24" class="svg-icon anagram-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anagram Generator">
+                      <!-- shuffle arrows -->
+                      <path d="M3 7h4c2 0 3 3 5 3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      <path d="M15.5 5.2 19 7.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M3 17h4c2 0 3-3 5-3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      <path d="M15.5 14.2 19 16.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <!-- letter tiles -->
+                      <rect x="2.8" y="9.4" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                      <text x="5.1" y="12.6" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">A</text>
+                      <rect x="16.6" y="8.1" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".95"/>
+                      <text x="18.9" y="11.3" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">G</text>
+                    </svg>
+                  </div>
+                  <h3 id="anagram-tg" class="card-title anagram-card-title">Anagram Generator</h3>
+                  <p class="card-desc anagram-card-desc">
+                    Rearrange letters into single or multi-word anagrams with smart filters for length, starts/ends with, include or exclude letters, and wildcard patterns. Rank by frequency or Scrabble score, paste your own dictionary, and export results. Private, in-browser.
+                  </p>
+                  <a class="card-cta anagram-card-cta" href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-label="Open Anagram Generator">Open →</a>
+              </article>
+
+              <article class="tool-card piglatin-card-teaser" tabindex="0"
+                  data-href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
+                  aria-labelledby="t-piglatin">
+                  <div class="card-icon" aria-hidden="true">
+                    <!-- Pig Latin icon: pig snout + speech bubble "ay" motif -->
+                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Pig Latin Converter icon">
+                      <!-- head -->
+                      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <!-- ears -->
+                      <path d="M7.2 6.5l-2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16.8 6.5l2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <!-- snout -->
+                      <ellipse cx="12" cy="14" rx="4.2" ry="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <circle cx="10.7" cy="14" r="0.7" fill="currentColor"/>
+                      <circle cx="13.3" cy="14" r="0.7" fill="currentColor"/>
+                      <!-- smile hint -->
+                      <path d="M9 11.2c.8.5 2 .5 3 0" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                      <!-- speech bubble tail with tiny 'ay' strokes -->
+                      <path d="M18 9.2c1.9 0 3.3 1.4 3.3 3.1 0 1.8-1.4 3.2-3.3 3.2h-1.1l-1.2 1.3v-1.3h-0.2"
+                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M17.2 11.5l.5 1.6m1-1.6l-.5 1.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <h3 id="t-piglatin" class="card-title">Pig Latin Converter</h3>
+                  <p class="card-desc">
+                    Turn English into Pig Latin with smart punctuation and capitalization, choose suffix styles, see side by side diffs, try reverse mode, and export TXT, CSV, or JSON. Private, in browser.
+                  </p>
+                  <a class="card-cta"
+                    href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
+                    aria-label="Open Pig Latin Converter">Open →</a>
+              </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+  <div class="random-text-toast" id="random-text-toast" role="status" aria-live="polite"></div>
+
+
+    <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+/* ==============================================
+   Readability Score Checker • All local
+   IDs/classes prefixed with reasco / che
+   ============================================== */
+
+const $ = sel => document.querySelector(sel);
+const $$ = sel => Array.from(document.querySelectorAll(sel));
+const toast = (msg) => {
+  const t = $('#reasco-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 1200);
+};
+
+// Basic text utils
+function normalizeText(t){
+  return (t || '').replace(/\u00A0/g, ' ').replace(/\s+/g,' ').trim();
+}
+function splitSentences(t){
+  // Simple sentence splitter with common abbreviations
+  const abbr = /(Mr|Mrs|Dr|Prof|Sr|Jr|St|vs|etc|e\.g|i\.e)\.$/i;
+  const parts = [];
+  let buf = '';
+  for (let i=0;i<t.length;i++){
+    const ch = t[i];
+    buf += ch;
+    if (/[.!?]/.test(ch)){
+      // look ahead for space and capital
+      const ahead = t.slice(i+1, i+5);
+      if (!abbr.test(buf.trim().split(' ').slice(-1)[0] || '') && /(\s|$)/.test(ahead[0]||'') ){
+        parts.push(buf.trim());
+        buf = '';
+      }
+    }
+  }
+  if (buf.trim()) parts.push(buf.trim());
+  return parts.length ? parts : (t.trim() ? [t.trim()] : []);
+}
+function getWords(t){
+  return (t.toLowerCase().match(/[a-zA-Z\u00C0-\u024F]+(?:'[a-z]+)?/g) || []);
+}
+function countCharacters(t){
+  return (t.match(/[A-Za-z0-9]/g) || []).length;
+}
+
+// Syllable estimation (English heuristic)
+function syllables(word){
+  word = word.toLowerCase().replace(/[^a-z]/g,'');
+  if (!word) return 0;
+  if (word.length <= 3) return 1;
+  // subtract silent e
+  const se = /e$/.test(word) ? -1 : 0;
+  // consecutive vowels count as one
+  let groups = (word.match(/[aeiouy]{1,2}/g) || []).length;
+  // add back if ends with le and preceded by consonant
+  if (/[^aeiou]le$/.test(word)) groups++;
+  // ensure min 1
+  return Math.max(1, groups + se);
+}
+function isPolysyllabic(word){ return syllables(word) >= 3; }
+function isComplex(word){
+  // 3+ syllables, not all caps, not a short proper noun heuristic
+  if (isPolysyllabic(word)) {
+    if (/^[A-Z]{2,}$/.test(word)) return false;
+    return true;
+  }
+  return false;
+}
+// Passive voice heuristic: "be" verb + past participle
+const beVerbs = /\b(am|is|are|was|were|be|been|being|'s|'re)\b/i;
+const pastParticiple = /\b\w+(ed|en)\b/i;
+
+function analyze(text){
+  const clean = text.replace(/\s+/g,' ').trim();
+  const sentences = splitSentences(clean);
+  const words = getWords(clean);
+  const wordCount = words.length || 1;
+  const sentCount = sentences.length || 1;
+
+  const syllCount = words.reduce((a,w)=>a+syllables(w),0);
+  const polyCount = words.reduce((a,w)=>a+(isPolysyllabic(w)?1:0),0);
+  const complexCount = words.reduce((a,w)=>a+(isComplex(w)?1:0),0);
+  const charCount = countCharacters(clean);
+
+  const WPS = wordCount / sentCount;
+  const SPW = syllCount / wordCount;
+
+  // Flesch Reading Ease
+  const FRE = 206.835 - 1.015*WPS - 84.6*SPW;
+  // Flesch Kincaid Grade
+  const FKG = 0.39*WPS + 11.8*SPW - 15.59;
+  // Gunning Fog
+  const GFI = 0.4 * (WPS + 100 * (complexCount/wordCount));
+  // SMOG
+  const SMOG = 1.043 * Math.sqrt(polyCount * (30 / sentCount)) + 3.1291;
+  // ARI
+  const ARI = 4.71*(charCount/wordCount) + 0.5*WPS - 21.43;
+  // Coleman Liau
+  const L = (charCount/wordCount)*100;
+  const S = (sentCount/wordCount)*100;
+  const CLI = 0.0588*L - 0.296*S - 15.8;
+
+  // Read time (200 wpm default)
+  const minutes = Math.max(1, Math.round(wordCount/200));
+
+  // Sentence detail
+  const sentDetail = sentences.map(s=>{
+    const ww = getWords(s);
+    const w = ww.length || 1;
+    const sy = ww.reduce((a,x)=>a+syllables(x),0);
+    const pol = ww.reduce((a,x)=>a+(syllables(x)>=3?1:0),0);
+    const score = 206.835 - 1.015*(w/1) - 84.6*(sy/w);
+    const passive = beVerbs.test(s) && pastParticiple.test(s);
+    let diff = 'easy';
+    if (w >= 25 || pol >= 3 || score < 60) diff = 'med';
+    if (w >= 35 || pol >= 5 || score < 40) diff = 'hard';
+    return {text:s, words:w, pol, score, passive, diff};
+  });
+
+  return {
+    wordCount, sentCount, charCount, syllCount, polyCount, complexCount,
+    FRE, FKG, GFI, SMOG, ARI, CLI, minutes, sentDetail
+  };
+}
+
+function gradeFromScores({FKG, GFI, SMOG, ARI, CLI}){
+  // average of main grade style metrics
+  const grades = [FKG, GFI, SMOG, ARI, CLI].filter(n=>Number.isFinite(n));
+  const avg = grades.reduce((a,b)=>a+b,0)/grades.length;
+  return Math.max(0, Math.round((avg + Number.EPSILON)*10)/10);
+}
+
+function easeLabel(fre){
+  if (fre >= 90) return 'Very easy';
+  if (fre >= 80) return 'Easy';
+  if (fre >= 70) return 'Fairly easy';
+  if (fre >= 60) return 'Standard';
+  if (fre >= 50) return 'Fairly hard';
+  if (fre >= 30) return 'Hard';
+  return 'Very hard';
+}
+
+function tipForTarget(target, gradeAvg){
+  const delta = gradeAvg - target;
+  if (delta <= -1) return 'Your text is simpler than your target. You can add detail or technical terms if needed.';
+  if (delta < 1) return 'Nice match. Keep sentences tight and vary structure to hold attention.';
+  if (delta < 3) return 'Trim long sentences, swap jargon for plain words, and prefer active voice.';
+  return 'Split complex sentences, remove filler, define uncommon terms, and use concrete examples.';
+}
+
+// DOM bindings
+const elText = $('#reasco-che-text');
+const elTarget = $('#reasco-che-target');
+const elTargetLabel = $('#reasco-che-target-label');
+const elMode = $('#reasco-che-mode');
+
+const pills = {
+  words: $('#reasco-pill-words'),
+  sent: $('#reasco-pill-sent'),
+  time: $('#reasco-pill-time')
+};
+const kv = {
+  fre: $('#reasco-kv-fre'),
+  fkg: $('#reasco-kv-fkg'),
+  gfi: $('#reasco-kv-gfi'),
+  smog: $('#reasco-kv-smog'),
+  ari: $('#reasco-kv-ari'),
+  cli: $('#reasco-kv-cli'),
+};
+const elBarTarget = $('#reasco-bar-target');
+const elTip = $('#reasco-tip');
+const elList = $('#reasco-sent-list');
+const elResult = $('#reasco-result');
+
+function renderReport(r){
+  pills.words.textContent = `Words: ${r.wordCount}`;
+  pills.sent.textContent = `Sentences: ${r.sentCount}`;
+  pills.time.textContent = `Reading time: ${r.minutes} min`;
+
+  kv.fre.textContent = `${r.FRE.toFixed(1)} (${easeLabel(r.FRE)})`;
+  kv.fkg.textContent = r.FKG.toFixed(1);
+  kv.gfi.textContent = r.GFI.toFixed(1);
+  kv.smog.textContent = r.SMOG.toFixed(1);
+  kv.ari.textContent = r.ARI.toFixed(1);
+  kv.cli.textContent = r.CLI.toFixed(1);
+
+  const target = parseInt(elTarget.value,10);
+  const gradeAvg = gradeFromScores(r);
+  const pct = Math.max(0, Math.min(100, 100 - Math.abs(gradeAvg - target)/target*100));
+  elBarTarget.style.width = pct.toFixed(0) + '%';
+  elTip.textContent = `Avg grade ≈ ${gradeAvg.toFixed(1)}. ${tipForTarget(target, gradeAvg)}`;
+
+  // Sentences
+  elList.innerHTML = '';
+  r.sentDetail.forEach((s, idx)=>{
+    const item = document.createElement('div');
+    item.className = 'reasco-sent';
+    item.dataset.diff = s.diff;
+    item.dataset.passive = s.passive ? '1' : '0';
+    item.innerHTML = `
+      <div class="reasco-sub" style="margin-bottom:6px">
+        <b>#${idx+1}</b> • ${s.words} words • Poly ${s.pol} • Ease ${s.score.toFixed(0)}
+      </div>
+      <div>${escapeHtml(s.text)}</div>
+    `;
+    elList.appendChild(item);
+  });
+
+  // Apply highlight mode
+  applyHighlightMode();
+  elResult.hidden = false;
+}
+
+// Highlight mode
+function applyHighlightMode(){
+  const mode = elMode.value;
+  $$('#reasco-sent-list .reasco-sent').forEach(el=>{
+    el.style.opacity = '1';
+    if (mode === 'passive'){
+      if (el.dataset.passive !== '1'){ el.style.opacity = '.6'; }
+    } else if (mode === 'length'){
+      // length proxy: easy < med < hard
+      const map = {easy: '.7', med: '.9', hard:'1'};
+      el.style.opacity = map[el.dataset.diff] || '1';
+    } else {
+      el.style.opacity = '1';
+    }
+  });
+}
+
+// Copy, export, share
+function toCSV(){
+  const lines = [['metric','value']];
+  lines.push(['Flesch Reading Ease', kv.fre.textContent]);
+  lines.push(['Flesch Kincaid Grade', kv.fkg.textContent]);
+  lines.push(['Gunning Fog', kv.gfi.textContent]);
+  lines.push(['SMOG', kv.smog.textContent]);
+  lines.push(['ARI', kv.ari.textContent]);
+  lines.push(['Coleman Liau', kv.cli.textContent]);
+  const rows = $$('#reasco-sent-list .reasco-sent');
+  lines.push([]);
+  lines.push(['sentence_index','words','polysyllables','ease','passive','text']);
+  rows.forEach((el,i)=>{
+    const meta = el.querySelector('.reasco-sub')?.textContent || '';
+    const m = meta.match(/#(\d+).+?(\d+)\swords.+?Poly\s(\d+).+?Ease\s(\-?\d+)/i);
+    const text = el.lastElementChild?.textContent || '';
+    lines.push([i+1, m?m[2]:'', m?m[3]:'', m?m[4]:'', el.dataset.passive==='1'?'yes':'no', text.replace(/\s+/g,' ').trim()]);
+  });
+  return lines.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+}
+function copyReport(){
+  const data = {
+    words: pills.words.textContent,
+    sentences: pills.sent.textContent,
+    readingTime: pills.time.textContent,
+    scores:{
+      FRE: kv.fre.textContent, FKG: kv.fkg.textContent, GFI: kv.gfi.textContent,
+      SMOG: kv.smog.textContent, ARI: kv.ari.textContent, CLI: kv.cli.textContent
+    }
+  };
+  navigator.clipboard.writeText(JSON.stringify(data, null, 2)).then(()=>toast('Report copied'));
+}
+function exportCSV(){
+  const blob = new Blob([toCSV()], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'readability-report.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+  toast('CSV exported');
+}
+function shareLink(){
+  const params = new URLSearchParams();
+  params.set('t', elText.value.slice(0, 5000)); // avoid oversized URLs
+  params.set('g', elTarget.value);
+  params.set('m', elMode.value);
+  navigator.clipboard.writeText(location.origin + '/tools/readability-score-checker?' + params.toString())
+    .then(()=>toast('Link copied'));
+}
+
+// Drag & drop
+function readFileText(file){
+  return new Promise((res, rej)=>{
+    const reader = new FileReader();
+    reader.onload = () => res(reader.result);
+    reader.onerror = rej;
+    reader.readAsText(file);
+  });
+}
+function handleDrop(e){
+  e.preventDefault();
+  if (!e.dataTransfer?.files?.length) return;
+  const file = e.dataTransfer.files[0];
+  if (!file.name.match(/\.(txt|md|csv|log|html)$/i)) { toast('Please drop a text file'); return; }
+  readFileText(file).then(txt=>{
+    $('#reasco-che-text').value = String(txt).replace(/<[^>]+>/g,'');
+    run();
+  });
+}
+['dragenter','dragover'].forEach(ev=>{
+  elText.addEventListener(ev, e=>{ e.preventDefault(); elText.style.boxShadow='0 0 0 3px rgba(59,130,246,.25)' });
+});
+['dragleave','drop'].forEach(ev=>{
+  elText.addEventListener(ev, e=>{ elText.style.boxShadow='none' });
+});
+elText.addEventListener('drop', handleDrop);
+
+// Sample text
+const SAMPLE = `Clear writing helps readers move fast. Short sentences carry one idea at a time. When a sentence runs long, split it. Use concrete words and active voice. Define any term that could be new to your audience.`;
+
+function run(){
+  const text = elText.value;
+  const r = analyze(text);
+  renderReport(r);
+}
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+}
+
+// Events
+$('#reasco-che-run').addEventListener('click', run);
+$('#reasco-che-copy').addEventListener('click', copyReport);
+$('#reasco-che-export').addEventListener('click', exportCSV);
+$('#reasco-che-share').addEventListener('click', shareLink);
+$('#reasco-che-clear').addEventListener('click', ()=>{ elText.value=''; $('#reasco-result').hidden=true; toast('Cleared') });
+$('#reasco-che-sample').addEventListener('click', ()=>{ elText.value = SAMPLE; run(); });
+
+elTarget.addEventListener('input', ()=>{
+  $('#reasco-che-target-label').textContent = `Grade ${elTarget.value}`;
+  if (!$('#reasco-result').hidden) run();
+});
+elMode.addEventListener('change', applyHighlightMode);
+
+// Keyboard shortcuts
+window.addEventListener('keydown', e=>{
+  if (e.key === 'Enter' && (document.activeElement === elText || e.metaKey || e.ctrlKey)){ e.preventDefault(); run(); }
+  if (e.key.toLowerCase() === 'c' && (e.metaKey || e.ctrlKey)) return; // let system copy
+  if (e.key.toLowerCase() === 'c' && !e.metaKey && !e.ctrlKey){ e.preventDefault(); copyReport(); }
+  if (e.key.toLowerCase() === 'l'){ e.preventDefault(); shareLink(); }
+});
+
+// Permalink hydrate
+(function hydrate(){
+  const q = new URLSearchParams(location.search);
+  if (q.has('t')) elText.value = q.get('t');
+  if (q.has('g')) elTarget.value = q.get('g');
+  if (q.has('m')) elMode.value = q.get('m');
+  if (elText.value.trim()) run();
+})();
+</script>
+</body>
+</html>

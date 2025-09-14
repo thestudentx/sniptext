@@ -27,7 +27,37 @@
   })();
 
 
+/* === CATEGORY FILTER === */
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards   = document.querySelectorAll('.tool-card');
+  const headers = document.querySelectorAll('.tool-category');
 
+  // Click handler
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // 1) toggle active button state
+      buttons.forEach(b => b.classList.toggle('is-active', b === btn));
+
+      const chosen = btn.dataset.cat;          // "all" or the category title
+
+      // 2) show / hide cards
+      cards.forEach(card => {
+        const match = chosen === 'all' || card.dataset.filter === chosen;
+        card.classList.toggle('is-hidden', !match);
+      });
+
+      // 3) show / hide headings that still have visible cards
+      headers.forEach(h2 => {
+        const catName = h2.textContent.trim();
+        const hasAny  = [...cards].some(
+          c => !c.classList.contains('is-hidden') && c.dataset.filter === catName
+        );
+        h2.classList.toggle('is-hidden', chosen !== 'all' ? !hasAny : false);
+      });
+    });
+  });
+});
 
   
 

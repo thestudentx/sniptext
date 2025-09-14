@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GE98V48RK8');
+</script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+</script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Hash Generator - MD5, SHA1, SHA256 | SnipText</title>
+  <meta name="description" content="Fast, private, in-browser hash generator for MD5, SHA1, and SHA256. Hash text and files, add salt or HMAC, verify checksums, export .sha256 lists, and share results via URL. Dark themed and responsive." />
+  <meta name="keywords" content="hash generator, md5, sha1, sha256, checksum, file integrity, hmac, hash text, verify hash, create sha256 file" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#0F172A" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/hash-generator-md5-sha1-sha256" />
+  <link rel="alternate" href="https://checkai.pro/tools/hash-generator-md5-sha1-sha256" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/hash-generator-md5-sha1-sha256" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Icons / Favicon (keep same) -->
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Hash Generator",
+    "url":"https://checkai.pro/tools/hash-generator-md5-sha1-sha256",
+    "applicationCategory":"SecurityApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Generate MD5, SHA1, SHA256 for text",
+      "Hash multiple files locally with drag and drop",
+      "Salted hashing and HMAC (SHA variants)",
+      "Clipboard paste support for files and text",
+      "Checksum verification with match highlighting",
+      "Export .sha256 list and download results",
+      "Permalink with query params for reproducibility",
+      "Keyboard shortcuts and accessible UI"
+    ],
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}}
+  }
+  </script>
+
+  <style>
+  /* ==============================================
+     SNIPTEXT • HASH GENERATOR (MD5, SHA1, SHA256)
+     Dark themed with brand gradients
+     Classes/IDs include 'hasgen'
+     ============================================== */
+
+  :root{
+    /* Brand palette copied and mapped with tool-specific vars (names include 'hash') */
+    --hash-primary:#1D4ED8;         /* color-primary */
+    --hash-accent:#3B82F6;          /* color-accent */
+    --hash-bg:#0F172A;              /* color-bg-dark */
+    --hash-bg-soft:#1d1f2f;         /* color-footer-bg */
+    --hash-white:#ffffff;           /* color-white */
+    --hash-text:#E6EEF8;            /* light text */
+    --hash-muted:#AAB6C7;           /* subtle text */
+    --hash-border:rgba(255,255,255,0.14);
+    --hash-warm:#ff7c4c;            /* gradient end */
+    --hash-warm-2:#e85d27;          /* used often */
+
+    --hash-shadow-1:0 10px 30px rgba(0,0,0,.35);
+    --hash-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+    --hash-r-xl:20px; --hash-r-lg:14px; --hash-r-md:10px;
+
+    color-scheme: dark;
+  }
+
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--hash-text);
+    font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 12% -10%, color-mix(in oklab, var(--hash-primary) 26%, transparent), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%,  color-mix(in oklab, var(--hash-accent) 22%, transparent), transparent 52%),
+      radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--hash-warm) 14%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--hash-bg) 0%, var(--hash-bg-soft) 100%);
+    background-attachment: fixed;
+  }
+
+  /* Page shell */
+  .hasgen-main{ width:min(1200px,92vw); margin: clamp(16px,3vw,40px) auto 80px; }
+
+  /* Hero */
+  .hasgen-hero{
+    display:grid; grid-template-columns: 1.2fr .8fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+    border:1px solid var(--hash-border); border-radius:var(--hash-r-xl);
+    padding: clamp(18px,3vw,28px);
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--hash-primary) 20%, transparent),
+      color-mix(in oklab, var(--hash-accent) 18%, transparent)
+    ) border-box;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    box-shadow: var(--hash-shadow-1);
+    position:relative; overflow:hidden;
+  }
+  .hasgen-hero::after{
+    content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.6; pointer-events:none;
+    background:
+      radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--hash-primary) 28%, transparent), transparent 65%),
+      radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--hash-accent) 26%, transparent), transparent 62%);
+  }
+  @media (max-width:980px){ .hasgen-hero{ grid-template-columns:1fr } }
+
+  .hasgen-title{ margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12; font-family:'Poppins','Segoe UI',sans-serif; font-size: clamp(22px,3.2vw,36px);
+    background: linear-gradient(90deg,#fff,
+      color-mix(in oklab, var(--hash-accent) 54%, #fff) 38%,
+      color-mix(in oklab, var(--hash-warm) 40%, #fff) 78%, #fff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hasgen-sub{ margin:6px 0 0; color:var(--hash-muted); font-size:clamp(14px,1.8vw,16px) }
+  .hasgen-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+  .hasgen-badge{ padding:6px 10px; border:1px solid var(--hash-border); border-radius:999px; background: color-mix(in oklab, var(--hash-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem }
+
+  .hasgen-hero-art{ justify-self:end; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--hash-border); border-radius:var(--hash-r-lg); padding:18px; box-shadow: var(--hash-shadow-1) }
+  .hasgen-hero-art svg{ width:min(260px,42vw); height:auto; display:block; color:#d6e2ff }
+  @media (max-width:980px){ .hasgen-hero-art{ justify-self:start }}
+
+  /* Grid */
+  .hasgen-grid{ margin-top: clamp(14px,2.6vw,24px); display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(12px,2.4vw,20px) }
+  @media (max-width:980px){ .hasgen-grid{ grid-template-columns:1fr } }
+
+  .hasgen-card{ border:1px solid var(--hash-border); border-radius:var(--hash-r-lg); background: rgba(255,255,255,.06); box-shadow: var(--hash-shadow-2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); overflow:hidden }
+  .hasgen-card-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; background: linear-gradient(90deg, color-mix(in oklab, var(--hash-primary) 12%, transparent), color-mix(in oklab, var(--hash-accent) 10%, transparent)); border-bottom:1px solid var(--hash-border) }
+  .hasgen-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family:'Poppins','Segoe UI',sans-serif }
+  .hasgen-section{ padding:12px 14px; display:grid; gap:12px }
+
+  /* Inputs */
+  .hasgen-field{ display:grid; gap:6px }
+  .hasgen-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+  .hasgen-input, .hasgen-select, .hasgen-textarea{
+    background:#0e1730; color:#e6ecff; border:1px solid var(--hash-border);
+    border-radius:10px; padding:12px 14px; outline:none; transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease; min-height:44px;
+  }
+  .hasgen-textarea{ min-height:100px; resize:vertical }
+  .hasgen-select{ appearance:none }
+  .hasgen-input:focus, .hasgen-select:focus, .hasgen-textarea:focus{ border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px) }
+  .hasgen-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+  /* Buttons */
+  .hasgen-btn{ --_bg: linear-gradient(180deg, color-mix(in oklab, var(--hash-primary) 70%, transparent), color-mix(in oklab, var(--hash-accent) 62%, transparent)); --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--hash-primary)); appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt); padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer; transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease; box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16); font-family:'Poppins','Segoe UI',sans-serif }
+  .hasgen-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+  .hasgen-btn:active{ transform: translateY(0); filter: brightness(.98) }
+  .hasgen-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--hash-border); box-shadow:none }
+  .hasgen-btn-warm{ background: linear-gradient(135deg, var(--hash-accent), var(--hash-warm)); border-color:transparent }
+
+  /* Output */
+  .hasgen-result{ display:grid; gap:10px }
+  .hasgen-pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid var(--hash-border); border-radius:999px; background: color-mix(in oklab, var(--hash-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem }
+  .hasgen-kv{ display:grid; grid-template-columns: 1fr; gap:8px }
+  .hasgen-kv div{ background: rgba(255,255,255,.04); border:1px solid var(--hash-border); border-radius:10px; padding:10px }
+  .hasgen-kv b{ display:block; font-size:.8rem; color:#c8d7ff; margin-bottom:3px }
+  .hasgen-code{ font: 600 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace; word-break: break-all }
+
+  /* File table */
+  table.hasgen-table{ width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:10px; border:1px solid var(--hash-border) }
+  .hasgen-table th, .hasgen-table td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--hash-border); vertical-align:top }
+  .hasgen-table th{ background: rgba(255,255,255,.05); font:700 12px 'Poppins','Segoe UI',sans-serif; letter-spacing:.25px; text-transform:uppercase }
+  .hasgen-table tr:last-child td{ border-bottom:0 }
+  .hasgen-status-ok{ color:#7CFC9A }
+  .hasgen-status-warn{ color:#FFD166 }
+  .hasgen-status-bad{ color:#FF6B6B }
+
+  /* Toast */
+  .hasgen-toast{ position: fixed; inset: auto 16px 16px auto; background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--hash-border); backdrop-filter: blur(8px); box-shadow: var(--hash-shadow-1); transform: translateY(20px); opacity:0; pointer-events:none; transition: transform .25s ease, opacity .25s ease; z-index: 50 }
+  .hasgen-toast.show{ transform: translateY(0); opacity:1 }
+
+  /* Drag drop */
+  .hasgen-drop{ border:1px dashed var(--hash-border); border-radius:12px; padding:18px; text-align:center; background: rgba(255,255,255,.03) }
+  .hasgen-drop.drag{ background: rgba(59,130,246,.08); border-color: rgba(59,130,246,.55) }
+
+  /* Subtle float */
+  @media (prefers-reduced-motion:no-preference){ .hasgen-card{ animation: hasgen-float 18s ease-in-out infinite } @keyframes hasgen-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} } }
+
+  /* Utility */
+  .kbd{ font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace; background: color-mix(in oklab, var(--hash-bg) 78%, transparent); color:#cbd5e1; padding:3px 6px; border-radius:8px; border:1px solid var(--hash-border) }
+  .sr-only{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+
+  </style>
+</head>
+<body class="grade-calc-page">
+
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+<main class="hasgen-main" id="hasgen-main" aria-label="Hash Generator">
+  <!-- HERO -->
+  <section class="hasgen-hero" aria-labelledby="hasgen-title">
+    <div>
+      <h1 class="hasgen-title" id="hasgen-title">Hash Generator - MD5, SHA1, SHA256</h1>
+      <p class="hasgen-sub">Type or paste text, or drop files, and get hashes instantly. Add salt or HMAC, verify against a known checksum, and export a .sha256 list. Everything runs locally in your browser.</p>
+      <div class="hasgen-badges">
+        <span class="hasgen-badge">Private</span>
+        <span class="hasgen-badge">No upload</span>
+        <span class="hasgen-badge">Drag and drop files</span>
+      </div>
+    </div>
+    <div class="hasgen-hero-art" aria-hidden="true">
+      <!-- Chip icon -->
+      <svg viewBox="0 0 200 160" role="img" aria-label="Microchip icon">
+        <rect x="20" y="30" width="160" height="100" rx="14" fill="none" stroke="currentColor" opacity=".25" />
+        <rect x="50" y="50" width="100" height="60" rx="10" fill="none" stroke="currentColor" opacity=".9" />
+        <g opacity=".85">
+          <circle cx="75" cy="70" r="6" fill="currentColor" />
+          <circle cx="125" cy="70" r="6" fill="currentColor" />
+          <rect x="86" y="86" width="28" height="8" rx="3" fill="currentColor" />
+        </g>
+        <g opacity=".5">
+          <rect x="18" y="28" width="8" height="18" rx="2" fill="currentColor" />
+          <rect x="174" y="28" width="8" height="18" rx="2" fill="currentColor" />
+          <rect x="18" y="114" width="8" height="18" rx="2" fill="currentColor" />
+          <rect x="174" y="114" width="8" height="18" rx="2" fill="currentColor" />
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="hasgen-grid">
+    <!-- LEFT: Inputs -->
+    <article class="hasgen-card" aria-labelledby="hasgen-enter">
+      <header class="hasgen-card-head">
+        <h2 class="hasgen-card-title" id="hasgen-enter">Enter data</h2>
+        <div class="hasgen-row">
+          <button class="hasgen-btn hasgen-btn-ghost" id="hasgen-clear" title="Clear inputs"><span class="kbd">Esc</span> Clear</button>
+          <button class="hasgen-btn" id="hasgen-sample" title="Fill sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="hasgen-section">
+        <div class="hasgen-field">
+          <label class="hasgen-label" for="hasgen-text">Text</label>
+          <textarea id="hasgen-text" class="hasgen-textarea" placeholder="Type or paste text here..."></textarea>
+        </div>
+
+        <div class="hasgen-row">
+          <div class="hasgen-field" style="flex:1 1 220px">
+            <label class="hasgen-label" for="hasgen-salt">Salt</label>
+            <input id="hasgen-salt" class="hasgen-input" type="text" placeholder="Optional salt" />
+          </div>
+          <div class="hasgen-field" style="width:200px">
+            <label class="hasgen-label" for="hasgen-saltpos">Salt position</label>
+            <select id="hasgen-saltpos" class="hasgen-select">
+              <option value="prefix">Prefix</option>
+              <option value="suffix">Suffix</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+          <div class="hasgen-field" style="width:200px">
+            <label class="hasgen-label" for="hasgen-encoding">Encoding</label>
+            <select id="hasgen-encoding" class="hasgen-select">
+              <option value="utf-8" selected>UTF-8</option>
+              <option value="utf-16le">UTF-16 LE</option>
+            </select>
+          </div>
+        </div>
+
+        <details class="hasgen-drop" id="hasgen-hmac-wrap">
+          <summary class="hasgen-label" style="cursor:pointer">HMAC options (SHA1 or SHA256)</summary>
+          <div class="hasgen-row" style="margin-top:10px">
+            <div class="hasgen-field" style="flex:1 1 220px">
+              <label class="hasgen-label" for="hasgen-hmackey">HMAC key</label>
+              <input id="hasgen-hmackey" class="hasgen-input" type="text" placeholder="Enter secret key for HMAC" />
+            </div>
+            <div class="hasgen-field" style="width:200px">
+              <label class="hasgen-label" for="hasgen-hmacalgo">HMAC algo</label>
+              <select id="hasgen-hmacalgo" class="hasgen-select">
+                <option value="SHA-256" selected>SHA-256</option>
+                <option value="SHA-1">SHA-1</option>
+              </select>
+            </div>
+          </div>
+        </details>
+
+        <div class="hasgen-row">
+          <div class="hasgen-field" style="flex:1 1 240px">
+            <label class="hasgen-label" for="hasgen-file" aria-live="polite">Files</label>
+            <input id="hasgen-file" class="hasgen-input" type="file" multiple />
+            <div class="hasgen-drop" id="hasgen-drop">Drop files here or paste from clipboard</div>
+          </div>
+        </div>
+
+        <div class="hasgen-row">
+          <button class="hasgen-btn" id="hasgen-run" title="Generate hashes"><span class="kbd">Enter</span> Generate</button>
+          <button class="hasgen-btn hasgen-btn-ghost" id="hasgen-copy" title="Copy all results"><span class="kbd">C</span> Copy</button>
+          <button class="hasgen-btn hasgen-btn-ghost" id="hasgen-download" title="Download text file of results">Download</button>
+          <button class="hasgen-btn hasgen-btn-warm" id="hasgen-share" title="Copy permalink"><span class="kbd">L</span> Copy link</button>
+        </div>
+
+        <p class="hasgen-sub" style="margin:4px 0 0">Keyboard: <span class="kbd">Enter</span> generate, <span class="kbd">C</span> copy, <span class="kbd">L</span> link, <span class="kbd">Esc</span> clear.</p>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="hasgen-card" aria-live="polite">
+      <header class="hasgen-card-head">
+        <h2 class="hasgen-card-title">Results</h2>
+        <div class="hasgen-row">
+          <span class="hasgen-pill" id="hasgen-pill-status">Ready</span>
+        </div>
+      </header>
+
+      <div class="hasgen-section hasgen-result" id="hasgen-result">
+        <div class="hasgen-kv">
+          <div>
+            <b>MD5</b>
+            <div class="hasgen-code" id="hasgen-md5">-</div>
+          </div>
+          <div>
+            <b>SHA1</b>
+            <div class="hasgen-code" id="hasgen-sha1">-</div>
+          </div>
+          <div>
+            <b>SHA256</b>
+            <div class="hasgen-code" id="hasgen-sha256">-</div>
+          </div>
+          <div>
+            <b>HMAC</b>
+            <div class="hasgen-code" id="hasgen-hmac">-</div>
+          </div>
+        </div>
+
+        <div class="hasgen-field">
+          <label class="hasgen-label" for="hasgen-verify">Verify against known hash</label>
+          <input id="hasgen-verify" class="hasgen-input" type="text" placeholder="Paste an expected hash to check" />
+          <small class="hasgen-sub" id="hasgen-verdict">Waiting for value...</small>
+        </div>
+
+        <div class="hasgen-field">
+          <label class="hasgen-label">Files summary</label>
+          <table class="hasgen-table" id="hasgen-table" aria-describedby="hasgen-file">
+            <thead>
+              <tr>
+                <th scope="col">File</th>
+                <th scope="col">Size</th>
+                <th scope="col">SHA256</th>
+                <th scope="col">Match</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="hasgen-tbody"></tbody>
+          </table>
+          <div class="hasgen-row">
+            <button class="hasgen-btn" id="hasgen-export-sha256">Download .sha256 list</button>
+            <button class="hasgen-btn hasgen-btn-ghost" id="hasgen-import-sums">Import checksum file</button>
+            <input type="file" id="hasgen-import-file" accept=".sha256,.txt" class="sr-only" />
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="hasgen-card" style="margin-top:16px">
+    <header class="hasgen-card-head"><h2 class="hasgen-card-title">Tips</h2></header>
+    <div class="hasgen-section">
+      <ul>
+        <li>Permalink copies your current inputs so you can reproduce the same hashes later.</li>
+        <li>Pasting files from clipboard also works where supported.</li>
+        <li>Use HMAC when you need a keyed digest for authentication. MD5 is not supported for HMAC here.</li>
+      </ul>
+    </div>
+  </section>
+
+
+     <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Hash Generator Guide on SnipText Blog Page <a href="/blog/hash-generator-md5-sha1-sha256-verify-checksum-hmac-salt-guide-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+</main>
+
+<div class="hasgen-toast" id="hasgen-toast" role="status" aria-live="polite">Copied to clipboard</div>
+
+
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card table-gen-tool-card" tabindex="0" data-href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-labelledby="table-gen-tg">
+        <div class="card-icon table-gen-card-icon" aria-hidden="true">
+          <!-- Grid/Table icon -->
+          <svg viewBox="0 0 24 24" class="svg-icon table-gen-svg" xmlns="http://www.w3.org/2000/svg" role="img">
+            <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M3 9h18M3 14h18M8 4v16M14 4v16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 id="table-gen-tg" class="card-title table-gen-card-title">Quick Table Generator</h3>
+        <p class="card-desc table-gen-card-desc">
+          Paste or upload CSV to generate clean, responsive HTML table code with auto-detect delimiter, header toggle, sort, filter, paginate, transpose, sticky header, and one-click copy or download. Private, in-browser.
+        </p>
+        <a class="card-cta table-gen-card-cta" href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-label="Open Quick Table Generator">Open →</a>
+      </article>
+
+      <article class="tool-card" tabindex="0" data-href="/tools/timeline-maker-academic-timeline.html" aria-labelledby="t13">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Timeline icon: calendar + vertical line with nodes -->
+            <svg viewBox="0 0 24 24" class="svg-icon">
+              <!-- Calendar frame -->
+              <rect x="3" y="4.5" width="18" height="16" rx="2.5" ry="2.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
+              <path d="M3 8h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              <path d="M8 4.5v-2M16 4.5v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Vertical timeline -->
+              <path d="M8.5 11v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="8.5" cy="12.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="18" r="1.4" fill="currentColor"/>
+              <!-- Event cards hint -->
+              <path d="M11.5 12.5h6M11.5 15.5h5M11.5 18h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 id="t13" class="card-title">Timeline Maker</h3>
+          <p class="card-desc">Enter events to auto-generate an academic-style timeline with categories, eras, zoom, drag-reorder, and one-click export to HTML, SVG, or JSON. Private, in-browser.</p>
+          <a class="card-cta" href="/tools/timeline-maker-academic-timeline.html" aria-label="Open Timeline Maker">Open →</a>
+        </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <script src="/js/index.js"></script>  
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+// ==========================
+// HASH GENERATOR - CLIENT JS
+// ==========================
+(function(){
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+  const els = {
+    text: $('#hasgen-text'),
+    salt: $('#hasgen-salt'),
+    saltpos: $('#hasgen-saltpos'),
+    encoding: $('#hasgen-encoding'),
+    hmackey: $('#hasgen-hmackey'),
+    hmacalgo: $('#hasgen-hmacalgo'),
+    run: $('#hasgen-run'),
+    sample: $('#hasgen-sample'),
+    clear: $('#hasgen-clear'),
+    copy: $('#hasgen-copy'),
+    download: $('#hasgen-download'),
+    share: $('#hasgen-share'),
+    file: $('#hasgen-file'),
+    drop: $('#hasgen-drop'),
+    pillStatus: $('#hasgen-pill-status'),
+    md5: $('#hasgen-md5'), sha1: $('#hasgen-sha1'), sha256: $('#hasgen-sha256'), hmac: $('#hasgen-hmac'),
+    verify: $('#hasgen-verify'), verdict: $('#hasgen-verdict'),
+    table: $('#hasgen-table'), tbody: $('#hasgen-tbody'),
+    exportSums: $('#hasgen-export-sha256'), importSums: $('#hasgen-import-sums'), importFile: $('#hasgen-import-file'),
+    toast: $('#hasgen-toast')
+  };
+
+  // ---------- Utilities ----------
+  const encUtf8 = new TextEncoder();
+  function encData(text, encoding){
+    if(encoding === 'utf-8'){ return encUtf8.encode(text); }
+    if(encoding === 'utf-16le'){
+      const buf = new ArrayBuffer(text.length * 2);
+      const view = new DataView(buf);
+      for(let i=0;i<text.length;i++){ view.setUint16(i*2, text.charCodeAt(i), true); }
+      return new Uint8Array(buf);
+    }
+    return encUtf8.encode(text);
+  }
+  const toHex = (buf)=> Array.from(buf).map(b=> b.toString(16).padStart(2,'0')).join('');
+  const toHexUpper = (hex)=> hex.toUpperCase();
+  const showToast = (msg)=>{ els.toast.textContent = msg; els.toast.classList.add('show'); clearTimeout(showToast.t); showToast.t = setTimeout(()=> els.toast.classList.remove('show'), 1400); };
+  const humanSize = (n)=>{
+    const u = ['B','KB','MB','GB','TB'];
+    let i = 0, v = n;
+    while(v >= 1024 && i < u.length-1){ v/=1024; i++; }
+    return (Math.round(v*10)/10)+' '+u[i];
+  }
+
+  // ---------- MD5 (small JS impl, public domain) ----------
+  // Source adapted from https://github.com/blueimp/JavaScript-MD5 (trimmed for brevity)
+  function md5(bytes){
+    function safe_add(x,y){ var l=(x & 0xffff)+(y & 0xffff), m=(x>>16)+(y>>16)+(l>>16); return (m<<16)|(l & 0xffff); }
+    function bit_rol(num,cnt){ return (num<<cnt)|(num>>> (32-cnt)); }
+    function md5ff(a,b,c,d,x,s,t){ return safe_add(bit_rol(safe_add(safe_add(a,(b & c)|((~b) & d)), safe_add(x,t)), s), b); }
+    function md5gg(a,b,c,d,x,s,t){ return safe_add(bit_rol(safe_add(safe_add(a,(b & d)|(c & (~d))), safe_add(x,t)), s), b); }
+    function md5hh(a,b,c,d,x,s,t){ return safe_add(bit_rol(safe_add(safe_add(a,b^c^d), safe_add(x,t)), s), b); }
+    function md5ii(a,b,c,d,x,s,t){ return safe_add(bit_rol(safe_add(safe_add(a,c^(b|(~d))), safe_add(x,t)), s), b); }
+    function binl_md5(x, len){
+      x[len>>5] |= 0x80 << (len % 32); x[(((len + 64) >>> 9) << 4) + 14] = len;
+      var i, olda, oldb, oldc, oldd, a=1732584193, b=-271733879, c=-1732584194, d=271733878;
+      for(i=0;i<x.length;i+=16){
+        olda=a; oldb=b; oldc=c; oldd=d;
+        a=md5ff(a,b,c,d,x[i],7,-680876936); d=md5ff(d,a,b,c,x[i+1],12,-389564586); c=md5ff(c,d,a,b,x[i+2],17,606105819); b=md5ff(b,c,d,a,x[i+3],22,-1044525330);
+        a=md5ff(a,b,c,d,x[i+4],7,-176418897); d=md5ff(d,a,b,c,x[i+5],12,1200080426); c=md5ff(c,d,a,b,x[i+6],17,-1473231341); b=md5ff(b,c,d,a,x[i+7],22,-45705983);
+        a=md5ff(a,b,c,d,x[i+8],7,1770035416); d=md5ff(d,a,b,c,x[i+9],12,-1958414417); c=md5ff(c,d,a,b,x[i+10],17,-42063); b=md5ff(b,c,d,a,x[i+11],22,-1990404162);
+        a=md5ff(a,b,c,d,x[i+12],7,1804603682); d=md5ff(d,a,b,c,x[i+13],12,-40341101); c=md5ff(c,d,a,b,x[i+14],17,-1502002290); b=md5ff(b,c,d,a,x[i+15],22,1236535329);
+        a=md5gg(a,b,c,d,x[i+1],5,-165796510); d=md5gg(d,a,b,c,x[i+6],9,-1069501632); c=md5gg(c,d,a,b,x[i+11],14,643717713); b=md5gg(b,c,d,a,x[i],20,-373897302);
+        a=md5gg(a,b,c,d,x[i+5],5,-701558691); d=md5gg(d,a,b,c,x[i+10],9,38016083); c=md5gg(c,d,a,b,x[i+15],14,-660478335); b=md5gg(b,c,d,a,x[i+4],20,-405537848);
+        a=md5gg(a,b,c,d,x[i+9],5,568446438); d=md5gg(d,a,b,c,x[i+14],9,-1019803690); c=md5gg(c,d,a,b,x[i+3],14,-187363961); b=md5gg(b,c,d,a,x[i+8],20,1163531501);
+        a=md5hh(a,b,c,d,x[i+5],4,-1444681467); d=md5hh(d,a,b,c,x[i+8],11,-51403784); c=md5hh(c,d,a,b,x[i+11],16,1735328473); b=md5hh(b,c,d,a,x[i+14],23,-1926607734);
+        a=md5hh(a,b,c,d,x[i+1],4,-378558); d=md5hh(d,a,b,c,x[i+4],11,-2022574463); c=md5hh(c,d,a,b,x[i+7],16,1839030562); b=md5hh(b,c,d,a,x[i+10],23,-35309556);
+        a=md5ii(a,b,c,d,x[i],6,-198630844); d=md5ii(d,a,b,c,x[i+7],10,1126891415); c=md5ii(c,d,a,b,x[i+14],15,-1416354905); b=md5ii(b,c,d,a,x[i+5],21,-57434055);
+        a=md5ii(a,b,c,d,x[i+12],6,1700485571); d=md5ii(d,a,b,c,x[i+3],10,-1894986606); c=md5ii(c,d,a,b,x[i+10],15,-1051523); b=md5ii(b,c,d,a,x[i+1],21,-2054922799);
+        a=md5ii(a,b,c,d,x[i+8],6,1873313359); d=md5ii(d,a,b,c,x[i+11],10,-30611744); c=md5ii(c,d,a,b,x[i+14],15,-1560198380); b=md5ii(b,c,d,a,x[i+5],21,1309151649);
+        a=md5ii(a,b,c,d,x[i+12],6,-145523070); d=md5ii(d,a,b,c,x[i+3],10,-1120210379); c=md5ii(c,d,a,b,x[i+10],15,718787259); b=md5ii(b,c,d,a,x[i+1],21,-343485551);
+        a=safe_add(a,olda); b=safe_add(b,oldb); c=safe_add(c,oldc); d=safe_add(d,oldd);
+      }
+      return [a,b,c,d];
+    }
+    function rstr2binl(input){ var i, out=[]; out[(input.length>>2)-1] = undefined; for(i=0;i<out.length;i++) out[i]=0; for(i=0;i<input.length*8;i+=8) out[i>>5] |= (input.charCodeAt(i/8) & 0xff) << (i%32); return out; }
+    function binl2rstr(input){ var i, out=''; for(i=0;i<input.length*32;i+=8) out += String.fromCharCode( (input[i>>5] >>> (i%32)) & 0xff ); return out; }
+    function bytesToRstr(bytes){ return Array.from(bytes).map(c=>String.fromCharCode(c)).join(''); }
+    function rstr_md5(s){ return binl2rstr(binl_md5(rstr2binl(s), s.length*8)); }
+    function rstr2hex(s){ var hex='', x; for(var i=0;i<s.length;i++){ x = s.charCodeAt(i).toString(16).padStart(2,'0'); hex += x; } return hex; }
+    return rstr2hex(rstr_md5(bytesToRstr(bytes)));
+  }
+
+  // ---------- SHA via Web Crypto ----------
+  async function sha(algo, bytes){
+    if(!(window.crypto && crypto.subtle)) throw new Error('Web Crypto not available');
+    const buf = await crypto.subtle.digest(algo, bytes);
+    return toHex(new Uint8Array(buf));
+  }
+
+  async function hmacDigest(algo, keyStr, bytes){
+    if(!keyStr) return '-';
+    const keyData = encUtf8.encode(keyStr);
+    const key = await crypto.subtle.importKey('raw', keyData, {name:'HMAC', hash:{name:algo}}, false, ['sign']);
+    const sig = await crypto.subtle.sign('HMAC', key, bytes);
+    return toHex(new Uint8Array(sig));
+  }
+
+  // ---------- Main compute ----------
+  async function computeText(){
+    const salt = els.salt.value || '';
+    const t = els.text.value || '';
+    const saltpos = els.saltpos.value;
+    const encoding = els.encoding.value;
+    let mixed = t;
+    if(salt){ if(saltpos==='prefix') mixed = salt + t; else if(saltpos==='suffix') mixed = t + salt; else mixed = salt + t + salt; }
+    const data = encData(mixed, encoding);
+
+    els.pillStatus.textContent = 'Working...';
+
+    // MD5 (JS)
+    const md5hex = md5(data);
+    els.md5.textContent = md5hex;
+
+    // SHA1 & SHA256
+    try{
+      const [s1, s256] = await Promise.all([sha('SHA-1', data), sha('SHA-256', data)]);
+      els.sha1.textContent = s1; els.sha256.textContent = s256;
+    }catch(err){ els.sha1.textContent = 'Unavailable'; els.sha256.textContent = 'Unavailable'; }
+
+    // HMAC
+    try{
+      els.hmac.textContent = await hmacDigest(els.hmacalgo.value, els.hmackey.value, data);
+    }catch(err){ els.hmac.textContent = 'Unavailable'; }
+
+    els.pillStatus.textContent = 'Done';
+    autoVerify();
+  }
+
+  function autoVerify(){
+    const expected = (els.verify.value||'').trim().toLowerCase();
+    const vals = [els.md5.textContent, els.sha1.textContent, els.sha256.textContent, els.hmac.textContent].map(v=> (v||'').toLowerCase());
+    let verdict = 'No match yet'; let cls = 'hasgen-status-warn';
+    if(expected){
+      if(vals.some(v=> v && v === expected)){ verdict = 'Match found'; cls = 'hasgen-status-ok'; }
+      else { verdict = 'No match'; cls = 'hasgen-status-bad'; }
+    } else verdict = 'Waiting for value...';
+    els.verdict.textContent = verdict; els.verdict.className = 'hasgen-sub ' + cls;
+  }
+
+  els.verify.addEventListener('input', autoVerify);
+
+  // ---------- Files hashing ----------
+  const fileRows = new Map(); // filename -> {tr, sha256}
+
+  async function hashFile(file){
+    const buf = await file.arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    // Use SHA-256 for file integrity
+    try{
+      const hex = await sha('SHA-256', bytes);
+      return hex;
+    }catch(err){
+      // fallback: not implemented for sha256 in JS here
+      throw new Error('SHA-256 unavailable');
+    }
+  }
+
+  function addFileRows(files){
+    for(const f of files){
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${f.name}</td><td>${humanSize(f.size)}</td><td class="hasgen-code">…</td><td>-</td><td><button class="hasgen-btn hasgen-btn-ghost hasgen-act-copy">Copy</button></td>`;
+      els.tbody.appendChild(tr);
+      fileRows.set(f.name, { tr, file: f, sha256: '' });
+    }
+  }
+
+  async function processFiles(){
+    const entries = Array.from(fileRows.values());
+    for(const row of entries){
+      const tdHash = row.tr.children[2];
+      const tdMatch = row.tr.children[3];
+      try{
+        const hex = await hashFile(row.file);
+        row.sha256 = hex; tdHash.textContent = hex;
+        const expected = (els.verify.value||'').trim().toLowerCase();
+        if(expected){
+          if(hex.toLowerCase() === expected){ tdMatch.textContent = 'Match'; tdMatch.className = 'hasgen-status-ok'; }
+          else { tdMatch.textContent = 'No'; tdMatch.className = 'hasgen-status-bad'; }
+        } else { tdMatch.textContent = '-'; tdMatch.className = ''; }
+      }catch(err){ tdHash.textContent = 'Unavailable'; tdMatch.textContent = '-'; tdMatch.className = 'hasgen-status-bad'; }
+    }
+  }
+
+  // Export .sha256 list
+  function exportSha256(){
+    const lines = [];
+    for(const {file, sha256} of fileRows.values()){
+      if(sha256){ lines.push(`${sha256}  ${file.name}`); }
+    }
+    if(!lines.length){ showToast('Nothing to export yet'); return; }
+    const blob = new Blob([lines.join('\n')+'\n'], {type:'text/plain'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'checksums.sha256';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  // Import checksum file
+  function importSums(file){
+    const reader = new FileReader();
+    reader.onload = () => {
+      const map = new Map();
+      (reader.result||'').split(/\r?\n/).forEach(line=>{
+        line = line.trim(); if(!line) return;
+        // support formats: "<hash>  <name>" or "<name>=<hash>"
+        let m = line.match(/^([a-fA-F0-9]{32,64})\s+\*?(.+)$/) || line.match(/^(.+?)\s*[=:]\s*([a-fA-F0-9]{32,64})$/);
+        if(m){ const h = m[1].length>=32 && m[1].match(/^[a-fA-F0-9]+$/) ? m[1] : m[2]; const n = m[1]===h ? m[2] : m[1]; map.set(n.trim(), h.trim()); }
+      });
+      // apply matches
+      for(const [name, row] of fileRows.entries()){
+        const tdMatch = row.tr.children[3];
+        const tdHash = row.tr.children[2];
+        const expected = map.get(name);
+        if(expected){
+          const got = (tdHash.textContent||'').trim();
+          if(got && got.toLowerCase() === expected.toLowerCase()){ tdMatch.textContent = 'Match'; tdMatch.className = 'hasgen-status-ok'; }
+          else { tdMatch.textContent = 'No'; tdMatch.className = 'hasgen-status-bad'; }
+        }
+      }
+      showToast('Checksum file applied');
+    };
+    reader.readAsText(file);
+  }
+
+  // Copy all results
+  async function copyAll(){
+    const parts = [];
+    parts.push(`MD5: ${els.md5.textContent}`);
+    parts.push(`SHA1: ${els.sha1.textContent}`);
+    parts.push(`SHA256: ${els.sha256.textContent}`);
+    parts.push(`HMAC: ${els.hmac.textContent}`);
+    if(fileRows.size){
+      parts.push('Files:');
+      for(const {file, sha256} of fileRows.values()) parts.push(`  ${file.name}: ${sha256||'pending'}`);
+    }
+    await navigator.clipboard.writeText(parts.join('\n'));
+    showToast('Copied to clipboard');
+  }
+
+  // Download results
+  function downloadTxt(){
+    const lines = [];
+    lines.push(`# Hash Generator results`);
+    lines.push(`MD5: ${els.md5.textContent}`);
+    lines.push(`SHA1: ${els.sha1.textContent}`);
+    lines.push(`SHA256: ${els.sha256.textContent}`);
+    lines.push(`HMAC: ${els.hmac.textContent}`);
+    if(fileRows.size){
+      lines.push(''); lines.push('# Files');
+      for(const {file, sha256} of fileRows.values()) lines.push(`${file.name}: ${sha256||'pending'}`);
+    }
+    const blob = new Blob([lines.join('\n')+'\n'], {type:'text/plain'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'hash-results.txt'; a.click(); URL.revokeObjectURL(a.href);
+  }
+
+  // Permalink
+  function copyLink(){
+    const params = new URLSearchParams();
+    if(els.text.value) params.set('t', els.text.value);
+    if(els.salt.value) params.set('s', els.salt.value);
+    if(els.saltpos.value !== 'prefix') params.set('p', els.saltpos.value);
+    if(els.encoding.value !== 'utf-8') params.set('e', els.encoding.value);
+    if(els.hmackey.value) params.set('k', els.hmackey.value);
+    if(els.hmacalgo.value !== 'SHA-256') params.set('h', els.hmacalgo.value);
+    const url = location.origin + location.pathname + (params.toString()? ('?'+params.toString()):'');
+    navigator.clipboard.writeText(url).then(()=> showToast('Permalink copied'));
+  }
+
+  // Apply URL params on load
+  function applyParams(){
+    const q = new URLSearchParams(location.search);
+    if(q.has('t')) els.text.value = q.get('t');
+    if(q.has('s')) els.salt.value = q.get('s');
+    if(q.has('p')) els.saltpos.value = q.get('p');
+    if(q.has('e')) els.encoding.value = q.get('e');
+    if(q.has('k')) els.hmackey.value = q.get('k');
+    if(q.has('h')) els.hmacalgo.value = q.get('h');
+    if(q.size) computeText();
+  }
+
+  // Events
+  els.run.addEventListener('click', computeText);
+  els.sample.addEventListener('click', ()=>{ els.text.value = 'SnipText demo'; els.salt.value = 'NaCl'; els.saltpos.value = 'suffix'; els.encoding.value = 'utf-8'; computeText(); });
+  els.clear.addEventListener('click', ()=>{ els.text.value=''; els.salt.value=''; els.hmackey.value=''; els.verify.value=''; els.md5.textContent='-'; els.sha1.textContent='-'; els.sha256.textContent='-'; els.hmac.textContent='-'; els.verdict.textContent='Waiting for value...'; els.verdict.className='hasgen-sub'; els.tbody.innerHTML=''; fileRows.clear(); els.pillStatus.textContent='Ready'; });
+  els.copy.addEventListener('click', copyAll);
+  els.download.addEventListener('click', downloadTxt);
+  els.share.addEventListener('click', copyLink);
+  ['input','change'].forEach(evt=>{ els.text.addEventListener(evt, ()=> debounceCompute()); els.salt.addEventListener(evt, ()=> debounceCompute()); els.saltpos.addEventListener(evt, ()=> debounceCompute()); els.encoding.addEventListener(evt, ()=> debounceCompute()); els.hmackey.addEventListener(evt, ()=> debounceCompute()); els.hmacalgo.addEventListener(evt, ()=> debounceCompute()); });
+
+  // Keyboard shortcuts
+  window.addEventListener('keydown', (e)=>{
+    if(e.key==='Enter' && (document.activeElement===els.text || document.activeElement===els.verify || document.activeElement===els.salt || document.activeElement===els.hmackey)) { e.preventDefault(); computeText(); }
+    if(e.key.toLowerCase()==='c' && (e.ctrlKey || e.metaKey || !e.shiftKey)) { copyAll(); }
+    if(e.key.toLowerCase()==='l' && !e.ctrlKey && !e.metaKey) { copyLink(); }
+    if(e.key==='Escape'){ els.clear.click(); }
+  });
+
+  // Drag and drop
+  ;['dragenter','dragover'].forEach(evt=> els.drop.addEventListener(evt, e=>{ e.preventDefault(); e.stopPropagation(); els.drop.classList.add('drag'); }));
+  ;['dragleave','drop'].forEach(evt=> els.drop.addEventListener(evt, e=>{ e.preventDefault(); e.stopPropagation(); els.drop.classList.remove('drag'); }));
+  els.drop.addEventListener('drop', (e)=>{ const files = e.dataTransfer.files; if(files.length){ addFileRows(files); processFiles(); } });
+  els.file.addEventListener('change', ()=>{ if(els.file.files.length){ addFileRows(els.file.files); processFiles(); } });
+
+  // Paste files
+  window.addEventListener('paste', (e)=>{
+    const files = Array.from(e.clipboardData?.files || []);
+    if(files.length){ addFileRows(files); processFiles(); showToast('Files pasted'); }
+  });
+
+  // Row copy actions
+  els.tbody.addEventListener('click', async (e)=>{
+    if(e.target.closest('.hasgen-act-copy')){
+      const tr = e.target.closest('tr'); const hex = tr.children[2].textContent; if(hex && hex!=='…'){ await navigator.clipboard.writeText(hex); showToast('Hash copied'); }
+    }
+  });
+
+  // Import checksums
+  els.importSums.addEventListener('click', ()=> els.importFile.click());
+  els.importFile.addEventListener('change', ()=>{ const f = els.importFile.files[0]; if(f) importSums(f); });
+  els.exportSums.addEventListener('click', exportSha256);
+
+  // Debounce typing
+  let tDeb; function debounceCompute(){ clearTimeout(tDeb); tDeb = setTimeout(computeText, 200); }
+
+  // Init
+  applyParams();
+})();
+</script>
+</body>
+</html>

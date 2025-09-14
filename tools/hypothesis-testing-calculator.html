@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Analytics (optional, non-blocking) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date()); gtag('config','G-GE98V48RK8');
+  </script>
+  <script>
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Hypothesis Testing Calculator - Z test, T test, Chi square with steps, power and effect sizes | SnipText</title>
+  <meta name="description" content="Free hypothesis testing calculator for Z test, T test and Chi square. One sample, two sample, paired and proportions. Shows steps, p value, critical value, effect size, quick power, and downloadable report. Works offline and client side." />
+  <meta name="keywords" content="hypothesis testing calculator, z test, t test, chi square, one sample, two sample, paired t test, proportions test, p value, effect size, power calculator" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/hypothesis-testing-calculator" />
+  <link rel="alternate" href="https://checkai.pro/tools/hypothesis-testing-calculator" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/hypothesis-testing-calculator" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Hypothesis Testing Calculator" />
+  <meta property="og:description" content="Z test, T test, Chi square with steps, p value, effect size, quick power and downloadable report. Private and in your browser." />
+  <meta property="og:url" content="https://checkai.pro/tools/hypothesis-testing-calculator" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Hypothesis Testing Calculator preview" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hypothesis Testing Calculator" />
+  <meta name="twitter:description" content="All client side. Z, T and Chi square. Steps, effect sizes, quick power and export." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Hypothesis Testing Calculator",
+    "url":"https://checkai.pro/tools/hypothesis-testing-calculator",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Z test one sample and two sample (means and proportions)",
+      "T test one sample, independent (pooled or Welch), paired",
+      "Chi square goodness of fit and independence",
+      "Auto null and alternate setup with tails",
+      "Step by step working with formulas",
+      "Effect sizes: Cohen d, Hedges g, Glass delta, Phi, Cramers V, r",
+      "Quick power and sample size hints",
+      "Distribution plot with critical regions",
+      "Shareable permalink, copy, CSV or JSON export"
+    ],
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}}
+  }
+  </script>
+
+  <style>
+/* =========================================================
+   SNIPTEXT • HYPOTHESIS TESTING CALCULATOR (single file)
+   Dark themed • brand gradients • responsive • accessible
+   Classes/IDs include 'hyp-tes-cal' (first 3 letters of tool words)
+   ========================================================= */
+:root{
+  /* Brand palette mapped to tool tokens - use exact hex codes */
+  --hyp-primary:#1D4ED8;
+  --hyp-accent:#3B82F6;
+  --hyp-bg-dark:#0F172A;
+  --hyp-bg-soft:#1d1f2f;
+  --hyp-text:#E6EEF8;
+  --hyp-muted:#A6B0C3;
+  --hyp-white:#ffffff;
+  --hyp-border:rgba(229,231,235,.18);
+  --hyp-warm:#ff7c4c;
+  --hyp-often:#e85d27;
+  --hyp-shadow-1:0 12px 34px rgba(0,0,0,.42);
+  --hyp-shadow-2:0 18px 48px rgba(17,24,39,.46);
+  --hyp-radius-xl:20px;
+  --hyp-radius-lg:14px;
+  --hyp-radius-md:10px;
+  color-scheme: dark;
+}
+
+html,body{height:100%}
+body{
+  margin:0; font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+  color:var(--hyp-text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--hyp-primary) 24%, transparent), transparent 60%),
+    radial-gradient(900px 520px at 100% 0%,  color-mix(in oklab, var(--hyp-accent) 22%, transparent), transparent 55%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--hyp-warm) 14%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--hyp-bg-dark) 0%, var(--hyp-bg-soft) 100%);
+  background-attachment:fixed;
+}
+
+.hyp-tes-cal-wrap{
+  width:min(1200px,92vw);
+  margin: clamp(16px,3vw,36px) auto 80px;
+}
+
+/* Hero */
+.hyp-tes-cal-hero{
+  display:grid; grid-template-columns:1.15fr .85fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+  border:1px solid var(--hyp-border); border-radius:var(--hyp-radius-xl);
+  padding: clamp(18px,3vw,28px);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--hyp-primary) 18%, transparent),
+    color-mix(in oklab, var(--hyp-accent) 16%, transparent)
+  ) border-box;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--hyp-shadow-1);
+  position:relative; overflow:hidden;
+}
+.hyp-tes-cal-hero::after{
+  content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.55; pointer-events:none;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--hyp-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--hyp-accent) 26%, transparent), transparent 62%);
+}
+@media (max-width:980px){ .hyp-tes-cal-hero{ grid-template-columns:1fr } }
+
+.hyp-tes-cal-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:'Poppins','Segoe UI',sans-serif;
+  font-size: clamp(22px,3.2vw,36px);
+  background: linear-gradient(90deg,#fff,
+    color-mix(in oklab, var(--hyp-accent) 54%, #fff) 38%,
+    color-mix(in oklab, var(--hyp-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hyp-tes-cal-sub{ margin:6px 0 0; color:var(--hyp-muted); font-size:clamp(14px,1.8vw,16px) }
+.hyp-tes-cal-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.hyp-tes-cal-badge{
+  padding:6px 10px; border:1px solid var(--hyp-border); border-radius:999px;
+  background: color-mix(in oklab, var(--hyp-bg-dark) 72%, transparent); color:#dbe7ff; font-size:.82rem;
+}
+
+/* Hero art */
+.hyp-tes-cal-art{
+  justify-self:end;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid var(--hyp-border);
+  border-radius:var(--hyp-radius-lg);
+  padding:18px; box-shadow: var(--hyp-shadow-1);
+}
+.hyp-tes-cal-art svg{ width:min(280px,44vw); height:auto; display:block; color:#d6e2ff }
+@media (max-width:980px){ .hyp-tes-cal-art{ justify-self:start }}
+
+/* Grid */
+.hyp-tes-cal-grid{
+  margin-top: clamp(14px,2.6vw,24px);
+  display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(12px,2.4vw,20px);
+}
+@media (max-width:980px){ .hyp-tes-cal-grid{ grid-template-columns:1fr } }
+
+.hyp-tes-cal-card{
+  border:1px solid var(--hyp-border);
+  border-radius:var(--hyp-radius-lg);
+  background: rgba(255,255,255,.06);
+  box-shadow: var(--hyp-shadow-2);
+  backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.hyp-tes-cal-card-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px;
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--hyp-primary) 12%, transparent),
+    color-mix(in oklab, var(--hyp-accent) 10%, transparent)
+  );
+  border-bottom:1px solid var(--hyp-border);
+}
+.hyp-tes-cal-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family:'Poppins','Segoe UI',sans-serif }
+.hyp-tes-cal-section{ padding:12px 14px; display:grid; gap:12px }
+
+/* Inputs */
+.hyp-tes-cal-field{ display:grid; gap:6px }
+.hyp-tes-cal-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+.hyp-tes-cal-input, .hyp-tes-cal-select, .hyp-tes-cal-textarea{
+  background:#0e1730; color:#e6ecff; border:1px solid var(--hyp-border);
+  border-radius:10px; padding:12px 14px; outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+  min-height:44px;
+}
+.hyp-tes-cal-textarea{ min-height:120px; resize:vertical }
+.hyp-tes-cal-select{ appearance:none }
+.hyp-tes-cal-input:focus, .hyp-tes-cal-select:focus, .hyp-tes-cal-textarea:focus{
+  border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px)
+}
+.hyp-tes-cal-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+/* Buttons */
+.hyp-tes-cal-btn{
+  --_bg: linear-gradient(180deg, color-mix(in oklab, var(--hyp-primary) 70%, transparent), color-mix(in oklab, var(--hyp-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--hyp-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family:'Poppins','Segoe UI',sans-serif;
+}
+.hyp-tes-cal-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+.hyp-tes-cal-btn:active{ transform: translateY(0); filter: brightness(.98) }
+.hyp-tes-cal-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--hyp-border); box-shadow:none }
+.hyp-tes-cal-btn-warm{ background: linear-gradient(135deg, var(--hyp-accent), var(--hyp-warm)); border-color:transparent }
+
+/* Output */
+.hyp-tes-cal-result{ display:grid; gap:12px }
+.hyp-tes-cal-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border:1px solid var(--hyp-border); border-radius:999px;
+  background: color-mix(in oklab, var(--hyp-bg-dark) 72%, transparent); color:#bcd3ff; font-size:.8rem;
+}
+.hyp-tes-cal-kv{ display:grid; grid-template-columns: 1fr 1fr; gap:8px }
+.hyp-tes-cal-kv div{ background: rgba(255,255,255,.04); border:1px solid var(--hyp-border); border-radius:10px; padding:10px }
+.hyp-tes-cal-kv b{ display:block; font-size:.8rem; color:#c8d7ff; margin-bottom:3px }
+.hyp-tes-cal-steps{ border:1px solid var(--hyp-border); border-radius:12px; padding:14px; background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)) }
+.hyp-tes-cal-chart{ height:160px; position:relative; border:1px solid var(--hyp-border); border-radius:10px; background:rgba(255,255,255,.03); overflow:hidden }
+
+/* Toast */
+.hyp-tes-cal-toast{
+  position: fixed; inset: auto 16px 16px auto;
+  background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--hyp-border);
+  backdrop-filter: blur(8px); box-shadow: var(--hyp-shadow-1);
+  transform: translateY(20px); opacity:0; pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease; z-index: 50;
+}
+.hyp-tes-cal-toast.show{ transform: translateY(0); opacity:1 }
+
+/* Subtle float */
+@media (prefers-reduced-motion:no-preference){
+  .hyp-tes-cal-card{ animation: hypFloat 18s ease-in-out infinite }
+  @keyframes hypFloat{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* Utility */
+.kbd{
+  font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  background: color-mix(in oklab, var(--hyp-bg-dark) 78%, transparent); color:#cbd5e1;
+  padding:3px 6px; border-radius:8px; border:1px solid var(--hyp-border);
+}
+small.muted{ color:var(--hyp-muted) }
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+<body>
+
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+<main class="hyp-tes-cal-wrap" id="hyp-tes-cal-app" aria-label="Hypothesis Testing Calculator">
+  <!-- HERO -->
+  <section class="hyp-tes-cal-hero" aria-labelledby="hyp-tes-cal-title">
+    <div>
+      <h1 class="hyp-tes-cal-title" id="hyp-tes-cal-title">Hypothesis Testing Calculator</h1>
+      <p class="hyp-tes-cal-sub">
+        Z test, T test and Chi square in one clean tool. Choose your test, enter your data and get a clear decision with steps, effect sizes and a quick power check. Everything runs locally in your browser.
+      </p>
+      <div class="hyp-tes-cal-badges">
+        <span class="hyp-tes-cal-badge">No sign in</span>
+        <span class="hyp-tes-cal-badge">Local only</span>
+        <span class="hyp-tes-cal-badge">Copy link & export</span>
+      </div>
+    </div>
+    <div class="hyp-tes-cal-art" aria-hidden="true">
+      <!-- Minimal bell-curve icon -->
+      <svg viewBox="0 0 220 160" role="img" aria-label="Distribution icon">
+        <defs><linearGradient id="curve" x1="0" x2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#ff7c4c"/></linearGradient></defs>
+        <rect x="8" y="8" width="204" height="144" rx="16" fill="none" stroke="currentColor" opacity=".18"/>
+        <path d="M12 120 C 60 40, 160 40, 212 120" fill="none" stroke="url(#curve)" stroke-width="3"/>
+        <line x1="112" y1="120" x2="112" y2="24" stroke="currentColor" opacity=".35"/>
+        <circle cx="112" cy="84" r="3" fill="currentColor"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="hyp-tes-cal-grid">
+    <!-- LEFT: Inputs -->
+    <article class="hyp-tes-cal-card">
+      <header class="hyp-tes-cal-card-head">
+        <h2 class="hyp-tes-cal-card-title">Enter details</h2>
+        <div class="hyp-tes-cal-row">
+          <button class="hyp-tes-cal-btn hyp-tes-cal-btn-ghost" id="hyp-tes-cal-clear" title="Reset all">Clear</button>
+          <button class="hyp-tes-cal-btn" id="hyp-tes-cal-sample" title="Load sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="hyp-tes-cal-section" id="hyp-tes-cal-inputs">
+        <!-- Test type -->
+        <div class="hyp-tes-cal-row">
+          <div class="hyp-tes-cal-field" style="flex:1 1 240px">
+            <label class="hyp-tes-cal-label" for="testType">Test type</label>
+            <select id="testType" class="hyp-tes-cal-select" aria-label="Choose test type">
+              <option value="z_mean_1">Z test - one sample mean (σ known)</option>
+              <option value="z_mean_2">Z test - two sample means (σ known)</option>
+              <option value="z_prop_1">Z test - one sample proportion</option>
+              <option value="z_prop_2">Z test - two sample proportions</option>
+              <option value="t_mean_1">T test - one sample mean</option>
+              <option value="t_mean_2_ind">T test - two sample means independent</option>
+              <option value="t_mean_2_paired">T test - paired samples</option>
+              <option value="chi_gof">Chi square - goodness of fit</option>
+              <option value="chi_ind">Chi square - independence (contingency)</option>
+            </select>
+          </div>
+          <div class="hyp-tes-cal-field" style="width:210px">
+            <label class="hyp-tes-cal-label" for="tails">Alternate tails</label>
+            <select id="tails" class="hyp-tes-cal-select" aria-label="Choose one or two tailed">
+              <option value="two">Two tailed</option>
+              <option value="gt">Right tailed</option>
+              <option value="lt">Left tailed</option>
+            </select>
+          </div>
+          <div class="hyp-tes-cal-field" style="width:160px">
+            <label class="hyp-tes-cal-label" for="alpha">Alpha</label>
+            <input id="alpha" class="hyp-tes-cal-input" type="number" step="0.001" min="0.0001" max="0.5" value="0.05" />
+          </div>
+        </div>
+
+        <!-- Dynamic zones -->
+        <div id="zone-params" class="hyp-tes-cal-row" aria-live="polite" aria-atomic="true" style="flex-wrap:wrap"></div>
+
+        <!-- Actions -->
+        <div class="hyp-tes-cal-row">
+          <button class="hyp-tes-cal-btn" id="hyp-tes-cal-run" title="Calculate (Enter)"><span class="kbd">Enter</span> Calculate</button>
+          <button class="hyp-tes-cal-btn hyp-tes-cal-btn-ghost" id="hyp-tes-cal-copy">Copy result</button>
+          <button class="hyp-tes-cal-btn hyp-tes-cal-btn-ghost" id="hyp-tes-cal-export">Export CSV</button>
+          <button class="hyp-tes-cal-btn hyp-tes-cal-btn-warm" id="hyp-tes-cal-share">Copy link</button>
+        </div>
+
+        <p class="hyp-tes-cal-sub" style="margin:4px 0 0">Keyboard: <span class="kbd">Enter</span> calculate, <span class="kbd">C</span> copy, <span class="kbd">L</span> link, <span class="kbd">S</span> sample.</p>
+        <p class="hyp-tes-cal-sub" style="margin:0"><small class="muted">Tip: Paste a contingency table or observed vs expected as CSV. The parser will detect it.</small></p>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="hyp-tes-cal-card" aria-live="polite">
+      <header class="hyp-tes-cal-card-head">
+        <h2 class="hyp-tes-cal-card-title">Your results</h2>
+        <div class="hyp-tes-cal-row">
+          <span class="hyp-tes-cal-pill" id="pill-test">Test: -</span>
+          <span class="hyp-tes-cal-pill" id="pill-hyp">H0 vs H1: -</span>
+        </div>
+      </header>
+
+      <div class="hyp-tes-cal-section hyp-tes-cal-result" id="result-wrap" hidden>
+        <div class="hyp-tes-cal-kv">
+          <div><b>Test statistic</b><span id="statistic">-</span></div>
+          <div><b>p value</b><span id="pvalue">-</span></div>
+          <div><b>Critical value(s)</b><span id="crit">-</span></div>
+          <div><b>Decision</b><span id="decision">-</span></div>
+        </div>
+
+        <div class="hyp-tes-cal-kv" id="kv-effect">
+          <div><b>Effect size</b><span id="effect">-</span></div>
+          <div><b>Quick power</b><span id="power">-</span></div>
+        </div>
+
+        <div class="hyp-tes-cal-chart" id="chart" aria-label="Sampling distribution chart"></div>
+
+        <div class="hyp-tes-cal-steps" id="steps" aria-label="Step by step working"></div>
+
+        <details>
+          <summary>Recent runs on this device</summary>
+          <ul id="recent" style="margin:6px 0 0; padding-left:18px"></ul>
+        </details>
+      </div>
+    </aside>
+  </section>
+
+  <section class="hyp-tes-cal-card" style="margin-top:14px">
+    <header class="hyp-tes-cal-card-head">
+      <h2 class="hyp-tes-cal-card-title">Paste data or contingency table</h2>
+      <div class="hyp-tes-cal-row">
+        <button class="hyp-tes-cal-btn hyp-tes-cal-btn-ghost" id="btn-parse">Parse to fields</button>
+      </div>
+    </header>
+    <div class="hyp-tes-cal-section">
+      <div class="hyp-tes-cal-field">
+        <label class="hyp-tes-cal-label" for="bulk">Paste CSV or numbers</label>
+        <textarea id="bulk" class="hyp-tes-cal-textarea" placeholder="Examples:
+one-sample mean: xbar=5.4, mu0=5, sd=1.2, n=40
+two-sample mean: x1bar=5, s1=1.1, n1=30, x2bar=4.6, s2=1.0, n2=28
+one-sample proportion: phat=0.62, p0=0.5, n=200
+two-sample proportions: x1=45, n1=100, x2=30, n2=100
+chi gof: observed: 30,40,50 | expected: 33.3,33.3,53.4
+chi independence (3x2): 12,8 | 14,6 | 9,11"></textarea>
+      </div>
+      <p class="hyp-tes-cal-sub" style="margin:0"><small class="muted">Auto detect works for most short notations. For chi independence you can paste a matrix row by row separated by new lines or pipes.</small></p>
+    </div>
+  </section>
+
+
+     <div class="free-tools-guide">
+    <p class="free-tools-guide-p">See Hypothesis Testing Calculator Guide on SnipText Blog Page <a href="/blog/hypothesis-testing-calculator-z-test-t-test-chi-square-effect-size-power-visual-examples-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+</main>
+
+<div class="hyp-tes-cal-toast" id="toast" role="status" aria-live="polite"></div>
+
+
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card table-gen-tool-card" tabindex="0" data-href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-labelledby="table-gen-tg">
+        <div class="card-icon table-gen-card-icon" aria-hidden="true">
+          <!-- Grid/Table icon -->
+          <svg viewBox="0 0 24 24" class="svg-icon table-gen-svg" xmlns="http://www.w3.org/2000/svg" role="img">
+            <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M3 9h18M3 14h18M8 4v16M14 4v16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 id="table-gen-tg" class="card-title table-gen-card-title">Quick Table Generator</h3>
+        <p class="card-desc table-gen-card-desc">
+          Paste or upload CSV to generate clean, responsive HTML table code with auto-detect delimiter, header toggle, sort, filter, paginate, transpose, sticky header, and one-click copy or download. Private, in-browser.
+        </p>
+        <a class="card-cta table-gen-card-cta" href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-label="Open Quick Table Generator">Open →</a>
+      </article>
+
+      <article class="tool-card" tabindex="0" data-href="/tools/timeline-maker-academic-timeline.html" aria-labelledby="t13">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Timeline icon: calendar + vertical line with nodes -->
+            <svg viewBox="0 0 24 24" class="svg-icon">
+              <!-- Calendar frame -->
+              <rect x="3" y="4.5" width="18" height="16" rx="2.5" ry="2.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
+              <path d="M3 8h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              <path d="M8 4.5v-2M16 4.5v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Vertical timeline -->
+              <path d="M8.5 11v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="8.5" cy="12.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="18" r="1.4" fill="currentColor"/>
+              <!-- Event cards hint -->
+              <path d="M11.5 12.5h6M11.5 15.5h5M11.5 18h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 id="t13" class="card-title">Timeline Maker</h3>
+          <p class="card-desc">Enter events to auto-generate an academic-style timeline with categories, eras, zoom, drag-reorder, and one-click export to HTML, SVG, or JSON. Private, in-browser.</p>
+          <a class="card-cta" href="/tools/timeline-maker-academic-timeline.html" aria-label="Open Timeline Maker">Open →</a>
+        </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <script src="/js/index.js"></script>  
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+/* =========================================================
+   Hypothesis Testing Calculator
+   - Z tests: means (σ known), proportions
+   - T tests: one sample, two independent (Welch or pooled), paired
+   - Chi square: goodness of fit, independence
+   - Extras: effect sizes, quick power, chart, steps, permalink, exports, recent runs
+   ========================================================= */
+
+/* ---------- helpers ---------- */
+const $ = sel => document.querySelector(sel);
+const el = (t, a={}, c=[]) => { const e=document.createElement(t); Object.assign(e,a); c.forEach(ch=>e.appendChild(ch)); return e; };
+const fmt = (x, d=4) => (Number.isFinite(x)? (Math.abs(x)>=1e4||Math.abs(x)<1e-3 ? x.toExponential(2) : x.toFixed(d)) : "-");
+const clamp01 = v => Math.max(0, Math.min(1, v));
+function showToast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"), 1800);
+}
+function setHidden(id, hidden){ const n=$(id); if(!n) return; n.hidden = !!hidden; }
+
+/* ---------- dynamic param zones ---------- */
+const zone = $("#zone-params");
+function renderParams(){
+  const type = $("#testType").value;
+  zone.innerHTML = "";
+  const mkField = (id,label,placeholder="",type="number",step="any") => {
+    const wrap = el("div",{className:"hyp-tes-cal-field", style:"flex:1 1 150px"});
+    wrap.append(
+      el("label",{className:"hyp-tes-cal-label", htmlFor:id, textContent:label}),
+      el("input",{id, className:"hyp-tes-cal-input", type, placeholder, ...(type==="number"?{step}:{})})
+    );
+    return wrap;
+  };
+  const mkCheck = (id,label) => {
+    const w=el("div",{className:"hyp-tes-cal-field", style:"width:220px"});
+    const i=el("input",{id,type:"checkbox",className:"hyp-tes-cal-input", style:"width:auto;min-height:0;padding:10px"});
+    const l=el("label",{className:"hyp-tes-cal-label", htmlFor:id, textContent:label});
+    w.append(l,i); return w;
+  };
+
+  if(type==="z_mean_1"){
+    zone.append(mkField("xbar","Sample mean x̄"), mkField("mu0","Null mean μ₀"),
+                mkField("sigma","Population σ"), mkField("n","Sample size n","", "number","1"));
+  } else if(type==="z_mean_2"){
+    zone.append(mkField("x1bar","x̄₁"), mkField("x2bar","x̄₂"),
+                mkField("s1","σ₁"), mkField("s2","σ₂"),
+                mkField("n1","n₁","", "number","1"), mkField("n2","n₂","", "number","1"));
+  } else if(type==="z_prop_1"){
+    zone.append(mkField("xsucc","Successes x"), mkField("n","Trials n","", "number","1"), mkField("p0","Null p₀", "0.5"));
+  } else if(type==="z_prop_2"){
+    zone.append(mkField("x1","x₁ successes"), mkField("n1","n₁","", "number","1"),
+                mkField("x2","x₂ successes"), mkField("n2","n₂","", "number","1"));
+  } else if(type==="t_mean_1"){
+    zone.append(mkField("xbar","Sample mean x̄"), mkField("mu0","Null mean μ₀"),
+                mkField("s","Sample sd s"), mkField("n","Sample size n","", "number","1"));
+  } else if(type==="t_mean_2_ind"){
+    zone.append(mkField("x1bar","x̄₁"), mkField("x2bar","x̄₂"),
+                mkField("s1","s₁"), mkField("s2","s₂"),
+                mkField("n1","n₁","", "number","1"), mkField("n2","n₂","", "number","1"),
+                mkCheck("pooled","Assume equal variances (pooled)"));
+  } else if(type==="t_mean_2_paired"){
+    zone.append(mkField("dbar","Mean of differences d̄"), mkField("sd","sd of differences s_d"),
+                mkField("n","Pairs n","", "number","1"), mkField("mu0","Null mean diff μ₀","0"));
+  } else if(type==="chi_gof"){
+    zone.append(
+      el("div",{className:"hyp-tes-cal-field", style:"flex:1 1 100%"},
+        [el("label",{className:"hyp-tes-cal-label", htmlFor:"chi_obs", textContent:"Observed counts (CSV)"}),
+         el("input",{id:"chi_obs", className:"hyp-tes-cal-input", placeholder:"e.g. 30,40,50"})]),
+      el("div",{className:"hyp-tes-cal-field", style:"flex:1 1 100%"},
+        [el("label",{className:"hyp-tes-cal-label", htmlFor:"chi_exp", textContent:"Expected counts or probabilities (CSV)"}),
+         el("input",{id:"chi_exp", className:"hyp-tes-cal-input", placeholder:"e.g. 33.3,33.3,53.4 or 0.33,0.33,0.34"})])
+    );
+  } else if(type==="chi_ind"){
+    zone.append(
+      el("div",{className:"hyp-tes-cal-field", style:"flex:1 1 100%"},
+        [el("label",{className:"hyp-tes-cal-label", htmlFor:"chi_tab", textContent:"Contingency table (rows by newline, columns by comma or pipe)"}),
+         el("textarea",{id:"chi_tab", className:"hyp-tes-cal-textarea", placeholder:"12,8,5\n14,6,7\n9,11,10"})])
+    );
+  }
+}
+renderParams();
+
+/* ---------- math utils ---------- */
+const SQRT=Math.sqrt, ABS=Math.abs, LN=Math.log, PI=Math.PI, pow=Math.pow, erf=x=> {
+  // numerical approximation for error function
+  const a1=0.254829592,a2=-0.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=0.3275911;
+  const sign = x<0?-1:1; x=ABS(x);
+  const t=1/(1+p*x);
+  const y=1-((((a5*t+a4)*t+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);
+  return sign*y;
+};
+const phi = x => 0.5*(1+erf(x/Math.SQRT2)); // standard normal CDF
+const qnorm = p => {
+  // Approximate inverse CDF (Acklam)
+  const a=[-39.6968302866538,220.946098424521,-275.928510446969,138.357751867269,-30.6647980661472,2.50662827745924];
+  const b=[-54.4760987982241,161.585836858041,-155.698979859887,66.8013118877197,-13.2806815528857];
+  const c=[-0.00778489400243029,-0.322396458041136,-2.40075827716184,-2.54973253934373,4.37466414146497,2.93816398269878];
+  const d=[0.00778469570904146,0.32246712907004,2.445134137143,3.75440866190742];
+  let q, r;
+  if(p<0||p>1) return NaN;
+  if(p<0.02425){ q=Math.sqrt(-2*Math.log(p)); return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1); }
+  if(p>1-0.02425){ q=Math.sqrt(-2*Math.log(1-p)); return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1); }
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q / (((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+};
+// Student t CDF via relation to regularized incomplete beta (approx). Use sf by symmetry.
+function t_cdf(t, df){
+  // For |t| large use normal approx
+  if(df>60) return phi(t*Math.sqrt((df)/(df-2))); // quick approx
+  // numeric integration (Simpson) for robustness
+  const f = x => gamma((df+1)/2)/(Math.sqrt(df*PI)*gamma(df/2))*Math.pow(1+x*x/df, -(df+1)/2);
+  const a=-10, b=t, n=400, h=(b-a)/n;
+  let s=f(a)+f(b);
+  for(let i=1;i<n;i++){ s+=f(a+i*h)*(i%2?4:2); }
+  return Math.max(0,Math.min(1, s*h/3));
+}
+// cheap gamma
+function gamma(z){ // Lanczos
+  const p=[676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];
+  const g=7; if(z<0.5) return Math.PI/(Math.sin(Math.PI*z)*gamma(1-z));
+  z-=1; let x=0.99999999999980993;
+  for(let i=0;i<p.length;i++) x+=p[i]/(z+i+1);
+  const t=z+g+0.5; return Math.sqrt(2*Math.PI)*Math.pow(t,z+0.5)*Math.exp(-t)*x;
+}
+function tinv(p, df){
+  // invert t CDF with bisection
+  let lo=-10, hi=10;
+  for(let k=0;k<80;k++){
+    const mid=(lo+hi)/2;
+    if(t_cdf(mid,df) < p) lo=mid; else hi=mid;
+  }
+  return (lo+hi)/2;
+}
+const chisq_cdf = (x, k) => {
+  // regularized lower gamma
+  function P(s, x){
+    let sum=1/s, term=1/s;
+    for(let n=1;n<200;n++){
+      term *= x/(s+n); sum += term;
+      if(term<1e-12) break;
+    }
+    return Math.pow(x,s)*Math.exp(-x)*sum;
+  }
+  return P(k/2, x/2)/gamma(k/2);
+}
+function chi_inv(p, k){
+  let lo=0, hi=k*10+50;
+  for(let i=0;i<80;i++){
+    const mid=(lo+hi)/2;
+    if(chisq_cdf(mid,k) < p) lo=mid; else hi=mid;
+  }
+  return (lo+hi)/2;
+}
+
+/* ---------- calculators ---------- */
+function calc(){
+  const type = $("#testType").value;
+  const tails = $("#tails").value;
+  const alpha = parseFloat($("#alpha").value || "0.05");
+  let out = {test:type, tails, alpha, stat:NaN, p:NaN, crit:"-", decision:"-", steps:"", effect:"-", power:"-"};
+
+  const tailP = (z) => tails==="two" ? 2*(1-phi(Math.abs(z))) : (tails==="gt" ? 1-phi(z) : phi(z));
+  const critZ = () => {
+    if(tails==="two"){ const c = qnorm(1-alpha/2); return `± ${fmt(c,3)}`; }
+    const c = qnorm(1-alpha); return tails==="gt" ? fmt(c,3) : fmt(-c,3);
+  };
+  const decide = (p) => p < alpha ? "Reject H0" : "Fail to reject H0";
+
+  if(type==="z_mean_1"){
+    const xbar=+$("#xbar").value, mu0=+$("#mu0").value, sigma=+$("#sigma").value, n=+$("#n").value;
+    const z = (xbar-mu0)/(sigma/SQRT(n));
+    out.stat=z; out.p=tailP(z); out.crit=critZ(); out.decision=decide(out.p);
+    const d = (xbar-mu0)/sigma; // Cohen's d using σ
+    out.effect=`Cohen d=${fmt(d,3)}`;
+    const zpow = qnorm(1-alpha/(tails==="two"?2:1));
+    const power = tails==="two" ? (1-phi(zpow - Math.abs(d)*SQRT(n))) + phi(-zpow - Math.abs(d)*SQRT(n)) : 1-phi(zpow - d*SQRT(n));
+    out.power=`~${fmt(clamp01(power)*100,2)}%`;
+    out.steps = `z = (x̄ - μ₀) / (σ/√n) = (${xbar} - ${mu0}) / (${sigma}/√${n}) = ${fmt(z,4)}.`;
+  }
+
+  if(type==="z_mean_2"){
+    const x1=+$("#x1bar").value, x2=+$("#x2bar").value, s1=+$("#s1").value, s2=+$("#s2").value, n1=+$("#n1").value, n2=+$("#n2").value;
+    const se = Math.sqrt(s1*s1/n1 + s2*s2/n2);
+    const z = (x1-x2)/se;
+    out.stat=z; out.p=tailP(z); out.crit=critZ(); out.decision=decide(out.p);
+    const d = (x1-x2)/Math.sqrt((s1*s1+s2*s2)/2);
+    out.effect=`Cohen d≈${fmt(d,3)}`;
+    const zpow=qnorm(1-alpha/(tails==="two"?2:1));
+    const neff = (n1*n2)/(n1+n2);
+    const power = tails==="two" ? (1-phi(zpow - Math.abs(d)*SQRT(neff))) + phi(-zpow - Math.abs(d)*SQRT(neff)) : 1-phi(zpow - d*SQRT(neff));
+    out.power=`~${fmt(clamp01(power)*100,2)}%`;
+    out.steps = `z = ((x̄₁ - x̄₂) - 0) / √(σ₁²/n₁ + σ₂²/n₂) = (${x1}-${x2})/√(${s1}²/${n1} + ${s2}²/${n2}) = ${fmt(z,4)}.`;
+  }
+
+  if(type==="z_prop_1"){
+    const x=+$("#xsucc").value, n=+$("#n").value, p0=+$("#p0").value;
+    const phat = x/n, se=Math.sqrt(p0*(1-p0)/n), z=(phat-p0)/se;
+    out.stat=z; out.p=tailP(z); out.crit=critZ(); out.decision=decide(out.p);
+    const es = (phat-p0)/Math.sqrt(p0*(1-p0)); // Cohen h approx via arcsin not used here; use r
+    out.effect=`Difference=${fmt(phat-p0,3)} | phat=${fmt(phat,3)}`;
+    const zpow=qnorm(1-alpha/(tails==="two"?2:1));
+    const d=(phat-p0)/Math.sqrt(p0*(1-p0));
+    const power = tails==="two" ? (1-phi(zpow - Math.abs(d)*SQRT(n))) + phi(-zpow - Math.abs(d)*SQRT(n)) : 1-phi(zpow - d*SQRT(n));
+    out.power=`~${fmt(clamp01(power)*100,2)}%`;
+    out.steps = `z = (p̂ - p₀) / √(p₀(1-p₀)/n) = (${fmt(phat,4)} - ${p0}) / √(${p0}(1-${p0})/${n}) = ${fmt(z,4)}.`;
+  }
+
+  if(type==="z_prop_2"){
+    const x1=+$("#x1").value, n1=+$("#n1").value, x2=+$("#x2").value, n2=+$("#n2").value;
+    const p1=x1/n1, p2=x2/n2, ppool=(x1+x2)/(n1+n2), se=Math.sqrt(ppool*(1-ppool)*(1/n1+1/n2));
+    const z = (p1-p2)/se;
+    out.stat=z; out.p=tailP(z); out.crit=critZ(); out.decision=decide(out.p);
+    const h = 2*(Math.asin(Math.sqrt(p1))-Math.asin(Math.sqrt(p2)));
+    out.effect=`Cohen h=${fmt(h,3)} | Δp=${fmt(p1-p2,3)}`;
+    const zpow=qnorm(1-alpha/(tails==="two"?2:1));
+    const neff=(n1*n2)/(n1+n2);
+    const d = (p1-p2)/Math.sqrt(ppool*(1-ppool));
+    const power = tails==="two" ? (1-phi(zpow - Math.abs(d)*SQRT(neff))) + phi(-zpow - Math.abs(d)*SQRT(neff)) : 1-phi(zpow - d*SQRT(neff));
+    out.power=`~${fmt(clamp01(power)*100,2)}%`;
+    out.steps = `z = (p̂₁ - p̂₂) / √(p̂(1-p̂)(1/n₁+1/n₂)), with pooled p̂ = ${(ppool).toFixed(4)} → z=${fmt(z,4)}.`;
+  }
+
+  if(type==="t_mean_1"){
+    const xbar=+$("#xbar").value, mu0=+$("#mu0").value, s=+$("#s").value, n=+$("#n").value;
+    const t = (xbar-mu0)/(s/SQRT(n)), df=n-1;
+    const p = tails==="two" ? 2*(1-t_cdf(Math.abs(t),df)) : (tails==="gt" ? 1-t_cdf(t,df) : t_cdf(t,df));
+    const crit = tails==="two" ? `± ${fmt(tinv(1-alpha/2,df),3)} (df=${df})` : `${fmt(tinv(1-alpha,df)*(tails==="gt"?1:-1),3)} (df=${df})`;
+    out.stat=t; out.p=p; out.crit=crit; out.decision=decide(p);
+    const d=(xbar-mu0)/s, g = d*(1 - (3/(4*df-1)));
+    out.effect=`Cohen d=${fmt(d,3)}, Hedges g=${fmt(g,3)}`;
+    // quick power via normal approx
+    const zpow=qnorm(1-alpha/(tails==="two"?2:1));
+    const power = tails==="two" ? (1-phi(zpow - Math.abs(d)*SQRT(n))) + phi(-zpow - Math.abs(d)*SQRT(n)) : 1-phi(zpow - d*SQRT(n));
+    out.power=`~${fmt(clamp01(power)*100,2)}%`;
+    out.steps = `t = (x̄ - μ₀) / (s/√n) = (${xbar}-${mu0})/(${s}/√${n}) = ${fmt(t,4)}, df=${df}.`;
+  }
+
+  if(type==="t_mean_2_ind"){
+    const x1=+$("#x1bar").value, x2=+$("#x2bar").value, s1=+$("#s1").value, s2=+$("#s2").value, n1=+$("#n1").value, n2=+$("#n2").value;
+    const pooled = $("#pooled")?.checked;
+    let se, df, t;
+    if(pooled){
+      const sp2 = ((n1-1)*s1*s1 + (n2-1)*s2*s2)/(n1+n2-2);
+      se = Math.sqrt(sp2*(1/n1+1/n2));
+      t=(x1-x2)/se; df=n1+n2-2;
+    } else {
+      se = Math.sqrt(s1*s1/n1 + s2*s2/n2);
+      t=(x1-x2)/se;
+      df = Math.pow(s1*s1/n1 + s2*s2/n2,2) /
+          ((Math.pow(s1*s1/n1,2)/(n1-1)) + (Math.pow(s2*s2/n2,2)/(n2-1)));
+      df = Math.floor(df);
+    }
+    const p = tails==="two" ? 2*(1-t_cdf(Math.abs(t),df)) : (tails==="gt" ? 1-t_cdf(t,df) : t_cdf(t,df));
+    const crit = tails==="two" ? `± ${fmt(tinv(1-alpha/2,df),3)} (df=${df})` : `${fmt(tinv(1-alpha,df)*(tails==="gt"?1:-1),3)} (df=${df})`;
+    out.stat=t; out.p=p; out.crit=crit; out.decision=decide(p);
+    const sP = pooled ? Math.sqrt(((n1-1)*s1*s1 + (n2-1)*s2*s2)/(n1+n2-2)) : Math.sqrt((s1*s1 + s2*s2)/2);
+    const d=(x1-x2)/sP; out.effect=`Cohen d≈${fmt(d,3)}${pooled?" (pooled)":" (Welch)"}`;
+    const zpow=qnorm(1-alpha/(tails==="two"?2:1)); const neff=(n1*n2)/(n1+n2);
+    const power = tails==="two" ? (1-phi(zpow - Math.abs(d)*SQRT(neff))) + phi(-zpow - Math.abs(d)*SQRT(neff)) : 1-phi(zpow - d*SQRT(neff));
+    out.power=`~${fmt(clamp01(power)*100,2)}%`;
+    out.steps = `t = ((x̄₁ - x̄₂) - 0)/SE with ${pooled?"pooled":"Welch"} SE → t=${fmt(t,4)}, df=${df}.`;
+  }
+
+  if(type==="t_mean_2_paired"){
+    const dbar=+$("#dbar").value, sd=+$("#sd").value, n=+$("#n").value, mu0=+($("#mu0").value||0);
+    const t=(dbar-mu0)/(sd/SQRT(n)), df=n-1;
+    const p = tails==="two" ? 2*(1-t_cdf(Math.abs(t),df)) : (tails==="gt" ? 1-t_cdf(t,df) : t_cdf(t,df));
+    const crit = tails==="two" ? `± ${fmt(tinv(1-alpha/2,df),3)} (df=${df})` : `${fmt(tinv(1-alpha,df)*(tails==="gt"?1:-1),3)} (df=${df})`;
+    out.stat=t; out.p=p; out.crit=crit; out.decision=decide(p);
+    const d=(dbar-mu0)/sd; out.effect=`Cohen d=${fmt(d,3)} (paired)`;
+    const zpow=qnorm(1-alpha/(tails==="two"?2:1));
+    const power = tails==="two" ? (1-phi(zpow - Math.abs(d)*SQRT(n))) + phi(-zpow - Math.abs(d)*SQRT(n)) : 1-phi(zpow - d*SQRT(n));
+    out.power=`~${fmt(clamp01(power)*100,2)}%`;
+    out.steps=`t = (d̄ - μ₀)/(s_d/√n) = (${dbar}-${mu0})/(${sd}/√${n}) = ${fmt(t,4)}, df=${df}.`;
+  }
+
+  if(type==="chi_gof"){
+    let obs=$("#chi_obs").value.split(/[,|\s]+/).filter(Boolean).map(Number);
+    let exp=$("#chi_exp").value.split(/[,|\s]+/).filter(Boolean).map(Number);
+    if(exp.reduce((a,b)=>a+b,0) <= 1.000001){ // probabilities
+      const N = obs.reduce((a,b)=>a+b,0);
+      exp = exp.map(p=>p*N);
+    }
+    if(obs.length!==exp.length || obs.length<2) { showToast("Please supply matching observed and expected"); return; }
+    let chi=0; for(let i=0;i<obs.length;i++){ if(exp[i]===0){showToast("Expected has zero"); return;} chi += (obs[i]-exp[i])**2/exp[i]; }
+    const k=obs.length-1, p=1-chisq_cdf(chi, k); const crit=fmt(chi_inv(1-parseFloat($("#alpha").value), k),3);
+    out.stat=chi; out.p=p; out.crit=`> ${crit} (df=${k})`; out.decision=decide(p);
+    const total=obs.reduce((a,b)=>a+b,0);
+    const w = Math.sqrt(chi/total);
+    out.effect=`Cramers V = ${fmt(w,3)} (df=${k})`;
+    // rough power not shown for chi gof
+    out.power="n/a";
+    out.steps=`χ² = Σ (O-E)²/E = ${fmt(chi,4)} with df=${k}.`;
+  }
+
+  if(type==="chi_ind"){
+    const rows = $("#chi_tab").value.trim().split(/\n+/).map(r=>r.split(/[,\|\s]+/).filter(Boolean).map(Number)).filter(r=>r.length>0);
+    const rlen=rows.length, clen=Math.max(...rows.map(r=>r.length||0));
+    if(rlen<2 || clen<2){ showToast("Please enter a matrix with at least 2x2"); return; }
+    // complete ragged rows with zeros
+    rows.forEach(r=>{ while(r.length<clen) r.push(0); });
+    const R=rlen, C=clen;
+    const rowS = rows.map(r=>r.reduce((a,b)=>a+b,0));
+    const colS = Array.from({length:C}, (_,j)=> rows.reduce((a,r)=>a+r[j],0));
+    const N = rowS.reduce((a,b)=>a+b,0);
+    let chi=0;
+    for(let i=0;i<R;i++) for(let j=0;j<C;j++){
+      const e = rowS[i]*colS[j]/N; if(e===0){showToast("Zero expected in a cell"); return;}
+      chi += (rows[i][j]-e)**2/e;
+    }
+    const df=(R-1)*(C-1), p=1-chisq_cdf(chi, df); const crit=fmt(chi_inv(1-parseFloat($("#alpha").value), df),3);
+    out.stat=chi; out.p=p; out.crit=`> ${crit} (df=${df})`; out.decision=decide(p);
+    const V = Math.sqrt(chi/(N*Math.min(R-1,C-1)));
+    out.effect=`Cramers V = ${fmt(V,3)}`;
+    out.power="n/a";
+    out.steps=`χ² = Σ (O-E)²/E over ${R}×${C} table = ${fmt(chi,4)}, df=${df}.`;
+  }
+
+  // Update UI
+  fillOutput(out);
+  drawChart(out);
+  pushRecent(out);
+  updatePills(out);
+  updatePermalink();
+}
+
+function updatePills(out){
+  const typeMap={
+    z_mean_1:"Z one sample mean", z_mean_2:"Z two sample means",
+    z_prop_1:"Z one sample proportion", z_prop_2:"Z two sample proportions",
+    t_mean_1:"T one sample mean", t_mean_2_ind:"T two sample independent", t_mean_2_paired:"T paired",
+    chi_gof:"Chi square goodness of fit", chi_ind:"Chi square independence"
+  };
+  $("#pill-test").textContent = `Test: ${typeMap[out.test]||out.test}`;
+  const tailsMap={two:"H1 is not equal", gt:"H1 is greater than", lt:"H1 is less than"};
+  $("#pill-hyp").textContent = `H0 vs H1: ${tailsMap[out.tails]}`;
+}
+
+function fillOutput(o){
+  $("#result-wrap").hidden=false;
+  $("#statistic").textContent = fmt(o.stat,4);
+  $("#pvalue").textContent = fmt(o.p,6);
+  $("#crit").textContent = o.crit;
+  $("#decision").textContent = o.decision;
+  $("#effect").textContent = o.effect;
+  $("#power").textContent = o.power;
+  $("#steps").textContent = o.steps;
+}
+
+/* ---------- chart ---------- */
+function drawChart(o){
+  const cvs = (()=>{ let c=$("#chart").querySelector("canvas"); if(!c){ c=el("canvas",{width:800,height:160}); $("#chart").appendChild(c);} return c; })();
+  const ctx = cvs.getContext("2d");
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+
+  // choose dist
+  let pdf, invCrits=[];
+  if(String(o.crit).includes("df=")){ // t or chi
+    const dfMatch = /df=(\d+)/.exec(o.crit); const df = dfMatch?+dfMatch[1]:30;
+    if(o.test.startsWith("chi")){
+      pdf = x => x<0?0: Math.pow(x,df/2-1)*Math.exp(-x/2)/(Math.pow(2,df/2)*gamma(df/2));
+      const alpha=parseFloat($("#alpha").value);
+      invCrits=[chi_inv(1-alpha, df)];
+    } else {
+      pdf = x => gamma((df+1)/2)/(Math.sqrt(df*Math.PI)*gamma(df/2))*Math.pow(1+x*x/df, -(df+1)/2);
+      const alpha=parseFloat($("#alpha").value);
+      if($("#tails").value==="two"){ const t=tinv(1-alpha/2,df); invCrits=[-t,t]; } else {
+        const t=tinv(1-alpha,df); invCrits=[($("#tails").value==="gt"?t:-t)];
+      }
+    }
+  } else { // normal
+    pdf = x => Math.exp(-0.5*x*x)/Math.sqrt(2*Math.PI);
+    const alpha=parseFloat($("#alpha").value);
+    if($("#tails").value==="two"){ const z=qnorm(1-alpha/2); invCrits=[-z,z]; } else {
+      const z=qnorm(1-alpha); invCrits=[($("#tails").value==="gt"?z:-z)];
+    }
+  }
+
+  const W=cvs.width, H=cvs.height, mid=H-22;
+  // axes
+  ctx.strokeStyle="rgba(255,255,255,.18)"; ctx.beginPath(); ctx.moveTo(12,mid); ctx.lineTo(W-8,mid); ctx.stroke();
+
+  // curve
+  ctx.beginPath();
+  let maxY=0; for(let i=-350;i<=350;i++){ const x=i/35; maxY=Math.max(maxY, pdf(x)); }
+  const scaleX = W/14, scaleY = (H-30)/(maxY*1.4);
+  ctx.strokeStyle="#9ec6ff"; ctx.lineWidth=2;
+  for(let i=-350;i<=350;i++){
+    const x=i/35, y=pdf(x);
+    const cx=W/2 + x*scaleX, cy=mid - y*scaleY;
+    if(i===-350) ctx.moveTo(cx,cy); else ctx.lineTo(cx,cy);
+  }
+  ctx.stroke();
+
+  // critical regions
+  ctx.fillStyle="rgba(232,93,39,.22)";
+  invCrits.forEach(c=>{
+    const cx=W/2 + c*scaleX;
+    if($("#tails").value==="two"){
+      // left
+      ctx.fillRect(12, 0, cx-12, mid);
+      // right handled in second c when positive
+    } else {
+      if($("#tails").value==="gt"){ ctx.fillRect(cx, 0, W-cx-8, mid); }
+      else { ctx.fillRect(12, 0, cx-12, mid); }
+    }
+    // guide
+    ctx.strokeStyle="rgba(255,255,255,.28)"; ctx.setLineDash([4,3]); ctx.beginPath(); ctx.moveTo(cx,0); ctx.lineTo(cx, H); ctx.stroke(); ctx.setLineDash([]);
+  });
+  if($("#tails").value==="two" && invCrits.length===2){
+    const right=W/2 + invCrits[1]*scaleX; ctx.fillRect(right,0,W-right-8, mid);
+  }
+
+  // observed test stat marker
+  if(Number.isFinite(o.stat)){
+    const x=W/2 + o.stat*scaleX;
+    ctx.strokeStyle="#ffd5c7"; ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
+  }
+}
+
+/* ---------- parsing & samples ---------- */
+function parseBulk(){
+  const t = $("#bulk").value.trim();
+  if(!t){ showToast("Nothing to parse"); return; }
+  const map = Object.fromEntries([...t.matchAll(/([a-zA-Z_]+)\s*=\s*(-?\d*\.?\d+(?:e-?\d+)?)/g)].map(m=>[m[1].toLowerCase(), parseFloat(m[2])]));
+  // try chi
+  if(/observed/i.test(t) || /expected/i.test(t)){
+    $("#testType").value="chi_gof"; renderParams();
+    $("#chi_obs").value=(t.match(/observed[:\s]*([^\n|]+)/i)?.[1]||"").replace(/[^\d.,]/g,"");
+    $("#chi_exp").value=(t.match(/expected[:\s]*([^\n|]+)/i)?.[1]||"").replace(/[^\d.,]/g,"");
+    showToast("Parsed chi square goodness of fit"); return;
+  }
+  if(/\n/.test(t) || /\|/.test(t)){
+    $("#testType").value="chi_ind"; renderParams();
+    $("#chi_tab").value=t;
+    showToast("Parsed contingency table"); return;
+  }
+  // numbers
+  if(map.xbar!==undefined && map.mu0!==undefined && (map.sigma!==undefined||map.s!==undefined)){
+    $("#testType").value= map.sigma!==undefined ? "z_mean_1" : "t_mean_1"; renderParams();
+    $("#xbar").value=map.xbar; $("#mu0").value=map.mu0; $("#sigma")?.value&&( $("#sigma").value=map.sigma );
+    $("#s")?.value&&( $("#s").value=map.s ); $("#n").value=map.n??"";
+    showToast("Parsed one sample mean"); return;
+  }
+  if(map.x1bar!==undefined && map.x2bar!==undefined && (map.s1!==undefined && map.s2!==undefined)){
+    $("#testType").value = (map.sigma1||map.sigma2)? "z_mean_2" : "t_mean_2_ind"; renderParams();
+    $("#x1bar").value=map.x1bar; $("#x2bar").value=map.x2bar; $("#s1").value=map.s1; $("#s2").value=map.s2; $("#n1").value=map.n1??""; $("#n2").value=map.n2??"";
+    showToast("Parsed two sample means"); return;
+  }
+  if((map.phat!==undefined||map.x!==undefined) && (map.p0!==undefined || map.p!==undefined)){
+    $("#testType").value="z_prop_1"; renderParams();
+    if(map.phat!==undefined && map.n){ $("#xsucc").value=Math.round(map.phat*map.n); $("#n").value=map.n; }
+    else { $("#xsucc").value=map.x??""; $("#n").value=map.n??""; }
+    $("#p0").value=map.p0??map.p;
+    showToast("Parsed one sample proportion"); return;
+  }
+  if(map.x1!==undefined && map.n1!==undefined && map.x2!==undefined && map.n2!==undefined){
+    $("#testType").value="z_prop_2"; renderParams();
+    $("#x1").value=map.x1; $("#n1").value=map.n1; $("#x2").value=map.x2; $("#n2").value=map.n2;
+    showToast("Parsed two sample proportions"); return;
+  }
+  showToast("Could not map fields. Please check your text.");
+}
+
+function loadSample(){
+  const samples = [
+    {type:"t_mean_1", tails:"two", alpha:0.05, fields:{xbar:5.4, mu0:5, s:1.2, n:40}},
+    {type:"z_prop_2", tails:"gt", alpha:0.05, fields:{x1:45,n1:100,x2:30,n2:100}},
+    {type:"t_mean_2_ind", tails:"two", alpha:0.05, fields:{x1bar:102,x2bar:98,s1:12,s2:15,n1:35,n2:33}},
+    {type:"chi_ind", tails:"two", alpha:0.05, table:"12,8 | 14,6 | 9,11"},
+    {type:"chi_gof", tails:"two", alpha:0.05, gof:{obs:"30,40,50", exp:"33.3,33.3,53.4"}}
+  ];
+  const s = samples[Math.floor(Math.random()*samples.length)];
+  $("#testType").value=s.type; $("#tails").value=s.tails; $("#alpha").value=s.alpha;
+  renderParams();
+  if(s.fields){ for(const k in s.fields){ const node=$("#"+k); if(node) node.value=s.fields[k]; } }
+  if(s.table){ $("#chi_tab").value=s.table; }
+  if(s.gof){ $("#chi_obs").value=s.gof.obs; $("#chi_exp").value=s.gof.exp; }
+  showToast("Sample loaded");
+}
+
+/* ---------- exports, recent, permalink ---------- */
+function copyResult(){
+  const text = [
+    $("#pill-test").textContent,
+    $("#pill-hyp").textContent,
+    `Statistic: ${$("#statistic").textContent}`,
+    `p value: ${$("#pvalue").textContent}`,
+    `Critical: ${$("#crit").textContent}`,
+    `Decision: ${$("#decision").textContent}`,
+    `Effect: ${$("#effect").textContent}`,
+    `Power: ${$("#power").textContent}`,
+    `Steps: ${$("#steps").textContent}`
+  ].join("\n");
+  navigator.clipboard.writeText(text).then(()=>showToast("Result copied"));
+}
+function exportCSV(){
+  const rows = [
+    ["field","value"],
+    ["test", $("#pill-test").textContent],
+    ["hypothesis", $("#pill-hyp").textContent],
+    ["statistic", $("#statistic").textContent],
+    ["pvalue", $("#pvalue").textContent],
+    ["critical", $("#crit").textContent],
+    ["decision", $("#decision").textContent],
+    ["effect", $("#effect").textContent],
+    ["power", $("#power").textContent],
+    ["steps", $("#steps").textContent.replace(/\n/g," ")]
+  ];
+  const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], {type:"text/csv"});
+  const a = el("a",{href:URL.createObjectURL(blob), download:"hypothesis-result.csv"}); document.body.appendChild(a); a.click(); a.remove();
+}
+function updatePermalink(){
+  const type=$("#testType").value, tails=$("#tails").value, alpha=$("#alpha").value;
+  const params = new URLSearchParams({type,tails,alpha});
+  // add all inputs visible
+  zone.querySelectorAll("input").forEach(inp=>{
+    if(inp.type==="checkbox"){ if(inp.checked) params.set(inp.id,"1"); }
+    else if(inp.value) params.set(inp.id, inp.value);
+  });
+  const url = location.pathname + "?" + params.toString();
+  history.replaceState(null,"",url);
+}
+function copyPermalink(){
+  updatePermalink(); navigator.clipboard.writeText(location.href).then(()=>showToast("Link copied"));
+}
+function loadFromQuery(){
+  const q = new URLSearchParams(location.search);
+  const type=q.get("type"); if(type){ $("#testType").value=type; }
+  const tails=q.get("tails"); if(tails){ $("#tails").value=tails; }
+  const alpha=q.get("alpha"); if(alpha){ $("#alpha").value=alpha; }
+  renderParams();
+  zone.querySelectorAll("input").forEach(inp=>{
+    if(q.has(inp.id)){
+      if(inp.type==="checkbox") inp.checked = q.get(inp.id)==="1";
+      else inp.value = q.get(inp.id);
+    }
+  });
+}
+function pushRecent(o){
+  const key="hyp_tes_cal_recent";
+  const arr = JSON.parse(localStorage.getItem(key)||"[]");
+  arr.unshift({t:new Date().toISOString(), test:o.test, tails:o.tails, alpha:o.alpha, stat:o.stat, p:o.p, dec:o.decision});
+  if(arr.length>10) arr.pop();
+  localStorage.setItem(key, JSON.stringify(arr));
+  const ul=$("#recent"); ul.innerHTML="";
+  arr.forEach(r=>{
+    const li=el("li",{textContent:`${r.test} | stat=${fmt(r.stat,3)} | p=${fmt(r.p,4)} | ${r.dec}`}); ul.appendChild(li);
+  });
+}
+
+/* ---------- wiring ---------- */
+$("#testType").addEventListener("change", ()=>{ renderParams(); updatePermalink(); });
+$("#tails").addEventListener("change", updatePermalink);
+$("#alpha").addEventListener("input", updatePermalink);
+$("#hyp-tes-cal-run").addEventListener("click", calc);
+$("#hyp-tes-cal-copy").addEventListener("click", copyResult);
+$("#hyp-tes-cal-export").addEventListener("click", exportCSV);
+$("#hyp-tes-cal-share").addEventListener("click", copyPermalink);
+$("#hyp-tes-cal-clear").addEventListener("click", ()=>{ renderParams(); $("#result-wrap").hidden=true; showToast("Cleared"); });
+$("#hyp-tes-cal-sample").addEventListener("click", ()=>{ loadSample(); });
+$("#btn-parse").addEventListener("click", parseBulk);
+$("#bulk").addEventListener("keydown", e=>{ if(e.key==="Enter" && (e.metaKey||e.ctrlKey)) parseBulk(); });
+document.addEventListener("keydown", e=>{
+  if(e.key==="Enter"){ const t=e.target; if(!/input|textarea|select/i.test(t.tagName)) calc(); }
+  if(e.key.toLowerCase()==="c" && (e.ctrlKey||e.metaKey)) return; // let system copy
+  if(e.key.toLowerCase()==="c"){ copyResult(); }
+  if(e.key.toLowerCase()==="l"){ copyPermalink(); }
+  if(e.key.toLowerCase()==="s"){ loadSample(); }
+});
+
+loadFromQuery();
+</script>
+</body>
+</html>

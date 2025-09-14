@@ -1,34 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://checkai.pro/tools/case-converter</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/duplicate-word-finder</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/emoji-replacer</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://checkai.pro/tools/palindromic-word-finder</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/random-text-generator</loc><lastmod>2025-08-18T17:45:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/remove-empty-lines</loc><lastmod>2025-08-18T17:45:27+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/symbol-character-info</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/whitespace-and-formatting-cleaner</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/word-counter</loc><lastmod>2025-08-17T09:51:26+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/bibtex-to-citation-to-bibtex</loc><lastmod>2025-08-27T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/math-formula-renderer-latex-to-image-png-svg</loc><lastmod>2025-08-27T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/text-to-list-to-text-converter</loc><lastmod>2025-08-27T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/unit-converter-physics-chemistry-time-length-temprature</loc><lastmod>2025-08-27T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/grade-calculator-percentage-letter-weighted-average-gpa-sniptext</loc><lastmod>2025-09-02T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/quick-table-generator-csv-to-html-table-code</loc><lastmod>2025-09-03T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/timeline-maker-academic-timeline</loc><lastmod>2025-09-03T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/alphabetizer-sort-words-sentences</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/daily-writing-challenge</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/metaphor-finder-fresh-analogy-generator-avoid-cliches-context-highlighter-export</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/pig-latin-converter-fun-accurate-and-classroom-friendly</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/pomodoro-timer</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/quote-of-the-day-widget-writing-motivation-favorites-embed-json-export-sniptext</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/random-writing-prompt-generator-json-list-filters-export</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/roman-numeral-converter</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://checkai.pro/tools/typing-speed-test</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <!-- Tools index -->
+  <url><loc>https://checkai.pro/tools</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>daily</changefreq><priority>0.90</priority></url>
+  <url><loc>https://checkai.pro/tools/free-tools</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>daily</changefreq><priority>0.90</priority></url>
 
-  <!-- Optional canonical for tools hub (explicit file) -->
-  <url><loc>https://checkai.pro/tools/free-tools</loc><lastmod>2025-09-09T00:00:00+05:00</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
+<!-- Individual tools -->
+  <url><loc>https://checkai.pro/tools/age-birthday-calculator-sniptext</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/alphabetizer-sort-words-sentences</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/bibtex-to-citation-to-bibtex</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/case-converter</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/code-diff-checker-side-by-side</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/daily-writing-challenge</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/duplicate-word-finder</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/emoji-replacer</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/flashcard-creator-export-to-anki</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/grade-calculator-percentage-letter-weighted-average-gpa-sniptext</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/hash-generator-md5-sha1-sha256</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/html-css-js-minifier-beautifier</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/hypothesis-testing-calculator</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/love-calculator-smart-compatibility-score-sniptext</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/math-formula-renderer-latex-to-image-png-svg</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/metaphor-finder-fresh-analogy-generator-avoid-cliches-context-highlighter-export</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/name-generator-pen-names-research-authors-fantasy</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/palindromic-word-finder</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/pig-latin-converter-fun-accurate-and-classroom-friendly</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/pomodoro-timer</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/quick-table-generator-csv-to-html-table-code</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/quote-of-the-day-widget-writing-motivation-favorites-embed-json-export-sniptext</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/random-password-generator</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/random-picker</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/random-text-generator</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/random-writing-prompt-generator-json-list-filters-export</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/readability-score-checker</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/remove-empty-lines</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/rock-paper-scissors-smart</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/roman-numeral-converter</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/sentence-expander-shortener-rule-based-no-ai-cost</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/survey-question-randomizer</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/symbol-character-info</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/text-progress-bar-maker</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/text-to-list-to-text-converter</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/timeline-maker-academic-timeline</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/typing-speed-test</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/unit-converter-physics-chemistry-time-length-temprature</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/whitespace-and-formatting-cleaner</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/word-counter</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://checkai.pro/tools/zodiac-sign-and-horoscope-calculator</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+
 </urlset>
