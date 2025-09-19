@@ -64,6 +64,11 @@
 { "source": "/blog/rock-paper-scissors-adaptive-ai-game-strategy-probabilities-keyboard-shortcuts-stats-guide-sniptext-blog", "destination": "/blog/rock-paper-scissors-adaptive-ai-game-strategy-probabilities-keyboard-shortcuts-stats-guide-sniptext-blog.html" },
 { "source": "/blog/survey-question-randomizer-balanced-block-stratified-seeded-guide-blog", "destination": "/blog/survey-question-randomizer-balanced-block-stratified-seeded-guide-blog.html" },
 { "source": "/blog/zodiac-sign-and-horoscope-calculator-guide-date-of-birth-sun-sign-traits-elements-chinese-zodiac-life-path-private-in-browser-sniptext-blog", "destination": "/blog/zodiac-sign-and-horoscope-calculator-guide-date-of-birth-sun-sign-traits-elements-chinese-zodiac-life-path-private-in-browser-sniptext-blog.html" },
+{ "source": "/blog/confidence-interval-calculator-guide-confidence-level-margin-of-error-bootstrap-wilson-welch-newcombe-sample-size-blog", "destination": "/blog/confidence-interval-calculator-guide-confidence-level-margin-of-error-bootstrap-wilson-welch-newcombe-sample-size-blog.html" },
+{ "source": "/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog", "destination": "/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog.html" },
+{ "source": "/blog/json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide-sniptext-blog", "destination": "/blog/json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide-sniptext-blog.html" },
+{ "source": "/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog", "destination": "/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog.html" },
+{ "source": "/blog/time-zone-converter-compare-cities-overlap-ics-guide", "destination": "/blog/time-zone-converter-compare-cities-overlap-ics-guide.html" },
 
 { "source": "/blog/:blogslug", "destination": "/blog/:blogslug.html" },
 
@@ -126,6 +131,11 @@
 { "source": "/tools/survey-question-randomizer", "destination": "/tools/survey-question-randomizer.html" },
 { "source": "/tools/text-progress-bar-maker", "destination": "/tools/text-progress-bar-maker.html" },
 { "source": "/tools/zodiac-sign-and-horoscope-calculator", "destination": "/tools/zodiac-sign-and-horoscope-calculator.html" },
+{ "source": "/tools/confidence-interval-calculator", "destination": "/tools/confidence-interval-calculator.html" },
+{ "source": "/tools/csv-viewer-editor", "destination": "/tools/csv-viewer-editor.html" },
+{ "source": "/tools/json-formatter-validator", "destination": "/tools/json-formatter-validator.html" },
+{ "source": "/tools/json-yaml-toml-converter-pretty-format-parse-sniptext", "destination": "/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html" },
+{ "source": "/tools/time-zone-converter-compare-cities", "destination": "/tools/time-zone-converter-compare-cities.html" },
 
     { "source": "/tools/:tool", "destination": "/tools/:tool.html" }
   ],

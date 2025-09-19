@@ -1,0 +1,452 @@
+<!-- JSON ↔ YAML ↔ TOML Conversion Guide - SnipText Blog -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/blog/">
+
+  <!-- Primary SEO -->
+  <title>JSON to YAML to TOML Converter Guide - Pretty Print, Sorting, Round Trip, Best Practices | SnipText Blog</title>
+  <meta name="description" content="A practical guide to converting JSON, YAML, and TOML with pretty print, minify, key sorting, JSONC handling, and round trip checks. Learn when to use each format, common pitfalls, and workflows for CI, config, and data pipelines. Includes links to the SnipText JSON ↔ YAML ↔ TOML Converter." />
+  <meta name="keywords" content="json to yaml, yaml to json, json to toml, toml to json, yaml to toml, pretty print json, sort keys, json comments, jsonc, config formats, round trip validation, developer tools" />
+
+  <!-- Indexing & referrer -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang (extension-less) -->
+  <link rel="canonical" href="https://checkai.pro/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog" />
+  <link rel="alternate" href="https://checkai.pro/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SnipText Blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="JSON ↔ YAML ↔ TOML Converter Guide - Pretty, Minify, Sort, Round Trip" />
+  <meta property="og:description" content="Convert JSON, YAML, and TOML like a pro. Pretty, minify, key sort, handle JSONC, and verify round trips. Learn best practices for configs and pipelines." />
+  <meta property="og:url" content="https://checkai.pro/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Diagram showing arrows between JSON, YAML, and TOML" />
+  <meta property="article:section" content="Developer Guides" />
+  <meta property="article:tag" content="json" />
+  <meta property="article:tag" content="yaml" />
+  <meta property="article:tag" content="toml" />
+  <meta property="article:tag" content="developer tools" />
+  <meta property="article:published_time" content="2025-09-19T00:00:00+05:00" />
+  <meta property="article:modified_time" content="2025-09-19T00:00:00+05:00" />
+  <meta property="og:updated_time" content="2025-09-19T00:00:00+05:00" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JSON ↔ YAML ↔ TOML Converter Guide - Pretty, Minify, Sort, Round Trip" />
+  <meta name="twitter:description" content="When to use JSON, YAML, or TOML, how to convert safely, and how to avoid gotchas in configs and CI." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <!-- Favicon: Blog Pages (Square Blue + White Book Icon) -->
+  <link rel="icon" type="image/svg+xml"
+  href="data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='SnipText Blog Icon'>
+    <rect x='0' y='0' width='100' height='100' fill='%231D4ED8'/>
+    <path d='M20 25h25v50H20z M55 25h25v50H55z' fill='%23ffffff'/>
+  </svg>" />
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: BlogPosting (extension-less URLs) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://checkai.pro/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog" },
+    "headline": "JSON to YAML to TOML Converter Guide - Pretty Print, Sorting, Round Trip, Best Practices",
+    "description": "A developer focused guide to converting JSON, YAML, and TOML cleanly with pretty print, minify, key sorting, JSONC handling, and round trip validation. Includes workflows for CI and data pipelines.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://checkai.pro/images/sniptext-blog-default-image.png",
+      "width": 1200,
+      "height": 630
+    },
+    "author": { "@type": "Person", "name": "Nora Patel" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SnipText",
+      "logo": { "@type": "ImageObject", "url": "https://checkai.pro/favicon.png", "width": 512, "height": 512 }
+    },
+    "datePublished": "2025-09-19T00:00:00+05:00",
+    "dateModified": "2025-09-19T00:00:00+05:00",
+    "inLanguage": "en",
+    "keywords": ["json to yaml","yaml to json","toml converter","pretty print json","sort keys","jsonc","developer tools","config formats","round trip validation"],
+    "articleSection": "Developer Guides",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs (extension-less) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog"},
+      {"@type":"ListItem","position":3,"name":"JSON ↔ YAML ↔ TOML Converter Guide","item":"https://checkai.pro/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog"}
+    ]
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/index.html" class="brand-link">SnipText</a>
+      </div>
+      <div class="nav-menu">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/blog/blog.html" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="blog-hero-content">
+          <h1 class="hero-title">JSON ↔ YAML ↔ TOML Converter Guide</h1>
+          <p class="hero-subtitle">Convert between JSON, YAML, and TOML with pretty print, minify, key sorting, and round trip safety checks. Learn format differences and practical workflows for clean configs.</p>
+          <div class="hero-cta">
+            <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html" class="cta-button">Open the Converter</a>
+            <a href="#articles" class="cta-button" style="--variant:ghost">Go to Articles</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+      <div class="container">
+        <article class="article-card featured">
+          <div class="article-meta">
+            <span class="article-category">Developer Tools</span>
+            <time datetime="2025-09-19" class="article-date">September 19, 2025</time>
+          </div>
+
+          <h2 class="article-title">JSON to YAML to TOML: Fast, Safe Conversion With Pretty Print, Sorting, and Round Trips</h2>
+
+          <p class="article-excerpt">This guide explains how to switch between JSON, YAML, and TOML without breaking configs. You will learn what each format is best at, common pitfalls like comments and trailing commas, and an efficient workflow using the SnipText converter.</p>
+
+          <div class="article-content">
+            <div class="drop-cap-paragraph">
+              <span class="drop-cap">C</span>onfiguration and data files move across tools and teams. Your API might expect JSON, your CI uses YAML, and your app config is TOML. The SnipText <strong>JSON ↔ YAML ↔ TOML Converter</strong> runs in your browser to pretty print or minify, sort keys for stable diffs, handle JSONC style comments when needed, and verify round trips so you ship with confidence.
+            </div>
+
+            <nav class="article-toc" aria-label="Quick navigation">
+              <strong>In this guide:</strong>
+              <ul>
+                <li><a href="#what">What this converter does</a></li>
+                <li><a href="#why">Why format choice matters</a></li>
+                <li><a href="#workflow">A clean conversion workflow</a></li>
+                <li><a href="#pitfalls">Common pitfalls and fixes</a></li>
+                <li><a href="#stack">Helpful companion tools</a></li>
+                <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </nav>
+
+            <h3 id="what">What this converter does</h3>
+            <ul>
+              <li><strong>Convert both ways:</strong> JSON to YAML, YAML to JSON, JSON to TOML, and YAML to TOML with safe parsing.</li>
+              <li><strong>Pretty and minify:</strong> Expand for code review or compress for transport.</li>
+              <li><strong>Sort keys:</strong> Stable ordering makes diffs and reviews easier.</li>
+              <li><strong>JSONC option:</strong> Strip inline comments from JSON if you pasted from docs or VS Code settings.</li>
+              <li><strong>Round trip check:</strong> Parse output back to an object and compare so you catch silent changes before committing.</li>
+              <li><strong>Tiny share link:</strong> Copy a short URL hash for small samples to share with your team.</li>
+            </ul>
+
+            <h3 id="why">Why format choice matters</h3>
+            <p><strong>JSON</strong> is strict and universal. It is perfect for APIs, data transport, and machines. <strong>YAML</strong> is human friendly for CI and infra, but be careful with indentation and anchors. <strong>TOML</strong> has a tidy table oriented syntax that many app configs prefer. Picking the right format increases readability and lowers runtime surprises.</p>
+
+            <div class="collapsible-section">
+              <button class="collapsible-toggle" aria-expanded="false">
+                <span>Pro tips for reliable configs</span>
+                <span class="toggle-icon">+</span>
+              </button>
+              <div class="collapsible-content">
+                <ul>
+                  <li><strong>Keep a canonical JSON:</strong> Even if teams edit YAML, store a pretty sorted JSON copy for diff friendly reviews using the <a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a>.</li>
+                  <li><strong>Normalize newlines:</strong> Before commits, tidy whitespace with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>.</li>
+                  <li><strong>Validate shape:</strong> For JSON outputs, run a schema check in the <a href="/tools/json-formatter-validator.html">AJV powered validator</a>.</li>
+                  <li><strong>Track changes:</strong> Use the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> to review before and after configs with word level highlights.</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 id="workflow">A clean conversion workflow</h3>
+            <ol>
+              <li>Open the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a>.</li>
+              <li>Paste a file or drop it into the input. Leave format to Auto or set it manually if you already know.</li>
+              <li>Choose your target format and toggle <em>Pretty</em> or <em>Minify</em>. Turn on <em>Sort keys</em> for stable diffs.</li>
+              <li>If your JSON has comments, enable <em>JSONC</em> so the tool strips them safely before parsing.</li>
+              <li>Enable <em>Round trip</em> to verify the output parses back to the same structure.</li>
+              <li>Copy or download the result. For small snippets, share a tiny link in chat or issue comments.</li>
+            </ol>
+
+            <h3 id="pitfalls">Common pitfalls and fixes</h3>
+            <ul>
+              <li><strong>Unexpected token '#':</strong> JSON cannot have comments. Use JSONC mode, or convert from YAML which supports <code>#</code> comments.</li>
+              <li><strong>Trailing commas:</strong> JSON and TOML do not allow trailing commas in arrays and objects. Remove them or let the parser error show you the exact line.</li>
+              <li><strong>YAML indentation:</strong> Two spaces per level. Mixing tabs and spaces can break parsing. The tool surface errors clearly with line numbers.</li>
+              <li><strong>Date handling:</strong> TOML dates are typed. If you need plain strings, quote them like <code>"2025-09-19"</code> before converting.</li>
+            </ul>
+
+            <h3 id="stack">Helpful companion tools</h3>
+            <ul>
+              <li><a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a> - pretty or minify plus AJV schema checks and JSONPath.</li>
+              <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - trim, normalize newlines, collapse blanks.</li>
+              <li><a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> - review config changes with inline or side by side view.</li>
+              <li><a href="/tools/random-text-generator.html">Random Text Generator</a> - make quick sample payloads for testing.</li>
+              <li>Related guides: <a href="/blog/word-character-line-sentence-counter-blog.html">Word and Character Counter guide</a> and <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner guide</a>.</li>
+            </ul>
+
+            <h3 id="faq">FAQ</h3>
+            <dl class="faq grammar-faq" id="grammar-faq">
+              <dt tabindex="0" aria-expanded="false">Does the converter upload my data</dt>
+              <dd class="hidden">No. It runs in your browser for speed and privacy.</dd>
+
+              <dt tabindex="0" aria-expanded="false">Can I keep comments when moving from YAML to JSON</dt>
+              <dd class="hidden">JSON does not support comments. Consider keeping a YAML source of truth or store comments in a separate README field.</dd>
+
+              <dt tabindex="0" aria-expanded="false">How do I make diffs clean for code review</dt>
+              <dd class="hidden">Enable Sort keys and Pretty, then compare with the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</dd>
+
+              <dt tabindex="0" aria-expanded="false">What about TOML arrays and tables</dt>
+              <dd class="hidden">Arrays keep order. Tables map well to nested objects. If you hit a typing issue, quote values to force string type before conversion.</dd>
+            </dl>
+
+            <h3>Conclusion</h3>
+            <p>Use the format that suits your workflow and convert with care. Pretty print for humans, minify for transport, sort keys for clean diffs, and verify round trips so your configs stay safe. Open the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a> and make a clean conversion part of every PR.</p>
+          </div>
+
+          <div class="article-footer">
+            <div class="article-tags">
+              <span class="tag">JSON</span>
+              <span class="tag">YAML</span>
+              <span class="tag">TOML</span>
+              <span class="tag">Configs</span>
+              <span class="tag">Developer Tools</span>
+            </div>
+            <div class="article-share">
+              <span class="share-text">Share:</span>
+              <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+              <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+              <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="articles-section">
+      <div class="container">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="articles-grid">
+          <article class="article-card">
+            <div class="article-meta">
+              <span class="article-category">Text Utilities</span>
+              <time datetime="2025-08-18" class="article-date">August 18, 2025</time>
+            </div>
+            <h3 class="article-title">Random Text Generator: Instantly Create Unique Content Snippets</h3>
+            <p class="article-excerpt">Generate random words, sentences, or paragraphs to test layouts and flows. Great for writers, developers, and designers.</p>
+            <a href="/blog/free-random-text-generator-lorem-ipsum-sentences-and-dummy-parahraphs-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+
+          <article class="article-card">
+            <div class="article-meta">
+              <span class="article-category">Writing Tools</span>
+              <time datetime="2025-08-18" class="article-date">August 18, 2025</time>
+            </div>
+            <h3 class="article-title">Remove Empty Lines: Clean and Compact Your Text</h3>
+            <p class="article-excerpt">Strip blank lines, collapse multi line gaps, and format text into a neat flow before splitting or after joining.</p>
+            <a href="/blog/free-remove-empty-lines-trim-lines-collapse-gaps-normalize-newlines-sniptext-blog.html" class="read-more">Read More</a>
+          </article>
+
+          <article class="article-card">
+            <div class="article-meta">
+              <span class="article-category">Writing Tools</span>
+              <time datetime="2025-08-20" class="article-date">August 20, 2025</time>
+            </div>
+            <h3 class="article-title">Text to List - List to Text Converter: Split, Join, Sort, Unique</h3>
+            <p class="article-excerpt">Turn paragraphs into structured lists or combine list items into polished text with clean separators and wrapping.</p>
+            <a href="/blog/text-to-list-converter" class="read-more">Read More</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-content">
+          <h2 class="section-title">About This Blog</h2>
+          <p class="about-text">We publish practical guides for developers and writers who care about clean data and frictionless workflows. Expect hands on tutorials for formats like JSON, YAML, and TOML alongside text utilities that run in your browser.</p>
+          <p class="about-text">Build a smooth toolkit with the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a>, the <a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a>, the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>, and the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Author Bio Card -->
+  <aside class="author-bio" id="author-bio">
+    <div class="container">
+      <div class="bio-card">
+        <div class="bio-avatar">
+          <div class="avatar-placeholder">NP</div>
+        </div>
+        <div class="bio-content">
+          <h3 class="bio-name">Nora Patel</h3>
+          <p class="bio-title">Developer Advocate and Data Workflow Designer</p>
+          <p class="bio-description">Nora helps teams ship stable configs by focusing on format clarity, testing, and lightweight browser tools. She writes about clean diffs, safe conversions, and simple checks that prevent late night rollbacks.</p>
+          <div class="bio-links">
+            <a href="/blog/blog.html" class="bio-link">All Posts</a>
+            <a href="/tools/free-tools.html" class="bio-link">Free Tools</a>
+            <a href="/contact.html" class="bio-link">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="footer-title">SnipText</h4>
+          <p class="footer-text">Clean data tools for developers and teams.</p>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-title">Connect</h4>
+          <ul class="footer-links">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SnipText. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <span class="back-to-top-icon">↑</span>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="/blog/js/sniptext-blog.js"></script>
+
+  <!-- Small accessible script to toggle FAQ questions -->
+  <script>
+  (function () {
+    const faq = document.getElementById('grammar-faq');
+    if (!faq) return;
+    const dts = faq.querySelectorAll('dt');
+
+    dts.forEach(dt => {
+      const dd = dt.nextElementSibling;
+      dt.setAttribute('role', 'button');
+      if (dd && !dd.id) dd.id = 'faq-' + Math.random().toString(36).slice(2,9);
+      dt.setAttribute('aria-controls', dd ? dd.id : '');
+      dt.setAttribute('tabindex', '0');
+
+      const toggle = () => {
+        const isOpen = dt.classList.toggle('open');
+        if (dd) {
+          dd.classList.toggle('hidden', !isOpen);
+          dt.setAttribute('aria-expanded', String(isOpen));
+        }
+      };
+
+      dt.addEventListener('click', toggle);
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

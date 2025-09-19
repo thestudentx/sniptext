@@ -48,5 +48,35 @@
   <url><loc>https://checkai.pro/tools/whitespace-and-formatting-cleaner</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://checkai.pro/tools/word-counter</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
   <url><loc>https://checkai.pro/tools/zodiac-sign-and-horoscope-calculator</loc><lastmod>2025-09-14T00:00:00+05:00</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+    <url>
+    <loc>https://checkai.pro/tools/confidence-interval-calculator</loc>
+    <lastmod>2025-09-19T00:00:00+05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/csv-viewer-editor</loc>
+    <lastmod>2025-09-19T00:00:00+05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/json-formatter-validator</loc>
+    <lastmod>2025-09-19T00:00:00+05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/json-yaml-toml-converter-pretty-format-parse-sniptext</loc>
+    <lastmod>2025-09-19T00:00:00+05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://checkai.pro/tools/time-zone-converter-compare-cities</loc>
+    <lastmod>2025-09-19T00:00:00+05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
 
 </urlset>

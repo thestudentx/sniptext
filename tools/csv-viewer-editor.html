@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>CSV Viewer and Editor - Fast Grid, Filter, Sort, Clean, Convert to JSON or TSV, Export and Mini Charts | SnipText</title>
+  <meta name="description" content="Open, view, and edit CSV files in a fast in-browser grid. Detect delimiter, sort and filter columns, clean whitespace, deduplicate, split or merge columns, run quick formulas, convert to JSON or TSV, and export. Private in your browser." />
+  <meta name="keywords" content="CSV viewer, CSV editor, edit CSV online, sort filter CSV, convert CSV to JSON, CSV to TSV, clean data, split columns, merge columns, export CSV, SnipText tools" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/csv-viewer-editor" />
+  <link rel="alternate" href="https://checkai.pro/tools/csv-viewer-editor" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/csv-viewer-editor" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="CSV Viewer and Editor - Fast Grid with Filters and Export" />
+  <meta property="og:description" content="Clean, filter, and edit CSV files in a smooth dark themed grid. Convert to JSON or TSV and export. Runs locally in your browser." />
+  <meta property="og:url" content="https://checkai.pro/tools/csv-viewer-editor" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Dark themed CSV grid with filters and export buttons" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CSV Viewer and Editor - Fast Grid with Filters and Export" />
+  <meta name="twitter:description" content="View and edit CSV files, sort and filter, clean data, convert to JSON or TSV, and export in one click. Private and fast." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText CSV Viewer and Editor",
+    "url":"https://checkai.pro/tools/csv-viewer-editor",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Fast grid with sort and filter",
+      "Edit cells, add or remove rows and columns",
+      "Delimiter detection and header toggle",
+      "Clean whitespace, trim and deduplicate",
+      "Split column by delimiter or pattern",
+      "Merge columns with custom joiner",
+      "Convert to JSON or TSV",
+      "Export CSV or copy to clipboard",
+      "Quick formulas: SUM, AVERAGE, MIN, MAX, COUNT",
+      "Mini charts and data profile"
+    ],
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}}
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is the CSV Viewer and Editor private",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. It runs locally in your browser. Your files do not leave your device."}},
+      {"@type":"Question","name":"Can I handle large files",
+       "acceptedAnswer":{"@type":"Answer","text":"The grid is optimized for a few hundred thousand cells. For very large files, use filter first and turn off animations for speed."}},
+      {"@type":"Question","name":"Can I convert CSV to JSON or TSV",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. Use Export and choose JSON or TSV. You can also copy the result to the clipboard."}}
+    ]
+  }
+  </script>
+
+  <style>
+  /* ==========================================================
+     SNIPTEXT • CSV VIEWER & EDITOR
+     Dark themed with brand gradients • classes/ids include 'csv-vie-edi' (csvvie)
+     ========================================================== */
+  :root{
+    /* Brand tokens with tool specific names */
+    --csvvie-primary:#1D4ED8;  /* color-primary */
+    --csvvie-accent:#3B82F6;   /* color-accent */
+    --csvvie-bg:#0F172A;       /* color-bg-dark */
+    --csvvie-bg-soft:#1d1f2f;  /* color-footer-bg */
+    --csvvie-white:#ffffff;
+    --csvvie-text:#E6EEF8;
+    --csvvie-muted:#AAB6C7;
+    --csvvie-border:rgba(255,255,255,0.14);
+    --csvvie-warm:#ff7c4c;     /* gradient cta end */
+    --csvvie-warm-2:#e85d27;   /* used often */
+    --csvvie-green:#10B981;
+    --csvvie-red:#EF4444;
+    --csvvie-yellow:#F59E0B;
+    --csvvie-blue-soft: #93C5FD;
+
+    --csvvie-radius-xl:20px;
+    --csvvie-radius-lg:14px;
+    --csvvie-radius-md:10px;
+
+    --csvvie-shadow-1:0 10px 30px rgba(0,0,0,.35);
+    --csvvie-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--csvvie-text);
+    font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 12% -10%, color-mix(in oklab, var(--csvvie-primary) 26%, transparent), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, color-mix(in oklab, var(--csvvie-accent) 22%, transparent), transparent 52%),
+      radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--csvvie-warm) 14%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--csvvie-bg) 0%, var(--csvvie-bg-soft) 100%);
+    background-attachment: fixed;
+  }
+
+  /* Page shell */
+  .csv-vie-edi-main{
+    width:min(1200px,92vw);
+    margin: clamp(16px,3vw,40px) auto 80px;
+  }
+
+  /* Hero */
+  .csv-vie-edi-hero{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+    border:1px solid var(--csvvie-border); border-radius:var(--csvvie-radius-xl);
+    padding: clamp(18px,3vw,28px);
+    background: linear-gradient(135deg,
+      color-mix(in oklab, var(--csvvie-primary) 20%, transparent),
+      color-mix(in oklab, var(--csvvie-accent) 18%, transparent)
+    ) border-box;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--csvvie-shadow-1);
+    position:relative; overflow:hidden;
+  }
+  .csv-vie-edi-hero::after{
+    content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.6; pointer-events:none;
+    background:
+      radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--csvvie-primary) 28%, transparent), transparent 65%),
+      radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--csvvie-accent) 26%, transparent), transparent 62%);
+  }
+  @media (max-width:980px){ .csv-vie-edi-hero{ grid-template-columns:1fr } }
+
+  .csv-vie-edi-title{
+    margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+    font-family:'Poppins','Segoe UI',sans-serif;
+    font-size: clamp(22px,3.2vw,36px);
+    background: linear-gradient(90deg,#fff,
+      color-mix(in oklab, var(--csvvie-accent) 54%, #fff) 38%,
+      color-mix(in oklab, var(--csvvie-warm) 40%, #fff) 78%, #fff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .csv-vie-edi-sub{ margin:6px 0 0; color:var(--csvvie-muted); font-size:clamp(14px,1.8vw,16px) }
+  .csv-vie-edi-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+  .csv-vie-edi-badge{
+    padding:6px 10px; border:1px solid var(--csvvie-border); border-radius:999px;
+    background: color-mix(in oklab, var(--csvvie-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem;
+  }
+
+  /* Animated hero icon: grid sheet + import arrow + blinking caret + sweep */
+  .csv-vie-edi-hero-art svg.csvvie-svg { justify-self: end; width:min(280px,44vw); height:auto; display:block; color:#d6e2ff }
+
+  .csvvie-grid rect { stroke: currentColor; fill: none; opacity:.35 }
+  .csvvie-cells line { stroke: currentColor; opacity:.25; }
+  .csvvie-sweep { fill: url(#csvvie-grad); opacity:.25; animation: csvvie-scan 3.6s linear infinite }
+  .csvvie-arrow path { stroke: var(--csvvie-blue-soft); stroke-width:1.6; fill:none; filter:url(#csvvie-glow) }
+  .csvvie-caret { fill: var(--csvvie-accent); animation: csvvie-blink 1.1s steps(2) infinite }
+  @keyframes csvvie-scan { 0% { transform: translateY(-140px) } 100% { transform: translateY(140px) } }
+  @keyframes csvvie-blink { 0%,49% { opacity:1 } 50%,100% { opacity:0 } }
+
+  /* Grid */
+  .csv-vie-edi-grid{
+    margin-top: clamp(14px,2.6vw,24px);
+    display:grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,2.4vw,20px);
+  }
+  @media (max-width:1100px){ .csv-vie-edi-grid{ grid-template-columns:1fr } }
+
+  /* Cards */
+  .csv-vie-edi-card{
+    border:1px solid var(--csvvie-border);
+    border-radius:var(--csvvie-radius-lg);
+    background: rgba(255,255,255,.06);
+    box-shadow: var(--csvvie-shadow-2);
+    backdrop-filter: blur(10px);
+    overflow:hidden;
+  }
+  .csv-vie-edi-card-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:12px 14px;
+    background: linear-gradient(90deg,
+      color-mix(in oklab, var(--csvvie-primary) 12%, transparent),
+      color-mix(in oklab, var(--csvvie-accent) 10%, transparent)
+    );
+    border-bottom:1px solid var(--csvvie-border);
+  }
+  .csv-vie-edi-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family:'Poppins','Segoe UI',sans-serif }
+  .csv-vie-edi-section{ padding:12px 14px; display:grid; gap:12px }
+
+  /* Inputs */
+  .csv-vie-edi-field{ display:grid; gap:6px }
+  .csv-vie-edi-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+  .csv-vie-edi-input, .csv-vie-edi-select, .csv-vie-edi-textarea{
+    background:#0e1730; color:#e6ecff; border:1px solid var(--csvvie-border);
+    border-radius:10px; padding:12px 14px; outline:none;
+    transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+    min-height:44px;
+  }
+  .csv-vie-edi-textarea{
+    min-height:160px; resize:vertical;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+    line-height:1.45; font-size:13px; white-space:pre;
+  }
+  .csv-vie-edi-select{ appearance:none }
+  .csv-vie-edi-input:focus, .csv-vie-edi-select:focus, .csv-vie-edi-textarea:focus{
+    border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px)
+  }
+  .csv-vie-edi-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+  /* Buttons */
+  .csv-vie-edi-btn{
+    --_bg: linear-gradient(180deg, color-mix(in oklab, var(--csvvie-primary) 70%, transparent), color-mix(in oklab, var(--csvvie-accent) 62%, transparent));
+    --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--csvvie-primary));
+    appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+    padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+    transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+    box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+    font-family:'Poppins','Segoe UI',sans-serif;
+  }
+  .csv-vie-edi-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+  .csv-vie-edi-btn:active{ transform: translateY(0); filter: brightness(.98) }
+  .csv-vie-edi-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--csvvie-border); box-shadow:none }
+  .csv-vie-edi-btn-warm{ background: linear-gradient(135deg, var(--csvvie-accent), var(--csvvie-warm)); border-color:transparent }
+  .csv-vie-edi-btn-red{ background: linear-gradient(135deg, #EF4444, #F59E0B); border-color: transparent }
+
+  /* Grid output area */
+  .csv-vie-edi-result{ display:grid; gap:10px }
+  .csv-vie-edi-toolbar{ display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+  .csv-vie-edi-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 10px; border:1px solid var(--csvvie-border); border-radius:999px;
+    background: color-mix(in oklab, var(--csvvie-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem;
+  }
+
+  .csv-vie-edi-tablewrap{
+    border:1px solid var(--csvvie-border); border-radius:10px; overflow:auto; background: rgba(14,23,48,.6);
+    max-height:56vh; position:relative;
+  }
+
+  table.csv-vie-edi-table{
+    border-collapse: separate; border-spacing:0;
+    width:100%; min-width:620px; font-size:14px; line-height:1.35;
+  }
+  thead.csv-vie-edi-thead th{
+    position:sticky; top:0; background: color-mix(in oklab, var(--csvvie-bg) 88%, #000 0%);
+    color:#e8eeff; text-align:left; font-weight:700; border-bottom:1px solid var(--csvvie-border);
+    backdrop-filter: blur(6px); z-index:2;
+  }
+  thead.csv-vie-edi-thead th, tbody.csv-vie-edi-tbody td{
+    padding:8px 10px; border-right:1px solid rgba(255,255,255,.06);
+  }
+  thead.csv-vie-edi-thead th:last-child, tbody.csv-vie-edi-tbody td:last-child{ border-right:none }
+  tbody.csv-vie-edi-tbody tr:nth-child(odd) td{ background: rgba(255,255,255,.02) }
+  tbody.csv-vie-edi-tbody td[contenteditable="true"]{ outline:none }
+  tbody.csv-vie-edi-tbody td:focus{ box-shadow: inset 0 0 0 2px rgba(59,130,246,.55); border-radius:6px; }
+  .csvvie-col-filter{ font-size:12px; width:100%; padding:6px 8px; margin-top:6px; background:#0e1730; border:1px solid var(--csvvie-border); color:#e6ecff; border-radius:8px }
+
+  .csv-vie-edi-status{
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between
+  }
+  .csv-vie-edi-minichart{ height:100px; border:1px solid var(--csvvie-border); border-radius:10px; background: rgba(255,255,255,.04) }
+
+  /* Toast */
+  .csv-vie-edi-toast{
+    position: fixed; inset: auto 16px 16px auto;
+    background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--csvvie-border);
+    backdrop-filter: blur(8px); box-shadow: var(--csvvie-shadow-1);
+    transform: translateY(20px); opacity:0; pointer-events:none; transition: transform .25s ease, opacity .25s ease; z-index: 50;
+  }
+  .csv-vie-edi-toast.show{ transform: translateY(0); opacity:1 }
+
+  /* Hover helpers */
+  .csv-vie-edi-action{ opacity:.85; cursor:pointer }
+  .csv-vie-edi-action:hover{ opacity:1; text-decoration:underline }
+
+  /* Subtle float */
+  @media (prefers-reduced-motion:no-preference){
+    .csv-vie-edi-card{ animation: csvvie-float 18s ease-in-out infinite }
+    @keyframes csvvie-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+  }
+
+  /* Accessible focus */
+  :focus-visible{ outline:2px solid color-mix(in oklab, var(--csvvie-accent) 60%, #fff); outline-offset:2px }
+
+  .feature-card-all-pages {margin: 0 2rem;}
+  .tools-grid {margin: 1rem; background: #0e1730;}
+  .tool-card {background: #0f1b34;}
+  @media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+<body>
+
+
+
+    
+
+<nav id="main-navbar" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="logo"><a href="/index.html">Snip Text</a></div>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+<main class="csv-vie-edi-main" id="csv-vie-edi-main" aria-label="CSV Viewer and Editor">
+  <!-- HERO -->
+  <section class="csv-vie-edi-hero" aria-labelledby="csv-vie-edi-title">
+    <div>
+      <h1 class="csv-vie-edi-title" id="csv-vie-edi-title">CSV Viewer and Editor</h1>
+      <p class="csv-vie-edi-sub">
+        Open, edit, and clean CSV files in a fast grid. Detect delimiter, sort and filter, split or merge columns, trim whitespace, deduplicate, convert to JSON or TSV, then export. Private and fast in your browser.
+      </p>
+      <div class="csv-vie-edi-badges">
+        <span class="csv-vie-edi-badge">Local only</span>
+        <span class="csv-vie-edi-badge">Sort and filter</span>
+        <span class="csv-vie-edi-badge">JSON export</span>
+        <span class="csv-vie-edi-badge">Mini charts</span>
+      </div>
+    </div>
+
+    <!-- Animated hero icon: sheet grid + import arrow + blinking caret + sweep -->
+    <div class="csv-vie-edi-hero-art" aria-hidden="true">
+      <svg class="csvvie-svg" viewBox="0 0 220 160" role="img" aria-label="CSV sheet icon">
+        <defs>
+          <linearGradient id="csvvie-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#ffffff" stop-opacity=".08"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="csvvie-glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="0" stdDeviation="1.4" flood-color="#93C5FD" flood-opacity=".55"/>
+          </filter>
+          <clipPath id="csvvie-clip">
+            <rect x="12" y="10" rx="10" width="136" height="140"></rect>
+          </clipPath>
+        </defs>
+
+        <!-- Sheet outline -->
+        <g class="csvvie-grid">
+          <rect x="12" y="10" rx="10" width="136" height="140"/>
+        </g>
+
+        <!-- Grid lines -->
+        <g class="csvvie-cells">
+          <!-- verticals -->
+          <line x1="40" y1="10" x2="40" y2="150"/>
+          <line x1="70" y1="10" x2="70" y2="150"/>
+          <line x1="100" y1="10" x2="100" y2="150"/>
+          <line x1="130" y1="10" x2="130" y2="150"/>
+          <!-- horizontals -->
+          <line x1="12" y1="36" x2="148" y2="36"/>
+          <line x1="12" y1="62" x2="148" y2="62"/>
+          <line x1="12" y1="88" x2="148" y2="88"/>
+          <line x1="12" y1="114" x2="148" y2="114"/>
+          <line x1="12" y1="140" x2="148" y2="140"/>
+        </g>
+
+        <!-- Sweep -->
+        <g clip-path="url(#csvvie-clip)">
+          <rect class="csvvie-sweep" x="12" y="10" width="136" height="140"/>
+        </g>
+
+        <!-- Import arrow -->
+        <g class="csvvie-arrow">
+          <path d="M168 40 h22"/>
+          <path d="M190 40 v20"/>
+          <path d="M182 52 l8 8 8-8"/>
+        </g>
+
+        <!-- Caret block animating into a cell -->
+        <rect class="csvvie-caret" x="73" y="64" width="2.4" height="14" rx="1"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="csv-vie-edi-grid">
+    <!-- LEFT: Inputs and actions -->
+    <article class="csv-vie-edi-card">
+      <header class="csv-vie-edi-card-head">
+        <h2 class="csv-vie-edi-card-title">Import or paste CSV</h2>
+        <div class="csv-vie-edi-row">
+          <button class="csv-vie-edi-btn csv-vie-edi-btn-ghost" id="csv-vie-edi-clear">Clear</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="csv-vie-edi-section">
+        <div class="csv-vie-edi-row" style="align-items:flex-start">
+          <div class="csv-vie-edi-field" style="flex:1 1 420px">
+            <label class="csv-vie-edi-label" for="csv-vie-edi-inputarea">Paste CSV</label>
+            <textarea id="csv-vie-edi-inputarea" class="csv-vie-edi-textarea" placeholder="Paste CSV here or drag and drop a .csv file" aria-label="Paste CSV" spellcheck="false"></textarea>
+            <div class="csv-vie-edi-row">
+              <input type="file" id="csv-vie-edi-file" class="csv-vie-edi-input" accept=".csv,.tsv,.txt" />
+              <select id="csv-vie-edi-delim" class="csv-vie-edi-select" aria-label="Delimiter">
+                <option value="auto">Auto</option>
+                <option value=",">Comma</option>
+                <option value=";">Semicolon</option>
+                <option value="	">Tab</option>
+                <option value="|">Pipe</option>
+              </select>
+              <label class="csv-vie-edi-label"><input type="checkbox" id="csv-vie-edi-header" checked /> First row is header</label>
+            </div>
+            <div class="csv-vie-edi-row">
+              <button class="csv-vie-edi-btn" id="csv-vie-edi-import"><span class="kbd">Enter</span> Import</button>
+              <button class="csv-vie-edi-btn csv-vie-edi-btn-ghost" id="csv-vie-edi-append">Append rows</button>
+              <button class="csv-vie-edi-btn csv-vie-edi-btn-warm" id="csv-vie-edi-copy-json">Copy JSON</button>
+            </div>
+            <p class="csv-vie-edi-sub" style="margin:0">Drop a CSV file on the textarea. Your data stays in your browser.</p>
+          </div>
+        </div>
+
+        <div class="csv-vie-edi-row">
+          <label class="csv-vie-edi-label" for="csv-vie-edi-global-search">Quick filter</label>
+          <input id="csv-vie-edi-global-search" class="csv-vie-edi-input" placeholder="Type to filter all columns (press Esc to clear)" />
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-clear-filter" title="Clear filters">Clear filters</button>
+        </div>
+
+        <div class="csv-vie-edi-row" aria-label="Table actions toolbar">
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-add-row">Add row</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-add-col">Add column</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-del-row">Delete selected row</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-del-col">Delete selected column</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-undo" title="Undo"><span class="kbd">Ctrl</span>+<span class="kbd">Z</span> Undo</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-redo" title="Redo"><span class="kbd">Ctrl</span>+<span class="kbd">Y</span> Redo</button>
+        </div>
+
+        <div class="csv-vie-edi-row" aria-label="Clean and transform">
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-trim">Trim whitespace</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-dedupe">Deduplicate rows</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-split">Split column</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-merge">Merge columns</button>
+          <button class="csv-vie-edi-btn csv-vie-edi-btn-ghost" id="csv-vie-edi-find">Find and replace</button>
+        </div>
+
+        <div class="csv-vie-edi-row" aria-label="Export">
+          <button class="csv-vie-edi-btn csv-vie-edi-btn-warm" id="csv-vie-edi-export-csv">Export CSV</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-export-tsv">Export TSV</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-export-json">Export JSON</button>
+          <button class="csv-vie-edi-btn csv-vie-edi-btn-ghost" id="csv-vie-edi-copy-csv">Copy CSV</button>
+          <button class="csv-vie-edi-btn csv-vie-edi-btn-ghost" id="csv-vie-edi-share">Copy tiny link</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- RIGHT: Grid and insights -->
+    <aside class="csv-vie-edi-card" aria-live="polite">
+      <header class="csv-vie-edi-card-head">
+        <h2 class="csv-vie-edi-card-title">Table</h2>
+        <div class="csv-vie-edi-row">
+          <span class="csv-vie-edi-pill" id="csv-vie-edi-stat-rows">Rows: 0</span>
+          <span class="csv-vie-edi-pill" id="csv-vie-edi-stat-cols">Cols: 0</span>
+          <span class="csv-vie-edi-pill" id="csv-vie-edi-stat-missing">Missing: 0</span>
+        </div>
+      </header>
+
+      <div class="csv-vie-edi-section csv-vie-edi-result" id="csv-vie-edi-result" hidden>
+        <div class="csv-vie-edi-toolbar">
+          <label class="csv-vie-edi-label">Selected:</label>
+          <span class="csv-vie-edi-pill" id="csv-vie-edi-selected">R -, C -</span>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-formula-sum" title="Sum selected column">SUM</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-formula-avg" title="Average selected column">AVG</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-formula-min" title="Min selected column">MIN</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-formula-max" title="Max selected column">MAX</button>
+          <button class="csv-vie-edi-btn" id="csv-vie-edi-formula-count" title="Count non empty">COUNT</button>
+        </div>
+
+        <div class="csv-vie-edi-tablewrap" id="csv-vie-edi-tablewrap" aria-label="CSV grid">
+          <table class="csv-vie-edi-table" id="csv-vie-edi-table">
+            <thead class="csv-vie-edi-thead" id="csv-vie-edi-thead"></thead>
+            <tbody class="csv-vie-edi-tbody" id="csv-vie-edi-tbody"></tbody>
+          </table>
+        </div>
+
+        <div class="csv-vie-edi-status">
+          <canvas class="csv-vie-edi-minichart" id="csv-vie-edi-minichart" aria-label="Mini chart overview"></canvas>
+          <p class="csv-vie-edi-sub" id="csv-vie-edi-hints">Tip: Click a header to sort. Shift click for multi sort. Double click a cell to edit. Press Ctrl+F to open find.</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <div style="margin-top:16px">
+    <p class="csv-vie-edi-sub">More you might like:
+      <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+      <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a>,
+      <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>,
+      <a href="/tools/word-counter.html">Word Counter</a>.
+    </p>
+  </div>
+
+     <div class="free-tools-guide">
+        <p class="free-tools-guide-p">Read CSV Viewer & Editor Guide on SnipText Blog Page <a href="/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+      </div>
+</main>
+
+<!-- Toast -->
+<div class="csv-vie-edi-toast" id="csv-vie-edi-toast" role="status" aria-live="polite"></div>
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+  </section>
+  
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+  <script src="/js/index.js"></script>  
+  <script src="/js/auth.js"> </script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+/* ==========================================================
+   CSV VIEWER & EDITOR • Single file JS
+   ========================================================== */
+(function(){
+  'use strict';
+
+  // Elements
+  const ta = document.getElementById('csv-vie-edi-inputarea');
+  const fileInput = document.getElementById('csv-vie-edi-file');
+  const btnImport = document.getElementById('csv-vie-edi-import');
+  const btnAppend = document.getElementById('csv-vie-edi-append');
+  const btnClear = document.getElementById('csv-vie-edi-clear');
+  const btnSample = document.getElementById('csv-vie-edi-sample');
+  const selectDelim = document.getElementById('csv-vie-edi-delim');
+  const chkHeader = document.getElementById('csv-vie-edi-header');
+
+  const resultWrap = document.getElementById('csv-vie-edi-result');
+  const thead = document.getElementById('csv-vie-edi-thead');
+  const tbody = document.getElementById('csv-vie-edi-tbody');
+  const table = document.getElementById('csv-vie-edi-table');
+
+  const statRows = document.getElementById('csv-vie-edi-stat-rows');
+  const statCols = document.getElementById('csv-vie-edi-stat-cols');
+  const statMissing = document.getElementById('csv-vie-edi-stat-missing');
+  const selBadge = document.getElementById('csv-vie-edi-selected');
+
+  const globalSearch = document.getElementById('csv-vie-edi-global-search');
+  const btnClearFilter = document.getElementById('csv-vie-edi-clear-filter');
+
+  const btnAddRow = document.getElementById('csv-vie-edi-add-row');
+  const btnAddCol = document.getElementById('csv-vie-edi-add-col');
+  const btnDelRow = document.getElementById('csv-vie-edi-del-row');
+  const btnDelCol = document.getElementById('csv-vie-edi-del-col');
+  const btnUndo = document.getElementById('csv-vie-edi-undo');
+  const btnRedo = document.getElementById('csv-vie-edi-redo');
+
+  const btnTrim = document.getElementById('csv-vie-edi-trim');
+  const btnDedupe = document.getElementById('csv-vie-edi-dedupe');
+  const btnSplit = document.getElementById('csv-vie-edi-split');
+  const btnMerge = document.getElementById('csv-vie-edi-merge');
+  const btnFind = document.getElementById('csv-vie-edi-find');
+
+  const btnCopyJSON = document.getElementById('csv-vie-edi-copy-json');
+  const btnExportCSV = document.getElementById('csv-vie-edi-export-csv');
+  const btnExportTSV = document.getElementById('csv-vie-edi-export-tsv');
+  const btnExportJSON = document.getElementById('csv-vie-edi-export-json');
+  const btnCopyCSV = document.getElementById('csv-vie-edi-copy-csv');
+  const btnShare = document.getElementById('csv-vie-edi-share');
+
+  const toast = document.getElementById('csv-vie-edi-toast');
+  const miniChart = document.getElementById('csv-vie-edi-minichart');
+
+  // Data state
+  let data = [];             // array of rows, each row array of strings
+  let header = [];           // header labels
+  let hasHeader = true;
+  let selected = { r: -1, c: -1 };
+  let sortState = [];        // [{col, dir}]
+  let history = [];          // undo stack: snapshots
+  let redoStack = [];
+
+  // Utilities
+  const showToast = (msg) => {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'), 1800);
+  };
+
+  const cloneDeep = (x) => JSON.parse(JSON.stringify(x));
+
+  const snapshot = () => {
+    history.push({ data: cloneDeep(data), header: cloneDeep(header) });
+    if (history.length > 100) history.shift();
+    redoStack = [];
+  };
+
+  const detectDelimiter = (text) => {
+    const lines = text.split(/\r?\n/).slice(0, 10);
+    const candidates = [',',';','\t','|'];
+    let best = {ch:',',score: -1};
+    for(const ch of candidates){
+      let counts = lines.map(l => (l.match(new RegExp(ch,'g'))||[]).length);
+      if (counts.length === 0) continue;
+      // score by mean and low variance
+      const mean = counts.reduce((a,b)=>a+b,0)/(counts.length||1);
+      const variance = counts.reduce((a,b)=>a + Math.pow(b-mean,2),0)/(counts.length||1);
+      const score = mean - variance*0.1;
+      if (score > best.score) best = {ch,score};
+    }
+    return best.ch;
+  };
+
+  const parseCSV = (text, delim) => {
+    const d = delim === 'auto' ? detectDelimiter(text) : delim;
+    const rows = [];
+    let i=0, cur='', row=[];
+    let inQuotes=false;
+    while(i<text.length){
+      const ch = text[i];
+      if (ch === '"'){
+        if(inQuotes && text[i+1] === '"'){ cur+='"'; i+=2; continue; }
+        inQuotes = !inQuotes; i++; continue;
+      }
+      if (!inQuotes && ch === d){
+        row.push(cur); cur=''; i++; continue;
+      }
+      if (!inQuotes && (ch === '\n' || ch === '\r')){
+        // handle CRLF
+        if (ch === '\r' && text[i+1] === '\n') i++;
+        row.push(cur); rows.push(row); cur=''; row=[]; i++; continue;
+      }
+      cur+=ch; i++;
+    }
+    row.push(cur); rows.push(row);
+    // trim trailing empty last row
+    if (rows.length && rows[rows.length-1].every(v=>v==='')) rows.pop();
+    return { rows, delim: d };
+  };
+
+  const toCSV = (rows, delim=',') => {
+    const esc = (s) => {
+      const need = s.includes('"') || s.includes('\n') || s.includes('\r') || s.includes(delim);
+      const t = s.replace(/"/g,'""');
+      return need ? `"${t}"` : t;
+    };
+    return rows.map(r => r.map(v => esc(String(v??''))).join(delim)).join('\n');
+  };
+
+  const toTSV = (rows) => rows.map(r => r.map(v => String(v??'').replace(/\t/g,' ')).join('\t')).join('\n');
+
+  const updateStats = () => {
+    const rowsCount = data.length;
+    const colsCount = header.length || (data[0]?.length || 0);
+    let missing = 0;
+    for(const r of data) for(const v of r) if (v === '' || v == null) missing++;
+    statRows.textContent = `Rows: ${rowsCount}`;
+    statCols.textContent = `Cols: ${colsCount}`;
+    statMissing.textContent = `Missing: ${missing}`;
+  };
+
+  const inferHeader = () => {
+    if (!data.length) return [];
+    const cols = Math.max(...data.map(r => r.length));
+    const base = Array.from({length: cols}, (_,i)=>`Col ${i+1}`);
+    return base;
+  };
+
+  const drawTable = () => {
+    resultWrap.hidden = false;
+    // header
+    thead.innerHTML = '';
+    const tr = document.createElement('tr');
+    const cols = header.length || (data[0]?.length || 0);
+    for(let c=0;c<cols;c++){
+      const th = document.createElement('th');
+      const title = hasHeader ? (header[c] ?? `Col ${c+1}`) : `Col ${c+1}`;
+      th.innerHTML = `
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="csv-vie-edi-action" data-col="${c}" title="Sort">${escapeHtml(title)}</span>
+          <span style="opacity:.6;font-size:11px" id="csv-vie-edi-sort-${c}"></span>
+        </div>
+        <input class="csvvie-col-filter" data-col="${c}" placeholder="Filter this column" aria-label="Filter column ${c+1}" />
+      `;
+      tr.appendChild(th);
+    }
+    thead.appendChild(tr);
+
+    // body
+    tbody.innerHTML = '';
+    const rows = dataView(); // apply filters and sort
+    for(let r=0;r<rows.length;r++){
+      const row = rows[r];
+      const trb = document.createElement('tr');
+      for(let c=0;c<cols;c++){
+        const td = document.createElement('td');
+        td.textContent = row[c] ?? '';
+        td.tabIndex = 0;
+        td.contentEditable = "true";
+        td.dataset.r = r; // visible row index
+        td.dataset.c = c;
+        td.addEventListener('focus', ()=>{ selected = { r, c }; updateSelectedBadge(); });
+        td.addEventListener('input', cellEdited);
+        trb.appendChild(td);
+      }
+      tbody.appendChild(trb);
+    }
+
+    // bind sort clicks and filters
+    thead.querySelectorAll('.csv-vie-edi-action').forEach(el=>{
+      el.addEventListener('click', (e)=>{
+        const col = Number(e.currentTarget.dataset.col);
+        const hasShift = e.shiftKey;
+        toggleSort(col, hasShift);
+      });
+    });
+    thead.querySelectorAll('.csvvie-col-filter').forEach(inp=>{
+      inp.addEventListener('input', applyFilters);
+    });
+
+    updateStats();
+    drawMiniChart();
+    persistLocal();
+  };
+
+  const updateSelectedBadge = () => {
+    selBadge.textContent = `R ${selected.r+1}, C ${selected.c+1}`;
+  };
+
+  const escapeHtml = (s) => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+
+  // Filters and sorting
+  const colFilters = {}; // col -> text
+  let globalFilter = '';
+
+  const applyFilters = () => {
+    thead.querySelectorAll('.csvvie-col-filter').forEach(inp=>{
+      const col = Number(inp.dataset.col);
+      colFilters[col] = inp.value.trim();
+    });
+    drawTable();
+  };
+
+  globalSearch.addEventListener('input', ()=>{
+    globalFilter = globalSearch.value.trim();
+    drawTable();
+  });
+
+  btnClearFilter.addEventListener('click', ()=>{
+    globalFilter = '';
+    globalSearch.value = '';
+    Object.keys(colFilters).forEach(k=>delete colFilters[k]);
+    thead.querySelectorAll('.csvvie-col-filter').forEach(i=>i.value='');
+    drawTable();
+  });
+
+  const dataView = () => {
+    let rows = data.map((r,i)=>({r,i}));
+    // filters
+    if (globalFilter){
+      const q = globalFilter.toLowerCase();
+      rows = rows.filter(({r}) => r.some(v => String(v??'').toLowerCase().includes(q)));
+    }
+    for(const k in colFilters){
+      const q = colFilters[k].toLowerCase();
+      if (!q) continue;
+      const col = Number(k);
+      rows = rows.filter(({r}) => String(r[col]??'').toLowerCase().includes(q));
+    }
+    // sort
+    if (sortState.length){
+      rows.sort((a,b)=>{
+        for(const s of sortState){
+          const va = a.r[s.col] ?? '';
+          const vb = b.r[s.col] ?? '';
+          const na = parseFloat(va); const nb = parseFloat(vb);
+          const bothNum = !isNaN(na) && !isNaN(nb);
+          let cmp = 0;
+          if (bothNum) cmp = na - nb; else cmp = String(va).localeCompare(String(vb), undefined, {numeric:true});
+          if (cmp!==0) return s.dir==='asc' ? cmp : -cmp;
+        }
+        return 0;
+      });
+      // update sort icons
+      for(let c=0;c<(header.length||data[0]?.length||0);c++){
+        const s = sortState.find(x=>x.col===c);
+        const el = document.getElementById(`csv-vie-edi-sort-${c}`);
+        if (el) el.textContent = s ? (s.dir==='asc'?'▲':'▼') : '';
+      }
+    } else {
+      for(let c=0;c<(header.length||data[0]?.length||0);c++){
+        const el = document.getElementById(`csv-vie-edi-sort-${c}`);
+        if (el) el.textContent = '';
+      }
+    }
+    return rows.map(x=>data[x.i]);
+  };
+
+  const toggleSort = (col, multi=false) => {
+    if (!multi) sortState = [];
+    const idx = sortState.findIndex(s=>s.col===col);
+    if (idx===-1) sortState.push({col, dir:'asc'});
+    else if (sortState[idx].dir==='asc') sortState[idx].dir='desc';
+    else sortState.splice(idx,1);
+    drawTable();
+  };
+
+  // Editing
+  function cellEdited(e){
+    const td = e.currentTarget;
+    const vr = Number(td.dataset.r);
+    const vc = Number(td.dataset.c);
+    // visible row index maps to filtered/sorted view; need original index
+    const view = dataView();
+    // find original row index by matching value arrays - safer to rebuild mapping
+    const map = buildIndexMap();
+    const origRow = map[vr];
+    snapshot();
+    data[origRow][vc] = td.textContent;
+    drawMiniChartThrottled();
+    persistLocal();
+  }
+
+  const buildIndexMap = () => {
+    // map visible row to original row index
+    const rows = data.map((r,i)=>({r,i}));
+    if (globalFilter){
+      const q = globalFilter.toLowerCase();
+      rows.splice(0, rows.length, ...rows.filter(({r}) => r.some(v => String(v??'').toLowerCase().includes(q))));
+    }
+    for(const k in colFilters){
+      const q = colFilters[k].toLowerCase();
+      if (!q) continue;
+      const col = Number(k);
+      rows.splice(0, rows.length, ...rows.filter(({r}) => String(r[col]??'').toLowerCase().includes(q)));
+    }
+    if (sortState.length){
+      rows.sort((a,b)=>{
+        for(const s of sortState){
+          const va = a.r[s.col] ?? '';
+          const vb = b.r[s.col] ?? '';
+          const na = parseFloat(va); const nb = parseFloat(vb);
+          const bothNum = !isNaN(na) && !isNaN(nb);
+          let cmp = 0;
+          if (bothNum) cmp = na - nb; else cmp = String(va).localeCompare(String(vb), undefined, {numeric:true});
+          if (cmp!==0) return s.dir==='asc' ? cmp : -cmp;
+        }
+        return 0;
+      });
+    }
+    return rows.map(x=>x.i);
+  };
+
+  // Import
+  const importText = (text, append=false) => {
+    const delim = selectDelim.value;
+    const {rows,delim:used} = parseCSV(text, delim);
+    hasHeader = chkHeader.checked;
+    if (!append){
+      snapshot();
+      if (hasHeader){
+        header = rows[0] || [];
+        data = rows.slice(1);
+      } else {
+        header = inferHeaderFromRows(rows);
+        data = rows;
+      }
+    } else {
+      snapshot();
+      let newRows = rows;
+      if (hasHeader && rows.length) newRows = rows.slice(1);
+      data.push(...newRows);
+      // widen header if needed
+      const maxCols = Math.max(header.length, ...(data.map(r=>r.length)));
+      if (header.length < maxCols){
+        for(let i=header.length;i<maxCols;i++) header[i] = `Col ${i+1}`;
+      }
+    }
+    if (!header.length) header = inferHeader();
+    drawTable();
+    showToast(`Imported ${data.length} rows • Delimiter "${used === '\t' ? 'Tab' : used}"`);
+  };
+
+  const inferHeaderFromRows = (rows) => {
+    const cols = Math.max(...rows.map(r=>r.length));
+    return Array.from({length: cols}, (_,i)=>`Col ${i+1}`);
+  };
+
+  // File input
+  fileInput.addEventListener('change', async (e)=>{
+    const f = e.target.files[0];
+    if (!f) return;
+    const text = await f.text();
+    ta.value = text;
+    importText(text, false);
+  });
+
+  // Drag drop
+  ta.addEventListener('dragover', (e)=>{ e.preventDefault(); ta.style.boxShadow='0 0 0 3px rgba(59,130,246,.25)'; });
+  ta.addEventListener('dragleave', ()=>{ ta.style.boxShadow='none'; });
+  ta.addEventListener('drop', async (e)=>{
+    e.preventDefault(); ta.style.boxShadow='none';
+    const f = e.dataTransfer.files[0];
+    if (!f) return;
+    const text = await f.text();
+    ta.value = text;
+    importText(text, false);
+  });
+
+  // Buttons
+  btnImport.addEventListener('click', ()=> importText(ta.value, false));
+  btnAppend.addEventListener('click', ()=> importText(ta.value, true));
+  btnClear.addEventListener('click', ()=>{
+    ta.value=''; data=[]; header=[]; thead.innerHTML=''; tbody.innerHTML=''; resultWrap.hidden = true;
+    statRows.textContent='Rows: 0'; statCols.textContent='Cols: 0'; statMissing.textContent='Missing: 0';
+    showToast('Cleared');
+    persistLocal();
+  });
+  btnSample.addEventListener('click', ()=>{
+    const sample = `Name,Role,Salary,Joined
+Alice,Engineer,98000,2022-04-10
+Bilal,Designer,82000,2023-01-05
+Carmen,Engineer,105000,2021-09-03
+Danish,PM,114500,2020-11-30
+Eva,Analyst,76000,2024-02-14`;
+    ta.value = sample;
+    chkHeader.checked = true;
+    selectDelim.value = 'auto';
+    importText(sample, false);
+  });
+
+  // Add remove rows cols
+  btnAddRow.addEventListener('click', ()=>{
+    if (!header.length) header = inferHeader();
+    snapshot();
+    const cols = header.length;
+    data.push(Array.from({length:cols}, ()=> ''));
+    drawTable();
+  });
+  btnAddCol.addEventListener('click', ()=>{
+    snapshot();
+    const name = prompt('New column name', `Col ${header.length+1}`) ?? `Col ${header.length+1}`;
+    header.push(name);
+    for(const r of data) r.push('');
+    drawTable();
+  });
+  btnDelRow.addEventListener('click', ()=>{
+    if (selected.r<0) return showToast('Select a cell first');
+    snapshot();
+    const map = buildIndexMap();
+    const orig = map[selected.r];
+    data.splice(orig,1);
+    selected.r = -1;
+    drawTable();
+  });
+  btnDelCol.addEventListener('click', ()=>{
+    if (selected.c<0) return showToast('Select a cell first');
+    snapshot();
+    const col = selected.c;
+    header.splice(col,1);
+    for(const r of data) r.splice(col,1);
+    selected.c = -1;
+    drawTable();
+  });
+
+  // Undo redo
+  const restore = (snap) => {
+    data = cloneDeep(snap.data);
+    header = cloneDeep(snap.header);
+    drawTable();
+  };
+  btnUndo.addEventListener('click', ()=>{
+    if (!history.length) return;
+    const cur = { data: cloneDeep(data), header: cloneDeep(header) };
+    const prev = history.pop();
+    redoStack.push(cur);
+    restore(prev);
+  });
+  btnRedo.addEventListener('click', ()=>{
+    if (!redoStack.length) return;
+    const cur = { data: cloneDeep(data), header: cloneDeep(header) };
+    const nxt = redoStack.pop();
+    history.push(cur);
+    restore(nxt);
+  });
+  document.addEventListener('keydown', (e)=>{
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase()==='z'){ e.preventDefault(); btnUndo.click(); }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase()==='y'){ e.preventDefault(); btnRedo.click(); }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase()==='f'){ e.preventDefault(); openFind(); }
+    if (e.key==='Escape'){ globalSearch.value=''; globalFilter=''; applyFilters(); }
+  });
+
+  // Clean and transform
+  btnTrim.addEventListener('click', ()=>{
+    if (!data.length) return;
+    snapshot();
+    data = data.map(r => r.map(v => String(v??'').replace(/\s+/g, ' ').trim()));
+    drawTable();
+    showToast('Trimmed whitespace');
+  });
+  btnDedupe.addEventListener('click', ()=>{
+    if (!data.length) return;
+    snapshot();
+    const seen = new Set();
+    const k = (r) => r.map(v=>String(v??'')).join('\u241F'); // unit separator
+    const uniq = [];
+    for(const r of data){ const kk=k(r); if (!seen.has(kk)){ seen.add(kk); uniq.push(r); } }
+    const removed = data.length - uniq.length;
+    data = uniq;
+    drawTable();
+    showToast(`Removed ${removed} duplicate row${removed===1?'':'s'}`);
+  });
+  btnSplit.addEventListener('click', ()=>{
+    if (selected.c<0) return showToast('Select a column to split');
+    const delim = prompt('Split by (enter a character or regex like \\s+):', ',');
+    if (delim==null || delim==='') return;
+    snapshot();
+    const re = delim.startsWith('\\') ? new RegExp(delim) : new RegExp(escapeRegex(delim));
+    let maxParts = 1;
+    const col = selected.c;
+    const parts = data.map(r => {
+      const p = String(r[col]??'').split(re);
+      if (p.length>maxParts) maxParts=p.length;
+      return p;
+    });
+    // insert new cols after col
+    for(let i=0;i<maxParts;i++){
+      header.splice(col+i+1,0,`${header[col]}_${i+1}`);
+    }
+    data = data.map((r,ri)=>{
+      const out = r.slice(0,col).concat([parts[ri][0]??'']);
+      for(let i=1;i<maxParts;i++) out.push(parts[ri][i]??'');
+      out.push(...r.slice(col+1));
+      return out;
+    });
+    drawTable();
+    showToast('Column split');
+  });
+  btnMerge.addEventListener('click', ()=>{
+    if (header.length<2) return showToast('Need at least two columns');
+    const cols = prompt('Enter columns to merge (1 based, comma separated)', '1,2');
+    if (!cols) return;
+    const ids = cols.split(',').map(s=>parseInt(s.trim(),10)-1).filter(n=>!isNaN(n));
+    if (ids.length<2) return showToast('Pick two or more columns');
+    const joiner = prompt('Join with', ' ');
+    snapshot();
+    const minIdx = Math.min(...ids);
+    const keep = new Set(ids);
+    data = data.map(r=>{
+      const merged = ids.map(i=>String(r[i]??'')).join(joiner);
+      const out = [];
+      r.forEach((v,i)=>{ if (i===minIdx) out.push(merged); else if(!keep.has(i)) out.push(v); });
+      return out;
+    });
+    // adjust header
+    const mergedName = ids.map(i=>header[i]??`Col ${i+1}`).join('+');
+    const newHeader = [];
+    header.forEach((h,i)=>{
+      if (i===minIdx) newHeader.push(mergedName);
+      else if(!ids.includes(i)) newHeader.push(h);
+    });
+    header = newHeader;
+    drawTable();
+    showToast('Columns merged');
+  });
+
+  // Find and replace
+  let findPanel;
+  function openFind(){
+    if (findPanel) return;
+    findPanel = document.createElement('div');
+    findPanel.style.cssText = 'position:sticky;top:0;display:flex;gap:6px;padding:8px;background:#0b1223cc;border:1px solid rgba(255,255,255,.14);border-radius:10px;backdrop-filter:blur(8px);z-index:10';
+    findPanel.innerHTML = `
+      <input class="csv-vie-edi-input" id="csv-vie-edi-find-q" placeholder="Find" style="min-height:36px">
+      <input class="csv-vie-edi-input" id="csv-vie-edi-find-r" placeholder="Replace" style="min-height:36px">
+      <label class="csv-vie-edi-label" style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="csv-vie-edi-find-case"> Case</label>
+      <button class="csv-vie-edi-btn" id="csv-vie-edi-find-next">Next</button>
+      <button class="csv-vie-edi-btn" id="csv-vie-edi-replace">Replace</button>
+      <button class="csv-vie-edi-btn" id="csv-vie-edi-replace-all">Replace all</button>
+      <button class="csv-vie-edi-btn csv-vie-edi-btn-ghost" id="csv-vie-edi-find-close">Close</button>
+    `;
+    document.getElementById('csv-vie-edi-tablewrap').prepend(findPanel);
+    const q = findPanel.querySelector('#csv-vie-edi-find-q');
+    const r = findPanel.querySelector('#csv-vie-edi-find-r');
+    const next = findPanel.querySelector('#csv-vie-edi-find-next');
+    const rep = findPanel.querySelector('#csv-vie-edi-replace');
+    const repAll = findPanel.querySelector('#csv-vie-edi-replace-all');
+    const caseCb = findPanel.querySelector('#csv-vie-edi-find-case');
+    const close = findPanel.querySelector('#csv-vie-edi-find-close');
+
+    let pos = {row:0,col:0};
+    const locate = ()=>{
+      const needle = q.value;
+      if (!needle) return;
+      const flags = caseCb.checked ? 'g' : 'gi';
+      const re = new RegExp(escapeRegex(needle), flags);
+      for(let i=pos.row;i<data.length;i++){
+        for(let j=(i===pos.row?pos.col:0); j<header.length; j++){
+          if (String(data[i][j]??'').match(re)){
+            pos = {row:i, col:j};
+            // scroll and focus
+            drawTable();
+            const viewIndex = buildIndexMap().indexOf(i);
+            if (viewIndex>=0){
+              const cell = tbody.querySelector(`tr:nth-child(${viewIndex+1}) td:nth-child(${j+1})`);
+              if (cell){ cell.scrollIntoView({block:'center'}); cell.focus(); }
+            }
+            return;
+          }
+        }
+      }
+      showToast('No more matches');
+      pos = {row:0,col:0};
+    };
+    next.addEventListener('click', locate);
+    rep.addEventListener('click', ()=>{
+      const needle = q.value;
+      const repl = r.value ?? '';
+      if (!needle) return;
+      snapshot();
+      const flags = caseCb.checked ? 'g' : 'gi';
+      const re = new RegExp(escapeRegex(needle), flags);
+      for(let i=pos.row;i<data.length;i++){
+        for(let j=(i===pos.row?pos.col:0); j<header.length; j++){
+          if (String(data[i][j]??'').match(re)){
+            data[i][j] = String(data[i][j]).replace(re, repl);
+            drawTable();
+            showToast('Replaced');
+            return;
+          }
+        }
+      }
+    });
+    repAll.addEventListener('click', ()=>{
+      const needle = q.value;
+      const repl = r.value ?? '';
+      if (!needle) return;
+      snapshot();
+      const flags = caseCb.checked ? 'g' : 'gi';
+      const re = new RegExp(escapeRegex(needle), flags);
+      let cnt=0;
+      for(let i=0;i<data.length;i++){
+        for(let j=0;j<header.length;j++){
+          const s = String(data[i][j]??'');
+          const replaced = s.replace(re, repl);
+          if (replaced!==s){ data[i][j]=replaced; cnt++; }
+        }
+      }
+      drawTable();
+      showToast(`Replaced in ${cnt} cell${cnt===1?'':'s'}`);
+    });
+    close.addEventListener('click', ()=>{
+      findPanel.remove(); findPanel=null;
+    });
+    q.focus();
+  }
+  btnFind.addEventListener('click', openFind);
+
+  const escapeRegex = (s)=> s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+  // Export and copy
+  btnCopyJSON.addEventListener('click', ()=>{
+    if (!data.length) return;
+    const rows = hasHeader ? data.map(r => Object.fromEntries(header.map((h,i)=>[h, r[i]??'']))) : data;
+    navigator.clipboard.writeText(JSON.stringify(rows, null, 2));
+    showToast('JSON copied');
+  });
+  btnCopyCSV.addEventListener('click', ()=>{
+    if (!data.length) return;
+    const rows = hasHeader ? [header, ...data] : data;
+    navigator.clipboard.writeText(toCSV(rows));
+    showToast('CSV copied');
+  });
+  btnExportCSV.addEventListener('click', ()=> downloadBlob('data.csv', toCSV(hasHeader?[header,...data]:data)));
+  btnExportTSV.addEventListener('click', ()=> downloadBlob('data.tsv', toTSV(hasHeader?[header,...data]:data)));
+  btnExportJSON.addEventListener('click', ()=>{
+    const rows = hasHeader ? data.map(r => Object.fromEntries(header.map((h,i)=>[h, r[i]??'']))) : data;
+    downloadBlob('data.json', JSON.stringify(rows, null, 2));
+  });
+
+  const downloadBlob = (name, text) => {
+    const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  // Tiny link share (base64 in hash for small tables)
+  btnShare.addEventListener('click', ()=>{
+    const rows = hasHeader ? [header, ...data] : data;
+    const csv = toCSV(rows);
+    const encoded = btoa(unescape(encodeURIComponent(csv))); // small inputs only
+    const url = `${location.origin}/tools/csv-viewer-editor#csv=${encoded}`;
+    navigator.clipboard.writeText(url);
+    showToast('Tiny link copied');
+  });
+
+  // Formulas
+  const pickCol = () => selected.c>=0 ? selected.c : 0;
+  const colSeries = (c) => data.map(r => parseFloat(String(r[c]??'').replace(/,/g,''))).filter(v => !isNaN(v));
+  const fmt = (n) => Number.isFinite(n) ? String(n) : '-';
+
+  document.getElementById('csv-vie-edi-formula-sum').addEventListener('click', ()=>{
+    const s = colSeries(pickCol()).reduce((a,b)=>a+b,0);
+    showToast(`SUM = ${s}`);
+  });
+  document.getElementById('csv-vie-edi-formula-avg').addEventListener('click', ()=>{
+    const arr = colSeries(pickCol()); const v = arr.reduce((a,b)=>a+b,0)/(arr.length||1);
+    showToast(`AVG = ${fmt(v)}`);
+  });
+  document.getElementById('csv-vie-edi-formula-min').addEventListener('click', ()=>{
+    const arr = colSeries(pickCol()); const v = Math.min(...arr);
+    showToast(`MIN = ${fmt(v)}`);
+  });
+  document.getElementById('csv-vie-edi-formula-max').addEventListener('click', ()=>{
+    const arr = colSeries(pickCol()); const v = Math.max(...arr);
+    showToast(`MAX = ${fmt(v)}`);
+  });
+  document.getElementById('csv-vie-edi-formula-count').addEventListener('click', ()=>{
+    const arr = colSeries(pickCol()); showToast(`COUNT = ${arr.length}`);
+  });
+
+  // Mini chart
+  let miniTimer = null;
+  const drawMiniChartThrottled = ()=>{ clearTimeout(miniTimer); miniTimer = setTimeout(drawMiniChart, 200); };
+  const drawMiniChart = ()=>{
+    const ctx = miniChart.getContext('2d');
+    const w = miniChart.clientWidth, h = miniChart.clientHeight;
+    miniChart.width = w * devicePixelRatio; miniChart.height = h * devicePixelRatio;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    ctx.clearRect(0,0,w,h);
+    // draw axes
+    ctx.globalAlpha = 0.4;
+    ctx.beginPath(); ctx.moveTo(32,10); ctx.lineTo(32,h-24); ctx.lineTo(w-10,h-24); ctx.strokeStyle = '#94a3b8'; ctx.stroke();
+    // choose numeric column
+    const c = Math.min(pickCol(), (header.length||1)-1);
+    const series = colSeries(c).slice(0, 200);
+    if (!series.length){ ctx.globalAlpha=0.6; ctx.fillStyle='#94a3b8'; ctx.fillText('Select a numeric column for a quick chart', 40, h/2); return; }
+    const min = Math.min(...series), max = Math.max(...series);
+    const xs = series.map((_,i)=> 40 + i*( (w-60)/Math.max(series.length-1,1) ));
+    const ys = series.map(v => {
+      if (max===min) return (h-24-10)/2 + 10;
+      return (h-24) - ((v-min)/(max-min))*(h-44) + 10;
+    });
+    ctx.globalAlpha = 0.9;
+    ctx.beginPath(); ctx.moveTo(xs[0], ys[0]); for(let i=1;i<xs.length;i++) ctx.lineTo(xs[i], ys[i]);
+    ctx.strokeStyle = '#3B82F6'; ctx.lineWidth = 2; ctx.stroke();
+    // points
+    ctx.fillStyle = '#1D4ED8';
+    for(let i=0;i<xs.length;i++){ ctx.beginPath(); ctx.arc(xs[i], ys[i], 2, 0, Math.PI*2); ctx.fill(); }
+  };
+
+  // Local persistence
+  const persistLocal = ()=>{
+    try{
+      const pack = { header, data, hasHeader };
+      localStorage.setItem('csv_vie_edi_last', JSON.stringify(pack));
+    }catch(e){}
+  };
+  const restoreLocal = ()=>{
+    try{
+      const s = localStorage.getItem('csv_vie_edi_last');
+      if (!s) return;
+      const pack = JSON.parse(s);
+      header = pack.header||[];
+      data = pack.data||[];
+      hasHeader = !!pack.hasHeader;
+      if (data.length){ drawTable(); }
+    }catch(e){}
+  };
+  restoreLocal();
+
+  // Load from tiny link if present
+  (function loadFromHash(){
+    const m = location.hash.match(/csv=([^&]+)/);
+    if (!m) return;
+    try{
+      const csv = decodeURIComponent(escape(atob(m[1])));
+      ta.value = csv;
+      importText(csv, false);
+    }catch(e){}
+  })();
+
+})();
+</script>
+
+</body>
+</html>

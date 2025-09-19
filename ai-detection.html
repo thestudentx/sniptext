@@ -229,13 +229,13 @@
     <!-- Actions -->
     <div class="input-actions-wrapper">
       <div class="upload-wrapper">
-        <label for="fileUpload" class="upload-btn" title="Upload .docx or .txt">
+        <label for="fileUpload" class="upload-btn" title="Upload .txt, .docx, .pdf, .csv, .md, .rtf">
           <svg width="20" height="20" fill="var(--ai-accent)" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6v-6h4l-7-7z" />
           </svg>
           Upload File
         </label>
-        <input type="file" id="fileUpload" accept=".txt,.docx" hidden />
+        <input type="file" id="fileUpload" accept=".txt,.docx,.pdf,.csv,.md,.rtf" hidden />
         <span class="file-info" id="fileInfo">No file chosen</span>
       </div>
 
@@ -355,6 +355,7 @@
   <!-- <script src="components/global-loading-animation.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
   <script src="js/ai-detection.js" defer></script>
 </body>
 </html>

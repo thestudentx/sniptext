@@ -257,6 +257,49 @@
 }
 
 
+/* ---------- CATEGORIES BAR ---------- */
+.tools-filter{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin:clamp(12px,2.4vw,22px) 0;
+  padding:6px 0;
+}
+.filter-btn{
+  appearance:none;
+  border:none; /* removed border line */
+  background:var(--surface-bg);
+  color:var(--text-900);
+  font:600 14px/1 var(--font-body);
+  padding:8px 16px;
+  border-radius:6px; /* reduced roundness */
+  cursor:pointer;
+  box-shadow:var(--elev-1);
+  transition:background .25s,transform .15s,box-shadow .25s;
+}
+[data-theme="dark"] .filter-btn{ color:var(--text-900); }
+.filter-btn:hover{ transform:translateY(-2px); box-shadow:var(--elev-2); }
+.filter-btn.is-active{
+  background:linear-gradient(90deg,var(--blue-600),var(--warm-600));
+  color:var(--btn-fore);
+  border:none; /* no border on active either */
+}
+/* Smaller screens: make buttons full-width in two columns */
+@media(max-width:490px){
+  .filter-btn{ flex:1 1 calc(50% - 8px); text-align:center; }
+}
+/* Hide helper */
+.is-hidden { display: none !important; }
+
+/* Optional smooth fade */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.tool-card:not(.is-hidden),
+.tool-category:not(.is-hidden) {
+  animation: fadeIn 0.25s ease-out;
+}
+
+
 
 /*-----------------------------------------------
   TOOLS GRID - standard layout

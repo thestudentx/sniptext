@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>Time Zone Converter - Compare Cities, Best Meeting Times, Copy Slots | SnipText</title>
+  <meta name="description" content="Convert times across cities, visualize overlaps, and copy meeting friendly slots. Add multiple time zones, set working hours, find the best windows, export to calendar, and share a tiny link. Fast and private in your browser." />
+  <meta name="keywords" content="time zone converter, compare cities time, world clock planner, best meeting time, overlap hours, working hours, copy time slots, tiny link, calendar export" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/time-zone-converter-compare-cities" />
+  <link rel="alternate" href="https://checkai.pro/tools/time-zone-converter-compare-cities" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/time-zone-converter-compare-cities" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Time Zone Converter - Compare Cities, Best Meeting Times" />
+  <meta property="og:description" content="See overlapping working hours, copy meeting friendly slots, export to calendar, and share a tiny link. Everything runs in your browser." />
+  <meta property="og:url" content="https://checkai.pro/tools/time-zone-converter-compare-cities" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Time zone converter showing overlapping working hours" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Time Zone Converter - Compare Cities, Best Meeting Times" />
+  <meta name="twitter:description" content="Plan meetings across time zones. Compare cities, find overlap windows, copy or export slots, and share a tiny link." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Time Zone Converter",
+    "url":"https://checkai.pro/tools/time-zone-converter-compare-cities",
+    "applicationCategory":"BusinessApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Compare multiple cities and time zones",
+      "Visual overlap heatmap with friendly windows",
+      "Working hours presets and custom ranges",
+      "Copy or export meeting slots to calendar",
+      "Tiny share link for quick planning"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is my data sent anywhere",
+       "acceptedAnswer":{"@type":"Answer","text":"No. The Time Zone Converter runs locally in your browser. Your settings and zones do not leave your device."}},
+      {"@type":"Question","name":"How are meeting friendly windows calculated",
+       "acceptedAnswer":{"@type":"Answer","text":"We intersect each participant's working hours with the selected date range and duration. The overlap score favors mid day slots and avoids very early or late hours."}},
+      {"@type":"Question","name":"Does it handle daylight saving",
+       "acceptedAnswer":{"@type":"Answer","text":"Yes. All conversions use the browser's Internationalization APIs which include daylight saving rules for IANA time zones."}}
+    ]
+  }
+  </script>
+
+  <style>
+/* ==========================================================
+   SNIPTEXT • TIME ZONE CONVERTER
+   Dark theme with brand gradients • classes/ids include 'tim-zon-con'
+   ========================================================== */
+:root{
+  /* Brand tokens with tool specific names (hex codes only) */
+  --timzon-primary:#1D4ED8;   /* color-primary */
+  --timzon-accent:#3B82F6;    /* color-accent */
+  --timzon-bg:#0F172A;        /* color-bg-dark */
+  --timzon-bg-soft:#1d1f2f;   /* color-footer-bg */
+  --timzon-white:#ffffff;
+  --timzon-text:#E6EEF8;
+  --timzon-muted:#AAB6C7;
+  --timzon-border:rgba(255,255,255,0.14);
+  --timzon-warm:#ff7c4c;      /* gradient cta end */
+  --timzon-warm2:#e85d27;     /* used often */
+  --timzon-green:#10B981;
+  --timzon-yellow:#F59E0B;
+  --timzon-red:#EF4444;
+  --timzon-purple:#7C3AED;
+
+  --timzon-radius-xl:20px;
+  --timzon-radius-lg:14px;
+  --timzon-radius-md:10px;
+
+  --timzon-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --timzon-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--timzon-text);
+  font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 15% -10%, color-mix(in oklab, var(--timzon-primary) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, color-mix(in oklab, var(--timzon-accent) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--timzon-warm) 14%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--timzon-bg) 0%, var(--timzon-bg-soft) 100%);
+  background-attachment: fixed;
+}
+
+/* Page shell */
+.tim-zon-con-main{
+  width:min(1200px,92vw);
+  margin: clamp(16px,3vw,40px) auto 80px;
+}
+
+/* Hero */
+.tim-zon-con-hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+  border:1px solid var(--timzon-border); border-radius:var(--timzon-radius-xl);
+  padding: clamp(18px,3vw,28px);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--timzon-primary) 20%, transparent),
+    color-mix(in oklab, var(--timzon-accent) 18%, transparent)
+  ) border-box;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--timzon-shadow-1);
+  position:relative; overflow:hidden;
+}
+.tim-zon-con-hero::after{
+  content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.6; pointer-events:none;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--timzon-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--timzon-accent) 26%, transparent), transparent 62%);
+}
+@media (max-width:980px){ .tim-zon-con-hero{ grid-template-columns:1fr } }
+
+.tim-zon-con-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:'Poppins','Segoe UI',sans-serif;
+  font-size: clamp(22px,3.2vw,36px);
+  background: linear-gradient(90deg,#fff,
+    color-mix(in oklab, var(--timzon-accent) 54%, #fff) 38%,
+    color-mix(in oklab, var(--timzon-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.tim-zon-con-sub{ margin:6px 0 0; color:var(--timzon-muted); font-size:clamp(14px,1.8vw,16px) }
+.tim-zon-con-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.tim-zon-con-badge{
+  padding:6px 10px; border:1px solid var(--timzon-border); border-radius:999px;
+  background: color-mix(in oklab, var(--timzon-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem;
+}
+
+/* Animated hero icon: globe + clock sweep + orbiting city pins */
+.tim-zon-con-hero-art svg.timzon-svg { justify-self: end; width:min(260px,42vw); height:auto; display:block; color:#d6e2ff }
+
+.timzon-globe { fill: none; stroke: currentColor; opacity:.28 }
+.timzon-latlon path { stroke: currentColor; opacity:.35; stroke-width:.6 }
+.timzon-clock circle { stroke: currentColor; opacity:.4 }
+.timzon-hand { stroke: currentColor; stroke-width:1.8; transform-origin: 100px 80px; animation: timzon-rotate 20s linear infinite }
+.timzon-hand-min { animation-duration: 6s; opacity:.9 }
+.timzon-hand-hour { animation-duration: 24s; opacity:.7 }
+.timzon-sweep { fill: url(#timzon-sweep-grad); transform-origin: 100px 80px; animation: timzon-sweep 8s ease-in-out infinite }
+
+.timzon-pin { fill: currentColor; opacity:.9 }
+.timzon-pin:nth-of-type(1){ animation: timzon-orbit 10s linear infinite; transform-origin: 100px 80px }
+.timzon-pin:nth-of-type(2){ animation: timzon-orbit 12s linear infinite reverse; transform-origin: 100px 80px }
+.timzon-pin:nth-of-type(3){ animation: timzon-orbit 14s linear infinite; transform-origin: 100px 80px }
+
+@keyframes timzon-rotate { to { transform: rotate(360deg) } }
+@keyframes timzon-sweep { 0%,100% { opacity:.18 } 50% { opacity:.38 } }
+@keyframes timzon-orbit { to { transform: rotate(360deg) translateX(0) } }
+
+@media (prefers-reduced-motion: reduce){
+  .timzon-hand, .timzon-sweep, .timzon-pin { animation: none }
+}
+
+/* Grid */
+.tim-zon-con-grid{
+  margin-top: clamp(14px,2.6vw,24px);
+  display:grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,2.4vw,20px);
+}
+@media (max-width:1100px){ .tim-zon-con-grid{ grid-template-columns:1fr } }
+
+/* Cards */
+.tim-zon-con-card{
+  border:1px solid var(--timzon-border);
+  border-radius:var(--timzon-radius-lg);
+  background: rgba(255,255,255,.06);
+  box-shadow: var(--timzon-shadow-2);
+  backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.tim-zon-con-card-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px;
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--timzon-primary) 12%, transparent),
+    color-mix(in oklab, var(--timzon-accent) 10%, transparent)
+  );
+  border-bottom:1px solid var(--timzon-border);
+}
+.tim-zon-con-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family:'Poppins','Segoe UI',sans-serif }
+.tim-zon-con-section{ padding:12px 14px; display:grid; gap:12px }
+
+/* Inputs */
+.tim-zon-con-field{ display:grid; gap:6px }
+.tim-zon-con-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+.tim-zon-con-input, .tim-zon-con-select, .tim-zon-con-textarea{
+  background:#0e1730; color:#e6ecff; border:1px solid var(--timzon-border);
+  border-radius:10px; padding:12px 14px; outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+  min-height:44px;
+}
+.tim-zon-con-select{ appearance:none }
+.tim-zon-con-input:focus, .tim-zon-con-select:focus{
+  border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px)
+}
+.tim-zon-con-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+/* Buttons */
+.tim-zon-con-btn{
+  --_bg: linear-gradient(180deg, color-mix(in oklab, var(--timzon-primary) 70%, transparent), color-mix(in oklab, var(--timzon-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--timzon-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family:'Poppins','Segoe UI',sans-serif;
+}
+.tim-zon-con-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+.tim-zon-con-btn:active{ transform: translateY(0); filter: brightness(.98) }
+.tim-zon-con-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--timzon-border); box-shadow:none }
+.tim-zon-con-btn-warm{ background: linear-gradient(135deg, var(--timzon-accent), var(--timzon-warm)); border-color:transparent }
+.tim-zon-con-btn-red{ background: linear-gradient(135deg, #EF4444, #F59E0B); border-color: transparent }
+
+/* Pill */
+.tim-zon-con-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border:1px solid var(--timzon-border); border-radius:999px;
+  background: color-mix(in oklab, var(--timzon-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem;
+}
+
+/* Tables and grid */
+.tim-zon-con-table{
+  width:100%; border-collapse:separate; border-spacing:0; overflow:auto; border-radius:10px;
+}
+.tim-zon-con-table th, .tim-zon-con-table td{
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:10px 8px; text-align:center; font-size:.92rem
+}
+.tim-zon-con-table th{
+  position:sticky; top:0; background: rgba(14,23,48,.85); backdrop-filter: blur(6px); z-index:1; font-weight:700
+}
+
+/* Heat cells */
+.tim-zon-con-cell{ border-radius:8px; padding:6px 4px }
+.tim-zon-con-cold{ background: rgba(124,58,237,.14) } /* purple ish */
+.tim-zon-con-okay{ background: rgba(59,130,246,.18) } /* blue */
+.tim-zon-con-good{ background: rgba(16,185,129,.24) }  /* green */
+.tim-zon-con-bad{ background: rgba(239,68,68,.20) }    /* red */
+.tim-zon-con-now{ outline:2px dashed rgba(255,255,255,.28); outline-offset:-3px }
+
+/* Slots list */
+.tim-zon-con-slots{ display:grid; gap:8px }
+.tim-zon-con-slot{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  border:1px solid var(--timzon-border); border-radius:10px; padding:10px 12px; background: rgba(255,255,255,.04)
+}
+.tim-zon-con-slot strong{ letter-spacing:.2px }
+.tim-zon-con-slot .who{ color:#cbd5e1; font-size:.9rem }
+
+/* Toast */
+.tim-zon-con-toast{
+  position: fixed; inset: auto 16px 16px auto;
+  background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--timzon-border);
+  backdrop-filter: blur(8px); box-shadow: var(--timzon-shadow-1);
+  transform: translateY(20px); opacity:0; pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease;
+  z-index: 50;
+}
+.tim-zon-con-toast.show{ transform: translateY(0); opacity:1 }
+
+/* Small helper text */
+.tim-zon-con-subtle{ color:#a8b3c7; font-size:.9rem }
+
+/* Accessible focus */
+:focus-visible{ outline:2px solid color-mix(in oklab, var(--timzon-accent) 60%, #fff); outline-offset:2px }
+
+/* Subtle float */
+@media (prefers-reduced-motion:no-preference){
+  .tim-zon-con-card{ animation: timzon-float 18s ease-in-out infinite }
+  @keyframes timzon-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* Links area */
+.tim-zon-con-more{ margin-top:16px }
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+.card-title {color: #e5e7eb;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+<body>
+
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+ 
+<main class="tim-zon-con-main" id="tim-zon-con-main" aria-label="Time Zone Converter">
+  <!-- HERO -->
+  <section class="tim-zon-con-hero" aria-labelledby="tim-zon-con-title">
+    <div>
+      <h1 class="tim-zon-con-title" id="tim-zon-con-title">Time Zone Converter - Compare Cities and Copy Meeting Friendly Slots</h1>
+      <p class="tim-zon-con-sub">
+        Add cities, set working hours, and see overlap windows at a glance. Copy or export meeting times, generate a tiny link,
+        and avoid the late night shuffle. Everything runs locally in your browser.
+      </p>
+      <div class="tim-zon-con-badges">
+        <span class="tim-zon-con-badge">Local only</span>
+        <span class="tim-zon-con-badge">DST aware</span>
+        <span class="tim-zon-con-badge">Overlap heatmap</span>
+        <span class="tim-zon-con-badge">ICS export</span>
+      </div>
+    </div>
+
+    <!-- Animated hero icon: globe + clock sweep + orbit pins -->
+    <div class="tim-zon-con-hero-art" aria-hidden="true">
+      <svg class="timzon-svg" viewBox="0 0 200 160" role="img" aria-label="Globe and clock icon">
+        <defs>
+          <linearGradient id="timzon-sweep-grad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.00"/>
+            <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.12"/>
+            <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.00"/>
+          </linearGradient>
+          <filter id="timzon-glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="0" stdDeviation="1.2" flood-color="#3B82F6" flood-opacity=".35"/>
+          </filter>
+        </defs>
+
+        <!-- Globe -->
+        <g class="timzon-globe" transform="translate(0,0)" filter="url(#timzon-glow)">
+          <circle cx="100" cy="80" r="54" />
+        </g>
+        <!-- Lat/Lon -->
+        <g class="timzon-latlon">
+          <path d="M46 80h108"/>
+          <path d="M100 26v108"/>
+          <path d="M60 38a54 54 0 0 0 80 0"/>
+          <path d="M60 122a54 54 0 0 1 80 0"/>
+        </g>
+
+        <!-- Clock face -->
+        <g class="timzon-clock">
+          <circle cx="100" cy="80" r="38" />
+          <line class="timzon-hand timzon-hand-hour" x1="100" y1="80" x2="118" y2="80"/>
+          <line class="timzon-hand timzon-hand-min" x1="100" y1="80" x2="100" y2="56"/>
+          <circle cx="100" cy="80" r="2" fill="currentColor"/>
+        </g>
+
+        <!-- Sweep -->
+        <g>
+          <ellipse class="timzon-sweep" cx="100" cy="80" rx="38" ry="8"/>
+        </g>
+
+        <!-- Orbit pins -->
+        <circle class="timzon-pin" cx="100" cy="26" r="2.6"/>
+        <circle class="timzon-pin" cx="154" cy="80" r="2.6"/>
+        <circle class="timzon-pin" cx="46" cy="80" r="2.6"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="tim-zon-con-grid">
+    <!-- LEFT: Controls -->
+    <article class="tim-zon-con-card">
+      <header class="tim-zon-con-card-head">
+        <h2 class="tim-zon-con-card-title">Participants and settings</h2>
+        <div class="tim-zon-con-row">
+          <button class="tim-zon-con-btn tim-zon-con-btn-ghost" id="tim-zon-con-clear">Clear</button>
+          <button class="tim-zon-con-btn" id="tim-zon-con-sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="tim-zon-con-section" id="tim-zon-con-controls">
+        <div class="tim-zon-con-field">
+          <label for="tim-zon-con-add" class="tim-zon-con-label">Add city or time zone</label>
+          <div class="tim-zon-con-row" style="align-items:stretch">
+            <input id="tim-zon-con-add" class="tim-zon-con-input" placeholder="Type a city or IANA time zone (e.g., Europe/Paris)" aria-label="Add time zone"/>
+            <button class="tim-zon-con-btn" id="tim-zon-con-add-btn">Add</button>
+            <button class="tim-zon-con-btn tim-zon-con-btn-ghost" id="tim-zon-con-add-local" title="Add my local zone">Add my zone</button>
+          </div>
+          <p class="tim-zon-con-subtle">Tip: You can also paste a city list like "New York, London, Singapore" and click Add.</p>
+        </div>
+
+        <div class="tim-zon-con-field">
+          <label class="tim-zon-con-label">Participants</label>
+          <div id="tim-zon-con-list" class="tim-zon-con-list" aria-live="polite"></div>
+          <p class="tim-zon-con-subtle">Use the arrows to reorder. Working hours apply per person.</p>
+        </div>
+
+        <div class="tim-zon-con-row">
+          <div class="tim-zon-con-field" style="min-width:160px">
+            <label class="tim-zon-con-label" for="tim-zon-con-date">Date</label>
+            <input id="tim-zon-con-date" type="date" class="tim-zon-con-input" />
+          </div>
+          <div class="tim-zon-con-field" style="min-width:160px">
+            <label class="tim-zon-con-label" for="tim-zon-con-duration">Duration (minutes)</label>
+            <input id="tim-zon-con-duration" type="number" min="15" step="15" value="60" class="tim-zon-con-input"/>
+          </div>
+          <div class="tim-zon-con-field" style="min-width:180px">
+            <label class="tim-zon-con-label" for="tim-zon-con-interval">Granularity</label>
+            <select id="tim-zon-con-interval" class="tim-zon-con-select">
+              <option value="30">30 min</option>
+              <option value="60" selected>60 min</option>
+              <option value="15">15 min</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tim-zon-con-row">
+          <button class="tim-zon-con-btn" id="tim-zon-con-update"><span class="kbd">Enter</span> Update</button>
+          <button class="tim-zon-con-btn tim-zon-con-btn-warm" id="tim-zon-con-copy-link">Copy tiny link</button>
+          <button class="tim-zon-con-btn tim-zon-con-btn-ghost" id="tim-zon-con-export-ics">Export ICS</button>
+        </div>
+
+        <p class="tim-zon-con-subtle">Keyboard: <span class="kbd">Enter</span> update, <span class="kbd">Ctrl</span>+<span class="kbd">C</span> copy best slot, <span class="kbd">Ctrl</span>+<span class="kbd">L</span> tiny link.</p>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="tim-zon-con-card" aria-live="polite">
+      <header class="tim-zon-con-card-head">
+        <h2 class="tim-zon-con-card-title">Overlap heatmap and best slots</h2>
+        <div class="tim-zon-con-row">
+          <span class="tim-zon-con-pill" id="tim-zon-con-stat-now">Now: -</span>
+          <span class="tim-zon-con-pill" id="tim-zon-con-stat-zones">Zones: 0</span>
+          <span class="tim-zon-con-pill" id="tim-zon-con-stat-best">Best: -</span>
+        </div>
+      </header>
+
+      <div class="tim-zon-con-section">
+        <div class="tim-zon-con-row" style="justify-content:space-between; align-items:center">
+          <div class="tim-zon-con-row">
+            <label class="tim-zon-con-label"><input type="checkbox" id="tim-zon-con-show-local" checked/> Show my local time</label>
+            <label class="tim-zon-con-label"><input type="checkbox" id="tim-zon-con-favor-mid" checked/> Favor mid day</label>
+          </div>
+          <div class="tim-zon-con-row">
+            <span class="tim-zon-con-pill">Legend: <span style="margin-left:8px">Good</span></span>
+            <span class="tim-zon-con-pill" style="background: rgba(16,185,129,.24)">  </span>
+            <span class="tim-zon-con-pill" style="background: rgba(59,130,246,.18)">  </span>
+            <span class="tim-zon-con-pill" style="background: rgba(124,58,237,.14)">  </span>
+            <span class="tim-zon-con-pill" style="background: rgba(239,68,68,.20)">  </span>
+          </div>
+        </div>
+
+        <div style="overflow:auto; border:1px solid var(--timzon-border); border-radius:10px; background: rgba(255,255,255,.04)">
+          <table class="tim-zon-con-table" id="tim-zon-con-table" aria-label="Overlap heatmap">
+            <thead id="tim-zon-con-head"></thead>
+            <tbody id="tim-zon-con-body"></tbody>
+          </table>
+        </div>
+
+        <h3 style="margin:6px 0 0">Top meeting friendly slots</h3>
+        <div id="tim-zon-con-slots" class="tim-zon-con-slots" aria-label="Best meeting slots"></div>
+
+        <div class="tim-zon-con-more">
+          <p class="tim-zon-con-subtle">More you might like:
+            <a href="/tools/code-diff-checker-side-by-side">Code Diff Checker</a>,
+            <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+            <a href="/tools/word-counter.html">Word Counter</a>,
+            <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON YAML TOML Converter</a>.
+          </p>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+    <div class="free-tools-guide">
+      <p>Read Time Zone Converter Guide on SnipText Blog Page <a href="/blog/time-zone-converter-compare-cities-overlap-ics-guide.html" class="free-tools-blog-link" style="color: #ccc;">here</a>.</p>
+    </div>
+</main>
+
+<!-- Toast -->
+<div id="tim-zon-con-toast" class="tim-zon-con-toast" role="status" aria-live="polite"></div>
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
+      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
+      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t2" class="card-title">Case Converter</h3>
+      <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
+      <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
+    </article>
+
+  </section>
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+    <!-- Include the JavaScript file for this page -->
+  <script src="/js/index.js" defer></script>
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+(function(){
+  'use strict';
+
+  // ---------- Elements ----------
+  const $ = (id) => document.getElementById(id);
+  const elMain = $('tim-zon-con-main');
+  const elAdd = $('tim-zon-con-add');
+  const elAddBtn = $('tim-zon-con-add-btn');
+  const elAddLocal = $('tim-zon-con-add-local');
+  const elList = $('tim-zon-con-list');
+  const elDate = $('tim-zon-con-date');
+  const elDuration = $('tim-zon-con-duration');
+  const elInterval = $('tim-zon-con-interval');
+  const elUpdate = $('tim-zon-con-update');
+  const elCopyLink = $('tim-zon-con-copy-link');
+  const elExportIcs = $('tim-zon-con-export-ics');
+  const elClear = $('tim-zon-con-clear');
+  const elSample = $('tim-zon-con-sample');
+
+  const elHead = $('tim-zon-con-head');
+  const elBody = $('tim-zon-con-body');
+  const elTable = $('tim-zon-con-table');
+  const elSlots = $('tim-zon-con-slots');
+  const elToast = $('tim-zon-con-toast');
+
+  const elStatNow = $('tim-zon-con-stat-now');
+  const elStatZones = $('tim-zon-con-stat-zones');
+  const elStatBest = $('tim-zon-con-stat-best');
+
+  const elShowLocal = $('tim-zon-con-show-local');
+  const elFavorMid = $('tim-zon-con-favor-mid');
+
+  // ---------- Utilities ----------
+  const showToast = (msg) => {
+    elToast.textContent = msg;
+    elToast.classList.add('show');
+    setTimeout(()=>elToast.classList.remove('show'), 1800);
+  };
+
+  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+
+  const todayISO = () => {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  };
+
+  // ---------- Time zone helpers ----------
+  // Try Intl.supportedValuesOf, fallback to a small list
+  const allZones = (() => {
+    if (typeof Intl.supportedValuesOf === 'function') {
+      try { return Intl.supportedValuesOf('timeZone'); } catch {}
+    }
+    return [
+      'UTC','Europe/London','Europe/Paris','Europe/Berlin','Asia/Dubai','Asia/Karachi',
+      'Asia/Kolkata','Asia/Singapore','Asia/Hong_Kong','Asia/Tokyo','Australia/Sydney',
+      'America/New_York','America/Chicago','America/Denver','America/Los_Angeles',
+      'America/Sao_Paulo','Africa/Johannesburg'
+    ];
+  })();
+
+  const guessLocalZone = () => Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+
+  const toZoned = (dateObj, timeZone) => {
+    const fmt = new Intl.DateTimeFormat('en-GB',{
+      timeZone, year:'numeric', month:'2-digit', day:'2-digit',
+      hour:'2-digit', minute:'2-digit', hour12:false
+    });
+    const parts = fmt.formatToParts(dateObj).reduce((a,p)=>{a[p.type]=p.value; return a},{});
+    const y = Number(parts.year), m = Number(parts.month), d = Number(parts.day);
+    const hh = Number(parts.hour), mm = Number(parts.minute);
+    return { y,m,d,hh,mm, label: `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}` };
+  };
+
+  const fmtTime = (d, tz) => {
+    return new Intl.DateTimeFormat('en-US',{ timeZone: tz, hour:'numeric', minute:'2-digit' }).format(d);
+  };
+  const fmtDay = (d, tz) => {
+    return new Intl.DateTimeFormat('en-US',{ timeZone: tz, weekday:'short' }).format(d);
+  };
+
+  const parseCityInput = (txt) => {
+    if (!txt) return [];
+    // Allow comma separated list
+    return txt.split(',').map(s => s.trim()).filter(Boolean);
+  };
+
+  const findZone = (q) => {
+    // If already an exact IANA zone
+    if (allZones.includes(q)) return q;
+    const norm = q.toLowerCase().replace(/\s+/g,'_').replace(/-/g,'_');
+    // Try mapped city hints
+    const cityMap = {
+      'new_york':'America/New_York',
+      'nyc':'America/New_York',
+      'san_francisco':'America/Los_Angeles',
+      'los_angeles':'America/Los_Angeles',
+      'la':'America/Los_Angeles',
+      'chicago':'America/Chicago',
+      'denver':'America/Denver',
+      'london':'Europe/London',
+      'paris':'Europe/Paris',
+      'berlin':'Europe/Berlin',
+      'dubai':'Asia/Dubai',
+      'karachi':'Asia/Karachi',
+      'mumbai':'Asia/Kolkata',
+      'delhi':'Asia/Kolkata',
+      'kolkata':'Asia/Kolkata',
+      'singapore':'Asia/Singapore',
+      'hong_kong':'Asia/Hong_Kong',
+      'tokyo':'Asia/Tokyo',
+      'sydney':'Australia/Sydney',
+      'johannesburg':'Africa/Johannesburg',
+      'sao_paulo':'America/Sao_Paulo'
+    };
+    if (cityMap[norm]) return cityMap[norm];
+    // Fuzzy startsWith on zone list
+    const hit = allZones.find(z => z.toLowerCase().includes(norm));
+    return hit || null;
+  };
+
+  // ---------- State ----------
+  const state = {
+    date: todayISO(),
+    duration: 60,
+    interval: 60,
+    favorMid: true,
+    showLocal: true,
+    people: [] // { id, label, zone, start:9, end:17 }
+  };
+
+  // ---------- DOM builders ----------
+  const personRow = (p) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'tim-zon-con-slot';
+    wrap.setAttribute('data-id', p.id);
+
+    const left = document.createElement('div');
+    left.style.display = 'grid';
+    left.style.gap = '4px';
+
+    const title = document.createElement('strong');
+    title.textContent = `${p.label} — ${p.zone}`;
+    left.appendChild(title);
+
+    const times = document.createElement('div');
+    times.className = 'tim-zon-con-subtle';
+    times.textContent = `Working hours: ${String(p.start).padStart(2,'0')}:00 to ${String(p.end).padStart(2,'0')}:00`;
+    left.appendChild(times);
+
+    const right = document.createElement('div');
+    right.className = 'tim-zon-con-row';
+
+    const startSel = hourSelect(p.start);
+    const endSel = hourSelect(p.end);
+    startSel.title = 'Start hour';
+    endSel.title = 'End hour';
+    startSel.addEventListener('change', () => { p.start = Number(startSel.value); update() });
+    endSel.addEventListener('change', () => { p.end = Number(endSel.value); update() });
+
+    const up = btn('↑','Move up','tim-zon-con-btn-ghost');
+    const down = btn('↓','Move down','tim-zon-con-btn-ghost');
+    const del = btn('Remove','Remove','tim-zon-con-btn-red');
+
+    up.addEventListener('click', () => movePerson(p.id, -1));
+    down.addEventListener('click', () => movePerson(p.id, +1));
+    del.addEventListener('click', () => removePerson(p.id));
+
+    right.append(startSel,endSel,up,down,del);
+    wrap.append(left,right);
+    return wrap;
+  };
+
+  const hourSelect = (val) => {
+    const s = document.createElement('select');
+    s.className = 'tim-zon-con-select';
+    for (let h=0; h<24; h++){
+      const o = document.createElement('option');
+      o.value = h; o.textContent = String(h).padStart(2,'0') + ':00';
+      if (h===val) o.selected = true;
+      s.appendChild(o);
+    }
+    return s;
+  };
+
+  const btn = (text, title, extraClass) => {
+    const b = document.createElement('button');
+    b.className = 'tim-zon-con-btn ' + (extraClass||'');
+    b.textContent = text;
+    b.title = title || '';
+    return b;
+  };
+
+  // ---------- People ops ----------
+  const addZones = (labels) => {
+    let added = 0;
+    labels.forEach(label=>{
+      const zone = findZone(label);
+      if (!zone) return;
+      const id = crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2);
+      state.people.push({ id, label: label.trim(), zone, start:9, end:17 });
+      added++;
+    });
+    renderPeople();
+    if (added) update();
+    else showToast('No matching time zones found');
+  };
+
+  const removePerson = (id) => {
+    const i = state.people.findIndex(p=>p.id===id);
+    if (i>=0){ state.people.splice(i,1); renderPeople(); update(); }
+  };
+
+  const movePerson = (id, dir) => {
+    const i = state.people.findIndex(p=>p.id===id);
+    if (i<0) return;
+    const j = clamp(i+dir, 0, state.people.length-1);
+    if (i===j) return;
+    const [row] = state.people.splice(i,1);
+    state.people.splice(j,0,row);
+    renderPeople(); update();
+  };
+
+  const renderPeople = () => {
+    elList.innerHTML = '';
+    state.people.forEach(p => elList.appendChild(personRow(p)));
+    elStatZones.textContent = `Zones: ${state.people.length}`;
+  };
+
+  // ---------- Overlap and scoring ----------
+  const buildSlots = () => {
+    const base = new Date(elDate.value + 'T00:00:00');
+    const step = Number(elInterval.value);
+    const duration = Number(elDuration.value);
+
+    const slots = [];
+    for (let mins=0; mins<24*60; mins += step){
+      const startUTC = new Date(base.getTime() + mins*60000);
+      const endUTC = new Date(startUTC.getTime() + duration*60000);
+
+      // For each person, check if start to end stays inside working hours in their zone
+      const who = [];
+      let countIn = 0;
+      let penalty = 0; // mild penalty for early or late times
+      for (const p of state.people){
+        const sZ = toZoned(startUTC, p.zone);
+        const eZ = toZoned(endUTC, p.zone);
+        const sH = sZ.hh + sZ.mm/60;
+        const eH = eZ.hh + eZ.mm/60;
+        // If slot crosses midnight for that zone, consider not in working hours
+        const crossesDay = (sZ.d !== eZ.d) || (sZ.m !== eZ.m) || (sZ.y !== eZ.y);
+        const inHours = !crossesDay && sH >= p.start && eH <= p.end;
+        if (inHours) {
+          countIn++;
+          who.push(`${p.label} ${String(Math.round(sH)).padStart(2,'0')}:${String(sZ.mm).padStart(2,'0')}`);
+          // Penalty if near edges
+          const mid = (p.start + p.end)/2;
+          penalty += Math.abs(sH - mid);
+        }
+      }
+      if (countIn === 0) continue;
+
+      // Score: more people is better, lower penalty is better, mid day favored if chosen
+      const baseScore = countIn * 100 - penalty * (state.favorMid ? 6 : 3);
+      slots.push({ startUTC, endUTC, countIn, who, score: baseScore });
+    }
+
+    // Sort by score desc then earliest
+    slots.sort((a,b) => b.score - a.score || a.startUTC - b.startUTC);
+    return slots;
+  };
+
+  const cellQuality = (countIn, total) => {
+    if (countIn === total) return 'tim-zon-con-good';
+    if (countIn >= Math.max(2, Math.ceil(total*0.66))) return 'tim-zon-con-okay';
+    if (countIn >= 1) return 'tim-zon-con-cold';
+    return 'tim-zon-con-bad';
+  };
+
+  // ---------- Render heatmap ----------
+  const renderTable = () => {
+    const base = new Date(elDate.value + 'T00:00:00');
+    const step = Number(elInterval.value);
+    const rows = state.people.length;
+    if (!rows){ elHead.innerHTML=''; elBody.innerHTML=''; return; }
+
+    // Header times in my local zone or UTC
+    const headCells = ['<th>Person</th>'];
+    for (let mins=0; mins<24*60; mins+=step){
+      const d = new Date(base.getTime() + mins*60000);
+      const tz = elShowLocal.checked ? guessLocalZone() : 'UTC';
+      const label = fmtTime(d, tz);
+      headCells.push(`<th>${label}</th>`);
+    }
+    elHead.innerHTML = `<tr>${headCells.join('')}</tr>`;
+
+    // Body
+    const now = new Date();
+    elBody.innerHTML = '';
+    for (const p of state.people){
+      const tr = document.createElement('tr');
+      const th = document.createElement('th');
+      th.style.textAlign = 'left';
+      th.innerHTML = `<div style="display:grid;gap:4px">
+          <div>${p.label}</div>
+          <div class="tim-zon-con-subtle">${p.zone} • ${fmtDay(base,p.zone)}</div>
+        </div>`;
+      tr.appendChild(th);
+
+      for (let mins=0; mins<24*60; mins+=step){
+        const startUTC = new Date(base.getTime() + mins*60000);
+        const endUTC = new Date(startUTC.getTime() + Number(elDuration.value)*60000);
+        const sZ = toZoned(startUTC, p.zone);
+        const eZ = toZoned(endUTC, p.zone);
+        const sH = sZ.hh + sZ.mm/60;
+        const eH = eZ.hh + eZ.mm/60;
+        const crossesDay = (sZ.d !== eZ.d) || (sZ.m !== eZ.m) || (sZ.y !== eZ.y);
+        const inHours = !crossesDay && sH >= p.start && eH <= p.end;
+
+        // Count how many people would be in hours for this slot
+        let countIn = 0;
+        for (const q of state.people){
+          const qs = toZoned(startUTC, q.zone);
+          const qe = toZoned(endUTC, q.zone);
+          const qH = qs.hh + qs.mm/60;
+          const qHe = qe.hh + qe.mm/60;
+          const crosses = (qs.d !== qe.d) || (qs.m !== qe.m) || (qs.y !== qe.y);
+          const ok = !crosses && qH >= q.start && qHe <= q.end;
+          if (ok) countIn++;
+        }
+
+        const td = document.createElement('td');
+        const div = document.createElement('div');
+        div.className = `tim-zon-con-cell ${cellQuality(countIn, state.people.length)}`;
+        if (inHours) div.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,.08)';
+
+        // Mark "now" column for local zone view
+        if (elShowLocal.checked){
+          const colTime = new Date(base.getTime() + mins*60000);
+          const my = toZoned(now, guessLocalZone());
+          const colZ = toZoned(colTime, guessLocalZone());
+          if (my.hh === colZ.hh && Math.abs(my.mm - colZ.mm) < step) {
+            div.classList.add('tim-zon-con-now');
+          }
+        }
+
+        div.title = `${p.label} ${String(Math.round(sH)).padStart(2,'0')}:${String(sZ.mm).padStart(2,'0')} • matches ${countIn}/${state.people.length}`;
+        td.appendChild(div);
+        tr.appendChild(td);
+      }
+      elBody.appendChild(tr);
+    }
+  };
+
+  // ---------- Render best slots ----------
+  const renderSlots = () => {
+    const slots = buildSlots().slice(0, 8);
+    elSlots.innerHTML = '';
+    if (!slots.length){
+      const p = document.createElement('p');
+      p.className = 'tim-zon-con-subtle';
+      p.textContent = 'No overlapping slots for the chosen duration. Try shorter duration or adjust working hours.';
+      elSlots.appendChild(p);
+      elStatBest.textContent = 'Best: -';
+      return;
+    }
+
+    const fmtSlotLine = (s) => {
+      const lines = state.people.map(p=>{
+        const sZ = toZoned(s.startUTC, p.zone);
+        const eZ = toZoned(s.endUTC, p.zone);
+        const st = `${String(sZ.hh).padStart(2,'0')}:${String(sZ.mm).padStart(2,'0')}`;
+        const et = `${String(eZ.hh).padStart(2,'0')}:${String(eZ.mm).padStart(2,'0')}`;
+        return `${p.label} — ${st} to ${et} (${p.zone})`;
+      });
+      return lines.join(' | ');
+    };
+
+    elStatBest.textContent = `Best: matches ${slots[0].countIn}/${state.people.length}`;
+
+    slots.forEach((s, idx)=>{
+      const line = fmtSlotLine(s);
+      const div = document.createElement('div');
+      div.className = 'tim-zon-con-slot';
+
+      const left = document.createElement('div');
+      left.innerHTML = `<strong>#${idx+1}</strong> <span class="who">${line}</span>`;
+
+      const copy = btn('Copy','Copy slot','');
+      const ics = btn('ICS','Export ICS','tim-zon-con-btn-ghost');
+
+      copy.addEventListener('click', async ()=>{
+        try{ await navigator.clipboard.writeText(line); showToast('Slot copied'); }catch{ showToast('Copy failed') }
+      });
+
+      ics.addEventListener('click', ()=>{
+        const file = makeICS(s);
+        downloadText(file.content, file.filename);
+      });
+
+      const right = document.createElement('div');
+      right.className = 'tim-zon-con-row';
+      right.append(copy, ics);
+
+      div.append(left,right);
+      elSlots.appendChild(div);
+    });
+  };
+
+  // ---------- ICS export ----------
+  const pad = (n) => String(n).padStart(2,'0');
+  const toICSDate = (d) => {
+    return d.getUTCFullYear() + pad(d.getUTCMonth()+1) + pad(d.getUTCDate()) + 'T' + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + '00Z';
+  };
+  const makeICS = (slot) => {
+    const uid = (crypto.randomUUID && crypto.randomUUID()) || (Date.now() + '@sniptext');
+    const dtStart = toICSDate(slot.startUTC);
+    const dtEnd = toICSDate(slot.endUTC);
+    const title = 'Meeting';
+    const desc = 'Planned via SnipText Time Zone Converter';
+    const loc = state.people.map(p=>p.zone).join(', ');
+
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SnipText//TimeZoneConverter//EN
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${toICSDate(new Date())}
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:${title}
+DESCRIPTION:${desc}
+LOCATION:${loc}
+END:VEVENT
+END:VCALENDAR`;
+    return { filename:'meeting.ics', content: ics };
+  };
+
+  const downloadText = (text, filename) => {
+    const blob = new Blob([text], {type:'text/calendar;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  // ---------- Share tiny link ----------
+  const encodeState = () => {
+    const data = {
+      d: state.date,
+      du: state.duration,
+      iv: state.interval,
+      fm: state.favorMid ? 1 : 0,
+      sl: state.showLocal ? 1 : 0,
+      ppl: state.people.map(p=>[p.label,p.zone,p.start,p.end])
+    };
+    const json = JSON.stringify(data);
+    // small base64 url safe
+    const b64 = btoa(unescape(encodeURIComponent(json))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+    return b64;
+  };
+  const decodeState = (b64) => {
+    try{
+      const json = decodeURIComponent(escape(atob(b64.replace(/-/g,'+').replace(/_/g,'/'))));
+      return JSON.parse(json);
+    }catch{ return null }
+  };
+
+  const hydrateFromHash = () => {
+    if (!location.hash) return false;
+    const hash = location.hash.slice(1);
+    const data = decodeState(hash);
+    if (!data) return false;
+
+    state.date = data.d || todayISO();
+    state.duration = Number(data.du||60);
+    state.interval = Number(data.iv||60);
+    state.favorMid = !!data.fm;
+    state.showLocal = !!data.sl;
+    state.people = (data.ppl||[]).map(([label,zone,start,end])=>({
+      id: (crypto.randomUUID && crypto.randomUUID()) || String(Math.random()).slice(2),
+      label, zone, start:Number(start), end:Number(end)
+    }));
+
+    elDate.value = state.date;
+    elDuration.value = state.duration;
+    elInterval.value = state.interval;
+    elFavorMid.checked = state.favorMid;
+    elShowLocal.checked = state.showLocal;
+
+    renderPeople(); update();
+    return true;
+  };
+
+  // ---------- Update cycle ----------
+  const update = () => {
+    state.date = elDate.value || todayISO();
+    state.duration = Number(elDuration.value || 60);
+    state.interval = Number(elInterval.value || 60);
+    state.favorMid = elFavorMid.checked;
+    state.showLocal = elShowLocal.checked;
+
+    // Stats now
+    const now = new Date();
+    elStatNow.textContent = `Now: ${fmtTime(now, guessLocalZone())} ${state.showLocal ? '' : 'UTC view'}`;
+
+    renderTable();
+    renderSlots();
+  };
+
+  // ---------- Wire up ----------
+  // Defaults
+  elDate.value = todayISO();
+
+  elAddBtn.addEventListener('click', ()=>{
+    const list = parseCityInput(elAdd.value);
+    if (!list.length){ showToast('Type a city or time zone'); return; }
+    addZones(list);
+    elAdd.value = '';
+  });
+
+  elAddLocal.addEventListener('click', ()=>{
+    addZones([guessLocalZone()]);
+  });
+
+  elUpdate.addEventListener('click', update);
+  elClear.addEventListener('click', ()=>{
+    state.people = [];
+    renderPeople(); update();
+  });
+
+  elSample.addEventListener('click', ()=>{
+    state.people = [
+      { id:'1', label:'New York', zone:'America/New_York', start:9, end:17 },
+      { id:'2', label:'London', zone:'Europe/London', start:9, end:17 },
+      { id:'3', label:'Singapore', zone:'Asia/Singapore', start:9, end:18 }
+    ];
+    elInterval.value = '60';
+    elDuration.value = '60';
+    elFavorMid.checked = true;
+    elShowLocal.checked = true;
+    elDate.value = todayISO();
+    renderPeople(); update();
+    showToast('Sample loaded');
+  });
+
+  elCopyLink.addEventListener('click', async ()=>{
+    const hash = encodeState();
+    const url = location.origin + location.pathname + '#' + hash;
+    try{
+      await navigator.clipboard.writeText(url);
+      showToast('Tiny link copied');
+    }catch{
+      showToast('Copy failed');
+    }
+  });
+
+  elExportIcs.addEventListener('click', ()=>{
+    const best = buildSlots()[0];
+    if (!best){ showToast('No slot to export'); return; }
+    const file = makeICS(best);
+    downloadText(file.content, file.filename);
+  });
+
+  elFavorMid.addEventListener('change', update);
+  elShowLocal.addEventListener('change', update);
+  elDate.addEventListener('change', update);
+  elDuration.addEventListener('input', update);
+  elInterval.addEventListener('change', update);
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') { e.preventDefault(); update(); }
+    if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='c'){
+      const firstCopyBtn = elSlots.querySelector('.tim-zon-con-slot button');
+      if (firstCopyBtn) { e.preventDefault(); firstCopyBtn.click(); }
+    }
+    if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='l'){
+      e.preventDefault(); elCopyLink.click();
+    }
+  });
+
+  // Start with local zone
+  if (!hydrateFromHash()){
+    addZones([guessLocalZone()]);
+    update();
+  }
+})();
+</script>
+</body>
+</html>

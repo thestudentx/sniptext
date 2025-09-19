@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/">
+
+  <!-- Primary SEO -->
+  <title>JSON ↔ YAML ↔ TOML Converter - Pretty format, safe parse, auto detect, copy and download | SnipText</title>
+  <meta name="description" content="Convert JSON, YAML, and TOML both ways. Pretty print, minify, sort keys, auto detect input, copy and download, drag and drop files, and share tiny links. Runs privately in your browser using js-yaml and TOML UMD." />
+  <meta name="keywords" content="json to yaml, yaml to json, toml to json, json to toml, yaml to toml, toml to yaml, online converter, pretty print json, sort keys, js-yaml, toml-js, private in browser" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/json-yaml-toml-converter-pretty-format-parse-sniptext" />
+  <link rel="alternate" href="https://checkai.pro/tools/json-yaml-toml-converter-pretty-format-parse-sniptext" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/json-yaml-toml-converter-pretty-format-parse-sniptext" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="JSON ↔ YAML ↔ TOML Converter" />
+  <meta property="og:description" content="Fast, private converter with pretty print, minify, sort keys, auto detect, copy and download." />
+  <meta property="og:url" content="https://checkai.pro/tools/json-yaml-toml-converter-pretty-format-parse-sniptext" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="JSON YAML TOML converter with dual panels and arrows" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JSON ↔ YAML ↔ TOML Converter" />
+  <meta name="twitter:description" content="Convert between JSON, YAML, and TOML. Pretty print, minify, sort keys, auto detect, copy and download. Private and fast." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts (brand stack) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText JSON YAML TOML Converter",
+    "url":"https://checkai.pro/tools/json-yaml-toml-converter-pretty-format-parse-sniptext",
+    "applicationCategory":"DeveloperApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "JSON ↔ YAML ↔ TOML both ways",
+      "Pretty print and minify",
+      "Auto detect input format",
+      "Sort keys for stable diffs",
+      "Drag and drop or paste",
+      "Copy and download output",
+      "Round trip integrity check",
+      "Tiny share link for small snippets"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is the conversion private","acceptedAnswer":{"@type":"Answer","text":"Yes. The converter runs locally in your browser. Your data does not leave your device."}},
+      {"@type":"Question","name":"Can I convert big files","acceptedAnswer":{"@type":"Answer","text":"The tool handles typical configs and API payloads. For very large files, disable animations and live preview for best speed."}},
+      {"@type":"Question","name":"Do you preserve types across formats","acceptedAnswer":{"@type":"Answer","text":"Yes. We use js-yaml and TOML UMD to parse and stringify with careful options. Some edge cases like large integers or timestamps can differ by format. Use Round Trip Check to verify."}}
+    ]
+  }
+  </script>
+
+  <style>
+/* ==========================================================
+   SNIPTEXT • JSON ↔ YAML ↔ TOML CONVERTER
+   Dark themed with brand gradients • classes/ids include 'jso-yam-tom'
+   ========================================================== */
+:root{
+  /* Brand tokens with tool specific names - include a word from the tool name */
+  --jsoyam-primary:#1D4ED8;   /* color-primary */
+  --jsoyam-accent:#3B82F6;    /* color-accent */
+  --jsoyam-bg:#0F172A;        /* color-bg-dark */
+  --jsoyam-bg-soft:#1d1f2f;   /* color-footer-bg */
+  --jsoyam-white:#ffffff;
+  --jsoyam-text:#E6EEF8;
+  --jsoyam-muted:#AAB6C7;
+  --jsoyam-border:rgba(255,255,255,0.14);
+  --jsoyam-warm:#ff7c4c;      /* gradient cta end */
+  --jsoyam-warm-2:#e85d27;    /* used often */
+
+  --jsoyam-green:#10B981;
+  --jsoyam-red:#EF4444;
+  --jsoyam-yellow:#F59E0B;
+
+  --jsoyam-radius-xl:20px;
+  --jsoyam-radius-lg:14px;
+  --jsoyam-radius-md:10px;
+
+  --jsoyam-shadow-1:0 10px 30px rgba(0,0,0,.35);
+  --jsoyam-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--jsoyam-text);
+  font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 12% -10%, color-mix(in oklab, var(--jsoyam-primary) 26%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, color-mix(in oklab, var(--jsoyam-accent) 22%, transparent), transparent 52%),
+    radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--jsoyam-warm) 14%, transparent), transparent 58%),
+    linear-gradient(180deg, var(--jsoyam-bg) 0%, var(--jsoyam-bg-soft) 100%);
+  background-attachment: fixed;
+}
+
+/* Page shell */
+.jso-yam-tom-main{
+  width:min(1200px,92vw);
+  margin: clamp(16px,3vw,40px) auto 80px;
+}
+
+/* Hero */
+.jso-yam-tom-hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px,2.4vw,22px); align-items:center;
+  border:1px solid var(--jsoyam-border); border-radius:var(--jsoyam-radius-xl);
+  padding: clamp(18px,3vw,28px);
+  background: linear-gradient(135deg,
+    color-mix(in oklab, var(--jsoyam-primary) 20%, transparent),
+    color-mix(in oklab, var(--jsoyam-accent) 18%, transparent)
+  ) border-box;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--jsoyam-shadow-1);
+  position:relative; overflow:hidden;
+}
+.jso-yam-tom-hero::after{
+  content:""; position:absolute; inset:-3px; filter: blur(16px); opacity:.6; pointer-events:none;
+  background:
+    radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--jsoyam-primary) 28%, transparent), transparent 65%),
+    radial-gradient(460px 280px at 86% 0%,  color-mix(in oklab, var(--jsoyam-accent) 26%, transparent), transparent 62%);
+}
+@media (max-width:980px){ .jso-yam-tom-hero{ grid-template-columns:1fr } }
+
+.jso-yam-tom-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.2px; line-height:1.12;
+  font-family:'Poppins','Segoe UI',sans-serif;
+  font-size: clamp(22px,3.2vw,36px);
+  background: linear-gradient(90deg,#fff,
+    color-mix(in oklab, var(--jsoyam-accent) 54%, #fff) 38%,
+    color-mix(in oklab, var(--jsoyam-warm) 40%, #fff) 78%, #fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.jso-yam-tom-sub{ margin:6px 0 0; color:var(--jsoyam-muted); font-size:clamp(14px,1.8vw,16px) }
+.jso-yam-tom-badges{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.jso-yam-tom-badge{
+  padding:6px 10px; border:1px solid var(--jsoyam-border); border-radius:999px;
+  background: color-mix(in oklab, var(--jsoyam-bg) 72%, transparent); color:#dbe7ff; font-size:.82rem;
+}
+
+/* Animated hero icon: triple nodes with rotating arrows */
+.jso-yam-tom-hero-art svg.jsoyam-svg { justify-self: end; width:min(280px,44vw); height:auto; display:block; color:#d6e2ff }
+
+/* Pulse circles and rotating arrows */
+.jsoyam-node { transform-origin: center; animation: jsoyam-pulse 3s ease-in-out infinite }
+.jsoyam-arrow { transform-origin: 50% 50%; animation: jsoyam-rotate 8s linear infinite }
+.jsoyam-arrow:nth-child(2){ animation-delay:-2.6s }
+.jsoyam-arrow:nth-child(3){ animation-delay:-5.2s }
+
+@keyframes jsoyam-pulse {
+  0%,100%{ filter: drop-shadow(0 0 0 rgba(59,130,246,.0)); opacity:.9 }
+  50%    { filter: drop-shadow(0 0 12px rgba(59,130,246,.35)); opacity:1 }
+}
+@keyframes jsoyam-rotate {
+  from { transform: rotate(0deg) }
+  to   { transform: rotate(360deg) }
+}
+
+/* Grid */
+.jso-yam-tom-grid{
+  margin-top: clamp(14px,2.6vw,24px);
+  display:grid; grid-template-columns: 1fr 1fr; gap: clamp(12px,2.4vw,20px);
+}
+@media (max-width:1100px){ .jso-yam-tom-grid{ grid-template-columns:1fr } }
+
+/* Cards */
+.jso-yam-tom-card{
+  border:1px solid var(--jsoyam-border);
+  border-radius:var(--jsoyam-radius-lg);
+  background: rgba(255,255,255,.06);
+  box-shadow: var(--jsoyam-shadow-2);
+  backdrop-filter: blur(10px);
+  overflow:hidden;
+}
+.jso-yam-tom-card-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:12px 14px;
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--jsoyam-primary) 12%, transparent),
+    color-mix(in oklab, var(--jsoyam-accent) 10%, transparent)
+  );
+  border-bottom:1px solid var(--jsoyam-border);
+}
+.jso-yam-tom-card-title{ margin:0; font-size:13px; letter-spacing:.35px; text-transform:uppercase; opacity:.9; font-family:'Poppins','Segoe UI',sans-serif }
+.jso-yam-tom-section{ padding:12px 14px; display:grid; gap:12px }
+
+/* Inputs */
+.jso-yam-tom-field{ display:grid; gap:6px }
+.jso-yam-tom-label{ font-weight:700; font-size:.95rem; color:#dfe7ff; letter-spacing:.2px }
+.jso-yam-tom-input, .jso-yam-tom-select, .jso-yam-tom-textarea{
+  background:#0e1730; color:#e6ecff; border:1px solid var(--jsoyam-border);
+  border-radius:10px; padding:12px 14px; outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+  min-height:44px;
+}
+.jso-yam-tom-textarea{
+  min-height:240px; resize:vertical; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  line-height:1.45; font-size:13px; white-space:pre;
+}
+.jso-yam-tom-select{ appearance:none }
+.jso-yam-tom-input:focus, .jso-yam-tom-select:focus, .jso-yam-tom-textarea:focus{
+  border-color: rgba(59,130,246,.55); box-shadow:0 0 0 3px rgba(59,130,246,.25); transform:translateY(-1px)
+}
+.jso-yam-tom-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+
+/* Buttons */
+.jso-yam-tom-btn{
+  --_bg: linear-gradient(180deg, color-mix(in oklab, var(--jsoyam-primary) 70%, transparent), color-mix(in oklab, var(--jsoyam-accent) 62%, transparent));
+  --_txt:#fff; --_bd: color-mix(in oklab, #000 12%, var(--jsoyam-primary));
+  appearance:none; border:1px solid var(--_bd); background:var(--_bg); color:var(--_txt);
+  padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px; letter-spacing:.3px; cursor:pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;
+  box-shadow: 0 10px 20px rgba(29,78,216,.22), 0 6px 14px rgba(59,130,246,.16);
+  font-family:'Poppins','Segoe UI',sans-serif;
+}
+.jso-yam-tom-btn:hover{ transform: translateY(-1px); filter: brightness(1.06) }
+.jso-yam-tom-btn:active{ transform: translateY(0); filter: brightness(.98) }
+.jso-yam-tom-btn-ghost{ background:transparent; color:#e5e7eb; border:1px dashed var(--jsoyam-border); box-shadow:none }
+.jso-yam-tom-btn-warm{ background: linear-gradient(135deg, var(--jsoyam-accent), var(--jsoyam-warm)); border-color:transparent }
+.jso-yam-tom-btn-red{ background: linear-gradient(135deg, #EF4444, #F59E0B); border-color: transparent }
+
+/* Output panel */
+.jso-yam-tom-pane{
+  border:1px solid var(--jsoyam-border); border-radius:10px; overflow:auto; background: rgba(14,23,48,.6);
+  max-height:560px; position:relative;
+}
+.jso-yam-tom-preview{ white-space:pre; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace; padding:12px; font-size:13px }
+
+/* Status pills */
+.jso-yam-tom-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border:1px solid var(--jsoyam-border); border-radius:999px;
+  background: color-mix(in oklab, var(--jsoyam-bg) 72%, transparent); color:#bcd3ff; font-size:.8rem;
+}
+
+/* Toast */
+.jso-yam-tom-toast{
+  position: fixed; inset: auto 16px 16px auto;
+  background: #0b1223ee; color:#e5e7eb; padding: 10px 14px; border-radius: 12px; border:1px solid var(--jsoyam-border);
+  backdrop-filter: blur(8px); box-shadow: var(--jsoyam-shadow-1);
+  transform: translateY(20px); opacity:0; pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease;
+  z-index: 50;
+}
+.jso-yam-tom-toast.show{ transform: translateY(0); opacity:1 }
+
+/* Subtle float */
+@media (prefers-reduced-motion:no-preference){
+  .jso-yam-tom-card{ animation: jsoyam-float 18s ease-in-out infinite }
+  @keyframes jsoyam-float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+}
+
+/* Utility */
+.kbd{
+  font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  background: color-mix(in oklab, var(--jsoyam-bg) 78%, transparent); color:#cbd5e1;
+  padding:3px 6px; border-radius:8px; border:1px solid var(--jsoyam-border);
+}
+
+/* Accessible focus */
+:focus-visible{ outline:2px solid color-mix(in oklab, var(--jsoyam-accent) 60%, #fff); outline-offset:2px }
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+  </style>
+</head>
+<body>
+
+
+
+    
+  
+<nav id="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/index.html">Snip Text</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+<main class="jso-yam-tom-main" id="jso-yam-tom-main" aria-label="JSON YAML TOML Converter">
+  <!-- HERO -->
+  <section class="jso-yam-tom-hero" aria-labelledby="jso-yam-tom-title">
+    <div>
+      <h1 class="jso-yam-tom-title" id="jso-yam-tom-title">JSON ↔ YAML ↔ TOML Converter</h1>
+      <p class="jso-yam-tom-sub">
+        Paste or drop a file, auto detect the format, and convert both ways. Pretty print, minify, sort keys, copy and download, round trip check, and tiny share links for small snippets. Private and fast.
+      </p>
+      <div class="jso-yam-tom-badges">
+        <span class="jso-yam-tom-badge">Local only</span>
+        <span class="jso-yam-tom-badge">Auto detect</span>
+        <span class="jso-yam-tom-badge">Pretty and minify</span>
+        <span class="jso-yam-tom-badge">Round trip check</span>
+      </div>
+    </div>
+
+    <!-- Animated hero icon: JSON, YAML, TOML nodes with rotating arrows -->
+    <div class="jso-yam-tom-hero-art" aria-hidden="true">
+      <svg class="jsoyam-svg" viewBox="0 0 240 180" role="img" aria-label="JSON YAML TOML conversion icon">
+        <!-- Nodes -->
+        <g class="jsoyam-node" id="node-json">
+          <circle cx="60" cy="60" r="22" fill="none" stroke="currentColor" stroke-width="2" opacity="0.85"/>
+          <text x="60" y="64" text-anchor="middle" font-size="10" font-family="monospace" fill="currentColor">JSON</text>
+        </g>
+        <g class="jsoyam-node" id="node-yaml">
+          <circle cx="180" cy="60" r="22" fill="none" stroke="currentColor" stroke-width="2" opacity="0.85"/>
+          <text x="180" y="64" text-anchor="middle" font-size="10" font-family="monospace" fill="currentColor">YAML</text>
+        </g>
+        <g class="jsoyam-node" id="node-toml">
+          <circle cx="120" cy="128" r="22" fill="none" stroke="currentColor" stroke-width="2" opacity="0.85"/>
+          <text x="120" y="132" text-anchor="middle" font-size="10" font-family="monospace" fill="currentColor">TOML</text>
+        </g>
+
+        <!-- Rotating arrows around center -->
+        <g class="jsoyam-arrow">
+          <path d="M60 60 C 90 20, 150 20, 180 60" fill="none" stroke="currentColor" stroke-width="2" opacity=".9"/>
+          <polygon points="176,52 186,60 176,68" fill="currentColor" opacity=".9"/>
+        </g>
+        <g class="jsoyam-arrow">
+          <path d="M180 60 C 170 100, 140 120, 120 128" fill="none" stroke="currentColor" stroke-width="2" opacity=".9"/>
+          <polygon points="124,118 118,130 132,126" fill="currentColor" opacity=".9"/>
+        </g>
+        <g class="jsoyam-arrow">
+          <path d="M120 128 C 100 120, 70 100, 60 60" fill="none" stroke="currentColor" stroke-width="2" opacity=".9"/>
+          <polygon points="52,64 60,52 64,66" fill="currentColor" opacity=".9"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="jso-yam-tom-grid">
+    <!-- LEFT: Inputs -->
+    <article class="jso-yam-tom-card">
+      <header class="jso-yam-tom-card-head">
+        <h2 class="jso-yam-tom-card-title">Enter or drop content</h2>
+        <div class="jso-yam-tom-row">
+          <button class="jso-yam-tom-btn jso-yam-tom-btn-ghost" id="jso-yam-tom-clear">Clear</button>
+          <button class="jso-yam-tom-btn" id="jso-yam-tom-sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="jso-yam-tom-section">
+        <div class="jso-yam-tom-row" style="align-items:flex-start">
+          <div class="jso-yam-tom-field" style="flex:1 1 380px">
+            <label class="jso-yam-tom-label" for="jso-yam-tom-input-text">Input</label>
+            <textarea id="jso-yam-tom-input-text" class="jso-yam-tom-textarea" placeholder="Paste or drop file here" aria-label="Input area" spellcheck="false"></textarea>
+            <div class="jso-yam-tom-row">
+              <input type="file" id="jso-yam-tom-input-file" class="jso-yam-tom-input" accept=".json,.yaml,.yml,.toml,.txt" />
+              <button class="jso-yam-tom-btn jso-yam-tom-btn-ghost" id="jso-yam-tom-paste" title="Paste from clipboard"><span class="kbd">Ctrl</span>+<span class="kbd">V</span> paste</button>
+            </div>
+          </div>
+
+          <div class="jso-yam-tom-field" style="flex:1 1 260px">
+            <label class="jso-yam-tom-label" for="jso-yam-tom-format-from">Detect or set input</label>
+            <div class="jso-yam-tom-row">
+              <select id="jso-yam-tom-format-from" class="jso-yam-tom-select" aria-label="Input format select">
+                <option value="auto">Auto detect</option>
+                <option value="json">JSON</option>
+                <option value="yaml">YAML</option>
+                <option value="toml">TOML</option>
+              </select>
+              <label class="jso-yam-tom-label" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="jso-yam-tom-live" /> Live preview</label>
+            </div>
+
+            <label class="jso-yam-tom-label" for="jso-yam-tom-format-to">Convert to</label>
+            <select id="jso-yam-tom-format-to" class="jso-yam-tom-select" aria-label="Output format select">
+              <option value="json">JSON</option>
+              <option value="yaml">YAML</option>
+              <option value="toml">TOML</option>
+            </select>
+
+            <div class="jso-yam-tom-row">
+              <label class="jso-yam-tom-label"><input type="checkbox" id="jso-yam-tom-pretty" checked /> Pretty print</label>
+              <label class="jso-yam-tom-label"><input type="checkbox" id="jso-yam-tom-minify" /> Minify</label>
+              <label class="jso-yam-tom-label"><input type="checkbox" id="jso-yam-tom-sort" /> Sort keys</label>
+            </div>
+            <div class="jso-yam-tom-row">
+              <label class="jso-yam-tom-label"><input type="checkbox" id="jso-yam-tom-rt" /> Round trip check</label>
+              <label class="jso-yam-tom-label"><input type="checkbox" id="jso-yam-tom-jsonc" /> Allow comments in JSON</label>
+            </div>
+
+            <div class="jso-yam-tom-row">
+              <button class="jso-yam-tom-btn" id="jso-yam-tom-convert" title="Convert (Enter to run)"><span class="kbd">Enter</span> Convert</button>
+              <button class="jso-yam-tom-btn jso-yam-tom-btn-ghost" id="jso-yam-tom-swap" title="Swap input and output">Swap</button>
+              <button class="jso-yam-tom-btn jso-yam-tom-btn-warm" id="jso-yam-tom-copy" title="Copy output">Copy</button>
+              <button class="jso-yam-tom-btn jso-yam-tom-btn-ghost" id="jso-yam-tom-download" title="Download output">Download</button>
+              <button class="jso-yam-tom-btn jso-yam-tom-btn-warm" id="jso-yam-tom-share" title="Copy tiny link">Copy link</button>
+            </div>
+
+            <p class="jso-yam-tom-sub" style="margin:4px 0 0">Shortcuts: <span class="kbd">Enter</span> convert, <span class="kbd">Ctrl</span>+<span class="kbd">S</span> download, <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">C</span> copy.</p>
+            <p class="jso-yam-tom-sub" style="margin:0">Drop files on the input area. Your data never leaves your device.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="jso-yam-tom-card" aria-live="polite">
+      <header class="jso-yam-tom-card-head">
+        <h2 class="jso-yam-tom-card-title">Results</h2>
+        <div class="jso-yam-tom-row">
+          <span class="jso-yam-tom-pill" id="jso-yam-tom-stat-from">Input: -</span>
+          <span class="jso-yam-tom-pill" id="jso-yam-tom-stat-to">Output: JSON</span>
+          <span class="jso-yam-tom-pill" id="jso-yam-tom-stat-bytes">Bytes: 0</span>
+        </div>
+      </header>
+
+      <div class="jso-yam-tom-section">
+        <div class="jso-yam-tom-pane" id="jso-yam-tom-output-pane" aria-label="Conversion output">
+          <pre class="jso-yam-tom-preview" id="jso-yam-tom-output" tabindex="0"></pre>
+        </div>
+
+        <details id="jso-yam-tom-errors" class="jso-yam-tom-pane" style="border-style:dashed" hidden>
+          <summary class="jso-yam-tom-sub" style="padding:12px">Errors and warnings</summary>
+          <pre class="jso-yam-tom-preview" id="jso-yam-tom-error-log" aria-live="assertive"></pre>
+        </details>
+      </div>
+    </aside>
+  </section>
+
+  <div style="margin-top:16px">
+    <p class="jso-yam-tom-sub">More you might like:
+      <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>,
+      <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>,
+      <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+      <a href="/tools/word-counter.html">Word Counter</a>.
+    </p>
+  </div>
+
+  <div class="free-tools-guide">
+    <p class="free-tools-guide-p">Read JSON ↔ YAML ↔ TOML Converter guide on SnipText Blog <a href="/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog.html" class="free-tools-blog-link">here</a>.</p>
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="jso-yam-tom-toast" id="jso-yam-tom-toast" role="status" aria-live="polite"></div>
+
+
+    <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+
+    <article class="tool-card table-gen-tool-card" tabindex="0" data-href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-labelledby="table-gen-tg">
+        <div class="card-icon table-gen-card-icon" aria-hidden="true">
+          <!-- Grid/Table icon -->
+          <svg viewBox="0 0 24 24" class="svg-icon table-gen-svg" xmlns="http://www.w3.org/2000/svg" role="img">
+            <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M3 9h18M3 14h18M8 4v16M14 4v16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 id="table-gen-tg" class="card-title table-gen-card-title">Quick Table Generator</h3>
+        <p class="card-desc table-gen-card-desc">
+          Paste or upload CSV to generate clean, responsive HTML table code with auto-detect delimiter, header toggle, sort, filter, paginate, transpose, sticky header, and one-click copy or download. Private, in-browser.
+        </p>
+        <a class="card-cta table-gen-card-cta" href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-label="Open Quick Table Generator">Open →</a>
+      </article>
+
+      <article class="tool-card" tabindex="0" data-href="/tools/timeline-maker-academic-timeline.html" aria-labelledby="t13">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Timeline icon: calendar + vertical line with nodes -->
+            <svg viewBox="0 0 24 24" class="svg-icon">
+              <!-- Calendar frame -->
+              <rect x="3" y="4.5" width="18" height="16" rx="2.5" ry="2.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
+              <path d="M3 8h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              <path d="M8 4.5v-2M16 4.5v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Vertical timeline -->
+              <path d="M8.5 11v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="8.5" cy="12.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="18" r="1.4" fill="currentColor"/>
+              <!-- Event cards hint -->
+              <path d="M11.5 12.5h6M11.5 15.5h5M11.5 18h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 id="t13" class="card-title">Timeline Maker</h3>
+          <p class="card-desc">Enter events to auto-generate an academic-style timeline with categories, eras, zoom, drag-reorder, and one-click export to HTML, SVG, or JSON. Private, in-browser.</p>
+          <a class="card-cta" href="/tools/timeline-maker-academic-timeline.html" aria-label="Open Timeline Maker">Open →</a>
+        </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+  </section>
+
+
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+
+
+
+  <script src="/js/index.js"></script>  
+  <script src="/js/auth.js"></script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<!-- Dependencies: js-yaml and TOML UMD builds -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/toml/3.0.0/toml.min.js"></script>
+
+<script>
+(function(){
+  'use strict';
+
+  /* -------------------------------------------------------
+     Lightweight loader for js-yaml and TOML UMD builds
+     ------------------------------------------------------- */
+  const ensureScript = (id, src) => new Promise((resolve, reject) => {
+    if (document.getElementById(id)) return resolve();
+    const s = document.createElement('script');
+    s.id = id; s.async = true; s.src = src;
+    s.onload = resolve; s.onerror = () => reject(new Error('Failed to load ' + src));
+    document.head.appendChild(s);
+  });
+
+  // Primary + fallback CDNs (kept tiny and fast)
+  const loadLibs = async () => {
+    // js-yaml (exposes window.jsyaml)
+    try {
+      await ensureScript('lib-jsyaml',
+        'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js');
+    } catch {
+      await ensureScript('lib-jsyaml-2',
+        'https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js');
+    }
+    // @iarna/toml UMD (exposes window.TOML)
+    try {
+      await ensureScript('lib-toml',
+        'https://cdn.jsdelivr.net/npm/@iarna/toml@3.0.0/dist/toml.umd.js');
+    } catch {
+      await ensureScript('lib-toml-2',
+        'https://unpkg.com/@iarna/toml@3.0.0/dist/toml.umd.js');
+    }
+  };
+
+  /* -------------------------------------------------------
+     Elements
+     ------------------------------------------------------- */
+  const el = (id) => document.getElementById(id);
+  const inputText = el('jso-yam-tom-input-text');
+  const inputFile = el('jso-yam-tom-input-file');
+  const formatFrom = el('jso-yam-tom-format-from');
+  const formatTo = el('jso-yam-tom-format-to');
+  const pretty = el('jso-yam-tom-pretty');
+  const minify = el('jso-yam-tom-minify');
+  const sortKeys = el('jso-yam-tom-sort');
+  const jsonc = el('jso-yam-tom-jsonc');
+  const roundTrip = el('jso-yam-tom-rt');
+  const live = el('jso-yam-tom-live');
+
+  const btnConvert = el('jso-yam-tom-convert');
+  const btnSwap = el('jso-yam-tom-swap');
+  const btnCopy = el('jso-yam-tom-copy');
+  const btnDownload = el('jso-yam-tom-download');
+  const btnShare = el('jso-yam-tom-share');
+  const btnClear = el('jso-yam-tom-clear');
+  const btnSample = el('jso-yam-tom-sample');
+  const btnPaste = el('jso-yam-tom-paste');
+
+  const out = el('jso-yam-tom-output');           // <pre> or <code> container
+  const pane = el('jso-yam-tom-output-pane');     // scrollable wrapper
+  const toast = el('jso-yam-tom-toast');
+
+  const statFrom = el('jso-yam-tom-stat-from');
+  const statTo = el('jso-yam-tom-stat-to');
+  const statBytes = el('jso-yam-tom-stat-bytes');
+
+  const errWrap = el('jso-yam-tom-errors');
+  const errLog = el('jso-yam-tom-error-log');
+
+  /* -------------------------------------------------------
+     Utilities
+     ------------------------------------------------------- */
+  const showToast = (msg) => {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'), 1800);
+  };
+
+  const detectFormat = (text) => {
+    const trimmed = (text || '').trim();
+    if (!trimmed) return 'auto';
+    // likely JSON
+    if (/^\s*[{[]/.test(trimmed)) return 'json';
+    // likely TOML: simple key = value or [section]
+    if (/^\s*[\w-"]+\s*=\s*/m.test(trimmed) || /^\s*\[[^\]]+\]/m.test(trimmed)) return 'toml';
+    // likely YAML: dash lists or key: value
+    if (/^\s*-\s+/.test(trimmed) || /^[\w\-".']+:\s+/.test(trimmed)) return 'yaml';
+    return 'json';
+  };
+
+  // JSONC stripper: supports //, /* */, and # at line start
+  const stripJsonComments = (str) => {
+    return str
+      // block comments
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      // line comments //
+      .replace(/(^|[^:])\/\/.*$/gm, '$1')
+      // hash comments at start or after whitespace
+      .replace(/^\s*#.*$/gm, '');
+  };
+
+  const safeJsonParse = (str, allowComments) => {
+    const s = allowComments ? stripJsonComments(str) : str;
+    return JSON.parse(s);
+  };
+
+  const stableStringify = (obj, space, doSort) => {
+    const replacer = doSort ? (k, v) => {
+      if (v && typeof v === 'object' && !Array.isArray(v)) {
+        const sorted = {};
+        Object.keys(v).sort().forEach(key => sorted[key] = v[key]);
+        return sorted;
+      }
+      return v;
+    } : null;
+    return JSON.stringify(obj, replacer, space);
+  };
+
+  const bytes = (str) => new Blob([str || '']).size;
+
+  const setStats = (srcFmt, dstFmt, text) => {
+    if (statFrom) statFrom.textContent = `Input: ${String(srcFmt || '').toUpperCase()}`;
+    if (statTo) statTo.textContent = `Output: ${String(dstFmt || '').toUpperCase()}`;
+    if (statBytes) statBytes.textContent = `Bytes: ${bytes(text)}`;
+  };
+
+  const setOutput = (text) => {
+    if (!out || !pane) return;
+    out.textContent = text;
+    pane.scrollTop = 0;
+  };
+
+  const showError = (err) => {
+    if (!errWrap || !errLog) return;
+    errLog.textContent = String(err && err.message ? err.message : err);
+    errWrap.hidden = false;
+  };
+  const clearError = () => {
+    if (!errWrap || !errLog) return;
+    errLog.textContent = '';
+    errWrap.hidden = true;
+  };
+
+  // Helpers that fetch libs late to avoid timing issues
+  const getYamlLib = () => window.jsyaml || window.jsYaml || window.JSYAML || null;
+  const getTomlLib = () => window.TOML || null;
+
+  const yamlDump = (obj, prettyMode) => {
+    const Y = getYamlLib();
+    if (!Y) throw new Error('js-yaml not loaded');
+    return Y.dump(obj, {
+      noRefs: true,
+      lineWidth: 100,
+      sortKeys: !!(sortKeys && sortKeys.checked),
+      indent: prettyMode ? 2 : 0
+    });
+  };
+  const yamlLoad = (text) => {
+    const Y = getYamlLib();
+    if (!Y) throw new Error('js-yaml not loaded');
+    return Y.load(text);
+  };
+
+  const tomlParse = (text) => {
+    const T = getTomlLib();
+    if (!T) throw new Error('TOML not loaded');
+    return T.parse(text);
+  };
+  const tomlStringify = (obj) => {
+    const T = getTomlLib();
+    if (!T) throw new Error('TOML not loaded');
+    if (typeof T.stringify === 'function') return T.stringify(obj);
+    // minimal fallback
+    const toToml = (o, prefix='') => {
+      let lines = [];
+      for (const [k, v] of Object.entries(o || {})) {
+        const key = /^[a-zA-Z0-9_-]+$/.test(k) ? k : `"${k.replace(/"/g,'\\"')}"`;
+        if (v && typeof v === 'object' && !Array.isArray(v)) {
+          lines.push(`[${prefix}${key}]`);
+          lines.push(toToml(v, prefix + key + '.'));
+        } else if (Array.isArray(v)) {
+          const arr = v.map(x => typeof x === 'string' ? `"${x.replace(/"/g,'\\"')}"` : JSON.stringify(x)).join(', ');
+          lines.push(`${key} = [${arr}]`);
+        } else if (typeof v === 'string') {
+          lines.push(`${key} = "${v.replace(/"/g,'\\"')}"`);
+        } else {
+          lines.push(`${key} = ${String(v)}`);
+        }
+      }
+      return lines.join('\n');
+    };
+    return toToml(obj);
+  };
+
+  // Deep helpers
+  const sortObjectDeep = (obj) => {
+    if (Array.isArray(obj)) return obj.map(sortObjectDeep);
+    if (obj && typeof obj === 'object'){
+      const out = {};
+      Object.keys(obj).sort().forEach(k => out[k] = sortObjectDeep(obj[k]));
+      return out;
+    }
+    return obj;
+  };
+  const deepEqual = (a, b) => {
+    try { return JSON.stringify(a) === JSON.stringify(b) } catch { return false }
+  };
+
+  /* -------------------------------------------------------
+     Convert core
+     ------------------------------------------------------- */
+  const convert = () => {
+    clearError();
+    const raw = (inputText && inputText.value) || '';
+    if (!raw.trim()){
+      setOutput('');
+      setStats('none', formatTo ? formatTo.value : '', '');
+      return;
+    }
+
+    let src = (formatFrom && formatFrom.value) === 'auto' ? detectFormat(raw) : (formatFrom ? formatFrom.value : 'json');
+    if (src === 'auto') src = 'json';
+
+    let data;
+    try{
+      if (src === 'json') data = safeJsonParse(raw, jsonc && jsonc.checked);
+      if (src === 'yaml') data = yamlLoad(raw);
+      if (src === 'toml') data = tomlParse(raw);
+    }catch(e){
+      showError(new Error(`Parse error in ${src.toUpperCase()}: ${e.message}`));
+      setOutput('');
+      setStats(src, formatTo ? formatTo.value : '', '');
+      return;
+    }
+
+    const sortedData = (sortKeys && sortKeys.checked) ? sortObjectDeep(data) : data;
+
+    let outText = '';
+    try{
+      const target = (formatTo && formatTo.value) || 'json';
+      if (target === 'json'){
+        if (minify && minify.checked) {
+          outText = stableStringify(sortedData, 0, false);
+        } else if (pretty && pretty.checked) {
+          outText = stableStringify(sortedData, 2, sortKeys && sortKeys.checked);
+        } else {
+          outText = JSON.stringify(sortedData);
+        }
+      }
+      if (target === 'yaml'){
+        outText = yamlDump(sortedData, !!(pretty && pretty.checked) && !(minify && minify.checked));
+      }
+      if (target === 'toml'){
+        const s = tomlStringify(sortedData);
+        outText = (minify && minify.checked) ? s.replace(/\n+/g,'\n').trim() : s;
+      }
+
+      if (roundTrip && roundTrip.checked){
+        try{
+          let backObj;
+          if (src === 'json'){
+            backObj = safeJsonParse(outText, jsonc && jsonc.checked);
+          } else if (src === 'yaml'){
+            backObj = yamlLoad(outText);
+          } else {
+            backObj = tomlParse(outText);
+          }
+          if (!deepEqual(sortedData, backObj)) {
+            showError(new Error('Round trip check shows differences between original parse and reparse of output'));
+          }
+        }catch(e){
+          showError(new Error('Round trip failed: ' + e.message));
+        }
+      }
+
+      setOutput(outText);
+      setStats(src, target, outText);
+
+    }catch(e){
+      showError(e);
+      setOutput('');
+      setStats(src, formatTo ? formatTo.value : '', '');
+    }
+  };
+
+  /* -------------------------------------------------------
+     Clipboard, download, share
+     ------------------------------------------------------- */
+  if (btnCopy) btnCopy.addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText(out ? (out.textContent || '') : '');
+      showToast('Output copied');
+    }catch(e){ showToast('Copy failed'); }
+  });
+
+  if (btnDownload) btnDownload.addEventListener('click', () => {
+    const fmt = (formatTo && formatTo.value) || 'txt';
+    const blob = new Blob([out ? (out.textContent || '') : ''], {type:'text/plain;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `converted.${fmt === 'yaml' ? 'yml' : fmt}`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  if (btnShare) btnShare.addEventListener('click', () => {
+    const raw = (inputText && inputText.value) || '';
+    const small = raw.length <= 1800;
+    if (!small) { showToast('Input too large for tiny link'); return; }
+    const params = new URLSearchParams({
+      f: formatFrom ? formatFrom.value : 'auto',
+      t: formatTo ? formatTo.value : 'json',
+      p: pretty && pretty.checked ? '1' : '0',
+      m: minify && minify.checked ? '1' : '0',
+      s: sortKeys && sortKeys.checked ? '1' : '0',
+      j: jsonc && jsonc.checked ? '1' : '0',
+      r: roundTrip && roundTrip.checked ? '1' : '0',
+      d: raw
+    });
+    const url = location.origin + location.pathname + '#' + params.toString();
+    navigator.clipboard.writeText(url).then(()=>showToast('Tiny link copied'));
+  });
+
+  if (btnClear) btnClear.addEventListener('click', () => {
+    if (inputText) inputText.value = '';
+    setOutput('');
+    clearError();
+    setStats('none', formatTo ? formatTo.value : '', '');
+  });
+
+  if (btnSample) btnSample.addEventListener('click', () => {
+    if (inputText) {
+      inputText.value = `
+app:
+  name: SnipText
+  port: 8080
+  features:
+    - convert
+    - pretty
+    - share
+users:
+  - id: 1
+    name: "Areeba"
+  - id: 2
+    name: "Imran"
+`;
+    }
+    if (formatFrom) formatFrom.value = 'auto';
+    if (formatTo) formatTo.value = 'json';
+    if (pretty) pretty.checked = true;
+    if (sortKeys) sortKeys.checked = true;
+    if (minify) minify.checked = false;
+    convert();
+    showToast('Sample loaded');
+  });
+
+  if (btnPaste) btnPaste.addEventListener('click', async () => {
+    try{
+      const t = await navigator.clipboard.readText();
+      if (inputText) inputText.value = t;
+      showToast('Pasted');
+      if (live && live.checked) convert();
+    }catch(e){ showToast('Paste not allowed'); }
+  });
+
+  if (btnSwap) btnSwap.addEventListener('click', () => {
+    const o = out ? (out.textContent || '') : '';
+    if (!o){ showToast('Nothing to swap'); return; }
+    if (inputText) inputText.value = o;
+    const prevFrom = (formatFrom && formatFrom.value) === 'auto' ? detectFormat(o) : (formatFrom ? formatFrom.value : 'json');
+    const prevTo = formatTo ? formatTo.value : 'json';
+    if (formatFrom) formatFrom.value = prevTo;
+    if (formatTo) formatTo.value = prevFrom;
+    convert();
+  });
+
+  if (inputFile) inputFile.addEventListener('change', async (e)=>{
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const txt = await file.text();
+    if (inputText) inputText.value = txt;
+    if (formatFrom) formatFrom.value = 'auto';
+    if (live && live.checked) convert();
+    showToast('File loaded');
+    e.target.value = '';
+  });
+
+  const prevent = (e)=>{ e.preventDefault(); e.stopPropagation(); };
+  if (inputText){
+    ['dragenter','dragover','dragleave','drop'].forEach(ev=>inputText.addEventListener(ev, prevent));
+    inputText.addEventListener('drop', async (e)=>{
+      const file = e.dataTransfer.files && e.dataTransfer.files[0];
+      if (!file) return;
+      const txt = await file.text();
+      inputText.value = txt;
+      if (live && live.checked) convert();
+      showToast('File dropped');
+    });
+    inputText.addEventListener('input', ()=>{ if (live && live.checked) convert(); });
+  }
+
+  [formatFrom, formatTo, pretty, minify, sortKeys, jsonc, roundTrip]
+    .filter(Boolean)
+    .forEach(c => c.addEventListener('change', ()=>{ if (live && live.checked) convert(); }));
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter' && (document.activeElement === inputText || e.metaKey || e.ctrlKey)){
+      e.preventDefault(); convert();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's'){
+      e.preventDefault(); btnDownload && btnDownload.click();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'c'){
+      e.preventDefault(); btnCopy && btnCopy.click();
+    }
+  });
+
+  // Tiny link hydrate
+  const hydrateFromHash = () => {
+    if (!location.hash) return;
+    try{
+      const q = new URLSearchParams(location.hash.slice(1));
+      const raw = q.get('d') || '';
+      if (inputText) inputText.value = raw;
+      const f = q.get('f') || 'auto';
+      const t = q.get('t') || 'json';
+      if (formatFrom) formatFrom.value = f;
+      if (formatTo) formatTo.value = t;
+      if (pretty) pretty.checked = q.get('p') === '1';
+      if (minify) minify.checked = q.get('m') === '1';
+      if (sortKeys) sortKeys.checked = q.get('s') === '1';
+      if (jsonc) jsonc.checked = q.get('j') === '1';
+      if (roundTrip) roundTrip.checked = q.get('r') === '1';
+      convert();
+    }catch{}
+  };
+
+  // Wire the missing Convert button
+  if (btnConvert) btnConvert.addEventListener('click', convert);
+
+  // Init: load libs, then hydrate and set baseline
+  (async () => {
+    try {
+      await loadLibs();
+    } catch (e) {
+      showError(e);
+    } finally {
+      hydrateFromHash();
+      setOutput('');
+      clearError();
+      setStats('none', formatTo ? formatTo.value : '', '');
+    }
+  })();
+
+})();
+</script>
+
+</body>
+</html>

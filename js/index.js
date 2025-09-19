@@ -308,162 +308,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// ---------------------------- TESTIMONIALS CAROUSEL --------------------------
+// ---------------- TESTIMONIALS — snap aware paging with dots ----------------
 document.addEventListener("DOMContentLoaded", () => {
   const section = document.getElementById("testimonials");
-  const carousel = section.querySelector(".testimonial-carousel");
   const viewport = section.querySelector(".testimonial-viewport");
   const track = section.querySelector(".testimonial-track");
-  const prevBtn = section.querySelector(".carousel-btn.prev");
-  const nextBtn = section.querySelector(".carousel-btn.next");
-  const dotsWrap = section.querySelector(".carousel-dots");
   const cards = Array.from(track.children);
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prev = section.querySelector(".carousel-btn.prev");
+  const next = section.querySelector(".carousel-btn.next");
+  const dotsWrap = section.querySelector(".carousel-dots");
+  const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Helper: initials avatar ---------- */
-  function nameToInitials(name = "") {
-    const parts = name.trim().split(/\s+/).filter(Boolean);
-    if (!parts.length) return "??";
-    const first = parts[0][0] || "";
-    const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
-    return (first + last).toUpperCase();
+  // Avatar initials fallback
+  function initials(name=""){
+    const p = name.trim().split(/\s+/).filter(Boolean);
+    return ((p[0]?.[0]||"") + (p[1]?.[0]||"")).toUpperCase() || "??";
   }
-  function nameToGradient(name){
-    // tiny hash -> hue(s)
-    let hash = 0;
-    for (let i=0; i<name.length; i++) hash = (hash * 31 + name.charCodeAt(i)) >>> 0;
-    const h1 = hash % 360;
-    const h2 = (h1 + 40 + (hash % 20)) % 360;
-    return `linear-gradient(135deg, hsl(${h1} 72% 48%), hsl(${h2} 72% 52%))`;
+  function gradient(name){
+    let h=0; for(let i=0;i<name.length;i++) h=(h*31+name.charCodeAt(i))>>>0;
+    const h1=h%360, h2=(h1+40+(h%20))%360;
+    return `linear-gradient(135deg,hsl(${h1} 72% 48%),hsl(${h2} 72% 52%))`;
   }
-  function ensureAvatar(card){
-    const name = card.dataset.name || card.querySelector("h4")?.textContent?.trim() || "User";
-    let img = card.querySelector("img.avatar");
+  cards.forEach(card=>{
     const wrap = card.querySelector(".avatar-wrap");
-    const makeInitial = () => {
+    const img = card.querySelector("img.avatar");
+    const n = card.dataset.name || card.querySelector("h4")?.textContent || "User";
+    const make = ()=>{
       wrap.innerHTML = "";
-      const div = document.createElement("div");
-      div.className = "avatar-initial";
-      div.textContent = nameToInitials(name);
-      div.style.background = nameToGradient(name);
-      wrap.appendChild(div);
+      const d = document.createElement("div");
+      d.className = "avatar-initial";
+      d.textContent = initials(n);
+      d.style.background = gradient(n);
+      wrap.appendChild(d);
     };
-    if (!img) { makeInitial(); return; }
-    if (!img.getAttribute("src")) { makeInitial(); return; }
-    img.addEventListener("error", makeInitial, { once: true });
-  }
-  cards.forEach(ensureAvatar);
+    if (!wrap) return;
+    if (!img || !img.getAttribute("src")) { make(); return; }
+    img.addEventListener("error", make, { once: true });
+  });
 
-  /* ---------- Reveal on scroll ---------- */
+  // Reveal on scroll
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach((e, i)=>{
-        if(e.isIntersecting){
-          e.target.style.transitionDelay = (i * 70) + "ms";
-          e.target.classList.add("is-visible");
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    cards.forEach(c => io.observe(c));
-  } else {
-    cards.forEach(c => c.classList.add("is-visible"));
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("is-visible"); io.unobserve(e.target); } });
+    },{ threshold: 0.12 });
+    cards.forEach(c=>io.observe(c));
+  } else { cards.forEach(c=>c.classList.add("is-visible")); }
+
+  // Snap paging helpers
+  function pages(){
+    // total pages = ceil(scrollWidth / clientWidth)
+    return Math.max(1, Math.ceil(viewport.scrollWidth / viewport.clientWidth));
+  }
+  function currentPage(){
+    return Math.round(viewport.scrollLeft / viewport.clientWidth);
+  }
+  function goTo(pageIndex){
+    const x = pageIndex * viewport.clientWidth;
+    viewport.scrollTo({ left: x, behavior: prefersReduce ? "auto" : "smooth" });
   }
 
-  /* ---------- Carousel pagination ---------- */
-  let page = 0, pages = 1, autoplayTimer = null;
-  const AUTOPLAY_MS = 5000;
-
-  function cardsPerView(){
-    const v = getComputedStyle(carousel).getPropertyValue("--cards-per-view");
-    return Math.max(1, parseInt(v, 10) || 1);
-  }
-  function computePages(){
-    pages = Math.max(1, Math.ceil(cards.length / cardsPerView()));
-  }
-
+  // Dots
   function renderDots(){
+    const n = pages();
     dotsWrap.innerHTML = "";
-    for (let i=0; i<pages; i++){
-      const b = document.createElement("button");
-      b.type = "button";
+    for(let i=0;i<n;i++){
+      const b=document.createElement("button");
+      b.type="button"; if(i===currentPage()) b.classList.add("is-active");
       b.setAttribute("role","tab");
-      b.setAttribute("aria-label", `Go to slide ${i+1}`);
-      if (i === page) b.classList.add("is-active");
-      b.addEventListener("click", ()=>goTo(i));
+      b.setAttribute("aria-label",`Go to page ${i+1}`);
+      b.addEventListener("click",()=>goTo(i));
       dotsWrap.appendChild(b);
     }
   }
-
-  function update(){
-    const offset = viewport.clientWidth * page;
-    track.style.transform = `translateX(-${offset}px)`;
-    Array.from(dotsWrap.children).forEach((d, i)=>d.classList.toggle("is-active", i===page));
+  function updateDotsActive(){
+    const i = currentPage();
+    Array.from(dotsWrap.children).forEach((d,idx)=>d.classList.toggle("is-active", idx===i));
   }
-
-  function goTo(p){
-    page = (p + pages) % pages;
-    update();
-  }
-
-  function next(){ goTo(page + 1); }
-  function prev(){ goTo(page - 1); }
-
-  function startAutoplay(){
-    if (reduce) return; // respect reduced motion
-    stopAutoplay();
-    autoplayTimer = setInterval(next, AUTOPLAY_MS);
-  }
-  function stopAutoplay(){ clearInterval(autoplayTimer); }
 
   // Buttons
-  nextBtn.addEventListener("click", next);
-  prevBtn.addEventListener("click", prev);
+  prev.addEventListener("click", ()=>goTo(currentPage()-1));
+  next.addEventListener("click", ()=>goTo(currentPage()+1));
 
-  // Keyboard
+  // Keyboard on viewport
   section.addEventListener("keydown", (e)=>{
-    if (e.key === "ArrowRight") { next(); }
-    if (e.key === "ArrowLeft") { prev(); }
+    if (e.key === "ArrowRight") goTo(currentPage()+1);
+    if (e.key === "ArrowLeft")  goTo(currentPage()-1);
   });
 
-  // Swipe / drag
-  let startX = 0, dx = 0, dragging = false;
-  viewport.addEventListener("pointerdown", (e)=>{
-    dragging = true; startX = e.clientX; dx = 0; viewport.setPointerCapture(e.pointerId); stopAutoplay();
-  });
-  viewport.addEventListener("pointermove", (e)=>{
-    if (!dragging) return;
-    dx = e.clientX - startX;
-    track.style.transition = "none";
-    const base = viewport.clientWidth * page;
-    track.style.transform = `translateX(${-(base - dx)}px)`;
-  });
-  const endDrag = ()=>{
-    if (!dragging) return;
-    dragging = false; track.style.transition = "";
-    const threshold = viewport.clientWidth * 0.15;
-    if (Math.abs(dx) > threshold){ dx < 0 ? next() : prev(); } else { update(); }
-    if (!reduce) startAutoplay();
-  };
-  viewport.addEventListener("pointerup", endDrag);
-  viewport.addEventListener("pointercancel", endDrag);
-  viewport.addEventListener("pointerleave", endDrag);
+  // Sync dots on scroll end
+  let t=null;
+  viewport.addEventListener("scroll", ()=>{
+    clearTimeout(t);
+    t=setTimeout(updateDotsActive, 80);
+  }, { passive:true });
 
-  // Hover / focus pause
-  section.addEventListener("mouseenter", stopAutoplay);
-  section.addEventListener("mouseleave", startAutoplay);
-  section.addEventListener("focusin", stopAutoplay);
-  section.addEventListener("focusout", startAutoplay);
-
-  // Handle resize
-  const onResize = ()=>{
-    computePages(); page = Math.min(page, pages-1); renderDots(); update();
-  };
-  window.addEventListener("resize", onResize);
+  // Resize observer to keep everything responsive
+  const ro = new ResizeObserver(()=>{ renderDots(); updateDotsActive(); });
+  ro.observe(viewport);
 
   // Init
-  computePages(); renderDots(); update(); startAutoplay();
+  renderDots(); updateDotsActive();
 });
+
 
 
 

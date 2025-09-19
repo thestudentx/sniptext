@@ -93,26 +93,86 @@ clearBtn.addEventListener('click', () => {
   // File upload handling
 fileUpload.addEventListener('change', async (e) => {
   resetUI();
-  const file = e.target.files[0];
+
+  const file = e.target.files && e.target.files[0];
   if (!file) {
     fileInfo.textContent = 'No file chosen';
-    showToast('No file selected.', 'warning'); // ✅ Added
+    showToast('No file selected.', 'warning');
     return;
   }
+
   fileInfo.textContent = file.name;
+  const name = file.name.toLowerCase();
+  const ext = name.slice(name.lastIndexOf('.')); // includes the dot
+  let text = '';
+
+  // Optional size guard (100 MB soft guard – adjust if needed)
+  const MAX_BYTES = 100 * 1024 * 1024;
+  if (file.size > MAX_BYTES) {
+    showToast('File is too large. Please upload a smaller file.', 'error');
+    fileUpload.value = '';
+    return;
+  }
+
   try {
-    if (file.name.endsWith('.docx')) {
+    if (ext === '.txt' || ext === '.md' || ext === '.csv') {
+      // Read as plain text
+      text = await file.text();
+
+      // Optional light CSV normalization to reduce excessive commas in previews
+      if (ext === '.csv') {
+        // Keep it as raw text for your detector. If you prefer, you can convert commas to tabs:
+        // text = text.replace(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/g, '\t');
+      }
+
+    } else if (ext === '.docx') {
       const arrayBuffer = await file.arrayBuffer();
-      const { value: text } = await mammoth.extractRawText({ arrayBuffer });
-      inputText.value = text;
+      const { value } = await mammoth.extractRawText({ arrayBuffer });
+      text = value || '';
+
+    } else if (ext === '.pdf') {
+      const ab = await file.arrayBuffer();
+      const pdf = await window['pdfjs-dist/build/pdf'].getDocument({ data: ab }).promise;
+      const parts = [];
+      for (let p = 1; p <= pdf.numPages; p++) {
+        const page = await pdf.getPage(p);
+        const content = await page.getTextContent();
+        parts.push(content.items.map(i => i.str).join(' '));
+      }
+      text = parts.join('\n');
+
+    } else if (ext === '.rtf') {
+      // Basic RTF to text fallback (quick and not perfect, but works for simple files)
+      const raw = await file.text();
+      text = raw
+        .replace(/\\par[d]?/g, '\n')
+        .replace(/\\'[0-9a-fA-F]{2}/g, (m) => {
+          try { return decodeURIComponent('%' + m.slice(2)); } catch { return ' '; }
+        })
+        .replace(/\\[a-z]+\d* ?/g, '')
+        .replace(/[{}]/g, '')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+
     } else {
-      inputText.value = await file.text();
+      showToast('Unsupported file type. Try .txt, .docx, .pdf, .csv, .md, or .rtf', 'error');
+      fileUpload.value = '';
+      return;
     }
+
+    // Push into your textarea/input for detection
+    inputText.value = (text || '').trim();
+
+    // Your existing counters and UI hooks
     updateCounts();
-    showToast('File uploaded successfully!', 'success'); // ✅ Added
+    showToast('File uploaded successfully!', 'success');
+
   } catch (err) {
     console.error('File read error:', err);
-    showToast('Could not read the file.', 'error'); // ✅ Already exists
+    showToast('Could not read the file.', 'error');
+  } finally {
+    // Reset to allow re-upload of the same file if needed
+    fileUpload.value = '';
   }
 });
 

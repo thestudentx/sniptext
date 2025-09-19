@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GE98V48RK8');
+</script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+</script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/blog/">
+
+  <!-- Primary SEO -->
+  <title>CSV Viewer and Editor Guide: Clean, Filter, Sort, Convert to JSON or TSV, Quick Formulas and Mini Charts | SnipText Blog</title>
+  <meta name="description" content="Learn how to use the SnipText CSV Viewer and Editor to open, clean, and transform CSV files. Detect delimiters, sort and filter columns, split and merge, deduplicate, convert to JSON or TSV, and export. Includes workflow tips, keyboard shortcuts, and data hygiene best practices." />
+  <meta name="author" content="Maya Ortiz" />
+
+  <!-- Indexing -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang (extension-less) -->
+  <link rel="canonical" href="https://checkai.pro/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog" />
+  <link rel="alternate" href="https://checkai.pro/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog" hreflang="x-default" />
+
+  <!-- Open Graph (article) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SnipText Blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="CSV Viewer and Editor Guide: Clean, Filter, Sort, Convert, Export" />
+  <meta property="og:description" content="Open and edit CSVs in a fast grid. Clean, filter, split and merge columns, convert to JSON or TSV, and export. Includes a practical workflow and tips." />
+  <meta property="og:url" content="https://checkai.pro/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog" />
+  <!-- Sitewide default blog image: ensure this serves a real 1200x630 file -->
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText CSV Viewer and Editor grid preview with filters" />
+  <meta property="article:section" content="Data Tools" />
+  <meta property="article:published_time" content="2025-09-12T00:00:00+05:00" />
+  <meta property="article:modified_time" content="2025-09-12T00:00:00+05:00" />
+  <meta property="og:updated_time" content="2025-09-12T00:00:00+05:00" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+<!-- Favicon: Blog Pages (Square Blue + White Book Icon) -->
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='SnipText Blog Icon'>
+  <rect x='0' y='0' width='100' height='100' fill='%231D4ED8'/>
+  <path d='M20 25h25v50H20z M55 25h25v50H55z' fill='%23ffffff'/>
+</svg>" />
+
+  <!-- Performance: fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: BlogPosting (extension-less URLs) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog"},
+    "headline":"CSV Viewer and Editor Guide: Clean, Filter, Sort, Convert to JSON or TSV, Quick Formulas and Mini Charts",
+    "description":"A practical guide to SnipText CSV Viewer and Editor. Learn delimiter detection, sorting and filtering, split and merge columns, deduping, converting to JSON or TSV, and exporting. Includes workflow tips and data hygiene best practices.",
+    "image":{
+      "@type":"ImageObject",
+      "url":"https://checkai.pro/images/sniptext-blog-default-image",
+      "width":1200,
+      "height":630
+    },
+    "author":{"@type":"Person","name":"Maya Ortiz"},
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    },
+    "datePublished":"2025-09-12T00:00:00+05:00",
+    "dateModified":"2025-09-12T00:00:00+05:00",
+    "inLanguage":"en",
+    "articleSection":"Data Tools",
+    "isAccessibleForFree": true,
+    "keywords":["CSV viewer","CSV editor","clean CSV","sort filter CSV","convert CSV to JSON","CSV to TSV","deduplicate rows","data hygiene","SnipText tools"]
+  }
+  </script>
+
+  <!-- Structured Data: WebApplication (tool details; extension-less URLs) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText CSV Viewer and Editor",
+    "url":"https://checkai.pro/tools/csv-viewer-editor",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript; works on modern browsers.",
+    "featureList":[
+      "Open CSV with auto delimiter detection",
+      "Fast grid with column sort and filters",
+      "Edit cells, add or remove rows and columns",
+      "Split and merge columns",
+      "Trim whitespace and deduplicate rows",
+      "Convert to JSON or TSV and export"
+    ],
+    "screenshot":"https://checkai.pro/images/sniptext-blog-default-image",
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "url":"https://checkai.pro/",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    },
+    "potentialAction":{"@type":"UseAction","target":{"@type":"EntryPoint","urlTemplate":"https://checkai.pro/tools/csv-viewer-editor"}}
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList (extension-less) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog"},
+      {"@type":"ListItem","position":3,"name":"CSV Viewer and Editor","item":"https://checkai.pro/blog/csv-viewer-and-editor-open-clean-filter-sort-convert-to-json-tsv-export-formulas-mini-charts-sniptext-blog"}
+    ]
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
+    </div>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/index.html" class="brand-link">SnipText</a>
+      </div>
+      <div class="nav-menu">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/blog/blog.html" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+
+<main class="main-content">
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="blog-hero-content">
+        <h1 class="hero-title">CSV Viewer and Editor - Clean, Filter, Convert and Export</h1>
+        <p class="hero-subtitle">Open and edit CSV files in a fast grid. Detect delimiters, sort and filter columns, split and merge, deduplicate, convert to JSON or TSV, and export in one click.</p>
+        <div class="hero-cta">
+          <a href="/tools/csv-viewer-editor.html" class="cta-button">Open CSV Viewer & Editor</a>
+          <a href="#articles" class="cta-button" style="--variant:ghost">Read Related Articles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Article -->
+  <section class="featured-article">
+    <div class="container">
+      <article class="article-card featured">
+        <div class="article-meta">
+          <span class="article-category">Data Tools</span>
+          <time datetime="2025-09-12" class="article-date">September 12, 2025</time>
+        </div>
+
+        <h2 class="article-title">CSV Viewer and Editor Guide: From Messy Spreadsheet to Clean Export</h2>
+        <p class="article-excerpt">Import a CSV, clean whitespace, split or merge columns, filter and sort, run quick formulas, and export to JSON or TSV. This guide explains a simple workflow plus data hygiene tips that save time for students, analysts, and content teams.</p>
+
+        <div class="article-content">
+          <div class="drop-cap-paragraph">
+            <span class="drop-cap">C</span>SV files are the glue between spreadsheets, databases, and web apps. The SnipText <strong>CSV Viewer and Editor</strong> gives you a fast dark themed grid that runs privately in your browser. You can detect the delimiter, edit cells, add or remove rows and columns, filter and sort, then export clean data without installing anything.
+          </div>
+
+          <p><strong>Build a lightweight data workflow:</strong>
+            <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a>,
+            <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a>,
+            <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+            <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>,
+            <a href="/tools/word-counter.html">Word and Character Counter</a>,
+            <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.
+          </p>
+
+          <nav class="article-toc" aria-label="Quick navigation">
+            <strong>In this guide:</strong>
+            <ul>
+              <li><a href="#what">What the tool does</a></li>
+              <li><a href="#why">Why it matters</a></li>
+              <li><a href="#workflow">Fast workflow in 6 steps</a></li>
+              <li><a href="#tips">Educational insights and tips</a></li>
+              <li><a href="#integrations">Helpful tools and integrations</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </nav>
+
+          <h3 id="what">What the CSV Viewer and Editor does</h3>
+          <ul>
+            <li><strong>Open and detect:</strong> Paste or drop a file and let the tool detect comma, semicolon, tab, or pipe separators.</li>
+            <li><strong>Grid editing:</strong> Double click to edit cells, add or remove rows and columns, and undo or redo changes.</li>
+            <li><strong>Filter and sort:</strong> Search all columns at once or add per column filters. Click headers to sort ascending or descending.</li>
+            <li><strong>Clean and transform:</strong> Trim whitespace, deduplicate rows, split a column by a character or regex, or merge columns with a custom joiner.</li>
+            <li><strong>Convert and export:</strong> Convert to JSON or TSV and download or copy results directly to the clipboard.</li>
+            <li><strong>Quick math:</strong> Run SUM, AVG, MIN, MAX, and COUNT on the active column. See a small inline chart to sense check outliers.</li>
+            <li><strong>Private by design:</strong> Everything runs locally in your browser for speed and privacy.</li>
+          </ul>
+
+          <h3 id="why">Why it matters</h3>
+          <p>Many CSVs come with messy spacing, mixed types, or duplicate rows. Fixing these by hand wastes time and introduces errors. A focused viewer and editor helps you <em>spot issues instantly</em>, apply <em>repeatable cleanups</em>, and <em>export consistent data</em> for your CMS, analytics platform, or app import. Clean inputs mean fewer bugs and smoother handoffs.</p>
+
+          <h3 id="workflow">Fast workflow in 6 steps</h3>
+          <ol>
+            <li><strong>Import:</strong> Open the <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a> and paste or drop your file. Choose Auto delimiter and confirm that the first row is a header.</li>
+            <li><strong>Filter and scan:</strong> Use the quick filter to isolate rows. Sort target columns to reveal empty values or odd spikes.</li>
+            <li><strong>Clean:</strong> Run <em>Trim whitespace</em> and <em>Deduplicate</em>. If a field packs multiple values, use <em>Split column</em>.</li>
+            <li><strong>Transform:</strong> Merge columns when needed, rename headers for clarity, and standardize date formats before export.</li>
+            <li><strong>Validate:</strong> Use quick formulas and the mini chart on numeric columns to confirm ranges and spot outliers.</li>
+            <li><strong>Export:</strong> Copy or download as CSV, TSV, or JSON. For web use, convert to JSON and format it with the <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a>.</li>
+          </ol>
+
+          <div class="collapsible-section">
+            <button class="collapsible-toggle" aria-expanded="false">
+              <span>Pro tip: Column naming patterns that scale</span><span class="toggle-icon">+</span>
+            </button>
+            <div class="collapsible-content">
+              <ul>
+                <li><strong>Use snake case or kebab case consistently:</strong> <code>product_id</code>, <code>user_email</code> are easier to work with in code than mixed spacing.</li>
+                <li><strong>Add units to numeric headers:</strong> <code>price_usd</code>, <code>weight_kg</code> cut confusion later.</li>
+                <li><strong>Add a primary key if missing:</strong> Insert a new column like <code>row_id</code> and fill unique values. It helps during merges and imports.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 id="tips">Educational insights and tips</h3>
+          <ul>
+            <li><strong>Type drift is real:</strong> CSVs do not store types. Keep numbers unquoted where possible, and avoid mixing digits and text in the same column.</li>
+            <li><strong>Dates are tricky:</strong> Prefer ISO format <code>YYYY-MM-DD</code>. If you inherit <code>MM/DD/YYYY</code>, convert before combining data from other regions.</li>
+            <li><strong>Normalize categories:</strong> Create a small mapping table for values like <em>US</em>, <em>USA</em>, <em>United States</em>. Consistent labels improve joins and charts.</li>
+            <li><strong>Document your transforms:</strong> Keep a note of split, merge, and dedupe rules. Repeatability is part of data hygiene.</li>
+          </ul>
+
+          <h3 id="integrations">Helpful tools and integrations</h3>
+          <ul>
+            <li><strong>Tables for the web:</strong> Convert a small dataset to an HTML table with the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>.</li>
+            <li><strong>Whitespace cleanup:</strong> Use the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> before pasting CSV into emails or docs.</li>
+            <li><strong>Character checks:</strong> Inspect odd symbols with <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.</li>
+            <li><strong>Writing polish:</strong> If you publish findings, tidy copy with the <a href="/grammarly1.html">Grammar Checker</a> and verify counts using the <a href="/tools/word-counter.html">Word Counter</a>.</li>
+            <li><strong>Developer utilities:</strong> Compare exports with the <a href="/tools/code-diff-checker-side-by-side">Code Diff Checker</a> to be sure only the intended lines changed.</li>
+          </ul>
+
+          <h3>Try it now</h3>
+          <p>Open the <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a>, import a CSV, run Trim and Deduplicate, split one column, and export to JSON. Then pretty print it in the <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a> for your API or CMS.</p>
+
+          <h3 id="faq">FAQ</h3>
+          <dl class="faq grammar-faq" id="grammar-faq">
+            <dt tabindex="0" aria-expanded="false">Is the CSV Viewer and Editor free</dt>
+            <dd class="hidden">Yes. You can open, clean, and export small to medium CSV files with no sign in.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Is my data uploaded anywhere</dt>
+            <dd class="hidden">No. Processing happens in your browser for privacy and speed. Nothing is sent to a server.</dd>
+
+            <dt tabindex="0" aria-expanded="false">How big a file can I use</dt>
+            <dd class="hidden">The grid handles a few hundred thousand cells comfortably. If you see slowdowns, filter first and turn off animations in your browser.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Can I convert CSV to JSON or TSV</dt>
+            <dd class="hidden">Yes. Export as CSV, TSV, or JSON, or copy the output directly to your clipboard.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Can I split and merge columns</dt>
+            <dd class="hidden">Yes. Use Split to break a column by a character or regex and Merge to combine multiple columns with a custom joiner.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Do you have more data tools</dt>
+            <dd class="hidden">Yes. Try <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>, <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a>, and <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>.</dd>
+          </dl>
+        </div>
+
+        <div class="article-footer">
+          <div class="article-tags">
+            <span class="tag">CSV</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">JSON</span>
+            <span class="tag">TSV</span>
+            <span class="tag">Tools</span>
+          </div>
+          <div class="article-share">
+            <span class="share-text">Share:</span>
+            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="articles" class="articles-section">
+    <div class="container">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="articles-grid">
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Team Workflow</span>
+    <time datetime="2025-09-19" class="article-date">September 19, 2025</time>
+  </div>
+  <h3 class="article-title">Time Zone Converter Guide - Compare Cities, Overlap Hours, and ICS Invites</h3>
+  <p class="article-excerpt">
+    Plan meetings across continents with confidence. This guide shows how to add cities, set working hours, read the overlap heatmap, and copy meeting friendly slots. Learn when to use IANA time zones, how DST affects offsets, and how to export a clean ICS invite. Includes etiquette tips for remote teams and links to related SnipText tools.
+  </p>
+  <a href="/blog/time-zone-converter-compare-cities-overlap-ics-guide.html" class="read-more">Read More</a>
+</article>
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Research Tools</span>
+    <time datetime="2025-09-14" class="article-date">September 14, 2025</time>
+  </div>
+  <h3 class="article-title">Survey Question Randomizer Guide - Seeds, Blocks, Tags and Anchors</h3>
+  <p class="article-excerpt">
+    Learn how to design fair and reproducible questionnaires with the SnipText Survey Question Randomizer. Use seed control for reproducibility, block randomization for structure, tag stratification for balance, anchors for fixed items, and no repeat memory for clean rotation. Runs fully private in your browser.
+  </p>
+  <a href="/blog/survey-question-randomizer-balanced-block-stratified-seeded-guide-blog.html" class="read-more">Read More</a>
+</article>
+
+
+<article class="article-card" data-cat="tools">
+  <div class="article-meta">
+    <span class="article-category">Developer Tools</span>
+    <time datetime="2025-09-14" class="article-date">September 14, 2025</time>
+  </div>
+  <h3 class="article-title">HTML CSS JS Minifier and Beautifier Guide</h3>
+  <p class="article-excerpt">
+    Improve page speed and readability with client side minify and pretty print for HTML, CSS, and JavaScript. Learn safe comment handling, whitespace rules, gzip size checks, and live HTML preview. Includes tips, pitfalls, and links to related tools.
+  </p>
+  <a href="/blog/html-css-js-minifier-and-beautifier-guide-fast-private-seo-best-practices-developer-workflows-sniptext-blog.html" class="read-more">Read More</a>
+</article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">About This Blog</h2>
+        <p class="about-text">We publish practical, step by step guides on data cleaning and writing so your exports and drafts are ready to use. Start with the free <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a>, then polish payloads with the <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a> and tidy formatting with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>.</p>
+        <p class="about-text">For content teams and students, explore the <a href="/quillbot2.html">Paraphrasing Tool</a>, <a href="/grammarly1.html">Grammar Checker</a>, and <a href="/tools/word-counter.html">Word Counter</a> to finish faster with fewer errors.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+<!-- Author Bio Card -->
+
+<aside class="author-bio" id="author-bio">
+    <div class="container">
+        <div class="bio-card">
+            <div class="bio-avatar">
+                <div class="avatar-placeholder">M</div>
+            </div>
+            <div class="bio-content">
+                <h3 class="bio-name">Maya Ortiz</h3>
+                <p class="bio-title">Data Workflow Writer & Product Educator</p>
+                <p class="bio-description">Maya helps teams move from messy spreadsheets to clean, dependable data. At SnipText, she writes guides that turn complex steps into short, reliable workflows.</p>
+        <div class="bio-links">
+          <a href="/blog/blog.html" class="bio-link">All Posts</a>
+          <a href="/tools/free-tools.html" class="bio-link">Free Tools</a>
+          <a href="/contact.html" class="bio-link">Contact</a>
+        </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">SnipText</h4>
+                <p class="footer-text">Clean data, clear writing.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SnipText. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <span class="back-to-top-icon">↑</span>
+</button>
+
+<!-- JavaScript -->
+<script src="/blog/js/sniptext-blog.js"></script>
+
+<!-- Small accessible script to toggle FAQ questions (kept; uses existing ID) -->
+<script>
+(function () {
+  const faq = document.getElementById('grammar-faq');
+  if (!faq) return;
+  const dts = faq.querySelectorAll('dt');
+
+  dts.forEach(dt => {
+    const dd = dt.nextElementSibling;
+    // ensure initial state
+    dt.setAttribute('role', 'button');
+    dt.setAttribute('aria-controls', dd ? (dd.id || '') : '');
+    dt.setAttribute('tabindex', '0');
+
+    const toggle = () => {
+      const isOpen = dt.classList.toggle('open');
+      if (dd) {
+        dd.classList.toggle('hidden', !isOpen);
+        dt.setAttribute('aria-expanded', String(isOpen));
+      }
+    };
+
+    dt.addEventListener('click', toggle);
+    dt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

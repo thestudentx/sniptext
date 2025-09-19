@@ -148,7 +148,7 @@
   <!-- HERO -->
 <section class="tools-hero tools-hero--writing" aria-labelledby="tools-hero-title">
   <div class="hero-content">
-    <h1 id="tools-hero-title">Free Text Tools - fast, tiny, and for everyone</h1>
+    <h1 id="tools-hero-title">Free Tools - fast, tiny, and for everyone</h1>
     <p class="lead">
       Lightweight text utilities with zero friction-no sign-ins, no fuss. Count words, clean formatting, compare texts, and more.
       Need more power? Our <span class="hero-premium">PREMIUM TOOLS</span> cover plagiarism checks, grammar, paraphrasing, rewriting, and styling.
@@ -235,12 +235,16 @@
 <section id="tools-filter" class="tools-filter" aria-label="Filter tools">
   <button class="filter-btn is-active" data-cat="all">All</button>
   <button class="filter-btn" data-cat="Academic & Planning">Academic & Planning</button>
-  <button class="filter-btn" data-cat="Research Helpers">Research Helpers</button>
-  <button class="filter-btn" data-cat="Text Utilities">Text Utilities</button>
+  <button class="filter-btn" data-cat="Research & Stats">Research & Stats</button>
+  <button class="filter-btn" data-cat="Text & Writing Tools">Text & Writing Tools</button>
   <button class="filter-btn" data-cat="Formatting & Cleaning">Formatting & Cleaning</button>
-  <button class="filter-btn" data-cat="Language">Language</button>
-  <button class="filter-btn" data-cat="Engagement Boosters">Engagement Boosters</button>
+  <button class="filter-btn" data-cat="Files & Docs">Files & Docs (Soon)</button>
+  <button class="filter-btn" data-cat="Data & Converters">Data & Converters</button>
+  <button class="filter-btn" data-cat="Media & Graphics">Media & Graphics (Soon)</button>
+  <button class="filter-btn" data-cat="Accessibility & Design">Accessibility & Design (Soon)</button>
+  <button class="filter-btn" data-cat="Engagement & Productivity">Engagement & Productivity</button>
   <button class="filter-btn" data-cat="Devs & Hacks">Devs & Hacks</button>
+  <button class="filter-btn" data-cat="Classroom & Printables">Classroom & Printables (Soon)</button>
   <button class="filter-btn" data-cat="Fun & Interactive">Fun & Interactive</button>
 </section>
 <!-- ================================== -->
@@ -385,10 +389,10 @@
 
     
           <!-- -------------------------------------------------------------------------- -->
-<h2 class="tool-category" id="cat-text">Research Helpers</h2>
+<h2 class="tool-category" id="cat-text">Research & Stats</h2>
           <!-- -------------------------------------------------------------------------- -->
 
-<article class="tool-card surque-tool-card" tabindex="0" data-href="/tools/survey-question-randomizer.html" aria-labelledby="surque-tg" data-filter="Research Helpers">
+<article class="tool-card surque-tool-card" tabindex="0" data-href="/tools/survey-question-randomizer.html" aria-labelledby="surque-tg" data-filter="Research & Stats">
   <div class="card-icon surque-card-icon" aria-hidden="true">
     <!-- Survey Randomizer icon: stacked cards + shuffle arrows + seed star -->
     <svg viewBox="0 0 24 24" class="svg-icon surque-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Survey Question Randomizer">
@@ -426,8 +430,7 @@
   <a class="card-cta surque-card-cta" href="/tools/survey-question-randomizer.html" aria-label="Open Survey Question Randomizer">Open →</a>
 </article>
 
-
-<article class="tool-card hyp-tes-cal-card toolcard" tabindex="0" data-href="/tools/hypothesis-testing-calculator.html" aria-labelledby="hyp-tes-cal-tg" data-filter="Research Helpers">
+<article class="tool-card hyp-tes-cal-card toolcard" tabindex="0" data-href="/tools/hypothesis-testing-calculator.html" aria-labelledby="hyp-tes-cal-tg" data-filter="Research & Stats">
   <div class="card-icon hyp-tes-cal-icon" aria-hidden="true">
     <!-- Hypothesis Testing icon: bell curve + critical regions + H0/H1 ticks -->
     <svg viewBox="0 0 24 24" class="svg-icon hyp-tes-cal-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hypothesis Testing Calculator - Z test, T test, Chi square">
@@ -461,14 +464,203 @@
   </p>
   <a class="card-cta hyp-tes-cal-cta" href="/tools/hypothesis-testing-calculator.html" aria-label="Open Hypothesis Testing Calculator - Z test, T test, Chi square">Open →</a>
 </article>
+
+<article class="tool-card conint-tool-card" tabindex="0" data-href="/tools/confidence-interval-calculator.html" aria-labelledby="conint-tg" data-filter="Research & Stats">
+  <div class="card-icon conint-card-icon" aria-hidden="true">
+    <!-- Confidence Interval icon: bell curve + CI band + bracket ticks -->
+    <svg viewBox="0 0 24 24" class="svg-icon conint-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Confidence Interval Calculator">
+      <!-- Axis -->
+      <line x1="2.2" y1="18.8" x2="21.8" y2="18.8" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+      <!-- CI bracket ticks -->
+      <g stroke="#ff7c4c" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
+        <line x1="7.2" y1="19.2" x2="7.2" y2="17.4"/>
+        <line x1="16.8" y1="19.2" x2="16.8" y2="17.4"/>
+      </g>
+      <!-- CI band -->
+      <rect x="7.2" y="7.8" width="9.6" height="10.6" rx="1.8" fill="rgba(59,130,246,0.22)" stroke="#3B82F6" stroke-width="1"/>
+      <!-- Bell curve -->
+      <path d="M2.5 18.8 C 6.0 6.2, 18.0 6.2, 21.5 18.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.95"/>
+      <!-- Sampling dots -->
+      <g fill="#10B981" opacity="0.9">
+        <circle cx="9.0" cy="11.2" r="0.7"/>
+        <circle cx="10.6" cy="9.9" r="0.7"/>
+        <circle cx="12.0" cy="10.4" r="0.7"/>
+        <circle cx="13.6" cy="12.0" r="0.7"/>
+      </g>
+    </svg>
+  </div>
+  <h3 id="conint-tg" class="card-title conint-card-title">Confidence Interval Calculator</h3>
+  <p class="card-desc conint-card-desc">
+    Compute confidence intervals for means and proportions in seconds. Auto z or t for one-sample means, Wilson or Agresti-Coull for proportions, Welch or pooled for two means, and Newcombe or Wald for two proportions. Paste raw data to bootstrap, plan sample size for a target margin, preview a mini chart, then copy results, download CSV, or share a tiny link. Private in your browser.
+  </p>
+  <a class="card-cta conint-card-cta" href="/tools/confidence-interval-calculator.html" aria-label="Open Confidence Interval Calculator">Open →</a>
+</article>
+
+
+
           
           <!-- -------------------------------------------------------------------------- -->
-<h2 class="tool-category" id="cat-text">Text Utilities</h2>
+<h2 class="tool-category" id="cat-text">Text & Writing Tools</h2>
           <!-- -------------------------------------------------------------------------- -->
 
+              <article class="tool-card anagram-tool-card" tabindex="0" data-href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-labelledby="anagram-tg" data-filter="Text & Writing Tools">
+                  <div class="card-icon anagram-card-icon" aria-hidden="true">
+                    <!-- Anagram icon: shuffled arrows + letter tiles -->
+                    <svg viewBox="0 0 24 24" class="svg-icon anagram-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anagram Generator">
+                      <!-- shuffle arrows -->
+                      <path d="M3 7h4c2 0 3 3 5 3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      <path d="M15.5 5.2 19 7.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M3 17h4c2 0 3-3 5-3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      <path d="M15.5 14.2 19 16.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <!-- letter tiles -->
+                      <rect x="2.8" y="9.4" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                      <text x="5.1" y="12.6" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">A</text>
+                      <rect x="16.6" y="8.1" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".95"/>
+                      <text x="18.9" y="11.3" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">G</text>
+                    </svg>
+                  </div>
+                  <h3 id="anagram-tg" class="card-title anagram-card-title">Anagram Generator</h3>
+                  <p class="card-desc anagram-card-desc">
+                    Rearrange letters into single or multi-word anagrams with smart filters for length, starts/ends with, include or exclude letters, and wildcard patterns. Rank by frequency or Scrabble score, paste your own dictionary, and export results. Private, in-browser.
+                  </p>
+                  <a class="card-cta anagram-card-cta" href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-label="Open Anagram Generator">Open →</a>
+              </article>
 
+              <article class="tool-card piglatin-card-teaser" tabindex="0"
+                  data-href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
+                  aria-labelledby="t-piglatin" data-filter="Text & Writing Tools">
+                  <div class="card-icon" aria-hidden="true">
+                    <!-- Pig Latin icon: pig snout + speech bubble "ay" motif -->
+                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Pig Latin Converter icon">
+                      <!-- head -->
+                      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <!-- ears -->
+                      <path d="M7.2 6.5l-2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16.8 6.5l2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <!-- snout -->
+                      <ellipse cx="12" cy="14" rx="4.2" ry="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <circle cx="10.7" cy="14" r="0.7" fill="currentColor"/>
+                      <circle cx="13.3" cy="14" r="0.7" fill="currentColor"/>
+                      <!-- smile hint -->
+                      <path d="M9 11.2c.8.5 2 .5 3 0" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                      <!-- speech bubble tail with tiny 'ay' strokes -->
+                      <path d="M18 9.2c1.9 0 3.3 1.4 3.3 3.1 0 1.8-1.4 3.2-3.3 3.2h-1.1l-1.2 1.3v-1.3h-0.2"
+                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M17.2 11.5l.5 1.6m1-1.6l-.5 1.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <h3 id="t-piglatin" class="card-title">Pig Latin Converter</h3>
+                  <p class="card-desc">
+                    Turn English into Pig Latin with smart punctuation and capitalization, choose suffix styles, see side by side diffs, try reverse mode, and export TXT, CSV, or JSON. Private, in browser.
+                  </p>
+                  <a class="card-cta"
+                    href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
+                    aria-label="Open Pig Latin Converter">Open →</a>
+              </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html"  aria-labelledby="t1" data-filter="Text Utilities">
+              <article class="tool-card writingprompt-tool-card" tabindex="0"
+                      data-href="/tools/random-writing-prompt-generator-json-list-filters-export.html"
+                      aria-labelledby="writingprompt-tg" data-filter="Text & Writing Tools">
+                      <div class="card-icon writingprompt-card-icon" aria-hidden="true">
+                        <!-- Writing Prompt icon: dice + pencil + spark -->
+                        <svg viewBox="0 0 24 24" class="svg-icon writingprompt-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Random Writing Prompt Generator">
+                          <!-- dice -->
+                          <rect x="2.5" y="2.5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                          <circle cx="5.3" cy="5.3" r="0.9" fill="currentColor"/>
+                          <circle cx="8.7" cy="5.3" r="0.9" fill="currentColor"/>
+                          <circle cx="7" cy="8.7" r="0.9" fill="currentColor"/>
+                          <!-- pencil -->
+                          <path d="M14.2 6.8l6.6 6.6c.5.5.5 1.3 0 1.8l-3.6 3.6c-.5.5-1.3.5-1.8 0l-6.6-6.6 5.4-5.4z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                          <path d="M7.9 12.1l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                          <!-- pencil tip fill -->
+                          <path d="M20.8 13.6l-1.8-1.8-1.5 1.5 1.8 1.8 1.5-1.5z" fill="currentColor"/>
+                          <!-- spark -->
+                          <path d="M12.2 2.6l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1.1" fill="none"/>
+                        </svg>
+                      </div>
+                      <h3 id="writingprompt-tg" class="card-title writingprompt-card-title">Random Writing Prompt Generator</h3>
+                      <p class="card-desc writingprompt-card-desc">
+                        Generate story ideas with genre, tone, and length filters. Save favorites, search the library, import your own JSON list, and export visible results as JSON or CSV. Share a link to your exact settings. Private, in-browser.
+                      </p>
+                      <a class="card-cta writingprompt-card-cta"
+                        href="/tools/random-writing-prompt-generator-json-list-filters-export.html"
+                        aria-label="Open Random Writing Prompt Generator">Open →</a>
+                  </article>
+
+                  <article class="tool-card metaphor-card-teaser" tabindex="0"
+                          data-href="/tools/metaphor-finder-fresh-analogy-generator-avoid-cliches-context-highlighter-export.html"
+                          aria-labelledby="t-metaphor" data-filter="Text & Writing Tools">
+                          <div class="card-icon" aria-hidden="true">
+                            <!-- Metaphor icon: bridge (linking ideas) + spark -->
+                            <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Metaphor Finder icon" xmlns="http://www.w3.org/2000/svg">
+                              <!-- bridge arc -->
+                              <path d="M3 14c3-5 15-5 18 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                              <!-- pillars -->
+                              <path d="M6 14v5M18 14v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                              <!-- deck -->
+                              <path d="M4 14h16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                              <!-- sparkle -->
+                              <path d="M12 4l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1.1" fill="none"/>
+                            </svg>
+                          </div>
+                          <h3 id="t-metaphor" class="card-title">Metaphor Finder</h3>
+                          <p class="card-desc">
+                            Generate fresh metaphors and similes from curated lists with category, tone, and intensity filters. Flag clichés and mixed metaphors, highlight in context, one-click replace, and export your replacement map as CSV or JSON. Private, in-browser.
+                          </p>
+                          <a class="card-cta"
+                            href="/tools/metaphor-finder-fresh-analogy-generator-avoid-cliches-context-highlighter-export.html"
+                            aria-label="Open Metaphor Finder">Open →</a>
+                      </article>
+
+                      <article class="tool-card expandshort-tool-card" tabindex="0"
+                            data-href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
+                            aria-labelledby="expandshort-tg" data-filter="Text & Writing Tools">
+                            <div class="card-icon expandshort-card-icon" aria-hidden="true">
+                              <!-- Sentence Expander - Shortener icon: arrows out/in + text lines -->
+                              <svg viewBox="0 0 24 24" class="svg-icon expandshort-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sentence Expander - Shortener">
+                                <!-- text lines -->
+                                <path d="M3 5.5h10M3 9h14M3 12.5h12M3 16h10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
+                                <!-- expand arrow (left block -> right) -->
+                                <path d="M7 19h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M12 17l3 2-3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <!-- shorten arrow (right block -> left) -->
+                                <path d="M17 19h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M12 21l-3-2 3-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <!-- spark -->
+                                <path d="M19 4.2l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1" fill="none"/>
+                              </svg>
+                            </div>
+                            <h3 id="expandshort-tg" class="card-title expandshort-card-title">Sentence Expander - Shortener</h3>
+                            <p class="card-desc expandshort-card-desc">
+                              Rewrite faster with rule-based controls. Expand with clear transitions or shorten for crisp clarity, set a target length, lock protected terms, process lines in batch, and view side by side diffs. Export TXT, CSV, or JSON. Zero AI cost, private in-browser.
+                            </p>
+                            <a class="card-cta expandshort-card-cta"
+                              href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
+                              aria-label="Open Sentence Expander - Shortener">Open →</a>
+                        </article>
+
+<article class="tool-card" tabindex="0" data-href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-labelledby="t-synonym" data-filter="Text & Writing Tools">
+                  <div class="card-icon" aria-hidden="true">
+                    <!-- Synonym icon: shuffle arrows + sparkle -->
+                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Random Synonym Finder icon">
+                      <!-- shuffle paths -->
+                      <path d="M3 7h4c2.5 0 4 5 7 5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                      <path d="M3 17h4c1.6 0 2.7-2 3.6-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                      <!-- arrowheads -->
+                      <path d="M17 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <path d="M17 13l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                      <!-- sparkle -->
+                      <path d="M7 4.5l.6-1.2.6 1.2 1.2.6-1.2.6-.6 1.2-.6-1.2-1.2-.6 1.2-.6z" stroke="currentColor" stroke-width="1.2" fill="none" />
+                    </svg>
+                  </div>
+                  <h3 id="t-synonym" class="card-title">Random Synonym Finder</h3>
+                  <p class="card-desc">
+                    Highlight a word and spin smart synonyms by tone, formality, length, and frequency. Batch-rewrite with locks, A/B compare, and export your replacement map. Private, in-browser.
+                  </p>
+                  <a class="card-cta" href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-label="Open Random Synonym Finder">Open →</a>
+              </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html"  aria-labelledby="t1" data-filter="Text & Writing Tools">
           <div class="card-icon" aria-hidden="true">
             <!-- Document + counter icon -->
             <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Word and Character Counter icon">
@@ -489,7 +681,7 @@
           <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
       </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2" data-filter="Text Utilities">
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2" data-filter="Text & Writing Tools">
       <div class="card-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" class="svg-icon">
           <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -500,7 +692,7 @@
       <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
     </article>  
 
-<article class="tool-card" tabindex="0" data-href="/tools/readability-score-checker.html" aria-labelledby="t-read" data-filter="Text Utilities">
+<article class="tool-card" tabindex="0" data-href="/tools/readability-score-checker.html" aria-labelledby="t-read" data-filter="Text & Writing Tools">
   <div class="card-icon" aria-hidden="true">
     <!-- Readability icon: book + dial gauge -->
     <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Readability Score Checker icon" xmlns="http://www.w3.org/2000/svg">
@@ -522,12 +714,13 @@
   <p class="card-desc">Check Flesch Kincaid, Gunning Fog, SMOG, ARI, and Coleman Liau in one place. Get sentence highlights, passive voice hints, target grade tips, and exportable reports. All local and fast.</p>
   <a class="card-cta" href="/tools/readability-score-checker.html" aria-label="Open Readability Score Checker">Open →</a>
 </article>
+
+
+
     
           <!-- -------------------------------------------------------------------------- -->
 <h2 class="tool-category" id="cat-text">Formatting & Cleaning</h2>
           <!-- -------------------------------------------------------------------------- -->
-
-
 
     <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3" data-filter="Formatting & Cleaning">
       <div class="card-icon" aria-hidden="true">
@@ -685,178 +878,137 @@
               Sort words, lines, or sentences A-Z or Z-A with smart options: case-insensitive, numeric-aware, ignore leading articles (a, an, the), remove duplicates, and group by initial. Private, in-browser.
             </p>
             <a class="card-cta alphabetizer-card-cta" href="/tools/alphabetizer-sort-words-sentences.html" aria-label="Open Alphabetizer">Open →</a>
-        </article>
+        </article>       
+
+
+
+          
+          <!-- -------------------------------------------------------------------------- -->
+<h2 class="tool-category" id="cat-text">Files & Docs (Soon)</h2>
+          <!-- -------------------------------------------------------------------------- -->
+
+
+
+          
+          <!-- -------------------------------------------------------------------------- -->
+<h2 class="tool-category" id="cat-text">Data & Converters</h2>
+          <!-- -------------------------------------------------------------------------- -->
+
+<article class="tool-card jso-for-val-card toolcard" tabindex="0" data-href="/tools/json-formatter-validator.html" aria-labelledby="jso-for-val-tg" data-filter="Data & Converters">
+  <div class="card-icon jso-for-val-icon" aria-hidden="true">
+    <!-- JSON Formatter icon: curly braces + schema nodes + check -->
+    <svg viewBox="0 0 24 24" class="svg-icon jso-for-val-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JSON Formatter and Validator - Prettier + AJV">
+      <!-- Frame -->
+      <rect x="1.25" y="2" width="21.5" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.35"/>
+      <!-- Curly braces -->
+      <path d="M7 6c-1.2 0-2 .8-2 2v1c0 .6-.4 1-1 1 .6 0 1 .4 1 1v1c0 1.2.8 2 2 2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <path d="M17 6c1.2 0 2 .8 2 2v1c0 .6.4 1 1 1-.6 0-1 .4-1 1v1c0 1.2-.8 2-2 2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <!-- Schema nodes -->
+      <circle cx="10" cy="8" r="0.8" fill="currentColor" opacity="0.85"/>
+      <circle cx="14" cy="8" r="0.8" fill="currentColor" opacity="0.85"/>
+      <circle cx="12" cy="11" r="0.8" fill="currentColor" opacity="0.85"/>
+      <line x1="10" y1="8.8" x2="12" y2="10.2" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
+      <line x1="14" y1="8.8" x2="12" y2="10.2" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
+      <!-- Check mark -->
+      <path d="M9.2 15.2l1.8 1.9 3.8-4.1" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.95"/>
+    </svg>
+  </div>
+  <h3 id="jso-for-val-tg" class="card-title jso-for-val-title">JSON Formatter and Validator - Prettier + AJV</h3>
+  <p class="card-desc jso-for-val-desc">
+    Format and minify JSON with Prettier, validate against JSON Schema using AJV with formats, defaults, and type coercion, and run JSONPath queries. Includes flatten and unflatten for analytics, a draft schema generator, copy and download, and a tiny share link for small samples. Everything runs locally for privacy and speed.
+  </p>
+  <a class="card-cta jso-for-val-cta" href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html" aria-label="Open JSON Formatter and Validator - Prettier + AJV">Open →</a>
+</article>
+
+<article class="tool-card jso-yam-tom-card toolcard" tabindex="0" data-href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html" aria-labelledby="jso-yam-tom-tg" data-filter="Data & Converters">
+  <div class="card-icon jso-yam-tom-icon" aria-hidden="true">
+    <!-- JSON ↔ YAML ↔ TOML icon: three nodes with circular arrows -->
+    <svg viewBox="0 0 24 24" class="svg-icon jso-yam-tom-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JSON YAML TOML Converter">
+      <!-- Frame -->
+      <rect x="1.25" y="2" width="21.5" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.35"/>
+      <!-- Nodes -->
+      <circle cx="6.8" cy="9" r="2.8" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <circle cx="17.2" cy="9" r="2.8" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <circle cx="12" cy="16.2" r="2.8" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <!-- Labels -->
+      <g fill="currentColor" opacity="0.9" font-family="monospace" font-size="2.6">
+        <text x="6.1" y="9.4">J</text>
+        <text x="16.6" y="9.4">Y</text>
+        <text x="11.4" y="16.6">T</text>
+      </g>
+      <!-- Circular arrows -->
+      <path d="M9.8 7.1c1.6-1.4 3.8-1.4 5.4 0" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.9"/>
+      <polygon points="15.6,6.3 16.8,7.2 15.3,7.8" fill="currentColor" opacity="0.9"/>
+      <path d="M15.6 11.1c.4 1.9-.4 3.3-1.8 4.3" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.9"/>
+      <polygon points="14.4,15.1 13.7,16.5 12.9,15.1" fill="currentColor" opacity="0.9"/>
+      <path d="M10.2 15.4c-1.5-1-2.3-2.4-1.9-4.3" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.9"/>
+      <polygon points="7.7,10.9 8.2,9.5 9.1,10.9" fill="currentColor" opacity="0.9"/>
+    </svg>
+  </div>
+  <h3 id="jso-yam-tom-tg" class="card-title jso-yam-tom-title">JSON ↔ YAML ↔ TOML Converter</h3>
+  <p class="card-desc jso-yam-tom-desc">
+    Convert JSON, YAML, and TOML both ways with pretty print, minify, and optional key sort. Auto detect input, paste or drop files, copy or download output, and run a round trip check to verify integrity. Powered by js-yaml and TOML UMD, everything runs locally for privacy and speed.
+  </p>
+  <a class="card-cta jso-yam-tom-cta" href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html" aria-label="Open JSON YAML TOML Converter">Open →</a>
+</article>  
+
+
+
+          
+          <!-- -------------------------------------------------------------------------- -->
+<h2 class="tool-category" id="cat-text">Media & Graphics (Soon)</h2>
+          <!-- -------------------------------------------------------------------------- -->  
+
+
+
+          
+          <!-- -------------------------------------------------------------------------- -->
+<h2 class="tool-category" id="cat-text">Accessibility & Design (Soon)</h2>
+          <!-- -------------------------------------------------------------------------- -->
+
+
 
 
           <!-- -------------------------------------------------------------------------- -->
-<h2 class="tool-category" id="cat-text">Language</h2>
+          <h2 class="tool-category" id="cat-text">Engagement & Productivity</h2>
           <!-- -------------------------------------------------------------------------- -->
 
-          <article class="tool-card" tabindex="0" data-href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-labelledby="t-synonym" data-filter="Language">
-                  <div class="card-icon" aria-hidden="true">
-                    <!-- Synonym icon: shuffle arrows + sparkle -->
-                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Random Synonym Finder icon">
-                      <!-- shuffle paths -->
-                      <path d="M3 7h4c2.5 0 4 5 7 5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-                      <path d="M3 17h4c1.6 0 2.7-2 3.6-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-                      <!-- arrowheads -->
-                      <path d="M17 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                      <path d="M17 13l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                      <!-- sparkle -->
-                      <path d="M7 4.5l.6-1.2.6 1.2 1.2.6-1.2.6-.6 1.2-.6-1.2-1.2-.6 1.2-.6z" stroke="currentColor" stroke-width="1.2" fill="none" />
-                    </svg>
-                  </div>
-                  <h3 id="t-synonym" class="card-title">Random Synonym Finder</h3>
-                  <p class="card-desc">
-                    Highlight a word and spin smart synonyms by tone, formality, length, and frequency. Batch-rewrite with locks, A/B compare, and export your replacement map. Private, in-browser.
-                  </p>
-                  <a class="card-cta" href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html" aria-label="Open Random Synonym Finder">Open →</a>
-              </article>
-
-              <article class="tool-card anagram-tool-card" tabindex="0" data-href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-labelledby="anagram-tg" data-filter="Language">
-                  <div class="card-icon anagram-card-icon" aria-hidden="true">
-                    <!-- Anagram icon: shuffled arrows + letter tiles -->
-                    <svg viewBox="0 0 24 24" class="svg-icon anagram-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anagram Generator">
-                      <!-- shuffle arrows -->
-                      <path d="M3 7h4c2 0 3 3 5 3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                      <path d="M15.5 5.2 19 7.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M3 17h4c2 0 3-3 5-3h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                      <path d="M15.5 14.2 19 16.5l-3.5 2.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                      <!-- letter tiles -->
-                      <rect x="2.8" y="9.4" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
-                      <text x="5.1" y="12.6" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">A</text>
-                      <rect x="16.6" y="8.1" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".95"/>
-                      <text x="18.9" y="11.3" text-anchor="middle" font-size="2.6" font-family="ui-sans-serif, system-ui" fill="currentColor">G</text>
-                    </svg>
-                  </div>
-                  <h3 id="anagram-tg" class="card-title anagram-card-title">Anagram Generator</h3>
-                  <p class="card-desc anagram-card-desc">
-                    Rearrange letters into single or multi-word anagrams with smart filters for length, starts/ends with, include or exclude letters, and wildcard patterns. Rank by frequency or Scrabble score, paste your own dictionary, and export results. Private, in-browser.
-                  </p>
-                  <a class="card-cta anagram-card-cta" href="/tools/anagram-generator-fast-anagram-filters-multi-word-export-sniptext-tool.html" aria-label="Open Anagram Generator">Open →</a>
-              </article>
-
-              <article class="tool-card piglatin-card-teaser" tabindex="0"
-                  data-href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
-                  aria-labelledby="t-piglatin" data-filter="Language">
-                  <div class="card-icon" aria-hidden="true">
-                    <!-- Pig Latin icon: pig snout + speech bubble "ay" motif -->
-                    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Pig Latin Converter icon">
-                      <!-- head -->
-                      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                      <!-- ears -->
-                      <path d="M7.2 6.5l-2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M16.8 6.5l2-1.6 0 2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                      <!-- snout -->
-                      <ellipse cx="12" cy="14" rx="4.2" ry="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                      <circle cx="10.7" cy="14" r="0.7" fill="currentColor"/>
-                      <circle cx="13.3" cy="14" r="0.7" fill="currentColor"/>
-                      <!-- smile hint -->
-                      <path d="M9 11.2c.8.5 2 .5 3 0" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                      <!-- speech bubble tail with tiny 'ay' strokes -->
-                      <path d="M18 9.2c1.9 0 3.3 1.4 3.3 3.1 0 1.8-1.4 3.2-3.3 3.2h-1.1l-1.2 1.3v-1.3h-0.2"
-                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M17.2 11.5l.5 1.6m1-1.6l-.5 1.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                    </svg>
-                  </div>
-                  <h3 id="t-piglatin" class="card-title">Pig Latin Converter</h3>
-                  <p class="card-desc">
-                    Turn English into Pig Latin with smart punctuation and capitalization, choose suffix styles, see side by side diffs, try reverse mode, and export TXT, CSV, or JSON. Private, in browser.
-                  </p>
-                  <a class="card-cta"
-                    href="/tools/pig-latin-converter-fun-accurate-and-classroom-friendly.html"
-                    aria-label="Open Pig Latin Converter">Open →</a>
-              </article>
-
-              <article class="tool-card writingprompt-tool-card" tabindex="0"
-                      data-href="/tools/random-writing-prompt-generator-json-list-filters-export.html"
-                      aria-labelledby="writingprompt-tg" data-filter="Language">
-                      <div class="card-icon writingprompt-card-icon" aria-hidden="true">
-                        <!-- Writing Prompt icon: dice + pencil + spark -->
-                        <svg viewBox="0 0 24 24" class="svg-icon writingprompt-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Random Writing Prompt Generator">
-                          <!-- dice -->
-                          <rect x="2.5" y="2.5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
-                          <circle cx="5.3" cy="5.3" r="0.9" fill="currentColor"/>
-                          <circle cx="8.7" cy="5.3" r="0.9" fill="currentColor"/>
-                          <circle cx="7" cy="8.7" r="0.9" fill="currentColor"/>
-                          <!-- pencil -->
-                          <path d="M14.2 6.8l6.6 6.6c.5.5.5 1.3 0 1.8l-3.6 3.6c-.5.5-1.3.5-1.8 0l-6.6-6.6 5.4-5.4z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                          <path d="M7.9 12.1l1.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                          <!-- pencil tip fill -->
-                          <path d="M20.8 13.6l-1.8-1.8-1.5 1.5 1.8 1.8 1.5-1.5z" fill="currentColor"/>
-                          <!-- spark -->
-                          <path d="M12.2 2.6l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1.1" fill="none"/>
-                        </svg>
-                      </div>
-                      <h3 id="writingprompt-tg" class="card-title writingprompt-card-title">Random Writing Prompt Generator</h3>
-                      <p class="card-desc writingprompt-card-desc">
-                        Generate story ideas with genre, tone, and length filters. Save favorites, search the library, import your own JSON list, and export visible results as JSON or CSV. Share a link to your exact settings. Private, in-browser.
-                      </p>
-                      <a class="card-cta writingprompt-card-cta"
-                        href="/tools/random-writing-prompt-generator-json-list-filters-export.html"
-                        aria-label="Open Random Writing Prompt Generator">Open →</a>
-                  </article>
-
-                  <article class="tool-card metaphor-card-teaser" tabindex="0"
-                          data-href="/tools/metaphor-finder-fresh-analogy-generator-avoid-cliches-context-highlighter-export.html"
-                          aria-labelledby="t-metaphor" data-filter="Language">
-                          <div class="card-icon" aria-hidden="true">
-                            <!-- Metaphor icon: bridge (linking ideas) + spark -->
-                            <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Metaphor Finder icon" xmlns="http://www.w3.org/2000/svg">
-                              <!-- bridge arc -->
-                              <path d="M3 14c3-5 15-5 18 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                              <!-- pillars -->
-                              <path d="M6 14v5M18 14v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                              <!-- deck -->
-                              <path d="M4 14h16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                              <!-- sparkle -->
-                              <path d="M12 4l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1.1" fill="none"/>
-                            </svg>
-                          </div>
-                          <h3 id="t-metaphor" class="card-title">Metaphor Finder</h3>
-                          <p class="card-desc">
-                            Generate fresh metaphors and similes from curated lists with category, tone, and intensity filters. Flag clichés and mixed metaphors, highlight in context, one-click replace, and export your replacement map as CSV or JSON. Private, in-browser.
-                          </p>
-                          <a class="card-cta"
-                            href="/tools/metaphor-finder-fresh-analogy-generator-avoid-cliches-context-highlighter-export.html"
-                            aria-label="Open Metaphor Finder">Open →</a>
-                      </article>
-
-                      <article class="tool-card expandshort-tool-card" tabindex="0"
-                            data-href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
-                            aria-labelledby="expandshort-tg" data-filter="Language">
-                            <div class="card-icon expandshort-card-icon" aria-hidden="true">
-                              <!-- Sentence Expander - Shortener icon: arrows out/in + text lines -->
-                              <svg viewBox="0 0 24 24" class="svg-icon expandshort-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sentence Expander - Shortener">
-                                <!-- text lines -->
-                                <path d="M3 5.5h10M3 9h14M3 12.5h12M3 16h10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
-                                <!-- expand arrow (left block -> right) -->
-                                <path d="M7 19h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                                <path d="M12 17l3 2-3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                <!-- shorten arrow (right block -> left) -->
-                                <path d="M17 19h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                                <path d="M12 21l-3-2 3-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                <!-- spark -->
-                                <path d="M19 4.2l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1" fill="none"/>
-                              </svg>
-                            </div>
-                            <h3 id="expandshort-tg" class="card-title expandshort-card-title">Sentence Expander - Shortener</h3>
-                            <p class="card-desc expandshort-card-desc">
-                              Rewrite faster with rule-based controls. Expand with clear transitions or shorten for crisp clarity, set a target length, lock protected terms, process lines in batch, and view side by side diffs. Export TXT, CSV, or JSON. Zero AI cost, private in-browser.
-                            </p>
-                            <a class="card-cta expandshort-card-cta"
-                              href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
-                              aria-label="Open Sentence Expander - Shortener">Open →</a>
-                        </article>
-
-
-          <!-- -------------------------------------------------------------------------- -->
-          <h2 class="tool-category" id="cat-text">Engagement Boosters</h2>
-          <!-- -------------------------------------------------------------------------- -->
+<article class="tool-card tim-zon-con-card toolcard" tabindex="0"
+  data-href="/tools/time-zone-converter-compare-cities.html"
+  aria-labelledby="tim-zon-con-tg" data-filter="Engagement & Productivity">
+  <div class="card-icon tim-zon-con-icon" aria-hidden="true">
+    <!-- Time Zone Converter icon: globe + clock hands + overlap ring -->
+    <svg viewBox="0 0 24 24" class="svg-icon tim-zon-con-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Time Zone Converter - Compare Cities">
+      <!-- Globe outline -->
+      <circle cx="10" cy="12" r="6.8" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
+      <!-- Lat/Lon lines -->
+      <path d="M3.6 12h12.8M10 5.2v13.6M6.2 7.7a6.8 6.8 0 0 0 7.6 0M6.2 16.3a6.8 6.8 0 0 1 7.6 0" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.45"/>
+      <!-- City pins -->
+      <circle cx="10" cy="5.2" r="0.7" fill="currentColor" opacity="0.9"/>
+      <circle cx="16.4" cy="12" r="0.7" fill="currentColor" opacity="0.9"/>
+      <circle cx="3.6" cy="12" r="0.7" fill="currentColor" opacity="0.9"/>
+      <!-- Clock bezel -->
+      <circle cx="18.2" cy="7.6" r="4.2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.75"/>
+      <!-- Clock hands -->
+      <path d="M18.2 7.6v-2.1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.95"/>
+      <path d="M18.2 7.6h2.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.9"/>
+      <circle cx="18.2" cy="7.6" r="0.6" fill="currentColor" />
+      <!-- Overlap ring (meeting window) -->
+      <path d="M7.6 14.5a3.8 3.8 0 0 0 4.8 0" fill="none" stroke="currentColor" stroke-width="2" opacity="0.28" />
+    </svg>
+  </div>
+  <h3 id="tim-zon-con-tg" class="card-title tim-zon-con-title">Time Zone Converter - Compare Cities, Copy Meeting Slots</h3>
+  <p class="card-desc tim-zon-con-desc">
+    Add cities or IANA zones, set working hours, and see an overlap heatmap. Copy the best meeting friendly windows, export an ICS invite, or share a tiny link. DST aware, private, and fast in your browser.
+  </p>
+  <a class="card-cta tim-zon-con-cta"
+     href="/tools/time-zone-converter-compare-cities.html"
+     aria-label="Open Time Zone Converter - Compare Cities, Copy Meeting Slots">Open →</a>
+</article>
 
           <article class="tool-card writingchallenge-tool-card" tabindex="0"
                 data-href="/tools/daily-writing-challenge.html"
-                aria-labelledby="writingchallenge-tg" data-filter="Engagement Boosters">
+                aria-labelledby="writingchallenge-tg" data-filter="Engagement & Productivity">
                 <div class="card-icon writingchallenge-card-icon" aria-hidden="true">
                   <!-- Daily Writing Challenge icon: calendar + pen nib + spark -->
                   <svg viewBox="0 0 24 24" class="svg-icon writingchallenge-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daily Writing Challenge">
@@ -889,7 +1041,7 @@
 
             <article class="tool-card typing-card-teaser" tabindex="0"
                     data-href="/tools/typing-speed-test.html"
-                    aria-labelledby="t-typing" data-filter="Engagement Boosters">
+                    aria-labelledby="t-typing" data-filter="Engagement & Productivity">
                     <div class="card-icon typing-card-icon" aria-hidden="true">
                       <!-- Typing Speed Test icon: keyboard + stopwatch + spark -->
                       <svg viewBox="0 0 24 24" class="svg-icon typing-svg" role="img" aria-label="Typing Speed Test icon" xmlns="http://www.w3.org/2000/svg">
@@ -916,7 +1068,7 @@
 
                 <article class="tool-card pomodoro-tool-card" tabindex="0"
                           data-href="/tools/pomodoro-timer.html"
-                          aria-labelledby="pomodoro-tg" data-filter="Engagement Boosters">
+                          aria-labelledby="pomodoro-tg" data-filter="Engagement & Productivity">
                           <div class="card-icon pomodoro-card-icon" aria-hidden="true">
                             <!-- Pomodoro Timer icon: tomato + clock ring + hand -->
                             <svg viewBox="0 0 24 24" class="svg-icon pomodoro-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pomodoro Timer">
@@ -953,7 +1105,7 @@
 
                     <article class="tool-card qotd-card-teaser" tabindex="0"
                             data-href="/tools/quote-of-the-day-widget-writing-motivation-favorites-embed-json-export-sniptext.html"
-                            aria-labelledby="t-qotd" data-filter="Engagement Boosters">
+                            aria-labelledby="t-qotd" data-filter="Engagement & Productivity">
                             <div class="card-icon qotd-card-icon" aria-hidden="true">
                               <!-- Quote of the Day icon: quote bubble + calendar + refresh -->
                               <svg viewBox="0 0 24 24" class="svg-icon qotd-svg" role="img" aria-label="Quote of the Day icon" xmlns="http://www.w3.org/2000/svg">
@@ -983,7 +1135,7 @@
 
                         <article class="tool-card progressbar-tool-card" tabindex="0"
                                       data-href="/tools/text-progress-bar-maker.html"
-                                      aria-labelledby="progressbar-tg" data-filter="Engagement Boosters">
+                                      aria-labelledby="progressbar-tg" data-filter="Engagement & Productivity">
                                 <div class="card-icon progressbar-card-icon" aria-hidden="true">
                                   <!-- Text Progress Bar Maker icon: linear bar + circular ring with percent -->
                                   <svg viewBox="0 0 24 24" class="svg-icon progressbar-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Text Progress Bar Maker">
@@ -1022,7 +1174,7 @@
 
                             <article class="tool-card namegen-card-teaser" tabindex="0"
                                           data-href="/tools/name-generator-pen-names-research-authors-fantasy.html"
-                                          aria-labelledby="t-namegen" data-filter="Engagement Boosters">
+                                          aria-labelledby="t-namegen" data-filter="Engagement & Productivity">
                                     <div class="card-icon namegen-card-icon" aria-hidden="true">
                                       <!-- Name Generator icon: quill + sparkle stars + initials badge -->
                                       <svg viewBox="0 0 24 24" class="svg-icon namegen-svg" role="img" aria-label="Name Generator icon" xmlns="http://www.w3.org/2000/svg">
@@ -1049,7 +1201,7 @@
 
                                 <article class="tool-card flashcard-tool-card" tabindex="0"
                                             data-href="/tools/flashcard-creator-export-to-anki.html"
-                                            aria-labelledby="flashcard-tg" data-filter="Engagement Boosters">
+                                            aria-labelledby="flashcard-tg" data-filter="Engagement & Productivity">
                                       <div class="card-icon flashcard-card-icon" aria-hidden="true">
                                         <!-- Flashcard Creator icon: stacked cards + cloze brackets + export arrow -->
                                         <svg viewBox="0 0 24 24" class="svg-icon flashcard-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flashcard Creator">
@@ -1077,6 +1229,8 @@
                                         href="/tools/flashcard-creator-export-to-anki.html"
                                         aria-label="Open Flashcard Creator">Open →</a>
                                   </article>
+
+
 
 
           <!-- -------------------------------------------------------------------------- -->
@@ -1201,6 +1355,15 @@
                     href="/tools/random-password-generator.html"
                     aria-label="Open Random Password Generator">Open →</a>
 </article>  
+
+                                  
+
+
+          <!-- -------------------------------------------------------------------------- -->
+          <h2 class="tool-category" id="cat-text">Classroom & Printables (Soon)</h2>
+          <!-- -------------------------------------------------------------------------- -->
+
+
 
 
           <!-- -------------------------------------------------------------------------- -->

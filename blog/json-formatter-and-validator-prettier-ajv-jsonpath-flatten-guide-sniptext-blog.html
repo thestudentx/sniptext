@@ -1,0 +1,516 @@
+<!-- JSON Formatter & Validator - BLOG ARTICLE HEAD -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GE98V48RK8');
+</script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+</script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+  <!-- Essentials -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/blog/">
+
+  <!-- Primary SEO -->
+  <title>JSON Formatter and Validator Guide - Prettier formatting, AJV schema checks, JSONPath and flatten tips | SnipText Blog</title>
+  <meta name="description" content="Learn how to format JSON with Prettier, validate with AJV, run JSONPath queries, and flatten data. Practical steps, examples, and pro tips. Includes backlinks to SnipText tools like JSON Formatter & Validator, Whitespace Cleaner, Word Counter, and Code Diff." />
+  <meta name="keywords" content="JSON formatter, JSON validator, Prettier JSON, AJV schema validation, JSON Schema, Draft 2020-12, JSONPath, flatten JSON, unflatten, data cleaning, developer tools, private in browser" />
+  <meta name="author" content="Areeba Khan" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang (extension-less) -->
+  <link rel="canonical" href="https://checkai.pro/blog/free-json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide" />
+  <link rel="alternate" href="https://checkai.pro/blog/free-json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/blog/free-json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide" hreflang="x-default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SnipText Blog" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="JSON Formatter and Validator Guide - Prettier + AJV" />
+  <meta property="og:description" content="Format JSON with Prettier, validate with AJV, explore with JSONPath, and flatten data. Practical steps and examples for clean, reliable JSON." />
+  <meta property="og:url" content="https://checkai.pro/blog/free-json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SnipText Blog cover for JSON Formatter and Validator" />
+  <meta property="article:published_time" content="2025-09-18T00:00:00+05:00" />
+  <meta property="article:modified_time" content="2025-09-18T00:00:00+05:00" />
+  <meta property="article:section" content="Tools" />
+
+  <!-- Twitter (no handle) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="JSON Formatter and Validator Guide - Prettier + AJV" />
+  <meta name="twitter:description" content="A practical guide to formatting and validating JSON with Prettier and AJV, JSONPath queries, and flattening data. Private and fast." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-blog-default-image.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#1D4ED8" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+<!-- Favicon: Blog Pages (Square Blue + White Book Icon) -->
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='SnipText Blog Icon'>
+  <rect x='0' y='0' width='100' height='100' fill='%231D4ED8'/>
+  <path d='M20 25h25v50H20z M55 25h25v50H55z' fill='%23ffffff'/>
+</svg>" />
+
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/css/sniptext-blog.css" />
+
+  <!-- Structured Data: BlogPosting (extension-less URLs) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://checkai.pro/blog/free-json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide"},
+    "headline":"JSON Formatter and Validator Guide - Prettier formatting, AJV schema checks, JSONPath and flatten tips",
+    "description":"A clear guide to formatting JSON with Prettier, validating with AJV, running JSONPath queries, and flattening data for real projects. Includes examples and links to SnipText tools.",
+    "image":{
+      "@type":"ImageObject",
+      "url":"https://checkai.pro/images/sniptext-blog-default-image.png",
+      "width":1200,
+      "height":630
+    },
+    "author":{"@type":"Person","name":"Areeba Khan"},
+    "publisher":{"@type":"Organization","name":"SnipText","logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}},
+    "inLanguage":"en",
+    "isAccessibleForFree": true,
+    "articleSection":"Tools",
+    "datePublished":"2025-09-18T00:00:00+05:00",
+    "dateModified":"2025-09-18T00:00:00+05:00",
+    "keywords":["JSON formatter","JSON validator","Prettier JSON","AJV","JSON Schema","Draft 2020-12","JSONPath","flatten JSON","unflatten","developer tools"]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumbs (extension-less) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkai.pro/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://checkai.pro/blog"},
+      {"@type":"ListItem","position":3,"name":"JSON Formatter and Validator Guide","item":"https://checkai.pro/blog/free-json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide"}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQ (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What is a JSON formatter and validator",
+        "acceptedAnswer":{"@type":"Answer","text":"A JSON formatter makes your JSON readable with consistent indentation while a validator checks that the JSON is well formed and optionally conforms to a JSON Schema. This guide covers Prettier for formatting and AJV for schema validation."}
+      },
+      {
+        "@type":"Question",
+        "name":"Is JSON formatting and validation private",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. The SnipText JSON tools run in your browser so your data does not leave your device."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I validate with Draft 2020-12",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. AJV supports modern drafts including 2020-12. Paste your schema, enable formats or defaults if needed, and validate."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Compatibility -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+        </div>
+    </div>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/index.html" class="brand-link">SnipText</a>
+      </div>
+      <div class="nav-menu">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="/blog/blog.html" class="nav-link">Blog</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#articles" class="nav-link">Articles</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <div class="nav-hamburger" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+
+<main class="main-content">
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="blog-hero-content">
+        <h1 class="hero-title">JSON Formatter and Validator - Prettier + AJV</h1>
+        <p class="hero-subtitle">Format JSON with Prettier, validate against JSON Schema using AJV, run JSONPath queries, and flatten or unflatten data. Fast, private, and built for everyday developer workflows.</p>
+        <div class="hero-cta">
+          <a href="/tools/json-formatter-validator.html" class="cta-button">Open JSON Formatter & Validator</a>
+          <a href="#articles" class="cta-button" style="--variant:ghost">Go to Articles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Article -->
+  <section class="featured-article">
+    <div class="container">
+      <article class="article-card featured">
+        <div class="article-meta">
+          <span class="article-category">Developer Tools</span>
+          <time datetime="2025-09-18" class="article-date">September 18, 2025</time>
+        </div>
+
+        <h2 class="article-title">JSON Formatter and Validator Guide: Prettier formatting, AJV schema checks, JSONPath, and flatten tips</h2>
+
+        <p class="article-excerpt">Clean JSON helps prevent errors and speeds up reviews. In this guide you will format with Prettier, validate with AJV, query with JSONPath, and flatten structures for analytics and APIs.</p>
+
+        <div class="article-content">
+          <div class="drop-cap-paragraph">
+            <span class="drop-cap">J</span>SON is the backbone of modern web apps and APIs. Messy or invalid JSON slows teams and breaks integrations. The SnipText <strong>JSON Formatter and Validator</strong> runs in your browser so formatting, schema checks, and quick queries feel instant and private. This post explains what the tool is, why it matters, and how to apply it in real work.
+          </div>
+
+          <nav class="article-toc" aria-label="Quick navigation">
+            <strong>In this guide:</strong>
+            <ul>
+              <li><a href="#features">What the formatter and validator do</a></li>
+              <li><a href="#examples">Examples with Prettier, AJV, and JSONPath</a></li>
+              <li><a href="#workflow">Recommended workflow</a></li>
+              <li><a href="#use-cases">Use cases and benefits</a></li>
+              <li><a href="#stack">Companion tools and links</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </nav>
+
+          <h3 id="features">What the formatter and validator do</h3>
+          <ul>
+            <li><strong>Prettier formatting:</strong> Make JSON readable with consistent indentation. Supports JSONC input when allowed and optional key sorting for stable diffs.</li>
+            <li><strong>AJV schema validation:</strong> Check payloads against JSON Schema, enable formats like email or date time, apply defaults, and coerce types when you need quick fixes.</li>
+            <li><strong>JSONPath queries:</strong> Inspect or extract parts of a large object using patterns like <code>$.items[*].id</code> or <code>$..price</code>.</li>
+            <li><strong>Flatten and unflatten:</strong> Convert nested objects to key paths for spreadsheets and analytics, then rebuild them into proper JSON.</li>
+            <li><strong>Share and review:</strong> Copy a tiny link for small samples, download formatted JSON, and keep everything on device for privacy.</li>
+          </ul>
+
+          <h3 id="examples">Examples with Prettier, AJV, and JSONPath</h3>
+          <p><strong>Prettier formatting and minify</strong></p>
+          <pre><code>// Pretty print with 2 spaces
+{
+  "id": 101,
+  "email": "dev@example.com",
+  "roles": ["admin","user"]
+}
+
+// Minified
+{"id":101,"email":"dev@example.com","roles":["admin","user"]}</code></pre>
+
+          <p><strong>AJV validation snippet</strong></p>
+          <pre><code>// Schema fragment
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object",
+  "required":["id","email"],
+  "properties":{
+    "id":{"type":"integer"},
+    "email":{"type":"string","format":"email"},
+    "roles":{"type":"array","items":{"type":"string"}}
+  }
+}
+
+// Typical error
+1. at "/email" - must match format "email"</code></pre>
+
+          <p><strong>JSONPath quick checks</strong></p>
+          <pre><code>// Get all product IDs
+$.products[*].id
+
+// Grab nested prices anywhere
+$..price</code></pre>
+
+          <div class="collapsible-section">
+            <button class="collapsible-toggle" aria-expanded="false">
+              <span>Pro tips for cleaner JSON</span>
+              <span class="toggle-icon">+</span>
+            </button>
+            <div class="collapsible-content">
+              <ul>
+                <li><strong>Stable diffs:</strong> Sort keys before committing so Code Diff stays readable. Try our <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</li>
+                <li><strong>Guardrails:</strong> Add <code>required</code> and <code>enum</code> to schemas to catch missing or invalid values early.</li>
+                <li><strong>Performance:</strong> For large payloads, disable live formatting and run manual format to avoid heavy reflows.</li>
+                <li><strong>Analytics:</strong> Flatten responses to audit field coverage, then unflatten when you post back to an API.</li>
+                <li><strong>Privacy:</strong> Work locally. The SnipText tools run in your browser so sample data stays on device.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 id="workflow">Recommended workflow</h3>
+          <ol>
+            <li>Open the <a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a>.</li>
+            <li>Paste JSON and click Format. If you need to handle comments, enable JSONC first.</li>
+            <li>Paste a JSON Schema and run Validate. Toggle formats, defaults, and type coercion as needed.</li>
+            <li>Use JSONPath for quick checks like IDs or totals. Copy results for review.</li>
+            <li>Flatten when moving data into a sheet, unflatten to restore it for your API.</li>
+            <li>Copy or download the final JSON, then compare versions with the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</li>
+          </ol>
+
+          <h3 id="use-cases">Use cases and benefits</h3>
+          <ul>
+            <li><strong>API development:</strong> Validate requests and responses against a shared schema so front end and back end stay aligned.</li>
+            <li><strong>Data pipelines:</strong> Normalize and inspect fields before indexing or analysis. Catch type drift early.</li>
+            <li><strong>Config management:</strong> Keep readable configs with Prettier and enforce valid shapes with AJV.</li>
+            <li><strong>QA and reviews:</strong> Share small samples as tiny links and run JSONPath checks during code reviews.</li>
+          </ul>
+
+          <h3 id="stack">Companion tools and links</h3>
+          <ul>
+            <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - normalize spacing and line endings before you paste JSON into docs.</li>
+            <li><a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a> - convert flattened data into clean HTML tables for docs.</li>
+            <li><a href="/tools/word-counter.html">Word and Character Counter</a> - check limits for descriptions and notes embedded in JSON.</li>
+            <li><a href="/tools/random-text-generator.html">Random Text Generator</a> - create safe placeholder strings for test payloads.</li>
+            <li>Guides: <a href="/blog/code-diff-checker-guide-side-by-side-inline-diff-unified-patch-export-git-workflows-private-browser-sniptext-blog.html">Code Diff Checker guide</a> and <a href="/blog/word-character-line-sentence-counter-blog.html">Word and Character Counter guide</a>.</li>
+            <li>Looking for advanced workflows and saved presets? Check SnipText <a href="/pricing.html">Pro features</a>.</li>
+          </ul>
+
+          <h3 id="faq">FAQ</h3>
+          <dl class="faq grammar-faq" id="grammar-faq">
+            <dt tabindex="0" aria-expanded="false">Does the formatter change values</dt>
+            <dd class="hidden">No. Prettier changes whitespace and indentation only. If you enable key sorting, it reorders keys for stable diffs.</dd>
+
+            <dt tabindex="0" aria-expanded="false">What JSON Schema drafts are supported</dt>
+            <dd class="hidden">AJV supports modern drafts like 2020-12 and Draft 7. Paste your schema and run Validate.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Can I fix errors automatically</dt>
+            <dd class="hidden">Yes. If your workflow allows it, enable defaults and type coercion in AJV to apply safe fixes where possible.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Is my data uploaded</dt>
+            <dd class="hidden">No. The tool runs locally in your browser for speed and privacy.</dd>
+
+            <dt tabindex="0" aria-expanded="false">Do you support huge files</dt>
+            <dd class="hidden">The tool is optimized for typical app payloads. For very large files, turn off live preview and format manually.</dd>
+          </dl>
+        </div>
+
+        <div class="article-footer">
+          <div class="article-tags">
+            <span class="tag">JSON</span>
+            <span class="tag">Validation</span>
+            <span class="tag">Developer Tools</span>
+            <span class="tag">APIs</span>
+            <span class="tag">Data Quality</span>
+          </div>
+          <div class="article-share">
+            <span class="share-text">Share:</span>
+            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="articles" class="articles-section">
+    <div class="container">
+      <h2 class="section-title">Latest Articles</h2>
+      <div class="articles-grid">
+
+        <article class="article-card" data-cat="guides">
+          <div class="article-meta">
+            <span class="article-category">Writing Techniques</span>
+            <time datetime="2025-08-15" class="article-date">August 15, 2025</time>
+          </div>
+          <h3 class="article-title">Mastering Paraphrasing, Tone, Style & Mode for Academic & Creative Writing</h3>
+          <p class="article-excerpt">A complete guide to refining your writing by understanding how paraphrasing, tone, style, and mode shape clarity, originality, and reader engagement - with real examples and expert tips.</p>
+          <a href="/blog/paraphrasing-tone-style-modes-an-academic-guide-with-ethical-ai-tips-sniptext-blog.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="guides">
+          <div class="article-meta">
+            <span class="article-category">Academic Writing</span>
+            <time datetime="2025-08-07" class="article-date">August 7, 2025</time>
+          </div>
+          <h3 class="article-title">Paraphrase vs. Rewrite vs. Summarize: What’s the Difference & When to Use Each</h3>
+          <p class="article-excerpt">Learn clear definitions, real-world use-cases, and academic integrity tips for paraphrasing, rewriting, and summarizing with SnipText’s AI tools.</p>
+          <a href="/blog/paraphrase-rewrite-summarize.html" class="read-more">Read More</a>
+        </article>
+
+        <article class="article-card" data-cat="guides">
+          <div class="article-meta">
+            <span class="article-category">Academic Writing</span>
+            <time datetime="2025-07-20" class="article-date">July 20, 2025</time>
+          </div>
+          <h3 class="article-title">Ethical Paraphrasing in Academia: How to Use AI Without Getting in Trouble</h3>
+          <p class="article-excerpt">Discover best practices for paraphrasing research, proper citation methods, and how SnipText helps you maintain academic integrity.</p>
+          <a href="/blog/ethical-paraphrasing-in-academia.html" class="read-more">Read More</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">About This Blog</h2>
+        <p class="about-text">We publish compact guides that help you format, validate, and ship clean data. Our spotlight tool is the <strong>JSON Formatter and Validator</strong> powered by Prettier and AJV. For writing and developer tasks we also offer the <strong>Whitespace and Formatting Cleaner</strong>, <strong>Code Diff Checker</strong>, and <strong>Word and Character Counter</strong>.</p>
+        <p class="about-text">All SnipText tools run locally in your browser for privacy and speed. Explore more free and pro tools on our <a href="/tools/free-tools.html">Free Tools</a> page and <a href="/pricing.html">Pro features</a> page.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+<!-- Author Bio Card -->
+<aside class="author-bio" id="author-bio">
+    <div class="container">
+        <div class="bio-card">
+            <div class="bio-avatar">
+                <div class="avatar-placeholder">AK</div>
+            </div>
+            <div class="bio-content">
+                <h3 class="bio-name">Areeba Khan</h3>
+                <p class="bio-title">Chief Developer Advocate</p>
+                <p class="bio-description">Areeba writes about practical developer workflows and data hygiene. She helps teams use small browser based tools to catch issues early and keep JSON readable, valid, and easy to review.</p>
+                <div class="bio-links">
+                  <a href="/blog/blog.html" class="bio-link">All Posts</a>
+                  <a href="/tools/free-tools.html" class="bio-link">Free Tools</a>
+                  <a href="/contact.html" class="bio-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">SnipText</h4>
+                <p class="footer-text">Fast private developer tools for clean JSON and content.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SnipText. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <span class="back-to-top-icon">↑</span>
+</button>
+
+<!-- JavaScript -->
+<script src="/blog/js/sniptext-blog.js"></script>
+
+<!-- Small accessible script to toggle FAQ questions -->
+<script>
+(function () {
+  const faq = document.getElementById('grammar-faq');
+  if (!faq) return;
+  const dts = faq.querySelectorAll('dt');
+
+  dts.forEach(dt => {
+    const dd = dt.nextElementSibling;
+    dt.setAttribute('role', 'button');
+    dt.setAttribute('aria-controls', dd ? dd.id || '' : '');
+    dt.setAttribute('tabindex', '0');
+
+    const toggle = () => {
+      const isOpen = dt.classList.toggle('open');
+      if (dd) {
+        dd.classList.toggle('hidden', !isOpen);
+        dt.setAttribute('aria-expanded', String(isOpen));
+      }
+    };
+
+    dt.addEventListener('click', toggle);
+    dt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
+  // Collapsible sections
+  const colls = document.querySelectorAll('.collapsible-section .collapsible-toggle');
+  colls.forEach(btn => {
+    const icon = btn.querySelector('.toggle-icon');
+    const area = btn.nextElementSibling;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      area.style.display = open ? 'none' : 'block';
+      if (icon) icon.textContent = open ? '+' : '−';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

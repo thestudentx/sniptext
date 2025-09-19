@@ -290,40 +290,65 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // === File Upload (.txt/.docx -> raw text) ===
-  uploadInput.addEventListener('change', async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const name = file.name;
-    const lower = name.toLowerCase();
-    const ext = lower.slice(lower.lastIndexOf('.'));
+uploadInput.addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const name = file.name;
+  const lower = name.toLowerCase();
+  const ext = lower.slice(lower.lastIndexOf('.'));
+  let text = '';
 
-    try {
-      if (!['.txt', '.docx'].includes(ext)) {
-        showToast('Only .txt and .docx files are allowed. Try again.', 'error');
-        return;
-      }
-      let text = '';
-      if (ext === '.txt') {
+  try {
+    switch (ext) {
+      case '.txt':
         text = await file.text();
-      } else {
+        break;
+
+      case '.docx':
         const arrayBuffer = await file.arrayBuffer();
         const { value } = await window.mammoth.extractRawText({ arrayBuffer });
         text = value || '';
-      }
-      inputTextarea.value = text.trim();
-      inputTextarea.dispatchEvent(new Event('input'));
-      showToast('File uploaded successfully!', 'success');
-      if (fileInfo) {
-        fileInfo.textContent = `Loaded: ${name}`;
-        fileInfo.classList.remove('hidden');
-      }
-    } catch (err) {
-      console.error('File read error:', err);
-      showToast('File read failed. Try another one.', 'error');
-    } finally {
-      uploadInput.value = '';
+        break;
+
+      case '.pdf':
+        const pdfArrayBuffer = await file.arrayBuffer();
+        const pdf = await window.pdfjsLib.getDocument({ data: pdfArrayBuffer }).promise;
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          text += content.items.map(item => item.str).join(' ') + '\n';
+        }
+        break;
+
+      case '.csv':
+        text = await file.text();
+        // Optional: add a CSV-to-plain-text parser (strip commas, etc.)
+        break;
+
+      case '.md':
+        text = await file.text();
+        break;
+
+      default:
+        showToast('Unsupported file type. Try .txt, .docx, .pdf, .csv, .md', 'error');
+        return;
     }
-  });
+
+    inputTextarea.value = text.trim();
+    inputTextarea.dispatchEvent(new Event('input'));
+    showToast('File uploaded successfully!', 'success');
+    if (fileInfo) {
+      fileInfo.textContent = `Loaded: ${name}`;
+      fileInfo.classList.remove('hidden');
+    }
+  } catch (err) {
+    console.error('File read error:', err);
+    showToast('File read failed. Try another one.', 'error');
+  } finally {
+    uploadInput.value = '';
+  }
+});
+
 
   // === Chunking (sentence-aware with fallback) ===
   function splitIntoSentences(text) {

@@ -289,20 +289,20 @@
       <!-- Input & Output layout -->
       <div class="qb-tool">
         <section class="qb-section qb-section--input">
-          <div class="input-upper-part">
-            <label for="qb-input" class="qb-label">Original Text</label>
-            <button id="qb-paste" class="qb-textarea-button qb-button--small" title="Paste from clipboard">📋 Paste</button>
-          </div>
-          <div class="qb-textarea-container">
-            <textarea id="qb-input" class="qb-textarea" placeholder="Paste your text paragraph here..." rows="8" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
-          </div>
-          <div class="qb-input-footer">
-            <p id="qb-count" class="qb-count">Words: 0 | Approx. Tokens: 0</p>
-            <span id="fileInfo" class="file-info hidden">No file selected</span>
-            <label for="qb-upload" class="qb-upload-btn" title="Upload .txt or .docx">📁 Upload</label>
-            <input type="file" id="qb-upload" accept=".txt,.docx" hidden />
-          </div>
-        </section>
+              <div class="input-upper-part">
+                <label for="qb-input" class="qb-label">Original Text</label>
+                <button id="qb-paste" class="qb-textarea-button qb-button--small" title="Paste from clipboard">📋 Paste</button>
+              </div>
+              <div class="qb-textarea-container">
+                <textarea id="qb-input" class="qb-textarea" placeholder="Paste your text paragraph here..." rows="8" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+              </div>
+              <div class="qb-input-footer">
+                <p id="qb-count" class="qb-count">Words: 0 | Approx. Tokens: 0</p>
+                <span id="fileInfo" class="file-info hidden">No file selected</span>
+                <label for="qb-upload" class="qb-upload-btn" title="Upload .txt, .docx, .pdf, .csv, .md">📁 Upload</label>
+                <input type="file" id="qb-upload" accept=".txt,.docx,.pdf,.csv,.md" hidden />
+              </div>
+            </section>
 
         <section class="qb-section qb-section--output">
           <div class="output-upper-part">
@@ -418,6 +418,7 @@
   <!-- DOCX & PDF (UMDs) - safe no-conflict globals -->
 <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js" defer></script>
 
   <!-- Language detection shim -->
   <script>

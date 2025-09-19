@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE98V48RK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config','G-GE98V48RK8');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)
+    })(window, document, "clarity", "script", "t5y2d08vd0");
+  </script>
+  <meta name="msvalidate.01" content="A9EB890789B5C28E62629F99EEDC30A1" />
+
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <base href="/tools/" />
+
+  <!-- Primary SEO -->
+  <title>Confidence Interval Calculator - Mean, Proportion, Difference, Bootstrap, Sample Size | SnipText</title>
+  <meta name="description" content="Fast, private and accurate confidence interval calculator for mean, proportion and differences. Auto z or t, Wilson and Agresti-Coull for proportions, Welch or pooled for means, bootstrap from raw data, and sample size for a target margin. Runs locally in your browser." />
+  <meta name="keywords" content="confidence interval calculator, mean ci, proportion ci, wilson interval, agresti coull, t interval, z interval, difference of means, difference of proportions, bootstrap ci, sample size for margin of error, research statistics tool" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://checkai.pro/tools/confidence-interval-calculator" />
+  <link rel="alternate" href="https://checkai.pro/tools/confidence-interval-calculator" hreflang="en" />
+  <link rel="alternate" href="https://checkai.pro/tools/confidence-interval-calculator" hreflang="x-default" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/tools/css/free-tools.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SnipText" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Confidence Interval Calculator - Research & Stats" />
+  <meta property="og:description" content="Compute CIs for means, proportions and differences. Includes Wilson, Agresti-Coull, Welch, pooled, bootstrap and sample size. Private and fast." />
+  <meta property="og:url" content="https://checkai.pro/tools/confidence-interval-calculator" />
+  <meta property="og:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:secure_url" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Confidence Interval Calculator with dark panels and bell curve" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Confidence Interval Calculator - Research & Stats" />
+  <meta name="twitter:description" content="Accurate CIs for mean and proportion with advanced options and bootstrap. Private, smooth and clean UI." />
+  <meta name="twitter:image" content="https://checkai.pro/images/sniptext-default-tools-img.png" />
+
+  <!-- Theme / Icons -->
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SnipText Confidence Interval Calculator",
+    "url":"https://checkai.pro/tools/confidence-interval-calculator",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "featureList":[
+      "Mean CI with auto z or t",
+      "Proportion CI - Wilson and Agresti-Coull",
+      "Difference of means - Welch or pooled",
+      "Difference of proportions - Wald score",
+      "Bootstrap CI from raw data",
+      "Sample size for a target margin",
+      "Permalink share, CSV and JSON export"
+    ],
+    "publisher":{
+      "@type":"Organization",
+      "name":"SnipText",
+      "logo":{"@type":"ImageObject","url":"https://checkai.pro/favicon.png","width":512,"height":512}
+    }
+  }
+  </script>
+
+  <style>
+  /* ================================================
+     SNIPTEXT • CONFIDENCE INTERVAL CALCULATOR (con-int)
+     Dark theme with brand gradient accents
+     Classes and ids prefixed with 'con-int' or 'conint'
+     ================================================ */
+  :root{
+    /* Brand palette mapped to tool specific vars */
+    --conint-primary:#1D4ED8;   /* brand color-primary */
+    --conint-accent:#3B82F6;    /* brand color-accent */
+    --conint-bg:#0F172A;        /* brand color-bg-dark */
+    --conint-bg-soft:#1d1f2f;   /* brand footer bg */
+    --conint-white:#ffffff;
+    --conint-text:#E6EEF8;
+    --conint-muted:#9FB0C9;
+    --conint-border:rgba(255,255,255,0.14);
+    --conint-warm:#ff7c4c;      /* gradient cta end */
+    --conint-warm-2:#e85d27;    /* used often */
+    --conint-green:#10B981;
+    --conint-red:#EF4444;
+    --conint-yellow:#F59E0B;
+
+    --conint-radius-xl:22px;
+    --conint-radius-lg:14px;
+    --conint-radius-md:10px;
+
+    --conint-shadow-1:0 10px 30px rgba(0,0,0,.35);
+    --conint-shadow-2:0 18px 48px rgba(17,24,39,.46);
+
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--conint-text);
+    font-family:'Roboto','Poppins','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 12% -10%, color-mix(in oklab, var(--conint-primary) 26%, transparent), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, color-mix(in oklab, var(--conint-accent) 22%, transparent), transparent 52%),
+      radial-gradient(800px 520px at 0% 100%, color-mix(in oklab, var(--conint-warm) 14%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--conint-bg) 0%, var(--conint-bg-soft) 100%);
+    background-attachment: fixed;
+  }
+  a{color:#bcd3ff}
+
+  /* Shell */
+  .con-int-main{width:min(1200px,92vw);margin:clamp(16px,3vw,40px) auto 80px}
+
+  /* Hero */
+  .con-int-hero{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(14px,2.4vw,22px);align-items:center;
+    border:1px solid var(--conint-border);border-radius:var(--conint-radius-xl);
+    padding:clamp(18px,3vw,28px);
+    background:linear-gradient(135deg,color-mix(in oklab,var(--conint-primary) 18%, transparent),color-mix(in oklab,var(--conint-accent) 16%, transparent)) border-box;
+    box-shadow:var(--conint-shadow-1);backdrop-filter:blur(8px);position:relative;overflow:hidden
+  }
+  .con-int-hero::after{content:"";position:absolute;inset:-3px;filter:blur(16px);opacity:.6;pointer-events:none;background:radial-gradient(600px 220px at 18% -6%, color-mix(in oklab, var(--conint-primary) 28%, transparent), transparent 65%),radial-gradient(460px 280px at 86% 0%, color-mix(in oklab, var(--conint-accent) 26%, transparent), transparent 62%)}
+  @media (max-width:980px){.con-int-hero{grid-template-columns:1fr}}
+  .con-int-title{margin:0 0 6px;font-weight:800;letter-spacing:.2px;line-height:1.12;font-family:'Poppins','Segoe UI',sans-serif;font-size:clamp(22px,3.2vw,36px);background:linear-gradient(90deg,#fff,color-mix(in oklab, var(--conint-accent) 54%, #fff) 38%,color-mix(in oklab, var(--conint-warm) 40%, #fff) 78%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .con-int-sub{margin:6px 0 0;color:var(--conint-muted);font-size:clamp(14px,1.8vw,16px)}
+  .con-int-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .con-int-badge{padding:6px 10px;border:1px solid var(--conint-border);border-radius:999px;background:color-mix(in oklab,var(--conint-bg) 72%, transparent);color:#dbe7ff;font-size:.82rem}
+
+  /* Animated hero art - bell curve with CI band and sampling dots */
+  .con-int-hero-art svg{justify-self:end;width:min(280px,42vw);height:auto;display:block;color:#d6e2ff}
+  .conint-band{fill:rgba(59,130,246,.18);stroke:#3B82F6;stroke-width:1}
+  .conint-curve{fill:none;stroke:currentColor;stroke-width:1.6;filter:drop-shadow(0 0 1px rgba(255,255,255,.35))}
+  .conint-brackets line{stroke:#ff7c4c;stroke-width:2}
+  .conint-dot{fill:#10B981;opacity:.85}
+  .conint-dot{animation:conint-fall 3.5s cubic-bezier(.2,.8,.2,1) infinite}
+  .conint-dot:nth-child(2){animation-delay:.6s}
+  .conint-dot:nth-child(3){animation-delay:1.2s}
+  .conint-dot:nth-child(4){animation-delay:1.8s}
+  @keyframes conint-fall{0%{transform:translateY(-10px);opacity:0}15%{opacity:1}60%{transform:translateY(6px)}100%{transform:translateY(0)}}
+  .conint-brackets{animation:conint-breathe 3.2s ease-in-out infinite}
+  @keyframes conint-breathe{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.05)}}
+
+  /* Grid */
+  .con-int-grid{margin-top:clamp(14px,2.6vw,24px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2.4vw,20px)}
+  @media (max-width:1100px){.con-int-grid{grid-template-columns:1fr}}
+
+  /* Cards */
+  .con-int-card{border:1px solid var(--conint-border);border-radius:var(--conint-radius-lg);background:rgba(255,255,255,.06);box-shadow:var(--conint-shadow-2);backdrop-filter:blur(10px);overflow:hidden}
+  .con-int-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;background:linear-gradient(90deg,color-mix(in oklab,var(--conint-primary) 12%, transparent),color-mix(in oklab,var(--conint-accent) 10%, transparent));border-bottom:1px solid var(--conint-border)}
+  .con-int-card-title{margin:0;font-size:13px;letter-spacing:.35px;text-transform:uppercase;opacity:.9;font-family:'Poppins','Segoe UI',sans-serif}
+  .con-int-section{padding:12px 14px;display:grid;gap:12px}
+
+  /* Inputs */
+  .con-int-field{display:grid;gap:6px}
+  .con-int-label{font-weight:700;font-size:.95rem;color:#dfe7ff;letter-spacing:.2px}
+  .con-int-input,.con-int-select,.con-int-textarea{
+    background:#0e1730;color:#e6ecff;border:1px solid var(--conint-border);
+    border-radius:10px;padding:12px 14px;outline:none;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;min-height:44px
+  }
+  .con-int-textarea{min-height:160px;resize:vertical;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;line-height:1.45;font-size:13px;white-space:pre}
+  .con-int-select{appearance:none}
+  .con-int-input:focus,.con-int-select:focus,.con-int-textarea:focus{border-color:rgba(59,130,246,.55);box-shadow:0 0 0 3px rgba(59,130,246,.25);transform:translateY(-1px)}
+  .con-int-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+  /* Buttons */
+  .con-int-btn{--_bg:linear-gradient(180deg,color-mix(in oklab,var(--conint-primary) 70%, transparent),color-mix(in oklab,var(--conint-accent) 62%, transparent));--_txt:#fff;--_bd:color-mix(in oklab,#000 12%, var(--conint-primary));appearance:none;border:1px solid var(--_bd);background:var(--_bg);color:var(--_txt);padding:10px 12px;border-radius:12px;font-weight:700;font-size:13px;letter-spacing:.3px;cursor:pointer;transition:transform .15s ease, filter .15s ease, box-shadow .2s ease, background .3s ease;box-shadow:0 10px 20px rgba(29,78,216,.22),0 6px 14px rgba(59,130,246,.16);font-family:'Poppins','Segoe UI',sans-serif}
+  .con-int-btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .con-int-btn:active{transform:translateY(0);filter:brightness(.98)}
+  .con-int-btn-ghost{background:transparent;color:#e5e7eb;border:1px dashed var(--conint-border);box-shadow:none}
+  .con-int-btn-warm{background:linear-gradient(135deg,var(--conint-accent),var(--conint-warm));border-color:transparent}
+
+  /* Output */
+  .con-int-result{display:grid;gap:10px}
+  .con-int-pane{border:1px solid var(--conint-border);border-radius:10px;background:rgba(14,23,48,.6);padding:12px;max-height:620px;overflow:auto}
+  .con-int-stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+  .con-int-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--conint-border);border-radius:999px;background:color-mix(in oklab,var(--conint-bg) 72%, transparent);color:#bcd3ff;font-size:.85rem}
+  .con-int-num{font-weight:800}
+  .con-int-faint{opacity:.7}
+
+  /* Charts */
+  .con-int-canvas-wrap{position:relative;border:1px solid var(--conint-border);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.05);min-height:160px}
+  canvas{display:block;width:100%;height:220px}
+
+  /* Toast */
+  .con-int-toast{position:fixed;inset:auto 16px 16px auto;background:#0b1223ee;color:#e5e7eb;padding:10px 14px;border-radius:12px;border:1px solid var(--conint-border);backdrop-filter:blur(8px);box-shadow:var(--conint-shadow-1);transform:translateY(20px);opacity:0;pointer-events:none;transition:transform .25s ease, opacity .25s ease;z-index:50}
+  .con-int-toast.show{transform:translateY(0);opacity:1}
+
+  /* Accessible focus */
+  :focus-visible{outline:2px solid color-mix(in oklab,var(--conint-accent) 60%, #fff);outline-offset:2px}
+
+  /* Motion preference */
+  @media (prefers-reduced-motion:no-preference){.con-int-card{animation:conint-float 18s ease-in-out infinite}@keyframes conint-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}}
+
+  /* Utility */
+  .kbd{font:600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;background:color-mix(in oklab,var(--conint-bg) 78%, transparent);color:#cbd5e1;padding:3px 6px;border-radius:8px;border:1px solid var(--conint-border)}
+
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
+.tool-card {background: #0f1b34;}
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
+
+  </style>
+</head>
+<body>
+
+
+
+    
+
+<nav id="main-navbar" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="logo"><a href="/index.html">Snip Text</a></div>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/tools/free-tools.html">Free Tools</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/blog.html">Blog</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a id="nav-dashboard-link" href="/login.html">Dashboard</a></li>
+      <li><a id="nav-logout-link" href="#" style="display:none;">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+<main class="con-int-main" id="con-int-main" aria-label="Confidence Interval Calculator">
+  <!-- HERO -->
+  <section class="con-int-hero" aria-labelledby="con-int-title">
+    <div>
+      <h1 class="con-int-title" id="con-int-title">Confidence Interval Calculator</h1>
+      <p class="con-int-sub">Compute clean, publication ready confidence intervals for means and proportions. Paste raw data or summary stats. Auto choose z or t, Wilson or Agresti-Coull for proportions, Welch or pooled for two means. Try bootstrap from raw data and plan sample size for a target margin. Everything runs in your browser.</p>
+      <div class="con-int-badges">
+        <span class="con-int-badge">Local only</span>
+        <span class="con-int-badge">Auto z or t</span>
+        <span class="con-int-badge">Wilson & Agresti-Coull</span>
+        <span class="con-int-badge">Bootstrap</span>
+        <span class="con-int-badge">Sample size</span>
+      </div>
+    </div>
+    <!-- Animated hero icon: bell curve with CI band and sampling dots -->
+    <div class="con-int-hero-art" aria-hidden="true">
+      <svg viewBox="0 0 220 160" role="img" aria-label="Bell curve with confidence band">
+        <!-- Axis -->
+        <line x1="10" y1="130" x2="210" y2="130" stroke="currentColor" opacity=".25"/>
+        <!-- Band -->
+        <rect id="ciBand" class="conint-band" x="70" y="38" width="80" height="92" rx="6"/>
+        <!-- Brackets -->
+        <g class="conint-brackets">
+          <line x1="70" y1="135" x2="70" y2="128"/>
+          <line x1="150" y1="135" x2="150" y2="128"/>
+        </g>
+        <!-- Normal curve path -->
+        <path id="curve" class="conint-curve" d="M10 130 C 60 20, 160 20, 210 130" />
+        <!-- Sampling dots that fall into band -->
+        <circle class="conint-dot" cx="85" cy="80" r="3"/>
+        <circle class="conint-dot" cx="100" cy="70" r="3"/>
+        <circle class="conint-dot" cx="120" cy="74" r="3"/>
+        <circle class="conint-dot" cx="135" cy="86" r="3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="con-int-grid">
+    <!-- LEFT: Inputs -->
+    <article class="con-int-card" aria-labelledby="con-int-form-title">
+      <header class="con-int-card-head">
+        <h2 class="con-int-card-title" id="con-int-form-title">Inputs</h2>
+        <div class="con-int-row">
+          <button class="con-int-btn con-int-btn-ghost" id="con-int-clear">Clear</button>
+          <button class="con-int-btn" id="con-int-sample">Try sample</button>
+        </div>
+      </header>
+
+      <div class="con-int-section">
+        <div class="con-int-row">
+          <div class="con-int-field" style="flex:1 1 220px">
+            <label class="con-int-label" for="con-int-type">Analysis type</label>
+            <select id="con-int-type" class="con-int-select" aria-label="Analysis type">
+              <option value="mean1">Mean - one sample</option>
+              <option value="prop1">Proportion - one sample</option>
+              <option value="mean2">Difference of means - two samples</option>
+              <option value="prop2">Difference of proportions - two samples</option>
+              <option value="nplan">Sample size planning</option>
+            </select>
+          </div>
+
+          <div class="con-int-field" style="flex:1 1 200px">
+            <label class="con-int-label" for="con-int-conf">Confidence level</label>
+            <div class="con-int-row" style="align-items:center">
+              <input id="con-int-conf" type="range" min="80" max="99.9" step="0.1" value="95" class="con-int-input" aria-label="Confidence level slider" />
+              <input id="con-int-conf-num" type="number" min="80" max="99.9" step="0.1" value="95" class="con-int-input" style="width:90px" aria-label="Confidence level percent" />
+              <span class="con-int-faint">%</span>
+            </div>
+          </div>
+
+          <div class="con-int-field" style="flex:1 1 220px">
+            <label class="con-int-label" for="con-int-method">Method</label>
+            <select id="con-int-method" class="con-int-select" aria-label="Method">
+              <!-- Populated dynamically per analysis type -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Raw data paste area (optional) -->
+        <div class="con-int-field" id="con-int-raw-wrap" hidden>
+          <label class="con-int-label" for="con-int-raw">Raw data - paste numbers separated by space, comma or newlines</label>
+          <textarea id="con-int-raw" class="con-int-textarea" placeholder="Example: 12, 15, 13, 11, 16, 14"></textarea>
+          <div class="con-int-row">
+            <button class="con-int-btn con-int-btn-ghost" id="con-int-raw-clean">Clean & parse</button>
+            <label class="con-int-label"><input type="checkbox" id="con-int-bootstrap" /> Bootstrap CI from raw data</label>
+            <label class="con-int-label"><input type="checkbox" id="con-int-showchart" checked /> Show sampling chart</label>
+          </div>
+        </div>
+
+        <!-- Summary stats blocks -->
+        <div class="con-int-row" id="con-int-summary-mean1">
+          <div class="con-int-field" style="flex:1 1 160px">
+            <label class="con-int-label" for="con-int-xbar">Sample mean</label>
+            <input id="con-int-xbar" class="con-int-input" type="number" step="any" placeholder="e.g., 5.2" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 160px">
+            <label class="con-int-label" for="con-int-sd">Sample sd or known sigma</label>
+            <input id="con-int-sd" class="con-int-input" type="number" step="any" placeholder="e.g., 1.8" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 120px">
+            <label class="con-int-label" for="con-int-n">n</label>
+            <input id="con-int-n" class="con-int-input" type="number" step="1" min="1" placeholder="e.g., 30" />
+          </div>
+        </div>
+
+        <div class="con-int-row" id="con-int-summary-prop1" hidden>
+          <div class="con-int-field" style="flex:1 1 160px">
+            <label class="con-int-label" for="con-int-x">Successes x</label>
+            <input id="con-int-x" class="con-int-input" type="number" step="1" min="0" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 160px">
+            <label class="con-int-label" for="con-int-np">Trials n</label>
+            <input id="con-int-np" class="con-int-input" type="number" step="1" min="1" />
+          </div>
+        </div>
+
+        <div class="con-int-row" id="con-int-summary-mean2" hidden>
+          <div class="con-int-field" style="flex:1 1 140px">
+            <label class="con-int-label" for="con-int-xbar1">Mean 1</label>
+            <input id="con-int-xbar1" class="con-int-input" type="number" step="any" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 140px">
+            <label class="con-int-label" for="con-int-sd1">SD 1</label>
+            <input id="con-int-sd1" class="con-int-input" type="number" step="any" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 120px">
+            <label class="con-int-label" for="con-int-n1">n1</label>
+            <input id="con-int-n1" class="con-int-input" type="number" step="1" min="1" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 140px">
+            <label class="con-int-label" for="con-int-xbar2">Mean 2</label>
+            <input id="con-int-xbar2" class="con-int-input" type="number" step="any" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 140px">
+            <label class="con-int-label" for="con-int-sd2">SD 2</label>
+            <input id="con-int-sd2" class="con-int-input" type="number" step="any" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 120px">
+            <label class="con-int-label" for="con-int-n2">n2</label>
+            <input id="con-int-n2" class="con-int-input" type="number" step="1" min="1" />
+          </div>
+        </div>
+
+        <div class="con-int-row" id="con-int-summary-prop2" hidden>
+          <div class="con-int-field" style="flex:1 1 130px">
+            <label class="con-int-label" for="con-int-xa">x1</label>
+            <input id="con-int-xa" class="con-int-input" type="number" step="1" min="0" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 130px">
+            <label class="con-int-label" for="con-int-na">n1</label>
+            <input id="con-int-na" class="con-int-input" type="number" step="1" min="1" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 130px">
+            <label class="con-int-label" for="con-int-xb">x2</label>
+            <input id="con-int-xb" class="con-int-input" type="number" step="1" min="0" />
+          </div>
+          <div class="con-int-field" style="flex:1 1 130px">
+            <label class="con-int-label" for="con-int-nb">n2</label>
+            <input id="con-int-nb" class="con-int-input" type="number" step="1" min="1" />
+          </div>
+        </div>
+
+        <!-- Planning block -->
+        <div class="con-int-row" id="con-int-plan" hidden>
+          <div class="con-int-field" style="flex:1 1 200px">
+            <label class="con-int-label" for="con-int-plan-type">Plan for</label>
+            <select id="con-int-plan-type" class="con-int-select">
+              <option value="mean">Mean</option>
+              <option value="prop">Proportion</option>
+            </select>
+          </div>
+          <div class="con-int-field" style="flex:1 1 160px">
+            <label class="con-int-label" for="con-int-margin">Target margin E</label>
+            <input id="con-int-margin" class="con-int-input" type="number" step="any" placeholder="e.g., 0.3" />
+          </div>
+          <div class="con-int-field" id="con-int-plan-sd-wrap" style="flex:1 1 160px">
+            <label class="con-int-label" for="con-int-plan-sd">Estimated sd or sigma</label>
+            <input id="con-int-plan-sd" class="con-int-input" type="number" step="any" />
+          </div>
+          <div class="con-int-field" id="con-int-plan-p-wrap" hidden style="flex:1 1 160px">
+            <label class="con-int-label" for="con-int-plan-p">Estimated p*</label>
+            <input id="con-int-plan-p" class="con-int-input" type="number" step="any" min="0" max="1" />
+          </div>
+        </div>
+
+        <div class="con-int-row">
+          <button class="con-int-btn" id="con-int-run" title="Compute"><span class="kbd">Enter</span> compute</button>
+          <button class="con-int-btn con-int-btn-ghost" id="con-int-share" title="Copy a tiny link">Copy link</button>
+          <button class="con-int-btn con-int-btn-warm" id="con-int-copy" title="Copy results">Copy results</button>
+          <button class="con-int-btn con-int-btn-ghost" id="con-int-csv" title="Download CSV">Download CSV</button>
+        </div>
+        <p class="con-int-sub" style="margin:4px 0 0">Keyboard: <span class="kbd">Enter</span> compute, <span class="kbd">Ctrl</span>+<span class="kbd">C</span> copy results.</p>
+      </div>
+    </article>
+
+    <!-- RIGHT: Results -->
+    <aside class="con-int-card" aria-live="polite">
+      <header class="con-int-card-head">
+        <h2 class="con-int-card-title">Results</h2>
+        <div class="con-int-row" id="con-int-stat-pills">
+          <span class="con-int-pill">Level <span class="con-int-num" id="con-int-pill-cl">95%</span></span>
+          <span class="con-int-pill">Estimate <span class="con-int-num" id="con-int-pill-est">-</span></span>
+          <span class="con-int-pill">Margin <span class="con-int-num" id="con-int-pill-me">-</span></span>
+          <span class="con-int-pill">CI <span class="con-int-num" id="con-int-pill-ci">[-, -]</span></span>
+        </div>
+      </header>
+
+      <div class="con-int-section con-int-result">
+        <div class="con-int-pane" id="con-int-out" aria-label="Confidence interval output">
+          <div class="con-int-stat" id="con-int-stat"></div>
+          <hr style="border:0;border-top:1px solid var(--conint-border);margin:10px 0"/>
+          <p id="con-int-interpret" class="con-int-sub"></p>
+        </div>
+
+        <div class="con-int-canvas-wrap" id="con-int-chart-wrap" hidden>
+          <canvas id="con-int-chart" aria-label="Sampling distribution with confidence interval" role="img"></canvas>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <div style="margin-top:16px">
+    <p class="con-int-sub">More you might like:
+      <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
+      <a href="/tools/word-counter.html">Word Counter</a>,
+      <a href="/tools/random-synonym-finder-smart-thesaurus-batch-rewrite-tone-length-filters-free-online-tool-sniptext.html">Random Synonym Finder</a>.
+    </p>
+  </div>
+
+     <div class="free-tools-guide">
+        <p class="free-tools-guide-p">See Confidence Intervel Calculator uide on SnipText Blog Page <a href="/blog/confidence-interval-calculator-guide-confidence-level-margin-of-error-bootstrap-wilson-welch-newcombe-sample-size-blog.html" class="free-tools-blog-link">here</a>.</p>
+      </div>
+
+  <div class="con-int-toast" id="con-int-toast" role="status" aria-live="polite">Copied</div>
+</main>
+
+
+      <!-- TOOLS GRID -->
+       <div class="feature-card-all-pages">
+        <h1 class="feature-card-all-pages-para">Featured Tools</h1>
+       </div>
+  <section id="tools-grid" class="tools-grid" aria-label="Tools list">
+    <!-- Tool cards - 10 items -->
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
+      <div class="card-icon" aria-hidden="true">
+        <!-- simple SVG icon -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t1" class="card-title">Word & Character Counter</h3>
+      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
+      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
+      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
+      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
+      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
+    </article>
+
+  </section>
+  
+
+
+
+
+  
+<footer id="main-footer" class="site-footer" aria-labelledby="footer-heading">
+  <!-- decorative background -->
+  <div class="footer-bg" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2 id="footer-heading" class="footer-brand">Snip Text</h2>
+      <p>Empowering better writing, one tool at a time.</p>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html#contact">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; <span id="year"></span>
+        <span class="powered-by">
+          Snip Text - powered by
+          <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a>
+        </span>
+        · All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- back to top -->
+  <button class="to-top" id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</footer>
+
+
+  <script src="/js/index.js"></script>  
+  <script src="/js/auth.js"> </script>
+  <script src="/tools/js/free-tools.js"></script>
+
+<script>
+// ==============================================================
+// CONFIDENCE INTERVAL CALCULATOR • all local client side
+// Prefix: con-int / conint
+// ==============================================================
+(function(){
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  // Elements
+  const els = {
+    type: $('#con-int-type'), method: $('#con-int-method'), conf: $('#con-int-conf'), confNum: $('#con-int-conf-num'),
+    rawWrap: $('#con-int-raw-wrap'), raw: $('#con-int-raw'), rawClean: $('#con-int-raw-clean'), bootstrap: $('#con-int-bootstrap'),
+    showChart: $('#con-int-showchart'),
+    xbar: $('#con-int-xbar'), sd: $('#con-int-sd'), n: $('#con-int-n'),
+    x: $('#con-int-x'), np: $('#con-int-np'),
+    xbar1: $('#con-int-xbar1'), sd1: $('#con-int-sd1'), n1: $('#con-int-n1'), xbar2: $('#con-int-xbar2'), sd2: $('#con-int-sd2'), n2: $('#con-int-n2'),
+    xa: $('#con-int-xa'), na: $('#con-int-na'), xb: $('#con-int-xb'), nb: $('#con-int-nb'),
+    planWrap: $('#con-int-plan'), planType: $('#con-int-plan-type'), margin: $('#con-int-margin'), planSdWrap: $('#con-int-plan-sd-wrap'), planSd: $('#con-int-plan-sd'), planPWrap: $('#con-int-plan-p-wrap'), planP: $('#con-int-plan-p'),
+    run: $('#con-int-run'), clear: $('#con-int-clear'), sample: $('#con-int-sample'), share: $('#con-int-share'), copy: $('#con-int-copy'), csv: $('#con-int-csv'),
+    chartWrap: $('#con-int-chart-wrap'), chart: $('#con-int-chart'),
+    stat: $('#con-int-stat'), out: $('#con-int-out'), interp: $('#con-int-interpret'),
+    pillCL: $('#con-int-pill-cl'), pillEst: $('#con-int-pill-est'), pillME: $('#con-int-pill-me'), pillCI: $('#con-int-pill-ci'),
+    toast: $('#con-int-toast'),
+    band: document.getElementById('ciBand'),
+  };
+
+  // Helper: Toast
+  function toast(msg){
+    els.toast.textContent = msg; els.toast.classList.add('show');
+    setTimeout(()=>els.toast.classList.remove('show'), 1600);
+  }
+
+  // Math helpers
+  const SQRT2 = Math.SQRT2, PI = Math.PI;
+  const erf = (x) => { // Abramowitz-Stegun approximation
+    const sign = Math.sign(x); x = Math.abs(x);
+    const t = 1/(1+0.3275911*x);
+    const a1=0.254829592,a2=-0.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429;
+    const y = 1-((((a5*t+a4)*t+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);
+    return sign*y;
+  }
+  const stdNormCDF = (z) => 0.5*(1+erf(z/Math.SQRT2));
+  const stdNormInv = (p) => { // Acklam's approximation
+    if(p<=0||p>=1) return NaN;
+    const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+    const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+    const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+    const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+    let q, r;
+    if (p < 0.02425) {
+      q = Math.sqrt(-2 * Math.log(p));
+      return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    } else if (p > 1 - 0.02425) {
+      q = Math.sqrt(-2 * Math.log(1 - p));
+      return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    } else {
+      q = p - 0.5; r = q*q;
+      return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+    }
+  }
+  // Student t inverse CDF via binary search on df
+  function tInv(p, df){
+    // Use symmetry: two sided quantile at p -> (1+p)/2 one sided
+    const target = p; // here we will search for quantile x with CDF(x)=p
+    let lo=-10, hi=10; // wide range
+    for(let i=0;i<80;i++){
+      const mid=(lo+hi)/2, c=tCDF(mid, df);
+      if(c<target) lo=mid; else hi=mid;
+    }
+    return (lo+hi)/2;
+  }
+  // t CDF using a continued fraction (reference: Numerical Recipes)
+  function betacf(a,b,x){
+    const MAXIT=200, EPS=3e-7, FPMIN=1e-30;
+    let qab=a+b, qap=a+1, qam=a-1, c=1, d=1- qab*x/qap; if(Math.abs(d)<FPMIN) d=FPMIN; d=1/d; let h=d;
+    for(let m=1, m2=2; m<=MAXIT; m++, m2+=2){
+      let aa = m*(b-m)*x/((qam+m2)*(a+m2)); d=1+aa*d; if(Math.abs(d)<FPMIN) d=FPMIN; c=1+aa/c; if(Math.abs(c)<FPMIN) c=FPMIN; d=1/d; h *= d*c;
+      aa = -(a+m)*(qab+m)*x/((a+m2)*(qap+m2)); d=1+aa*d; if(Math.abs(d)<FPMIN) d=FPMIN; c=1+aa/c; if(Math.abs(c)<FPMIN) c=FPMIN; d=1/d; h *= d*c;
+      if(Math.abs(d*c-1) < EPS) break;
+    }
+    return h;
+  }
+  function betai(a,b,x){
+    if(x<=0) return 0; if(x>=1) return 1;
+    const bt = Math.exp(lngamma(a+b) - lngamma(a) - lngamma(b) + a*Math.log(x) + b*Math.log(1-x));
+    if(x < (a+1)/(a+b+2)) return bt*betacf(a,b,x)/a;
+    else return 1 - bt*betacf(b,a,1-x)/b;
+  }
+  function lngamma(z){ // Lanczos
+    const g=7, p=[0.99999999999980993,676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];
+    if(z<0.5) return Math.log(Math.PI) - Math.log(Math.sin(Math.PI*z)) - lngamma(1-z);
+    z-=1; let x=p[0]; for(let i=1;i<g+2;i++) x += p[i]/(z+i);
+    const t = z + g + 0.5; return 0.5*Math.log(2*Math.PI) + (z+0.5)*Math.log(t) - t + Math.log(x) - Math.log(z+1);
+  }
+  function tCDF(x, df){
+    const t = df/(df + x*x);
+    const ib = 0.5 * betai(df/2, 0.5, t);
+    return x>=0 ? 1 - ib : ib; // symmetry
+  }
+
+  // Proportion intervals
+  function wilson(p,n,z){
+    const z2=z*z; const denom=1+z2/n; const center=(p + z2/(2*n))/denom; const half=z*Math.sqrt((p*(1-p)+z2/(4*n))/n)/denom;
+    return [center-half, center+half];
+  }
+  function agrestiCoull(p,n,z){
+    const z2=z*z; const nTilde=n+z2; const pTilde=(n*p + 0.5*z2)/nTilde; const half=z*Math.sqrt(pTilde*(1-pTilde)/nTilde);
+    return [pTilde-half, pTilde+half];
+  }
+
+  // Render methods per type
+  function refreshMethod(){
+    const t = els.type.value; const m = els.method; m.innerHTML='';
+    const add=(v,l)=>{const o=document.createElement('option');o.value=v;o.textContent=l;m.appendChild(o)}
+    if(t==='mean1'){ add('auto','Auto z or t'); add('z','z with known sigma'); add('t','t with sample sd'); els.rawWrap.hidden=false; show( 'mean1' ); }
+    else if(t==='prop1'){ add('wilson','Wilson score'); add('agc','Agresti-Coull'); add('wald','Wald normal'); els.rawWrap.hidden=true; show('prop1'); }
+    else if(t==='mean2'){ add('welch','Welch unequal var'); add('pooled','Pooled equal var'); els.rawWrap.hidden=true; show('mean2'); }
+    else if(t==='prop2'){ add('wald','Wald normal'); add('newcombe','Newcombe score (approx)'); els.rawWrap.hidden=true; show('prop2'); }
+    else if(t==='nplan'){ add('mean','Mean - margin to n'); add('prop','Proportion - margin to n'); els.rawWrap.hidden=true; show('nplan'); }
+  }
+  function show(which){
+    $('#con-int-summary-mean1').hidden = which!=='mean1';
+    $('#con-int-summary-prop1').hidden = which!=='prop1';
+    $('#con-int-summary-mean2').hidden = which!=='mean2';
+    $('#con-int-summary-prop2').hidden = which!=='prop2';
+    els.planWrap.hidden = which!=='nplan';
+  }
+
+  // Clean raw data
+  function parseRaw(){
+    const txt = els.raw.value.trim(); if(!txt) return [];
+    const arr = txt.split(/[^-+.eE0-9]+/).map(Number).filter(x=>Number.isFinite(x));
+    return arr;
+  }
+  function computeFromRaw(arr){
+    const n=arr.length; if(n===0) return null; const mean=arr.reduce((a,b)=>a+b,0)/n; const sd=Math.sqrt(arr.reduce((a,b)=>a+(b-mean)*(b-mean),0)/(n-1 || 1));
+    return {n,mean,sd};
+  }
+
+  // Core compute
+  function run(){
+    const cl = clamp(parseFloat(els.confNum.value)||95,80,99.9)/100; els.conf.value = (cl*100).toFixed(1); els.confNum.value=(cl*100).toFixed(1);
+    const alpha = 1-cl; const z = stdNormInv(1-alpha/2);
+    els.pillCL.textContent = (cl*100).toFixed(1)+'%';
+
+    let res=null, interp=""; let est='-', me='-', lo='-', hi='-';
+    const t=els.type.value, m=els.method.value;
+
+    if(t==='mean1'){
+      let n = parseInt(els.n.value);
+      let xbar = parseFloat(els.xbar.value);
+      let s = parseFloat(els.sd.value);
+      let used = 't';
+      // If raw provided, override
+      const arr = parseRaw();
+      if(arr.length){ const r=computeFromRaw(arr); n=r.n; xbar=r.mean; s=r.sd; }
+      if(!Number.isFinite(n)||!Number.isFinite(xbar)||!Number.isFinite(s)||n<=0){ return showOut({error:'Enter mean, sd/sigma and n or paste raw data.'}); }
+      let se, crit;
+      if(m==='z'){ se = s/Math.sqrt(n); crit=z; used='z'; }
+      else if(m==='t'){ se = s/Math.sqrt(n); const df=n-1; crit = Math.abs(tInv(1-alpha/2, df)); used='t'; }
+      else { // auto
+        if(arr.length===0 && $('#con-int-raw').value.trim()==='' && $('#con-int-sd').value && n>30){ se = s/Math.sqrt(n); crit = z; used='z'; }
+        else { se = s/Math.sqrt(n); const df=n-1; crit = Math.abs(tInv(1-alpha/2, df)); used='t'; }
+      }
+      me = crit*se; lo = xbar - me; hi = xbar + me; est=xbar;
+
+      // Optional bootstrap percentile
+      if(els.bootstrap.checked){
+        const arrB = arr.length? arr.slice() : null;
+        if(arrB && arrB.length>4){
+          const B=500; const means=[]; for(let b=0;b<B;b++){ let sum=0; for(let i=0;i<arrB.length;i++){ sum += arrB[Math.floor(Math.random()*arrB.length)] } means.push(sum/arrB.length) }
+          means.sort((a,b)=>a-b); const loB=means[Math.floor(alpha/2*B)], hiB=means[Math.floor((1-alpha/2)*B)];
+          // Combine by showing both
+          res = {estimate:xbar, margin:me, lo, hi, method:used+' (bootstrap shown)', extra:{bootstrapLo:loB, bootstrapHi:hiB, n}};
+          interp = `We are ${(cl*100).toFixed(1)}% confident the population mean lies between ${fmt(lo)} and ${fmt(hi)} based on ${used} method. Bootstrap percentile gives [${fmt(loB)}, ${fmt(hiB)}].`;
+        }
+      }
+      if(!res){ res = {estimate:xbar, margin:me, lo, hi, method:used, extra:{n,sd:s}}; interp = `We are ${(cl*100).toFixed(1)}% confident the population mean lies between ${fmt(lo)} and ${fmt(hi)} using ${used} with n=${n}.`; }
+    }
+
+    else if(t==='prop1'){
+      const x = parseInt(els.x.value), n = parseInt(els.np.value); if(!(n>0) || !(x>=0)) return showOut({error:'Enter successes x and trials n.'});
+      const p = x/n; let ci;
+      if(m==='wilson') ci = wilson(p,n,z);
+      else if(m==='agc') ci = agrestiCoull(p,n,z);
+      else { // Wald
+        const se = Math.sqrt(p*(1-p)/n); ci=[p - z*se, p + z*se];
+      }
+      lo=ci[0]; hi=ci[1]; est=p; me=(hi-lo)/2;
+      res = {estimate:p, margin:me, lo, hi, method:m, extra:{x,n}};
+      interp = `We are ${(cl*100).toFixed(1)}% confident the true proportion is between ${fmtPct(lo)} and ${fmtPct(hi)} (method: ${labelOf(m)}).`;
+    }
+
+    else if(t==='mean2'){
+      const x1=parseFloat(els.xbar1.value), s1=parseFloat(els.sd1.value), n1=parseInt(els.n1.value);
+      const x2=parseFloat(els.xbar2.value), s2=parseFloat(els.sd2.value), n2=parseInt(els.n2.value);
+      if(![x1,s1,n1,x2,s2,n2].every(Number.isFinite) || n1<=0 || n2<=0) return showOut({error:'Enter mean, sd and n for both groups.'});
+      const diff = x1-x2; let se, crit, df, used;
+      if(m==='welch'){
+        se = Math.sqrt(s1*s1/n1 + s2*s2/n2);
+        const v = (s1*s1/n1 + s2*s2/n2)**2 / ((s1*s1/n1)**2/(n1-1) + (s2*s2/n2)**2/(n2-1));
+        df = v; crit = Math.abs(tInv(1-alpha/2, df)); used='Welch';
+      } else {
+        const sp2 = ((n1-1)*s1*s1 + (n2-1)*s2*s2)/(n1+n2-2); se = Math.sqrt(sp2*(1/n1+1/n2)); df=n1+n2-2; crit=Math.abs(tInv(1-alpha/2, df)); used='Pooled';
+      }
+      me = crit*se; lo=diff-me; hi=diff+me; est=diff;
+      res = {estimate:diff, margin:me, lo, hi, method:used, extra:{n1,n2,df}};
+      interp = `We are ${(cl*100).toFixed(1)}% confident the difference in means (group1 minus group2) lies between ${fmt(lo)} and ${fmt(hi)} using ${used}.`;
+    }
+
+    else if(t==='prop2'){
+      const x1=parseInt(els.xa.value), n1=parseInt(els.na.value), x2=parseInt(els.xb.value), n2=parseInt(els.nb.value);
+      if(![x1,n1,x2,n2].every(Number.isFinite) || n1<=0 || n2<=0) return showOut({error:'Enter x and n for both groups.'});
+      const p1=x1/n1, p2=x2/n2; const diff=p1-p2; let ci;
+      if(m==='newcombe'){
+        // Approximate Newcombe: CI for each p via Wilson then difference bounds by subtraction
+        const c1=wilson(p1,n1,z), c2=wilson(p2,n2,z); lo = c1[0]-c2[1]; hi = c1[1]-c2[0];
+        ci=[lo,hi];
+      } else { // Wald
+        const se=Math.sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2); ci=[diff - z*se, diff + z*se];
+      }
+      lo=ci[0]; hi=ci[1]; est=diff; me=(hi-lo)/2;
+      res = {estimate:diff, margin:me, lo, hi, method:labelOf(m), extra:{p1,p2,n1,n2}};
+      interp = `We are ${(cl*100).toFixed(1)}% confident the difference in proportions (group1 minus group2) lies between ${fmt(lo)} and ${fmt(hi)} (method: ${labelOf(m)}).`;
+    }
+
+    else if(t==='nplan'){
+      const mode = els.planType.value;
+      if(mode==='mean'){
+        const E=parseFloat(els.margin.value), s=parseFloat(els.planSd.value); if(!(E>0 && s>0)) return showOut({error:'Enter target margin E and estimated sd.'});
+        const n = Math.ceil((z*s/E)**2); res={estimate:'n', margin:E, lo:n, hi:n, method:'Mean planning', extra:{}}
+        interp = `To achieve a margin of ±${fmt(E)} at ${(cl*100).toFixed(1)}% for the mean, you need at least n = ${n} assuming sd ≈ ${fmt(s)}.`;
+      } else {
+        const E=parseFloat(els.margin.value), pStar=parseFloat(els.planP.value); if(!(E>0) || !(pStar>=0 && pStar<=1)) return showOut({error:'Enter target margin E and estimated p* in [0,1].'});
+        const n = Math.ceil((z*z*pStar*(1-pStar))/(E*E)); res={estimate:'n', margin:E, lo:n, hi:n, method:'Proportion planning', extra:{}}
+        interp = `To achieve a margin of ±${fmt(E)} at ${(cl*100).toFixed(1)}% for a proportion with p* ≈ ${fmtPct(pStar)}, you need at least n = ${n}.`;
+      }
+    }
+
+    if(!res) return;
+    updatePills(res);
+    renderStats(res, cl);
+    drawChart(res);
+    updateBand(res, cl);
+    lastResult = {res, cl, t:els.type.value, m:els.method.value};
+  }
+
+  function labelOf(m){
+    return ({wilson:'Wilson', agc:'Agresti-Coull', wald:'Wald', welch:'Welch', pooled:'Pooled', auto:'Auto', mean:'Mean', prop:'Proportion', newcombe:'Newcombe score'}[m]||m);
+  }
+
+  function fmt(x){ return Number.isFinite(x)? (Math.abs(x)>=1000? x.toFixed(2) : Math.abs(x)>=1? x.toFixed(3) : x.toPrecision(3)) : '-'; }
+  function fmtPct(x){ return Number.isFinite(x)? (100*x).toFixed(2)+'%' : '-'; }
+
+  function updatePills(obj){
+    els.pillEst.textContent = fmt(obj.estimate);
+    els.pillME.textContent = fmt(obj.margin);
+    els.pillCI.textContent = `[${fmt(obj.lo)}, ${fmt(obj.hi)}]`;
+  }
+
+  function renderStats(obj, cl){
+    const box = els.stat; box.innerHTML='';
+    const add = (label, val) => { const d=document.createElement('div'); d.className='con-int-pill'; d.innerHTML=`<span class="con-int-faint">${label}:</span> <span class="con-int-num">${val}</span>`; box.appendChild(d); };
+    add('Estimate', fmt(obj.estimate)); add('Margin', fmt(obj.margin)); add('Lower', fmt(obj.lo)); add('Upper', fmt(obj.hi)); add('Method', obj.method);
+    for(const [k,v] of Object.entries(obj.extra||{})) add(k, typeof v==='number'? fmt(v): v);
+    els.interp.textContent = obj.error? obj.error : (els.interp.textContent = obj.interp || '');
+  }
+
+  function showOut(obj){
+    els.stat.innerHTML=''; els.pillEst.textContent='-'; els.pillME.textContent='-'; els.pillCI.textContent='[-, -]'; els.interp.textContent = obj.error||''; drawChart(null); return null;
+  }
+
+  // Chart: lightweight normal curve with CI band and estimate
+  let ctx=null; let lastResult=null;
+  function drawChart(obj){
+    const wrap = els.chartWrap; if(!els.showChart.checked || !obj || obj.error){ wrap.hidden=true; return; }
+    wrap.hidden=false;
+    const canvas = els.chart; const dpr = window.devicePixelRatio||1; const w = canvas.clientWidth*dpr, h = 220*dpr; canvas.width=w; canvas.height=h; ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0,w,h); ctx.save();
+
+    // Axes
+    const m=28*dpr; const W=w-2*m; const H=h-2*m; const x0=m, y0=h-m;
+
+    // Assume normal around estimate with sd = margin/crit ~ margin/1.96
+    const est = obj.estimate; const me=obj.margin; const sd = me/1.96 || 1; const lo = obj.lo, hi=obj.hi;
+    const xMin = est - 4*sd, xMax = est + 4*sd;
+    const X = x=> x0 + (x-xMin)/(xMax-xMin)*W;
+    const Y = y=> y0 - y*H; // y is density scaled, we normalize to 1 at peak visually
+
+    function pdf(x){ return Math.exp(-0.5*((x-est)/sd)**2) } // unnormalized ok for shape
+
+    // CI band
+    ctx.fillStyle = 'rgba(59,130,246,0.18)';
+    ctx.strokeStyle = '#3B82F6'; ctx.lineWidth = 1*dpr;
+    ctx.beginPath();
+    for(let i=0;i<=200;i++){
+      const x = xMin + (xMax-xMin)*i/200; const y = pdf(x);
+      const xx = X(x), yy = Y(y);
+      if(i===0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+    }
+    ctx.stroke();
+
+    // Fill band area between lo..hi under curve
+    ctx.save();
+    ctx.fillStyle = 'rgba(59,130,246,0.20)';
+    ctx.beginPath();
+    for(let i=0;i<=200;i++){
+      const x = xMin + (xMax-xMin)*i/200; const y = pdf(x); const xx = X(x), yy = Y(y);
+      if(i===0) ctx.moveTo(xx, y0); ctx.lineTo(xx, yy);
+    }
+    ctx.lineTo(X(xMax), y0); ctx.closePath(); ctx.clip();
+    ctx.fillRect(X(Math.max(lo,xMin)), 0, X(Math.min(hi,xMax)) - X(Math.max(lo,xMin)), h);
+    ctx.restore();
+
+    // Vertical lines for CI and estimate
+    ctx.strokeStyle = '#ff7c4c'; ctx.setLineDash([4*dpr,4*dpr]);
+    [lo,hi].forEach(val=>{ const xx=X(val); ctx.beginPath(); ctx.moveTo(xx, y0); ctx.lineTo(xx, y0-H); ctx.stroke(); });
+    ctx.setLineDash([]); ctx.strokeStyle = '#e85d27'; ctx.beginPath(); ctx.moveTo(X(est), y0); ctx.lineTo(X(est), y0-H); ctx.stroke();
+
+    ctx.restore();
+  }
+
+  // Sync confidence inputs and animate hero band width
+  function syncCL(){
+    els.confNum.value = els.conf.value; run();
+  }
+  function updateBand(obj, cl){
+    if(!els.band) return; const bw = clamp((cl*100-80)/(99.9-80),0,1); // 0..1
+    // Map to width between 60..90 px visually
+    const w = 60 + 30*bw; els.band.setAttribute('x', String(110 - w/2)); els.band.setAttribute('width', String(w));
+  }
+
+  // Copy, CSV, share
+  function copyResults(){
+    const pills = $$('#con-int-stat .con-int-pill').map(p=>p.textContent.replace(/\s+/g,' ').trim()).join('\n');
+    const top = `Level: ${els.pillCL.textContent}\nEstimate: ${els.pillEst.textContent}\nMargin: ${els.pillME.textContent}\nCI: ${els.pillCI.textContent}`;
+    const txt = top + (pills? '\n' + pills : '') + (els.interp.textContent? '\n\n' + els.interp.textContent : '');
+    navigator.clipboard.writeText(txt).then(()=>toast('Copied results'));
+  }
+  function downloadCSV(){
+    if(!lastResult){ toast('Nothing to export'); return; }
+    const {res, cl} = lastResult; const rows = [ ['level','estimate','margin','lower','upper','method'], [(cl*100).toFixed(1), res.estimate, res.margin, res.lo, res.hi, res.method] ];
+    const extra = Object.entries(res.extra||{}); extra.forEach(([k,v])=> rows.push([k, v]));
+    const csv = rows.map(r=>r.join(',')).join('\n');
+    const blob = new Blob([csv], {type:'text/csv'}); const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href=url; a.download='confidence-interval.csv'; a.click(); URL.revokeObjectURL(url);
+  }
+  function shareLink(){
+    const state = collectState(); const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
+    const url = location.origin + location.pathname + '#'+b64; navigator.clipboard.writeText(url).then(()=>toast('Link copied'));
+  }
+  function collectState(){
+    return {
+      type: els.type.value, method: els.method.value, cl: parseFloat(els.confNum.value),
+      xbar: els.xbar.value, sd: els.sd.value, n: els.n.value,
+      x: els.x.value, np: els.np.value,
+      xbar1: els.xbar1.value, sd1: els.sd1.value, n1: els.n1.value, xbar2: els.xbar2.value, sd2: els.sd2.value, n2: els.n2.value,
+      xa: els.xa.value, na: els.na.value, xb: els.xb.value, nb: els.nb.value,
+      planType: els.planType.value, margin: els.margin.value, planSd: els.planSd.value, planP: els.planP.value,
+      raw: els.raw.value, bootstrap: els.bootstrap.checked, showChart: els.showChart.checked
+    };
+  }
+  function restoreFromHash(){
+    if(!location.hash) return; try{
+      const obj = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))));
+      els.type.value=obj.type||'mean1'; refreshMethod(); els.method.value=obj.method||els.method.value; els.conf.value=obj.cl||95; els.confNum.value=obj.cl||95;
+      ['xbar','sd','n','x','np','xbar1','sd1','n1','xbar2','sd2','n2','xa','na','xb','nb','margin','planSd','planP'].forEach(k=>{ if(obj[k]!=null) els[k].value=obj[k]; });
+      els.planType.value=obj.planType||'mean'; els.raw.value=obj.raw||''; els.bootstrap.checked=!!obj.bootstrap; els.showChart.checked = obj.showChart!==false;
+    }catch(e){ console.warn('Bad hash'); }
+  }
+
+  // Events
+  els.type.addEventListener('change', refreshMethod);
+  els.planType.addEventListener('change', ()=>{ const isProp = els.planType.value==='prop'; els.planSdWrap.hidden=isProp; els.planPWrap.hidden=!isProp; });
+  els.conf.addEventListener('input', syncCL); els.confNum.addEventListener('change', ()=>{ els.conf.value=els.confNum.value; run(); });
+  els.run.addEventListener('click', run);
+  document.addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); run(); } if(e.ctrlKey && e.key.toLowerCase()==='c'){ e.preventDefault(); copyResults(); }});
+  els.copy.addEventListener('click', copyResults);
+  els.csv.addEventListener('click', downloadCSV);
+  els.share.addEventListener('click', shareLink);
+  els.clear.addEventListener('click', ()=>{ $$('.con-int-input, .con-int-textarea').forEach(el=>{ if(el.type==='checkbox'){ el.checked=false } else el.value='' }); run(); });
+  els.sample.addEventListener('click', ()=>{
+    els.type.value='mean1'; refreshMethod(); els.method.value='auto'; els.conf.value=95; els.confNum.value=95; els.rawWrap.hidden=false;
+    els.raw.value='12, 15, 13, 11, 16, 14, 15, 12, 13, 17, 16, 14, 13, 12, 16'; els.bootstrap.checked=true; els.showChart.checked=true; run();
+  });
+  els.rawClean.addEventListener('click', ()=>{ const arr=parseRaw(); els.raw.value=arr.join(', '); toast(arr.length+' values parsed'); });
+
+  // Init
+  refreshMethod(); restoreFromHash(); run();
+})();
+</script>
+</body>
+</html>
