@@ -7,10 +7,9 @@
     { "source": "/admin-login",  "destination": "/admin/admin-login.html" },
     { "source": "/admin",        "destination": "/admin/index.html" },
     { "source": "/admin/:path*", "destination": "/admin/:path*" },
-
+    
     { "source": "/blog", "destination": "/blog/blog.html" },
 
-{ "source": "/blog/sniptext-blog", "destination": "/blog/blog.html" },
 { "source": "/blog/sniptext-blog", "destination": "/blog/sniptext-blog.html" },
 
 { "source": "/blog/best-ai-writing-tools-2025", "destination": "/blog/best-ai-writing-tools-2025.html" },
@@ -140,55 +139,81 @@
     { "source": "/tools/:tool", "destination": "/tools/:tool.html" }
   ],
 
-  "headers": [
-    {
-      "source": "/:path*.:ext(css|js|png|jpg|jpeg|webp|avif|svg|woff2)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/:path*.:ext(html)",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-cache" }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
-        { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
-      ]
-    },
-    {
-      "source": "/sitemap-index.xml",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
-        { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/sitemaps/:name*.xml",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
-        { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Referrer-Policy",            "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Content-Type-Options",     "value": "nosniff" },
-        { "key": "X-Frame-Options",            "value": "SAMEORIGIN" },
-        { "key": "Permissions-Policy",         "value": "geolocation=(), microphone=(), camera=()" },
-        { "key": "Strict-Transport-Security",  "value": "max-age=31536000; includeSubDomains; preload" }
-      ]
-    }
-  ]
+"headers": [
+  {
+    "source": "/(.*)\\.(css|js|mjs|map)",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+    ]
+  },
+  {
+    "source": "/(.*)\\.(png|jpg|jpeg|webp|avif|svg|ico|woff|woff2)",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+    ]
+  },
+  {
+    "source": "/(.*)\\.html",
+    "headers": [
+      { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+      { "key": "Pragma", "value": "no-cache" },
+      { "key": "Expires", "value": "0" }
+    ]
+  },
+  {
+    "source": "/",
+    "headers": [
+      { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+      { "key": "Pragma", "value": "no-cache" },
+      { "key": "Expires", "value": "0" }
+    ]
+  },
+  {
+    "source": "/blog",
+    "headers": [
+      { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+      { "key": "Pragma", "value": "no-cache" },
+      { "key": "Expires", "value": "0" }
+    ]
+  },
+  {
+    "source": "/tools",
+    "headers": [
+      { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+      { "key": "Pragma", "value": "no-cache" },
+      { "key": "Expires", "value": "0" }
+    ]
+  },
+  {
+    "source": "/sitemap.xml",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+      { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
+    ]
+  },
+  {
+    "source": "/sitemap-index.xml",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+      { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
+    ]
+  },
+  {
+    "source": "/sitemaps/(.*)\\.xml",
+    "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" },
+      { "key": "Content-Type",  "value": "application/xml; charset=utf-8" }
+    ]
+  },
+  {
+    "source": "/(.*)",
+    "headers": [
+      { "key": "Referrer-Policy",            "value": "strict-origin-when-cross-origin" },
+      { "key": "X-Content-Type-Options",     "value": "nosniff" },
+      { "key": "X-Frame-Options",            "value": "SAMEORIGIN" },
+      { "key": "Permissions-Policy",         "value": "geolocation=(), microphone=(), camera=()" },
+      { "key": "Strict-Transport-Security",  "value": "max-age=31536000; includeSubDomains; preload" }
+    ]
+  }
+]
 }
