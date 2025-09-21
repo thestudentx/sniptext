@@ -257,39 +257,99 @@
 }
 
 
-/* ---------- CATEGORIES BAR ---------- */
+/* ---------- CATEGORIES BAR (uniform padding + consistent sizing) ---------- */
 .tools-filter{
-  display:flex; flex-wrap:wrap; gap:10px;
-  margin:clamp(12px,2.4vw,22px) 0;
-  padding:6px 0;
+  /* switch to grid for perfect wrapping while keeping same look */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: clamp(12px, 2.4vw, 22px) 0;
+  padding: 6px 0;
 }
+
+/* Configurable tokens for button sizing */
+:root{
+  --cat-pad-y: 10px;        /* fixed vertical padding */
+  --cat-pad-x: 16px;        /* fixed horizontal padding */
+  --cat-font: 600 14px/1.2 var(--font-body, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+  --cat-radius: 8px;
+  --cat-border: var(--border-200, rgba(255,255,255,0.12));
+  --cat-bg: var(--surface-bg, #0f1b34);
+  --cat-fg: var(--text-900, #e6eaf2);
+  --cat-shadow-1: var(--elev-1, 0 4px 14px rgba(0,0,0,.18));
+  --cat-shadow-2: var(--elev-2, 0 8px 22px rgba(0,0,0,.22));
+  --cat-active-grad: linear-gradient(90deg, var(--blue-600, #3B82F6), var(--warm-600, #ff7c4c));
+  --cat-active-fg: var(--btn-fore, #ffffff);
+}
+
+/* Dark theme color alignment if you use [data-theme="dark"] */
+[data-theme="dark"] .filter-btn{ color: var(--cat-fg) }
+
+/* Unified button styling */
 .filter-btn{
-  appearance:none;
-  border:none; /* removed border line */
-  background:var(--surface-bg);
-  color:var(--text-900);
-  font:600 14px/1 var(--font-body);
-  padding:8px 16px;
-  border-radius:6px; /* reduced roundness */
-  cursor:pointer;
-  box-shadow:var(--elev-1);
-  transition:background .25s,transform .15s,box-shadow .25s;
+  appearance: none;
+  border: none;
+  background: var(--cat-bg);
+  color: var(--cat-fg);
+  font: var(--cat-font);
+
+  /* SAME fixed padding on every screen size */
+  padding: var(--cat-pad-y) var(--cat-pad-x);
+
+  /* Consistent height even when labels wrap to 2 lines */
+  min-height: calc((var(--cat-pad-y) * 2) + 1.2em);
+  border-radius: var(--cat-radius);
+
+  /* Keep shapes consistent regardless of content length */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Allow long labels to wrap but keep padding equal */
+  white-space: normal;
+  word-break: keep-all;
+
+  cursor: pointer;
+  box-shadow: var(--cat-shadow-1);
+  transition: box-shadow .2s ease, filter .2s ease, transform .12s ease, background .25s ease, border-color .25s ease;
 }
-[data-theme="dark"] .filter-btn{ color:var(--text-900); }
-.filter-btn:hover{ transform:translateY(-2px); box-shadow:var(--elev-2); }
+
+/* Hover/active with subtle motion (no size shift) */
+.filter-btn:hover{
+  box-shadow: var(--cat-shadow-2);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+.filter-btn:active{
+  transform: translateY(0);
+  filter: brightness(.98);
+}
+
+/* Active pill */
 .filter-btn.is-active{
-  background:linear-gradient(90deg,var(--blue-600),var(--warm-600));
-  color:var(--btn-fore);
-  border:none; /* no border on active either */
+  background: var(--cat-active-grad);
+  color: var(--cat-active-fg);
+  border-color: transparent;
 }
-/* Smaller screens: make buttons full-width in two columns */
-@media(max-width:490px){
-  .filter-btn{ flex:1 1 calc(50% - 8px); text-align:center; }
+
+/* Keyboard focus visibility */
+.filter-btn:focus-visible{
+  outline: 2px solid color-mix(in oklab, var(--blue-600, #3B82F6) 70%, #fff);
+  outline-offset: 2px;
 }
-/* Hide helper */
+
+/* Tiny screens: keep the exact same padding/height, just stack cleanly */
+@media (max-width: 490px){
+  .tools-filter{
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns */
+  }
+}
+
+/* Hide helper (unchanged) */
 .is-hidden { display: none !important; }
 
-/* Optional smooth fade */
+/* Optional subtle fade for filtered elements (unchanged) */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -298,6 +358,7 @@
 .tool-category:not(.is-hidden) {
   animation: fadeIn 0.25s ease-out;
 }
+
 
 
 
