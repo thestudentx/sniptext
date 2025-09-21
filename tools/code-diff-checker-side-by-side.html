@@ -650,50 +650,110 @@ body{
        </div>
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">
     <!-- Tool cards - 10 items -->
-    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
-      <div class="card-icon" aria-hidden="true">
-        <!-- simple SVG icon -->
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t1" class="card-title">Word & Character Counter</h3>
-      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
-      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
-    </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
-      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
-      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
-    </article>
+    <article class="tool-card hashgen-tool-card" tabindex="0" data-href="/tools/hash-generator-md5-sha1-sha256.html" aria-labelledby="hashgen-tg" data-filter="Devs & Hacks">
+  <div class="card-icon hashgen-card-icon" aria-hidden="true">
+    <!-- Hash Generator icon: shield + hex + hash mark -->
+    <svg viewBox="0 0 24 24" class="svg-icon hashgen-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hash Generator - MD5, SHA1, SHA256">
+      <!-- Shield -->
+      <path d="M12 2.5l6 2.2v5.2c0 4.7-3 8.7-6 9.6-3-0.9-6-4.9-6-9.6V4.7l6-2.2z" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+      <!-- Hex grid dots -->
+      <g fill="currentColor" opacity="0.5">
+        <circle cx="8.2" cy="8.3" r="0.6"/><circle cx="10.5" cy="7.1" r="0.6"/><circle cx="12.8" cy="8.3" r="0.6"/>
+        <circle cx="15.1" cy="7.1" r="0.6"/><circle cx="10.5" cy="9.7" r="0.6"/><circle cx="12.8" cy="11.0" r="0.6"/>
+        <circle cx="8.2" cy="11.0" r="0.6"/><circle cx="15.1" cy="10.0" r="0.6"/><circle cx="12.8" cy="13.2" r="0.6"/>
+      </g>
+      <!-- Hash mark # -->
+      <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.95">
+        <path d="M8.9 12.6h6.2M8.9 9.9h6.2M10.6 8.2l-1.4 7.2M14.8 8.2l-1.4 7.2"/>
+      </g>
+      <!-- Small check for verify -->
+      <path d="M16.3 16.9l1.4 1.4 2.6-2.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    </svg>
+  </div>
+  <h3 id="hashgen-tg" class="card-title hashgen-card-title">Hash Generator - MD5, SHA1, SHA256</h3>
+  <p class="card-desc hashgen-card-desc">
+    Generate hashes for text and files in your browser. Add salt, create HMAC, and verify checksums with a clean results table. Drag and drop multiple files, export a .sha256 list, import checksum files, and copy everything in one click. Private and fast.
+  </p>
+  <a class="card-cta hashgen-card-cta" href="/tools/hash-generator-md5-sha1-sha256.html" aria-label="Open Hash Generator - MD5, SHA1, SHA256">Open →</a>
+</article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
-      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
-      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
-    </article>
+    <article class="tool-card htmcssjs-tool-card" tabindex="0" data-href="/tools/html-css-js-minifier-beautifier.html" aria-labelledby="htmcssjs-tg" data-filter="Devs & Hacks">
+  <div class="card-icon htmcssjs-card-icon" aria-hidden="true">
+    <!-- Minifier & Beautifier icon: code brackets + magic wand spark -->
+    <svg viewBox="0 0 24 24" class="svg-icon htmcssjs-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTML CSS JS Minifier & Beautifier">
+      <!-- Brackets -->
+      <path d="M7 4L3 8l4 4M17 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+      <!-- Wand -->
+      <path d="M9 15l6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <rect x="14.5" y="14.5" width="3" height="3" transform="rotate(45 16 16)" fill="currentColor" opacity="0.8"/>
+      <!-- Sparkles -->
+      <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+        <path d="M16 5v2M16 11v2M13 8h2M19 8h2"/>
+      </g>
+    </svg>
+  </div>
+  <h3 id="htmcssjs-tg" class="card-title htmcssjs-card-title">HTML CSS JS Minifier & Beautifier</h3>
+  <p class="card-desc htmcssjs-card-desc">
+    Minify or beautify HTML, CSS and JavaScript instantly. Auto-detect code type, batch tabs, and keep important comments safe. Includes live HTML preview, gzip size estimate, clipboard copy, file download, and tiny share links. Runs fully in your browser.
+  </p>
+  <a class="card-cta htmcssjs-card-cta" href="/tools/html-css-js-minifier-beautifier.html" aria-label="Open HTML CSS JS Minifier & Beautifier">Open →</a>
+</article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
-      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
-      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
-    </article>
+    <article class="tool-card jso-for-val-card toolcard" tabindex="0" data-href="/tools/json-formatter-validator.html" aria-labelledby="jso-for-val-tg" data-filter="Data & Converters">
+  <div class="card-icon jso-for-val-icon" aria-hidden="true">
+    <!-- JSON Formatter icon: curly braces + schema nodes + check -->
+    <svg viewBox="0 0 24 24" class="svg-icon jso-for-val-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JSON Formatter and Validator - Prettier + AJV">
+      <!-- Frame -->
+      <rect x="1.25" y="2" width="21.5" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.35"/>
+      <!-- Curly braces -->
+      <path d="M7 6c-1.2 0-2 .8-2 2v1c0 .6-.4 1-1 1 .6 0 1 .4 1 1v1c0 1.2.8 2 2 2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <path d="M17 6c1.2 0 2 .8 2 2v1c0 .6.4 1 1 1-.6 0-1 .4-1 1v1c0 1.2-.8 2-2 2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <!-- Schema nodes -->
+      <circle cx="10" cy="8" r="0.8" fill="currentColor" opacity="0.85"/>
+      <circle cx="14" cy="8" r="0.8" fill="currentColor" opacity="0.85"/>
+      <circle cx="12" cy="11" r="0.8" fill="currentColor" opacity="0.85"/>
+      <line x1="10" y1="8.8" x2="12" y2="10.2" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
+      <line x1="14" y1="8.8" x2="12" y2="10.2" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
+      <!-- Check mark -->
+      <path d="M9.2 15.2l1.8 1.9 3.8-4.1" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.95"/>
+    </svg>
+  </div>
+  <h3 id="jso-for-val-tg" class="card-title jso-for-val-title">JSON Formatter and Validator - Prettier + AJV</h3>
+  <p class="card-desc jso-for-val-desc">
+    Format and minify JSON with Prettier, validate against JSON Schema using AJV with formats, defaults, and type coercion, and run JSONPath queries. Includes flatten and unflatten for analytics, a draft schema generator, copy and download, and a tiny share link for small samples. Everything runs locally for privacy and speed.
+  </p>
+  <a class="card-cta jso-for-val-cta" href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html" aria-label="Open JSON Formatter and Validator - Prettier + AJV">Open →</a>
+</article>
+
+    <article class="tool-card passwordgen-card-teaser" tabindex="0"
+                  data-href="/tools/random-password-generator.html"
+                  aria-labelledby="t-passwordgen" data-filter="Devs & Hacks">
+                  <div class="card-icon passwordgen-card-icon" aria-hidden="true">
+                    <!-- Random Password Generator icon: lock + spark + dice pip -->
+                    <svg viewBox="0 0 24 24" class="svg-icon passwordgen-svg" role="img" aria-label="Random Password Generator icon" xmlns="http://www.w3.org/2000/svg">
+                      <!-- lock body -->
+                      <rect x="3.5" y="10" width="17" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <!-- shackle -->
+                      <path d="M7.5 10V7.6c0-2.3 1.9-4.1 4.2-4.1s4.2 1.8 4.2 4.1V10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      <!-- keyhole -->
+                      <circle cx="12" cy="15" r="1.2" fill="currentColor"/>
+                      <path d="M12 16.2v1.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                      <!-- spark (entropy) -->
+                      <path d="M18.8 5.2l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4z" fill="currentColor"/>
+                      <!-- tiny dice pip to hint randomness -->
+                      <rect x="4.6" y="5.2" width="3" height="3" rx="0.6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                      <circle cx="6.1" cy="6.7" r="0.5" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <h3 id="t-passwordgen" class="card-title passwordgen-card-title">Random Password Generator</h3>
+                  <p class="card-desc passwordgen-card-desc">
+                    Create strong classic passwords, pronounceable strings, passphrases, PINs, and Wi-Fi keys. Batch generate, copy, or export TXT/CSV, with a live entropy meter, ambiguity filter, required characters, and local presets. Everything runs client-side for privacy.
+                  </p>
+                  <a class="card-cta passwordgen-card-cta"
+                    href="/tools/random-password-generator.html"
+                    aria-label="Open Random Password Generator">Open →</a>
+</article>  
 
   </section>
   
@@ -713,10 +773,10 @@ body{
     </div>
 
     <nav class="footer-links" aria-label="Footer links">
-      <a href="feedback.html">Feedback</a>
+      <a href="/feedback.html">Feedback</a>
       <a href="contact.html#contact">Contact Us</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
     </nav>
 
     <div class="footer-bottom">

@@ -447,49 +447,117 @@
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">
     <!-- Tool cards - 10 items -->
 
-    <article class="tool-card" tabindex="0" data-href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-labelledby="t11">
-        <div class="card-icon" aria-hidden="true">
+    <article class="tool-card" tabindex="0" data-href="/tools/roman-numeral-converter.html" aria-labelledby="t-roman" data-filter="Academic & Planning">
+              <div class="card-icon" aria-hidden="true">
+                <!-- Roman Numeral icon: rounded plaque + I, V, X with subtle overline hint -->
+                <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Roman Numeral Converter icon">
+                  <!-- plaque -->
+                  <rect x="3" y="4" width="18" height="16" rx="3" ry="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                  <!-- overline hint -->
+                  <path d="M6 7.2h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+                  <!-- I -->
+                  <path d="M7.5 9v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <!-- V -->
+                  <path d="M11 9l2 6 2-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- X -->
+                  <path d="M18 9l-3 6M15 9l3 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 id="t-roman" class="card-title">Roman Numeral Converter</h3>
+              <p class="card-desc">Convert Arabic ↔ Roman instantly with strict rules, extended overlines for large values, live validation, copy, and history. Private, in-browser.</p>
+              <a class="card-cta" href="/tools/roman-numeral-converter.html" aria-label="Open Roman Numeral Converter">Open →</a>
+          </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/timeline-maker-academic-timeline.html" aria-labelledby="t13" data-filter="Academic & Planning">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Timeline icon: calendar + vertical line with nodes -->
             <svg viewBox="0 0 24 24" class="svg-icon">
-                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <!-- Calendar frame -->
+              <rect x="3" y="4.5" width="18" height="16" rx="2.5" ry="2.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
+              <path d="M3 8h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+              <path d="M8 4.5v-2M16 4.5v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Vertical timeline -->
+              <path d="M8.5 11v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="8.5" cy="12.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/>
+              <circle cx="8.5" cy="18" r="1.4" fill="currentColor"/>
+              <!-- Event cards hint -->
+              <path d="M11.5 12.5h6M11.5 15.5h5M11.5 18h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
             </svg>
-        </div>
-        <h3 id="t11" class="card-title">Math Formula Tool</h3>
-        <p class="card-desc">Easily create, edit, and format mathematical equations online for documents, blogs, and educational use.</p>
-        <a class="card-cta" href="/tools/math-formula-renderer-latex-to-image-png-svg.html" aria-label="Open Math Formula Tool">Open →</a>
-    </article>
+          </div>
+          <h3 id="t13" class="card-title">Timeline Maker</h3>
+          <p class="card-desc">Enter events to auto-generate an academic-style timeline with categories, eras, zoom, drag-reorder, and one-click export to HTML, SVG, or JSON. Private, in-browser.</p>
+          <a class="card-cta" href="/tools/timeline-maker-academic-timeline.html" aria-label="Open Timeline Maker">Open →</a>
+        </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
-      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
-      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
-    </article>
+    <article class="tool-card zodiac-tool-card" tabindex="0" data-href="/tools/zodiac-sign-and-horoscope-calculator.html" aria-labelledby="zodiac-tg" data-filter="Fun & Interactive">
+  <div class="card-icon zodiac-card-icon" aria-hidden="true">
+    <!-- Zodiac icon: sun disc + constellation path -->
+    <svg viewBox="0 0 24 24" class="svg-icon zodiac-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zodiac Calculator">
+      <!-- Sun disc -->
+      <circle cx="6" cy="6" r="2.6" fill="currentColor" opacity="0.95"/>
+      <!-- Sun rays -->
+      <g stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.9">
+        <path d="M6 1.5v2.2M6 8.3v2.2M1.5 6h2.2M8.3 6h2.2M2.8 2.8l1.6 1.6M9.6 9.6l1.6 1.6M2.8 9.6l1.6-1.6M9.6 2.8L8 4.4"/>
+      </g>
+      <!-- Constellation frame -->
+      <rect x="10.2" y="4.2" width="11.8" height="15.6" rx="2.6" fill="none" stroke="currentColor" stroke-width="1" opacity="0.28"/>
+      <!-- Constellation stars -->
+      <g fill="currentColor">
+        <circle cx="12.2" cy="9.2" r="0.7"/>
+        <circle cx="15.4" cy="7.8" r="0.7"/>
+        <circle cx="18.6" cy="9.9" r="0.7"/>
+        <circle cx="17.8" cy="13.2" r="0.7"/>
+        <circle cx="14.1" cy="14.8" r="0.7"/>
+      </g>
+      <!-- Constellation lines -->
+      <path d="M12.2 9.2L15.4 7.8 18.6 9.9 17.8 13.2 14.1 14.8 12.2 9.2" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.72"/>
+    </svg>
+  </div>
+  <h3 id="zodiac-tg" class="card-title zodiac-card-title">Zodiac Sign & Horoscope</h3>
+  <p class="card-desc zodiac-card-desc">
+    Enter your date of birth to get your sun sign, traits, element and modality. See your Chinese Zodiac, life path number, a privacy friendly seeded daily reading, and a shareable link. Runs fully in browser.
+  </p>
+  <a class="card-cta zodiac-card-cta" href="/tools/zodiac-sign-and-horoscope-calculator.html" aria-label="Open Zodiac Sign & Horoscope Calculator">Open →</a>
+</article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
-      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
-      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
-    </article>
-    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
-      <div class="card-icon" aria-hidden="true">
-        <!-- simple SVG icon -->
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t1" class="card-title">Word & Character Counter</h3>
-      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
-      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
-    </article>
+    <article class="tool-card" tabindex="0"
+         data-href="/tools/love-calculator-smart-compatibility-score-sniptext.html"
+         aria-labelledby="tlovecalc" data-filter="Fun & Interactive">
+  <div class="card-icon" aria-hidden="true">
+    <!-- Love Calculator icon: heart + gauge -->
+    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Love Calculator icon">
+      <!-- Heart -->
+      <path d="M12 21s-6.4-4.2-9-7.6C1.5 11.1 2 8.3 4.2 6.9c1.7-1.1 4-0.9 5.5 0.5L12 9.6l2.3-2.2c1.5-1.4 3.8-1.6 5.5-0.5 2.2 1.4 2.7 4.2 1.2 6.5C18.4 16.8 12 21 12 21z"
+            fill="currentColor" opacity="0.9"/>
+      <!-- Gauge arc -->
+      <path d="M6.2 6.5a6.8 6.8 0 0 1 11.6 0" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+      <!-- Tick marks -->
+      <g stroke="currentColor" stroke-width="1" opacity="0.75">
+        <path d="M7.4 6.4l-1.7-.7"/>
+        <path d="M9.7 5.6L8.9 4"/>
+        <path d="M12 5.2V3.4"/>
+        <path d="M14.3 5.6l.8-1.6"/>
+        <path d="M16.6 6.4l1.7-.7"/>
+      </g>
+      <!-- Needle -->
+      <path d="M12 6 L13.9 9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="12" cy="6" r="0.9" fill="currentColor"/>
+      <!-- Sparkles -->
+      <g fill="currentColor" opacity="0.85">
+        <circle cx="4.5" cy="12.2" r="0.7"/>
+        <circle cx="19.6" cy="12.4" r="0.7"/>
+      </g>
+    </svg>
+  </div>
+  <h3 id="tlovecalc" class="card-title">Love Calculator</h3>
+  <p class="card-desc">
+    Get a smart compatibility score with a clear breakdown. Mix name similarity, phonetics, numerology, and zodiac with adjustable weights, private local history, and a shareable result card. Everything runs in your browser.
+  </p>
+  <a class="card-cta"
+     href="/tools/love-calculator-smart-compatibility-score-sniptext.html"
+     aria-label="Open Love Calculator">Open →</a>
+</article>
 
   </section>
 
@@ -506,10 +574,10 @@
         <p>Empowering better writing, one tool at a time.</p>
       </div>
       <nav class="footer-links" aria-label="Footer links">
-        <a href="feedback.html">Feedback</a>
+        <a href="/feedback.html">Feedback</a>
         <a href="contact.html#contact">Contact Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-use.html">Terms of Use</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-use.html">Terms of Use</a>
       </nav>
       <div class="footer-bottom">
         <p>&copy; <span id="year"></span> Snip Text · All rights reserved.</p>

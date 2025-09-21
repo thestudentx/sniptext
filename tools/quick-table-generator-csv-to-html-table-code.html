@@ -363,10 +363,10 @@ html,body{
 @keyframes tgen-fade{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
 .table-gen-animate-in{ animation: tgen-fade .35s ease both; }
 
-.feature-card-all-pages {margin: 0 3rem;}
-.tools-grid {margin: 1rem 3rem; background: #0e1730;}
+.feature-card-all-pages {margin: 0 2rem;}
+.tools-grid {margin: 1rem; background: #0e1730;}
 .tool-card {background: #0f1b34;}
-
+@media (max-width: 600px) { .tools-grid {margin: 1rem 0;} }
 </style>
 
 
@@ -622,50 +622,99 @@ Bob,28,Berlin"></textarea>
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">
     <!-- Tool cards - 10 items -->
 
-    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
-      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
-      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
-    </article>
-
-    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
-      <div class="card-icon" aria-hidden="true">
-        <!-- simple SVG icon -->
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t1" class="card-title">Word & Character Counter</h3>
-      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
-      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
-    </article>
-
-    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
-      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
-      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
-    </article>
-
-    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10">
+    <article class="tool-card" tabindex="0" data-href="/tools/bibtex-to-citation-to-bibtex.html" aria-labelledby="t11" data-filter="Academic & Planning">
         <div class="card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" class="svg-icon">
-            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- BibTeX to Citation Converter Icon -->
+          <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="BibTeX to Citation Converter icon">
+            <!-- Document outline -->
+            <rect x="4" y="3" width="16" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <!-- Citation lines -->
+            <line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="7" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <!-- Quotation mark -->
+            <path d="M9 5c0-1.1.9-2 2-2h.2c.6 0 1 .4 1 .9 0 .3-.2.6-.4.8-.4.4-.8.8-1 1.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
         </div>
-        <h3 id="t10" class="card-title">Random Text Generator</h3>
-        <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
-        <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+        <h3 id="t11" class="card-title">BibTeX to Citation Converter</h3>
+        <p class="card-desc">Convert BibTeX entries into clean academic citations (APA, MLA, Chicago, and more) instantly in your browser.</p>
+        <a class="card-cta" href="/tools/bibtex-to-citation-to-bibtex.html" aria-label="Open BibTeX to Citation Converter">Open →</a>
     </article>
+
+     <article class="tool-card" tabindex="0" data-href="/tools/unit-converter-physics-chemistry-time-length-temprature.html" aria-labelledby="t12" data-filter="Academic & Planning">
+      <div class="card-icon" aria-hidden="true">
+        <!-- Convert icon: bi-directional arrows inside a circle -->
+        <svg viewBox="0 0 24 24" class="svg-icon">
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M8 8h7m0 0-2-2m2 2-2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M16 16H9m0 0 2 2m-2-2 2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h3 id="t12" class="card-title">Unit Converter</h3>
+      <p class="card-desc">Academic style conversions for physics and chemistry. Convert length, mass, time, temperature, pressure, energy, power, speed, area, volume, force, frequency, and molarity with precision and scientific notation. Private and instant.</p>
+      <a class="card-cta" href="/tools/unit-converter-physics-chemistry-time-length-temprature.html" aria-label="Open Unit Converter">Open →</a>
+    </article>
+
+    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9" data-filter="Formatting & Cleaning">
+            <div class="card-icon" aria-hidden="true">
+              <!-- Text ↔ List Converter Icon -->
+              <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Text to List Converter icon">
+                <!-- Left: text lines -->
+                <line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="4" y1="10" x2="14" y2="10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="4" y1="14" x2="14" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="4" y1="18" x2="12" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                
+                <!-- Right: bullet list -->
+                <circle cx="18" cy="6" r="1.3" fill="currentColor"/>
+                <line x1="20.5" y1="6" x2="22" y2="6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                
+                <circle cx="18" cy="10" r="1.3" fill="currentColor"/>
+                <line x1="20.5" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                
+                <circle cx="18" cy="14" r="1.3" fill="currentColor"/>
+                <line x1="20.5" y1="14" x2="22" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
+            <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
+            <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
+        </article>
+
+    <article class="tool-card hyp-tes-cal-card toolcard" tabindex="0" data-href="/tools/hypothesis-testing-calculator.html" aria-labelledby="hyp-tes-cal-tg" data-filter="Research & Stats">
+  <div class="card-icon hyp-tes-cal-icon" aria-hidden="true">
+    <!-- Hypothesis Testing icon: bell curve + critical regions + H0/H1 ticks -->
+    <svg viewBox="0 0 24 24" class="svg-icon hyp-tes-cal-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hypothesis Testing Calculator - Z test, T test, Chi square">
+      <!-- Frame -->
+      <rect x="1.25" y="2" width="21.5" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.35"/>
+      <!-- Axes -->
+      <line x1="2.6" y1="17.5" x2="21.4" y2="17.5" stroke="currentColor" stroke-width="0.9" opacity="0.35"/>
+      <!-- Bell curve -->
+      <path d="M2.8 17.5 C 5.0 9.0, 10.5 5.2, 12.0 5.2 C 13.5 5.2, 19.0 9.0, 21.2 17.5"
+            fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.95"/>
+      <!-- Critical regions (shaded caps) -->
+      <path d="M2.8 17.5 C 4.1 13.2, 5.4 11.1, 6.4 10.0" stroke="currentColor" stroke-width="2.4" opacity="0.28"/>
+      <path d="M17.6 10.0 C 18.6 11.1, 19.9 13.2, 21.2 17.5" stroke="currentColor" stroke-width="2.4" opacity="0.28"/>
+      <!-- Stat marker -->
+      <line x1="15.2" y1="6.2" x2="15.2" y2="18.3" stroke="currentColor" stroke-width="1" opacity="0.9"/>
+      <!-- H0 and H1 ticks -->
+      <g fill="currentColor" opacity="0.9">
+        <text x="7.4" y="7.6" font-size="2.8" font-family="monospace">H0</text>
+        <text x="16.5" y="7.6" font-size="2.8" font-family="monospace">H1</text>
+      </g>
+      <!-- Small sigma and alpha hints -->
+      <g fill="currentColor" opacity="0.6" font-family="monospace" font-size="2.4">
+        <text x="3.1" y="19.9">α</text>
+        <text x="20.2" y="19.9">α</text>
+      </g>
+    </svg>
+  </div>
+  <h3 id="hyp-tes-cal-tg" class="card-title hyp-tes-cal-title">Hypothesis Testing Calculator - Z test, T test, Chi square</h3>
+  <p class="card-desc hyp-tes-cal-desc">
+    Run Z, T and Chi square tests in your browser with clear steps, p value, critical value, and effect sizes. Supports one sample, two sample, paired and proportions. Paste a contingency table, get Cramers V, Welch or pooled t, quick power, a neat distribution chart, and a shareable link. Private, fast and mobile friendly.
+  </p>
+  <a class="card-cta hyp-tes-cal-cta" href="/tools/hypothesis-testing-calculator.html" aria-label="Open Hypothesis Testing Calculator - Z test, T test, Chi square">Open →</a>
+</article>
 
   </section>
 
@@ -684,10 +733,10 @@ Bob,28,Berlin"></textarea>
     </div>
 
     <nav class="footer-links" aria-label="Footer links">
-      <a href="feedback.html">Feedback</a>
+      <a href="/feedback.html">Feedback</a>
       <a href="contact.html#contact">Contact Us</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
     </nav>
 
     <div class="footer-bottom">

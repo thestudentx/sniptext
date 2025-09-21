@@ -586,50 +586,97 @@ html, body{
        </div>
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">
     <!-- Tool cards - 10 items -->
-    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
-      <div class="card-icon" aria-hidden="true">
-        <!-- simple SVG icon -->
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t1" class="card-title">Word & Character Counter</h3>
-      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
-      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
-    </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
-      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
-      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
-    </article>
+    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html"  aria-labelledby="t1" data-filter="Text & Writing Tools">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Document + counter icon -->
+            <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Word and Character Counter icon">
+              <!-- Document outline -->
+              <rect x="4" y="3" width="14" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <!-- Text lines -->
+              <line x1="7" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="7" y1="12" x2="13" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="7" y1="16" x2="11" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Counter circle -->
+              <circle cx="19" cy="19" r="4" stroke="currentColor" stroke-width="1.4" fill="none"/>
+              <!-- Counter tick/check -->
+              <path d="M17.8 19l1.2 1.2 2-2.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 id="t1" class="card-title">Word & Character Counter</h3>
+          <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
+          <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
+      </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
-      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
-      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
-    </article>
+    <article class="tool-card alphabetizer-tool-card" tabindex="0" data-href="/tools/alphabetizer-sort-words-sentences.html" aria-labelledby="alpha-tg" data-filter="Formatting & Cleaning">
+            <div class="card-icon alphabetizer-card-icon" aria-hidden="true">
+              <!-- Alphabetizer icon: A/Z letters + up/down arrows -->
+              <svg viewBox="0 0 24 24" class="svg-icon alphabetizer-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alphabetizer">
+                <!-- A and Z letters -->
+                <text x="3.5" y="9.8" font-family="Poppins,Segoe UI,sans-serif" font-size="7.8" fill="currentColor">A</text>
+                <text x="19" y="20.2" text-anchor="end" font-family="Poppins,Segoe UI,sans-serif" font-size="7.8" fill="currentColor">Z</text>
+                <!-- Up arrow (A→Z) -->
+                <path d="M13 5l2.5-2.5L18 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.5 3v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <!-- Down arrow (Z→A) -->
+                <path d="M9 19l-2.5 2.5L4 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.5 21v-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <!-- Divider guides (subtle) -->
+                <path d="M3 12h18" stroke="currentColor" stroke-width="1" opacity=".25" />
+              </svg>
+            </div>
+            <h3 id="alpha-tg" class="card-title alphabetizer-card-title">Alphabetizer</h3>
+            <p class="card-desc alphabetizer-card-desc">
+              Sort words, lines, or sentences A-Z or Z-A with smart options: case-insensitive, numeric-aware, ignore leading articles (a, an, the), remove duplicates, and group by initial. Private, in-browser.
+            </p>
+            <a class="card-cta alphabetizer-card-cta" href="/tools/alphabetizer-sort-words-sentences.html" aria-label="Open Alphabetizer">Open →</a>
+        </article> 
 
-    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
-      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
-      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
-    </article>
+    <article class="tool-card" tabindex="0" data-href="/tools/random-text-generator.html" aria-labelledby="t10" data-filter="Formatting & Cleaning">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Random Text Generator Icon -->
+            <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Random Text Generator icon">
+              <!-- Random scattered lines -->
+              <line x1="4" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="10" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="6" y1="14" x2="16" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="8" y1="18" x2="18" y2="18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- Shuffle arrows -->
+              <path d="M3 12h3l2-2m-2 4l2-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 12h-3l-2-2m2 4l-2-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 id="t10" class="card-title">Random Text Generator</h3>
+          <p class="card-desc">Generate placeholder text: lorem ipsum, short sentences, and dummy paragraphs for testing layouts.</p>
+          <a class="card-cta" href="/tools/random-text-generator.html" aria-label="Open Random Text Generator">Open →</a>
+      </article>
+
+    <article class="tool-card expandshort-tool-card" tabindex="0"
+                            data-href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
+                            aria-labelledby="expandshort-tg" data-filter="Text & Writing Tools">
+                            <div class="card-icon expandshort-card-icon" aria-hidden="true">
+                              <!-- Sentence Expander - Shortener icon: arrows out/in + text lines -->
+                              <svg viewBox="0 0 24 24" class="svg-icon expandshort-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sentence Expander - Shortener">
+                                <!-- text lines -->
+                                <path d="M3 5.5h10M3 9h14M3 12.5h12M3 16h10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
+                                <!-- expand arrow (left block -> right) -->
+                                <path d="M7 19h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M12 17l3 2-3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <!-- shorten arrow (right block -> left) -->
+                                <path d="M17 19h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M12 21l-3-2 3-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <!-- spark -->
+                                <path d="M19 4.2l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1" fill="none"/>
+                              </svg>
+                            </div>
+                            <h3 id="expandshort-tg" class="card-title expandshort-card-title">Sentence Expander - Shortener</h3>
+                            <p class="card-desc expandshort-card-desc">
+                              Rewrite faster with rule-based controls. Expand with clear transitions or shorten for crisp clarity, set a target length, lock protected terms, process lines in batch, and view side by side diffs. Export TXT, CSV, or JSON. Zero AI cost, private in-browser.
+                            </p>
+                            <a class="card-cta expandshort-card-cta"
+                              href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
+                              aria-label="Open Sentence Expander - Shortener">Open →</a>
+                        </article>
 
   </section>
   
@@ -649,10 +696,10 @@ html, body{
     </div>
 
     <nav class="footer-links" aria-label="Footer links">
-      <a href="feedback.html">Feedback</a>
+      <a href="/feedback.html">Feedback</a>
       <a href="contact.html#contact">Contact Us</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
     </nav>
 
     <div class="footer-bottom">

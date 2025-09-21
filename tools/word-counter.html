@@ -575,7 +575,7 @@ kbd{background:rgba(255,255,255,.06); border-radius:6px; padding:4px 6px; font-w
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">
     <!-- Tool cards - 10 items -->
 
-    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2">
+    <article class="tool-card" tabindex="0" data-href="/tools/case-converter.html" aria-labelledby="t2" data-filter="Text & Writing Tools">
       <div class="card-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" class="svg-icon">
           <path d="M4 20h16M8 4l4 8 4-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -584,31 +584,59 @@ kbd{background:rgba(255,255,255,.06); border-radius:6px; padding:4px 6px; font-w
       <h3 id="t2" class="card-title">Case Converter</h3>
       <p class="card-desc">Switch between uppercase, lowercase, sentence case, title case and alternating case with one click.</p>
       <a class="card-cta" href="/tools/case-converter.html" aria-label="Open Case Converter">Open →</a>
-    </article>
+    </article>  
 
-    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
-      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
-      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
-    </article>
+    <article class="tool-card" tabindex="0" data-href="/tools/readability-score-checker.html" aria-labelledby="t-read" data-filter="Text & Writing Tools">
+  <div class="card-icon" aria-hidden="true">
+    <!-- Readability icon: book + dial gauge -->
+    <svg viewBox="0 0 24 24" class="svg-icon" role="img" aria-label="Readability Score Checker icon" xmlns="http://www.w3.org/2000/svg">
+      <!-- Open book -->
+      <path d="M4 6.5a2.5 2.5 0 0 1 2.5-2.5H11v15H6.5A2.5 2.5 0 0 1 4 16.5V6.5z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M20 6.5a2.5 2.5 0 0 0-2.5-2.5H13v15h4.5A2.5 2.5 0 0 0 20 16.5V6.5z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <!-- Page lines -->
+      <line x1="6.8" y1="8.2" x2="10.2" y2="8.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <line x1="6.8" y1="10.6" x2="10.2" y2="10.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <line x1="13.8" y1="8.2" x2="17.2" y2="8.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <line x1="13.8" y1="10.6" x2="17.2" y2="10.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <!-- Dial gauge -->
+      <path d="M6 18a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="12" y1="18" x2="16" y2="15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="12" cy="18" r="0.9" fill="currentColor"/>
+    </svg>
+  </div>
+  <h3 id="t-read" class="card-title">Readability Score Checker</h3>
+  <p class="card-desc">Check Flesch Kincaid, Gunning Fog, SMOG, ARI, and Coleman Liau in one place. Get sentence highlights, passive voice hints, target grade tips, and exportable reports. All local and fast.</p>
+  <a class="card-cta" href="/tools/readability-score-checker.html" aria-label="Open Readability Score Checker">Open →</a>
+</article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
-      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
-      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
-    </article>
+    <article class="tool-card expandshort-tool-card" tabindex="0"
+                            data-href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
+                            aria-labelledby="expandshort-tg" data-filter="Text & Writing Tools">
+                            <div class="card-icon expandshort-card-icon" aria-hidden="true">
+                              <!-- Sentence Expander - Shortener icon: arrows out/in + text lines -->
+                              <svg viewBox="0 0 24 24" class="svg-icon expandshort-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sentence Expander - Shortener">
+                                <!-- text lines -->
+                                <path d="M3 5.5h10M3 9h14M3 12.5h12M3 16h10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
+                                <!-- expand arrow (left block -> right) -->
+                                <path d="M7 19h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M12 17l3 2-3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <!-- shorten arrow (right block -> left) -->
+                                <path d="M17 19h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M12 21l-3-2 3-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <!-- spark -->
+                                <path d="M19 4.2l.5-1 .5 1 1 .5-1 .5-.5 1-.5-1-1-.5 1-.5z" stroke="currentColor" stroke-width="1" fill="none"/>
+                              </svg>
+                            </div>
+                            <h3 id="expandshort-tg" class="card-title expandshort-card-title">Sentence Expander - Shortener</h3>
+                            <p class="card-desc expandshort-card-desc">
+                              Rewrite faster with rule-based controls. Expand with clear transitions or shorten for crisp clarity, set a target length, lock protected terms, process lines in batch, and view side by side diffs. Export TXT, CSV, or JSON. Zero AI cost, private in-browser.
+                            </p>
+                            <a class="card-cta expandshort-card-cta"
+                              href="/tools/sentence-expander-shortener-rule-based-no-ai-cost.html"
+                              aria-label="Open Sentence Expander - Shortener">Open →</a>
+                        </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
+    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3" data-filter="Formatting & Cleaning">
       <div class="card-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" class="svg-icon">
           <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -632,10 +660,10 @@ kbd{background:rgba(255,255,255,.06); border-radius:6px; padding:4px 6px; font-w
     </div>
 
     <nav class="footer-links" aria-label="Footer links">
-      <a href="feedback.html">Feedback</a>
+      <a href="/feedback.html">Feedback</a>
       <a href="contact.html#contact">Contact Us</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms-of-use.html">Terms of Use</a>
     </nav>
 
     <div class="footer-bottom">

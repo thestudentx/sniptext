@@ -632,21 +632,28 @@ input[type="range"]#timeline-maker-zoom::-moz-range-thumb{
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">
     <!-- Tool cards - 10 items -->
 
-    <article class="tool-card" tabindex="0" data-href="/tools/unit-converter-physics-chemistry-time-length-temprature.html" aria-labelledby="t12">
-      <div class="card-icon" aria-hidden="true">
-        <!-- Convert icon: bi-directional arrows inside a circle -->
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
-          <path d="M8 8h7m0 0-2-2m2 2-2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path d="M16 16H9m0 0 2 2m-2-2 2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t12" class="card-title">Unit Converter</h3>
-      <p class="card-desc">Academic style conversions for physics and chemistry. Convert length, mass, time, temperature, pressure, energy, power, speed, area, volume, force, frequency, and molarity with precision and scientific notation. Private and instant.</p>
-      <a class="card-cta" href="/tools/unit-converter-physics-chemistry-time-length-temprature.html" aria-label="Open Unit Converter">Open →</a>
-    </article>
+    <article class="tool-card grade-calc-tool-card" tabindex="0" data-href="/tools/grade-calculator-percentage-letter-weighted-average-gpa-sniptext.html" aria-labelledby="gc-tg" data-filter="Academic & Planning">
+          <div class="card-icon grade-calc-card-icon" aria-hidden="true">
+            <!-- Grade icon: graduation cap + gauge -->
+            <svg viewBox="0 0 24 24" class="svg-icon grade-calc-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grade Calculator">
+              <!-- mortarboard -->
+              <path d="M3 8l9-4 9 4-9 4-9-4z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M7 10v3.5c0 .8 2.7 1.8 5 1.8s5-1 5-1.8V10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- tassel -->
+              <path d="M18 9.5v4.5m0 0a1.5 1.5 0 1 0 0 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <!-- gauge ring -->
+              <path d="M12 20a6 6 0 1 0-6-6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>
+              <path d="M12 14l2.8-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 id="gc-tg" class="card-title grade-calc-card-title">Grade Calculator</h3>
+          <p class="card-desc grade-calc-card-desc">
+            Convert percentages to letter grades and compute weighted averages across categories. Drop lowest scores, run what-if finals, calculate the required score to hit a target, and estimate GPA. Import/Export CSV or JSON. Private, in-browser.
+          </p>
+          <a class="card-cta grade-calc-card-cta" href="/tools/grade-calculator-percentage-letter-weighted-average-gpa-sniptext.html" aria-label="Open Grade Calculator">Open →</a>
+        </article>
 
-    <article class="tool-card table-gen-tool-card" tabindex="0" data-href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-labelledby="table-gen-tg">
+    <article class="tool-card table-gen-tool-card" tabindex="0" data-href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-labelledby="table-gen-tg" data-filter="Academic & Planning">
         <div class="card-icon table-gen-card-icon" aria-hidden="true">
           <!-- Grid/Table icon -->
           <svg viewBox="0 0 24 24" class="svg-icon table-gen-svg" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -661,27 +668,77 @@ input[type="range"]#timeline-maker-zoom::-moz-range-thumb{
         <a class="card-cta table-gen-card-cta" href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-label="Open Quick Table Generator">Open →</a>
       </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
-      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
-      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
-    </article>
+    <article class="tool-card agecalc-tool-card" tabindex="0" data-href="/tools/age-birthday-calculator-sniptext.html" aria-labelledby="agecalc-tg" data-filter="Fun & Interactive">
+  <div class="card-icon agecalc-card-icon" aria-hidden="true">
+    <!-- Age Calculator icon: calendar + countdown ring -->
+    <svg viewBox="0 0 24 24" class="svg-icon agecalc-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Age & Birthday Calculator">
+      <!-- Outer countdown ring -->
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+      <!-- Progress arc (static accent wedge) -->
+      <path d="M12 2 a10 10 0 0 1 8.7 5.02" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+      <!-- Calendar body -->
+      <rect x="5" y="7.2" width="14" height="10.8" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.85"/>
+      <!-- Calendar header bar -->
+      <rect x="5" y="7.2" width="14" height="3" rx="1" ry="1" fill="currentColor" opacity="0.3"/>
+      <!-- Binding rings -->
+      <g fill="currentColor" opacity="0.95">
+        <rect x="7" y="5" width="1.6" height="2.6" rx="0.6"/>
+        <rect x="11.2" y="5" width="1.6" height="2.6" rx="0.6"/>
+        <rect x="15.4" y="5" width="1.6" height="2.6" rx="0.6"/>
+      </g>
+      <!-- Date dots -->
+      <g fill="currentColor" opacity="0.85">
+        <circle cx="8.4" cy="12" r="0.8"/>
+        <circle cx="12" cy="12" r="0.8"/>
+        <circle cx="15.6" cy="12" r="0.8"/>
+        <circle cx="8.4" cy="15" r="0.8"/>
+        <circle cx="12" cy="15" r="0.8"/>
+        <circle cx="15.6" cy="15" r="0.8"/>
+      </g>
+      <!-- Small clock overlay -->
+      <g transform="translate(16.6,15.4)">
+        <circle cx="0" cy="0" r="2.8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.9"/>
+        <path d="M0 0 v-1.4 M0 0 h1.2" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
+      </g>
+    </svg>
+  </div>
+  <h3 id="agecalc-tg" class="card-title agecalc-card-title">Age & Birthday Calculator</h3>
+  <p class="card-desc agecalc-card-desc">
+    Get exact age in years, months, days, hours and seconds with a live countdown to your next birthday. See weekday born, zodiac, leap year handling, milestones like 10,000 days, and age on planets. Private and fully in your browser.
+  </p>
+  <a class="card-cta agecalc-card-cta" href="/tools/age-birthday-calculator-sniptext.html" aria-label="Open Age & Birthday Calculator">Open →</a>
+</article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/remove-empty-lines.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Remove Empty Lines</h3>
-      <p class="card-desc">Quickly strip blank lines, collapse multi-line gaps, and optionally trim each line.</p>
-      <a class="card-cta" href="/tools/remove-empty-lines.html" aria-label="Open Remove Empty Lines">Open →</a>
-    </article>
+    <article class="tool-card flashcard-tool-card" tabindex="0"
+                                            data-href="/tools/flashcard-creator-export-to-anki.html"
+                                            aria-labelledby="flashcard-tg" data-filter="Engagement & Productivity">
+                                      <div class="card-icon flashcard-card-icon" aria-hidden="true">
+                                        <!-- Flashcard Creator icon: stacked cards + cloze brackets + export arrow -->
+                                        <svg viewBox="0 0 24 24" class="svg-icon flashcard-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flashcard Creator">
+                                          <!-- back card -->
+                                          <rect x="5" y="4" width="12" height="8" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/>
+                                          <!-- front card -->
+                                          <rect x="7" y="8" width="12" height="10" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                                          <!-- cloze brackets {{c1:: }} -->
+                                          <path d="M10.4 11.2c-.7 0-1 .4-1 .9v2c0 .6.3.9 1 .9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                                          <path d="M13.6 11.2c.7 0 1 .4 1 .9v2c0 .6-.3.9-1 .9" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                                          <rect x="11" y="12" width="1.4" height="1.2" rx=".2" fill="currentColor" />
+                                          <!-- export down arrow to indicate Anki TSV/CSV -->
+                                          <path d="M18.5 5.2v3.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                          <path d="M17 7.6l1.5 1.5 1.5-1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                                          <!-- small tag for card labels -->
+                                          <path d="M15.3 16.4l2.2-2.2a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4l-2.2 2.2a1.2 1.2 0 0 1-.8.3h-1.2v-1.2a1.2 1.2 0 0 1 .4-.9z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                                          <circle cx="18.1" cy="15.9" r=".45" fill="currentColor"/>
+                                        </svg>
+                                      </div>
+                                      <h3 id="flashcard-tg" class="card-title flashcard-card-title">Flashcard Creator - export to Anki</h3>
+                                      <p class="card-desc flashcard-card-desc">
+                                        Build Basic, Reverse and Cloze flashcards fast. Tag and search cards, bulk import from text or CSV/TSV, shuffle and study with a clean review mode, then export Anki-ready TSV or CSV in one click. Private, fast, and in your browser.
+                                      </p>
+                                      <a class="card-cta flashcard-card-cta"
+                                        href="/tools/flashcard-creator-export-to-anki.html"
+                                        aria-label="Open Flashcard Creator">Open →</a>
+                                  </article>
 
   </section>
 
@@ -694,10 +751,10 @@ input[type="range"]#timeline-maker-zoom::-moz-range-thumb{
         <p>Empowering better writing, one tool at a time.</p>
       </div>
       <nav class="footer-links" aria-label="Footer links">
-        <a href="feedback.html">Feedback</a>
+        <a href="/feedback.html">Feedback</a>
         <a href="contact.html#contact">Contact Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-use.html">Terms of Use</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-use.html">Terms of Use</a>
       </nav>
       <div class="footer-bottom">
         <p>&copy; <span id="year"></span> <span class="powered-by">Snip Text - powered by <a href="https://checkai.pro" target="_blank" rel="noopener">CheckAI.pro</a></span> · All rights reserved.</p>
