@@ -572,50 +572,116 @@
        </div>
   <section id="tools-grid" class="tools-grid" aria-label="Tools list">
     <!-- Tool cards - 10 items -->
-    <article class="tool-card" tabindex="0" data-href="/tools/word-counter.html" aria-labelledby="t1">
-      <div class="card-icon" aria-hidden="true">
-        <!-- simple SVG icon -->
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t1" class="card-title">Word & Character Counter</h3>
-      <p class="card-desc">Instantly count words, characters, sentences and lines. Live updates as you type or paste text.</p>
-      <a class="card-cta" href="/tools/word-counter.html" aria-label="Open Word & Character Counter">Open →</a>
-    </article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/text-to-list-to-text-converter.html" aria-labelledby="t9">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M4 6h16M4 12h16M4 18h16M8 6v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t9" class="card-title">Text ↔ List Converter</h3>
-      <p class="card-desc">Quickly switch between plain text and structured lists with bullets, numbers, or custom separators.</p>
-      <a class="card-cta" href="/tools/text-to-list-to-text-converter.html" aria-label="Open Text to List Converter">Open →</a>
-    </article>
+ <article class="tool-card jso-for-val-card toolcard" tabindex="0" data-href="/tools/json-formatter-validator.html" aria-labelledby="jso-for-val-tg" data-filter="Data & Converters">
+  <div class="card-icon jso-for-val-icon" aria-hidden="true">
+    <!-- JSON Formatter icon: curly braces + schema nodes + check -->
+    <svg viewBox="0 0 24 24" class="svg-icon jso-for-val-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JSON Formatter and Validator - Prettier + AJV">
+      <!-- Frame -->
+      <rect x="1.25" y="2" width="21.5" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.35"/>
+      <!-- Curly braces -->
+      <path d="M7 6c-1.2 0-2 .8-2 2v1c0 .6-.4 1-1 1 .6 0 1 .4 1 1v1c0 1.2.8 2 2 2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <path d="M17 6c1.2 0 2 .8 2 2v1c0 .6.4 1 1 1-.6 0-1 .4-1 1v1c0 1.2-.8 2-2 2" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.95"/>
+      <!-- Schema nodes -->
+      <circle cx="10" cy="8" r="0.8" fill="currentColor" opacity="0.85"/>
+      <circle cx="14" cy="8" r="0.8" fill="currentColor" opacity="0.85"/>
+      <circle cx="12" cy="11" r="0.8" fill="currentColor" opacity="0.85"/>
+      <line x1="10" y1="8.8" x2="12" y2="10.2" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
+      <line x1="14" y1="8.8" x2="12" y2="10.2" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
+      <!-- Check mark -->
+      <path d="M9.2 15.2l1.8 1.9 3.8-4.1" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.95"/>
+    </svg>
+  </div>
+  <h3 id="jso-for-val-tg" class="card-title jso-for-val-title">JSON Formatter and Validator - Prettier + AJV</h3>
+  <p class="card-desc jso-for-val-desc">
+    Format and minify JSON with Prettier, validate against JSON Schema using AJV with formats, defaults, and type coercion, and run JSONPath queries. Includes flatten and unflatten for analytics, a draft schema generator, copy and download, and a tiny share link for small samples. Everything runs locally for privacy and speed.
+  </p>
+  <a class="card-cta jso-for-val-cta" href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html" aria-label="Open JSON Formatter and Validator - Prettier + AJV">Open →</a>
+</article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/whitespace-and-formatting-cleaner.html" aria-labelledby="t4">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h18M8 11h8M6 15h12M4 19h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t4" class="card-title">Whitespace & Formatting Cleaner</h3>
-      <p class="card-desc">Trim whitespace, normalize newlines, remove extra spaces, and fix inconsistent indentation.</p>
-      <a class="card-cta" href="/tools/whitespace-and-formatting-cleaner.html" aria-label="Open Whitespace & Formatting Cleaner">Open →</a>
-    </article>
+<article class="tool-card conint-tool-card" tabindex="0" data-href="/tools/confidence-interval-calculator.html" aria-labelledby="conint-tg" data-filter="Research & Stats">
+  <div class="card-icon conint-card-icon" aria-hidden="true">
+    <!-- Confidence Interval icon: bell curve + CI band + bracket ticks -->
+    <svg viewBox="0 0 24 24" class="svg-icon conint-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Confidence Interval Calculator">
+      <!-- Axis -->
+      <line x1="2.2" y1="18.8" x2="21.8" y2="18.8" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+      <!-- CI bracket ticks -->
+      <g stroke="#ff7c4c" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
+        <line x1="7.2" y1="19.2" x2="7.2" y2="17.4"/>
+        <line x1="16.8" y1="19.2" x2="16.8" y2="17.4"/>
+      </g>
+      <!-- CI band -->
+      <rect x="7.2" y="7.8" width="9.6" height="10.6" rx="1.8" fill="rgba(59,130,246,0.22)" stroke="#3B82F6" stroke-width="1"/>
+      <!-- Bell curve -->
+      <path d="M2.5 18.8 C 6.0 6.2, 18.0 6.2, 21.5 18.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.95"/>
+      <!-- Sampling dots -->
+      <g fill="#10B981" opacity="0.9">
+        <circle cx="9.0" cy="11.2" r="0.7"/>
+        <circle cx="10.6" cy="9.9" r="0.7"/>
+        <circle cx="12.0" cy="10.4" r="0.7"/>
+        <circle cx="13.6" cy="12.0" r="0.7"/>
+      </g>
+    </svg>
+  </div>
+  <h3 id="conint-tg" class="card-title conint-card-title">Confidence Interval Calculator</h3>
+  <p class="card-desc conint-card-desc">
+    Compute confidence intervals for means and proportions in seconds. Auto z or t for one-sample means, Wilson or Agresti-Coull for proportions, Welch or pooled for two means, and Newcombe or Wald for two proportions. Paste raw data to bootstrap, plan sample size for a target margin, preview a mini chart, then copy results, download CSV, or share a tiny link. Private in your browser.
+  </p>
+  <a class="card-cta conint-card-cta" href="/tools/confidence-interval-calculator.html" aria-label="Open Confidence Interval Calculator">Open →</a>
+</article>
 
-    <article class="tool-card" tabindex="0" data-href="/tools/duplicate-word-finder.html" aria-labelledby="t3">
-      <div class="card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" class="svg-icon">
-          <path d="M3 7h8v10H3zM13 3h8v10h-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <h3 id="t3" class="card-title">Duplicate Word Finder</h3>
-      <p class="card-desc">Find repeated words and common duplicates, with options to highlight or remove them automatically.</p>
-      <a class="card-cta" href="/tools/duplicate-word-finder.html" aria-label="Open Duplicate Word Finder">Open →</a>
-    </article>
+    <article class="tool-card table-gen-tool-card" tabindex="0" data-href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-labelledby="table-gen-tg" data-filter="Academic & Planning">
+        <div class="card-icon table-gen-card-icon" aria-hidden="true">
+          <!-- Grid/Table icon -->
+          <svg viewBox="0 0 24 24" class="svg-icon table-gen-svg" xmlns="http://www.w3.org/2000/svg" role="img">
+            <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M3 9h18M3 14h18M8 4v16M14 4v16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 id="table-gen-tg" class="card-title table-gen-card-title">Quick Table Generator</h3>
+        <p class="card-desc table-gen-card-desc">
+          Paste or upload CSV to generate clean, responsive HTML table code with auto-detect delimiter, header toggle, sort, filter, paginate, transpose, sticky header, and one-click copy or download. Private, in-browser.
+        </p>
+        <a class="card-cta table-gen-card-cta" href="/tools/quick-table-generator-csv-to-html-table-code.html" aria-label="Open Quick Table Generator">Open →</a>
+      </article>
+
+    <article class="tool-card surque-tool-card" tabindex="0" data-href="/tools/survey-question-randomizer.html" aria-labelledby="surque-tg" data-filter="Research & Stats">
+  <div class="card-icon surque-card-icon" aria-hidden="true">
+    <!-- Survey Randomizer icon: stacked cards + shuffle arrows + seed star -->
+    <svg viewBox="0 0 24 24" class="svg-icon surque-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Survey Question Randomizer">
+      <!-- Cards -->
+      <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" opacity="0.95">
+        <rect x="4" y="5" width="10" height="13" rx="2"/>
+        <rect x="9" y="3" width="10" height="13" rx="2" transform="rotate(6 14 9.5)"/>
+      </g>
+      <!-- Lines on top card -->
+      <g stroke="currentColor" stroke-linecap="round" stroke-width="1.2" opacity="0.9">
+        <path d="M11 7.5h6"/>
+        <path d="M11 9.8h4.5"/>
+        <path d="M11 12.1h6"/>
+        <path d="M11 14.4h3.5"/>
+      </g>
+      <!-- Shuffle arrows -->
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.4">
+        <path d="M3.5 18.5c2 0 3-.8 4.2-2.4l.3-.4"/>
+        <path d="M8.8 13.7l-.8 1.2"/>
+        <path d="M14.5 16.1c1.2 1.6 2.2 2.4 4.2 2.4"/>
+        <path d="M18 19l1.8-.9L18 17.2"/>
+        <path d="M6 12.1c1.2-1.6 2.2-2.4 4.2-2.4"/>
+        <path d="M9.8 9.7L8 8.8 9.8 7.9"/>
+      </g>
+      <!-- Seed star -->
+      <g fill="currentColor" opacity="0.9">
+        <path d="M6.2 5.2l.35-.9.35.9.9.35-.9.35-.35.9-.35-.9-.9-.35z"/>
+      </g>
+    </svg>
+  </div>
+  <h3 id="surque-tg" class="card-title surque-card-title">Survey Question Randomizer</h3>
+  <p class="card-desc surque-card-desc">
+    Build randomized question sets for research with seed control, block and tag stratification, anchors, adjacency guards, exclusion rules, and no-repeat memory per project. Import or paste questions, preview balanced sets, run quick simulations for fairness, then export to CSV or copy a shareable link. Private in your browser.
+  </p>
+  <a class="card-cta surque-card-cta" href="/tools/survey-question-randomizer.html" aria-label="Open Survey Question Randomizer">Open →</a>
+</article>
 
   </section>
   
