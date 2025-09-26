@@ -174,108 +174,115 @@ href="data:image/svg+xml;utf8,
     </div>
   </section>
 
-  <!-- Featured Article -->
-  <section class="featured-article">
-    <div class="container">
-      <article class="article-card featured">
-        <div class="article-meta">
-          <span class="article-category">Writing Tools</span>
-          <time datetime="2025-08-11" class="article-date">August 11, 2025</time>
+<!-- Featured Article -->
+<section class="featured-article">
+  <div class="container">
+    <article class="article-card featured" itemscope itemtype="https://schema.org/TechArticle">
+      <div class="article-meta">
+        <span class="article-category" itemprop="articleSection">Writing Tools</span>
+        <time datetime="2025-08-11" class="article-date" itemprop="datePublished">August 11, 2025</time>
+      </div>
+
+      <h2 class="article-title" itemprop="headline">Free Whitespace and Formatting Cleaner: Trim, Normalize, and Fix Indentation Online</h2>
+
+      <p class="article-excerpt" itemprop="description">
+        Paste or drop your text to instantly remove extra spaces, trailing whitespace, normalize line endings (LF or CRLF), collapse empty lines, convert tabs to spaces, and strip invisible characters like zero-width spaces and BOM. One-click cleanup for documents, Markdown, code, and web content.
+      </p>
+
+      <div class="article-content" itemprop="articleBody">
+        <div class="drop-cap-paragraph">
+          <span class="drop-cap">W</span>hen text passes through emails, editors, CMSs, and version control, it often collects formatting noise: mixed line endings, stray tabs, trailing spaces, and hidden characters. The SnipText 
+          <a href="/tools/whitespace-and-formatting-cleaner.html"><strong>Whitespace and Formatting Cleaner</strong></a> restores clean, consistent formatting that’s ready to publish, commit, or submit.
         </div>
 
-        <h2 class="article-title">Free Whitespace and Formatting Cleaner: Trim, Normalize, Fix Indentation</h2>
+        <h3 id="what-it-fixes">What the Whitespace Cleaner Fixes</h3>
+        <ul>
+          <li><strong>Trim whitespace:</strong> Remove leading/trailing spaces and per-line trailing whitespace for tidy diffs.</li>
+          <li><strong>Normalize line endings:</strong> Convert all newlines to LF (<code>\n</code>) or CRLF (<code>\r\n</code>) and fix mixed EOL issues.</li>
+          <li><strong>Collapse blank lines:</strong> Reduce multiple empty lines into a single break (or a chosen number). For strict gap control, see <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>.</li>
+          <li><strong>Indentation fixes:</strong> Convert tabs to spaces (or vice versa) and standardize indent size for consistent alignment.</li>
+          <li><strong>Strip invisible junk:</strong> Delete zero-width spaces and optional BOM (<code>U+FEFF</code>). For deeper inspection, use the <a href="/tools/symbol-character-info.html">Symbol and Character Info</a> tool.</li>
+          <li><strong>Preview invisibles:</strong> Show spaces, tabs, and newlines so you can visually spot problem areas.</li>
+        </ul>
 
-        <p class="article-excerpt">Paste or type your text to strip extra spaces, remove trailing whitespace, normalize LF or CRLF line endings, collapse blank lines, convert tabs to spaces, and remove zero width characters and BOM. One click cleanup for docs, markdown, and code.</p>
+        <h3 id="how-to-use">How to Use the Whitespace Cleaner</h3>
+        <ol>
+          <li>Go to the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>.</li>
+          <li>Paste or type your text. The live preview updates as you adjust settings.</li>
+          <li>Select line ending (LF or CRLF), set indentation style/size, and enable trimming options.</li>
+          <li>Click <strong>Clean All</strong> and then choose <strong>Copy</strong> or <strong>Download</strong> to save your cleaned text.</li>
+        </ol>
 
-        <div class="article-content" itemprop="articleBody">
-          <div class="drop-cap-paragraph">
-            <span class="drop-cap">W</span>hen text travels through emails, docs, editors, and CMSs it picks up mess. Mixed line endings, stray tabs, trailing spaces, and invisible characters can break layouts and diffs. The SnipText <a href="/tools/whitespace-and-formatting-cleaner.html"><strong>Whitespace and Formatting Cleaner</strong></a> restores clean, consistent formatting that is ready to publish, submit, or commit.
-          </div>
-
-          <h3>What the cleaner fixes</h3>
-          <ul>
-            <li><strong>Trim whitespace:</strong> Remove leading and trailing spaces, plus per line trailing whitespace.</li>
-            <li><strong>Normalize newlines:</strong> Convert everything to <code>LF</code> or <code>CRLF</code> and fix mixed endings.</li>
-            <li><strong>Collapse blanks:</strong> Reduce multiple blank lines to a single break or your chosen count. For gap control use <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>.</li>
-            <li><strong>Indentation:</strong> Convert tabs to spaces or spaces to tabs and normalize indent size for clean alignment.</li>
-            <li><strong>Invisible junk:</strong> Strip zero width characters and optional BOM <code>U+FEFF</code>. Inspect invisibles or code points with <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.</li>
-            <li><strong>Preview invisibles:</strong> Show spaces, tabs, and newlines to spot issues quickly.</li>
-          </ul>
-
-          <h3>How to use it fast</h3>
-          <ol>
-            <li>Open the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>.</li>
-            <li>Paste or type. Preview updates in real time as you change options.</li>
-            <li>Pick line ending (LF or CRLF), choose indentation style and size, and enable trim options.</li>
-            <li>Click <strong>Clean All</strong> then <strong>Copy</strong> or <strong>Download</strong> the result.</li>
-          </ol>
-
-          <div class="collapsible-section">
-            <button class="collapsible-toggle" aria-expanded="false">
-              <span>Pro tips for clean diffs and layouts</span>
-              <span class="toggle-icon">+</span>
-            </button>
-            <div class="collapsible-content">
-              <ul>
-                <li><strong>Match the target:</strong> CRLF for Windows docs, LF for UNIX and most repos. Set this once and keep it consistent.</li>
-                <li><strong>Normalize before diffing:</strong> Clean whitespace first so code diffs and similarity checks focus on real changes. For batch gap fixes use <a href="/blog/free-remove-empty-lines-trim-lines-collapse-gaps-normalize-newlines-sniptext-blog.html">Remove Empty Lines guide</a>.</li>
-                <li><strong>Tabs to spaces:</strong> Standardize indentation to avoid misaligned bullets, code blocks, and tables.</li>
-                <li><strong>Zero width proofing:</strong> ZWSP and friends can break search and URLs. Strip them here, or inspect with the <a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Symbol and Character Info guide</a>.</li>
-                <li><strong>Title and labels:</strong> Standardize capitalization with the <a href="/tools/case-converter.html">Case Converter</a> then verify limits in the <a href="/tools/word-counter.html">Word and Character Counter</a>.</li>
-              </ul>
-            </div>
-          </div>
-
-          <h3>Workflows and related tools</h3>
-          <ul>
-            <li><strong>Docs and markdown:</strong> Clean whitespace, then control paragraph gaps with <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>. Convert lists with the <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a>.</li>
-            <li><strong>Web and CMS:</strong> Escape or unescape HTML and inspect entities with <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>. For emoji edits or removal use the <a href="/tools/emoji-replacer.html">Emoji Replacer</a>.</li>
-            <li><strong>High stakes copy:</strong> After cleanup, fix grammar in <a href="/grammarly1.html">Grammar Corrector</a>, paraphrase carefully with <a href="/quillbot2.html">Paraphraser</a>, check originality in <a href="/dashboard.html">Plagiarism Checker</a>, and screen with <a href="/ai-detection.html">AI Detector</a> if required.</li>
-          </ul>
-
-          <h3>Why formatting consistency matters</h3>
-          <p>Messy whitespace causes broken lists, odd wraps, noisy diffs, and flaky tests. Clean formatting improves readability, reduces file size, and prevents platform specific glitches when you publish, submit, or commit.</p>
-
-          <h3>Try it now</h3>
-          <p><a href="/tools/whitespace-and-formatting-cleaner.html">Go to Whitespace and Formatting Cleaner</a></p>
-
-          <h3>FAQ</h3>
-          <dl class="faq grammar-faq" id="grammar-faq">
-            <dt tabindex="0" aria-expanded="false">Is the Whitespace and Formatting Cleaner free</dt>
-            <dd class="hidden">Yes. Use it as often as you like with no sign in.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Do you store my text</dt>
-            <dd class="hidden">No. Cleaning runs instantly in your browser for a privacy friendly workflow.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Can I choose LF or CRLF</dt>
-            <dd class="hidden">Yes. Pick your preferred line ending and the tool will normalize the entire document.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Does it fix tabs and spaces</dt>
-            <dd class="hidden">Yes. Convert tabs to spaces or spaces to tabs and set indentation size to keep bullets and code blocks aligned.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Will it remove invisible characters and BOM</dt>
-            <dd class="hidden">If enabled, it strips zero width characters and an optional BOM so your text behaves predictably across apps.</dd>
-          </dl>
-        </div>
-
-        <div class="article-footer">
-          <div class="article-tags">
-            <span class="tag">Whitespace Cleaner</span>
-            <span class="tag">LF and CRLF</span>
-            <span class="tag">Tabs to Spaces</span>
-            <span class="tag">Zero Width Characters</span>
-            <span class="tag">Writing Tools</span>
-          </div>
-          <div class="article-share">
-            <span class="share-text">Share:</span>
-            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
-            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
-            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+        <div class="collapsible-section">
+          <button class="collapsible-toggle" aria-expanded="false">
+            <span>Pro Tips for Clean Diffs and Layouts</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="collapsible-content">
+            <ul>
+              <li><strong>Match platform standards:</strong> Use CRLF for Windows docs and LF for Unix/Linux projects or Git repos.</li>
+              <li><strong>Normalize before diffing:</strong> Cleaning whitespace ensures diffs and plagiarism checks focus on actual content changes. For batch gap fixes, see our <a href="/blog/free-remove-empty-lines-trim-lines-collapse-gaps-normalize-newlines-sniptext-blog.html">Remove Empty Lines guide</a>.</li>
+              <li><strong>Indent consistently:</strong> Standardize tabs vs spaces to prevent broken code blocks and misaligned tables.</li>
+              <li><strong>Remove hidden characters:</strong> Zero-width spaces and BOMs can break search, URLs, and parsing. Strip them here or analyze with the <a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Symbol and Character Info guide</a>.</li>
+              <li><strong>Finalize presentation:</strong> Standardize capitalization using the <a href="/tools/case-converter.html">Case Converter</a> and check meta text limits in the <a href="/tools/word-counter.html">Word and Character Counter</a>.</li>
+            </ul>
           </div>
         </div>
-      </article>
-    </div>
-  </section>
+
+        <h3 id="workflows">Workflows and Related Tools</h3>
+        <ul>
+          <li><strong>Documents & Markdown:</strong> Clean whitespace, then manage paragraph gaps with <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>. Convert and organize lists with the <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a>.</li>
+          <li><strong>Web & CMS:</strong> Inspect or clean HTML entities with <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>. Manage emojis with the <a href="/tools/emoji-replacer.html">Emoji Replacer</a>.</li>
+          <li><strong>Professional writing:</strong> After cleaning, refine text using the <a href="/grammarly1.html">Grammar Corrector</a>, <a href="/quillbot2.html">Paraphraser</a>, and <a href="/dashboard.html">Plagiarism Checker</a>. Run the <a href="/ai-detection.html">AI Detector</a> if needed.</li>
+        </ul>
+
+        <h3 id="why-it-matters">Why Formatting Consistency Matters</h3>
+        <p>
+          Extra spaces and inconsistent formatting cause broken lists, odd line breaks, noisy diffs, and errors in Markdown or code. Cleaning whitespace improves readability, reduces file size, prevents platform-specific issues, and ensures text looks professional across editors, CMSs, and repositories.
+        </p>
+
+        <h3 id="try-it">Try It Now</h3>
+        <p><a href="/tools/whitespace-and-formatting-cleaner.html">Go to Whitespace and Formatting Cleaner</a> — fix spacing, line endings, and invisible characters instantly.</p>
+
+        <h3 id="faq">FAQ</h3>
+        <dl class="faq grammar-faq" id="grammar-faq">
+          <dt tabindex="0" aria-expanded="false">Is the Whitespace and Formatting Cleaner free?</dt>
+          <dd class="hidden">Yes. 100% free with unlimited use. No login required.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Do you store my text?</dt>
+          <dd class="hidden">No. All cleaning runs locally in your browser for privacy and speed.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Can I choose LF or CRLF?</dt>
+          <dd class="hidden">Yes. You can normalize text to either LF or CRLF depending on your project or repo settings.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Does it fix tabs and spaces?</dt>
+          <dd class="hidden">Yes. Convert tabs to spaces or spaces to tabs and define indent size for consistent alignment.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Will it remove invisible characters and BOM?</dt>
+          <dd class="hidden">Yes. If enabled, it strips zero-width characters and BOM markers to ensure consistent behavior across apps.</dd>
+        </dl>
+      </div>
+
+      <div class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Whitespace Cleaner</span>
+          <span class="tag">Trim Spaces</span>
+          <span class="tag">LF and CRLF</span>
+          <span class="tag">Tabs to Spaces</span>
+          <span class="tag">Invisible Characters</span>
+          <span class="tag">Writing Tools</span>
+        </div>
+        <div class="article-share">
+          <span class="share-text">Share:</span>
+          <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+          <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+          <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
 
   <!-- Articles Section -->
   <section id="articles" class="articles-section">

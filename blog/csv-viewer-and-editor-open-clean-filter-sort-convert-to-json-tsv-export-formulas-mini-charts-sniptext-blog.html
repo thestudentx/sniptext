@@ -215,27 +215,27 @@ href="data:image/svg+xml;utf8,
         </div>
 
         <h2 class="article-title">CSV Viewer and Editor Guide: From Messy Spreadsheet to Clean Export</h2>
-        <p class="article-excerpt">Import a CSV, clean whitespace, split or merge columns, filter and sort, run quick formulas, and export to JSON or TSV. This guide explains a simple workflow plus data hygiene tips that save time for students, analysts, and content teams.</p>
+        <p class="article-excerpt">Learn how to open, clean, edit, and export CSV files the right way. This guide explains what a CSV is, why data hygiene matters, and how to transform messy spreadsheets into structured exports for analytics, coding, and business. Try the <a href="/tools/csv-viewer-editor.html">SnipText CSV Viewer & Editor</a> for a fast in-browser workflow.</p>
 
         <div class="article-content">
           <div class="drop-cap-paragraph">
-            <span class="drop-cap">C</span>SV files are the glue between spreadsheets, databases, and web apps. The SnipText <strong>CSV Viewer and Editor</strong> gives you a fast dark themed grid that runs privately in your browser. You can detect the delimiter, edit cells, add or remove rows and columns, filter and sort, then export clean data without installing anything.
+            <span class="drop-cap">C</span>SV files are the glue between spreadsheets, databases, and web apps. The SnipText <strong><a href="/tools/csv-viewer-editor.html">CSV file editor</a></strong> gives you a fast dark-themed grid that runs privately in your browser. You can detect delimiters, edit cells, add or remove rows and columns, filter and sort, then export clean data without installing anything. For specs, see the <a href="https://www.rfc-editor.org/rfc/rfc4180" target="_blank">CSV format standard (RFC 4180)</a>.
           </div>
 
           <p><strong>Build a lightweight data workflow:</strong>
-            <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a>,
-            <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a>,
+            <a href="/tools/csv-viewer-editor.html">CSV Cleaner & Editor</a>,
+            <a href="/tools/json-formatter-validator.html">JSON Formatter & Validator</a>,
             <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
-            <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>,
-            <a href="/tools/word-counter.html">Word and Character Counter</a>,
-            <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.
+            <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>,
+            <a href="/tools/symbol-character-info.html">Character Info Checker</a>,
+            <a href="/tools/confidence-interval-calculator.html">Confidence Interval Calculator</a>.
           </p>
 
           <nav class="article-toc" aria-label="Quick navigation">
             <strong>In this guide:</strong>
             <ul>
               <li><a href="#what">What the tool does</a></li>
-              <li><a href="#why">Why it matters</a></li>
+              <li><a href="#why">Why clean CSV data matters</a></li>
               <li><a href="#workflow">Fast workflow in 6 steps</a></li>
               <li><a href="#tips">Educational insights and tips</a></li>
               <li><a href="#integrations">Helpful tools and integrations</a></li>
@@ -246,25 +246,25 @@ href="data:image/svg+xml;utf8,
           <h3 id="what">What the CSV Viewer and Editor does</h3>
           <ul>
             <li><strong>Open and detect:</strong> Paste or drop a file and let the tool detect comma, semicolon, tab, or pipe separators.</li>
-            <li><strong>Grid editing:</strong> Double click to edit cells, add or remove rows and columns, and undo or redo changes.</li>
-            <li><strong>Filter and sort:</strong> Search all columns at once or add per column filters. Click headers to sort ascending or descending.</li>
-            <li><strong>Clean and transform:</strong> Trim whitespace, deduplicate rows, split a column by a character or regex, or merge columns with a custom joiner.</li>
-            <li><strong>Convert and export:</strong> Convert to JSON or TSV and download or copy results directly to the clipboard.</li>
-            <li><strong>Quick math:</strong> Run SUM, AVG, MIN, MAX, and COUNT on the active column. See a small inline chart to sense check outliers.</li>
-            <li><strong>Private by design:</strong> Everything runs locally in your browser for speed and privacy.</li>
+            <li><strong>Grid editing:</strong> Double click to edit cells, add/remove rows and columns, and undo/redo changes.</li>
+            <li><strong>Filter and sort:</strong> Search across columns or add per-column filters. Click headers to sort ascending or descending.</li>
+            <li><strong>Clean and transform:</strong> Trim whitespace, deduplicate rows, split a column by character/regex, or merge columns with a custom joiner.</li>
+            <li><strong>Convert and export:</strong> Convert CSV to JSON or TSV and download or copy results to the clipboard.</li>
+            <li><strong>Quick math:</strong> Run SUM, AVG, MIN, MAX, and COUNT on numeric columns. Use inline charts to spot outliers.</li>
+            <li><strong>Private by design:</strong> Runs locally in your browser for speed and privacy.</li>
           </ul>
 
-          <h3 id="why">Why it matters</h3>
-          <p>Many CSVs come with messy spacing, mixed types, or duplicate rows. Fixing these by hand wastes time and introduces errors. A focused viewer and editor helps you <em>spot issues instantly</em>, apply <em>repeatable cleanups</em>, and <em>export consistent data</em> for your CMS, analytics platform, or app import. Clean inputs mean fewer bugs and smoother handoffs.</p>
+          <h3 id="why">Why clean CSV data matters</h3>
+          <p>Messy CSV files slow down analysis. Spacing issues, mixed types, or duplicates can break imports. A focused <a href="/tools/csv-viewer-editor.html">CSV cleaner</a> helps you <em>spot issues instantly</em>, apply <em>repeatable rules</em>, and <em>export consistent datasets</em> for analytics, CMS, or APIs. Clean inputs mean fewer bugs and smoother collaboration across teams.</p>
 
           <h3 id="workflow">Fast workflow in 6 steps</h3>
           <ol>
-            <li><strong>Import:</strong> Open the <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a> and paste or drop your file. Choose Auto delimiter and confirm that the first row is a header.</li>
-            <li><strong>Filter and scan:</strong> Use the quick filter to isolate rows. Sort target columns to reveal empty values or odd spikes.</li>
-            <li><strong>Clean:</strong> Run <em>Trim whitespace</em> and <em>Deduplicate</em>. If a field packs multiple values, use <em>Split column</em>.</li>
-            <li><strong>Transform:</strong> Merge columns when needed, rename headers for clarity, and standardize date formats before export.</li>
-            <li><strong>Validate:</strong> Use quick formulas and the mini chart on numeric columns to confirm ranges and spot outliers.</li>
-            <li><strong>Export:</strong> Copy or download as CSV, TSV, or JSON. For web use, convert to JSON and format it with the <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a>.</li>
+            <li><strong>Import:</strong> Open the <a href="/tools/csv-viewer-editor.html">CSV file viewer</a> and paste or drop your file. Use Auto delimiter detection and confirm the first row as header.</li>
+            <li><strong>Filter and scan:</strong> Isolate rows with quick filter. Sort columns to reveal empty values or spikes.</li>
+            <li><strong>Clean:</strong> Run <em>Trim whitespace</em> and <em>Deduplicate</em>. If multiple values live in one field, use <em>Split column</em>.</li>
+            <li><strong>Transform:</strong> Merge columns, rename headers, and standardize date formats before export. Use the <a href="/tools/unit-converter-physics-chemistry-time-length-temprature.html">Unit Converter</a> if numeric fields use inconsistent units.</li>
+            <li><strong>Validate:</strong> Apply quick formulas or charts to check ranges and outliers.</li>
+            <li><strong>Export:</strong> Copy/download as CSV, TSV, or JSON. For web apps, format JSON neatly with the <a href="/tools/json-formatter-validator.html">JSON Formatter</a>.</li>
           </ol>
 
           <div class="collapsible-section">
@@ -273,52 +273,52 @@ href="data:image/svg+xml;utf8,
             </button>
             <div class="collapsible-content">
               <ul>
-                <li><strong>Use snake case or kebab case consistently:</strong> <code>product_id</code>, <code>user_email</code> are easier to work with in code than mixed spacing.</li>
+                <li><strong>Use snake or kebab case consistently:</strong> <code>product_id</code>, <code>user_email</code> are easier to handle in code than mixed spacing.</li>
                 <li><strong>Add units to numeric headers:</strong> <code>price_usd</code>, <code>weight_kg</code> cut confusion later.</li>
-                <li><strong>Add a primary key if missing:</strong> Insert a new column like <code>row_id</code> and fill unique values. It helps during merges and imports.</li>
+                <li><strong>Add a primary key:</strong> Insert a column like <code>row_id</code> with unique values to help merges and imports.</li>
               </ul>
             </div>
           </div>
 
           <h3 id="tips">Educational insights and tips</h3>
           <ul>
-            <li><strong>Type drift is real:</strong> CSVs do not store types. Keep numbers unquoted where possible, and avoid mixing digits and text in the same column.</li>
-            <li><strong>Dates are tricky:</strong> Prefer ISO format <code>YYYY-MM-DD</code>. If you inherit <code>MM/DD/YYYY</code>, convert before combining data from other regions.</li>
-            <li><strong>Normalize categories:</strong> Create a small mapping table for values like <em>US</em>, <em>USA</em>, <em>United States</em>. Consistent labels improve joins and charts.</li>
-            <li><strong>Document your transforms:</strong> Keep a note of split, merge, and dedupe rules. Repeatability is part of data hygiene.</li>
+            <li><strong>Type drift is real:</strong> CSVs don’t store data types. Keep numbers unquoted where possible and avoid mixing digits with text.</li>
+            <li><strong>Dates are tricky:</strong> Prefer ISO <code>YYYY-MM-DD</code>. If given <code>MM/DD/YYYY</code>, convert before merging across regions.</li>
+            <li><strong>Normalize categories:</strong> Map values like <em>US</em>, <em>USA</em>, <em>United States</em> into one standard form.</li>
+            <li><strong>Document transforms:</strong> Record split, merge, and dedupe rules. Repeatability ensures better data hygiene.</li>
           </ul>
 
           <h3 id="integrations">Helpful tools and integrations</h3>
           <ul>
-            <li><strong>Tables for the web:</strong> Convert a small dataset to an HTML table with the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>.</li>
-            <li><strong>Whitespace cleanup:</strong> Use the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> before pasting CSV into emails or docs.</li>
-            <li><strong>Character checks:</strong> Inspect odd symbols with <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.</li>
-            <li><strong>Writing polish:</strong> If you publish findings, tidy copy with the <a href="/grammarly1.html">Grammar Checker</a> and verify counts using the <a href="/tools/word-counter.html">Word Counter</a>.</li>
-            <li><strong>Developer utilities:</strong> Compare exports with the <a href="/tools/code-diff-checker-side-by-side">Code Diff Checker</a> to be sure only the intended lines changed.</li>
+            <li><strong>Tables for the web:</strong> Use the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a> for HTML tables.</li>
+            <li><strong>Whitespace cleanup:</strong> Run the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> before pasting CSV into docs.</li>
+            <li><strong>Character checks:</strong> Inspect odd symbols with <a href="/tools/symbol-character-info.html">Symbol Info</a>.</li>
+            <li><strong>Writing polish:</strong> Publish findings with clean copy using the <a href="/grammarly1.html">Grammar Corrector</a> and verify counts with the <a href="/tools/word-counter.html">Word Counter</a>.</li>
+            <li><strong>Developer utilities:</strong> Compare before/after exports in the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> to confirm only intended lines changed.</li>
           </ul>
 
           <h3>Try it now</h3>
-          <p>Open the <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a>, import a CSV, run Trim and Deduplicate, split one column, and export to JSON. Then pretty print it in the <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a> for your API or CMS.</p>
+          <p>Open the <a href="/tools/csv-viewer-editor.html">CSV Viewer & Editor</a>, import a CSV, trim and deduplicate, split one column, and export to JSON. Then pretty print it with the <a href="/tools/json-formatter-validator.html">JSON Formatter</a> for APIs or CMS workflows.</p>
 
           <h3 id="faq">FAQ</h3>
           <dl class="faq grammar-faq" id="grammar-faq">
-            <dt tabindex="0" aria-expanded="false">Is the CSV Viewer and Editor free</dt>
-            <dd class="hidden">Yes. You can open, clean, and export small to medium CSV files with no sign in.</dd>
+            <dt tabindex="0" aria-expanded="false">Is the CSV Viewer and Editor free?</dt>
+            <dd class="hidden">Yes. Open, clean, and export CSV files without sign in.</dd>
 
-            <dt tabindex="0" aria-expanded="false">Is my data uploaded anywhere</dt>
-            <dd class="hidden">No. Processing happens in your browser for privacy and speed. Nothing is sent to a server.</dd>
+            <dt tabindex="0" aria-expanded="false">Is my data uploaded anywhere?</dt>
+            <dd class="hidden">No. Processing stays in your browser. Nothing is sent to servers.</dd>
 
-            <dt tabindex="0" aria-expanded="false">How big a file can I use</dt>
-            <dd class="hidden">The grid handles a few hundred thousand cells comfortably. If you see slowdowns, filter first and turn off animations in your browser.</dd>
+            <dt tabindex="0" aria-expanded="false">How big a file can I use?</dt>
+            <dd class="hidden">Handles a few hundred thousand cells smoothly. For very large files, filter first and disable browser animations.</dd>
 
-            <dt tabindex="0" aria-expanded="false">Can I convert CSV to JSON or TSV</dt>
-            <dd class="hidden">Yes. Export as CSV, TSV, or JSON, or copy the output directly to your clipboard.</dd>
+            <dt tabindex="0" aria-expanded="false">Can I convert CSV to JSON or TSV?</dt>
+            <dd class="hidden">Yes. Export as CSV, TSV, or JSON, or copy results directly.</dd>
 
-            <dt tabindex="0" aria-expanded="false">Can I split and merge columns</dt>
-            <dd class="hidden">Yes. Use Split to break a column by a character or regex and Merge to combine multiple columns with a custom joiner.</dd>
+            <dt tabindex="0" aria-expanded="false">Can I split and merge columns?</dt>
+            <dd class="hidden">Yes. Use Split for breaking fields and Merge to combine with a custom joiner.</dd>
 
-            <dt tabindex="0" aria-expanded="false">Do you have more data tools</dt>
-            <dd class="hidden">Yes. Try <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>, <a href="/tools/json-formatter-and-validator.html">JSON Formatter</a>, and <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>.</dd>
+            <dt tabindex="0" aria-expanded="false">Do you have more data tools?</dt>
+            <dd class="hidden">Yes. Try the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>, <a href="/tools/json-formatter-validator.html">JSON Formatter</a>, and <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>.</dd>
           </dl>
         </div>
 
@@ -326,9 +326,9 @@ href="data:image/svg+xml;utf8,
           <div class="article-tags">
             <span class="tag">CSV</span>
             <span class="tag">Data Cleaning</span>
+            <span class="tag">CSV Editor</span>
             <span class="tag">JSON</span>
             <span class="tag">TSV</span>
-            <span class="tag">Tools</span>
           </div>
           <div class="article-share">
             <span class="share-text">Share:</span>
@@ -340,6 +340,7 @@ href="data:image/svg+xml;utf8,
       </article>
     </div>
   </section>
+
 
   <!-- Articles Section -->
   <section id="articles" class="articles-section">

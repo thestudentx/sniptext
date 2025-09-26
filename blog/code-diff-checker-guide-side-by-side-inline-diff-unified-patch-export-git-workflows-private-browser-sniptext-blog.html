@@ -193,7 +193,7 @@
       </div>
     </section>
 
-    <!-- Featured Article -->
+       <!-- Featured Article -->
     <section class="featured-article">
       <div class="container">
         <article class="article-card featured">
@@ -205,21 +205,21 @@
           <h2 class="article-title">How to Read Code Diffs: Side by Side, Inline, Word Level Highlights, and Unified Patches</h2>
 
           <p class="article-excerpt">
-            A practical guide to diffs that saves time in code reviews. We break down side by side and inline views, word level highlights, minimap scanning, and unified patch export. All features run locally in the <a href="/tools/code-diff-checker-side-by-side.html">SnipText Code Diff Checker</a> for speed and privacy.
+            A practical guide to diffs that saves time in code reviews. We break down side by side and inline views, word level highlights, minimap scanning, and unified patch export. All features run locally in the <a href="/tools/code-diff-checker-side-by-side.html">SnipText Code Diff Checker</a> for speed and privacy. For faster reviews, normalize files first with the <a href="/tools/html-css-js-minifier-beautifier.html">HTML CSS JS Minifier &amp; Beautifier</a> and trim noise with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>.
           </p>
 
           <div class="article-content">
             <div class="drop-cap-paragraph">
-              <span class="drop-cap">D</span>iffs help you understand the intent of a change before you approve it. The SnipText <strong>Code Diff Checker</strong> loads two files or pasted snippets, renders a side by side or inline view, and highlights additions, deletions, and modified words. Turn on ignore whitespace to cut noise, use the minimap to jump across large files, and export a unified patch you can apply in Git. Try it on the <a href="/tools/code-diff-checker-side-by-side.html">tool page</a>.
+              <span class="drop-cap">D</span>iffs help you understand the intent of a change before you approve it. The SnipText <strong>Code Diff Checker</strong> loads two files or pasted snippets, renders a side by side or inline view, and highlights additions, deletions, and modified words. Turn on ignore whitespace to cut noise, use the minimap to jump across large files, and export a unified patch you can apply in Git. Try it on the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker tool page</a> or read the companion <a href="/blog/code-diff-checker-guide-side-by-side-inline-diff-unified-patch-export-git-workflows-private-browser-sniptext-blog.html">Code Diff Checker workflow guide</a>.
             </div>
 
             <!-- Helper links to related tools -->
             <p><strong>Helpful tools for cleaner diffs:</strong>
               <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>,
-              <a href="/tools/text-to-list-to-text-converter.html">Text to List - List to Text Converter</a>,
-              <a href="/tools/random-password-generator-strong-pronounceable-passphrases-wifi-sniptext.html">Random Password Generator</a>,
-              <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>,
-              <a href="/blog/best-ai-writing-tools-2025.html">Best AI Writing Tools 2025</a>.
+              <a href="/tools/html-css-js-minifier-beautifier.html">HTML CSS JS Minifier &amp; Beautifier</a>,
+              <a href="/tools/json-formatter-validator.html">JSON Formatter &amp; Validator</a>,
+              <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a>,
+              <a href="/blog/html-css-js-minifier-and-beautifier-guide-fast-private-seo-best-practices-developer-workflows-sniptext-blog.html">Minifier best practices guide</a>.
             </p>
 
             <nav class="article-toc" aria-label="Quick navigation">
@@ -238,7 +238,7 @@
 
             <h3 id="what-is-diff">What a code diff shows</h3>
             <p>
-              A diff aligns two versions of a file and marks what changed. At a high level you see lines that were added, deleted, or modified. A good diff also reveals <em>within line</em> edits so a small constant change does not look like a full rewrite.
+              A diff aligns two versions of a file and marks what changed. At a high level you see lines that were added, deleted, or modified. A good diff also reveals <em>within line</em> edits so a small constant change does not look like a full rewrite. When comparing structured files like JSON or YAML, format and validate first with the <a href="/tools/json-formatter-validator.html">JSON Formatter</a> or convert cleanly using the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a>.
             </p>
             <ul>
               <li><strong>Alignment step:</strong> Many diff engines use variants of the longest common subsequence idea to align lines efficiently.</li>
@@ -248,22 +248,22 @@
 
             <h3 id="views">Side by side vs inline views</h3>
             <p>
-              <strong>Side by side</strong> puts old and new in parallel columns with sync scrolling. This is great when you skim larger files and want your eyes to stay aligned. <strong>Inline</strong> merges both versions into a single timeline, which is ideal for patch notes or when you need a compact view. Switch modes instantly in the tool.
+              <strong>Side by side</strong> puts old and new in parallel columns with sync scrolling. This is great when you skim larger files and want your eyes to stay aligned. <strong>Inline</strong> merges both versions into a single timeline, which is ideal for patch notes or when you need a compact view. Switch modes instantly in the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.
             </p>
 
             <h3 id="noise">Cutting noise: whitespace, case, and line endings</h3>
             <p>
-              Noisy diffs waste time. Toggle <em>ignore whitespace</em> to hide changes from indentation or trailing spaces. Normalize line endings if you work across systems so CRLF and LF do not flood the view. You can also toggle case sensitivity to reduce noise in config diffs or markup where casing is not semantic.
+              Noisy diffs waste time. Toggle <em>ignore whitespace</em> to hide changes from indentation or trailing spaces. Normalize line endings if you work across systems so CRLF and LF do not flood the view. You can also toggle case sensitivity to reduce noise in config diffs or markup where casing is not semantic. For a cleaner baseline before comparing, run files through the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> and the <a href="/tools/html-css-js-minifier-beautifier.html">Minifier &amp; Beautifier</a>.
             </p>
 
             <h3 id="word-level">Word level and token level highlights</h3>
             <p>
-              Line level changes are not enough for modern reviews. The SnipText Code Diff Checker adds word level highlights so renamed variables, edited strings, and small constant tweaks stand out. This makes code intent faster to judge.
+              Line level changes are not enough for modern reviews. The SnipText <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> adds word level highlights so renamed variables, edited strings, and small constant tweaks stand out. This makes code intent faster to judge. For JSON and schemas, pair with the <a href="/blog/json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide-sniptext-blog.html">JSON Formatter &amp; Validator guide</a> for tips on avoiding structural noise.
             </p>
 
             <h3 id="patch">Unified diff patches you can export</h3>
             <p>
-              A unified patch encodes the before and after with a few lines of context. You can export a patch from the tool, share it for review, and apply it with Git. It is a portable format that plays well with code hosting, CI pipelines, and bug trackers.
+              A unified patch encodes the before and after with a few lines of context. You can export a patch from the tool, share it for review, and apply it with Git. It is a portable format that plays well with code hosting, CI pipelines, and bug trackers. If a patch spans multiple languages, consider tidying assets first in the <a href="/blog/html-css-js-minifier-and-beautifier-guide-fast-private-seo-best-practices-developer-workflows-sniptext-blog.html">Minifier guide</a>.
             </p>
 
             <h3 id="workflow">Fast review workflow with SnipText</h3>
@@ -272,32 +272,32 @@
               <li>Pick <strong>Side by side</strong> to scan, switch to <strong>Inline</strong> to summarize.</li>
               <li>Enable <strong>Ignore whitespace</strong> and <strong>Word level</strong> highlights.</li>
               <li>Use the minimap to jump between hunks, then copy HTML or export a unified patch.</li>
-              <li>Normalize text with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> for clean reviews.</li>
+              <li>Normalize text with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> and validate structured data with the <a href="/tools/json-formatter-validator.html">JSON Formatter</a> for clean reviews.</li>
             </ol>
 
             <h3 id="examples">Worked examples</h3>
             <ul>
               <li><strong>Constant change:</strong> from <code>const LIMIT = 100;</code> to <code>const LIMIT = 120;</code> shows a single in line edit with minimal noise.</li>
               <li><strong>Refactor rename:</strong> variable <code>userData</code> to <code>profile</code> appears as word level changes across multiple lines, so logic changes remain visible.</li>
-              <li><strong>Whitespace only:</strong> indentation changes vanish when ignore whitespace is enabled, revealing only true logic edits.</li>
+              <li><strong>Whitespace only:</strong> indentation changes vanish when ignore whitespace is enabled, revealing only true logic edits. Pre-clean with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>.</li>
             </ul>
 
             <h3 id="faq">Frequently asked questions</h3>
             <dl class="faq grammar-faq" id="grammar-faq">
-              <dt tabindex="0" aria-expanded="false">Can I compare large files</dt>
+              <dt tabindex="0" aria-expanded="false">Can I compare large files?</dt>
               <dd class="hidden">Yes. The tool is optimized for in browser performance. For very large files, the minimap and search help you jump across hunks quickly.</dd>
 
-              <dt tabindex="0" aria-expanded="false">Is my code uploaded</dt>
+              <dt tabindex="0" aria-expanded="false">Is my code uploaded?</dt>
               <dd class="hidden">No. Everything runs in your browser. Your code stays on your device, which is ideal for private reviews or proprietary work.</dd>
 
-              <dt tabindex="0" aria-expanded="false">Can I export a patch for Git</dt>
+              <dt tabindex="0" aria-expanded="false">Can I export a patch for Git?</dt>
               <dd class="hidden">Yes. Use the unified patch export. You can attach it to tickets or apply it locally with Git tools.</dd>
 
-              <dt tabindex="0" aria-expanded="false">What about non code text like JSON or Markdown</dt>
-              <dd class="hidden">The checker works for any text. Word level highlighting helps for config files, JSON, YAML, and docs too.</dd>
+              <dt tabindex="0" aria-expanded="false">What about non code text like JSON or Markdown?</dt>
+              <dd class="hidden">The checker works for any text. Word level highlighting helps for config files, JSON, YAML, and docs too. For JSON, format and validate with the <a href="/tools/json-formatter-validator.html">JSON Formatter &amp; Validator</a>.</dd>
 
-              <dt tabindex="0" aria-expanded="false">How do I reduce false positives in diffs</dt>
-              <dd class="hidden">Turn on ignore whitespace, normalize line endings, and ensure a consistent formatter. Use the Whitespace Cleaner to fix spacing before comparing.</dd>
+              <dt tabindex="0" aria-expanded="false">How do I reduce false positives in diffs?</dt>
+              <dd class="hidden">Turn on ignore whitespace, normalize line endings, and ensure a consistent formatter. Use the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> to fix spacing and the <a href="/tools/html-css-js-minifier-beautifier.html">Minifier &amp; Beautifier</a> to standardize code style before comparing.</dd>
             </dl>
           </div>
 
@@ -318,6 +318,7 @@
         </article>
       </div>
     </section>
+
 
     <!-- Articles Section -->
     <section id="articles" class="articles-section">

@@ -204,123 +204,127 @@ href="data:image/svg+xml;utf8,
     </div>
   </section>
 
-  <!-- Featured Article -->
-  <section class="featured-article">
-    <div class="container">
-      <article class="article-card featured">
-        <div class="article-meta">
-          <span class="article-category">Writing and Dev Tools</span>
-          <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
+ <!-- Featured Article -->
+<section class="featured-article">
+  <div class="container">
+    <article class="article-card featured" itemscope itemtype="https://schema.org/TechArticle">
+      <div class="article-meta">
+        <span class="article-category" itemprop="articleSection">Writing and Dev Tools</span>
+        <time datetime="2025-08-13" class="article-date" itemprop="datePublished">August 13, 2025</time>
+      </div>
+
+      <h2 class="article-title" itemprop="headline">Free Symbol and Character Info Tool: Decode Unicode, ASCII, and HTML Entities</h2>
+
+      <p class="article-excerpt" itemprop="description">
+        Paste text to instantly inspect every character. See Unicode code points, ASCII values, grapheme cluster counts, official names, scripts, and blocks. Copy ready HTML entities and UTF-8/UTF-16 encodings. Essential for developers, designers, writers, and QA teams.
+      </p>
+
+      <div class="article-content" itemprop="articleBody">
+        <div class="drop-cap-paragraph">
+          <span class="drop-cap">S</span>ymbols often look alike but behave differently across systems. Emoji skin tones, flags, diacritics, and zero-width joiners can cause broken counts, layout issues, or encoding errors. The SnipText 
+          <a href="/tools/symbol-character-info.html"><strong>Symbol and Character Info</strong></a> gives you instant clarity: accurate grapheme counts, Unicode and ASCII details, character names, blocks, scripts, and ready-to-copy HTML entities — all in your browser, no upload required.
         </div>
 
-        <h2 class="article-title">Free Symbol and Character Info: Count and Decode Unicode plus ASCII with Names and HTML Entities</h2>
+        <h3 id="what-it-shows">What the Symbol and Character Info Tool Shows</h3>
+        <ul>
+          <li><strong>Grapheme clusters:</strong> Count what users actually see, including emoji, flags, and combined marks.</li>
+          <li><strong>Unicode and ASCII:</strong> Code points like U+1F600, ASCII values where available, plus plane information.</li>
+          <li><strong>Character metadata:</strong> Human-readable names, Unicode block, and script classification.</li>
+          <li><strong>Encodings:</strong> Exact UTF-8 bytes and UTF-16 code units for debugging and data integrity checks.</li>
+          <li><strong>HTML entities:</strong> Copy named or numeric entities for safe use in HTML, XML, or Markdown.</li>
+          <li><strong>Unique symbol summary:</strong> Frequency counts and deduped views to spot unusual or repeated glyphs.</li>
+        </ul>
 
-        <p class="article-excerpt">Paste text to inspect every symbol. Get Unicode code points, official style names, scripts and blocks, UTF-8 and UTF-16, ASCII values, and copy ready HTML entities. Great for writers, developers, designers, and QA.</p>
+        <h3 id="how-to-use">How to Use the Tool</h3>
+        <ol>
+          <li>Open the <a href="/tools/symbol-character-info.html">Symbol and Character Info</a> tool.</li>
+          <li>Paste or type text into the input field — each unique symbol is displayed in a tile.</li>
+          <li>Click a tile for details: Unicode, ASCII, names, scripts, blocks, UTF-8/UTF-16 values, and HTML entities.</li>
+          <li>Use <strong>Copy Report</strong> to export a full character breakdown for bug reports, documentation, or QA tickets.</li>
+        </ol>
 
-        <div class="article-content" itemprop="articleBody">
-          <div class="drop-cap-paragraph">
-            <span class="drop-cap">S</span>ymbols can look the same but behave differently across apps. Accents, emoji skin tones, flags, and zero width joiners can break counts, layout, or encoding. The SnipText <a href="/tools/symbol-character-info.html"><strong>Symbol and Character Info</strong></a> gives instant clarity with accurate <em>grapheme</em> counts, <em>Unicode and ASCII</em> details, <em>names</em>, <em>blocks</em>, <em>scripts</em>, and <em>HTML entities</em> so you can paste, inspect, and ship with confidence.
-          </div>
-
-          <h3 id="what-it-shows">What the tool shows</h3>
-          <ul>
-            <li><strong>Grapheme cluster counts:</strong> Treats emoji sequences, flags, and combining marks as one user seen character.</li>
-            <li><strong>Unicode and ASCII:</strong> Code points like U+1F600, ASCII codes when available, and plane info.</li>
-            <li><strong>Names, scripts, blocks:</strong> Human readable names with Unicode block and script hints.</li>
-            <li><strong>Encodings:</strong> Exact <em>UTF-8 bytes</em> and <em>UTF-16 code units</em> for debugging and integrations.</li>
-            <li><strong>HTML entities:</strong> Copy named or numeric entities for safe web output.</li>
-            <li><strong>Unique symbol summary:</strong> Frequency and dedupe views to spot odd or repeated glyphs fast.</li>
-          </ul>
-
-          <h3 id="how-to-use">How to use it fast</h3>
-          <ol>
-            <li>Open <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.</li>
-            <li>Paste or type your text. Tiles appear for each unique symbol with counts.</li>
-            <li>Click a tile to see <em>Unicode, ASCII, names, scripts and blocks, UTF-8 and UTF-16,</em> and <em>HTML entities</em>.</li>
-            <li>Use <strong>Copy Report</strong> to export a full breakdown for tickets, docs, or QA notes.</li>
-          </ol>
-
-          <div class="collapsible-section">
-            <button class="collapsible-toggle" aria-expanded="false">
-              <span>Pro tips for Unicode and HTML</span>
-              <span class="toggle-icon">+</span>
-            </button>
-            <div class="collapsible-content">
-              <ul>
-                <li><strong>Grapheme vs code points:</strong> Enable <em>Count grapheme clusters</em> to match what users perceive as one character.</li>
-                <li><strong>Reveal invisibles:</strong> Toggle <em>Show invisibles</em> to expose spaces, tabs, and line breaks like ␠ ␉ ␊.</li>
-                <li><strong>Normalize text:</strong> Use NFC, NFD, NFKC, or NFKD to standardize before search or storage. For a cleanup pass, see <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner guide</a> and the <a href="/tools/whitespace-and-formatting-cleaner.html">tool</a>.</li>
-                <li><strong>Emoji and ZWJ:</strong> Grapheme mode respects ZWJ, skin tone, and flag sequences. For emoji edits and removals, try the <a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html">Emoji Replacer guide</a> and the <a href="/tools/emoji-replacer.html">tool</a>.</li>
-                <li><strong>Case and titles:</strong> Standardize headings with the <a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html">Case Converter guide</a> and the <a href="/tools/case-converter.html">tool</a>.</li>
-              </ul>
-            </div>
-          </div>
-
-          <h3 id="advanced-options">Advanced options you will love</h3>
-          <ul>
-            <li><strong>Visibility controls:</strong> Show invisibles, exclude whitespace from counts, switch grapheme or code point modes.</li>
-            <li><strong>Transform tools:</strong> Case convert, URL encode or decode, HTML escape or unescape, unique only view, and sorting.</li>
-            <li><strong>Favorites and quick picker:</strong> Pin frequent glyphs and re insert them in one click. Export or import sets.</li>
-            <li><strong>Random samplers:</strong> One click sets like arrows, currency, math, ASCII punctuation, emoji, and Latin 1 for testing.</li>
-          </ul>
-
-          <h3 id="use-cases">Use cases</h3>
-          <ul>
-            <li><strong>Developers:</strong> Verify API payloads, DB storage, regex, and search behavior. Cross check with <a href="/tools/palindromic-word-finder.html">Palindromic Word Finder</a> for edge cases in tokenization and symmetry.</li>
-            <li><strong>Writers and editors:</strong> Confirm counts and entities, then validate limits with the <a href="/tools/word-counter.html">Word and Character Counter</a>.</li>
-            <li><strong>Design and QA:</strong> Catch invisible characters and mixed normalization that cause layout shifts. Pair with <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> and <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>.</li>
-          </ul>
-
-          <h3 id="related-guides">Related guides and tools</h3>
-          <ul>
-            <li><a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Symbol and Character Info guide</a> for a full walkthrough.</li>
-            <li><a href="/blog/free-palindromic-word-finder-detect-highlight-in-words-phrases-substrings-blog.html">Palindromic Word Finder guide</a> and the <a href="/tools/palindromic-word-finder.html">tool</a>.</li>
-            <li><a href="/blog/replace-words-with-emojis-convert-emoticons-or-remove-emojis-free-fast-and-privacy-friendly-blog.html">Emoji Replacer guide</a> and the <a href="/tools/emoji-replacer.html">tool</a>.</li>
-            <li><a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner guide</a> and the <a href="/tools/whitespace-and-formatting-cleaner.html">tool</a>.</li>
-            <li><a href="/blog/case-converter-upper-lower-sentence-alternative-blog.html">Case Converter guide</a> and the <a href="/tools/case-converter.html">tool</a>.</li>
-            <li><a href="/blog/word-character-line-sentence-counter-blog.html">Word Counter guide</a> and the <a href="/tools/word-counter.html">tool</a>.</li>
-          </ul>
-
-          <h3 id="try-it">Try it now</h3>
-          <p><a href="/tools/symbol-character-info.html">Go to Symbol and Character Info</a></p>
-
-          <h3 id="faq">FAQ</h3>
-          <dl class="faq grammar-faq" id="grammar-faq">
-            <dt tabindex="0" aria-expanded="false">Is Symbol and Character Info free</dt>
-            <dd class="hidden">Yes. Totally free with unlimited use. No signup required.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Do you store my text</dt>
-            <dd class="hidden">No. Processing is instant in your browser for a privacy friendly workflow.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Does it support emojis and ZWJ sequences</dt>
-            <dd class="hidden">Yes. Grapheme counting recognizes emoji modifiers, flags, and zero width joiners as one character.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Can I copy HTML entities and Unicode codes</dt>
-            <dd class="hidden">Yes. Copy individual values or use <strong>Copy Report</strong> for a full breakdown.</dd>
-
-            <dt tabindex="0" aria-expanded="false">How can I standardize text before publishing</dt>
-            <dd class="hidden">Use Normalize NFC, NFD, NFKC, or NFKD, strip diacritics, and run <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> to unify inputs.</dd>
-          </dl>
-        </div>
-
-        <div class="article-footer">
-          <div class="article-tags">
-            <span class="tag">Unicode</span>
-            <span class="tag">Grapheme Clusters</span>
-            <span class="tag">HTML Entities</span>
-            <span class="tag">ASCII</span>
-            <span class="tag">Writing Tools</span>
-          </div>
-          <div class="article-share">
-            <span class="share-text">Share:</span>
-            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
-            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
-            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+        <div class="collapsible-section">
+          <button class="collapsible-toggle" aria-expanded="false">
+            <span>Pro Tips for Unicode, HTML, and Emoji</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="collapsible-content">
+            <ul>
+              <li><strong>Clusters vs code points:</strong> Use grapheme cluster counting to match user-perceived characters.</li>
+              <li><strong>Show invisibles:</strong> Reveal spaces, tabs, and line breaks like ␠ ␉ ␊ for debugging.</li>
+              <li><strong>Normalization:</strong> Switch between NFC, NFD, NFKC, and NFKD for consistent storage and search. See our <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner guide</a> for cleanup tips.</li>
+              <li><strong>Emoji handling:</strong> Grapheme mode respects ZWJ sequences, skin tones, and flags. For emoji replacements, try the <a href="/tools/emoji-replacer.html">Emoji Replacer</a>.</li>
+              <li><strong>Case conversion:</strong> Standardize headings or labels with the <a href="/tools/case-converter.html">Case Converter</a>.</li>
+            </ul>
           </div>
         </div>
-      </article>
-    </div>
-  </section>
+
+        <h3 id="advanced-options">Advanced Options</h3>
+        <ul>
+          <li><strong>Visibility controls:</strong> Toggle invisibles, exclude whitespace, and switch between grapheme/code point modes.</li>
+          <li><strong>Transform tools:</strong> Convert case, URL encode/decode, escape/unescape HTML, or sort unique glyphs.</li>
+          <li><strong>Quick picker:</strong> Pin and re-use frequent symbols; export or import your custom sets.</li>
+          <li><strong>Random samplers:</strong> Generate sets like arrows, math symbols, currency signs, punctuation, emoji, and Latin-1.</li>
+        </ul>
+
+        <h3 id="use-cases">Use Cases</h3>
+        <ul>
+          <li><strong>Developers:</strong> Debug API payloads, database storage, regex patterns, and search behavior. Combine with <a href="/tools/palindromic-word-finder.html">Palindromic Word Finder</a> to test edge cases.</li>
+          <li><strong>Writers & editors:</strong> Confirm counts, inspect entities, and validate limits with the <a href="/tools/word-counter.html">Word Counter</a>.</li>
+          <li><strong>Design & QA teams:</strong> Detect invisible characters and normalization issues that cause layout bugs. Pair with <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> or <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>.</li>
+        </ul>
+
+        <h3 id="related-guides">Related Guides and Tools</h3>
+        <ul>
+          <li><a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Symbol and Character Info Guide</a> – full walkthrough with examples.</li>
+          <li><a href="/tools/palindromic-word-finder.html">Palindromic Word Finder</a> – detect symmetry in words, phrases, and substrings.</li>
+          <li><a href="/tools/emoji-replacer.html">Emoji Replacer</a> – replace or strip emojis for cleaner text.</li>
+          <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> – normalize spacing, newlines, and tabs.</li>
+          <li><a href="/tools/case-converter.html">Case Converter</a> – uppercase, lowercase, sentence case, and more.</li>
+          <li><a href="/tools/word-counter.html">Word and Character Counter</a> – analyze limits and readability.</li>
+        </ul>
+
+        <h3 id="try-it">Try It Now</h3>
+        <p><a href="/tools/symbol-character-info.html">Go to Symbol and Character Info</a> — decode Unicode, ASCII, graphemes, and HTML entities instantly.</p>
+
+        <h3 id="faq">FAQ</h3>
+        <dl class="faq grammar-faq" id="grammar-faq">
+          <dt tabindex="0" aria-expanded="false">Is Symbol and Character Info free?</dt>
+          <dd class="hidden">Yes. Completely free to use with no sign-up required.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Do you store my text?</dt>
+          <dd class="hidden">No. Everything runs locally in your browser for maximum privacy and speed.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Does it support emojis and ZWJ sequences?</dt>
+          <dd class="hidden">Yes. Grapheme counting detects emoji modifiers, flags, and ZWJ sequences as one character.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Can I copy HTML entities and Unicode codes?</dt>
+          <dd class="hidden">Yes. Copy individual values or export the full report for documentation.</dd>
+
+          <dt tabindex="0" aria-expanded="false">How can I normalize text before publishing?</dt>
+          <dd class="hidden">Use NFC, NFD, NFKC, or NFKD modes, strip diacritics, and clean formatting with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>.</dd>
+        </dl>
+      </div>
+
+      <div class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Unicode</span>
+          <span class="tag">ASCII</span>
+          <span class="tag">HTML Entities</span>
+          <span class="tag">Character Encoding</span>
+          <span class="tag">Writing Tools</span>
+        </div>
+        <div class="article-share">
+          <span class="share-text">Share:</span>
+          <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+          <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+          <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
 
   <!-- Articles Section -->
   <section id="articles" class="articles-section" aria-labelledby="latest-articles">

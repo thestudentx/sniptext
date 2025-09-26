@@ -204,118 +204,125 @@ href="data:image/svg+xml;utf8,
     </div>
   </section>
 
-  <!-- Featured Article -->
-  <section class="featured-article">
-    <div class="container">
-      <article class="article-card featured">
-        <div class="article-meta">
-          <span class="article-category">Writing Tools</span>
-          <time datetime="2025-08-18" class="article-date">August 18, 2025</time>
+<!-- Featured Article -->
+<section class="featured-article">
+  <div class="container">
+    <article class="article-card featured" itemscope itemtype="https://schema.org/TechArticle">
+      <div class="article-meta">
+        <span class="article-category" itemprop="articleSection">Writing Tools</span>
+        <time datetime="2025-08-18" class="article-date" itemprop="datePublished">August 18, 2025</time>
+      </div>
+
+      <h2 class="article-title" itemprop="headline">Free Remove Empty Lines Tool: Clean Text, Trim Gaps, Normalize Newlines</h2>
+
+      <p class="article-excerpt" itemprop="description">
+        Paste or drop text and remove empty lines instantly. Keep one clean paragraph break if you need, trim each line, and export with LF or CRLF for stable diffs. Perfect for markdown, CSV, logs, and code cleanup. Runs locally in your browser for speed and privacy.
+      </p>
+
+      <div class="article-content" itemprop="articleBody">
+        <div class="drop-cap-paragraph">
+          <span class="drop-cap">C</span>lean spacing makes content easier to scan, maintain, and share. The SnipText 
+          <a href="/tools/remove-empty-lines.html"><strong>Remove Empty Lines</strong></a> tool deletes blank lines, collapses long gaps, trims every line, and normalizes newline characters. It also fixes invisible issues like zero-width spaces and BOM markers, preventing wrapping bugs and cursor jumps. Everything works offline in your browser.
         </div>
 
-        <h2 class="article-title">Free Remove Empty Lines: Trim Lines, Collapse Gaps, Normalize Newlines</h2>
+        <h3 id="what-it-does">Features of the Remove Empty Lines Tool</h3>
+        <ul>
+          <li><strong>Delete or keep gaps:</strong> Remove all empty lines or keep 1–3 in a row for readable paragraph breaks.</li>
+          <li><strong>Trim per line:</strong> Strip leading and trailing spaces for cleaner diffs and commits.</li>
+          <li><strong>Normalize newlines:</strong> Export as LF <code>\n</code> or CRLF <code>\r\n</code> to match team or project settings.</li>
+          <li><strong>Fix hidden characters:</strong> Handle zero-width spaces (<code>\u200B</code>) and BOM (<code>\uFEFF</code>).</li>
+          <li><strong>Regex controls:</strong> Mark lines as empty or protect lines from removal with custom patterns.</li>
+          <li><strong>Convenience:</strong> Drag & drop, live preview, quick keyboard shortcut, copy, download, and share links.</li>
+          <li><strong>Stats panel:</strong> See input lines, output lines, and blanks removed.</li>
+        </ul>
 
-        <p class="article-excerpt">Paste or drop text and remove empty lines in one click. Keep one clean paragraph break if you want, trim each line, and output LF or CRLF for stable diffs. Perfect for markdown, CSV, logs, and code.</p>
+        <h3 id="how-to-use">How to Use the Remove Empty Lines Tool</h3>
+        <ol>
+          <li>Open <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>.</li>
+          <li>Paste text into the input box or drop a file.</li>
+          <li>Choose how many blank lines to keep (0 removes all).</li>
+          <li>Enable <em>Trim each line</em> and set newline format (LF or CRLF).</li>
+          <li>(Optional) Add regex in <em>Treat as empty</em> or <em>Never remove</em> for advanced control.</li>
+          <li>Press <kbd>Ctrl or Cmd + Enter</kbd> to process, then <strong>Copy</strong> or <strong>Download</strong>.</li>
+        </ol>
 
-        <div class="article-content" itemprop="articleBody">
-          <div class="drop-cap-paragraph">
-            <span class="drop-cap">C</span>lean spacing makes content easier to scan and maintain. The SnipText <a href="/tools/remove-empty-lines.html"><strong>Remove Empty Lines</strong></a> tool deletes blank lines, collapses long gaps, trims each line, and normalizes newlines. It also catches invisible troublemakers like zero width spaces and BOM so odd wrapping and cursor jumps stop for good. Everything runs locally in your browser.
-          </div>
-
-          <h3 id="what-it-does">What the Remove Empty Lines tool does</h3>
-          <ul>
-            <li><strong>Delete or keep gaps:</strong> Remove all empty lines or keep 1 to 3 in a row for readable paragraph breaks.</li>
-            <li><strong>Trim per line:</strong> Strip leading and trailing spaces on each line for tidy diffs and commits.</li>
-            <li><strong>Normalize newlines:</strong> Output as LF \n or CRLF \r\n to match team settings and stop EOL churn.</li>
-            <li><strong>Handle zero width and BOM:</strong> Treat \u200B to \u200D and \uFEFF as spaces to fix hidden junk.</li>
-            <li><strong>Regex controls:</strong> Mark lines as empty with a pattern or protect lines you never want removed.</li>
-            <li><strong>Quality of life:</strong> Paste, import, drag and drop, copy, download, share link, live preview, and a quick keyboard shortcut.</li>
-            <li><strong>Stats panel:</strong> See input lines, output lines, and how many blanks were removed.</li>
-          </ul>
-
-          <h3 id="how-to-use">How to use it fast</h3>
-          <ol>
-            <li>Open <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>.</li>
-            <li>Paste text into Input or drop a file.</li>
-            <li>Choose how many consecutive blank lines to keep. Set 0 to remove every empty line.</li>
-            <li>Toggle <em>Trim each line</em> and pick newline format LF or CRLF.</li>
-            <li>(Optional) Add regex in <em>Treat as empty</em> or <em>Never remove</em> to fine tune behavior.</li>
-            <li>Press <kbd>Ctrl or Cmd + Enter</kbd> to run, then <strong>Copy</strong> or <strong>Download</strong>.</li>
-          </ol>
-
-          <div class="collapsible-section">
-            <button class="collapsible-toggle" aria-expanded="false">
-              <span>Pro tips for markdown, CSV, and code</span>
-              <span class="toggle-icon">+</span>
-            </button>
-            <div class="collapsible-content">
-              <ul>
-                <li><strong>Markdown flow:</strong> Keep 1 empty line so paragraphs stay clear without big gaps.</li>
-                <li><strong>CSV cleanup:</strong> Enable trim per line to remove stray spaces that break parsing.</li>
-                <li><strong>Protect comments:</strong> Use <code>Never remove</code> with <code>^\s*\/\/</code> or <code>^\s*#</code> to keep comment blocks.</li>
-                <li><strong>Remove separators:</strong> Use <code>Treat as empty</code> with <code>^[\.\-]+$</code> to delete dotted or dashed rules.</li>
-                <li><strong>Team EOL rules:</strong> Pick LF for Unix and CRLF for Windows so your diffs stop flipping.</li>
-                <li><strong>Hidden junk:</strong> Turn on zero width and BOM handling to fix odd cursor jumps and copy bugs.</li>
-              </ul>
-            </div>
-          </div>
-
-          <h3 id="why-it-matters">Why remove empty lines</h3>
-          <p>Extra blank lines bloat files, break folding, and hide real changes in diffs. A quick cleanup improves readability, keeps previews steady in CMS and README files, and avoids noisy merges in Git and CI.</p>
-
-          <h3 id="related-tools">Related tools and guides</h3>
-          <ul>
-            <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - trim trailing spaces, convert tabs to spaces, normalize newlines, and strip BOM.</li>
-            <li><a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a> - split and join lines, sort, and remove duplicates after cleanup.</li>
-            <li><a href="/tools/case-converter.html">Case Converter</a> - standardize headings and labels after spacing fixes.</li>
-            <li><a href="/tools/word-counter.html">Word and Character Counter</a> - verify limits for abstracts, captions, and meta descriptions.</li>
-            <li><a href="/tools/duplicate-word-finder.html">Duplicate Word Finder</a> - catch repeated words once spacing is clean.</li>
-            <li><a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner Guide</a> - full walkthrough with examples.</li>
-          </ul>
-
-          <h3 id="try-it">Try it now</h3>
-          <p><a href="/tools/remove-empty-lines.html">Go to Remove Empty Lines</a></p>
-
-          <h3 id="faq">FAQ</h3>
-          <dl class="faq grammar-faq" id="grammar-faq">
-            <dt tabindex="0" aria-expanded="false">Is the Remove Empty Lines tool free</dt>
-            <dd class="hidden">Yes. No sign in and no limits for normal use.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Do you store my text</dt>
-            <dd class="hidden">No. It runs in your browser for a private and fast workflow.</dd>
-
-            <dt tabindex="0" aria-expanded="false">How is this different from Whitespace and Formatting Cleaner</dt>
-            <dd class="hidden">This tool targets empty lines and simple trimming. The cleaner also removes trailing spaces, converts tabs to spaces, handles BOM and zero width, and more. Use both as needed.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Can I keep one blank line between paragraphs</dt>
-            <dd class="hidden">Yes. Set <em>Keep consecutive empty lines</em> to 1.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Can I force LF or CRLF</dt>
-            <dd class="hidden">Yes. Pick the newline format in the dropdown to match your project.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Does it support regex</dt>
-            <dd class="hidden">Yes. Use <em>Treat as empty</em> to target lines by pattern and <em>Never remove</em> to protect lines. Examples: <code>^[\.\-]+$</code> for rule lines, <code>^\s*\/\/</code> for code comments.</dd>
-          </dl>
-        </div>
-
-        <div class="article-footer">
-          <div class="article-tags">
-            <span class="tag">Remove Empty Lines</span>
-            <span class="tag">Delete Blank Lines</span>
-            <span class="tag">Normalize LF CRLF</span>
-            <span class="tag">Formatting</span>
-            <span class="tag">Writing Tools</span>
-          </div>
-          <div class="article-share">
-            <span class="share-text">Share:</span>
-            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
-            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
-            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+        <div class="collapsible-section">
+          <button class="collapsible-toggle" aria-expanded="false">
+            <span>Pro Tips for Markdown, CSV, and Code</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="collapsible-content">
+            <ul>
+              <li><strong>Markdown:</strong> Keep 1 blank line for neat paragraph spacing.</li>
+              <li><strong>CSV cleanup:</strong> Trim each line to prevent parsing errors.</li>
+              <li><strong>Code comments:</strong> Use <code>Never remove</code> with <code>^\s*\/\/</code> or <code>^\s*#</code> to preserve comment blocks.</li>
+              <li><strong>Separator lines:</strong> Use <code>Treat as empty</code> with <code>^[\.\-]+$</code> to remove dotted/dashed lines.</li>
+              <li><strong>Team rules:</strong> Pick LF for Unix/Linux, CRLF for Windows to avoid Git churn.</li>
+              <li><strong>Invisible junk:</strong> Enable zero-width/BOM handling to eliminate hidden formatting issues.</li>
+            </ul>
           </div>
         </div>
-      </article>
-    </div>
-  </section>
+
+        <h3 id="why-it-matters">Why Removing Empty Lines Improves Text</h3>
+        <p>
+          Extra blank lines bloat files, disrupt markdown previews, and hide real changes in diffs. Cleaning them up makes documents easier to read, ensures consistent formatting across markdown, CSV, and log files, and prevents noisy Git merges. It’s a quick win for <strong>developers, writers, and content teams</strong>.
+        </p>
+
+        <h3 id="related-tools">Related Tools and Guides</h3>
+        <ul>
+          <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> – trim spaces, normalize tabs, fix indentation, strip BOM.</li>
+          <li><a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a> – split, join, and sort lines after cleanup.</li>
+          <li><a href="/tools/case-converter.html">Case Converter</a> – standardize titles, headings, and labels.</li>
+          <li><a href="/tools/word-counter.html">Word and Character Counter</a> – check limits for abstracts, meta descriptions, and captions.</li>
+          <li><a href="/tools/duplicate-word-finder.html">Duplicate Word Finder</a> – catch repeated words once spacing is fixed.</li>
+          <li><a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner Guide</a> – full tutorial with examples.</li>
+        </ul>
+
+        <h3 id="try-it">Try It Now</h3>
+        <p><a href="/tools/remove-empty-lines.html">Go to Remove Empty Lines</a> — clean text, trim gaps, and normalize newlines in seconds.</p>
+
+        <h3 id="faq">FAQ</h3>
+        <dl class="faq grammar-faq" id="grammar-faq">
+          <dt tabindex="0" aria-expanded="false">Is the Remove Empty Lines tool free?</dt>
+          <dd class="hidden">Yes. 100% free to use with no login required.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Do you store my text?</dt>
+          <dd class="hidden">No. All processing happens locally in your browser for privacy and speed.</dd>
+
+          <dt tabindex="0" aria-expanded="false">How is it different from the Whitespace Cleaner?</dt>
+          <dd class="hidden">This tool removes empty lines and trims text. The <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> also fixes tabs, indentation, BOM, and trailing spaces.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Can I keep one blank line between paragraphs?</dt>
+          <dd class="hidden">Yes. Set <em>Keep consecutive empty lines</em> to 1 for clean paragraph breaks.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Can I control newline format?</dt>
+          <dd class="hidden">Yes. Choose LF or CRLF output to match your project or operating system.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Does it support regex?</dt>
+          <dd class="hidden">Yes. Use regex in <em>Treat as empty</em> to mark custom lines and <em>Never remove</em> to protect others. Example: <code>^[\.\-]+$</code> for rules, <code>^\s*\/\/</code> for comments.</dd>
+        </dl>
+      </div>
+
+      <div class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Remove Empty Lines</span>
+          <span class="tag">Delete Blank Lines</span>
+          <span class="tag">Normalize LF CRLF</span>
+          <span class="tag">Text Cleanup</span>
+          <span class="tag">Formatting</span>
+          <span class="tag">Writing Tools</span>
+        </div>
+        <div class="article-share">
+          <span class="share-text">Share:</span>
+          <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+          <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+          <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
 
   <!-- Articles Section -->
   <section id="articles" class="articles-section" aria-labelledby="latest-articles-heading">

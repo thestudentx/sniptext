@@ -209,127 +209,132 @@ href="data:image/svg+xml;utf8,
     </div>
   </section>
 
-  <!-- Featured Article -->
-  <section class="featured-article">
-    <div class="container">
-      <article class="article-card featured">
-        <div class="article-meta">
-          <span class="article-category">Writing and Dev Tools</span>
-          <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
+<!-- Featured Article -->
+<section class="featured-article">
+  <div class="container">
+    <article class="article-card featured">
+      <div class="article-meta">
+        <span class="article-category">Writing and Dev Tools</span>
+        <time datetime="2025-08-13" class="article-date">August 13, 2025</time>
+      </div>
+
+      <h2 class="article-title">Free Palindromic Word Finder: Detect, Highlight, and Export Palindromes</h2>
+
+      <p class="article-excerpt">Find palindromes in seconds — detect palindromic words, inner substrings, and full phrases (with spaces and punctuation). Highlight positions in context and export CSV or JSON for QA, linguistics, search/tokenization, and content audits. Try it in the <a href="/tools/palindromic-word-finder.html">Palindromic Word Finder</a>.</p>
+
+      <div class="article-content" itemprop="articleBody">
+        <div class="drop-cap-paragraph">
+          <span class="drop-cap">P</span>alindromes read the same forward and backward, like <em>level</em> or <em>racecar</em>, and phrases such as <em>never odd or even</em>. Beyond wordplay, they surface symmetry patterns that matter for <strong>QA testing</strong>, <strong>linguistics</strong>, <strong>search and tokenization</strong>, and <strong>UX copy checks</strong>. The SnipText <strong><a href="/tools/palindromic-word-finder.html">Palindromic Word Finder</a></strong> scans in real time, highlights results, and outputs structured data you can reuse.
         </div>
 
-        <h2 class="article-title">Free Palindromic Word Finder: Detect, Highlight, and Export Palindromes</h2>
+        <h3 id="what-it-finds">What the tool finds</h3>
+        <ul>
+          <li><strong>Palindromic words:</strong> Tokens like <em>madam</em>, <em>refer</em>, <em>level</em>.</li>
+          <li><strong>Palindromic substrings:</strong> Inner sequences inside words, for example <em>anna</em> in <em>Hannah</em>.</li>
+          <li><strong>Palindromic phrases:</strong> Sentence-level detection across spaces and punctuation (e.g., <em>never odd or even</em>).</li>
+          <li><strong>Exact positions:</strong> Start index, end index, and length for each match (handy for QA tickets).</li>
+          <li><strong>De-duplication:</strong> Optional unique-only listing to reduce noise in large texts.</li>
+        </ul>
 
-        <p class="article-excerpt">Detect palindromic words, inner substrings, and full phrases across spaces and punctuation. See positions, highlight in context, and export CSV or JSON for QA, linguistics, and content audits.</p>
+        <h3 id="how-to-use">How to use it</h3>
+        <ol>
+          <li>Open the <a href="/tools/palindromic-word-finder.html">Palindromic Word Finder</a>.</li>
+          <li>Paste or type your text to see live highlights.</li>
+          <li>Choose mode: <em>Words</em>, <em>Substrings</em>, or <em>Phrases</em>.</li>
+          <li>Set options: <strong>Ignore case</strong>, <strong>Ignore spaces</strong>, <strong>Ignore punctuation</strong>, <strong>Ignore diacritics</strong>.</li>
+          <li>Export results as <strong>CSV</strong> or <strong>JSON</strong>, or <strong>Copy Report</strong> for tickets and docs.</li>
+        </ol>
+        <p>Cleaning messy input first helps. Use <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> and <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>. For columns and lists, try the <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a>; to profile counts and length, use the <a href="/tools/word-counter.html">Word and Character Counter</a>.</p>
 
-        <div class="article-content" itemprop="articleBody">
-          <div class="drop-cap-paragraph">
-            <span class="drop-cap">P</span>alindromes read the same forward and backward, like <em>level</em> or <em>racecar</em>, and phrases such as <em>never odd or even</em>. Beyond wordplay, they surface symmetry patterns that matter for <strong>QA testing</strong>, <strong>linguistics</strong>, <strong>search and tokenization</strong>, and <strong>UX copy checks</strong>. The SnipText <strong>Palindromic Word Finder</strong> scans in real time, highlights results, and outputs structured data you can reuse.
-          </div>
-
-          <h3 id="what-it-finds">What the tool finds</h3>
-          <ul>
-            <li><strong>Palindromic words:</strong> Tokens like <em>madam</em>, <em>refer</em>, <em>level</em>.</li>
-            <li><strong>Palindromic substrings:</strong> Inner sequences inside words, for example <em>anna</em> in <em>Banana</em>.</li>
-            <li><strong>Palindromic phrases:</strong> Sentence level detection across spaces and punctuation.</li>
-            <li><strong>Exact positions:</strong> Start index, end index, and length for each match.</li>
-            <li><strong>De duplication:</strong> Optional unique only listing to reduce noise in large texts.</li>
-          </ul>
-
-          <h3 id="how-to-use">How to use it</h3>
-          <ol>
-            <li>Open the <a href="/tools/palindromic-word-finder.html">Palindromic Word Finder</a>.</li>
-            <li>Paste or type your text to see live highlights.</li>
-            <li>Choose mode: <em>Words</em>, <em>Substrings</em>, or <em>Phrases</em>.</li>
-            <li>Set options: <strong>Ignore case</strong>, <strong>Ignore spaces</strong>, <strong>Ignore punctuation</strong>, <strong>Ignore diacritics</strong>.</li>
-            <li>Export results as <strong>CSV</strong> or <strong>JSON</strong>, or <strong>Copy Report</strong> for tickets and docs.</li>
-          </ol>
-          <p>Cleaning messy input first helps. Use <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> and <a href="/tools/remove-empty-lines.html">Remove Empty Lines</a>. For columns and lists, try the <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a>.</p>
-
-          <div class="collapsible-section">
-            <button class="collapsible-toggle" aria-expanded="false">
-              <span>Pro tips for accurate detection</span>
-              <span class="toggle-icon">+</span>
-            </button>
-            <div class="collapsible-content">
-              <ul>
-                <li><strong>Control noise:</strong> Increase Min length to avoid tiny matches.</li>
-                <li><strong>Normalize accents:</strong> Enable Ignore diacritics so <em>réifier</em> ≈ <em>reifier</em>.</li>
-                <li><strong>Phrase mode:</strong> Turn on Ignore spaces and Ignore punctuation for sentence level palindromes.</li>
-                <li><strong>QA workflow:</strong> Use positions to reproduce issues in templates, DB fields, and search pipelines.</li>
-              </ul>
-            </div>
-          </div>
-
-          <h3 id="advanced">Advanced options and internals</h3>
-          <ul>
-            <li><strong>Three modes:</strong> Words, substrings, and phrases using an expand around center strategy for thorough finds.</li>
-            <li><strong>Unicode aware:</strong> Diacritic handling helps with international text and mixed content. For code points and names, see <a href="/tools/symbol-character-info.html">Symbol and Character Info</a> or the guide <a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Unicode and ASCII basics</a>.</li>
-            <li><strong>Export:</strong> One click CSV or JSON plus a human readable report for quick share.</li>
-          </ul>
-
-          <h3 id="use-cases">Use cases and quick workflows</h3>
-          <p>
-            <strong>Linguistics and NLP:</strong> Collect palindromic features, then profile terms with the <a href="/tools/word-counter.html">Word and Character Counter</a>.<br>
-            <strong>QA and content teams:</strong> Detect mirrored strings that can trip validation, then fix casing with the <a href="/tools/case-converter.html">Case Converter</a> and remove repeats with the <a href="/tools/duplicate-word-finder.html">Duplicate Word Finder</a>.<br>
-            <strong>Education and puzzles:</strong> Generate examples, then format lists with the <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a> or create placeholder text with the <a href="/tools/random-text-generator.html">Random Text Generator</a>.
-          </p>
-
-          <h3 id="why-it-matters">Why palindrome detection matters</h3>
-          <p>Symmetry patterns expose edge cases in search, tokenization, validation, and UI behavior. Handling case, punctuation, and accents correctly keeps content accessible and predictable. For grammar and clarity passes, finish with the <a href="/grammarly1.html">Grammar Corrector</a>.</p>
-
-          <h3 id="try-it">Try it now</h3>
-          <p><a href="/tools/palindromic-word-finder.html">Go to Palindromic Word Finder</a></p>
-
-          <h3 id="faq">FAQ</h3>
-          <dl class="faq grammar-faq" id="grammar-faq">
-            <dt tabindex="0" aria-expanded="false">Is the Palindrome Finder free</dt>
-            <dd class="hidden">Yes. It is free and runs in your browser with no login.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Does it detect sentence level palindromes</dt>
-            <dd class="hidden">Yes. Use Phrase mode with Ignore spaces and Ignore punctuation.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Does it handle Unicode and accents</dt>
-            <dd class="hidden">Enable Ignore diacritics for language agnostic detection. For character level details, use <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Can I export results</dt>
-            <dd class="hidden">Yes. Export CSV or JSON, or Copy Report for a quick audit summary.</dd>
-
-            <dt tabindex="0" aria-expanded="false">What about performance on long texts</dt>
-            <dd class="hidden">Use higher Min length and Unique only to reduce output size. Clean input with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> first.</dd>
-          </dl>
-
-          <!-- Related tools and guides -->
-          <aside class="related-box" aria-label="Related tools and guides">
-            <h3>Related tools and guides</h3>
+        <div class="collapsible-section">
+          <button class="collapsible-toggle" aria-expanded="false">
+            <span>Pro tips for accurate detection</span>
+            <span class="toggle-icon">+</span>
+          </button>
+          <div class="collapsible-content">
             <ul>
-              <li><a href="/tools/symbol-character-info.html">Symbol and Character Info</a> - inspect code points and names.</li>
-              <li><a href="/tools/case-converter.html">Case Converter</a> - Upper, Lower, Sentence, Title, Alternating.</li>
-              <li><a href="/tools/duplicate-word-finder.html">Duplicate Word Finder</a> - remove repeated words and doubles.</li>
-              <li><a href="/tools/word-counter.html">Word and Character Counter</a> - profile counts and limits.</li>
-              <li><a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Unicode and ASCII guide</a> - practical character tips.</li>
-              <li><a href="/blog/best-ai-writing-tools-2025.html">Best AI Writing Tools 2025</a> - a complete writing workflow.</li>
+              <li><strong>Control noise:</strong> Increase Min length to avoid tiny matches.</li>
+              <li><strong>Normalize accents:</strong> Enable Ignore diacritics so <em>réifier</em> ≈ <em>reifier</em>. For code points and names, see <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.</li>
+              <li><strong>Phrase mode:</strong> Turn on Ignore spaces and Ignore punctuation for sentence-level palindromes.</li>
+              <li><strong>QA workflow:</strong> Use positions to reproduce issues in templates, DB fields, and search pipelines; compare versions with the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</li>
             </ul>
-          </aside>
+          </div>
         </div>
 
-        <div class="article-footer">
-          <div class="article-tags">
-            <span class="tag">Palindromes</span>
-            <span class="tag">Text Analysis</span>
-            <span class="tag">Unicode</span>
-            <span class="tag">Writing Tools</span>
-          </div>
-          <div class="article-share">
-            <span class="share-text">Share:</span>
-            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
-            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
-            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
-          </div>
+        <h3 id="advanced">Advanced options and internals</h3>
+        <ul>
+          <li><strong>Three modes:</strong> Words, substrings, and phrases using an expand-around-center strategy for thorough finds.</li>
+          <li><strong>Unicode-aware:</strong> Diacritic handling helps with international text and mixed content. For deeper character insights, see <a href="/tools/symbol-character-info.html">Symbol and Character Info</a> or the guide <a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Unicode and ASCII basics</a>.</li>
+          <li><strong>Export:</strong> One-click CSV/JSON plus a human-readable report for quick share or audits.</li>
+        </ul>
+
+        <h3 id="use-cases">Use cases and quick workflows</h3>
+        <p>
+          <strong>Linguistics and NLP:</strong> Collect palindromic features, then profile terms with the <a href="/tools/word-counter.html">Word and Character Counter</a> and deduplicate lists via the <a href="/tools/alphabetizer-sort-words-sentences.html">Alphabetizer</a>.<br>
+          <strong>QA and content teams:</strong> Detect mirrored strings that can trip validation; fix casing with the <a href="/tools/case-converter.html">Case Converter</a> and remove repeats with the <a href="/tools/duplicate-word-finder.html">Duplicate Word Finder</a>.<br>
+          <strong>Education and puzzles:</strong> Generate examples, format lists with the <a href="/tools/text-to-list-to-text-converter.html">Text ↔ List Converter</a>, or create placeholder text with the <a href="/tools/random-text-generator.html">Random Text Generator</a>.
+        </p>
+
+        <h3 id="why-it-matters">Why palindrome detection matters</h3>
+        <p>Symmetry patterns expose edge cases in search, tokenization, validation, and UI behavior. Handling case, punctuation, and accents correctly keeps content accessible and predictable. Finish with a clarity pass in the <a href="/grammarly1.html">Grammar Corrector</a> and standardize headline case with the <a href="/tools/case-converter.html">Case Converter</a>.</p>
+
+        <h3 id="try-it">Try it now</h3>
+        <p><a href="/tools/palindromic-word-finder.html">Go to Palindromic Word Finder</a> — then tidy input with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a> for best results.</p>
+
+        <h3 id="faq">FAQ</h3>
+        <dl class="faq grammar-faq" id="grammar-faq">
+          <dt tabindex="0" aria-expanded="false">Is the Palindrome Finder free</dt>
+          <dd class="hidden">Yes. It is free and runs in your browser with no login.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Does it detect sentence level palindromes</dt>
+          <dd class="hidden">Yes. Use Phrase mode with Ignore spaces and Ignore punctuation.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Does it handle Unicode and accents</dt>
+          <dd class="hidden">Enable Ignore diacritics for language-agnostic detection. For character details, use <a href="/tools/symbol-character-info.html">Symbol and Character Info</a>.</dd>
+
+          <dt tabindex="0" aria-expanded="false">Can I export results</dt>
+          <dd class="hidden">Yes. Export CSV or JSON, or Copy Report for a quick audit summary.</dd>
+
+          <dt tabindex="0" aria-expanded="false">What about performance on long texts</dt>
+          <dd class="hidden">Use higher Min length and Unique only to reduce output size. Clean input with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> first.</dd>
+        </dl>
+
+        <!-- Related tools and guides -->
+        <aside class="related-box" aria-label="Related tools and guides">
+          <h3>Related tools and guides</h3>
+          <ul>
+            <li><a href="/tools/symbol-character-info.html">Symbol and Character Info</a> - inspect code points and names.</li>
+            <li><a href="/tools/case-converter.html">Case Converter</a> - Upper, Lower, Sentence, Title, Alternating.</li>
+            <li><a href="/tools/duplicate-word-finder.html">Duplicate Word Finder</a> - remove repeated words and doubles.</li>
+            <li><a href="/tools/alphabetizer-sort-words-sentences.html">Alphabetizer</a> - sort, natural numeric order, and deduplicate.</li>
+            <li><a href="/tools/word-counter.html">Word and Character Counter</a> - profile counts and limits.</li>
+            <li><a href="/blog/free-symbol-character-info-count-and-decode-unicode-and-ascii.html">Unicode and ASCII guide</a> - practical character tips.</li>
+            <li><a href="/blog/best-ai-writing-tools-2025.html">Best AI Writing Tools 2025</a> - a complete writing workflow.</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Palindromes</span>
+          <span class="tag">Palindrome Finder</span>
+          <span class="tag">Text Analysis</span>
+          <span class="tag">Unicode</span>
+          <span class="tag">NLP</span>
+          <span class="tag">QA Testing</span>
+          <span class="tag">Writing Tools</span>
         </div>
-      </article>
-    </div>
-  </section>
+        <div class="article-share">
+          <span class="share-text">Share:</span>
+          <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+          <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+          <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
 
   <!-- Articles Section -->
   <section id="articles" class="articles-section" aria-labelledby="latest-articles-heading">

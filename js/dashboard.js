@@ -223,8 +223,8 @@ if (modelKey === "turnitin1" || modelKey === "chatgpt1") {
       linkText: "Go to Turnitin Tool",
     },
     chatgpt1: {
-      email: "isntwaris@gmail.com", 
-      password: "4768.Isnt92747@Waris",       
+      email: "beingwaria@gmail.com", 
+      password: "beingwaria786",   
       linkText: "Open ChatGPT",
     },
   };
