@@ -68,6 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateTimer, 1000);
 
   const allModelCards = {
+    stealthwriter1: {
+    id: "model-stealthwriter-1",
+    href: "https://stealthwriter.com/login", 
+    img: "images/stealthwriter-logo.png", 
+    title: "Stealth Writer 1",
+    description: "Copy the info below and click the button to open Stealth Writer now.",
+    model: "StealthWriter",
+  },
     chatgpt1: {
       id: "model-chatgpt-1",
       href: "https://chatgpt.com", 
@@ -209,7 +217,7 @@ models.forEach((modelKey) => {
     cardDiv.appendChild(title);
     cardDiv.appendChild(desc);
 
-if (modelKey === "turnitin1" || modelKey === "chatgpt1") {
+if (modelKey === "turnitin1" || modelKey === "chatgpt1" || modelKey === "stealthwriter1") {
   // Disable pointer/hover on the entire card
   cardDiv.style.cursor = "default";
   cardDiv.onmouseenter = null;
@@ -227,6 +235,11 @@ if (modelKey === "turnitin1" || modelKey === "chatgpt1") {
       password: "beingwaria786",   
       linkText: "Open ChatGPT",
     },
+    stealthwriter1: {
+    email: "thesniptext@email.com",
+    password: "thesniptext37",
+    linkText: "Open Stealth Writer",
+  },
   };
 
   const { email: copyEmail, password: copyPassword, linkText } = perModel[modelKey];
