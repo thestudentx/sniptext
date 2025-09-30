@@ -9,7 +9,7 @@
   
   <title>Admin Panel - Snip Text</title>
 
-<link rel="stylesheet" href="/css/style.css?v=reset1" />
+<link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/components/toggleTheme.css" />
 
 <!-- ✅ Admin-specific CSS (inside admin folder) -->
@@ -135,10 +135,19 @@
 <!-- Global Toast Container (positions: toast-pos-tr | -br | -tl | -bl | -center) -->
 <div id="toast-container" class="toast-container toast-pos-tr hidden" aria-live="polite" aria-atomic="true"></div>
 
+  <!-- --------------- GLOBAL LOADER ANIMATION --------------- -->
+  <div id="global-loader">
+    <div class="typewriter">
+      <div class="slide"><i></i></div>
+      <div class="paper"></div>
+      <div class="keyboard"></div>
+    </div>
+  </div>
+
   <!-- Scripts -->
 <!-- ✅ Global Scripts -->
 <script src="/components/global-loading-animation.js"></script>
-<script src="js/index.js?v=reset1" defer></script>
+<script src="/js/index.js" defer></script>
 <script src="/components/toggleTheme.js"></script>
 
 <!-- ✅ Admin Scripts (inside admin folder) -->
