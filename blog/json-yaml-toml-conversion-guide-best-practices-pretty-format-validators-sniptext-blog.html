@@ -182,128 +182,131 @@
       </div>
     </section>
 
-    <!-- Featured Article -->
-    <section class="featured-article">
-      <div class="container">
-        <article class="article-card featured">
-          <div class="article-meta">
-            <span class="article-category">Developer Tools</span>
-            <time datetime="2025-09-19" class="article-date">September 19, 2025</time>
-          </div>
+<!-- Featured Article -->
 
-          <h2 class="article-title">JSON to YAML to TOML: Fast, Safe Conversion With Pretty Print, Sorting, and Round Trips</h2>
-
-          <p class="article-excerpt">This guide explains how to switch between JSON, YAML, and TOML without breaking configs. You will learn what each format is best at, common pitfalls like comments and trailing commas, and an efficient workflow using the SnipText converter.</p>
-
-          <div class="article-content">
-            <div class="drop-cap-paragraph">
-              <span class="drop-cap">C</span>onfiguration and data files move across tools and teams. Your API might expect JSON, your CI uses YAML, and your app config is TOML. The SnipText <strong>JSON ↔ YAML ↔ TOML Converter</strong> runs in your browser to pretty print or minify, sort keys for stable diffs, handle JSONC style comments when needed, and verify round trips so you ship with confidence.
-            </div>
-
-            <nav class="article-toc" aria-label="Quick navigation">
-              <strong>In this guide:</strong>
-              <ul>
-                <li><a href="#what">What this converter does</a></li>
-                <li><a href="#why">Why format choice matters</a></li>
-                <li><a href="#workflow">A clean conversion workflow</a></li>
-                <li><a href="#pitfalls">Common pitfalls and fixes</a></li>
-                <li><a href="#stack">Helpful companion tools</a></li>
-                <li><a href="#faq">FAQ</a></li>
-              </ul>
-            </nav>
-
-            <h3 id="what">What this converter does</h3>
-            <ul>
-              <li><strong>Convert both ways:</strong> JSON to YAML, YAML to JSON, JSON to TOML, and YAML to TOML with safe parsing.</li>
-              <li><strong>Pretty and minify:</strong> Expand for code review or compress for transport.</li>
-              <li><strong>Sort keys:</strong> Stable ordering makes diffs and reviews easier.</li>
-              <li><strong>JSONC option:</strong> Strip inline comments from JSON if you pasted from docs or VS Code settings.</li>
-              <li><strong>Round trip check:</strong> Parse output back to an object and compare so you catch silent changes before committing.</li>
-              <li><strong>Tiny share link:</strong> Copy a short URL hash for small samples to share with your team.</li>
-            </ul>
-
-            <h3 id="why">Why format choice matters</h3>
-            <p><strong>JSON</strong> is strict and universal. It is perfect for APIs, data transport, and machines. <strong>YAML</strong> is human friendly for CI and infra, but be careful with indentation and anchors. <strong>TOML</strong> has a tidy table oriented syntax that many app configs prefer. Picking the right format increases readability and lowers runtime surprises.</p>
-
-            <div class="collapsible-section">
-              <button class="collapsible-toggle" aria-expanded="false">
-                <span>Pro tips for reliable configs</span>
-                <span class="toggle-icon">+</span>
-              </button>
-              <div class="collapsible-content">
-                <ul>
-                  <li><strong>Keep a canonical JSON:</strong> Even if teams edit YAML, store a pretty sorted JSON copy for diff friendly reviews using the <a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a>.</li>
-                  <li><strong>Normalize newlines:</strong> Before commits, tidy whitespace with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a>.</li>
-                  <li><strong>Validate shape:</strong> For JSON outputs, run a schema check in the <a href="/tools/json-formatter-validator.html">AJV powered validator</a>.</li>
-                  <li><strong>Track changes:</strong> Use the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> to review before and after configs with word level highlights.</li>
-                </ul>
-              </div>
-            </div>
-
-            <h3 id="workflow">A clean conversion workflow</h3>
-            <ol>
-              <li>Open the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a>.</li>
-              <li>Paste a file or drop it into the input. Leave format to Auto or set it manually if you already know.</li>
-              <li>Choose your target format and toggle <em>Pretty</em> or <em>Minify</em>. Turn on <em>Sort keys</em> for stable diffs.</li>
-              <li>If your JSON has comments, enable <em>JSONC</em> so the tool strips them safely before parsing.</li>
-              <li>Enable <em>Round trip</em> to verify the output parses back to the same structure.</li>
-              <li>Copy or download the result. For small snippets, share a tiny link in chat or issue comments.</li>
-            </ol>
-
-            <h3 id="pitfalls">Common pitfalls and fixes</h3>
-            <ul>
-              <li><strong>Unexpected token '#':</strong> JSON cannot have comments. Use JSONC mode, or convert from YAML which supports <code>#</code> comments.</li>
-              <li><strong>Trailing commas:</strong> JSON and TOML do not allow trailing commas in arrays and objects. Remove them or let the parser error show you the exact line.</li>
-              <li><strong>YAML indentation:</strong> Two spaces per level. Mixing tabs and spaces can break parsing. The tool surface errors clearly with line numbers.</li>
-              <li><strong>Date handling:</strong> TOML dates are typed. If you need plain strings, quote them like <code>"2025-09-19"</code> before converting.</li>
-            </ul>
-
-            <h3 id="stack">Helpful companion tools</h3>
-            <ul>
-              <li><a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a> - pretty or minify plus AJV schema checks and JSONPath.</li>
-              <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - trim, normalize newlines, collapse blanks.</li>
-              <li><a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> - review config changes with inline or side by side view.</li>
-              <li><a href="/tools/random-text-generator.html">Random Text Generator</a> - make quick sample payloads for testing.</li>
-              <li>Related guides: <a href="/blog/word-character-line-sentence-counter-blog.html">Word and Character Counter guide</a> and <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner guide</a>.</li>
-            </ul>
-
-            <h3 id="faq">FAQ</h3>
-            <dl class="faq grammar-faq" id="grammar-faq">
-              <dt tabindex="0" aria-expanded="false">Does the converter upload my data</dt>
-              <dd class="hidden">No. It runs in your browser for speed and privacy.</dd>
-
-              <dt tabindex="0" aria-expanded="false">Can I keep comments when moving from YAML to JSON</dt>
-              <dd class="hidden">JSON does not support comments. Consider keeping a YAML source of truth or store comments in a separate README field.</dd>
-
-              <dt tabindex="0" aria-expanded="false">How do I make diffs clean for code review</dt>
-              <dd class="hidden">Enable Sort keys and Pretty, then compare with the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</dd>
-
-              <dt tabindex="0" aria-expanded="false">What about TOML arrays and tables</dt>
-              <dd class="hidden">Arrays keep order. Tables map well to nested objects. If you hit a typing issue, quote values to force string type before conversion.</dd>
-            </dl>
-
-            <h3>Conclusion</h3>
-            <p>Use the format that suits your workflow and convert with care. Pretty print for humans, minify for transport, sort keys for clean diffs, and verify round trips so your configs stay safe. Open the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a> and make a clean conversion part of every PR.</p>
-          </div>
-
-          <div class="article-footer">
-            <div class="article-tags">
-              <span class="tag">JSON</span>
-              <span class="tag">YAML</span>
-              <span class="tag">TOML</span>
-              <span class="tag">Configs</span>
-              <span class="tag">Developer Tools</span>
-            </div>
-            <div class="article-share">
-              <span class="share-text">Share:</span>
-              <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
-              <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
-              <a href="#" class="share-link" aria-label="Copy link">Copy</a>
-            </div>
-          </div>
-        </article>
+<section class="featured-article">
+  <div class="container">
+    <article class="article-card featured">
+      <div class="article-meta">
+        <span class="article-category">Developer Tools</span>
+        <time datetime="2025-09-19" class="article-date">September 19, 2025</time>
       </div>
-    </section>
+
+  <h2 class="article-title">JSON to YAML to TOML: Fast, Safe Conversion With Pretty Print, Sorting, and Round Trips</h2>
+
+  <p class="article-excerpt">This guide explains how to switch between JSON, YAML, and TOML without breaking configs. You will learn what each format is best at, common pitfalls like comments and trailing commas, and an efficient workflow using the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">SnipText converter</a> (see the <a href="/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog.html">conversion best-practices guide</a>).</p>
+
+  <div class="article-content">
+    <div class="drop-cap-paragraph">
+      <span class="drop-cap">C</span>onfiguration and data files move across tools and teams. Your API might expect JSON, your CI uses YAML, and your app config is TOML. The SnipText <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html"><strong>JSON ↔ YAML ↔ TOML Converter</strong></a> runs in your browser to pretty print or minify, sort keys for stable diffs, handle JSONC style comments when needed, and verify round trips so you ship with confidence. For schema checks and deep inspection, pair it with the <a href="/tools/json-formatter-validator.html">JSON Formatter &amp; Validator (AJV + JSONPath)</a>.
+    </div>
+
+    <nav class="article-toc" aria-label="Quick navigation">
+      <strong>In this guide:</strong>
+      <ul>
+        <li><a href="#what">What this converter does</a></li>
+        <li><a href="#why">Why format choice matters</a></li>
+        <li><a href="#workflow">A clean conversion workflow</a></li>
+        <li><a href="#pitfalls">Common pitfalls and fixes</a></li>
+        <li><a href="#stack">Helpful companion tools</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <h3 id="what">What this converter does</h3>
+    <ul>
+      <li><strong>Convert both ways:</strong> JSON to YAML, YAML to JSON, JSON to TOML, and YAML to TOML with safe parsing.</li>
+      <li><strong>Pretty and minify:</strong> Expand for code review or compress for transport (minify text assets further with the <a href="/tools/html-css-js-minifier-beautifier.html">HTML/CSS/JS Minifier &amp; Beautifier</a>).</li>
+      <li><strong>Sort keys:</strong> Stable ordering makes diffs and reviews easier (compare versions in the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>).</li>
+      <li><strong>JSONC option:</strong> Strip inline comments from JSON if you pasted from docs or VS Code settings.</li>
+      <li><strong>Round trip check:</strong> Parse output back to an object and compare so you catch silent changes before committing.</li>
+      <li><strong>Tiny share link:</strong> Copy a short URL hash for small samples to share with your team.</li>
+    </ul>
+
+    <h3 id="why">Why format choice matters</h3>
+    <p><strong>JSON</strong> is strict and universal. It is perfect for APIs, data transport, and machines. <strong>YAML</strong> is human friendly for CI and infra, but be careful with indentation and anchors. <strong>TOML</strong> has a tidy table oriented syntax that many app configs prefer. Picking the right format increases readability and lowers runtime surprises. If you need validation on JSON outputs, run AJV checks in the <a href="/tools/json-formatter-validator.html">JSON Formatter &amp; Validator</a>.</p>
+
+    <div class="collapsible-section">
+      <button class="collapsible-toggle" aria-expanded="false">
+        <span>Pro tips for reliable configs</span>
+        <span class="toggle-icon">+</span>
+      </button>
+      <div class="collapsible-content">
+        <ul>
+          <li><strong>Keep a canonical JSON:</strong> Even if teams edit YAML, store a pretty, sorted JSON copy for diff-friendly reviews using the <a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a> (see the <a href="/blog/json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide-sniptext-blog.html">formatter/validator guide</a>).</li>
+          <li><strong>Normalize newlines:</strong> Before commits, tidy whitespace with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> (read the <a href="/blog/free-whitespace-and-formatting-cleaner-trim-normalize-newlines-and-fix-indentation-blog.html">Whitespace Cleaner guide</a>).</li>
+          <li><strong>Validate shape:</strong> For JSON outputs, run a schema check in the <a href="/tools/json-formatter-validator.html">AJV powered validator</a>.</li>
+          <li><strong>Track changes:</strong> Use the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> to review before and after configs with word-level highlights (full walkthrough in the <a href="/blog/code-diff-checker-guide-side-by-side-inline-diff-unified-patch-export-git-workflows-private-browser-sniptext-blog.html">Diff Checker guide</a>).</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 id="workflow">A clean conversion workflow</h3>
+    <ol>
+      <li>Open the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a>.</li>
+      <li>Paste a file or drop it into the input. Leave format to Auto or set it manually if you already know.</li>
+      <li>Choose your target format and toggle <em>Pretty</em> or <em>Minify</em>. Turn on <em>Sort keys</em> for stable diffs.</li>
+      <li>If your JSON has comments, enable <em>JSONC</em> so the tool strips them safely before parsing (clean pasted text first with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace Cleaner</a>).</li>
+      <li>Enable <em>Round trip</em> to verify the output parses back to the same structure; if you need to present changes, compare with the <a href="/tools/code-diff-checker-side-by-side.html">Side-by-Side Diff</a>.</li>
+      <li>Copy or download the result. For small snippets, share a tiny link in chat or issue comments.</li>
+    </ol>
+
+    <h3 id="pitfalls">Common pitfalls and fixes</h3>
+    <ul>
+      <li><strong>Unexpected token '#':</strong> JSON cannot have comments. Use JSONC mode, or convert from YAML which supports <code>#</code> comments.</li>
+      <li><strong>Trailing commas:</strong> JSON and TOML do not allow trailing commas in arrays and objects. Remove them or let the parser error show you the exact line.</li>
+      <li><strong>YAML indentation:</strong> Two spaces per level. Mixing tabs and spaces can break parsing. The tool surfaces errors clearly with line numbers.</li>
+      <li><strong>Date handling:</strong> TOML dates are typed. If you need plain strings, quote them like <code>"2025-09-19"</code> before converting.</li>
+    </ul>
+
+    <h3 id="stack">Helpful companion tools</h3>
+    <ul>
+      <li><a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a> - pretty or minify plus AJV schema checks and JSONPath.</li>
+      <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - trim, normalize newlines, collapse blanks.</li>
+      <li><a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> - review config changes with inline or side-by-side view.</li>
+      <li><a href="/tools/random-text-generator.html">Random Text Generator</a> - make quick sample payloads for testing.</li>
+      <li>Related guides: <a href="/blog/word-character-line-sentence-counter-blog.html">Word &amp; Character Counter guide</a> and <a href="/blog/json-formatter-and-validator-prettier-ajv-jsonpath-flatten-guide-sniptext-blog.html">JSON Formatter/Validator guide</a>.</li>
+    </ul>
+
+    <h3 id="faq">FAQ</h3>
+    <dl class="faq grammar-faq" id="grammar-faq">
+      <dt tabindex="0" aria-expanded="false">Does the converter upload my data</dt>
+      <dd class="hidden">No. It runs in your browser for speed and privacy.</dd>
+
+      <dt tabindex="0" aria-expanded="false">Can I keep comments when moving from YAML to JSON</dt>
+      <dd class="hidden">JSON does not support comments. Consider keeping a YAML source of truth or store comments in a separate README field; when exporting JSON, validate shape with the <a href="/tools/json-formatter-validator.html">AJV validator</a>.</dd>
+
+      <dt tabindex="0" aria-expanded="false">How do I make diffs clean for code review</dt>
+      <dd class="hidden">Enable Sort keys and Pretty, then compare with the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a> (see the <a href="/blog/code-diff-checker-guide-side-by-side-inline-diff-unified-patch-export-git-workflows-private-browser-sniptext-blog.html">guide</a>).</dd>
+
+      <dt tabindex="0" aria-expanded="false">What about TOML arrays and tables</dt>
+      <dd class="hidden">Arrays keep order. Tables map well to nested objects. If you hit a typing issue, quote values to force string type before conversion; for JSON outputs, run a quick schema check in the <a href="/tools/json-formatter-validator.html">JSON Formatter &amp; Validator</a>.</dd>
+    </dl>
+
+    <h3>Conclusion</h3>
+    <p>Use the format that suits your workflow and convert with care. Pretty print for humans, minify for transport, sort keys for clean diffs, and verify round trips so your configs stay safe. Open the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ↔ YAML ↔ TOML Converter</a> and make a clean conversion part of every PR. If you need to validate or query JSON afterward, switch to the <a href="/tools/json-formatter-validator.html">JSON Formatter &amp; Validator</a>.</p>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-tags">
+      <span class="tag">JSON</span>
+      <span class="tag">YAML</span>
+      <span class="tag">TOML</span>
+      <span class="tag">Configs</span>
+      <span class="tag">Developer Tools</span>
+    </div>
+    <div class="article-share">
+      <span class="share-text">Share:</span>
+      <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+      <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+      <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+    </div>
+  </div>
+</article>
+
+  </div>
+</section>
+
 
     <!-- Articles Section -->
     <section id="articles" class="articles-section">

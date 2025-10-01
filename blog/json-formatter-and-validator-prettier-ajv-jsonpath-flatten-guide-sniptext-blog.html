@@ -196,161 +196,174 @@ href="data:image/svg+xml;utf8,
     </div>
   </section>
 
-  <!-- Featured Article -->
-  <section class="featured-article">
-    <div class="container">
-      <article class="article-card featured">
-        <div class="article-meta">
-          <span class="article-category">Developer Tools</span>
-          <time datetime="2025-09-18" class="article-date">September 18, 2025</time>
-        </div>
+<!-- Featured Article -->
 
-        <h2 class="article-title">JSON Formatter and Validator Guide: Prettier formatting, AJV schema checks, JSONPath, and flatten tips</h2>
+<section class="featured-article">
+  <div class="container">
+    <article class="article-card featured">
+      <div class="article-meta">
+        <span class="article-category">Developer Tools</span>
+        <time datetime="2025-09-18" class="article-date">September 18, 2025</time>
+      </div>
 
-        <p class="article-excerpt">Clean JSON helps prevent errors and speeds up reviews. In this guide you will format with Prettier, validate with AJV, query with JSONPath, and flatten structures for analytics and APIs.</p>
+  <h2 class="article-title">JSON Formatter and Validator Guide: Prettier formatting, AJV schema checks, JSONPath, and flatten tips</h2>
 
-        <div class="article-content">
-          <div class="drop-cap-paragraph">
-            <span class="drop-cap">J</span>SON is the backbone of modern web apps and APIs. Messy or invalid JSON slows teams and breaks integrations. The SnipText <strong>JSON Formatter and Validator</strong> runs in your browser so formatting, schema checks, and quick queries feel instant and private. This post explains what the tool is, why it matters, and how to apply it in real work.
-          </div>
+  <p class="article-excerpt">Clean JSON helps prevent errors and speeds up reviews. In this guide you will format with Prettier, validate with AJV, query with JSONPath, and flatten structures for analytics and APIs. Try it with the <a href="/tools/json-formatter-validator.html">JSON Formatter &amp; Validator</a> and, when needed, convert between formats using the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ⇄ YAML ⇄ TOML Converter</a> (see the <a href="/blog/json-yaml-toml-conversion-guide-best-practices-pretty-format-validators-sniptext-blog.html">conversion best-practices guide</a>).</p>
 
-          <nav class="article-toc" aria-label="Quick navigation">
-            <strong>In this guide:</strong>
-            <ul>
-              <li><a href="#features">What the formatter and validator do</a></li>
-              <li><a href="#examples">Examples with Prettier, AJV, and JSONPath</a></li>
-              <li><a href="#workflow">Recommended workflow</a></li>
-              <li><a href="#use-cases">Use cases and benefits</a></li>
-              <li><a href="#stack">Companion tools and links</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </nav>
+  <div class="article-content">
+    <div class="drop-cap-paragraph">
+      <span class="drop-cap">J</span>SON is the backbone of modern web apps and APIs. Messy or invalid JSON slows teams and breaks integrations. The SnipText <a href="/tools/json-formatter-validator.html"><strong>JSON Formatter and Validator</strong></a> runs in your browser so formatting, schema checks, and quick queries feel instant and private. This post explains what the tool is, why it matters, and how to apply it in real work—plus handy links to diff, convert, and document data.
+    </div>
 
-          <h3 id="features">What the formatter and validator do</h3>
-          <ul>
-            <li><strong>Prettier formatting:</strong> Make JSON readable with consistent indentation. Supports JSONC input when allowed and optional key sorting for stable diffs.</li>
-            <li><strong>AJV schema validation:</strong> Check payloads against JSON Schema, enable formats like email or date time, apply defaults, and coerce types when you need quick fixes.</li>
-            <li><strong>JSONPath queries:</strong> Inspect or extract parts of a large object using patterns like <code>$.items[*].id</code> or <code>$..price</code>.</li>
-            <li><strong>Flatten and unflatten:</strong> Convert nested objects to key paths for spreadsheets and analytics, then rebuild them into proper JSON.</li>
-            <li><strong>Share and review:</strong> Copy a tiny link for small samples, download formatted JSON, and keep everything on device for privacy.</li>
-          </ul>
+    <nav class="article-toc" aria-label="Quick navigation">
+      <strong>In this guide:</strong>
+      <ul>
+        <li><a href="#features">What the formatter and validator do</a></li>
+        <li><a href="#examples">Examples with Prettier, AJV, and JSONPath</a></li>
+        <li><a href="#workflow">Recommended workflow</a></li>
+        <li><a href="#use-cases">Use cases and benefits</a></li>
+        <li><a href="#stack">Companion tools and links</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
 
-          <h3 id="examples">Examples with Prettier, AJV, and JSONPath</h3>
-          <p><strong>Prettier formatting and minify</strong></p>
-          <pre><code>// Pretty print with 2 spaces
+    <h3 id="features">What the formatter and validator do</h3>
+    <ul>
+      <li><strong>Prettier formatting:</strong> Make JSON readable with consistent indentation. Supports JSONC input when allowed and optional key sorting for stable diffs (compare outputs with the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>).</li>
+      <li><strong>AJV schema validation:</strong> Check payloads against JSON Schema, enable formats like email or date time, apply defaults, and coerce types when you need quick fixes.</li>
+      <li><strong>JSONPath queries:</strong> Inspect or extract parts of a large object using patterns like <code>$.items[*].id</code> or <code>$..price</code>.</li>
+      <li><strong>Flatten and unflatten:</strong> Convert nested objects to key paths for spreadsheets and analytics, then rebuild them into proper JSON (export tables cleanly with the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a>).</li>
+      <li><strong>Share and review:</strong> Copy a tiny link for small samples, download formatted JSON, and keep everything on device for privacy.</li>
+    </ul>
+
+    <h3 id="examples">Examples with Prettier, AJV, and JSONPath</h3>
+    <p><strong>Prettier formatting and minify</strong></p>
+    <pre><code>// Pretty print with 2 spaces
+```
+
 {
-  "id": 101,
-  "email": "dev@example.com",
-  "roles": ["admin","user"]
+"id": 101,
+"email": "[dev@example.com](mailto:dev@example.com)",
+"roles": ["admin","user"]
 }
 
 // Minified
-{"id":101,"email":"dev@example.com","roles":["admin","user"]}</code></pre>
+{"id":101,"email":"[dev@example.com](mailto:dev@example.com)","roles":["admin","user"]}</code></pre>
 
-          <p><strong>AJV validation snippet</strong></p>
-          <pre><code>// Schema fragment
+```
+    <p><strong>AJV validation snippet</strong></p>
+    <pre><code>// Schema fragment
+```
+
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "type":"object",
-  "required":["id","email"],
-  "properties":{
-    "id":{"type":"integer"},
-    "email":{"type":"string","format":"email"},
-    "roles":{"type":"array","items":{"type":"string"}}
-  }
+"$schema":"[https://json-schema.org/draft/2020-12/schema](https://json-schema.org/draft/2020-12/schema)",
+"type":"object",
+"required":["id","email"],
+"properties":{
+"id":{"type":"integer"},
+"email":{"type":"string","format":"email"},
+"roles":{"type":"array","items":{"type":"string"}}
+}
 }
 
 // Typical error
+
 1. at "/email" - must match format "email"</code></pre>
 
-          <p><strong>JSONPath quick checks</strong></p>
-          <pre><code>// Get all product IDs
+   ```
+    <p><strong>JSONPath quick checks</strong></p>
+    <pre><code>// Get all product IDs
+   ```
+
 $.products[*].id
 
 // Grab nested prices anywhere
 $..price</code></pre>
 
-          <div class="collapsible-section">
-            <button class="collapsible-toggle" aria-expanded="false">
-              <span>Pro tips for cleaner JSON</span>
-              <span class="toggle-icon">+</span>
-            </button>
-            <div class="collapsible-content">
-              <ul>
-                <li><strong>Stable diffs:</strong> Sort keys before committing so Code Diff stays readable. Try our <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</li>
-                <li><strong>Guardrails:</strong> Add <code>required</code> and <code>enum</code> to schemas to catch missing or invalid values early.</li>
-                <li><strong>Performance:</strong> For large payloads, disable live formatting and run manual format to avoid heavy reflows.</li>
-                <li><strong>Analytics:</strong> Flatten responses to audit field coverage, then unflatten when you post back to an API.</li>
-                <li><strong>Privacy:</strong> Work locally. The SnipText tools run in your browser so sample data stays on device.</li>
-              </ul>
-            </div>
-          </div>
-
-          <h3 id="workflow">Recommended workflow</h3>
-          <ol>
-            <li>Open the <a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a>.</li>
-            <li>Paste JSON and click Format. If you need to handle comments, enable JSONC first.</li>
-            <li>Paste a JSON Schema and run Validate. Toggle formats, defaults, and type coercion as needed.</li>
-            <li>Use JSONPath for quick checks like IDs or totals. Copy results for review.</li>
-            <li>Flatten when moving data into a sheet, unflatten to restore it for your API.</li>
-            <li>Copy or download the final JSON, then compare versions with the <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</li>
-          </ol>
-
-          <h3 id="use-cases">Use cases and benefits</h3>
-          <ul>
-            <li><strong>API development:</strong> Validate requests and responses against a shared schema so front end and back end stay aligned.</li>
-            <li><strong>Data pipelines:</strong> Normalize and inspect fields before indexing or analysis. Catch type drift early.</li>
-            <li><strong>Config management:</strong> Keep readable configs with Prettier and enforce valid shapes with AJV.</li>
-            <li><strong>QA and reviews:</strong> Share small samples as tiny links and run JSONPath checks during code reviews.</li>
-          </ul>
-
-          <h3 id="stack">Companion tools and links</h3>
-          <ul>
-            <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - normalize spacing and line endings before you paste JSON into docs.</li>
-            <li><a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a> - convert flattened data into clean HTML tables for docs.</li>
-            <li><a href="/tools/word-counter.html">Word and Character Counter</a> - check limits for descriptions and notes embedded in JSON.</li>
-            <li><a href="/tools/random-text-generator.html">Random Text Generator</a> - create safe placeholder strings for test payloads.</li>
-            <li>Guides: <a href="/blog/code-diff-checker-guide-side-by-side-inline-diff-unified-patch-export-git-workflows-private-browser-sniptext-blog.html">Code Diff Checker guide</a> and <a href="/blog/word-character-line-sentence-counter-blog.html">Word and Character Counter guide</a>.</li>
-            <li>Looking for advanced workflows and saved presets? Check SnipText <a href="/pricing.html">Pro features</a>.</li>
-          </ul>
-
-          <h3 id="faq">FAQ</h3>
-          <dl class="faq grammar-faq" id="grammar-faq">
-            <dt tabindex="0" aria-expanded="false">Does the formatter change values</dt>
-            <dd class="hidden">No. Prettier changes whitespace and indentation only. If you enable key sorting, it reorders keys for stable diffs.</dd>
-
-            <dt tabindex="0" aria-expanded="false">What JSON Schema drafts are supported</dt>
-            <dd class="hidden">AJV supports modern drafts like 2020-12 and Draft 7. Paste your schema and run Validate.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Can I fix errors automatically</dt>
-            <dd class="hidden">Yes. If your workflow allows it, enable defaults and type coercion in AJV to apply safe fixes where possible.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Is my data uploaded</dt>
-            <dd class="hidden">No. The tool runs locally in your browser for speed and privacy.</dd>
-
-            <dt tabindex="0" aria-expanded="false">Do you support huge files</dt>
-            <dd class="hidden">The tool is optimized for typical app payloads. For very large files, turn off live preview and format manually.</dd>
-          </dl>
-        </div>
-
-        <div class="article-footer">
-          <div class="article-tags">
-            <span class="tag">JSON</span>
-            <span class="tag">Validation</span>
-            <span class="tag">Developer Tools</span>
-            <span class="tag">APIs</span>
-            <span class="tag">Data Quality</span>
-          </div>
-          <div class="article-share">
-            <span class="share-text">Share:</span>
-            <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
-            <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
-            <a href="#" class="share-link" aria-label="Copy link">Copy</a>
-          </div>
-        </div>
-      </article>
+```
+    <div class="collapsible-section">
+      <button class="collapsible-toggle" aria-expanded="false">
+        <span>Pro tips for cleaner JSON</span>
+        <span class="toggle-icon">+</span>
+      </button>
+      <div class="collapsible-content">
+        <ul>
+          <li><strong>Stable diffs:</strong> Sort keys before committing so Code Diff stays readable. Try our <a href="/tools/code-diff-checker-side-by-side.html">Code Diff Checker</a>.</li>
+          <li><strong>Guardrails:</strong> Add <code>required</code> and <code>enum</code> to schemas to catch missing or invalid values early. For multi-format docs, convert examples with the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">JSON ⇄ YAML ⇄ TOML Converter</a>.</li>
+          <li><strong>Performance:</strong> For large payloads, disable live formatting and run manual format to avoid heavy reflows. If you minify for transport, you can also compress text assets with the <a href="/tools/html-css-js-minifier-beautifier.html">Minifier/Beautifier</a>.</li>
+          <li><strong>Analytics:</strong> Flatten responses to audit field coverage, then unflatten when you post back to an API (turn flattened rows into clean docs with the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Table Generator</a>).</li>
+          <li><strong>Privacy:</strong> Work locally. The SnipText tools run in your browser so sample data stays on device.</li>
+        </ul>
+      </div>
     </div>
-  </section>
+
+    <h3 id="workflow">Recommended workflow</h3>
+    <ol>
+      <li>Open the <a href="/tools/json-formatter-validator.html">JSON Formatter and Validator</a>.</li>
+      <li>Paste JSON and click Format. If you need to handle comments, enable JSONC first (normalize pasted text with the <a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace &amp; Formatting Cleaner</a>).</li>
+      <li>Paste a JSON Schema and run Validate. Toggle formats, defaults, and type coercion as needed.</li>
+      <li>Use JSONPath for quick checks like IDs or totals. Copy results for review; compare versions side-by-side with the <a href="/tools/code-diff-checker-side-by-side.html">Diff Checker</a>.</li>
+      <li>Flatten when moving data into a sheet, unflatten to restore it for your API (preview tables with the <a href="/tools/csv-viewer-editor.html">CSV Viewer &amp; Editor</a>).</li>
+      <li>Copy or download the final JSON, then—if teams need YAML or TOML—use the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">format converter</a> for consistent artifacts.</li>
+    </ol>
+
+    <h3 id="use-cases">Use cases and benefits</h3>
+    <ul>
+      <li><strong>API development:</strong> Validate requests and responses against a shared schema so front end and back end stay aligned.</li>
+      <li><strong>Data pipelines:</strong> Normalize and inspect fields before indexing or analysis. Catch type drift early (document field lists with the <a href="/tools/quick-table-generator-csv-to-html-table-code.html">Table Generator</a>).</li>
+      <li><strong>Config management:</strong> Keep readable configs with Prettier and enforce valid shapes with AJV.</li>
+      <li><strong>QA and reviews:</strong> Share small samples as tiny links and run JSONPath checks during code reviews.</li>
+    </ul>
+
+    <h3 id="stack">Companion tools and links</h3>
+    <ul>
+      <li><a href="/tools/whitespace-and-formatting-cleaner.html">Whitespace and Formatting Cleaner</a> - normalize spacing and line endings before you paste JSON into docs.</li>
+      <li><a href="/tools/quick-table-generator-csv-to-html-table-code.html">Quick Table Generator</a> - convert flattened data into clean HTML tables for docs.</li>
+      <li><a href="/tools/word-counter.html">Word and Character Counter</a> - check limits for descriptions and notes embedded in JSON.</li>
+      <li><a href="/tools/random-text-generator.html">Random Text Generator</a> - create safe placeholder strings for test payloads.</li>
+      <li>Guides: <a href="/blog/code-diff-checker-guide-side-by-side-inline-diff-unified-patch-export-git-workflows-private-browser-sniptext-blog.html">Code Diff Checker guide</a> and <a href="/blog/word-character-line-sentence-counter-blog.html">Word and Character Counter guide</a>.</li>
+      <li>Looking for advanced workflows and saved presets? Check SnipText <a href="/pricing.html">Pro features</a>.</li>
+    </ul>
+
+    <h3 id="faq">FAQ</h3>
+    <dl class="faq grammar-faq" id="grammar-faq">
+      <dt tabindex="0" aria-expanded="false">Does the formatter change values</dt>
+      <dd class="hidden">No. Prettier changes whitespace and indentation only. If you enable key sorting, it reorders keys for stable diffs (verify with the <a href="/tools/code-diff-checker-side-by-side.html">Diff Checker</a>).</dd>
+
+      <dt tabindex="0" aria-expanded="false">What JSON Schema drafts are supported</dt>
+      <dd class="hidden">AJV supports modern drafts like 2020-12 and Draft 7. Paste your schema and run Validate. When you need YAML/TOML variants for docs, convert via the <a href="/tools/json-yaml-toml-converter-pretty-format-parse-sniptext.html">format converter</a>.</dd>
+
+      <dt tabindex="0" aria-expanded="false">Can I fix errors automatically</dt>
+      <dd class="hidden">Yes. If your workflow allows it, enable defaults and type coercion in AJV to apply safe fixes where possible.</dd>
+
+      <dt tabindex="0" aria-expanded="false">Is my data uploaded</dt>
+      <dd class="hidden">No. The tool runs locally in your browser for speed and privacy. For transport-ready artifacts, minify text assets with the <a href="/tools/html-css-js-minifier-beautifier.html">Minifier/Beautifier</a>.</dd>
+
+      <dt tabindex="0" aria-expanded="false">Do you support huge files</dt>
+      <dd class="hidden">The tool is optimized for typical app payloads. For very large files, turn off live preview and format manually; preview large tables in the <a href="/tools/csv-viewer-editor.html">CSV Viewer &amp; Editor</a>.</dd>
+    </dl>
+  </div>
+
+  <div class="article-footer">
+    <div class="article-tags">
+      <span class="tag">JSON</span>
+      <span class="tag">Validation</span>
+      <span class="tag">Developer Tools</span>
+      <span class="tag">APIs</span>
+      <span class="tag">Data Quality</span>
+    </div>
+    <div class="article-share">
+      <span class="share-text">Share:</span>
+      <a href="#" class="share-link" aria-label="Share on Twitter">Twitter</a>
+      <a href="#" class="share-link" aria-label="Share on LinkedIn">LinkedIn</a>
+      <a href="#" class="share-link" aria-label="Copy link">Copy</a>
+    </div>
+  </div>
+</article>
+
+  </div>
+</section>
+
 
   <!-- Articles Section -->
   <section id="articles" class="articles-section">
