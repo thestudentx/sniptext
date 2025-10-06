@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     stealthwriter1: {
     id: "model-stealthwriter-1",
     href: "https://stealthwriter.com/login", 
-    img: "images/stealthwriter-logo.png", 
+    img: "images/stealthwriter_logo.png", 
     title: "Stealth Writer 1",
     description: "Copy the info below and click the button to open Stealth Writer now.",
     model: "StealthWriter",
@@ -226,9 +226,9 @@ if (modelKey === "turnitin1" || modelKey === "chatgpt1" || modelKey === "stealth
   // Per-model credentials + link label
   const perModel = {
     turnitin1: {
-      email: "tabishmalik0049@gmail.com",
-      password: "sniptext.checkai",
-      linkText: "Go to Turnitin Tool",
+      email: "thesniptext@gmail.com",
+      password: "Plag@123",
+      linkText: "Go to Turnitin",
     },
     chatgpt1: {
       email: "beingwaria@gmail.com", 
