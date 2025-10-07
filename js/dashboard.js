@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const allModelCards = {
     stealthwriter1: {
     id: "model-stealthwriter-1",
-    href: "https://stealthwriter.com/login", 
+    href: "https://app.stealthwriter.ai/auth/sign-in", 
     img: "images/stealthwriter_logo.png", 
     title: "Stealth Writer 1",
     description: "Copy the info below and click the button to open Stealth Writer now.",
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   },
     chatgpt1: {
       id: "model-chatgpt-1",
-      href: "https://chatgpt.com", 
+      href: "https://auth.openai.com/log-in", 
       img: "images/chatgpt_icon.png",
       title: "ChatGPT 1",       
       description: "Copy the info below and click the button to open ChatGPT now.",
@@ -312,5 +312,145 @@ if (modelKey === "turnitin1" || modelKey === "chatgpt1" || modelKey === "stealth
     }
   }
 });
+/* =========================
+   HOW-TO: Screenshots Map
+   ========================= */
+const HOWTO_SHOTS = {
+  stealthwriter1: [
+    { src: "/images/login_process/step_1.png", caption: "Go to Stealth Writer login page." },
+    { src: "/images/login_process/step_2.png", caption: "Enter the provided email." },
+    { src: "/images/login_process/step_3.png", caption: "Paste the password." },
+    { src: "/images/login_process/step_4.png", caption: "Click Sign in." },
+    { src: "/images/login_process/step_5.png", caption: "You’re in — dashboard overview." },
+  ],
+  chatgpt1: [
+    { src: "/images/login_process/step_1.png", caption: "Open ChatGPT homepage." },
+    { src: "/images/login_process/step_2.png", caption: "Click Log in." },
+    { src: "/images/login_process/step_3.png", caption: "Use the provided email." },
+    { src: "/images/login_process/step_4.png", caption: "Paste the password." },
+    { src: "/images/login_process/step_5.png", caption: "Landing page confirmation." },
+  ],
+  turnitin1: [
+    { src: "/images/login_process/step_1.png", caption: "Open Turnitin login portal." },
+    { src: "/images/login_process/step_2.png", caption: "Enter the provided email." },
+    { src: "/images/login_process/step_3.png", caption: "Paste the password." },
+    { src: "/images/login_process/step_4.png", caption: "Click Log in." },
+    { src: "/images/login_process/step_5.png", caption: "Turnitin dashboard — ready to use." },
+  ],
+  // Add more tools if needed…
+};
+
+/* =========================
+   HOW-TO: Modal Controller
+   ========================= */
+(function initHowToModal() {
+  const $modal = document.getElementById("howto-modal");
+  const $img = document.getElementById("howto-image");
+  const $caption = document.getElementById("howto-caption");
+  const $subtitle = document.getElementById("howto-subtitle");
+  const $counter = document.getElementById("howto-counter");
+  const $prev = document.getElementById("howto-prev");
+  const $next = document.getElementById("howto-next");
+
+  let currentList = [];
+  let currentIdx = 0;
+  let currentToolKey = null;
+  let lastFocusedEl = null;
+
+  function setSlide(i) {
+    if (!currentList.length) return;
+    currentIdx = (i + currentList.length) % currentList.length;
+    const item = currentList[currentIdx];
+    $img.src = item.src;
+    $img.alt = item.caption || "Login step";
+    $caption.textContent = item.caption || "";
+    $counter.textContent = `${currentIdx + 1} / ${currentList.length}`;
+  }
+
+  function openModal(toolKey) {
+    currentToolKey = toolKey;
+    const list = HOWTO_SHOTS[toolKey] || [];
+    if (!list.length) return;
+
+    // Optional: subtitle shows which tool
+    const modelName = (allModelCards[toolKey]?.title || "").replace(/\s\d+$/, "");
+    $subtitle.textContent = modelName ? `Steps for ${modelName}` : "";
+
+    currentList = list.slice();
+    currentIdx = 0;
+
+    // Preload images
+    currentList.forEach(s => { const im = new Image(); im.src = s.src; });
+
+    lastFocusedEl = document.activeElement;
+    $modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    setSlide(0);
+    // Move focus for accessibility
+    $modal.querySelector(".howto-close").focus();
+  }
+
+  function closeModal() {
+    $modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    currentList = [];
+    currentIdx = 0;
+    currentToolKey = null;
+    if (lastFocusedEl && typeof lastFocusedEl.focus === "function") {
+      lastFocusedEl.focus();
+    }
+  }
+
+  // Wire controls
+  $prev.addEventListener("click", () => setSlide(currentIdx - 1));
+  $next.addEventListener("click", () => setSlide(currentIdx + 1));
+
+  $modal.addEventListener("click", (e) => {
+    if (e.target.matches("[data-close]")) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    const open = $modal.getAttribute("aria-hidden") === "false";
+    if (!open) return;
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowRight") setSlide(currentIdx + 1);
+    if (e.key === "ArrowLeft") setSlide(currentIdx - 1);
+  });
+
+  // Expose to outer scope
+  window.__openHowTo = openModal;
+})();
+
+/* =========================
+   HOW-TO: Add button to cards
+   ========================= */
+(function addHowToButtons() {
+  // After your cards are appended, iterate over them and inject the button
+  // We’ll piggyback on the container you already use:
+  const container = document.getElementById("modelLinks");
+  if (!container) return;
+
+  // Run once after your models.forEach has built the DOM.
+  // If your code is all in one file, you can call this at the very end.
+  const cards = container.querySelectorAll(".card");
+  cards.forEach(card => {
+    const modelKey = Object.keys(allModelCards).find(k => allModelCards[k].id === card.id);
+    if (!modelKey) return;
+
+    // Only add if we actually have screenshots for this tool
+    if (!HOWTO_SHOTS[modelKey] || HOWTO_SHOTS[modelKey].length === 0) return;
+
+    const howBtn = document.createElement("button");
+    howBtn.className = "howto-btn";
+    howBtn.type = "button";
+    howBtn.textContent = "View Login Steps";
+    howBtn.addEventListener("click", () => window.__openHowTo(modelKey));
+
+    // Place it under your existing content and above links
+    // If you want it above the Copy buttons for special cards:
+    const lastButton = card.querySelector(".model-link") || card.lastElementChild;
+    card.insertBefore(howBtn, lastButton);
+  });
+})();
 
 });

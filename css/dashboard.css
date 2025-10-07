@@ -291,6 +291,110 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
 }
 
+/* ===== How-To Modal ===== */
+.howto-modal { 
+  position: fixed; inset: 0; display: none; z-index: 9999;
+}
+.howto-modal[aria-hidden="false"] { display: block; }
+
+.howto-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(2px);
+}
+
+.howto-dialog {
+  position: relative;
+  width: min(960px, 92vw);
+  max-height: 90vh;
+  margin: 5vh auto;
+  background: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  animation: fadeSlideIn 0.25s ease;
+}
+
+.howto-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--card-border);
+  background: linear-gradient(to right, var(--user-info-gradient-start), var(--user-info-gradient-end));
+}
+.howto-header h2 { font-size: 20px; }
+.howto-subtitle { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+
+.howto-close {
+  position: absolute; top: 10px; right: 12px;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: none; cursor: pointer; font-size: 22px; line-height: 1;
+  background: var(--card-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: var(--text-main);
+}
+
+.howto-content {
+  padding: 16px; display: grid; gap: 12px;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+}
+
+.howto-frame {
+  background: var(--bg-body);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  display: grid; place-items: center;
+  padding: 10px; overflow: auto;
+}
+.howto-frame img {
+  width: 100%; height: auto; max-height: 60vh; object-fit: contain; border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.howto-caption { margin-top: 8px; font-size: 14px; color: var(--text-muted); }
+
+.howto-controls {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+.howto-nav {
+  padding: 10px 16px;
+  background: linear-gradient(to right, var(--gradient-primary-start), var(--gradient-primary-end));
+  color: var(--btn-text);
+  border: none; border-radius: 8px; font-weight: 600; cursor: pointer;
+}
+.howto-counter { font-size: 14px; color: var(--text-muted); }
+
+/* Button that appears inside each card */
+.howto-btn {
+  display: inline-block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, var(--gradient-model-start), var(--gradient-model-end));
+    color: var(--btn-text);
+    font-family: var(--font-heading, Inter);
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Small helper for your existing card effect when copying */
+.blur { filter: blur(0.5px); }
+
+/* Optional entrance anim (you referenced it earlier) */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 
 

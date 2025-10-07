@@ -176,6 +176,33 @@
 
     <div id="dashboard-error" class="message error" style="display: none;"></div>
     <div id="dashboard-success" class="message success" style="display: none;"></div>
+
+    <!-- How-To Modal (re-usable for all tools) -->
+<div id="howto-modal" class="howto-modal" aria-hidden="true" role="dialog" aria-labelledby="howto-title" aria-modal="true">
+  <div class="howto-backdrop" data-close></div>
+  <div class="howto-dialog" role="document">
+    <button class="howto-close" type="button" title="Close (Esc)" aria-label="Close" data-close>&times;</button>
+
+    <header class="howto-header">
+      <h2 id="howto-title">View Login Steps</h2>
+      <p id="howto-subtitle" class="howto-subtitle"></p>
+    </header>
+
+    <div class="howto-content">
+      <div class="howto-frame">
+        <img id="howto-image" alt="Login step" />
+        <p id="howto-caption" class="howto-caption"></p>
+      </div>
+
+      <div class="howto-controls">
+        <button id="howto-prev" class="howto-nav" type="button" aria-label="Previous step">◀ Prev</button>
+        <span id="howto-counter" class="howto-counter">1 / 5</span>
+        <button id="howto-next" class="howto-nav" type="button" aria-label="Next step">Next ▶</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   </main>
 
 
