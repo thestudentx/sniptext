@@ -321,7 +321,7 @@ const HOWTO_SHOTS = {
     { src: "/images/login_process/step_2.png", caption: "Enter the provided email." },
     { src: "/images/login_process/step_3.png", caption: "Paste the password." },
     { src: "/images/login_process/step_4.png", caption: "Click Sign in." },
-    { src: "/images/login_process/step_5.png", caption: "You’re in — dashboard overview." },
+    { src: "/images/login_process/step_5.png", caption: "You’re in - dashboard overview." },
   ],
   chatgpt1: [
     { src: "/images/login_process/step_1.png", caption: "Open ChatGPT homepage." },
@@ -335,7 +335,7 @@ const HOWTO_SHOTS = {
     { src: "/images/login_process/step_2.png", caption: "Enter the provided email." },
     { src: "/images/login_process/step_3.png", caption: "Paste the password." },
     { src: "/images/login_process/step_4.png", caption: "Click Log in." },
-    { src: "/images/login_process/step_5.png", caption: "Turnitin dashboard — ready to use." },
+    { src: "/images/login_process/step_5.png", caption: "Turnitin dashboard - ready to use." },
   ],
   // Add more tools if needed…
 };

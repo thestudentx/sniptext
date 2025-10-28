@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// ---------------- TESTIMONIALS — snap aware paging with dots ----------------
+// ---------------- TESTIMONIALS - snap aware paging with dots ----------------
 document.addEventListener("DOMContentLoaded", () => {
   const section = document.getElementById("testimonials");
   const viewport = section.querySelector(".testimonial-viewport");
@@ -487,6 +487,402 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 })();
 
+(() => {
+  // ========================== Q&A CONFIG ==========================
+  const QA = {
+    /* Core (keep these near top for quick chips) */
+    "how it works": "Add content → choose tools → review changes with explain-why → export/share. Private by design and fast.",
+    "free plan": "Yes-core checks and free tools with usage limits. Upgrade to Pro for higher limits and extras.",
+    "pro vs free": "Pro adds higher limits, batch files, premium AI models, citation helpers, and priority support. While free plan has 20+ free tools added.",
+    "plagiarism checker": "Flags overlaps and paraphrases with similarity score and source hints-verify and cite as needed.",
+    "paraphraser": "Rewrites while preserving meaning. Choose tones like Academic, Concise, Casual, Fluent, or Formal.",
+    "contact": "Support: support@checkai.pro  · Phone: +92 341 837 8430",
+    "privacy": "Processing runs in-browser when possible. When cloud models are used, your text isn’t used to train them. You can export/delete anytime.",
+    "what is sniptext": "An all-in-one writing workspace with AI-powered grammar, paraphrasing, originality checks, and fast export.",
+
+    /* Tool-specific: Turnitin */
+    "turnitin pricing": "Turnitin is institution-licensed; students typically access it via their school. Get a quote through our Contact page.",
+    "turnitin how it works": "Submissions are checked against web, publications, and institutional databases; you get a similarity report to review and cite correctly.",
+    "turnitin report time": "Often within minutes; during peak times it can take longer (up to ~24 hours).",
+    "turnitin vs sniptext": "Turnitin is an academic originality platform with institutional licensing. SnipText offers writer-side tools to draft, check, and revise before submission.",
+
+    /* Tool-specific: QuillBot */
+    "quillbot pricing": "We offer flexible Quillbot plans for 1 month, 3 months, 6 months, and 12 months duration. For pricing, please contact us through Contact page.",
+    "quillbot how it works": "AI rephrasing with modes (e.g., formal/fluency). It rewrites text while aiming to preserve meaning.",
+    "quillbot vs sniptext": "QuillBot focuses on paraphrasing. SnipText combines paraphrasing with grammar, originality insights, citations, and export-inside one editor.",
+
+    /* Tool-specific: AI detection (general) */
+    "ai detection tools": "They estimate the likelihood text was AI-generated using statistical cues. Use as a signal, not a verdict-false positives/negatives occur.",
+    "ai detection accuracy": "Varies by tool and text. Short or heavily edited text can be misclassified-always apply human judgment.",
+    "ai detection vs sniptext": "SnipText offers an AI signals check as guidance plus concrete editing tools. We encourage transparent, ethical writing practices.",
+
+    /* Tool-specific: ChatGPT (OpenAI) */
+    "chatgpt pricing": "We offer ChatGPT-5 for 1 & 2 months duration. For pricing, please contact us through Contact page.",
+    "chatgpt how it works": "You prompt a large language model for drafting or ideas. Always review for accuracy and cite sources when needed.",
+    "chatgpt vs sniptext": "ChatGPT is a general chat model. SnipText is a writing workspace with originality checks, citations, editor view, and document exports.",
+
+    /* Tool-specific: Grammarly */
+    "grammarly pricing": "Free basic checks plus Premium/Business plans. For pricing, please contact us through Contact page.",
+    "grammarly how it works": "Real-time grammar, clarity, and tone suggestions in editor extensions and web apps.",
+    "grammarly vs sniptext": "Grammarly focuses on grammar/style. SnipText adds paraphrasing, originality insights, citations, and export workflows in one place.",
+
+    /* Tool-specific: “Stealth writing / bypass” */
+    "stealth writer what is": "Tools that claim to ‘humanize’ or hide AI-generated text from detectors.",
+    "stealth writer price": "We offer flexible stealth writer plans to our users. Get a quote through our Contact page.",
+    "stealth writer risk": "We don’t support bypassing detectors. Such tools are unreliable, may degrade quality, and can violate academic or workplace policies.",
+    "stealth writer alternative": "Write transparently: draft, revise with paraphrasing/grammar tools, cite sources, and use originality checks to fix issues early.",
+
+    /* Timings / durations (practical) */
+    "how long plagiarism check": "Usually seconds to a couple of minutes for typical documents; large files or busy times can take longer.",
+    "how long paraphrase": "Instant-adjust tone/mode and see results immediately.",
+    "how long grammar check": "Real-time as you type in the editor.",
+    "how long ai detection": "Seconds-results depend on text length and quality.",
+
+    /* Integrations & formats */
+    "supported files": "DOCX, PDF, TXT, and Markdown. Export to DOCX/PDF or copy to clipboard.",
+    "integrations": "Connect Google Drive, Dropbox, Teams, Slack. Choose your preferred AI models-no lock-in.",
+    "academic formats": "APA, MLA, Chicago, IEEE and more via the Citations Helper.",
+
+    /* Accounts, limits, support */
+    "limits": "Free has fair-use limits. Pro increases limits and unlocks premium features.",
+    "account required": "Many free tools work without signup. Sign in for full workspace and history.",
+    "account creation, sign up": "Get in touch with us through our Contact page and get registered instantly by our team.",
+    "password reset": "Handled by our admin team-contact support to retrieve or reset your password.",
+    "contact": "Support: support@checkai.com · Sales: sales@checkai.com · Phone: +92 341 837 8430",
+    "support time": "We typically reply within 1 business day."
+  };
+
+  // ========================== TOPIC GROUPS ==========================
+  // Typing a base term (e.g., "turnitin") shows this whole bundle.
+  const TOPIC_GROUPS = {
+    "turnitin": [
+      "turnitin how it works",
+      "turnitin pricing",
+      "turnitin report time",
+      "turnitin vs sniptext"
+    ],
+    "quillbot": [
+      "quillbot how it works",
+      "quillbot pricing",
+      "quillbot vs sniptext"
+    ],
+    "ai detection": [
+      "ai detection tools",
+      "ai detection accuracy",
+      "ai detection vs sniptext"
+    ],
+    "chatgpt": [
+      "chatgpt how it works",
+      "chatgpt pricing",
+      "chatgpt vs sniptext"
+    ],
+    "grammarly": [
+      "grammarly how it works",
+      "grammarly pricing",
+      "grammarly vs sniptext"
+    ],
+    "stealth writer": [
+      "stealth writer what is",
+      "stealth writer price",
+      "stealth writer risk",
+      "stealth writer alternative"
+    ]
+  };
+
+  // ========================== ALIASES ==========================
+  // IMPORTANT: Base terms NOT mapped so bundles can trigger.
+  const ALIASES = {
+    /* Core */
+    "what is snip text": "what is sniptext",
+    "what is sniptext?": "what is sniptext",
+    "how does it work": "how it works",
+    "get started": "how it works",
+    "is there a free plan": "free plan",
+    "pro": "pro vs free",
+    "pricing plans": "pro vs free",
+    "cost": "pro vs free",
+    "price": "pro vs free",
+    "privacy policy": "privacy",
+    "store my text": "privacy",
+    "data storage": "privacy",
+
+    /* Turnitin */
+    "turnitin price": "turnitin pricing",
+    "turnitin pricing plans": "turnitin pricing",
+    "turnitin time": "turnitin report time",
+    "turnitin duration": "turnitin report time",
+    "turnitin report": "turnitin report time",
+    "compare turnitin": "turnitin vs sniptext",
+
+    /* QuillBot */
+    "quillbot price": "quillbot pricing",
+    "quillbot pricing": "quillbot pricing",
+    "quillbot vs": "quillbot vs sniptext",
+
+    /* AI detection */
+    "ai detector": "ai detection tools",
+    "detect ai": "ai detection tools",
+    "ai detection accuracy": "ai detection accuracy",
+
+    /* ChatGPT */
+    "chat gpt": "chatgpt how it works",
+    "chatgpt price": "chatgpt pricing",
+    "chatgpt pricing": "chatgpt pricing",
+    "chatgpt vs": "chatgpt vs sniptext",
+
+    /* Grammarly */
+    "grammarly price": "grammarly pricing",
+    "grammarly pricing": "grammarly pricing",
+    "grammarly vs": "grammarly vs sniptext",
+
+    /* Stealth writing */
+    "humanizer": "stealth writer what is",
+    "bypass detector": "stealth writer risk",
+    "avoid detection": "stealth writer risk",
+    "undetectable ai": "stealth writer risk",
+    "humanize ai": "stealth writer risk",
+    "safe alternative": "stealth writer alternative",
+
+    /* Durations */
+    "how long turnitin": "turnitin report time",
+    "plagiarism time": "how long plagiarism check",
+    "paraphrase time": "how long paraphrase",
+    "grammar time": "how long grammar check",
+    "ai detection time": "how long ai detection",
+
+    /* Misc */
+    "files": "supported files",
+    "formats": "supported files",
+    "integrations list": "integrations",
+    "citation styles": "academic formats",
+    "limits?": "limits",
+    "quota": "limits",
+    "signup": "account required",
+    "sign up": "account required",
+    "reset password": "password reset",
+    "forgot password": "password reset",
+    "support": "support time",
+    "email": "contact",
+    "phone": "contact"
+  };
+
+  // ========================== ELEMENTS ==========================
+  const launcher = document.getElementById('chat-launcher');
+  const panel    = document.getElementById('chat-panel');
+  const bodyEl   = document.getElementById('chat-body');
+  const form     = document.getElementById('chat-form');
+  const input    = document.getElementById('chat-text');
+  const quick    = document.getElementById('chat-quick');
+  const closeBtn = document.getElementById('chat-close');
+  const minBtn   = document.getElementById('chat-minimize');
+
+  if (!launcher || !panel || !bodyEl || !form || !input) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ========================== ICONS / LAUNCHER ==========================
+  const ICONS = {
+    chat: `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 6.5A3.5 3.5 0 0 1 7.5 3h9A3.5 3.5 0 0 1 20 6.5v6A3.5 3.5 0 0 1 16.5 16H11l-3.8 3.1c-.9.7-2.2-.1-2.2-1.2V16A3.5 3.5 0 0 1 4 12.5v-6z"
+              fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="9.8" r="1.25" fill="currentColor"/>
+        <circle cx="12" cy="9.8" r="1.25" fill="currentColor"/>
+        <circle cx="15" cy="9.8" r="1.25" fill="currentColor"/>
+      </svg>
+    `
+  };
+
+  function setLauncher(type = 'chat', label = 'Chat'){
+    const icon = ICONS[type] || ICONS.chat;
+    const labelSpan = launcher.querySelector('.chat-label');
+    const badge = launcher.querySelector('.notify-badge') || document.createElement('span');
+    badge.className = 'notify-badge';
+    badge.hidden = true;
+
+    launcher.innerHTML = icon;
+    if (labelSpan){
+      launcher.appendChild(labelSpan);
+      labelSpan.textContent = label;
+    } else {
+      const span = document.createElement('span');
+      span.className = 'chat-label';
+      span.textContent = label;
+      launcher.appendChild(span);
+    }
+    launcher.appendChild(badge);
+
+    launcher.title = 'Chat';
+    launcher.setAttribute('aria-label', `Chat – open chat`);
+  }
+
+  // ========================== HELPERS ==========================
+  const norm = s => (s||"").toLowerCase().replace(/[^\w\s]/g,' ').replace(/\s+/g,' ').trim();
+
+  // Build HTML for a topic bundle (inline styles ensure visibility in your theme)
+  function renderTopicBundle(topicKey){
+    const keys = TOPIC_GROUPS[topicKey] || [];
+    if (!keys.length) return null;
+
+    const items = keys
+      .filter(k => QA[k])
+      .map(k => {
+        const q = k.charAt(0).toUpperCase() + k.slice(1);
+        const prettyQ = q.replace(/\b(how it works|pricing|report time|what is|risk|price|alternative|vs sniptext)\b/ig, m => m.toLowerCase());
+        return `
+          <div style="margin:0 0 .55rem 0;">
+            <div style="font-weight:600; margin-bottom:.15rem; color:#fff;">${prettyQ}</div>
+            <div style="opacity:.95; color:rgba(255,255,255,.95);">${QA[k]}</div>
+          </div>
+        `;
+      }).join("");
+
+    return `
+      <div role="group" aria-label="${topicKey} quick answers" style="color:rgba(255,255,255,.96);">
+        ${items || "Sorry, no details yet."}
+      </div>
+    `;
+  }
+
+  // Bot/user message renderers (bot renders HTML safely)
+  function botSay(htmlOrText){
+    const row = document.createElement('div');
+    row.className = 'chat-msg bot';
+    row.innerHTML = `<div class="bubble">${htmlOrText}</div>`;
+    bodyEl.appendChild(row);
+    bodyEl.scrollTo({ top: bodyEl.scrollHeight, behavior: reduce ? 'auto':'smooth' });
+  }
+  function userSay(text){
+    const row = document.createElement('div');
+    row.className = 'chat-msg user';
+    row.innerHTML = `<div class="bubble">${text}</div>`;
+    bodyEl.appendChild(row);
+    bodyEl.scrollTo({ top: bodyEl.scrollHeight, behavior: reduce ? 'auto':'smooth' });
+  }
+
+  // Main answer function (returns a STRING; bundle rendered to HTML string)
+  function answer(raw){
+    const qRaw = (raw || "");
+    const q = norm(qRaw);
+    if (!q) return "";
+
+    // 1) Topic bundle if base term appears (exact word match anywhere)
+    for (const topic of Object.keys(TOPIC_GROUPS)){
+      const rx = new RegExp(`(^|\\b)${topic.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\$&')}(\\b|$)`, 'i');
+      if (rx.test(q)){
+        const html = renderTopicBundle(topic);
+        if (html) return html; // return HTML string (not an object)
+      }
+    }
+
+    // 2) Direct QA match
+    if (QA[q]) return QA[q];
+
+    // 3) Alias → canonical
+    if (ALIASES[q] && QA[ALIASES[q]]) return QA[ALIASES[q]];
+
+    // 4) Contains / fuzzy match
+    for (const key of Object.keys(QA)){
+      const k = norm(key);
+      if (q.includes(k) || k.includes(q)) return QA[key];
+    }
+
+    // 5) Token overlap heuristic
+    const tokens = new Set(q.split(' '));
+    let bestKey = null, best = 0;
+    for (const key of Object.keys(QA)){
+      const ks = new Set(norm(key).split(' '));
+      let score = 0; ks.forEach(t => tokens.has(t) && score++);
+      if (score > best){ best = score; bestKey = key; }
+    }
+    if (best >= 1 && bestKey) return QA[bestKey];
+
+    // 6) Fallback suggestions
+    const tips = Object.keys(QA).slice(0,5).map(k => `• ${k}`).join('<br>');
+    return `Sorry, I’m not sure yet.<br>${tips}`;
+  }
+
+  // ========================== UI HOOKS ==========================
+  function populateQuickChips(){
+    const keys = Object.keys(QA);
+    quick.innerHTML = '';
+    keys.slice(0,6).forEach(k => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chat-chip';
+      btn.textContent = k.charAt(0).toUpperCase() + k.slice(1);
+      btn.addEventListener('click', () => {
+        userSay(btn.textContent);
+        const reply = answer(btn.textContent);
+        botSay(reply);
+      });
+      quick.appendChild(btn);
+    });
+  }
+
+  function openPanel(){
+    panel.hidden = false;
+    panel.classList.add('is-open');
+    launcher.classList.add('open');
+    launcher.setAttribute('aria-expanded', 'true');
+    if (!panel.dataset.greeted){
+      botSay("Hi! Ask about pricing, features, privacy, or anything else.");
+      populateQuickChips();
+      panel.dataset.greeted = '1';
+      launcher.querySelector('.notify-badge')?.removeAttribute('hidden');
+    }
+    bodyEl.focus({ preventScroll: true });
+    setTimeout(()=>input.focus(), 30);
+    launcher.querySelector('.notify-badge')?.setAttribute('hidden','');
+  }
+  function closePanel(){
+    panel.classList.remove('is-open');
+    launcher.classList.remove('open');
+    launcher.setAttribute('aria-expanded', 'false');
+    setTimeout(()=>{ panel.hidden = true; }, 120);
+    launcher.focus();
+  }
+
+  launcher.addEventListener('click', () => panel.hidden ? openPanel() : closePanel());
+  closeBtn?.addEventListener('click', closePanel);
+  minBtn?.addEventListener('click', closePanel);
+
+  // close on outside click
+  document.addEventListener('click', (e) => {
+    if (panel.hidden) return;
+    const within = panel.contains(e.target) || launcher.contains(e.target);
+    if (!within) closePanel();
+  });
+
+  // Esc to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !panel.hidden) closePanel();
+  });
+
+  // submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = input.value.trim(); if (!val) return;
+    userSay(val);
+    const reply = answer(val);
+    botSay(reply);
+    input.value = '';
+    input.focus();
+  });
+
+  // responsive height
+  const applyViewportSizing = () => {
+    const vh = (window.visualViewport?.height || window.innerHeight);
+    const maxH = Math.max(260, Math.floor(vh * 0.7));
+    panel.style.maxHeight = maxH + 'px';
+  };
+  applyViewportSizing();
+  window.addEventListener('resize', applyViewportSizing);
+  window.visualViewport?.addEventListener('resize', applyViewportSizing);
+
+  // init icon + label
+  setLauncher('chat', 'Chat');
+})();
 
 
 

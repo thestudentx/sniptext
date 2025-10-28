@@ -892,7 +892,7 @@ body{
     left.style.gap = '4px';
 
     const title = document.createElement('strong');
-    title.textContent = `${p.label} — ${p.zone}`;
+    title.textContent = `${p.label} - ${p.zone}`;
     left.appendChild(title);
 
     const times = document.createElement('div');
@@ -1123,7 +1123,7 @@ body{
         const eZ = toZoned(s.endUTC, p.zone);
         const st = `${String(sZ.hh).padStart(2,'0')}:${String(sZ.mm).padStart(2,'0')}`;
         const et = `${String(eZ.hh).padStart(2,'0')}:${String(eZ.mm).padStart(2,'0')}`;
-        return `${p.label} — ${st} to ${et} (${p.zone})`;
+        return `${p.label} - ${st} to ${et} (${p.zone})`;
       });
       return lines.join(' | ');
     };
