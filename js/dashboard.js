@@ -227,7 +227,7 @@ if (modelKey === "turnitin1" || modelKey === "chatgpt1" || modelKey === "stealth
   const perModel = {
     turnitin1: {
       email: "thesniptext@gmail.com",
-      password: "Plag@123",
+      password: "Turnit@123",
       linkText: "Go to Turnitin",
     },
     chatgpt1: {
