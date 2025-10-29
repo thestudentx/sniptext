@@ -552,8 +552,8 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "support time": "We typically reply within 1 business day."
   };
 
-  // ========================== TOPIC GROUPS ==========================
-  // Typing a base term (e.g., "turnitin") shows this whole bundle.
+  // ========================== TOPIC GROUPS (question lists) ==========================
+  // Typing a base term (e.g., "turnitin") shows these related QUESTIONS (no answers).
   const TOPIC_GROUPS = {
     "turnitin": [
       "turnitin how it works",
@@ -589,8 +589,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     ]
   };
 
-  // ========================== ALIASES ==========================
-  // IMPORTANT: Base terms NOT mapped so bundles can trigger.
+  // ========================== ALIASES (base terms NOT mapped) ==========================
   const ALIASES = {
     /* Core */
     "what is snip text": "what is sniptext",
@@ -606,7 +605,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "store my text": "privacy",
     "data storage": "privacy",
 
-    /* Turnitin */
+    /* Turnitin (no alias for plain 'turnitin') */
     "turnitin price": "turnitin pricing",
     "turnitin pricing plans": "turnitin pricing",
     "turnitin time": "turnitin report time",
@@ -614,28 +613,28 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "turnitin report": "turnitin report time",
     "compare turnitin": "turnitin vs sniptext",
 
-    /* QuillBot */
+    /* QuillBot (no alias for plain 'quillbot') */
     "quillbot price": "quillbot pricing",
     "quillbot pricing": "quillbot pricing",
     "quillbot vs": "quillbot vs sniptext",
 
-    /* AI detection */
+    /* AI detection (no alias for plain 'ai detection') */
     "ai detector": "ai detection tools",
     "detect ai": "ai detection tools",
     "ai detection accuracy": "ai detection accuracy",
 
-    /* ChatGPT */
+    /* ChatGPT (no alias for plain 'chatgpt') */
     "chat gpt": "chatgpt how it works",
     "chatgpt price": "chatgpt pricing",
     "chatgpt pricing": "chatgpt pricing",
     "chatgpt vs": "chatgpt vs sniptext",
 
-    /* Grammarly */
+    /* Grammarly (no alias for plain 'grammarly') */
     "grammarly price": "grammarly pricing",
     "grammarly pricing": "grammarly pricing",
     "grammarly vs": "grammarly vs sniptext",
 
-    /* Stealth writing */
+    /* Stealth writing (no alias for plain 'stealth writer') */
     "humanizer": "stealth writer what is",
     "bypass detector": "stealth writer risk",
     "avoid detection": "stealth writer risk",
@@ -677,7 +676,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   const minBtn   = document.getElementById('chat-minimize');
 
   if (!launcher || !panel || !bodyEl || !form || !input) return;
-
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ========================== ICONS / LAUNCHER ==========================
@@ -692,7 +690,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       </svg>
     `
   };
-
   function setLauncher(type = 'chat', label = 'Chat'){
     const icon = ICONS[type] || ICONS.chat;
     const labelSpan = launcher.querySelector('.chat-label');
@@ -701,17 +698,9 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     badge.hidden = true;
 
     launcher.innerHTML = icon;
-    if (labelSpan){
-      launcher.appendChild(labelSpan);
-      labelSpan.textContent = label;
-    } else {
-      const span = document.createElement('span');
-      span.className = 'chat-label';
-      span.textContent = label;
-      launcher.appendChild(span);
-    }
+    if (labelSpan){ launcher.appendChild(labelSpan); labelSpan.textContent = label; }
+    else { const span = document.createElement('span'); span.className = 'chat-label'; span.textContent = label; launcher.appendChild(span); }
     launcher.appendChild(badge);
-
     launcher.title = 'Chat';
     launcher.setAttribute('aria-label', `Chat – open chat`);
   }
@@ -719,32 +708,47 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   // ========================== HELPERS ==========================
   const norm = s => (s||"").toLowerCase().replace(/[^\w\s]/g,' ').replace(/\s+/g,' ').trim();
 
-  // Build HTML for a topic bundle (inline styles ensure visibility in your theme)
-  function renderTopicBundle(topicKey){
-    const keys = TOPIC_GROUPS[topicKey] || [];
+  // Renders ONLY questions (chips) for a topic. Clicking a chip answers it.
+  function renderQuestionList(topicKey){
+    const keys = (TOPIC_GROUPS[topicKey] || []).filter(k => QA[k]);
     if (!keys.length) return null;
 
-    const items = keys
-      .filter(k => QA[k])
-      .map(k => {
-        const q = k.charAt(0).toUpperCase() + k.slice(1);
-        const prettyQ = q.replace(/\b(how it works|pricing|report time|what is|risk|price|alternative|vs sniptext)\b/ig, m => m.toLowerCase());
-        return `
-          <div style="margin:0 0 .55rem 0;">
-            <div style="font-weight:600; margin-bottom:.15rem; color:#fff;">${prettyQ}</div>
-            <div style="opacity:.95; color:rgba(255,255,255,.95);">${QA[k]}</div>
-          </div>
-        `;
-      }).join("");
+    const chips = keys.map(k => {
+      const label = k.charAt(0).toUpperCase() + k.slice(1);
+      return `
+        <button
+          type="button"
+          class="qa-chip"
+          data-qkey="${k.replace(/"/g,'&quot;')}"
+          style="
+            display:inline-block; margin:.25rem .35rem .35rem 0; padding:.42rem .7rem;
+            font: 600 0.86rem/1.1 var(--font-body, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+            color:#fff; background:rgba(255,255,255,.08);
+            border:1px solid rgba(255,255,255,.18); border-radius:999px; cursor:pointer;
+            transition:transform .15s ease, background .2s ease, border-color .2s ease;
+            backdrop-filter: blur(6px);
+          "
+          onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.transform='translateY(-1px)'"
+          onmouseout="this.style.background='rgba(255,255,255,.08)'; this.style.transform='none'">
+          ${label}
+        </button>
+      `;
+    }).join("");
 
     return `
-      <div role="group" aria-label="${topicKey} quick answers" style="color:rgba(255,255,255,.96);">
-        ${items || "Sorry, no details yet."}
+      <div role="group" aria-label="${topicKey} related questions" style="color:rgba(255,255,255,.96);">
+        <div style="font-weight:700; margin:0 0 .5rem 0; color:#fff;">
+          Related questions for “${topicKey.charAt(0).toUpperCase()+topicKey.slice(1)}”
+        </div>
+        <div>${chips}</div>
+        <div style="margin-top:.65rem; font-size:.85rem; opacity:.85;">
+          Tap a question above to see its answer.
+        </div>
       </div>
     `;
   }
 
-  // Bot/user message renderers (bot renders HTML safely)
+  // Bot/user message renderers
   function botSay(htmlOrText){
     const row = document.createElement('div');
     row.className = 'chat-msg bot';
@@ -760,18 +764,20 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     bodyEl.scrollTo({ top: bodyEl.scrollHeight, behavior: reduce ? 'auto':'smooth' });
   }
 
-  // Main answer function (returns a STRING; bundle rendered to HTML string)
+  // Core answer logic:
+  // - If query contains a base topic term -> show QUESTIONS list for that topic.
+  // - Else resolve to an answer from QA/ALIASES/fuzzy.
   function answer(raw){
     const qRaw = (raw || "");
     const q = norm(qRaw);
     if (!q) return "";
 
-    // 1) Topic bundle if base term appears (exact word match anywhere)
+    // 1) Topic list if base term appears
     for (const topic of Object.keys(TOPIC_GROUPS)){
       const rx = new RegExp(`(^|\\b)${topic.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\$&')}(\\b|$)`, 'i');
       if (rx.test(q)){
-        const html = renderTopicBundle(topic);
-        if (html) return html; // return HTML string (not an object)
+        const html = renderQuestionList(topic);
+        if (html) return html;
       }
     }
 
@@ -826,7 +832,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     launcher.classList.add('open');
     launcher.setAttribute('aria-expanded', 'true');
     if (!panel.dataset.greeted){
-      botSay("Hi! Ask about pricing, features, privacy, or anything else.");
+      botSay("Hi! Ask about pricing, features, privacy, or type a tool name like Turnitin or QuillBot.");
       populateQuickChips();
       panel.dataset.greeted = '1';
       launcher.querySelector('.notify-badge')?.removeAttribute('hidden');
@@ -847,7 +853,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   closeBtn?.addEventListener('click', closePanel);
   minBtn?.addEventListener('click', closePanel);
 
-  // close on outside click
+  // Close on outside click
   document.addEventListener('click', (e) => {
     if (panel.hidden) return;
     const within = panel.contains(e.target) || launcher.contains(e.target);
@@ -859,18 +865,34 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     if (e.key === 'Escape' && !panel.hidden) closePanel();
   });
 
-  // submit
+  // Submit
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const val = input.value.trim(); if (!val) return;
     userSay(val);
-    const reply = answer(val);
-    botSay(reply);
+    botSay(answer(val));
     input.value = '';
     input.focus();
   });
 
-  // responsive height
+  // ========================== CLICK-TO-ANSWER (DELEGATION) ==========================
+  // Handles clicks on generated question chips inside the bot's message.
+  bodyEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('button.qa-chip');
+    if (!btn) return;
+    const qKey = btn.getAttribute('data-qkey');
+    if (!qKey) return;
+
+    // Show user's selected question
+    const pretty = qKey.charAt(0).toUpperCase() + qKey.slice(1);
+    userSay(pretty);
+
+    // Return the answer
+    const ans = QA[qKey] || "Sorry, I don’t have that yet.";
+    botSay(ans);
+  });
+
+  // Responsive height
   const applyViewportSizing = () => {
     const vh = (window.visualViewport?.height || window.innerHeight);
     const maxH = Math.max(260, Math.floor(vh * 0.7));
@@ -880,7 +902,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   window.addEventListener('resize', applyViewportSizing);
   window.visualViewport?.addEventListener('resize', applyViewportSizing);
 
-  // init icon + label
+  // Init icon + label
   setLauncher('chat', 'Chat');
 })();
 
