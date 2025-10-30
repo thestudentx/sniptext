@@ -487,48 +487,50 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 })();
 
+
+// -------------------------- CHAT / Q&A WIDGET --------------------------
 (() => {
   // ========================== Q&A CONFIG ==========================
   const QA = {
     /* Core (keep these near top for quick chips) */
-    "how it works": "Add content → choose tools → review changes with explain-why → export/share. Private by design and fast.",
-    "free plan": "Yes-core checks and free tools with usage limits. Upgrade to Pro for higher limits and extras.",
-    "pro vs free": "Pro adds higher limits, batch files, premium AI models, citation helpers, and priority support. While free plan has 20+ free tools added.",
-    "plagiarism checker": "Flags overlaps and paraphrases with similarity score and source hints-verify and cite as needed.",
-    "paraphraser": "Rewrites while preserving meaning. Choose tones like Academic, Concise, Casual, Fluent, or Formal.",
-    "contact": "Support: support@checkai.pro  · Phone: +92 341 837 8430",
-    "privacy": "Processing runs in-browser when possible. When cloud models are used, your text isn’t used to train them. You can export/delete anytime.",
+    "how it works": "Choose a tool → Upload content → review changes with explain-why → export/share. Private by design and fast.",
+    "pro vs free": "Free includes 20+ tools with fair-use limits. Pro unlocks higher quotas, batch files, premium AI models, citation helpers, and priority support.",
+    "sniptext plagiarism checker": "Flags overlaps and paraphrases with similarity score and source hints-verify and cite as needed.",
+    "sniptext paraphraser": "Rewrites while preserving meaning. Choose tones like Academic, Concise, Casual, Fluent, or Formal.",
+    "contact": "Support: <a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decoration:underline;'>support@checkai.pro</a>  · Phone: +92 341 837 8430",
+    "privacy": "Processing runs in-browser when possible. When cloud models are used, your text is not used to train them. You can export/delete anytime.",
     "what is sniptext": "An all-in-one writing workspace with AI-powered grammar, paraphrasing, originality checks, and fast export.",
 
     /* Tool-specific: Turnitin */
-    "turnitin pricing": "Turnitin is institution-licensed; students typically access it via their school. Get a quote through our Contact page.",
+    "turnitin pricing": "Reach us via <a href='https://checkai.pro/contact' target='_blank' style='color:#4da6ff;text-decoration:underline;'>Contact page</a> to get the best quote for a Turnitin Student/Instructor account, or email us at <a href='mailto:<a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decoration:underline;'>support@checkai.pro</a>' style='color:#4da6ff;text-decoration:underline;'><a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decoration:underline;'>support@checkai.pro</a></a>.",
     "turnitin how it works": "Submissions are checked against web, publications, and institutional databases; you get a similarity report to review and cite correctly.",
-    "turnitin report time": "Often within minutes; during peak times it can take longer (up to ~24 hours).",
+    "turnitin report time": "Often within minutes; during peak times it can take longer.",
     "turnitin vs sniptext": "Turnitin is an academic originality platform with institutional licensing. SnipText offers writer-side tools to draft, check, and revise before submission.",
 
     /* Tool-specific: QuillBot */
-    "quillbot pricing": "We offer flexible Quillbot plans for 1 month, 3 months, 6 months, and 12 months duration. For pricing, please contact us through Contact page.",
+    "quillbot pricing": "We offer flexible QuillBot plans (1, 3, 6, or 12 months). For current pricing, please contact us via the <a href='https://checkai.pro/contact' target='_blank' style='color:#4da6ff;text-decoration:underline;'>Contact page</a> or email us at <a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decorationG:underline;'>support@checkai.pro</a>.",
     "quillbot how it works": "AI rephrasing with modes (e.g., formal/fluency). It rewrites text while aiming to preserve meaning.",
     "quillbot vs sniptext": "QuillBot focuses on paraphrasing. SnipText combines paraphrasing with grammar, originality insights, citations, and export-inside one editor.",
 
     /* Tool-specific: AI detection (general) */
     "ai detection tools": "They estimate the likelihood text was AI-generated using statistical cues. Use as a signal, not a verdict-false positives/negatives occur.",
     "ai detection accuracy": "Varies by tool and text. Short or heavily edited text can be misclassified-always apply human judgment.",
+    "ai detection pricing": "We offer AI detection plans for different durations. For pricing, please contact us through <a href='https://checkai.pro/contact' target='_blank' style='color:#4da6ff;text-decoration:underline;'>Contact page</a> or email us at <a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decoration:underline;'>support@checkai.pro</a>",
     "ai detection vs sniptext": "SnipText offers an AI signals check as guidance plus concrete editing tools. We encourage transparent, ethical writing practices.",
 
     /* Tool-specific: ChatGPT (OpenAI) */
-    "chatgpt pricing": "We offer ChatGPT-5 for 1 & 2 months duration. For pricing, please contact us through Contact page.",
+    "chatgpt pricing": "We offer ChatGPT-5 subscriptions for 1-month and 2-month durations. For current pricing, please reach out via the <a href='https://checkai.pro/contact' target='_blank' style='color:#4da6ff;text-decoration:underline;'>Contact page</a> or email us at <a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decoration:underline;'>support@checkai.pro</a>.",
     "chatgpt how it works": "You prompt a large language model for drafting or ideas. Always review for accuracy and cite sources when needed.",
     "chatgpt vs sniptext": "ChatGPT is a general chat model. SnipText is a writing workspace with originality checks, citations, editor view, and document exports.",
 
     /* Tool-specific: Grammarly */
-    "grammarly pricing": "Free basic checks plus Premium/Business plans. For pricing, please contact us through Contact page.",
+    "grammarly pricing": "Free basic checks plus Premium/Business plans. For pricing, please contact us through <a href='https://checkai.pro/contact' target='_blank' style='color:#4da6ff;text-decoration:underline;'>Contact page</a> or email us at <a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decoration:underline;'>support@checkai.pro</a>.",
     "grammarly how it works": "Real-time grammar, clarity, and tone suggestions in editor extensions and web apps.",
     "grammarly vs sniptext": "Grammarly focuses on grammar/style. SnipText adds paraphrasing, originality insights, citations, and export workflows in one place.",
 
     /* Tool-specific: “Stealth writing / bypass” */
     "stealth writer what is": "Tools that claim to ‘humanize’ or hide AI-generated text from detectors.",
-    "stealth writer price": "We offer flexible stealth writer plans to our users. Get a quote through our Contact page.",
+    "stealth writer price": "We offer flexible stealth writer plans to our users. Get a quote through our <a href='https://checkai.pro/contact' target='_blank' style='color:#4da6ff;text-decoration:underline;'>Contact page</a> or email us at <a href='mailto:support@checkai.pro' style='color:#4da6ff;text-decoration:underline;'>support@checkai.pro</a>.",
     "stealth writer risk": "We don’t support bypassing detectors. Such tools are unreliable, may degrade quality, and can violate academic or workplace policies.",
     "stealth writer alternative": "Write transparently: draft, revise with paraphrasing/grammar tools, cite sources, and use originality checks to fix issues early.",
 
@@ -553,8 +555,15 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   };
 
   // ========================== TOPIC GROUPS (question lists) ==========================
-  // Typing a base term (e.g., "turnitin") shows these related QUESTIONS (no answers).
   const TOPIC_GROUPS = {
+    "pricing": [
+      "turnitin pricing",
+      "quillbot pricing",
+      "grammarly pricing",
+      "ai detection pricing",
+      "chatgpt pricing",
+      "stealth writer price"
+    ],
     "turnitin": [
       "turnitin how it works",
       "turnitin pricing",
@@ -569,6 +578,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "ai detection": [
       "ai detection tools",
       "ai detection accuracy",
+      "ai detection pricing",
       "ai detection vs sniptext"
     ],
     "chatgpt": [
@@ -589,7 +599,17 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     ]
   };
 
-  // ========================== ALIASES (base terms NOT mapped) ==========================
+  // Topic synonyms (so "cost", "fees", etc. trigger the 'pricing' bundle)
+  const TOPIC_SYNONYMS = {
+    "pricing": [
+      "pricing", "pricing plan", "pricing plans", "plan pricing",
+      "price", "prices", "price list", "tool pricing", "tools pricing",
+      "cost", "costs", "fee", "fees", "rates", "packages",
+      "subscription", "subscriptions", "subscription pricing"
+    ]
+  };
+
+  // ========================== ALIASES (note: no price/cost here) ==========================
   const ALIASES = {
     /* Core */
     "what is snip text": "what is sniptext",
@@ -598,14 +618,12 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "get started": "how it works",
     "is there a free plan": "free plan",
     "pro": "pro vs free",
-    "pricing plans": "pro vs free",
-    "cost": "pro vs free",
-    "price": "pro vs free",
+    "pricing plans pro": "pro vs free", // keep this specific so "pricing plans" alone still triggers pricing hub
     "privacy policy": "privacy",
     "store my text": "privacy",
     "data storage": "privacy",
 
-    /* Turnitin (no alias for plain 'turnitin') */
+    /* Turnitin */
     "turnitin price": "turnitin pricing",
     "turnitin pricing plans": "turnitin pricing",
     "turnitin time": "turnitin report time",
@@ -613,28 +631,25 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "turnitin report": "turnitin report time",
     "compare turnitin": "turnitin vs sniptext",
 
-    /* QuillBot (no alias for plain 'quillbot') */
+    /* QuillBot */
     "quillbot price": "quillbot pricing",
-    "quillbot pricing": "quillbot pricing",
     "quillbot vs": "quillbot vs sniptext",
 
-    /* AI detection (no alias for plain 'ai detection') */
+    /* AI detection */
     "ai detector": "ai detection tools",
     "detect ai": "ai detection tools",
     "ai detection accuracy": "ai detection accuracy",
 
-    /* ChatGPT (no alias for plain 'chatgpt') */
+    /* ChatGPT */
     "chat gpt": "chatgpt how it works",
     "chatgpt price": "chatgpt pricing",
-    "chatgpt pricing": "chatgpt pricing",
     "chatgpt vs": "chatgpt vs sniptext",
 
-    /* Grammarly (no alias for plain 'grammarly') */
+    /* Grammarly */
     "grammarly price": "grammarly pricing",
-    "grammarly pricing": "grammarly pricing",
     "grammarly vs": "grammarly vs sniptext",
 
-    /* Stealth writing (no alias for plain 'stealth writer') */
+    /* Stealth writing */
     "humanizer": "stealth writer what is",
     "bypass detector": "stealth writer risk",
     "avoid detection": "stealth writer risk",
@@ -654,8 +669,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "formats": "supported files",
     "integrations list": "integrations",
     "citation styles": "academic formats",
-    "limits?": "limits",
-    "quota": "limits",
     "signup": "account required",
     "sign up": "account required",
     "reset password": "password reset",
@@ -764,18 +777,26 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     bodyEl.scrollTo({ top: bodyEl.scrollHeight, behavior: reduce ? 'auto':'smooth' });
   }
 
-  // Core answer logic:
-  // - If query contains a base topic term -> show QUESTIONS list for that topic.
-  // - Else resolve to an answer from QA/ALIASES/fuzzy.
+  // Core answer logic (topic bundles + direct answers)
   function answer(raw){
     const qRaw = (raw || "");
     const q = norm(qRaw);
     if (!q) return "";
 
-    // 1) Topic list if base term appears
+    // 1) Topic bundles via exact topic or synonyms
     for (const topic of Object.keys(TOPIC_GROUPS)){
-      const rx = new RegExp(`(^|\\b)${topic.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\$&')}(\\b|$)`, 'i');
-      if (rx.test(q)){
+      const escape = s => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+      // topic exact word match
+      let trigger = new RegExp(`(^|\\b)${escape(topic)}(\\b|$)`, 'i').test(q);
+
+      // topic synonyms
+      if (!trigger && TOPIC_SYNONYMS[topic]){
+        for (const syn of TOPIC_SYNONYMS[topic]){
+          if (new RegExp(`(^|\\b)${escape(syn)}(\\b|$)`, 'i').test(q)){ trigger = true; break; }
+        }
+      }
+      if (trigger){
         const html = renderQuestionList(topic);
         if (html) return html;
       }
@@ -808,31 +829,41 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     return `Sorry, I’m not sure yet.<br>${tips}`;
   }
 
-  // ========================== UI HOOKS ==========================
+  // ========================== DEFAULT QUICK CHIPS (custom order) ==========================
+  const DEFAULT_CHIPS = [
+    { label: 'How it works', query: 'how it works' },
+    { label: 'Pro vs Free',  query: 'pro vs free' },
+    { label: 'Privacy',      query: 'privacy' },
+    { label: 'Turnitin',     query: 'turnitin' },   // shows related questions
+    { label: 'QuillBot',     query: 'quillbot' },   // shows related questions
+    { label: 'ChatGPT',      query: 'chatgpt' }     // shows related questions
+  ];
+
   function populateQuickChips(){
-    const keys = Object.keys(QA);
     quick.innerHTML = '';
-    keys.slice(0,6).forEach(k => {
+    DEFAULT_CHIPS.forEach(({label, query}) => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'chat-chip';
-      btn.textContent = k.charAt(0).toUpperCase() + k.slice(1);
+      btn.textContent = label;
+      btn.setAttribute('data-query', query);
       btn.addEventListener('click', () => {
-        userSay(btn.textContent);
-        const reply = answer(btn.textContent);
+        userSay(label);
+        const reply = answer(query);
         botSay(reply);
       });
       quick.appendChild(btn);
     });
   }
 
+  // ========================== OPEN/CLOSE & WIRING ==========================
   function openPanel(){
     panel.hidden = false;
     panel.classList.add('is-open');
     launcher.classList.add('open');
     launcher.setAttribute('aria-expanded', 'true');
     if (!panel.dataset.greeted){
-      botSay("Hi! Ask about pricing, features, privacy, or type a tool name like Turnitin or QuillBot.");
+      botSay("Hi! Pick a quick topic below or type things like “pricing”, “costs”, or a tool name (Turnitin, QuillBot, ChatGPT).");
       populateQuickChips();
       panel.dataset.greeted = '1';
       launcher.querySelector('.notify-badge')?.removeAttribute('hidden');
@@ -875,19 +906,15 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     input.focus();
   });
 
-  // ========================== CLICK-TO-ANSWER (DELEGATION) ==========================
-  // Handles clicks on generated question chips inside the bot's message.
+  // Click-to-answer for generated question chips
   bodyEl.addEventListener('click', (e) => {
     const btn = e.target.closest('button.qa-chip');
     if (!btn) return;
     const qKey = btn.getAttribute('data-qkey');
     if (!qKey) return;
 
-    // Show user's selected question
     const pretty = qKey.charAt(0).toUpperCase() + qKey.slice(1);
     userSay(pretty);
-
-    // Return the answer
     const ans = QA[qKey] || "Sorry, I don’t have that yet.";
     botSay(ans);
   });
