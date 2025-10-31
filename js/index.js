@@ -1424,6 +1424,152 @@ function resolveAnswer(raw, opts = {}){
   initOnce();
 })();
 
+/* SnipText – Chat Teaser
+   Shows periodic teaser messages near the launcher, with a gentle pulse.
+   Safe to load after your existing chatbot script. */
+
+(() => {
+  const MESSAGES = [
+    "Need help? Ask SnipText.",
+    "Got questions about pricing?",
+    // "Try Turnitin, QuillBot & more →",
+    "Stuck? Chat with us."
+  ];
+
+  // Timing (ms)
+  const INITIAL_DELAY   = 4000;   // first teaser after page settles
+  const SHOW_DURATION   = 3800;   // how long the bubble stays visible
+  const BETWEEN_TEASERS = 16000;  // gap between teasers
+  const MAX_PER_SESSION = 6;      // prevent spamming per tab/session
+
+  // Behavior flags
+  const RESPECT_REDUCED_MOTION = true;
+  const STOP_WHEN_OPEN = true;           // pause while chat panel is open
+  const HIDE_ON_HOVER = false;           // set true if you want hover to hide
+  const STORAGE_KEY = "sniptext_teasers_shown";
+
+  let teaserEl = null;
+  let timer = null;
+  let msgIndex = 0;
+
+  function $(id){ return document.getElementById(id); }
+  const launcher = $("chat-launcher");
+  const panel    = $("chat-panel");
+  if (!launcher || !panel) return;
+
+  const prefersReduced = RESPECT_REDUCED_MOTION &&
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function sessionCount(getOnly=false){
+    try {
+      const n = parseInt(sessionStorage.getItem(STORAGE_KEY) || "0", 10);
+      if (getOnly) return isNaN(n) ? 0 : n;
+      const next = Math.min((isNaN(n) ? 0 : n) + 1, 999);
+      sessionStorage.setItem(STORAGE_KEY, String(next));
+      return next;
+    } catch { return 0; }
+  }
+
+  function makeTeaser(){
+    if (teaserEl) return teaserEl;
+    teaserEl = document.createElement("div");
+    teaserEl.className = "chat-teaser";
+    teaserEl.setAttribute("role", "button");
+    teaserEl.setAttribute("tabindex", "0");
+    teaserEl.setAttribute("aria-live", "polite");
+    teaserEl.setAttribute("aria-label", "Open chat");
+    teaserEl.addEventListener("click", openChat);
+    teaserEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openChat(); }
+    });
+    if (HIDE_ON_HOVER){
+      teaserEl.addEventListener("mouseenter", hideTeaser);
+    }
+    document.body.appendChild(teaserEl);
+    return teaserEl;
+  }
+
+  function setMessage(text){
+    makeTeaser().textContent = text;
+  }
+
+  function showTeaser(){
+    // do not show if panel is open (optional)
+    if (STOP_WHEN_OPEN && !panel.hidden) return;
+    // avoid excess
+    if (sessionCount(true) >= MAX_PER_SESSION) return;
+
+    // rotate message
+    setMessage(MESSAGES[msgIndex % MESSAGES.length]);
+    msgIndex++;
+
+    // pulse the launcher (visual nudge)
+    if (!prefersReduced) {
+      launcher.classList.add("tease-pulse");
+      setTimeout(() => launcher.classList.remove("tease-pulse"), 1400);
+    }
+
+    // reveal bubble
+    makeTeaser().classList.add("show");
+    // schedule hide + count
+    setTimeout(() => {
+      hideTeaser();
+      sessionCount(); // increment after a visible teaser
+    }, SHOW_DURATION);
+  }
+
+  function hideTeaser(){
+    if (teaserEl) teaserEl.classList.remove("show");
+  }
+
+  function openChat(){
+    // Prefer clicking the existing launcher so we don’t rely on internal functions
+    if (panel.hidden) launcher.click();
+    // If already open, just focus the input if present
+    const input = $("chat-text");
+    if (input) input.focus();
+    hideTeaser();
+  }
+
+  function startCycle(){
+    // initial wait
+    timer = setTimeout(function tick(){
+      showTeaser();
+      timer = setTimeout(tick, BETWEEN_TEASERS);
+    }, INITIAL_DELAY);
+  }
+
+  function stopCycle(){
+    if (timer) clearTimeout(timer);
+    timer = null;
+  }
+
+  // Pause while the chat is open, resume when closed (if enabled)
+  if (STOP_WHEN_OPEN) {
+    const mo = new MutationObserver(() => {
+      if (panel.hidden) {
+        // resume cycle (don’t double-start)
+        if (!timer) startCycle();
+      } else {
+        hideTeaser();
+        stopCycle();
+      }
+    });
+    mo.observe(panel, { attributes: true, attributeFilter: ["hidden", "class"] });
+  }
+
+  // Public hooks (optional)
+  window.SNIPCHAT = window.SNIPCHAT || {};
+  window.SNIPCHAT.teaser = {
+    start: () => { if (!timer) startCycle(); },
+    stop:  () => { stopCycle(); hideTeaser(); },
+    showNow: () => { showTeaser(); },
+    setMessages: (arr) => { if (Array.isArray(arr) && arr.length) { arr.forEach(s => { if (typeof s !== "string") throw new Error("Messages must be strings"); }); while(MESSAGES.length) MESSAGES.pop(); arr.forEach(m => MESSAGES.push(m)); } }
+  };
+
+  // Kick off
+  if (!prefersReduced) startCycle();
+})();
 
 
 

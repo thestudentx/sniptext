@@ -1839,6 +1839,52 @@ body {
   font-weight:700; margin:0 0 .45rem 0; color:#fff; font-size:.94rem;
   font-family: var(--font-heading, inherit);
 }
+/* === Chat launcher “teaser” effects (SnipText) === */
+.chat-launcher.tease-pulse { animation: st-pulse 1.2s ease-out 2; }
+@keyframes st-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,.25), inset 0 0 0 1px rgba(255,255,255,.12); }
+  70%  { box-shadow: 0 0 0 14px rgba(255,255,255,0), inset 0 0 0 1px rgba(255,255,255,.18); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0), inset 0 0 0 1px rgba(255,255,255,.12); }
+}
+
+/* Teaser bubble that appears next to the launcher */
+.chat-teaser {
+  position: fixed;
+  right: calc(16px + var(--safe-right) + 56px); /* 56px ≈ launcher width + gap */
+  bottom: calc(90px + var(--safe-bottom));
+  z-index: 10000;
+  max-width: 220px;
+  padding: .48rem .6rem;
+  border-radius: 12px;
+  font: 600 .92rem/1.25 var(--font-body, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+  color: #fff;
+  background: rgba(0,0,0,.55);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.12);
+  backdrop-filter: blur(6px);
+  opacity: 0; transform: translateX(6px);
+  transition: opacity .28s ease, transform .28s ease;
+  pointer-events: auto; cursor: pointer;
+}
+.chat-teaser.show { opacity: 1; transform: translateX(0); }
+.chat-teaser::after{
+  content: "";
+  position: absolute; right: -6px; bottom: 12px;
+  border-width: 6px; border-style: solid;
+  border-color: transparent transparent transparent rgba(0,0,0,.55);
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+}
+
+/* Mobile: nudge closer and make launcher a tad bigger for hit-area */
+@media (max-width: 480px){
+  .chat-teaser{ right: calc(12px + var(--safe-right) + 52px); bottom: calc(96px + var(--safe-bottom)); font-size: .9rem; }
+  .chat-launcher{ height: 52px; min-width: 52px; }
+}
+
+/* Respect reduced motion: no pulse; quick fade only */
+@media (prefers-reduced-motion: reduce){
+  .chat-launcher.tease-pulse{ animation: none !important; }
+  .chat-teaser{ transition: opacity .01s linear, transform .01s linear; }
+}
 
 
 
