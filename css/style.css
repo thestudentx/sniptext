@@ -1121,7 +1121,7 @@ body {
 
 
 
-/* ---------------- TESTIMONIALS — robust responsive scroll-snap ---------------- */
+/* ---------------- TESTIMONIALS - robust responsive scroll-snap ---------------- */
 .testimonials-section{
   position: relative;
   padding: clamp(56px, 7vw, 110px) clamp(18px, 4vw, 28px);
@@ -1638,7 +1638,7 @@ body {
 /* keep existing .chatbot and .chat-panel positions/safe areas from previous step */
 
 
-/* Panel — now fixed so it never hides behind other stacking contexts */
+/* Panel - now fixed so it never hides behind other stacking contexts */
 .chat-panel{
   pointer-events: auto;
   position: fixed;
@@ -1677,13 +1677,13 @@ body {
 }
 .chat-action-btn:hover{ background: rgba(255,255,255,.10); }
 
-/* Messages — simple & professional */
+/* Messages - simple & professional */
 .chat-body{
   padding: .8rem .9rem 1rem;
   overflow: auto; scrollbar-gutter: stable both-edges;
 }
 
-.chat-msg{ display:flex; gap:.6rem; margin-bottom:.6rem; }
+.chat-msg{ display:flex; gap:.6rem; margin-bottom:.6rem; align-items: flex-end; }
 .chat-msg .bubble{
   max-width: 82%;
   padding: .56rem .7rem;
@@ -1692,7 +1692,38 @@ body {
   font-size: .95rem;
   border: 1px solid rgba(255,255,255,.10);
 }
+.chat-msg .avatar{
+  width: 28px; height: 28px; border-radius: 999px;
+  display: inline-grid; place-items: center; flex: 0 0 28px;
+  font: 700 0.78rem/1 var(--font-body, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+  color: #fff; user-select: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.18);
+}
 
+/* Bot avatar appears on the left of the bubble */
+.chat-msg.bot .avatar{
+  margin-right: .35rem;
+  background: linear-gradient(135deg, #6366f1, #22c55e);
+}
+.chat-msg.bot .avatar span{ opacity:.95; }
+
+/* User avatar appears on the right of the bubble */
+.chat-msg.user .avatar{
+  margin-left: .35rem;
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+}
+
+/* Keep existing bubble styles; just ensure layout works with avatars */
+.chat-msg.bot { justify-content: flex-start; }
+.chat-msg.user { justify-content: flex-end; }
+.chat-msg.user .bubble{ order: 1; }
+.chat-msg.user .avatar{ order: 2; }
+
+/* ===== Micro feedback bar minor spacing fix (optional) ===== */
+.microfb { margin-top: .35rem; }
+
+/* ===== Auto-scroll sentinel helper (hidden visual) ===== */
+#chat-bottom-sentinel{ width:1px; height:1px; opacity:0; }
 /* User message: subtle accent */
 .chat-msg.user{ justify-content: flex-end; }
 .chat-msg.user .bubble{
@@ -1765,6 +1796,57 @@ body {
 @media (prefers-reduced-motion: reduce){
   .chat-panel, .chat-launcher{ transition: none !important; }
 }
+/* ======== Chatbot additions (Ask search + card styling) ======== */
+
+/* Ask search bar that appears above quick chips */
+.chat-ask{
+  display:grid; grid-template-columns: 1fr auto;
+  gap:.5rem; padding:.55rem .85rem .4rem;
+  border-top:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+}
+#chat-ask-input{
+  width:100%; border-radius:10px; border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06); color:#fff; padding:.5rem .65rem; outline:none;
+  font-size:.9rem;
+}
+#chat-ask-input::placeholder{ color: rgba(255,255,255,.55); }
+#chat-ask-clear{
+  border:0; border-radius:10px; padding:.5rem .7rem; cursor:pointer;
+  background: rgba(255,255,255,.06); color:#fff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+}
+
+/* Result chips container shown when typing */
+.chat-ask-results{
+  padding:.35rem .85rem .6rem;
+  border-top:1px dashed rgba(255,255,255,.10);
+}
+
+/* Card answer layout */
+.chat-card{
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; padding:.7rem .8rem;
+}
+.chat-card h4{
+  margin:.1rem 0 .4rem 0; font-size:1rem; color:#fff; font-family:var(--font-heading);
+}
+.chat-card p, .chat-card li{ color:rgba(255,255,255,.95); }
+.chat-card ul{ margin:.35rem 0 .4rem 1.1rem; }
+.chat-card .checklist{ list-style: none; padding-left: 0; margin:.3rem 0 .4rem 0; }
+.chat-card .checklist li{ position:relative; padding-left:1.4rem; margin:.25rem 0; }
+.chat-card .checklist li::before{
+  content:"✓"; position:absolute; left:.1rem; top:0; opacity:.95;
+}
+.chat-ctas{ display:flex; gap:.45rem; flex-wrap:wrap; margin-top:.55rem; }
+.chat-cta{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.42rem .7rem; border-radius:10px; text-decoration:none;
+  background: linear-gradient(135deg, var(--gradient-cta-start), var(--gradient-cta-end));
+  color:#fff; font-weight:600; font-size:.88rem;
+}
+.chat-link{ color:#4da6ff; text-decoration:underline; }
 
 
 
