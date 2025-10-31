@@ -488,7 +488,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 })();
 
 
-// -------------------------- CHAT / Q&A WIDGET (Debounce + No-dup + Avatars + Scroll Sentinel) --------------------------
+// -------------------------- CHAT / Q&A WIDGET (Fix bundle loop + entity/intent extraction) --------------------------
 (() => {
   // ========================== INTEGRATION HOOKS (logging) ==========================
   window.SNIPCHAT = window.SNIPCHAT || {};
@@ -528,7 +528,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     },
     "sniptext plagiarism checker": "Flags overlaps and paraphrases with similarity score and source hints-verify and cite as needed.",
     "sniptext paraphraser": "Rewrites while preserving meaning. Choose tones like Academic, Concise, Casual, Fluent, or Formal.",
-    "contact": "Support: <a href='mailto:support@checkai.pro' class='chat-link'>support@checkai.pro</a> · Phone: +92 341 837 8430",
     "privacy": "Processing runs in-browser when possible. When cloud models are used, your text is not used to train them. You can export/delete anytime.",
     "what is sniptext": "An all-in-one writing workspace with AI-powered grammar, paraphrasing, originality checks, and fast export.",
 
@@ -551,7 +550,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
     /* ChatGPT */
     "chatgpt pricing": "We offer ChatGPT-5 subscriptions for 1- or 2-month durations. For current pricing, use the <a href='https://checkai.pro/contact' target='_blank' rel='noopener' class='chat-link'>Contact page</a> or email <a href='mailto:support@checkai.pro' class='chat-link'>support@checkai.pro</a>.",
-    "chatgpt how it works": "You prompt a large language model for drafting/ideas. Review for accuracy and cite sources where needed.",
+    "chatgpt how it works": "We provide ChatGPT-5. You prompt a large language model for drafting/ideas. Review for accuracy and cite sources where needed.",
     "chatgpt vs sniptext": "ChatGPT is a general chat model. SnipText is a writing workspace with originality checks, citations, editor view, and exports.",
 
     /* Grammarly */
@@ -601,11 +600,36 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "stealth writer": ["stealth writer what is","stealth writer price","stealth writer risk","stealth writer alternative"]
   };
 
-  const TOPIC_SYNONYMS = {
-    "pricing": ["pricing","pricing plan","pricing plans","plan pricing","price","prices","price list","tool pricing","tools pricing","cost","costs","fee","fees","rates","packages","subscription","subscriptions","subscription pricing","billing","invoice","invoices"]
+  // ===== Entity bundles: which questions to show for each tool keyword =====
+const ENTITY_GROUPS = {
+  "turnitin": ["turnitin how it works","turnitin pricing","turnitin report time","turnitin vs sniptext"],
+  "quillbot": ["quillbot how it works","quillbot pricing","quillbot vs sniptext"],
+  "grammarly": ["grammarly how it works","grammarly pricing","grammarly vs sniptext"],
+  "chatgpt": ["chatgpt how it works","chatgpt pricing","chatgpt vs sniptext"],
+  "ai detection": ["ai detection tools","ai detection accuracy","ai detection pricing","ai detection vs sniptext"],
+  "stealth writer": ["stealth writer what is","stealth writer price","stealth writer risk","stealth writer alternative"]
+};
+
+  // Canonical intent synonyms
+  const INTENT_SYNONYMS = {
+    "pricing": ["pricing","price","prices","plan","plans","package","packages","cost","costs","fee","fees","rate","rates","subscription","subscriptions","billing","invoice","invoices"],
+    "how it works": ["how it works","how does it work","how work","guide","get started","do you have","do you support","is there","available","what is","about"],
+    "vs sniptext": ["vs sniptext","compare","comparison","vs"],
+    "report time": ["report time","how long","duration","time","turnaround","minutes","hours"]
   };
 
-  // ========================== ALIASES ==========================
+  // Canonical entity synonyms
+  const ENTITY_SYNONYMS = {
+    "turnitin": ["turnitin"],
+    "quillbot": ["quillbot","quill bot"],
+    "grammarly": ["grammarly"],
+    "chatgpt": ["chatgpt","chat gpt","gpt"],
+    "ai detection": ["ai detection","ai detector","detector","detection"],
+    "stealth writer": ["stealth writer","humanizer","humanise","humanize","undetectable"],
+    "sniptext": ["sniptext","snip text","snip"]
+  };
+
+  // ========================== ALIASES (kept) ==========================
   const ALIASES = {
     "what is snip text": "what is sniptext",
     "what is sniptext?": "what is sniptext",
@@ -616,33 +640,41 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     "privacy policy": "privacy",
     "store my text": "privacy",
     "data storage": "privacy",
+
     "turnitin price": "turnitin pricing",
     "turnitin pricing plans": "turnitin pricing",
     "turnitin time": "turnitin report time",
     "turnitin duration": "turnitin report time",
     "turnitin report": "turnitin report time",
     "compare turnitin": "turnitin vs sniptext",
+
     "quillbot price": "quillbot pricing",
     "quillbot vs": "quillbot vs sniptext",
+
     "ai detector": "ai detection tools",
     "detect ai": "ai detection tools",
     "ai detection accuracy": "ai detection accuracy",
+
     "chat gpt": "chatgpt how it works",
     "chatgpt price": "chatgpt pricing",
     "chatgpt vs": "chatgpt vs sniptext",
+
     "grammarly price": "grammarly pricing",
     "grammarly vs": "grammarly vs sniptext",
+
     "humanizer": "stealth writer what is",
     "bypass detector": "stealth writer risk",
     "avoid detection": "stealth writer risk",
     "undetectable ai": "stealth writer risk",
     "humanize ai": "stealth writer risk",
     "safe alternative": "stealth writer alternative",
+
     "how long turnitin": "turnitin report time",
     "plagiarism time": "how long plagiarism check",
     "paraphrase time": "how long paraphrase",
     "grammar time": "how long grammar check",
     "ai detection time": "how long ai detection",
+
     "files": "supported files",
     "formats": "supported files",
     "integrations list": "integrations",
@@ -741,6 +773,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     return `<div class="chat-card"><div>${String(value)}</div></div>`;
   }
 
+  // Show a list of question chips for a topic
   function renderQuestionList(topicKey){
     const keys = (TOPIC_GROUPS[topicKey] || []).filter(k => QA[k]);
     if (!keys.length) return null;
@@ -766,6 +799,90 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       </div>`;
   }
 
+  // ===== Render entity-specific bundles (Turnitin, QuillBot, etc.) =====
+function renderEntityQuestions(entityKey){
+  const keys = (ENTITY_GROUPS[entityKey] || []).filter(k => QA[k]);
+  if (!keys.length) return null;
+  const chips = keys.map(k=>{
+    const label = k.charAt(0).toUpperCase() + k.slice(1);
+    return `<button type="button" class="qa-chip" data-qkey="${k.replace(/"/g,'&quot;')}"
+      style="display:inline-block;margin:.25rem .35rem .35rem 0;padding:.42rem .7rem;
+             font:600 .86rem/1.1 var(--font-body,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif);
+             color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+             border-radius:999px;cursor:pointer;backdrop-filter:blur(6px);">
+      ${label}
+    </button>`;
+  }).join('');
+  return `
+    <div role="group" aria-label="${entityKey} related questions" style="color:rgba(255,255,255,.96);">
+      <div style="font-weight:700;margin:0 0 .5rem 0;color:#fff;">
+        ${entityKey.charAt(0).toUpperCase()+entityKey.slice(1)} - related questions
+      </div>
+      <div>${chips}</div>
+      <div style="margin-top:.65rem;font-size:.85rem;opacity:.85;">
+        Tap a question above to see its answer.
+      </div>
+    </div>`;
+}
+
+// ===== Entity + Intent extraction (no auto-answer for generic "how it works") =====
+function extractEntityIntentKey(qNorm){
+  let entity = null;
+  for (const canonical of Object.keys(ENTITY_SYNONYMS)){
+    const list = ENTITY_SYNONYMS[canonical];
+    if (list.some(term => qNorm.includes(norm(term)))) { entity = canonical; break; }
+  }
+  let intent = null;
+  for (const canonical of Object.keys(INTENT_SYNONYMS)){
+    const list = INTENT_SYNONYMS[canonical];
+    if (list.some(term => qNorm.includes(norm(term)))) { intent = canonical; break; }
+  }
+
+  if (!entity || !intent) return null;
+
+  // Prefer concrete intents (pricing, vs, report time). For "how it works" typed loosely,
+  // we'll show the entity bundle instead - unless the user clicked that exact chip.
+  if (intent === "how it works") return null;
+
+  const candidate = `${entity} ${intent}`;
+  if (QA[candidate]) return candidate;
+
+  if (intent === "pricing"){
+    const alt = `${entity} price`;
+    if (QA[alt]) return alt;
+  }
+  return null;
+}
+
+  // Guard: is the query a pure topic (no entity)?
+  function isPureTopic(qNorm, topic){
+    // If any known entity appears, it's NOT a pure topic
+    for (const ents of Object.values(ENTITY_SYNONYMS)){
+      if (ents.some(term => qNorm.includes(norm(term)))) return false;
+    }
+    // Otherwise allow the topic
+    return true;
+  }
+
+  // ===== Detect if query is basically just a tool keyword (show bundle) =====
+function getEntityOnly(qNorm){
+  // find entity by synonyms
+  let entity = null;
+  for (const canonical of Object.keys(ENTITY_SYNONYMS)){
+    const list = ENTITY_SYNONYMS[canonical];
+    if (list.some(term => qNorm.includes(norm(term)))) { entity = canonical; break; }
+  }
+  if (!entity) return null;
+
+  // if a user clicked a concrete question later, that path sets opts.direct and bypasses this
+  // if query looks like an exact QA key or alias → not entity-only
+  if (QA[qNorm] || (ALIASES[qNorm] && QA[ALIASES[qNorm]])) return null;
+
+  // if it composes into entity+intent like "turnitin pricing", we still prefer the bundle
+  // UNLESS it's a pricing/vs/report-time typed explicitly (handled below in resolveAnswer)
+  return entity;
+}
+
   // ========================== FEEDBACK + ESCALATION ==========================
   let needHumanCount = 0;
   let escalationShown = false;
@@ -777,14 +894,14 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     if (hit) needHumanCount++;
     if (needHumanCount >= 2){
       escalationShown = true;
-      const subject = encodeURIComponent("SnipText — Talk to a human (from chatbot)");
+      const subject = encodeURIComponent("SnipText - Talk to a human (from chatbot)");
       const body    = encodeURIComponent(`Hi SnipText team,\n\nI’d like to talk to a human about: "${lastUserText}".\n\nThanks!`);
       const mailHref = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
       const card = {
         type: 'card',
         title: 'Talk to a human',
         bullets: [
-          'Prefer a person? No problem — reach out directly.',
+          'Prefer a person? No problem - reach out directly.',
           'We can help with billing, setup, and account questions.'
         ],
         ctas: [
@@ -831,6 +948,199 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     `;
     container.appendChild(wrap);
   }
+/* ========================== LIVE RESULTS (bottom input typeahead) ========================== */
+/* Paste inside the same IIFE as the chatbot, after QA/TOPIC_GROUPS/ENTITY_GROUPS/etc. */
+
+(() => {
+  let liveResultsEl = null;
+  let debounceTimer = null;
+  let isBound = false;
+
+  // Build (once) the live results container just above quick chips
+  function ensureLiveResultsUI(panel, quick){
+    if (liveResultsEl) return;
+    liveResultsEl = document.createElement('div');
+    liveResultsEl.className = 'chat-live-results';
+    liveResultsEl.id = 'chat-live-results';
+    // Inline minimal styles so you don't need a CSS change
+    liveResultsEl.style.display = 'none';
+    liveResultsEl.style.padding = '.35rem .85rem .6rem';
+    liveResultsEl.style.borderTop = '1px dashed rgba(255,255,255,.10)';
+    liveResultsEl.style.background = 'rgba(255,255,255,.02)';
+    panel.insertBefore(liveResultsEl, quick);
+  }
+
+  // Tiny helpers
+  const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+  function show(){ if (liveResultsEl) liveResultsEl.style.display = 'block'; }
+  function hide(){ if (liveResultsEl){ liveResultsEl.innerHTML = ''; liveResultsEl.style.display = 'none'; } }
+
+  function renderChips(keys, headerText){
+    if (!keys?.length) return '';
+    const chips = keys.slice(0, 16).map(k => {
+      const label = cap(k);
+      return `<button type="button" class="qa-chip" data-qkey="${k.replace(/"/g,'&quot;')}"
+                style="display:inline-block;margin:.25rem .35rem .35rem 0;padding:.42rem .7rem;
+                       font:600 .86rem/1.1 var(--font-body,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif);
+                       color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+                       border-radius:999px;cursor:pointer;backdrop-filter:blur(6px);">
+                ${label}
+              </button>`;
+    }).join('');
+    return `
+      <div style="font-weight:700;margin:0 0 .45rem 0;color:#fff;">${headerText}</div>
+      <div class="chips" style="display:flex;flex-wrap:wrap;gap:.35rem;">${chips}</div>
+      <div style="margin-top:.45rem;font-size:.85rem;opacity:.85;">Tap a question to see its answer.</div>
+    `;
+  }
+
+  // Decide what to show as the user types:
+  // 1) If typing a known tool/entity → that tool’s questions (ENTITY_GROUPS)
+  // 2) Else if typing a known topic like "pricing" → topic bundle (TOPIC_GROUPS)
+  // 3) Else fuzzy QA matches
+  function updateResults(raw){
+    const q = norm(raw || "");
+    if (!q){ hide(); return; }
+
+    // Try entity detection
+    let entityKey = null;
+    for (const canonical of Object.keys(ENTITY_SYNONYMS)){
+      const list = ENTITY_SYNONYMS[canonical];
+      if (list.some(term => q.includes(norm(term)))) { entityKey = canonical; break; }
+    }
+    if (entityKey && ENTITY_GROUPS[entityKey]?.length){
+      const keys = ENTITY_GROUPS[entityKey].filter(k => QA[k]);
+      if (keys.length){
+        liveResultsEl.innerHTML = renderChips(keys, `${cap(entityKey)} – related questions`);
+        show();
+        return;
+      }
+    }
+
+    // Try topic detection
+    let topicKey = null;
+    for (const topic of Object.keys(TOPIC_GROUPS)){
+      const syns = (INTENT_SYNONYMS[topic] || [topic]);
+      if (syns.some(s => q.includes(norm(s)))) { topicKey = topic; break; }
+    }
+    if (topicKey && TOPIC_GROUPS[topicKey]?.length){
+      const keys = TOPIC_GROUPS[topicKey].filter(k => QA[k]);
+      if (keys.length){
+        liveResultsEl.innerHTML = renderChips(keys, `Related questions for “${cap(topicKey)}”`);
+        show();
+        return;
+      }
+    }
+
+    // Fuzzy match QA keys
+    const allKeys = Object.keys(QA);
+    const matches = allKeys.filter(k => norm(k).includes(q)).slice(0, 16);
+    if (matches.length){
+      liveResultsEl.innerHTML = renderChips(matches, 'Matching questions');
+      show();
+    } else {
+      hide();
+    }
+  }
+
+  function bindOnce(){
+    if (isBound) return;
+    const panel = document.getElementById('chat-panel');
+    const quick = document.getElementById('chat-quick');
+    const input = document.getElementById('chat-text');
+    const form  = document.getElementById('chat-form');
+
+    // Hard guards (don’t interfere if host hasn’t rendered yet)
+    if (!panel || !quick || !input || !form) return;
+
+    ensureLiveResultsUI(panel, quick);
+
+    // Live typing (debounced)
+    input.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      const val = input.value;
+      debounceTimer = setTimeout(() => updateResults(val), 90);
+    });
+
+    // Hide on submit
+    form.addEventListener('submit', () => { hide(); });
+
+    // Click on a suggested chip → show that exact answer (direct)
+    liveResultsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('button.qa-chip');
+      if (!btn) return;
+      const qKey = btn.getAttribute('data-qkey');
+      const pretty = cap(qKey);
+      // Source "typeahead" causes direct answer path in your existing queueAnswer()
+      queueAnswer(pretty, qKey, 'typeahead');
+      // Clear input and hide results
+      const inputEl = document.getElementById('chat-text');
+      if (inputEl) inputEl.value = '';
+      hide();
+    });
+
+    isBound = true;
+  }
+
+  // Auto-bind the first time the user focuses the bottom input,
+  // so no other code needs to be touched.
+  document.addEventListener('focusin', (e) => {
+    if (e.target && e.target.id === 'chat-text') bindOnce();
+  });
+
+  // Also try after DOM is ready, in case the input is already present
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bindOnce, { once:true });
+  } else {
+    // Give the host a moment to render the panel
+    setTimeout(bindOnce, 0);
+  }
+})();
+/* ========================== FIX: prevent chat from closing on typeahead click ========================== */
+/* Paste at the very end of your existing chatbot IIFE (after all functions/listeners are defined). */
+(() => {
+  // Create a tiny one-shot guard the outside-click closer will respect
+  window.SNIPCHAT = window.SNIPCHAT || {};
+  if (window.SNIPCHAT.__patchedClose) return; // idempotent
+  window.SNIPCHAT.__patchedClose = true;
+
+  const panelEl = document.getElementById('chat-panel');
+  const launcherEl = document.getElementById('chat-launcher');
+
+  // 1) Wrap closePanel to skip closing when a click originated inside the panel this tick
+  const __closePanelOriginal = closePanel;
+  closePanel = function (...args) {
+    if (window.SNIPCHAT.__suppressCloseOnce) {
+      window.SNIPCHAT.__suppressCloseOnce = false; // consume the one-shot
+      return; // skip closing
+    }
+    return __closePanelOriginal.apply(this, args);
+  };
+
+  // 2) On the *capture* phase, mark any clicks that start within the panel or launcher
+  //    This fires before your existing document click closer.
+  function markIfInside(e) {
+    // Use composedPath so it still counts even if the clicked node gets removed before bubbling
+    const path = e.composedPath ? e.composedPath() : [];
+    const inside =
+      (panelEl && (path.includes(panelEl) || panelEl.contains(e.target))) ||
+      (launcherEl && (path.includes(launcherEl) || launcherEl.contains(e.target)));
+    if (inside) {
+      window.SNIPCHAT.__suppressCloseOnce = true;
+    }
+  }
+  document.addEventListener('click', markIfInside, true); // capture phase
+
+  // 3) Also mark keyboard activations (Enter/Space) that originate inside the panel
+  document.addEventListener('keydown', (e) => {
+    if (!panelEl || panelEl.hidden) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      const path = e.composedPath ? e.composedPath() : [];
+      const inside = path.includes(panelEl) || panelEl.contains(e.target);
+      if (inside) window.SNIPCHAT.__suppressCloseOnce = true;
+    }
+  }, true);
+})();
 
   // ========================== BOT/USER RENDERERS (with avatars + sentinel) ==========================
   function botSay(html, meta){
@@ -856,58 +1166,77 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     scrollToBottom();
   }
 
-  // ========================== CORE ANSWER RESOLUTION ==========================
-  function resolveAnswer(raw){
-    const qRaw = (raw || "");
-    const q = norm(qRaw);
-    if (!q) return { html:"", kind:"empty" };
+ // opts.direct: set true ONLY when a user clicks a concrete question chip/typeahead
+function resolveAnswer(raw, opts = {}){
+  const qRaw = (raw || "");
+  const q = norm(qRaw);
+  if (!q) return { html:"", kind:"empty" };
 
-    // Topic bundles
+  // 1) Exact key (click on a specific question)
+  if (QA[q]) return { html: renderAnswer(QA[q]), kind:"answer", resolvedKey: q };
+
+  // 2) Alias → exact
+  if (ALIASES[q] && QA[ALIASES[q]]) {
+    return { html: renderAnswer(QA[ALIASES[q]]), kind:"answer", resolvedKey: ALIASES[q] };
+  }
+
+  // 3) Concrete entity+intent like "turnitin pricing" → answer
+  const composed = extractEntityIntentKey(q);
+  if (composed && QA[composed]) {
+    return { html: renderAnswer(QA[composed]), kind:"answer", resolvedKey: composed };
+  }
+
+  // 4) Entity-only (or generic "do you have turnitin?") → show that tool's bundle
+  const ent = getEntityOnly(q);
+  if (ent && !opts.direct){
+    const html = renderEntityQuestions(ent);
+    if (html) return { html, kind:"entity-bundle", resolvedKey: ent };
+  }
+
+  // 5) Topic bundles (e.g., "pricing" → all tools' pricing)
+  if (!opts.direct){
     for (const topic of Object.keys(TOPIC_GROUPS)){
-      let trigger = new RegExp(`(^|\\b)${escapeRx(topic)}(\\b|$)`, 'i').test(q);
-      if (!trigger && TOPIC_SYNONYMS[topic]){
-        for (const syn of TOPIC_SYNONYMS[topic]){
-          if (new RegExp(`(^|\\b)${escapeRx(syn)}(\\b|$)`, 'i').test(q)){ trigger = true; break; }
-        }
-      }
-      if (trigger){
+      const topicHit = new RegExp(`(^|\\b)${escapeRx(topic)}(\\b|$)`, 'i').test(q);
+      const syns = INTENT_SYNONYMS[topic] || [];
+      const synHit = syns.some(s => new RegExp(`(^|\\b)${escapeRx(s)}(\\b|$)`, 'i').test(q));
+      if (topicHit || synHit){
         const html = renderQuestionList(topic);
         if (html) return { html, kind:"bundle", resolvedKey: topic };
       }
     }
-
-    // Direct, alias, fuzzy
-    if (QA[q]) return { html: renderAnswer(QA[q]), kind:"answer", resolvedKey: q };
-    if (ALIASES[q] && QA[ALIASES[q]]) return { html: renderAnswer(QA[ALIASES[q]]), kind:"answer", resolvedKey: ALIASES[q] };
-
-    for (const key of Object.keys(QA)){
-      const k = norm(key);
-      if (q.includes(k) || k.includes(q)){
-        return { html: renderAnswer(QA[key]), kind:"answer", resolvedKey: key };
-      }
-    }
-
-    const tokens = new Set(q.split(' '));
-    let bestKey=null, best=0;
-    for (const key of Object.keys(QA)){
-      const ks = new Set(norm(key).split(' '));
-      let score=0; ks.forEach(t => tokens.has(t) && score++);
-      if (score>best){ best=score; bestKey=key; }
-    }
-    if (best>=1 && bestKey) return { html: renderAnswer(QA[bestKey]), kind:"answer", resolvedKey: bestKey };
-
-    const tips = Object.keys(QA).slice(0,5).map(k => `• ${k}`).join('<br>');
-    return { html:`Sorry, I’m not sure yet.<br>${tips}`, kind:"fallback" };
   }
+
+  // 6) Soft contains
+  for (const key of Object.keys(QA)){
+    const k = norm(key);
+    if (q.includes(k) || k.includes(q)){
+      return { html: renderAnswer(QA[key]), kind:"answer", resolvedKey: key };
+    }
+  }
+
+  // 7) Token overlap fallback
+  const tokens = new Set(q.split(' '));
+  let bestKey=null, best=0;
+  for (const key of Object.keys(QA)){
+    const ks = new Set(norm(key).split(' '));
+    let score=0; ks.forEach(t => tokens.has(t) && score++);
+    if (score>best){ best=score; bestKey=key; }
+  }
+  if (best>=1 && bestKey) return { html: renderAnswer(QA[bestKey]), kind:"answer", resolvedKey: bestKey };
+
+  const tips = Object.keys(QA).slice(0,5).map(k => `• ${k}`).join('<br>');
+  return { html:`Sorry, I’m not sure yet.<br>${tips}`, kind:"fallback" };
+}
 
   // ========================== DEFAULT QUICK CHIPS ==========================
   const DEFAULT_CHIPS = [
-    { label: 'How it works', query: 'how it works' },
     { label: 'Pro vs Free',  query: 'pro vs free' },
     { label: 'Privacy',      query: 'privacy' },
     { label: 'Turnitin',     query: 'turnitin' },
     { label: 'QuillBot',     query: 'quillbot' },
-    { label: 'ChatGPT',      query: 'chatgpt' }
+    { label: 'Grammarly',     query: 'grammarly' },
+    { label: 'ChatGPT',      query: 'chatgpt' },
+    { label: 'Stealth Writer',     query: 'stealth writer' }
   ];
 
   function populateQuickChips(){
@@ -923,94 +1252,44 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     });
   }
 
-  // ========================== ASK SEARCH (live question picker) ==========================
-  let askWrap, askInput, askClear, askResults;
-
-  function buildAskUI(){
-    if (askWrap) return;
-    askWrap = document.createElement('div');
-    askWrap.className = 'chat-ask';
-    askWrap.innerHTML = `
-      <input id="chat-ask-input" type="search" placeholder="Ask - search questions (e.g., pricing, Turnitin)…" aria-label="Search questions">
-      <button id="chat-ask-clear" type="button" aria-label="Clear search">Clear</button>
-    `;
-    panel.insertBefore(askWrap, quick);
-
-    askInput  = askWrap.querySelector('#chat-ask-input');
-    askClear  = askWrap.querySelector('#chat-ask-clear');
-
-    askResults = document.createElement('div');
-    askResults.className = 'chat-ask-results';
-    askResults.style.display = 'none';
-    panel.insertBefore(askResults, quick);
-
-    const allKeys = Object.keys(QA);
-
-    function renderMatches(q){
-      const query = norm(q);
-      if (!query){
-        askResults.style.display = 'none';
-        askResults.innerHTML = '';
-        return;
-      }
-      const matches = allKeys.filter(k => norm(k).includes(query)).slice(0, 14);
-      if (!matches.length){
-        askResults.style.display = 'block';
-        askResults.innerHTML = `<div style="opacity:.85;">No questions found. Try another term.</div>`;
-        return;
-      }
-      const chips = matches.map(k=>{
-        const label = k.charAt(0).toUpperCase() + k.slice(1);
-        return `<button type="button" class="qa-chip" data-qkey="${k.replace(/"/g,'&quot;')}"
-          style="display:inline-block;margin:.25rem .35rem .35rem 0;padding:.42rem .7rem;
-                 font:600 .86rem/1.1 var(--font-body,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif);
-                 color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
-                 border-radius:999px;cursor:pointer;backdrop-filter:blur(6px);">
-          ${label}
-        </button>`;
-      }).join('');
-      askResults.style.display = 'block';
-      askResults.innerHTML = `
-        <div style="font-weight:700;margin:0 0 .45rem 0;color:#fff;">Matching questions</div>
-        <div>${chips}</div>
-        <div style="margin-top:.5rem;font-size:.85rem;opacity:.85;">Tap a question to see its answer.</div>
-      `;
-    }
-
-    let t;
-    askInput.addEventListener('input', () => {
-      clearTimeout(t);
-      t = setTimeout(()=> renderMatches(askInput.value), 120);
-    });
-    askClear.addEventListener('click', () => {
-      askInput.value = '';
-      askResults.style.display = 'none';
-      askResults.innerHTML = '';
-      askInput.focus();
-    });
-  }
-
   // ========================== DEBOUNCED ANSWERING + DUP CHECK ==========================
   let answerTimer = null;
-  let lastNormalizedQuery = ""; // ignore exact duplicate in a row
+  let lastNormalizedQuery = ""; // ignore duplicate in a row
 
   function queueAnswer(userVisibleText, rawQuery, source){
     const normalized = norm(rawQuery || userVisibleText);
     if (!normalized) return;
-    if (normalized === lastNormalizedQuery) {
-      // ignore exact duplicate
-      return;
-    }
+    if (normalized === lastNormalizedQuery) return;
     lastNormalizedQuery = normalized;
 
     clearTimeout(answerTimer);
     answerTimer = setTimeout(() => {
+      const isDirect = source === "question-chip" || source === "typeahead";
       userSay(userVisibleText);
-      const res = resolveAnswer(rawQuery || userVisibleText);
+      const res = resolveAnswer(rawQuery || userVisibleText, { direct: isDirect });
       botSay(res.html, { resolvedKey: res.resolvedKey, kind: res.kind, source: source || "free-text" });
       maybeEscalate(userVisibleText);
-    }, 120); // 120ms debounce
+    }, 120); // debounce
   }
+
+  /* === FIX: Make Close & Minimize work again (don’t get swallowed by suppress) === */
+(() => {
+  const closeBtn = document.getElementById('chat-close');
+  const minBtn   = document.getElementById('chat-minimize');
+
+  // Helper that bypasses the suppress flag added by the outside-click guard
+  function forceClose(e){
+    e.preventDefault();
+    e.stopPropagation();           // don't let outer listeners meddle
+    window.SNIPCHAT = window.SNIPCHAT || {};
+    window.SNIPCHAT.__suppressCloseOnce = false;  // ensure wrapper won't skip
+    if (typeof closePanel === 'function') closePanel();
+  }
+
+  // Bind in CAPTURE phase so this runs before the global capture listener
+  if (closeBtn) closeBtn.addEventListener('click', forceClose, { capture: true });
+  if (minBtn)   minBtn.addEventListener('click', forceClose, { capture: true });
+})();
 
   // ========================== OPEN/CLOSE & WIRING ==========================
   function openPanel(){
@@ -1019,13 +1298,13 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     launcher.classList.add('open');
     launcher.setAttribute('aria-expanded', 'true');
     if (!panel.dataset.greeted){
-      botSay("Hi! Use the Ask bar to search questions, or pick a quick topic below. You can also type tool names like Turnitin, QuillBot, or say “pricing”.");
+      botSay("Hi! Type your question below. Try things like “pricing”, “Turnitin”, or “Do you have QuillBot?”");
       populateQuickChips();
       panel.dataset.greeted = '1';
       launcher.querySelector('.notify-badge')?.removeAttribute('hidden');
       scrollToBottom();
     }
-    buildAskUI();
+    // buildAskUI();
     bodyEl.focus({ preventScroll: true });
     setTimeout(()=>input.focus(), 30);
     launcher.querySelector('.notify-badge')?.setAttribute('hidden','');
@@ -1045,17 +1324,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   // Outside click
   document.addEventListener('click', (e) => {
     if (panel.hidden) return;
-
-    // Ask-results chip (outside bodyEl)
-    const withinAsk = e.target.closest('.chat-ask-results');
-    if (withinAsk){
-      const btn = e.target.closest('button.qa-chip');
-      if (!btn) return;
-      const qKey = btn.getAttribute('data-qkey');
-      const pretty = qKey.charAt(0).toUpperCase() + qKey.slice(1);
-      queueAnswer(pretty, qKey, "ask-results");
-      return;
-    }
 
     const within = panel.contains(e.target) || launcher.contains(e.target);
     if (!within) closePanel();
@@ -1126,7 +1394,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       const ack = document.createElement('div');
       ack.style.marginTop = ".35rem";
       ack.style.opacity = ".92";
-      ack.textContent = "Got it — thanks! We’ll use this to improve.";
+      ack.textContent = "Got it - thanks! We’ll use this to improve.";
       wrap.appendChild(ack);
       sendBtn.disabled = true;
       inputEl.disabled = true;
