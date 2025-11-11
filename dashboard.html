@@ -181,8 +181,8 @@
     </button>
   </div>
 
-  <div class="referral-body referral-layout">
-    <!-- left: stats -->
+  <div class="referral-body">
+    <!-- stats + progress -->
     <div class="referral-main">
       <div class="referral-stats">
         <div class="stat is-primary">
@@ -193,76 +193,73 @@
           <p class="stat-label">Your discount</p>
           <p class="stat-value highlight" id="referralDiscount">0%</p>
         </div>
-        <div class="stat">
-          <p class="stat-label">Monthly cap</p>
-          <p class="stat-value">60%</p>
-        </div>
       </div>
 
       <div class="referral-progress" aria-label="Discount progress">
         <div class="progress-track">
           <div class="progress-fill" id="referralProgressFill" style="width: 0%;"></div>
         </div>
-        <p class="progress-text">1st referral = 20% · each extra = +5% · max 60%</p>
-      </div>
-
-      <!-- collapsible rules -->
-      <div class="referral-rules" id="referralRules" hidden>
-        <h3>How this works</h3>
-        <div class="rules-steps">
-          <div class="rule-step">
-            <div class="rule-num">1</div>
-            <div class="rule-text">
-              You invite a person to SnipText. That person becomes <strong>your referral</strong>.
-            </div>
-          </div>
-          <div class="rule-step">
-            <div class="rule-num">2</div>
-            <div class="rule-text">
-              When your referral pays for a plan, <strong>you get a discount on your own next renewal</strong>.
-            </div>
-          </div>
-          <div class="rule-step">
-            <div class="rule-num">3</div>
-            <div class="rule-text">
-              If that same person pays again next month, <strong>you get the discount again</strong>. So you earn it month by month.
-            </div>
-          </div>
-          <div class="rule-step">
-            <div class="rule-num">4</div>
-            <div class="rule-text">
-              This month’s math:
-              <ul class="rule-mini-list">
-                <li>1 paying referral → <strong>20%</strong> off</li>
-                <li>2 paying referrals → <strong>25%</strong> off</li>
-                <li>every extra paying referral → <strong>+5%</strong></li>
-              </ul>
-            </div>
-          </div>
-          <div class="rule-step">
-            <div class="rule-num">5</div>
-            <div class="rule-text">
-              We stop at <strong>60% max</strong> in one month.
-            </div>
-          </div>
-          <div class="rule-step">
-            <div class="rule-num">6</div>
-            <div class="rule-text">
-              People you invite can also invite others and get the same rewards.
-            </div>
-          </div>
-          <p class="rule-bottom">Short version: <strong>they pay → you save.</strong></p>
-        </div>
+        <p class="progress-text">
+          1st = 20% · 2nd & 3rd = +10% · 4th+ = +5% · up to 100%
+        </p>
       </div>
     </div>
 
-    <!-- right: list -->
-    <div class="referral-side">
-      <div class="referral-side-head">
-        <p class="referral-side-title">This month’s referrals (dummy)</p>
-        <span class="referral-side-count" id="referralListCount">0</span>
+    <!-- collapsible rules -->
+    <div class="referral-rules" id="referralRules" hidden>
+      <h3>How this works</h3>
+      <div class="rules-steps">
+        <div class="rule-step">
+          <div class="rule-num">1</div>
+          <div class="rule-text">
+            You invite a person to SnipText. That person becomes <strong>your referral</strong>.
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-num">2</div>
+          <div class="rule-text">
+            When your referral pays for a plan, <strong>you get a discount on your own next renewal</strong>.
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-num">3</div>
+          <div class="rule-text">
+            If that same person pays again next month, <strong>you get the discount again</strong>. So you earn it month by month.
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-num">4</div>
+          <div class="rule-text">
+            This month’s math:
+            <ul class="rule-mini-list">
+              <li>
+                When you get <strong>1 paying referral</strong>, we give you <strong>20% off</strong> your next bill.
+              </li>
+              <li>
+                When you get <strong>2 paying referrals in the same month</strong>, your total discount becomes
+                <strong>30% off</strong> (not 20%+30%, just 30% total).
+              </li>
+              <li>
+                When you get <strong>3 paying referrals in the same month</strong>, your total discount becomes
+                <strong>40% off</strong>.
+              </li>
+              <li>
+                After that, for <strong>every referral starting from the 4th one</strong> in the same month,
+                we add <strong>+5% more</strong> to your discount. We keep adding 5% per extra referral
+                until you reach <strong>100% discount</strong> (which means you don’t pay for that renewal).
+              </li>
+            </ul>
+            <p class="rule-bottom">Example: 4 referrals = 45%, 5 referrals = 50%, 6 referrals = 55%, ... until 100%.</p>
+          </div>
+        </div>
+        <div class="rule-step">
+          <div class="rule-num">5</div>
+          <div class="rule-text">
+            People you invite can also invite others and get the same rewards.
+          </div>
+        </div>
+        <p class="rule-bottom">Short version: <strong>they pay → you save (up to 100%).</strong></p>
       </div>
-      <div id="referralList" class="referral-list"></div>
     </div>
   </div>
 
@@ -270,9 +267,14 @@
     <div class="referral-footer-text">
       <strong>Want the discount this month?</strong> Send us your referral and we’ll mark it.
     </div>
-    <a class="referral-primary-link" href="https://wa.me/923418378430" target="_blank" rel="noopener">
-      Send on WhatsApp →
-    </a>
+    <div class="referral-footer-links">
+      <a class="referral-primary-link" href="https://wa.me/923418378430" target="_blank" rel="noopener">
+        Send on WhatsApp
+      </a>
+      <a class="referral-primary-link" href="mailto:support@checkai.pro" target="_blank" rel="noopener">
+        Email us
+      </a>
+    </div>
   </div>
 </section>
 

@@ -316,59 +316,69 @@ if (modelKey === "turnitin1" || modelKey === "chatgpt1" || modelKey === "stealth
 
 
 // =========================
-// Dummy Referral Widget Logic
+// Referral Widget Logic (no cap, up to 100%) - randomized view
 // =========================
-(function initDummyReferralWidget() {
+(function initReferralWidget() {
   const referralCountEl = document.getElementById("referralCount");
   const referralDiscountEl = document.getElementById("referralDiscount");
   const referralProgressFill = document.getElementById("referralProgressFill");
   const referralRules = document.getElementById("referralRules");
   const referralBtn = document.getElementById("referralHowItWorksBtn");
-  const referralListEl = document.getElementById("referralList");
-  const referralListCountEl = document.getElementById("referralListCount");
 
   if (!referralCountEl) return;
-
-  const PEOPLE = [
-    { name: "Ahmed Khan", email: "ahmed.khan@example.com" },
-    { name: "Fatima Noor", email: "fatima.noor@example.com" },
-    { name: "Usman Ali", email: "usman.ali@example.com" },
-    { name: "Sara Malik", email: "sara.malik@example.com" },
-    { name: "Hassan Raza", email: "hassan.raza@example.com" },
-    { name: "Ayesha Siddiqui", email: "ayesha.s@example.com" },
-    { name: "Bilal Ahmed", email: "bilal.ahmed@example.com" },
-    { name: "Zara Sheikh", email: "zara.sheikh@example.com" },
-    { name: "Hamza Tariq", email: "hamza.tariq@example.com" },
-    { name: "Maria Yousuf", email: "maria.yousuf@example.com" }
-  ];
 
   function randInt(max) {
     return Math.floor(Math.random() * (max + 1));
   }
 
-  const qualifyingReferrals = randInt(6);
-  const showReferredBy = Math.random() > 0.4;
-  const referredBy = showReferredBy
-    ? PEOPLE[Math.floor(Math.random() * PEOPLE.length)]
-    : null;
+  // we know 15 referrals = 100% with current rules
+  const MAX_REFERRALS_FOR_100 = 15;
+  const qualifyingReferrals = randInt(MAX_REFERRALS_FOR_100);
 
-  const shuffled = [...PEOPLE].sort(() => Math.random() - 0.5);
-  const myReferrals = shuffled.slice(0, qualifyingReferrals);
+  // discount logic (your rules):
+  // 1st = 20
+  // 2nd = +10 (30)
+  // 3rd = +10 (40)
+  // 4th+ = +5 each
+  function calculateDiscount(referrals) {
+    if (referrals <= 0) return 0;
 
-  // discount
-  const BASE = 20;
-  const EXTRA = 5;
-  const MAX = 60;
-  let discount = 0;
-  if (qualifyingReferrals > 0) {
-    discount = BASE + (qualifyingReferrals - 1) * EXTRA;
+    let discount = 0;
+
+    // 1st
+    discount = 20;
+
+    // 2nd
+    if (referrals >= 2) {
+      discount += 10; // 30
+    }
+
+    // 3rd
+    if (referrals >= 3) {
+      discount += 10; // 40
+    }
+
+    // 4th and above
+    if (referrals >= 4) {
+      const extraAfterThird = referrals - 3;
+      discount += extraAfterThird * 5;
+    }
+
+    // never show over 100%
+    if (discount > 100) discount = 100;
+    return discount;
   }
-  if (discount > MAX) discount = MAX;
 
+  const discount = calculateDiscount(qualifyingReferrals);
+
+  // put into DOM
   referralCountEl.textContent = qualifyingReferrals;
   referralDiscountEl.textContent = discount + "%";
-  referralProgressFill.style.width = Math.min((discount / MAX) * 100, 100) + "%";
 
+  // progress bar to match (stay within 100%)
+  referralProgressFill.style.width = discount + "%";
+
+  // toggle rules
   referralBtn.addEventListener("click", () => {
     const isHidden = referralRules.hasAttribute("hidden");
     if (isHidden) {
@@ -379,50 +389,6 @@ if (modelKey === "turnitin1" || modelKey === "chatgpt1" || modelKey === "stealth
       referralBtn.textContent = "How it works";
     }
   });
-
-  // render side list
-  if (referralListEl) {
-    const items = [];
-
-    if (referredBy) {
-      items.push(`
-        <div class="referral-item">
-          <div class="referral-avatar">${referredBy.name.charAt(0)}</div>
-          <div class="referral-info">
-            <p class="referral-name">${referredBy.name} <span style="opacity:.6;">(your inviter)</span></p>
-            <p class="referral-email">${referredBy.email}</p>
-          </div>
-          <span class="referral-badge">invited you</span>
-        </div>
-      `);
-    }
-
-    if (myReferrals.length) {
-      myReferrals.forEach((p, idx) => {
-        const active = Math.random() > 0.25; // random status
-        items.push(`
-          <div class="referral-item">
-            <div class="referral-avatar">${p.name.charAt(0)}</div>
-            <div class="referral-info">
-              <p class="referral-name">${p.name}</p>
-              <p class="referral-email">${p.email}</p>
-            </div>
-            <span class="referral-badge" style="${active ? '' : 'background:rgba(248,113,113,.15);color:#b91c1c;'}">
-              ${active ? 'active' : 'pending'}
-            </span>
-          </div>
-        `);
-      });
-    } else {
-      items.push(`<p class="referral-meta" style="font-size:0.6rem;">No referrals yet.</p>`);
-    }
-
-    referralListEl.innerHTML = items.join("");
-  }
-
-  if (referralListCountEl) {
-    referralListCountEl.textContent = qualifyingReferrals;
-  }
 })();
 
 
