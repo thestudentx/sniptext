@@ -166,6 +166,117 @@
     </section>
 
 
+    <!-- REFERRAL OFFER / DISCOUNT -->
+<section class="referral-offer" aria-label="Referral discount program">
+  <div class="referral-header">
+    <div class="referral-icon">
+      <span>🎁</span>
+    </div>
+    <div>
+      <h2 class="referral-title">Monthly Referral Discount</h2>
+      <p class="referral-subtitle">Invite users → we reduce your next bill.</p>
+    </div>
+    <button class="referral-cta" type="button" id="referralHowItWorksBtn">
+      How it works
+    </button>
+  </div>
+
+  <div class="referral-body referral-layout">
+    <!-- left: stats -->
+    <div class="referral-main">
+      <div class="referral-stats">
+        <div class="stat is-primary">
+          <p class="stat-label">Active this month</p>
+          <p class="stat-value" id="referralCount">0</p>
+        </div>
+        <div class="stat">
+          <p class="stat-label">Your discount</p>
+          <p class="stat-value highlight" id="referralDiscount">0%</p>
+        </div>
+        <div class="stat">
+          <p class="stat-label">Monthly cap</p>
+          <p class="stat-value">60%</p>
+        </div>
+      </div>
+
+      <div class="referral-progress" aria-label="Discount progress">
+        <div class="progress-track">
+          <div class="progress-fill" id="referralProgressFill" style="width: 0%;"></div>
+        </div>
+        <p class="progress-text">1st referral = 20% · each extra = +5% · max 60%</p>
+      </div>
+
+      <!-- collapsible rules -->
+      <div class="referral-rules" id="referralRules" hidden>
+        <h3>How this works</h3>
+        <div class="rules-steps">
+          <div class="rule-step">
+            <div class="rule-num">1</div>
+            <div class="rule-text">
+              You invite a person to SnipText. That person becomes <strong>your referral</strong>.
+            </div>
+          </div>
+          <div class="rule-step">
+            <div class="rule-num">2</div>
+            <div class="rule-text">
+              When your referral pays for a plan, <strong>you get a discount on your own next renewal</strong>.
+            </div>
+          </div>
+          <div class="rule-step">
+            <div class="rule-num">3</div>
+            <div class="rule-text">
+              If that same person pays again next month, <strong>you get the discount again</strong>. So you earn it month by month.
+            </div>
+          </div>
+          <div class="rule-step">
+            <div class="rule-num">4</div>
+            <div class="rule-text">
+              This month’s math:
+              <ul class="rule-mini-list">
+                <li>1 paying referral → <strong>20%</strong> off</li>
+                <li>2 paying referrals → <strong>25%</strong> off</li>
+                <li>every extra paying referral → <strong>+5%</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div class="rule-step">
+            <div class="rule-num">5</div>
+            <div class="rule-text">
+              We stop at <strong>60% max</strong> in one month.
+            </div>
+          </div>
+          <div class="rule-step">
+            <div class="rule-num">6</div>
+            <div class="rule-text">
+              People you invite can also invite others and get the same rewards.
+            </div>
+          </div>
+          <p class="rule-bottom">Short version: <strong>they pay → you save.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- right: list -->
+    <div class="referral-side">
+      <div class="referral-side-head">
+        <p class="referral-side-title">This month’s referrals (dummy)</p>
+        <span class="referral-side-count" id="referralListCount">0</span>
+      </div>
+      <div id="referralList" class="referral-list"></div>
+    </div>
+  </div>
+
+  <div class="referral-footer-cta">
+    <div class="referral-footer-text">
+      <strong>Want the discount this month?</strong> Send us your referral and we’ll mark it.
+    </div>
+    <a class="referral-primary-link" href="https://wa.me/923418378430" target="_blank" rel="noopener">
+      Send on WhatsApp →
+    </a>
+  </div>
+</section>
+
+
 
 
     <section id="modelLinks" class="dashboard-cards">
