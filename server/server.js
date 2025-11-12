@@ -86,19 +86,6 @@ app.use('/api', paraphraseRoutes);
 app.use('/api', grammarly1Routes);
 app.use('/api/aidetection', aidetectionRoutes);
 
-// 🌐 Public IP Debug Route for Brevo whitelisting (unchanged)
-app.get('/api/check-my-ip', async (req, res) => {
-  try {
-    const response = await axios.get('https://api.ipify.org?format=json');
-    const ip = response.data.ip;
-    console.log('🕵️ My server’s public IP is:', ip);
-    res.json({ ip });
-  } catch (err) {
-    console.error('❌ Failed to fetch public IP:', err.message);
-    res.status(500).json({ error: 'Could not fetch IP' });
-  }
-});
-
 // ===== MongoDB connection & start =====
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {

@@ -70,7 +70,7 @@ async function loadUsers() {
         <td data-label="Access">${u.plan}</td>
         ${expiryCell}
         <td data-label="APIs">${(u.modelsAccess || []).join(', ')}</td>
-        <td data-label="Credits">${typeof u.credits === 'number' ? u.credits : 0}</td>
+        <td data-label="Price">${u.paymentInfo ? u.paymentInfo : '-'}</td>
         <td data-label="Actions">
           <button class="btn" onclick="editUser(${i})">Edit</button>
           <button class="btn" onclick="deleteUser('${u._id}')">Delete</button>
@@ -101,6 +101,27 @@ document.getElementById('addUserBtn').addEventListener('click', () => {
   openModal('userModal');
 });
 
+// CUSTOM DATE OPTION 
+const customExpiryCheckbox = document.getElementById('useCustomExpiry');
+const customExpiryWrapper  = document.getElementById('customExpiry');
+
+if (customExpiryCheckbox) {
+  customExpiryCheckbox.addEventListener('change', () => {
+    const wrapper = document.getElementById('customExpiryWrapper');
+    if (customExpiryCheckbox.checked) {
+      wrapper.style.display = 'block';
+      // access not required if custom selected
+      document.getElementById('access').required = false;
+      document.getElementById('customExpiry').required = true;
+    } else {
+      wrapper.style.display = 'none';
+      document.getElementById('access').required = true;
+      document.getElementById('customExpiry').required = false;
+    }
+  });
+}
+
+
 // ------------------------------
 // Handle Add/Edit form submit
 // ------------------------------
@@ -128,20 +149,30 @@ document.getElementById('userForm').addEventListener('submit', async e => {
     return;
   }
 
-  const data = {
-    email: submittedEmail,
-    access: raw.access,
-    modelsAccess: raw.apis
-      .split(',')
-      .map(s => s.trim())
-      .filter(s => s),
-    credits: parseInt(raw.credits, 10) || 0
-  };
+const useCustom = document.getElementById('useCustomExpiry').checked;
+const customExpiryVal = document.getElementById('customExpiry').value;
 
-  // Only send password if new or edited
-  if (!editingId || raw.password.trim()) {
-    data.password = raw.password;
-  }
+const data = {
+  email: submittedEmail,
+  modelsAccess: raw.apis
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean),
+  credits: 0, // keep system happy
+  paymentInfo: raw.paymentInfo ? raw.paymentInfo.trim() : ''
+};
+
+// only send password if new or changed
+if (!editingId || raw.password.trim()) {
+  data.password = raw.password;
+}
+
+if (useCustom && customExpiryVal) {
+  data.customExpiry = customExpiryVal; // e.g. "2025-11-30"
+} else {
+  data.access = raw.access; // 30, 90, etc.
+}
+
 
   try {
     const res = await fetch(editingId ? `${API}/${editingId}` : API, {
@@ -176,19 +207,37 @@ function editUser(index) {
 
   // prefill fields
   form.email.value = u.email;
-  form.access.value = ({
-    'Standard': '30',
-    'Pro': '90',
-    'Business': '180',
-    'Premium': '365'
-  }[u.plan] || '');
-  form.apis.value = (u.modelsAccess || []).join(', ');
+  form.apis.value  = (u.modelsAccess || []).join(', ');
+  document.getElementById('paymentInfo').value = u.paymentInfo || '';
   form.credits.value = u.credits || 0;
   document.getElementById('password').required = false;
+
+  // try to map plan → access
+  const accessSelect = form.access;
+  const planToDays = {
+    'Standard - 1 Month': '30',
+    'Pro - 3 Months': '90',
+    'Business - 6 Months': '180',
+    'Premium - 1 Year': '365'
+  };
+  accessSelect.value = planToDays[u.plan] || '';
+
+  // also prefill the date with their current accessDuration
+  const expiryDate = new Date(u.accessDuration);
+  const yyyy = expiryDate.getFullYear();
+  const mm = String(expiryDate.getMonth() + 1).padStart(2, '0');
+  const dd = String(expiryDate.getDate()).padStart(2, '0');
+  const isoDate = `${yyyy}-${mm}-${dd}`;
+  document.getElementById('customExpiry').value = isoDate;
+
+  // but don't force custom on — admin can pick
+  document.getElementById('useCustomExpiry').checked = false;
+  document.getElementById('customExpiryWrapper').style.display = 'none';
 
   openModal('userModal');
   showToast('Info', `Editing user: ${u.email}`, 'info');
 }
+
 
 // ------------------------------
 // Delete user with confirmation
@@ -301,7 +350,7 @@ function filterUsers() {
         <td data-label="Access">${u.plan}</td>
         ${expiryCell}
         <td data-label="APIs">${(u.modelsAccess || []).join(', ')}</td>
-        <td data-label="Credits">${typeof u.credits === 'number' ? u.credits : 0}</td>
+        <td data-label="Price">${u.paymentInfo ? u.paymentInfo : '-'}</td>
         <td data-label="Actions">
           <button class="btn" onclick="editUser(${list.indexOf(u)})">Edit</button>
           <button class="btn" onclick="deleteUser('${u._id}')">Delete</button>

@@ -72,7 +72,7 @@
                 <th>Duration</th>
                 <th>Expiry</th>
                 <th>Tools</th>
-                <th>Credits</th>
+                <th>Price</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -120,11 +120,34 @@
           <option value="365">Premium - 1 Year</option>
         </select>
 
+<div class="input-group">
+  <label>
+    <input type="checkbox" id="useCustomExpiry" />
+    Use custom expiry date
+  </label>
+</div>
+
+<div id="customExpiryWrapper">
+  <label for="customExpiry">Expiry date</label>
+  <input type="date" id="customExpiry" name="customExpiry" class="input" />
+</div>
+
+
         <label for="apis">Models</label>
         <input type="text" id="apis" name="apis" class="input" placeholder="e.g. turnitin1,quillbot2" required />
 
-        <label for="credits">Credits</label>
-        <input type="number" id="credits" name="credits" class="input" placeholder="Enter credits" min="0" required />
+<label for="paymentInfo">Price</label>
+<input
+  type="text"
+  id="paymentInfo"
+  name="paymentInfo"
+  class="input"
+  placeholder="How much the user paid"
+/>
+
+<!-- keep a hidden credits so backend doesn't cry -->
+<input type="hidden" id="credits" name="credits" value="0" />
+
 
         <button id="userSubmitBtn" type="submit" class="btn">Add User</button>
         <button type="button" class="btn btn-cancel" onclick="closeModal('userModal')">Cancel</button>

@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   role:     { type: String, default: 'user' },    // 'user' or 'admin'
   accessDuration: { type: Date, required: true }, // computed based on "access" days
   modelsAccess: { type: [String], default: [] },                      // e.g. ['turnitin1', 'quillbot2']
-  credits:        { type: Number, default: 0 }     // number of credits/checks assigned
+  credits:        { type: Number, default: 0 },     // number of credits/checks assigned
+  paymentInfo:  { type: String, default: '' }
 });
 
 module.exports = mongoose.model('User', userSchema);

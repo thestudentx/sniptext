@@ -21,9 +21,19 @@ const userValidation = [
   body('password')
     .optional({ nullable: true })
     .isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+  // allow either access or customExpiry
+  body().custom(body => {
+    if (!body.access && !body.customExpiry) {
+      throw new Error('Either access (days) or customExpiry (date) is required');
+    }
+    return true;
+  }),
   body('access')
-    .notEmpty().withMessage('Access is required')
+    .optional()
     .isIn(Object.keys(planMap)).withMessage('Access must be one of: ' + Object.keys(planMap).join(', ')),
+  body('customExpiry')
+    .optional()
+    .isISO8601().withMessage('customExpiry must be a valid date (YYYY-MM-DD)'),
   body('apis')
     .optional()
     .custom(val => {
@@ -33,8 +43,12 @@ const userValidation = [
     }),
   body('credits')
     .optional()
-    .isInt({ min: 0 }).withMessage('Credits must be a non-negative integer')
+    .isInt({ min: 0 }).withMessage('Credits must be a non-negative integer'),
+  body('paymentInfo')
+    .optional()
+    .isString()
 ];
+
 
 // GET /api/admin/users - list all users
 router.get('/', authenticateToken, requireAdmin, async (req, res) => {
@@ -48,7 +62,6 @@ router.get('/', authenticateToken, requireAdmin, async (req, res) => {
 });
 
 // POST /api/admin/users - create new user via admin panel
-// POST /api/admin/users
 router.post(
   '/', 
   authenticateToken, 
@@ -60,7 +73,7 @@ router.post(
 
     console.log('Creating user with body:', req.body);
 
-    const { email, password, access, credits } = req.body;
+    const { email, password, access, customExpiry, credits } = req.body;
     const rawModels = req.body.modelsAccess ?? req.body.apis;
     const modelsAccess = Array.isArray(rawModels)
       ? rawModels
@@ -74,33 +87,35 @@ router.post(
       }
 
       const hashedPwd = await bcrypt.hash(password, 10);
-      const days      = parseInt(access, 10);
-      const expiry    = new Date(Date.now() + days * 24 * 60 * 60 * 1000);
+
+      // 🔑 support custom expiry OR duration-based
+      let expiry;
+      let planLabel;
+      if (customExpiry) {
+        expiry = new Date(customExpiry);
+        planLabel = 'Custom';
+      } else {
+        const days   = parseInt(access, 10);
+        expiry       = new Date(Date.now() + days * 24 * 60 * 60 * 1000);
+        planLabel    = planMap[days];
+      }
 
       const newUser = new User({
         email,
         password:       hashedPwd,
-        plan:           planMap[days],
+        plan:           planLabel,
         role:           'user',
         accessDuration: expiry,
         modelsAccess,
         credits:        parseInt(credits, 10) || 0
       });
 
-      await newUser.save();
-
-      // ✅ BREVO INTEGRATION (safe, no interference)
-      try {
-        const { addUserToBrevo } = require('../utils/brevo'); // only used here
-        await addUserToBrevo({
-          email: newUser.email,
-          firstName: newUser.email.split('@')[0],
-          accessDuration: expiry.toISOString().split('T')[0]
-        });
-      } catch (brevoErr) {
-        console.error('📨 Brevo contact add failed:', brevoErr.message);
-        // Optional: log this error somewhere for audit
+      // 💰 store payment info if provided
+      if (req.body.paymentInfo) {
+        newUser.paymentInfo = req.body.paymentInfo;
       }
+
+      await newUser.save();
 
       res.status(201).json({ message: 'User created', user: newUser });
     } catch (err) {
@@ -124,13 +139,17 @@ router.put('/:id',
     }
 
     try {
-      const { access, apis, credits } = req.body;
+      const { access, apis, credits, customExpiry } = req.body;
       const update = {};
 
       if (access) {
         const days = parseInt(access, 10);
         update.plan           = planMap[days];
         update.accessDuration = new Date(Date.now() + days * 24 * 60 * 60 * 1000);
+      } else if (customExpiry) {
+        update.accessDuration = new Date(customExpiry);
+        // If you want to mark it explicitly:
+        // update.plan = 'Custom';
       }
 
       if (apis != null) {
@@ -143,18 +162,24 @@ router.put('/:id',
         update.credits = parseInt(credits, 10) || 0;
       }
 
+      // 💰 allow updating payment info
+      if (req.body.paymentInfo != null) {
+        update.paymentInfo = req.body.paymentInfo;
+      }
+
       const user = await User.findByIdAndUpdate(
         req.params.id,
         update,
         { new: true, select: '-password' }
       );
 
+      // keep existing logic that also accepts modelsAccess/apis in another form
       const rawModels = req.body.modelsAccess ?? req.body.apis;
-if (rawModels != null) {
-  update.modelsAccess = Array.isArray(rawModels)
-    ? rawModels
-    : rawModels.split(',').map(a => a.trim());
-}
+      if (rawModels != null) {
+        update.modelsAccess = Array.isArray(rawModels)
+          ? rawModels
+          : rawModels.split(',').map(a => a.trim());
+      }
 
       if (!user) return res.status(404).json({ message: 'User not found' });
       res.json({ message: 'User updated', user });
